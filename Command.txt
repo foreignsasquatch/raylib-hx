@@ -1,1 +1,0 @@
-haxe -cp src -cpp C:/projects/hxRaylib/bin -main Main
