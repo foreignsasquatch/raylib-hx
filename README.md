@@ -1,3 +1,3 @@
-# raylib-hx
+# hxRaylib
 Haxe bindings for raylib
 
