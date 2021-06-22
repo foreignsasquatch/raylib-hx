@@ -3,6 +3,11 @@ Haxe bindings for Raylib, a simple and easy-to-use library to learn videogame pr
 
 ###### warning: the binding is in its early stage of development so use at your own risk
 
+# Requirements
+- Haxe
+- hxcpp
+- Visual studio 2019 or build tools for vs2019
+
 # Installation
 - Clone this repository
 - You also need the raylib source files in the format `lib -> raylib -> src`
