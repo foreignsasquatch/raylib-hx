@@ -6,7 +6,7 @@ Haxe bindings for Raylib, a simple and easy-to-use library to learn videogame pr
 # Installation
 - Clone this repository
 - This repo can be used as a template 
--  To compile: haxe -cp src -cpp your output dir -main Main
+-  To compile: `haxe -cp src -cpp your output dir -main Main`
 
 # Example
 this is a basic example of the binding which creates a window
