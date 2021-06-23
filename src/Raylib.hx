@@ -43,6 +43,25 @@ extern class Color
 }
 
 @:include("raylib.h")
+extern class Rectangle
+{
+    var x:Float;
+    var y:Float;
+    var w:Float;
+    var h:Float;
+}
+
+@:include("raylib.h")
+extern class Image
+{
+    var data:Void;
+    var w:Int;
+    var h:Int;
+    var mipmaps:Int;
+    var format:Int;
+}
+
+@:include("raylib.h")
 @:native("Vector2")
 @:structAccess
 extern class Vector2
@@ -58,7 +77,8 @@ extern class Vector2
 @:include("raylib.h")
 @:native("Vector3")
 @:structAccess
-extern class Vector3 {
+extern class Vector3
+{
     var x:Float;
     var y:Float;
     var z:Float;
@@ -72,7 +92,8 @@ extern class Vector3 {
 @:include("raylib.h")
 @:native("Vector4")
 @:structAccess
-extern class Vector4 {
+extern class Vector4
+{
     var x:Float;
     var y:Float;
     var z:Float;
@@ -82,7 +103,8 @@ extern class Vector4 {
 @:include("raylib.h")
 @:native("Camera3D")
 @:structAccess
-extern class Camera3D {
+extern class Camera3D
+{
     var position:Vector3;
     var target:Vector3;
     var up:Vector3;
@@ -98,23 +120,46 @@ extern class Camera3D {
 typedef Camera = Camera3D;
 
 @:include("raylib.h")
-extern class Colors {
+extern class Colors
+{
     @:native("RAYWHITE")    public static var RAYWHITE:Color;
     @:native("LIGHTGRAY")   public static var LIGHTGRAY:Color;
     @:native("BLACK")       public static var BLACK:Color;
     @:native("GRAY")        public static var GRAY:Color;
     @:native("RED")         public static var RED:Color;
     @:native("MAROON")      public static var MAROON:Color;
+    @:native("DARKGRAY")    public static var DARKGRAY:Color;
+    @:native("YELLOW")      public static var YELLOW:Color;
+    @:native("GOLD")        public static var GOLD:Color;
+    @:native("ORANGE")      public static var ORANGE:Color;
+    @:native("PINK")        public static var PINK:Color;
+    @:native("GREEN")       public static var GREEN:Color;
+    @:native("LIME")        public static var LIME:Color;
+    @:native("DARKGREEN")   public static var DARKGREEN:Color;
+    @:native("SKYBLUE")     public static var SKYBLUE:Color;
+    @:native("BLUE")        public static var BLUE:Color;
+    @:native("DARKBLUE")    public static var DARKBLUE:Color;
+    @:native("PURPLE")      public static var PURPLE:Color;
+    @:native("VIOLET")      public static var VIOLET:Color;
+    @:native("DARKPURPLE")  public static var DARKPURPLE:Color;
+    @:native("BEIGE")       public static var BEIGE:Color;
+    @:native("BROWN")       public static var BROWN:Color;
+    @:native("DARKBROWN")   public static var DARKBROWN:Color;
+    @:native("WHITE")       public static var WHITE:Color;
+    @:native("BLANK")       public static var BLANK:Color;
+    @:native("MAGENTA")     public static var MAGENTA:Color;
 }
 
 @:include("raylib.h")
-extern class CameraProjections {
+extern class CameraProjections
+{
     @:native("CAMERA_PERSPECTIVE")      public static var CAMERA_PERSPECTIVE:Int;
     @:native("CAMERA_ORTHOGRAPHIC")     public static var CAMERA_ORTHOGRAPHIC:Int;
 }
 
 @:include("raylib.h")
-extern class CameraModes {
+extern class CameraModes
+{
     @:native("CAMERA_CUSTOM")           public static var CAMERA_CUSTOM:Int;
     @:native("CAMERA_FREE")             public static var CAMERA_FREE:Int;
     @:native("CAMERA_ORBITAL")          public static var CAMERA_ORBITAL:Int;
