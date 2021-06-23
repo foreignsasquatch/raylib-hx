@@ -19,7 +19,6 @@
 *       - Powerful math module for Vector, Matrix and Quaternion operations: [raymath]
 *       - Audio loading and playing with streaming support (WAV, OGG, MP3, FLAC, XM, MOD)
 *       - VR stereo rendering with configurable HMD device parameters
-*       - Bindings to multiple programming languages available!
 *
 *   LICENSE: zlib/libpng
 *
