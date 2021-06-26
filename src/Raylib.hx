@@ -19,6 +19,7 @@
 *       - Powerful math module for Vector, Matrix and Quaternion operations: [raymath]
 *       - Audio loading and playing with streaming support (WAV, OGG, MP3, FLAC, XM, MOD)
 *       - VR stereo rendering with configurable HMD device parameters
+*       - Bindings to multiple programming languages available!
 *
 *   LICENSE: zlib/libpng
 *
@@ -75,6 +76,12 @@ extern class Raylib
     @:native("DrawCube")                public static function DrawCube(position:Vector3, width:Float, height:Float, length:Float, color:Color):Void;
     @:native("DrawCubeWires")           public static function DrawCubeWires(position:Vector3, width:Float, height:Float, length:Float, color:Color):Void;
     @:native("DrawGrid")                public static function DrawGrid(slices:Int, spacing:Int):Void;
+    @:native("LoadImage")               public static function LoadImage(fileName:cpp.ConstCharStar):Image;
+    @:native("UnloadImage")             public static function UnloadImage(image:Image):Void;
+    @:native("LoadTexture")             public static function LoadTexture(fileName:cpp.ConstCharStar):Texture2D;
+    @:native("LoadTextureFromImage")    public static function LoadTextureFromImage(image:Image):Texture2D;
+    @:native("UnloadTexture")           public static function UnloadTexture(texture:Texture2D):Void;
+    @:native("DrawTexture")             public static function DrawTexture(texture:Texture2D, posX:Int, posY:Int, tint:Color):Void;
 }
 
 @:include("raylib.h")
@@ -209,22 +216,55 @@ extern class Image
 @:unreflective
 extern class Texture
 {
-    var id:Int; // OpenGL texture id
+    var id:UInt; // OpenGL texture id
     var width:Int;  // Texture base width
     var height:Int; // Texture base height
     var mipmaps:Int; // Mipmap levels, 1 by deafult
     var format:Int; //Data format (PixelFormat type)
 }
 
+// Texture2D, same as Texture
 typedef Texture2D = Texture;
+
+// TextureCubemap, same as Texture
 typedef TextureCubemap = Texture;
 
-@:native("raylib.h")
+//RenderTexture, fbo for texture rendering
+@:include("raylib.h")
 @:native("RenderTexture")
 @:structAccess
 extern class RenderTexture
 {
-    
+    var id:UInt;    // OpenGL framebuffer object id
+    var texture:Texture;    // Color buffer attachment texture
+    var depth:Texture;  // Depth buffer attachment texture
+}
+
+typedef RenderTexture2D =  RenderTexture;
+
+@:include("raylib.h")
+@:native("CharInfo")
+@:structAccess
+extern class CharInfo
+{
+    var value:Int;
+    var offsetX:Int;
+    var offsetY:Int;
+    var advanceX:Int;
+    var image:Image;
+}
+
+@:include("raylib.h")
+@:native("Font")
+@:structAccess
+extern class Font
+{
+    var baseSize:Int;
+    var charsCount:Int;
+    var charsPadding:Int;
+    var texture:Texture2D;
+    var recs:RawPointer<Rectangle>;
+    var chars:RawPointer<CharInfo>;
 }
 
 @:include("raylib.h")
