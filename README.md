@@ -54,3 +54,4 @@ class Main
 - **None4u: https://github.com/Picoseconds**
 - **Ian Harrigan: https://github.com/ianharrigan**
 - **Raysan: https://github.com/raysan5**
+- **PolybiusProxy: https://github.com/polybiusproxy**
