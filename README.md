@@ -4,18 +4,26 @@ Haxe bindings for Raylib, a simple and easy-to-use library to learn videogame pr
 ###### warning: the binding is in its early stage of development so use at your own risk
 
 # Requirements
-- Haxe
-- hxcpp
-- Visual studio 2019 or build tools for vs2019
+
+- Haxe 4.0.0 of above.
+- hxcpp (Haxe's C++ runtime) - Install it by running `haxelib install hxcpp`.
+- Raylib 3.7.0 source code. - Get it from [here](https://github.com/raysan5/raylib/archive/refs/tags/3.7.0.zip).
+
+- The following C++ tools: (you can find them in the VS Installer)
+    * MSVC v142 - VS 2019 C++ x64/x86 build tools
+    * Windows SDK (latest version)
 
 # Installation
-- Clone this repository
-- You also need the raylib source files in the format `lib -> raylib -> src`
-- This repo can be used as a template 
--  To compile: `haxe -cp src -cpp your output dir -main Main`
+
+1. Clone this repository.
+2. Create a folder called "lib".
+3. Rename the "raylib-3.7.0" folder to just "raylib".
+4. Insert the "raylib" folder into the "lib" folder. Then path should be like this: `lib -> raylib -> src`
+5. To compile, run hxBuild.bat
 
 # Example
-this is a basic example of the binding which creates a window
+This is a basic example of the binding which creates a basic window:
+
 ```haxe
 import Raylib.*;
 import Raylib.Colors.*;
@@ -29,8 +37,10 @@ class Main
         while (!WindowShouldClose())
         {
             BeginDrawing();
-                ClearBackground(RAYWHITE);
-                DrawText("Congrats! You created your first window using hxRaylib!", 100, 100, 20, RAYWHITE);
+            
+            ClearBackground(RAYWHITE);
+            DrawText("Congrats! You created your first window using hxRaylib!", 190, 200, 20, LIGHTGRAY);
+
             EndDrawing();
         }
 
@@ -41,6 +51,6 @@ class Main
 
 # Thanks to
 - **Zeta: https://github.com/Apprentice-Alchemist**
-- **None4u:https://github.com/Picoseconds**
+- **None4u: https://github.com/Picoseconds**
 - **Ian Harrigan: https://github.com/ianharrigan**
 - **Raysan: https://github.com/raysan5**
