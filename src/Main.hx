@@ -1,4 +1,4 @@
-package examples;
+package;
 
 import Raylib.*;
 import Raylib.Colors.*;
