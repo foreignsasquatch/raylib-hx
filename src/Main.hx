@@ -3,7 +3,7 @@ package examples;
 import Raylib.*;
 import Raylib.Colors.*;
 
-class CoreExample
+class Main
 {
     static function main()
     {
