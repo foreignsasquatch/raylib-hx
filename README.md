@@ -3,18 +3,21 @@ Haxe bindings for Raylib, a simple and easy-to-use library to learn videogame pr
 
 ###### warning: the binding is in its early stage of development so use at your own risk
 
-# Requirements
+Requirements
+-------------
 - Haxe
 - hxcpp
 - Visual studio 2019 or build tools for vs2019
 
-# Installation
+Installation
+-------------
 - Clone this repository
 - You also need the raylib source files in the format `lib -> raylib -> src`
 - This repo can be used as a template 
 -  To compile: `haxe -cp src -cpp your output dir -main Main`
 
-# Example
+Example
+--------
 this is a basic example of the binding which creates a window
 ```haxe
 import Raylib.*;
@@ -39,8 +42,13 @@ class Main
 }
 ```
 
-# Thanks to
-- **Zeta: https://github.com/Apprentice-Alchemist**
-- **None4u: https://github.com/Picoseconds**
-- **Ian Harrigan: https://github.com/ianharrigan**
-- **Raysan: https://github.com/raysan5**
+License
+-------
+raylib is licensed under an unmodified zlib/libpng license, which is an OSI-certified, BSD-like license that allows static linking with closed source software. Check [LICENSE](LICENSE) for further details.
+
+Thanks to:
+----------
+- **[Zeta](https://github.com/Apprentice-Alchemist)**
+- **[None4u](https://github.com/Picoseconds)**
+- **[Ian Harrigan](https://github.com/ianharrigan)**
+- **[Raysan](https://github.com/raysan5)**
