@@ -5,7 +5,7 @@ CALL :setESC
 GOTO START
 
 :START:
-ECHO %ESC%[45mhxRaylib builder - Made by PolybiusProxy%ESC%[0m
+ECHO %ESC%[45mhxRaylib builder for Windows%ESC%[0m
 TIMEOUT /T 1 /NOBREAK >NUL 2>&1
 ECHO %ESC%[41mSTARTING...%ESC%[0m
 TIMEOUT /T 2 /NOBREAK >NUL 2>&1
