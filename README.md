@@ -41,6 +41,6 @@ class Main
 
 # Thanks to
 - **Zeta: https://github.com/Apprentice-Alchemist**
-- **None4u:https://github.com/Picoseconds**
+- **None4u: https://github.com/Picoseconds**
 - **Ian Harrigan: https://github.com/ianharrigan**
 - **Raysan: https://github.com/raysan5**
