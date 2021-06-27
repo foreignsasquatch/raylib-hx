@@ -5,8 +5,8 @@ Haxe bindings for Raylib, a simple and easy-to-use library to learn videogame pr
 
 Requirements
 -------------
-- Haxe
-- hxcpp
+- Haxe 4.0.0 or above
+- Hxcpp
 - Visual studio 2019 or build tools for vs2019
 
 Installation
