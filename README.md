@@ -16,9 +16,9 @@ Haxe bindings for Raylib, a simple and easy-to-use library to learn videogame pr
 # Installation
 
 1. Clone this repository.
-2. Create a folder called "lib".
+2. Create a folder called "lib" in the root directory.
 3. Rename the "raylib-3.7.0" folder to just "raylib".
-4. Insert the "raylib" folder into the "lib" folder. Then path should be like this: `lib -> raylib -> src`
+4. Insert the "raylib" folder into the "lib" folder. Then path should be like this: `lib/raylib/src`
 5. To compile for Windows, run hxBuild.bat
 
 # Example
