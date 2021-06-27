@@ -5,11 +5,11 @@ Haxe bindings for Raylib, a simple and easy-to-use library to learn videogame pr
 
 # Requirements
 
-- Haxe 4.0.0 of above.
+- Haxe 4.0.0 or above.
 - hxcpp (Haxe's C++ runtime) - Install it by running `haxelib install hxcpp`.
 - Raylib 3.7.0 source code. - Get it from [here](https://github.com/raysan5/raylib/archive/refs/tags/3.7.0.zip).
 
-- The following C++ tools: (you can find them in the VS Installer)
+- The following C++ tools for Windows: (you can find them in the VS Installer)
     * MSVC v142 - VS 2019 C++ x64/x86 build tools
     * Windows SDK (latest version)
 
@@ -19,7 +19,7 @@ Haxe bindings for Raylib, a simple and easy-to-use library to learn videogame pr
 2. Create a folder called "lib".
 3. Rename the "raylib-3.7.0" folder to just "raylib".
 4. Insert the "raylib" folder into the "lib" folder. Then path should be like this: `lib -> raylib -> src`
-5. To compile, run hxBuild.bat
+5. To compile for Windows, run hxBuild.bat
 
 # Example
 This is a basic example of the binding which creates a basic window:
@@ -54,4 +54,3 @@ class Main
 - **None4u: https://github.com/Picoseconds**
 - **Ian Harrigan: https://github.com/ianharrigan**
 - **Raysan: https://github.com/raysan5**
-- **PolybiusProxy: https://github.com/polybiusproxy**
