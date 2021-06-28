@@ -2,22 +2,24 @@
 	<img src="res/logo.png" alt="Raylib Logo">
 </p>
 
-[Haxe](https://haxe.org/) bindings for [raylib](https://raylib.com), a simple and easy-to-use library to learn videogame programming, Currently works only for windows but feel free the expand to other platforms
+[Haxe](https://haxe.org/) bindings for [raylib](https://raylib.com), a simple and easy-to-use library to learn videogame programming, Currently works only for windows but feel free the expand to other platforms.
+This binding is worked on by two people but if you want to work on the binding feel free to add the feature and make a pull request.
 
 > Warning! The binding is in its early stage of development and may change at any moment, please use at your own risk
 
 Requirements
 -------------
 - Haxe 4.0.0 or above
-- Hxcpp
-- Visual studio 2019 or build tools for vs2019
+- Hxcpp (Haxe's C++ runtime) which you can install by using `haxelib insall hxcpp`
+- MSVC v142 - VS 2019 C++ x64/x86 build tools for Windows
+- (Windows only) Windows 10 SDK
 
 Installation
 -------------
-- Clone this repository
-- You also need the raylib source files in the format `lib/raylib/src`
-- This repo can be used as a template
--  To compile: `haxe -cp src -cpp your output dir -main Main`
+1. Clone this repository
+2. You also need the raylib source files in the format `lib/raylib/src`
+3. This repo can be used as a template
+4. To compile: `haxe build.hxml`
 
 Example
 --------
