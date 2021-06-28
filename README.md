@@ -17,9 +17,8 @@ Requirements
 Installation
 -------------
 1. Clone this repository
-2. You also need the raylib source files in the format `lib/raylib/src`
-3. This repo can be used as a template
-4. To compile: `haxe build.hxml`
+2. This repo can be used as a template
+3. To compile: `haxe build.hxml`
 
 Example
 --------
