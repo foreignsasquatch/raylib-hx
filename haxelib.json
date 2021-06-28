@@ -1,7 +1,7 @@
 {
 	"name": "hxRaylib",
 	"url" : "https://github.com/ForeignSasquatch/hxRaylib",
-	"license": "Zlib",
+	"license": "MIT",
 	"tags": ["bindings", "raylib", "hxcpp", "game", "development"],
 	"description": "Haxe bindings for raylib, a simple and easy-to-use library to learn videogame programming",
 	"version": "0.0.1",
