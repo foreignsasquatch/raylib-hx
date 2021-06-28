@@ -1,21 +1,23 @@
 <xml>
-    <set name="raylib_folder" value="../lib/raylib" />
-    <set name="glfw_folder" value="../lib/raylib/src/external/glfw" />
+    <set name="raylib_folder" value="../raylib" />
+    <set name="glfw_folder" value="../raylib/external/glfw" />
 
     <echo value="Using raylib from: ${raylib_folder}" />
     <echo value="Using glfw from: ${glfw_folder}" />
     
     <section>
         <files id="haxe">
+            <lib name="-lraylib" />
+
             <compilerflag value="-I${glfw_folder}/include" />
-            <compilerflag value="-I${raylib_folder}/src" />
+            <compilerflag value="-I${raylib_folder}" />
             
-            <file name="${raylib_folder}/src/core.c" />
-            <file name="${raylib_folder}/src/utils.c" />
-            <file name="${raylib_folder}/src/shapes.c" />
-            <file name="${raylib_folder}/src/textures.c" />
-            <file name="${raylib_folder}/src/text.c" />
-            <file name="${raylib_folder}/src/models.c" />
+            <file name="${raylib_folder}/core.c" />
+            <file name="${raylib_folder}/utils.c" />
+            <file name="${raylib_folder}/shapes.c" />
+            <file name="${raylib_folder}/textures.c" />
+            <file name="${raylib_folder}/text.c" />
+            <file name="${raylib_folder}/models.c" />
             
             <file name="${glfw_folder}/src/init.c" />
             <file name="${glfw_folder}/src/window.c" />

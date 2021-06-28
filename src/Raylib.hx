@@ -19,7 +19,6 @@
 *       - Powerful math module for Vector, Matrix and Quaternion operations: [raymath]
 *       - Audio loading and playing with streaming support (WAV, OGG, MP3, FLAC, XM, MOD)
 *       - VR stereo rendering with configurable HMD device parameters
-*       - Bindings to multiple programming languages available!
 *
 *   LICENSE: zlib/libpng
 *
@@ -49,7 +48,7 @@ package;
 import cpp.ConstCharStar;
 import cpp.RawPointer;
 
-@:buildXml("<include name='../Raylib.xml'/>")
+@:buildXml("<include name='../raylib.xml'/>")
 @:include("raylib.h")
 extern class Raylib
 {
@@ -88,33 +87,33 @@ extern class Raylib
 extern class Colors
 {
     // Basic colors (colours)
-    @:native("LIGHTGRAY")   public static var LIGHTGRAY:Color;
-    @:native("GRAY")        public static var GRAY:Color;
-    @:native("DARKGRAY")    public static var DARKGRAY:Color;
-    @:native("YELLOW")      public static var YELLOW:Color;
-    @:native("GOLD")        public static var GOLD:Color;
-    @:native("ORANGE")      public static var ORANGE:Color;
-    @:native("PINK")        public static var PINK:Color;
-    @:native("RED")         public static var RED:Color;
-    @:native("MAROON")      public static var MAROON:Color;
-    @:native("GREEN")       public static var GREEN:Color;
-    @:native("LIME")        public static var LIME:Color;
-    @:native("DARKGREEN")   public static var DARKGREEN:Color;
-    @:native("SKYBLUE")     public static var SKYBLUE:Color;
-    @:native("BLUE")        public static var BLUE:Color;
-    @:native("DARKBLUE")    public static var DARKBLUE:Color;
-    @:native("PURPLE")      public static var PURPLE:Color;
-    @:native("VIOLET")      public static var VIOLET:Color;
-    @:native("DARKPURPLE")  public static var DARKPURPLE:Color;
-    @:native("BEIGE")       public static var BEIGE:Color;
-    @:native("BROWN")       public static var BROWN:Color;
+    @:native("LIGHTGRAY")   public static var LIGHTGRAY:Color;  // Light Gray
+    @:native("GRAY")        public static var GRAY:Color;       // Gray
+    @:native("DARKGRAY")    public static var DARKGRAY:Color;   // Dark Gray
+    @:native("YELLOW")      public static var YELLOW:Color;     // Yellow
+    @:native("GOLD")        public static var GOLD:Color;       // Gold
+    @:native("ORANGE")      public static var ORANGE:Color;     // Orange
+    @:native("PINK")        public static var PINK:Color;       // Pink
+    @:native("RED")         public static var RED:Color;        // Red
+    @:native("MAROON")      public static var MAROON:Color;     // Maroon
+    @:native("GREEN")       public static var GREEN:Color;      // Green
+    @:native("LIME")        public static var LIME:Color;       // Lime
+    @:native("DARKGREEN")   public static var DARKGREEN:Color;  // Dark Green
+    @:native("SKYBLUE")     public static var SKYBLUE:Color;    // Sky Blue
+    @:native("BLUE")        public static var BLUE:Color;       // Blue
+    @:native("DARKBLUE")    public static var DARKBLUE:Color;   // Dark Blue
+    @:native("PURPLE")      public static var PURPLE:Color;     // Purple
+    @:native("VIOLET")      public static var VIOLET:Color;     // Violet
+    @:native("DARKPURPLE")  public static var DARKPURPLE:Color; // Dark Purple
+    @:native("BEIGE")       public static var BEIGE:Color;      // Beige
+    @:native("BROWN")       public static var BROWN:Color;      // Brown
+    @:native("DARKBROWN")   public static var DARKBROWN:Color;  // Dark Brown
 
-    @:native("RAYWHITE")    public static var RAYWHITE:Color;
-    @:native("BLACK")       public static var BLACK:Color;
-    @:native("DARKBROWN")   public static var DARKBROWN:Color;
-    @:native("WHITE")       public static var WHITE:Color;
-    @:native("BLANK")       public static var BLANK:Color;
-    @:native("MAGENTA")     public static var MAGENTA:Color;
+    @:native("WHITE")       public static var WHITE:Color;      // White
+    @:native("BLACK")       public static var BLACK:Color;      // Black
+    @:native("BLANK")       public static var BLANK:Color;      // Blank (Transparent)
+    @:native("MAGENTA")     public static var MAGENTA:Color;    // Magenta
+    @:native("RAYWHITE")    public static var RAYWHITE:Color;   // Raysan's white (raylib logo)
 }
 
 // Vector2, 2 components
@@ -235,56 +234,91 @@ typedef TextureCubemap = Texture;
 @:structAccess
 extern class RenderTexture
 {
-    var id:UInt;    // OpenGL framebuffer object id
+    var id:UInt;            // OpenGL framebuffer object id
     var texture:Texture;    // Color buffer attachment texture
-    var depth:Texture;  // Depth buffer attachment texture
+    var depth:Texture;      // Depth buffer attachment texture
 }
 
+// RenderTexture2D, same as RenderTexture;
 typedef RenderTexture2D =  RenderTexture;
 
+// NPatchInfo, n-patch layout info
+@:include("raylib.h")
+@:native("NPatchInfo")
+@:structAccess
+extern class NPatchInfo
+{
+    var source:Rectangle;   // Texture source rectangle
+    var left:Int;           // Left border offset
+    var top:Int;            // Top border offset
+    var right:Int;          // Right border offset
+    var bottom:Int;         // Bottom border offeset
+    var layout:Int;         // Layout of n-patch: 3x3, 1x3 or 3x1
+}
+
+// CharInfo, for font character info
 @:include("raylib.h")
 @:native("CharInfo")
 @:structAccess
 extern class CharInfo
 {
-    var value:Int;
-    var offsetX:Int;
-    var offsetY:Int;
-    var advanceX:Int;
-    var image:Image;
+    var value:Int;          // Character value (Unicode)
+    var offsetX:Int;        // Character offset X when drawing
+    var offsetY:Int;        // Character offset Y when drawing
+    var advanceX:Int;       // Charcter advance position X
+    var image:Image;        // Character image data
 }
 
+// Font, font texture and CharInfo array data
 @:include("raylib.h")
 @:native("Font")
 @:structAccess
 extern class Font
 {
-    var baseSize:Int;
-    var charsCount:Int;
-    var charsPadding:Int;
-    var texture:Texture2D;
-    var recs:RawPointer<Rectangle>;
-    var chars:RawPointer<CharInfo>;
+    var baseSize:Int;       // Base size (default chars height)
+    var charsCount:Int;     // Number of characters 
+    var charsPadding:Int;   // Padding around the chars 
+    var texture:Texture2D;  // Characters texture atlas
+    var recs:RawPointer<Rectangle>;    // Character rectabgle in texture
+    var chars:RawPointer<CharInfo>;    // Charcter info data
 }
 
+// Camera, defines positon/oreientation in 3d space
 @:include("raylib.h")
 @:native("Camera3D")
 @:structAccess
 extern class Camera3D
 {
-    var position:Vector3;
-    var target:Vector3;
-    var up:Vector3;
-    var fovy:Float;
-    var projection:Int;
-    
+    var position:Vector3;  // Camera position
+    var target:Vector3;    // Camera target it looks-at
+    var up:Vector3;        // Camera up vector (rotation over its axis)
+    var fovy:Float;        // Camera field-of-view apperture in Y (degrees) in perspective, used as near plane width in orthographic
+    var projection:Int;    // Camera projection: CAMERA_PERSPECTIVE or CAMERA_ORTHOGRAPHIC
+
     public static inline function create():Camera
     {
         return untyped __cpp__("{ 0 }");
     }
 }
 
-typedef Camera = Camera3D;
+typedef Camera = Camera3D; // Camera type fallback, defaults to Camera3D
+
+// Camera2D, defines position/orientation in 2d space
+@:include("raylib.h")
+@:native("Camera2D")
+@:structAccess
+extern class Camera2D
+{
+    var offset:Vector2;   // Camera offset (displacement from target)
+    var target:Vector2;   // Camera target (rotation and zoom origin)
+    var rotation:Float;   // Camera rotation in degrees
+    var zoom:Float;       // Camera zoom (scaling), should be 1.0f by default
+
+    public static inline function create():Camera
+    {
+        return untyped __cpp__("{ 0 }");
+    }
+}
 
 @:include("raylib.h")
 extern class CameraProjections
