@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="assets/logo.png" alt="Raylib Logo">
+	<img src="res/logo.png" alt="Raylib Logo">
 </p>
 
 [Haxe](https://haxe.org/) bindings for [raylib](https://raylib.com), a simple and easy-to-use library to learn videogame programming, Currently works only for windows but feel free the expand to other platforms
@@ -16,7 +16,7 @@ Installation
 -------------
 - Clone this repository
 - You also need the raylib source files in the format `lib/raylib/src`
-- This repo can be used as a template 
+- This repo can be used as a template
 -  To compile: `haxe -cp src -cpp your output dir -main Main`
 
 Example
