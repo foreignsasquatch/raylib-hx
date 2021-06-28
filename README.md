@@ -1,7 +1,10 @@
-# hxRaylib
-Haxe bindings for Raylib, a simple and easy-to-use library to learn videogame programming (www.raylib.com), Currently works only for windows but feel free the expand to other platforms
+<p align="center">
+	<img src="assets/logo.png" alt="Raylib Logo">
+</p>
 
-###### warning: the binding is in its early stage of development so use at your own risk
+[Haxe](https://haxe.org/) bindings for [raylib](https://raylib.com), a simple and easy-to-use library to learn videogame programming, Currently works only for windows but feel free the expand to other platforms
+
+> Warning! The binding is in its early stage of development and may change at any moment, please use at your own risk
 
 Requirements
 -------------
@@ -12,13 +15,13 @@ Requirements
 Installation
 -------------
 - Clone this repository
-- You also need the raylib source files in the format `lib -> raylib -> src`
+- You also need the raylib source files in the format `lib/raylib/src`
 - This repo can be used as a template 
 -  To compile: `haxe -cp src -cpp your output dir -main Main`
 
 Example
 --------
-this is a basic example of the binding which creates a window
+This is a basic example of the binding which creates a window
 ```haxe
 import Raylib.*;
 import Raylib.Colors.*;
