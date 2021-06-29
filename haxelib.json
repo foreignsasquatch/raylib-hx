@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "hxRaylib",
   "url" : "https://github.com/ForeignSasquatch/hxRaylib",
   "license": "MIT",
@@ -11,20 +10,4 @@
   "contributors": ["ForeignSasquatch", "logo4poop"],
   "dependencies": {
     "hxcpp": "4.2.1"
-  }
 }
-=======
-	"name": "hxRaylib",
-	"url" : "https://github.com/ForeignSasquatch/hxRaylib",
-	"license": "MIT",
-	"tags": ["bindings", "raylib", "hxcpp", "game", "development"],
-	"description": "Haxe bindings for raylib, a simple and easy-to-use library to learn videogame programming",
-	"version": "0.0.1",
-	"classPath": "src/",
-	"releasenote": "Initial haxelib release",
-	"contributors": ["ForeignSasquatch", "logo4poop"],
-	"dependencies": {
-		"hxcpp": "4.2.1"
-	}
-}
->>>>>>> aac2c800533ea555235a0ad55f4a773411a3f88e
