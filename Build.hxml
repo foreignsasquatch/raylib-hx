@@ -1,3 +1,4 @@
 -cp src
 -cpp bin
 -main Main
+-D windows

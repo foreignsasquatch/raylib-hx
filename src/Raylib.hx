@@ -48,7 +48,11 @@ package;
 import cpp.ConstCharStar;
 import cpp.RawPointer;
 
-@:buildXml("<include name='../raylib.xml'/>")
+#if windows
+    @:buildXml("<include name='../winraylib.xml'/>")
+#elseif mac
+    @:buildXml("<include name='../macraylib.xml'/>")
+#end
 @:include("raylib.h")
 extern class Raylib
 {
