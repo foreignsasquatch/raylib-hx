@@ -9,5 +9,6 @@
   "releasenote": "Initial haxelib release",
   "contributors": ["ForeignSasquatch", "logo4poop"],
   "dependencies": {
-    "hxcpp": "4.2.1"
+  	"hxcpp": "4.2.1"
+  }
 }
