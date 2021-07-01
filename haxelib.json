@@ -9,5 +9,6 @@
   "releasenote": "Version 0.1.0 Released!",
   "contributors": ["ForeignSasquatch", "logo4poop"],
   "dependencies": {
-    "hxcpp": "4.2.1"
+  	"hxcpp": "4.2.1"
+  }
 }
