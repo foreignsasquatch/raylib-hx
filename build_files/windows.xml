@@ -1,6 +1,6 @@
 <xml>
-    <set name="raylib_folder" value="../raylib" />
-    <set name="glfw_folder" value="../raylib/external/glfw" />
+    <set name="raylib_folder" value="${haxelib:hxRaylib}/raylib" />
+    <set name="glfw_folder" value="${haxelib:hxRaylib}/raylib/external/glfw" />
 
     <echo value="Using raylib from: ${raylib_folder}" />
     <echo value="Using glfw from: ${glfw_folder}" />

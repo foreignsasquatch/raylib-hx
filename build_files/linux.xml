@@ -1,0 +1,52 @@
+<xml>
+    <set name="raylib_folder" value="${haxelib:hxRaylib}/raylib" />
+    <set name="glfw_folder" value="${haxelib:hxRaylib}/raylib/external/glfw" />
+
+    <echo value="Using raylib from: ${raylib_folder}" />
+    <echo value="Using glfw from: ${glfw_folder}" />
+    
+    <section>
+        <files id="haxe">
+            <lib name="-lraylib" />
+
+            <compilerflag value="-I${glfw_folder}/include" />
+            <compilerflag value="-I${raylib_folder}" />
+            
+            <file name="${raylib_folder}/core.c" />
+            <file name="${raylib_folder}/utils.c" />
+            <file name="${raylib_folder}/shapes.c" />
+            <file name="${raylib_folder}/textures.c" />
+            <file name="${raylib_folder}/text.c" />
+            <file name="${raylib_folder}/models.c" />
+            
+            <file name="${glfw_folder}/src/init.c" />
+            <file name="${glfw_folder}/src/window.c" />
+            <file name="${glfw_folder}/src/input.c" />
+            <file name="${glfw_folder}/src/monitor.c" />
+            <file name="${glfw_folder}/src/context.c" />
+            <file name="${glfw_folder}/src/wgl_context.c" />
+            <file name="${glfw_folder}/src/egl_context.c" />
+            <file name="${glfw_folder}/src/osmesa_context.c" />
+            <file name="${glfw_folder}/src/vulkan.c" />
+
+            <!-- LINUX SPECIFICS -->
+            <compilerflag value="-DPLATFORM_DESKTOP" />
+            <compilerflag value="-D_GLFW_X11" />
+            <file name="${glfw_folder}/src/xkb_unicode.c" />
+            <file name="${glfw_folder}/src/glx_context.c" />
+            <file name="${glfw_folder}/src/x11_init.c" />
+            <file name="${glfw_folder}/src/x11_monitor.c" />
+            <file name="${glfw_folder}/src/linux_joystick.c" />
+            <file name="${glfw_folder}/src/x11_window.c" />
+            <file name="${glfw_folder}/src/posix_thread.c" />
+            <file name="${glfw_folder}/src/posix_time.c" />
+        </files>
+        
+        <!-- LINUX SPECIFICS -->
+        <target id="haxe" tool="linker" if="linux">
+            <lib name="Winmm.lib" />
+            <lib name="Gdi32.lib" />
+            <lib name="Shell32.lib" />
+        </target>
+    </section>    
+</xml>
