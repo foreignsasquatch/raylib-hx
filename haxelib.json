@@ -4,9 +4,9 @@
   "license": "MIT",
   "tags": ["bindings", "raylib", "hxcpp", "game", "development"],
   "description": "Haxe bindings for raylib, a simple and easy-to-use library to learn videogame programming",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "classPath": "src/",
-  "releasenote": "Version 0.1.0 Released!",
+  "releasenote": "Version 0.2.0 Released!",
   "contributors": ["ForeignSasquatch", "logo4poop"],
   "dependencies": {
   	"hxcpp": "4.2.1"
