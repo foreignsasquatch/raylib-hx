@@ -48,47 +48,6 @@ package;
 import cpp.ConstCharStar;
 import cpp.RawPointer;
 
-#if mac 
-    @:buildXml("<include name='${haxelib:hxRaylib}/build_files/mac.xml'/>")
-#elseif linux
-    @:buildXml("<include name='${haxelib:hxRaylib}/build_files/linux.xml'/>")
-#else
-    @:buildXml("<include name='${haxelib:hxRaylib}/build_files/windows.xml'/>")
-#end 
-@:include("raylib.h")
-extern class Raylib
-{
-    @:native("InitWindow")              public static function InitWindow(width:Int, height:Int, title:ConstCharStar):Void;
-    @:native("WindowShouldClose")       public static function WindowShouldClose():Bool;
-    @:native("CloseWindow")             public static function CloseWindow():Bool;
-    
-    @:native("SetTargetFPS")            public static function SetTargetFPS(fps:Int):Void;
-    @:native("BeginDrawing")            public static function BeginDrawing():Void;
-    @:native("EndDrawing")              public static function EndDrawing():Void;
-    
-    @:native("ClearBackground")         public static function ClearBackground(color:Color):Void;
-    @:native("DrawText")                public static function DrawText(text:ConstCharStar, x:Int, y:Int, fontSize:Int, color:Color):Void;
-    @:native("MeasureText")             public static function MeasureText(text:ConstCharStar, fontSize:Int):Int;
-    
-    @:native("SetCameraMode")           public static function SetCameraMode(camera:Camera, mode:Int):Void;
-    @:native("UpdateCamera")            public static function UpdateCamera(camera:RawPointer<Camera>):Void;
-    
-    @:native("GetWorldToScreen")        public static function GetWorldToScreen(position:Vector3, camera:Camera):Vector2;
-    
-    @:native("BeginMode3D")             public static function BeginMode3D(camera:Camera3D):Void;
-    @:native("EndMode3D")               public static function EndMode3D():Void;
-    
-    @:native("DrawCube")                public static function DrawCube(position:Vector3, width:Float, height:Float, length:Float, color:Color):Void;
-    @:native("DrawCubeWires")           public static function DrawCubeWires(position:Vector3, width:Float, height:Float, length:Float, color:Color):Void;
-    @:native("DrawGrid")                public static function DrawGrid(slices:Int, spacing:Int):Void;
-    @:native("LoadImage")               public static function LoadImage(fileName:cpp.ConstCharStar):Image;
-    @:native("UnloadImage")             public static function UnloadImage(image:Image):Void;
-    @:native("LoadTexture")             public static function LoadTexture(fileName:cpp.ConstCharStar):Texture2D;
-    @:native("LoadTextureFromImage")    public static function LoadTextureFromImage(image:Image):Texture2D;
-    @:native("UnloadTexture")           public static function UnloadTexture(texture:Texture2D):Void;
-    @:native("DrawTexture")             public static function DrawTexture(texture:Texture2D, posX:Int, posY:Int, tint:Color):Void;
-}
-
 @:include("raylib.h")
 extern class Colors
 {
@@ -343,359 +302,523 @@ extern class CameraModes
     @:native("CAMERA_THIRD_PERSON")     public static var CAMERA_THIRD_PERSON:Int;
 }
 
-// Keyboard keys (US keyboard layout)
-// NOTE: Use GetKeyPressed() to allow redefining
-// required keys for alternative layouts
-// @:include("raylib.h")
-// extern enum abstract KeyboardKey(UInt)
-// {
-//     @:native("KEY_APOSTROPHE")
-//     var KEY_APOSTROPHE;
+//Keyboard keys (US keyboard layout)
+//NOTE: Use GetKeyPressed() to allow redefining
+//required keys for alternative layouts
+@:include("raylib.h")
+extern enum abstract KeyboardKey(UInt)
+{
+    @:native("KEY_APOSTROPHE")
+    var KEY_APOSTROPHE;
 
-//     @:native("KEY_COMMA")
-//     var KEY_COMMA;
+    @:native("KEY_COMMA")
+    var KEY_COMMA;
 
-//     @:native("KEY_MINUS")
-//     var KEY_MINUS;
+    @:native("KEY_MINUS")
+    var KEY_MINUS;
 
-//     @:native("KEY_PERIOD")
-//     var KEY_PERIOD;
+    @:native("KEY_PERIOD")
+    var KEY_PERIOD;
 
-//     @:native("KEY_SLASH")
-//     var KEY_SLASH;
+    @:native("KEY_SLASH")
+    var KEY_SLASH;
 
-//     @:native("KEY_ZERO")
-//     var KEY_ZERO;
+    @:native("KEY_ZERO")
+    var KEY_ZERO;
 
-//     @:native("KEY_ONE")
-//     var KEY_ONE;
+    @:native("KEY_ONE")
+    var KEY_ONE;
 
-//     @:native("KEY_TWO")
-//     var KEY_TWO;
+    @:native("KEY_TWO")
+    var KEY_TWO;
 
-//     @:native("KEY_THREE")
-//     var KEY_THREE;
+    @:native("KEY_THREE")
+    var KEY_THREE;
 
-//     @:native("KEY_FOUR")
-//     var KEY_FOUR;
+    @:native("KEY_FOUR")
+    var KEY_FOUR;
 
-//     @:native("KEY_FIVE")
-//     var KEY_FIVE;
+    @:native("KEY_FIVE")
+    var KEY_FIVE;
 
-//     @:native("KEY_SIX")
-//     var KEY_SIX;
+    @:native("KEY_SIX")
+    var KEY_SIX;
 
-//     @:native("KEY_SEVEN")
-//     var KEY_SEVEN;
+    @:native("KEY_SEVEN")
+    var KEY_SEVEN;
 
-//     @:native("KEY_EIGHT")
-//     var KEY_EIGHT;
+    @:native("KEY_EIGHT")
+    var KEY_EIGHT;
 
-//     @:native("KEY_NINE")
-//     var KEY_NINE;
+    @:native("KEY_NINE")
+    var KEY_NINE;
 
-//     @:native("KEY_SEMICOLON")
-//     var KEY_SEMICOLON;
+    @:native("KEY_SEMICOLON")
+    var KEY_SEMICOLON;
 
-//     @:native("KEY_EQUAL")
-//     var KEY_EQUAL;
+    @:native("KEY_EQUAL")
+    var KEY_EQUAL;
 
-//     @:native("KEY_A")
-//     var KEY_A;
+    @:native("KEY_A")
+    var KEY_A;
 
-//     @:native("KEY_B")
-//     var KEY_B;
+    @:native("KEY_B")
+    var KEY_B;
 
-//     @:native("KEY_C")
-//     var KEY_C;
+    @:native("KEY_C")
+    var KEY_C;
 
-//     @:native("KEY_D")
-//     var KEY_D;
+    @:native("KEY_D")
+    var KEY_D;
 
-//     @:native("KEY_E")
-//     var KEY_E;
+    @:native("KEY_E")
+    var KEY_E;
 
-//     @:native("KEY_F")
-//     var KEY_F;
+    @:native("KEY_F")
+    var KEY_F;
 
-//     @:native("KEY_G")
-//     var KEY_G;
+    @:native("KEY_G")
+    var KEY_G;
 
-//     @:native("KEY_H")
-//     var KEY_H;
+    @:native("KEY_H")
+    var KEY_H;
 
-//     @:native("KEY_I")
-//     var KEY_I;
+    @:native("KEY_I")
+    var KEY_I;
 
-//     @:native("KEY_J")
-//     var KEY_J;
+    @:native("KEY_J")
+    var KEY_J;
 
-//     @:native("KEY_K")
-//     var KEY_K;
+    @:native("KEY_K")
+    var KEY_K;
 
-//     @:native("KEY_L")
-//     var KEY_L;
+    @:native("KEY_L")
+    var KEY_L;
 
-//     @:native("KEY_M")
-//     var KEY_M;
+    @:native("KEY_M")
+    var KEY_M;
 
-//     @:native("KEY_N")
-//     var KEY_N;
+    @:native("KEY_N")
+    var KEY_N;
 
-//     @:native("KEY_O")
-//     var KEY_O;
+    @:native("KEY_O")
+    var KEY_O;
 
-//     @:native("KEY_P")
-//     var KEY_P;
+    @:native("KEY_P")
+    var KEY_P;
 
-//     @:native("KEY_Q")
-//     var KEY_Q;
+    @:native("KEY_Q")
+    var KEY_Q;
 
-//     @:native("KEY_R")
-//     var KEY_R;
+    @:native("KEY_R")
+    var KEY_R;
 
-//     @:native("KEY_S")
-//     var KEY_S;
+    @:native("KEY_S")
+    var KEY_S;
 
-//     @:native("KEY_T")
-//     var KEY_T;
+    @:native("KEY_T")
+    var KEY_T;
 
-//     @:native("KEY_U")
-//     var KEY_U;
+    @:native("KEY_U")
+    var KEY_U;
 
-//     @:native("KEY_V")
-//     var KEY_V;
+    @:native("KEY_V")
+    var KEY_V;
 
-//     @:native("KEY_W")
-//     var KEY_W;
+    @:native("KEY_W")
+    var KEY_W;
 
-//     @:native("KEY_X")
-//     var KEY_X;
+    @:native("KEY_X")
+    var KEY_X;
 
-//     @:native("KEY_Y")
-//     var KEY_Y;
+    @:native("KEY_Y")
+    var KEY_Y;
 
-//     @:native("KEY_Z")
-//     var KEY_Z;
+    @:native("KEY_Z")
+    var KEY_Z;
 
-//     @:native("KEY_SPACE")
-//     var KEY_SPACE;
+    @:native("KEY_SPACE")
+    var KEY_SPACE;
 
-//     @:native("KEY_ESCAPE")
-//     var KEY_ESCAPE;
+    @:native("KEY_ESCAPE")
+    var KEY_ESCAPE;
 
-//     @:native("KEY_ENTER")
-//     var KEY_ENTER;
+    @:native("KEY_ENTER")
+    var KEY_ENTER;
 
-//     @:native("KEY_TAB")
-//     var KEY_TAB;
+    @:native("KEY_TAB")
+    var KEY_TAB;
 
-//     @:native("KEY_BACKSPACE")
-//     var KEY_BACKSPACE;
+    @:native("KEY_BACKSPACE")
+    var KEY_BACKSPACE;
 
-//     @:native("KEY_INSERT")
-//     var KEY_INSERT;
+    @:native("KEY_INSERT")
+    var KEY_INSERT;
 
-//     @:native("KEY_DELETE")
-//     var KEY_DELETE;
+    @:native("KEY_DELETE")
+    var KEY_DELETE;
 
-//     @:native("KEY_RIGHT")
-//     var KEY_RIGHT;
+    @:native("KEY_RIGHT")
+    var KEY_RIGHT;
 
-//     @:native("KEY_LEFT")
-//     var KEY_LEFT;
+    @:native("KEY_LEFT")
+    var KEY_LEFT;
 
-//     @:native("KEY_DOWN")
-//     var KEY_DOWN;
+    @:native("KEY_DOWN")
+    var KEY_DOWN;
 
-//     @:native("KEY_UP")
-//     var KEY_UP;
+    @:native("KEY_UP")
+    var KEY_UP;
 
-//     @:native("KEY_PAGE_UP")
-//     var KEY_PAGE_UP;
+    @:native("KEY_PAGE_UP")
+    var KEY_PAGE_UP;
 
-//     @:native("KEY_PAGE_DOWN")
-//     var KEY_PAGE_DOWN;
+    @:native("KEY_PAGE_DOWN")
+    var KEY_PAGE_DOWN;
 
-//     @:native("KEY_HOME")
-//     var KEY_HOME;
+    @:native("KEY_HOME")
+    var KEY_HOME;
 
-//     @:native("KEY_END")
-//     var KEY_END;
+    @:native("KEY_END")
+    var KEY_END;
 
-//     @:native("KEY_CAPS_LOCK")
-//     var KEY_CAPS_LOCK;
+    @:native("KEY_CAPS_LOCK")
+    var KEY_CAPS_LOCK;
 
-//     @:native("KEY_SCROLL_LOCK")
-//     var KEY_SCROLL_LOCK;
+    @:native("KEY_SCROLL_LOCK")
+    var KEY_SCROLL_LOCK;
 
-//     @:native("KEY_NUM_LOCK")
-//     var KEY_NUM_LOCK;
+    @:native("KEY_NUM_LOCK")
+    var KEY_NUM_LOCK;
 
-//     @:native("KEY_PRINT_SCREEN")
-//     var KEY_PRINT_SCREEN;
+    @:native("KEY_PRINT_SCREEN")
+    var KEY_PRINT_SCREEN;
 
-//     @:native("KEY_PAUSE")
-//     var KEY_PAUSE;
+    @:native("KEY_PAUSE")
+    var KEY_PAUSE;
 
-//     @:native("KEY_F1")
-//     var KEY_F1;
+    @:native("KEY_F1")
+    var KEY_F1;
 
-//     @:native("KEY_F2")
-//     var KEY_F2;
+    @:native("KEY_F2")
+    var KEY_F2;
 
-//     @:native("KEY_F3")
-//     var KEY_F3;
+    @:native("KEY_F3")
+    var KEY_F3;
 
-//     @:native("KEY_F4")
-//     var KEY_F4;
+    @:native("KEY_F4")
+    var KEY_F4;
 
-//     @:native("KEY_F5")
-//     var KEY_F5;
+    @:native("KEY_F5")
+    var KEY_F5;
 
-//     @:native("KEY_F6")
-//     var KEY_F6;
+    @:native("KEY_F6")
+    var KEY_F6;
 
-//     @:native("KEY_F7")
-//     var KEY_F7;
+    @:native("KEY_F7")
+    var KEY_F7;
 
-//     @:native("KEY_F8")
-//     var KEY_F8;
+    @:native("KEY_F8")
+    var KEY_F8;
 
-//     @:native("KEY_F9")
-//     var KEY_F9;
+    @:native("KEY_F9")
+    var KEY_F9;
 
-//     @:native("KEY_F10")
-//     var KEY_F10;
+    @:native("KEY_F10")
+    var KEY_F10;
 
-//     @:native("KEY_F11")
-//     var KEY_F11;
+    @:native("KEY_F11")
+    var KEY_F11;
 
-//     @:native("KEY_F12")
-//     var KEY_F12;
+    @:native("KEY_F12")
+    var KEY_F12;
 
-//     @:native("KEY_LEFT_SHIFT")
-//     var KEY_LEFT_SHIFT;
+    @:native("KEY_LEFT_SHIFT")
+    var KEY_LEFT_SHIFT;
 
-//     @:native("KEY_LEFT_CONTROL")
-//     var KEY_LEFT_CONTROL;
+    @:native("KEY_LEFT_CONTROL")
+    var KEY_LEFT_CONTROL;
 
-//     @:native("KEY_LEFT_ALT")
-//     var KEY_LEFT_ALT;
+    @:native("KEY_LEFT_ALT")
+    var KEY_LEFT_ALT;
 
-//     @:native("KEY_LEFT_SUPER")
-//     var KEY_LEFT_SUPER;
+    @:native("KEY_LEFT_SUPER")
+    var KEY_LEFT_SUPER;
 
-//     @:native("KEY_RIGHT_SHIFT")
-//     var KEY_RIGHT_SHIFT;
+    @:native("KEY_RIGHT_SHIFT")
+    var KEY_RIGHT_SHIFT;
 
-//     @:native("KEY_RIGHT_CONTROL")
-//     var KEY_RIGHT_CONTROL;
+    @:native("KEY_RIGHT_CONTROL")
+    var KEY_RIGHT_CONTROL;
 
-//     @:native("KEY_RIGHT_ALT")
-//     var KEY_RIGHT_ALT;
+    @:native("KEY_RIGHT_ALT")
+    var KEY_RIGHT_ALT;
 
-//     @:native("KEY_RIGHT_SUPER")
-//     var KEY_RIGHT_SUPER;
+    @:native("KEY_RIGHT_SUPER")
+    var KEY_RIGHT_SUPER;
 
-//     @:native("KEY_KB_MENU")
-//     var KEY_KB_MENU;
+    @:native("KEY_KB_MENU")
+    var KEY_KB_MENU;
 
-//     @:native("KEY_LEFT_BRACKET")
-//     var KEY_LEFT_BRACKET;
+    @:native("KEY_LEFT_BRACKET")
+    var KEY_LEFT_BRACKET;
 
-//     @:native("KEY_BACKSLASH")
-//     var KEY_BACKSLASH;
+    @:native("KEY_BACKSLASH")
+    var KEY_BACKSLASH;
 
-//     @:native("KEY_RIGHT_BRACKET")
-//     var KEY_RIGHT_BRACKET;
+    @:native("KEY_RIGHT_BRACKET")
+    var KEY_RIGHT_BRACKET;
 
-//     @:native("KEY_GRAVE")
-//     var KEY_GRAVE;
+    @:native("KEY_GRAVE")
+    var KEY_GRAVE;
 
-//     @:native("KEY_KP_0")
-//     var KEY_KP_0;
+    @:native("KEY_KP_0")
+    var KEY_KP_0;
 
-//     @:native("KEY_KP_1")
-//     var KEY_KP_1;
+    @:native("KEY_KP_1")
+    var KEY_KP_1;
 
-//     @:native("KEY_KP_2")
-//     var KEY_KP_2;
+    @:native("KEY_KP_2")
+    var KEY_KP_2;
 
-//     @:native("KEY_KP_3")
-//     var KEY_KP_3;
+    @:native("KEY_KP_3")
+    var KEY_KP_3;
 
-//     @:native("KEY_KP_4")
-//     var KEY_KP_4;
+    @:native("KEY_KP_4")
+    var KEY_KP_4;
 
-//     @:native("KEY_KP_5")
-//     var KEY_KP_5;
+    @:native("KEY_KP_5")
+    var KEY_KP_5;
 
-//     @:native("KEY_KP_6")
-//     var KEY_KP_6;
+    @:native("KEY_KP_6")
+    var KEY_KP_6;
 
-//     @:native("KEY_KP_7")
-//     var KEY_KP_7;
+    @:native("KEY_KP_7")
+    var KEY_KP_7;
 
-//     @:native("KEY_KP_8")
-//     var KEY_KP_8;
+    @:native("KEY_KP_8")
+    var KEY_KP_8;
 
-//     @:native("KEY_KP_9")
-//     var KEY_KP_9;
+    @:native("KEY_KP_9")
+    var KEY_KP_9;
 
-//     @:native("KEY_KP_DECIMAL")
-//     var KEY_KP_DECIMAL;
+    @:native("KEY_KP_DECIMAL")
+    var KEY_KP_DECIMAL;
 
-//     @:native("KEY_KP_DIVIDE")
-//     var KEY_KP_DIVIDE;
+    @:native("KEY_KP_DIVIDE")
+    var KEY_KP_DIVIDE;
 
-//     @:native("KEY_KP_MULTIPLY")
-//     var KEY_KP_MULTIPLY;
+    @:native("KEY_KP_MULTIPLY")
+    var KEY_KP_MULTIPLY;
 
-//     @:native("KEY_KP_SUBTRACT")
-//     var KEY_KP_SUBTRACT;
+    @:native("KEY_KP_SUBTRACT")
+    var KEY_KP_SUBTRACT;
 
-//     @:native("KEY_KP_ADD")
-//     var KEY_KP_ADD;
+    @:native("KEY_KP_ADD")
+    var KEY_KP_ADD;
 
-//     @:native("KEY_KP_ENTER")
-//     var KEY_KP_ENTER;
+    @:native("KEY_KP_ENTER")
+    var KEY_KP_ENTER;
 
-//     @:native("KEY_KP_EQUAL")
-//     var KEY_KP_EQUAL;
-// }
+    @:native("KEY_KP_EQUAL")
+    var KEY_KP_EQUAL;
+}
 
-// @:include("raylib.h")
-// extern enum abstract MouseButton(UInt)
-// {
-//     @:native("MOUSE_BUTTON_LEFT")
-//     var MOUSE_BUTTON_LEFT;
+// Mouse buttons
+@:include("raylib.h")
+extern enum abstract MouseButton(UInt)
+{
+    @:native("MOUSE_BUTTON_LEFT")
+    var MOUSE_BUTTON_LEFT;
 
-//     @:native("MOUSE_BUTTON_RIGHT")
-//     var MOUSE_BUTTON_RIGHT;
+    @:native("MOUSE_BUTTON_RIGHT")
+    var MOUSE_BUTTON_RIGHT;
 
-//     @:native("MOUSE_BUTTON_MIDDLE")
-//     var MOUSE_BUTTON_MIDDLE;
+    @:native("MOUSE_BUTTON_MIDDLE")
+    var MOUSE_BUTTON_MIDDLE;
 
-//     @:native("MOUSE_BUTTON_SIDE")
-//     var MOUSE_BUTTON_SIDE;
+    @:native("MOUSE_BUTTON_SIDE")
+    var MOUSE_BUTTON_SIDE;
 
-//     @:native("MOUSE_BUTTON_EXTRA")
-//     var MOUSE_BUTTON_EXTRA;
+    @:native("MOUSE_BUTTON_EXTRA")
+    var MOUSE_BUTTON_EXTRA;
 
-//     @:native("MOUSE_BUTTON_FORWARD")
-//     var MOUSE_BUTTON_FORWARD;
+    @:native("MOUSE_BUTTON_FORWARD")
+    var MOUSE_BUTTON_FORWARD;
 
-//     @:native("MOUSE_BUTTON_BACK")
-//     var MOUSE_BUTTON_BACK;
-// }
+    @:native("MOUSE_BUTTON_BACK")
+    var MOUSE_BUTTON_BACK;
+}
 
-// @:include("raylib.h")
-// extern enum abstract MouseCursor(UInt)
-// {
-//     @:native("MOUSE_CURSOR_DEFAULT")
-//     var MOUSE_CURSOR_DEFAULT;
+// Mouse cursor
+@:include("raylib.h")
+extern enum abstract MouseCursor(UInt)
+{
+    @:native("MOUSE_CURSOR_DEFAULT")
+    var MOUSE_CURSOR_DEFAULT;
 
-//     @:native("MOUSE_CURSOR_ARROW")
-//     var MOUSE_CURSOR_ARROW;
-// }
+    @:native("MOUSE_CURSOR_ARROW")
+    var MOUSE_CURSOR_ARROW;
+
+    @:native("MOUSE_CURSOR_IBEAM")
+    var MOUSE_CURSOR_IBEAM;
+
+    @:native("MOUSE_CURSOR_CROSSHAIR")
+    var MOUSE_CURSOR_CROSSHAIR;
+
+    @:native("MOUSE_CURSOR_POINTING_HAND")
+    var MOUSE_CURSOR_POINTING_HAND;
+
+    @:native("MOUSE_CURSOR_RESIZE_EW")      // The horizontal resize/move arrow shape
+    var MOUSE_CURSOR_RESIZE_EW;
+
+    @:native("MOUSE_CURSOR_RESIZE_NS")      // The vertical resize/move arrow shape
+    var MOUSE_CURSOR_RESIZE_NS;
+
+    @:native("MOUSE_CURSOR_RESIZE_NWSE")    // The top-left to bottom-right diagonal resize/move arrow shape
+    var MOUSE_CURSOR_RESIZE_NWSE;
+
+    @:native("MOUSE_CURSOR_RESIZE_NESW")    // The top-right to bottom-left diagonal resize/move arrow shape
+    var MOUSE_CURSOR_RESIZE_NESW;
+
+    @:native("MOUSE_CURSOR_RESIZE_ALL")     // The omni-directional resize/move cursor shape
+    var MOUSE_CURSOR_RESIZE_ALL;
+
+    @:native("MOUSE_CURSOR_NOT_ALLOWED")    // The operation-not-allowed shape
+    var MOUSE_CURSOR_NOT_ALLOWED;
+}
+
+// Gamepad buttons
+@:include("raylib.h")
+extern enum abstract GamepadButton(UInt)
+{
+    // This is here just for error checking
+    @:native("GAMEPAD_BUTTON_UNKOWN")
+    var GAMEPAD_BUTTON_UNKNOWN;
+
+    // This is normally a DPAD
+    @:native("GAMEPAD_BUTTON_LEFT_FACE_UP")
+    var GAMEPAD_BUTTON_LEFT_FACE_UP;
+
+    @:native("GAMEPAD_BUTTON_FACE_RIGHT")
+    var GAMEPAD_BUTTON_FACE_RIGHT;
+
+    @:native("GAMEPAD_BUTTON_FACE_DOWN")
+    var GAMEPAD_BUTTON_FACE_DOWN;
+
+    @:native("GAMEPAD_BUTTON_FACE_LEFT")
+    var GAMEPAD_BUTTON_FACE_LEFT;
+
+    // This normally corresponds with PlayStation and Xbox controllers
+    // XBOX: [Y,X,A,B]
+    // PS3: [Triangle,Square,Cross,Circle]
+    // No support for 6 button controllers though..
+    @:native("GAMEPAD_BUTTON_RIGHT_FACE_UP")
+    var GAMEPAD_BUTTON_RIGHT_FACE_UP;
+
+    @:native("GAMEPAD_BUTTON_RIGHT_FACE_RIGHT")
+    var GAMEPAD_BUTTON_RIGHT_FACE_RIGHT;
+
+    @:native("GAMEPAD_BUTTON_RIGHT_FACE_DOWN")
+    var GAMEPAD_BUTTON_RIGHT_FACE_DOWN;
+
+    @:native("GAMEPAD_BUTTON_RIGHT_FACE_LEFT")
+    var GAMEPAD_BUTTON_RIGHT_FACE_LEFT;
+
+    // Triggers
+    @:native("GAMEPAD_BUTTON_LEFT_TRIGGER_1")
+    var GAMEPAD_BUTTON_LEFT_TRIGGER_1;
+
+    @:native("GAMEPAD_BUTTON_LEFT_TRIGGER_2")
+    var GAMEPAD_BUTTON_LEFT_TRIGGER_2;
+
+    @:native("GAMEPAD_BUTTON_RIGHT_TRIGGER_1")
+    var GAMEPAD_BUTTON_RIGHT_TRIGGER_1;
+
+    @:native("GAMEPAD_BUTTON_RIGHT_TRIGGER_2")
+    var GAMEPAD_BUTTON_RIGHT_TRIGGER_2;
+
+    // These are buttons in the center of the gamepad
+    @:native("GAMEPAD_BUTTON_MIDDLE_LEFT")
+    var GAMEPAD_BUTTON_MIDDLE_LEFT;     // PS3 Select
+
+    @:native("GAMEPAD_BUTTON_MIDDLE")
+    var GAMEPAD_BUTTON_MIDDLE;          // PS Button/XBOX Button
+
+    @:native("GAMEPAD_BUTTON_MIDDLE_RIGHT")
+    var GAMEPAD_BUTTON_MIDDLE_RIGHT;    // PS3 Start
+
+    // These are the joystick press in buttons
+    @:native("GAMEPAD_BUTTON_LEFT_THUMB")
+    var GAMEPAD_BUTTON_LEFT_THUMB;
+
+    @:native("GAMEPAD_BUTTON_RIGHT_THUMB")
+    var GAMEPAD_BUTTON_RIGHT_THUMB;
+}
+
+// Gampad axis
+@:include("raylib.h")
+extern enum abstract GamepadAxis(UInt)
+{
+    // Left stick
+    @:native("GAMEPAD_AXIS_LEFT_X")
+    var GAMEPAD_AXIS_LEFT_X;
+
+    @:native("GAMEPAD_AXIS_LEFT_Y")
+    var GAMEPAD_AXIS_LEFT_Y;
+
+    // Right stick
+    @:native("GAMEPAD_AXIS_RIGHT_X")
+    var GAMEPAD_AXIS_RIGHT_X;
+
+    @:native("GAMEPAD_AXIS_RIGHT_Y")
+    var GAMEPAD_AXIS_RIGHT_Y;
+
+    // Pressure levels for the back triggers
+    @:native("GAMEPAD_AXIS_LEFT_TRIGGER")
+    var GAMEPAD_AXIS_LEFT_TRIGGER;
+
+    @:native("GAMEPAD_AXIS_RIGHT_TRIGGER")
+    var GAMEPAD_AXIS_RIGHT_TRIGGER;
+}
+
+#if mac 
+    @:buildXml("<include name='${haxelib:hxRaylib}/build_files/mac.xml'/>")
+#elseif linux
+    @:buildXml("<include name='${haxelib:hxRaylib}/build_files/linux.xml'/>")
+#else
+    @:buildXml("<include name='${haxelib:hxRaylib}/build_files/windows.xml'/>")
+#end 
+@:include("raylib.h")
+extern class Raylib
+{
+    @:native("InitWindow")              public static function InitWindow(width:Int, height:Int, title:ConstCharStar):Void;
+    @:native("WindowShouldClose")       public static function WindowShouldClose():Bool;
+    @:native("CloseWindow")             public static function CloseWindow():Bool;
+    
+    @:native("SetTargetFPS")            public static function SetTargetFPS(fps:Int):Void;
+    @:native("BeginDrawing")            public static function BeginDrawing():Void;
+    @:native("EndDrawing")              public static function EndDrawing():Void;
+    
+    @:native("ClearBackground")         public static function ClearBackground(color:Color):Void;
+    @:native("DrawText")                public static function DrawText(text:ConstCharStar, x:Int, y:Int, fontSize:Int, color:Color):Void;
+    @:native("MeasureText")             public static function MeasureText(text:ConstCharStar, fontSize:Int):Int;
+    
+    @:native("SetCameraMode")           public static function SetCameraMode(camera:Camera, mode:Int):Void;
+    @:native("UpdateCamera")            public static function UpdateCamera(camera:RawPointer<Camera>):Void;
+    
+    @:native("GetWorldToScreen")        public static function GetWorldToScreen(position:Vector3, camera:Camera):Vector2;
+    
+    @:native("BeginMode3D")             public static function BeginMode3D(camera:Camera3D):Void;
+    @:native("EndMode3D")               public static function EndMode3D():Void;
+    
+    @:native("DrawCube")                public static function DrawCube(position:Vector3, width:Float, height:Float, length:Float, color:Color):Void;
+    @:native("DrawCubeWires")           public static function DrawCubeWires(position:Vector3, width:Float, height:Float, length:Float, color:Color):Void;
+    @:native("DrawGrid")                public static function DrawGrid(slices:Int, spacing:Int):Void;
+    @:native("LoadImage")               public static function LoadImage(fileName:cpp.ConstCharStar):Image;
+    @:native("UnloadImage")             public static function UnloadImage(image:Image):Void;
+    @:native("LoadTexture")             public static function LoadTexture(fileName:cpp.ConstCharStar):Texture2D;
+    @:native("LoadTextureFromImage")    public static function LoadTextureFromImage(image:Image):Texture2D;
+    @:native("UnloadTexture")           public static function UnloadTexture(texture:Texture2D):Void;
+    @:native("DrawTexture")             public static function DrawTexture(texture:Texture2D, posX:Int, posY:Int, tint:Color):Void;
+}
