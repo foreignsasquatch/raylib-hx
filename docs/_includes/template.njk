@@ -1,0 +1,43 @@
+---
+title: logo4poop
+---
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<title>{{title}} - hxRaylib</title>	
+
+		<link rel="stylesheet" href="/assets/vendor/normalize/normalize.css" />
+		<link rel="stylesheet" href="/assets/vendor/prismjs-themes/prism-duotone-space.css" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+	</head>
+	<body>
+		<div class="top-bar">
+			<div class="logo">
+				<img src="/assets/images/logo.png"\>
+				<a href="/"><h1>hxRaylib</h1></a>
+			</div>
+		</div>
+		
+		<div class="menu">
+			<a href="/">home</a>
+			<span>-</span>
+			<a href="/documentation">documentation</a>
+			<span>-</span>
+			<a href="https://github.com/ForeignSasquatch/hxRaylib">github</a>
+		</div>
+
+		<div class="page-grid">
+			{{ content | safe }}
+		</div>
+
+		<footer class="page-grid page-footer">
+			<div class="width-wide">
+				<p>This website is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International</a> License.</p>
+			</div>
+		</footer>
+	</body>
+</html>

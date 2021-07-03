@@ -1,0 +1,19 @@
+---
+title: Documentation
+layout: template.njk 
+---
+<h1 class="title">Documentation</h1>
+
+<b>Information</b>
+<ul>
+	{% for doc in collections.information %}
+		<li><a href="{{doc.url}}">{{doc.data.title}}</a></li>
+	{% endfor %}
+</ul>
+
+<b>Getting Started</b>
+<ul>
+	{% for doc in collections.getting_started %}
+		<li><a href="{{doc.url}}">{{doc.data.title}}</a></li>
+	{% endfor %}
+</ul>

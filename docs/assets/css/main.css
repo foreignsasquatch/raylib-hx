@@ -1,0 +1,132 @@
+@font-face {
+	font-family: 'FiraSans-Regular';
+	src: url('/assets/fonts/FiraSans-Regular.woff'),
+	src: url('/assets/fonts/FiraSans-Regular.woff2'),
+	src: url('/assets/fonts/FiraSans-Regular.ttf')
+}
+
+body {
+	margin: 0;
+	overflow-x: hidden;
+
+	background-color: #FBFEF9;
+	color: #191923;
+	font-family: 'FiraSans-Regular', sans-serif;
+}
+
+h1 {
+	font-size: 50px;
+}
+
+a:hover {
+	color: #ff8000;
+}
+
+.title {
+	text-align: center;
+	text-decoration: underline;
+}
+
+.page-grid {
+	display: grid;
+	grid-template-columns: [full-start] minmax(4vmin,auto) [wide-start] minmax(auto,100px) [main-start] min(720px,calc(100% - 8vw)) [main-end] minmax(auto,100px) [wide-end] minmax(4vmin,auto) [full-end];
+}
+
+.page-grid > * {
+	grid-column: main-start / main-end;
+}
+.page-grid .width-wide {
+	grid-column: wide-start / wide-end;
+}
+.page-grid .width-full {
+	grid-column: full-start / full-end;
+}
+
+.page-grid img {
+	width: 100%;
+}
+
+.page-grid > *+* {
+	margin-top: 2vmin;
+	margin-bottom: 0;
+}
+
+.page-footer {
+	padding: 1.5vmin 0;
+	margin-top: auto;
+}
+
+.logo {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+
+	background-color: #191923;
+}
+
+.top-bar > .logo > img {
+	margin-right: 15px;
+	height: 50px;
+	width: auto;
+}
+
+.top-bar > .logo > a {
+	text-decoration: none;
+	margin: 0;
+	vertical-align: middle;
+	line-height: 50px;
+	color: #ff8000;
+}
+
+.menu {
+	display: flex;
+	background-color: #ff8000;
+	flex-direction: row;
+	justify-content: center;
+	padding: 10px;
+	gap: 2.5%;
+}
+
+.menu > a, .menu > span {
+	text-decoration: none;
+	color: white;
+	font-size: 32px;
+}
+
+.menu > a:hover {
+	color: #191923;
+}
+
+.card {
+	display: flex;
+	margin-top: 50px;
+	padding: 5%;
+	border-radius: 25px;
+	background-color: #F0F0F0;
+}
+
+.card > div {
+	margin-left: 50px;
+}
+
+.card > img {
+	width: 200px;
+}
+
+@media screen and (max-width: 600px) {
+	.menu > a, .menu > span {
+		font-size: 16px;
+	}
+
+	.card {
+		 align-items: center;
+	}
+
+	.card > img {
+		margin-left: auto;
+		
+		width: 100px;
+		height: 100px;
+	}
+}
