@@ -6,6 +6,9 @@
     "type": "git",
     "url": "git+https://github.com/ForeignSasquatch/hxRaylib.git"
   },
+  "scripts": {
+    "build": "eleventy"
+  },
   "author": "logo4poop",
   "license": "CC-BY-4.0",
   "bugs": {
