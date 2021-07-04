@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/ForeignSasquatch/hxRaylib#readme",
   "dependencies": {
-    "@11ty/eleventy": "^0.12.1"
+    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy-plugin-syntaxhighlight": "v3.1.1"
   }
 }
