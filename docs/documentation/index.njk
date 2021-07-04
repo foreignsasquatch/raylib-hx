@@ -7,13 +7,13 @@ layout: template.njk
 <b>Information</b>
 <ul>
 	{% for doc in collections.information %}
-		<li><a href="{{doc.url}}">{{doc.data.title}}</a></li>
+		<li><a href="/hxRaylib/{{doc.url}}">{{doc.data.title}}</a></li>
 	{% endfor %}
 </ul>
 
 <b>Getting Started</b>
 <ul>
 	{% for doc in collections.getting_started %}
-		<li><a href="{{doc.url}}">{{doc.data.title}}</a></li>
+		<li><a href="/hxRaylib/{{doc.url}}">{{doc.data.title}}</a></li>
 	{% endfor %}
 </ul>
