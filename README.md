@@ -10,8 +10,9 @@ This binding is worked on by two people, but if you want to work on the binding 
 Requirements
 -------------
 - Haxe 4.0.0 or above
-- (Windows only) MSVC v142 - VS 2019 C++ x64/x86 build tools
-- (Windows only) Windows 10 SDK
+- If you are on windows:
+- 	MSVC v142 - VS 2019 C++ x64/x86 build tools
+- 	Windows 10 SDK
 
 Installation
 -------------
