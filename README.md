@@ -11,8 +11,8 @@ Requirements
 -------------
 - Haxe 4.0.0 or above
 - If you are on windows:
-- 	MSVC v142 - VS 2019 C++ x64/x86 build tools
-- 	Windows 10 SDK
+ 	- MSVC v142 - VS 2019 C++ x64/x86 build tools
+	- Windows 10 SDK
 
 Installation
 -------------
