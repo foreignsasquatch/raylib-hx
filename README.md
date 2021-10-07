@@ -5,8 +5,6 @@
 [Haxe](https://haxe.org/) bindings for [raylib](https://raylib.com), a simple and easy-to-use library to learn videogame programming, Currently works only for windows but feel free the expand to other platforms.
 This binding is worked on by two people, but if you want to work on the binding feel free to add the feature and make a pull request.
 
-> Warning! The binding is in its early stage of development and may change at any moment, please use at your own risk
-
 Requirements
 -------------
 - Haxe 4.0.0 or above
@@ -15,7 +13,7 @@ Requirements
 
 Installation
 -------------
-To install hxRaylib just run ``haxelib git hxRaylib https://github.com/ForeignSasquatch/hxRaylib``.
+To install hxRaylib just run ``haxelib install hxRaylib``.
 
 Usage
 ------

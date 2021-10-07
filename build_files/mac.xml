@@ -13,7 +13,7 @@
             <compilerflag value="-I${raylib_folder}" />
             
             <file name="${raylib_folder}/rcore.c" />
-            <file name="${raylib_folder}/rutils.c" />
+            <file name="${raylib_folder}/utils.c" />
             <file name="${raylib_folder}/rshapes.c" />
             <file name="${raylib_folder}/rtextures.c" />
             <file name="${raylib_folder}/rtext.c" />
