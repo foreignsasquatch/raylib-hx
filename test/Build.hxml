@@ -1,0 +1,8 @@
+-cp src
+-cpp bin
+-lib hxRaylib-dev
+-main Main
+# Uncomment for the platform
+#-D mac
+-D windows
+#-D linux

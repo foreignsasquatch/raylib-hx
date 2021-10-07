@@ -46,5 +46,5 @@
             <lib name="Gdi32.lib" />
             <lib name="Shell32.lib" />
         </target>
-    </section>    
+    </section>
 </xml>

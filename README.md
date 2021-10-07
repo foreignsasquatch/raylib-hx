@@ -5,15 +5,13 @@
 [Haxe](https://haxe.org/) bindings for [raylib](https://raylib.com), a simple and easy-to-use library to learn videogame programming, Currently works only for windows but feel free the expand to other platforms.
 This binding is worked on by two people, but if you want to work on the binding feel free to add the feature and make a pull request.
 
-> Update: working on other projects and hashlink and js targets
 > Warning! The binding is in its early stage of development and may change at any moment, please use at your own risk
 
 Requirements
 -------------
 - Haxe 4.0.0 or above
-- If you are on windows:
- 	- MSVC v142 - VS 2019 C++ x64/x86 build tools
-	- Windows 10 SDK
+- (Windows only) MSVC v142 - VS 2019 C++ x64/x86 build tools
+- (Windows only) Windows 10 SDK
 
 Installation
 -------------
