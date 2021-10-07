@@ -1,6 +1,6 @@
 -cp src
 -cpp bin
--lib hxRaylib-dev
+-lib hxRaylib
 -main Main
 # Uncomment for the platform
 #-D mac

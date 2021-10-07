@@ -1,6 +1,6 @@
 <xml>
-    <set name="raylib_folder" value="${haxelib:hxRaylib}/raylib" />
-    <set name="glfw_folder" value="${haxelib:hxRaylib}/raylib/external/glfw" />
+    <set name="raylib_folder" value="${haxelib:hxRaylib}/raylib/src" />
+    <set name="glfw_folder" value="${haxelib:hxRaylib}/raylib/src/external/glfw" />
 
     <echo value="Using raylib from: ${raylib_folder}" />
     <echo value="Using glfw from: ${glfw_folder}" />
@@ -12,12 +12,12 @@
             <compilerflag value="-I${glfw_folder}/include" />
             <compilerflag value="-I${raylib_folder}" />
             
-            <file name="${raylib_folder}/core.c" />
-            <file name="${raylib_folder}/utils.c" />
-            <file name="${raylib_folder}/shapes.c" />
-            <file name="${raylib_folder}/textures.c" />
-            <file name="${raylib_folder}/text.c" />
-            <file name="${raylib_folder}/models.c" />
+            <file name="${raylib_folder}/rcore.c" />
+            <file name="${raylib_folder}/rutils.c" />
+            <file name="${raylib_folder}/rshapes.c" />
+            <file name="${raylib_folder}/rtextures.c" />
+            <file name="${raylib_folder}/rtext.c" />
+            <file name="${raylib_folder}/rmodels.c" />
             
             <file name="${glfw_folder}/src/init.c" />
             <file name="${glfw_folder}/src/window.c" />
