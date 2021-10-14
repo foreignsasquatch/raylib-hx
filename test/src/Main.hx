@@ -1,19 +1,20 @@
 import Raylib.*;
-import Raylib.Colors;
+import Raylib.Colors.*;
 
 class Main
 {
     static function main()
     {
-        InitWindow(800, 600, "Test");
-        SetTargetFPS(60);
-        while(!WindowShouldClose())
+        InitWindow(800, 450, "hxRaylib");
+
+        while (!WindowShouldClose())
         {
             BeginDrawing();
-                ClearBackground(Colors.BLACK);
-                //DrawFPS(100, 100);
+                ClearBackground(RAYWHITE);
+                DrawText("Congrats! You created your first window using hxRaylib!", 100, 100, 20, BLACK);
             EndDrawing();
         }
+
         CloseWindow();
     }
 }

@@ -1767,4 +1767,8 @@ extern class Raylib
     // Texture drawing functions
     @:native("DrawTexture")             public static function DrawTexture(texture:Texture2D, posX:Int, posy:Int, tint:Color):Void;
     @:native("DrawTextureV")            public static function DrawTextureV(texture:Texture2D, position:Vector2, tint:Color):Void;
+
+    //Text Drawing Functions
+    @:native("DrawFPS")                 public static function DrawFPS(posX:Int, posY:Int):Void;
+    @:native("DrawText")		public static function DrawText(text:ConstCharStar, posX:Int, posY:Int, FontSize:Int, color:Color):Void;
 }
