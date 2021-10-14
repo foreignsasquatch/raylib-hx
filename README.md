@@ -3,7 +3,7 @@
 </p>
 
 [Haxe](https://haxe.org/) bindings for [raylib](https://raylib.com), a simple and easy-to-use library to learn videogame programming.
-This binding is worked on by two people, but if you want to work on the binding feel free to add the feature and make a pull request.
+If you want to work on the binding feel free to fork and make a pull request.
 
 Requirements
 -------------
