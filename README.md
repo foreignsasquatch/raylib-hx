@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="res/logo.png" alt="Raylib Logo">
+	<img src="assets/logo.png" alt="Raylib Logo">
 </p>
 
 [Haxe](https://haxe.org/) bindings for [raylib](https://raylib.com), a simple and easy-to-use library to learn videogame programming.

@@ -29,6 +29,7 @@
 **********************************************************************************************/
 package;
 
+#if cpp
 //import haxe.ds.Vector;
 import cpp.ConstStar;
 import haxe.macro.Expr.Constant;
@@ -577,33 +578,32 @@ extern enum abstract ConfigFlags(UInt)
 }
 
 @:include("raylib.h")
-extern enum abstract TraceLogLevel(UInt)
+extern enum abstract TraceLogLevel(Int) from Int to Int
 {
     @:native("LOG_ALL")
-    var LOG_ALL;
-
-    @:native("LOG_TRACE")
-    var LOG_TRACE;
-
+    public static var ALL:Int;
+    
+    @:native("LOG_TRACE") 
+    public static var TRACE:Int;
+    
     @:native("LOG_DEBUG")
-    var LOG_DEBUG;
-
+    public static var DEBUG:Int;
+    
     @:native("LOG_INFO")
-    var LOG_INFO;
-
+    public static var INFO:Int;
+    
     @:native("LOG_WARNING")
-    var LOG_WARNING;
-
+    public static var WARNING:Int;
+    
     @:native("LOG_ERROR")
-    var LOG_ERROR;
-
+    public static var ERROR:Int;
+    
     @:native("LOG_FATAL")
-    var LOG_FATAL;
+    public static var FATAL:Int;
 
     @:native("LOG_NONE")
-    var LOG_NONE;
+    public static var NONE:Int;
 }
-
 
 @:include("raylib.h")
 extern class CameraProjection
@@ -615,11 +615,11 @@ extern class CameraProjection
 @:include("raylib.h")
 extern class CameraMode
 {
-    @:native("CAMERA_CUSTOM")           public static var CAMERA_CUSTOM:Int;
-    @:native("CAMERA_FREE")             public static var CAMERA_FREE:Int;
-    @:native("CAMERA_ORBITAL")          public static var CAMERA_ORBITAL:Int;
-    @:native("CAMERA_FIRST_PERSON")     public static var CAMERA_FIRST_PERSON:Int;
-    @:native("CAMERA_THIRD_PERSON")     public static var CAMERA_THIRD_PERSON:Int;
+    @:native("CAMERA_CUSTOM")           public static var CUSTOM:Int;
+    @:native("CAMERA_FREE")             public static var FREE:Int;
+    @:native("CAMERA_ORBITAL")          public static var ORBITAL:Int;
+    @:native("CAMERA_FIRST_PERSON")     public static var FIRST_PERSON:Int;
+    @:native("CAMERA_THIRD_PERSON")     public static var THIRD_PERSON:Int;
 }
 
 @:include("raylib.h")
@@ -1770,5 +1770,24 @@ extern class Raylib
 
     //Text Drawing Functions
     @:native("DrawFPS")                 public static function DrawFPS(posX:Int, posY:Int):Void;
-    @:native("DrawText")		public static function DrawText(text:ConstCharStar, posX:Int, posY:Int, FontSize:Int, color:Color):Void;
+    @:native("DrawText")				public static function DrawText(text:ConstCharStar, posX:Int, posY:Int, FontSize:Int, color:Color):Void;
+    
+    //------------------------------------------------------------------------------------
+    // Basic 3d Shapes Drawing Functions (Module: models)
+    //------------------------------------------------------------------------------------
+    
+    // Basic geometric 3D shapes drawing functions
+    @:native("DrawGrid")				public static function DrawGrid(slices:Int, spacing:Float):Void;
+    
+    //------------------------------------------------------------------------------------
+    // Model 3d Loading and Drawing Functions (Module: models)
+    //------------------------------------------------------------------------------------
+    
+    // Model management functions
+    @:native("LoadModel")				public static function LoadModel(fileName:cpp.ConstCharStar):Model;
+    @:native("UnloadModel")				public static function UnloadModel(model:Model):Void;
+
+    // Model drawing functions
+    @:native("DrawModel")				public static function DrawModel(model:Model, position:Vector3, scale:Float, tint:Color):Void;
 }
+#end

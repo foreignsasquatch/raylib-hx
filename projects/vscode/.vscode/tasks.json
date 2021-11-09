@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "haxe",
+            "args": "active configuration",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "C++ (debug)",
+            "type": "shell",
+            "command": "haxe",
+            "args": [
+                "build.hxml",
+            ],
+            "problemMatcher": [
+                "$haxe-absolute",
+                "$haxe",
+                "$haxe-error",
+                "$haxe-trace"
+            ]
+        }
+    ]
+}

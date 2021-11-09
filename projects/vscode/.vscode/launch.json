@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Raylib",
+            "type": "hxcpp",
+            "request": "launch",
+            "preLaunchTask": "C++ (debug)",
+            "program": "${workspaceFolder}/bin/Main-debug.exe"
+        }
+    ]
+}

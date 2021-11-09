@@ -1,5 +1,5 @@
 -cp src
--cpp bin
+-cpp temp
 -lib hxRaylib-dev
 -main Main
 # Uncomment for the platform
