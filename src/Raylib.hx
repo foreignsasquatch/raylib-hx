@@ -31,19 +31,15 @@ package;
 
 #if cpp
 //import haxe.ds.Vector;
-import cpp.ConstStar;
-import haxe.macro.Expr.Constant;
-import cpp.Char;
-import cpp.UInt8;
-import cpp.UInt16;
-import cpp.RawConstPointer;
-import cpp.Pointer;
-import cpp.Float32;
-import cpp.NativeArray;
 import cpp.ArrayBase;
+import cpp.Star;
 import cpp.ConstCharStar;
-import cpp.RawPointer;
 import cpp.ConstPointer;
+import cpp.NativeArray;
+import cpp.Pointer;
+import cpp.UInt16;
+import cpp.UInt8;
+import haxe.macro.Expr.Constant;
 
 @:include("raylib.h")
 extern class Colors
@@ -179,7 +175,7 @@ extern class Rectangle
 @:structAccess
 extern class Image
 {
-    var data:cpp.RawPointer<cpp.Void>;      // Image raw data
+    var data:cpp.Pointer<cpp.Void>;      // Image raw data
     var width:Int;  // Image base width
     var height:Int; // Image base height
     var mipmaps:Int; // Mipmap levels, 1 by default
@@ -234,6 +230,20 @@ extern class NPatchInfo
     var layout:Int;         // Layout of n-patch: 3x3, 1x3 or 3x1
 }
 
+// GlyphInfo, font characters glyphs info
+@:include("raylib.h")
+@:native("GlyphInfo")
+@:structAccess
+extern class GlyphInfo
+{
+    baseSize:Int;              // Base size (default chars height)
+    glyphCount:Int;            // Number of glyph characters
+    glyphPadding:Int;          // Padding around the glyph characters
+    texture:Texture2D;         // Texture atlas containing the glyphs
+    recs:Pointer<Rectangle>;   // Rectangles in texture for the glyphs
+    glyphs:Pointer<GlyphInfo>; // Glyphs info data
+}
+
 // CharInfo, for font character info
 @:include("raylib.h")
 @:native("CharInfo")
@@ -257,8 +267,8 @@ extern class Font
     var charsCount:Int;     // Number of characters
     var charsPadding:Int;   // Padding around the chars
     var texture:Texture2D;  // Characters texture atlas
-    var recs:RawPointer<Rectangle>;    // Character rectabgle in texture
-    var chars:RawPointer<CharInfo>;    // Charcter info data
+    var recs:Pointer<Rectangle>;    // Character rectabgle in texture
+    var chars:Pointer<CharInfo>;    // Charcter info data
 }
 
 // Camera, defines positon/oreientation in 3d space
@@ -306,19 +316,19 @@ extern class Mesh
     var VertexCount:Int;
     var triangleCount:Int;
 
-    var Verticies:cpp.RawPointer<Float>;
-    var textcoords:cpp.RawPointer<Float>;
-    var texcoord2:cpp.RawPointer<Float>;
-    var normals:cpp.RawPointer<Float>;
-    var tangents:cpp.RawPointer<Float>;
+    var Verticies:cpp.Pointer<Float>;
+    var textcoords:cpp.Pointer<Float>;
+    var texcoord2:cpp.Pointer<Float>;
+    var normals:cpp.Pointer<Float>;
+    var tangents:cpp.Pointer<Float>;
 
-    var animVertices:cpp.RawPointer<Float>;
-    var animNormals:cpp.RawPointer<Float>;
-    var boneIds:cpp.RawPointer<Int>;
-    var boneWeights:cpp.RawPointer<Float>;
+    var animVertices:cpp.Pointer<Float>;
+    var animNormals:cpp.Pointer<Float>;
+    var boneIds:cpp.Pointer<Int>;
+    var boneWeights:cpp.Pointer<Float>;
 
     var vaoId:UInt;
-    var vboId:cpp.RawPointer<UInt>;
+    var vboId:cpp.Pointer<UInt>;
 }
 
 @:include("raylib.h")
@@ -327,7 +337,7 @@ extern class Mesh
 extern class Shader
 {
     var id:UInt;
-    var locs:cpp.RawPointer<Int>;
+    var locs:cpp.Pointer<Int>;
 }
 
 @:include("raylib.h")
@@ -347,7 +357,7 @@ extern class MaterialMap
 extern class Material
 {
     var shader:Shader;
-    var maps:cpp.RawPointer<MaterialMap>;
+    var maps:cpp.Pointer<MaterialMap>;
     var params:Float;
 }
 
@@ -378,13 +388,13 @@ extern class Model
 
     var meshCount:Int;
     var materialCount:Int;
-    var meshes:RawPointer<Mesh>;
-    var materials:RawPointer<Material>;
-    var meshMaterials:RawPointer<Int>;
+    var meshes:Pointer<Mesh>;
+    var materials:Pointer<Material>;
+    var meshMaterials:Pointer<Int>;
 
     var boneCount:Int;
-    var bones:RawPointer<BoneInfo>;
-    var bindPose:RawPointer<Transform>;
+    var bones:Pointer<BoneInfo>;
+    var bindPose:Pointer<Transform>;
 }
 
 @:include("raylib.h")
@@ -394,8 +404,8 @@ extern class ModelAnimation
 {
     var boneCount:Int;
     var frameCount:Int;
-    var bones:RawPointer<BoneInfo>;
-    var framePoses:RawPointer<RawPointer<Transform>>;
+    var bones:Pointer<BoneInfo>;
+    var framePoses:Pointer<Pointer<Transform>>;
 }
 
 @:include("raylib.h")
@@ -451,7 +461,7 @@ extern class Wave
     var sampleRate:UInt;
     var sampleSize:UInt;
     var channels:UInt;
-    var data:RawPointer<cpp.Void>;
+    var data:Pointer<cpp.Void>;
 }
 
 // TODO: Test Audio support
@@ -468,7 +478,7 @@ extern class AudioBuffer
 @:structAccess
 extern class AudioStream
 {
-    var buffer:RawPointer<AudioBuffer>;
+    var buffer:Pointer<AudioBuffer>;
 
     var sampleRate:UInt;
     var sampleSize:UInt;
@@ -582,22 +592,22 @@ extern enum abstract TraceLogLevel(Int) from Int to Int
 {
     @:native("LOG_ALL")
     public static var ALL:Int;
-    
-    @:native("LOG_TRACE") 
+
+    @:native("LOG_TRACE")
     public static var TRACE:Int;
-    
+
     @:native("LOG_DEBUG")
     public static var DEBUG:Int;
-    
+
     @:native("LOG_INFO")
     public static var INFO:Int;
-    
+
     @:native("LOG_WARNING")
     public static var WARNING:Int;
-    
+
     @:native("LOG_ERROR")
     public static var ERROR:Int;
-    
+
     @:native("LOG_FATAL")
     public static var FATAL:Int;
 
@@ -976,7 +986,7 @@ extern enum abstract MouseButton(Int) from Int to Int
     public static var FORWARD:Int;
 
     @:native("MOUSE_BUTTON_BACK")
-    public static var BACK:Int; 
+    public static var BACK:Int;
 }
 
 // Mouse cursor
@@ -1500,7 +1510,7 @@ extern enum abstract NPatchLayout(UInt)
 extern class Raylib
 {
     //------------------------------------------------------------------------------------
-    // Window and Graphics Device Functions (Module: core)
+    // Core module
     //------------------------------------------------------------------------------------
 
     // Window-related functions
@@ -1522,12 +1532,12 @@ extern class Raylib
     @:native("MinimizeWindow")          public static function MinimizeWindow():Void;
     @:native("RestoreWindow")           public static function RestoreWindow():Void;
     @:native("SetWindowIcon")           public static function SetWindowIcon(image:Image):Void;
-    @:native("SetWindowTitle")          public static function SetWindowTitle(title:cpp.ConstCharStar):Void;
+    @:native("SetWindowTitle")          public static function SetWindowTitle(title:ConstCharStar):Void;
     @:native("SetWindowPosition")       public static function SetWindowPosition(x:Int, y:Int):Void;
     @:native("SetWindowMonitor")        public static function SetWindowMonitor(monitor:Int):Void;
     @:native("SetWindowMinSize")        public static function SetWindowMinSize(width:Int, height:Int):Void;
     @:native("SetWindowSize")           public static function SetWindowsize(width:Int, height:Int):Void;
-    @:native("GetWindowHandle")         public static function GetWindowHandle():cpp.RawPointer<Void>;
+    @:native("GetWindowHandle")         public static function GetWindowHandle():Star;
     @:native("GetScreenWidth")          public static function GetScreenWidth():Int;
     @:native("GetScreenHeight")         public static function GetScreenHeight():Int;
     @:native("GetMonitorCount")         public static function GetMonitorCount():Int;
@@ -1540,9 +1550,9 @@ extern class Raylib
     @:native("GetMonitorRefershRate")   public static function GetMonitorRefershRate(monitor:Int):Int;
     @:native("GetWindowPosition")       public static function GetWndowPosition():Vector2;
     @:native("GetWindowScaleDPI")       public static function GetWindowScaleDPI():Vector2;
-    @:native("GetMonitorName")          public static function GetMonitorName(monitor:Int):cpp.ConstCharStar;
-    @:native("SetClipboardText")        public static function SetClipboardText(text:cpp.ConstCharStar):Void;
-    @:native("GetClipboardText")        public static function GetClipboardText():cpp.ConstCharStar;
+    @:native("GetMonitorName")          public static function GetMonitorName(monitor:Int):ConstCharStar;
+    @:native("SetClipboardText")        public static function SetClipboardText(text:ConstCharStar):Void;
+    @:native("GetClipboardText")        public static function GetClipboardText():ConstCharStar;
 
     // Custom frame control functions
     // NOTE: Those functions are intended for advance users that want full control over the frame processing
@@ -1577,11 +1587,11 @@ extern class Raylib
     @:native("EndBlendMode")            public static function EndBlendMode():Void;
     @:native("BeginScissorMode")        public static function BeginScissorMode(x:Int, y:Int, width:Int, height:Int):Void;
     @:native("EndScissorMode")          public static function EndScissorMode():Void;
-    // BeginVrStereoMode
-    // EndVrStereoMode
+    @:native("BeginVrStereoMode")       static function BeginVrStereoMode(config:VrStereoConfig):Void;
+    @:native("EndVrStereoMode")         static function EndVrStereoMode():Void;
 
-    // LoadVrStereoConfig
-    // UnloadVrStereoConfig
+    @:native("LoadVrStereoConfig")      static function LoadVrStereoConfig(device:VrDeviceInfo):VrStereoConfig;
+    @:native("UnloadVrStereoConfig")    static function UnloadVrStereoConfig(config:VrStereoConfig):Void;
 
     // Shader manangement function
     @:native("LoadShader")              public static function LoadShader(vsFileName:ConstCharStar, fsFileName:ConstCharStar):Shader;
@@ -1616,20 +1626,20 @@ extern class Raylib
 
     @:native("TraceLog")                public static function TraceLog(logLevel:Int, text:ConstCharStar):Void;
     @:native("SetTraceLogLevel")        public static function SetTraceLogLevel(logLevel:Int):Void;
-    @:native("MemAlloc")                public static function MemAlloc(size:Int):RawPointer<Void>;
-    @:native("MemRealloc")              public static function MemRealloc(ptr:RawPointer<Void>, size:Int):RawPointer<Void>;
-    @:native("MemFree")                 public static function MemFree(ptr:RawPointer<Void>):Void;
+    @:native("MemAlloc")                public static function MemAlloc(size:Int):Star;
+    @:native("MemRealloc")              public static function MemRealloc(ptr:Star, size:Int):Star;
+    @:native("MemFree")                 public static function MemFree(ptr:Star):Void;
 
     // Set custom callback
     //@:native("SetTraceLogCallback")     public static function SetTraceLogCallback(callback:TraceLogCallback):Void;
 
     // Files management functions
-    @:native("LoadFileData")            public static function LoadFileData(filename:ConstCharStar, bytesRead:RawPointer<UInt>):RawPointer<UInt16>;
-    @:native("UnloadFileData")          public static function UnloadFileData(data:RawPointer<UInt16>):Void;
-    @:native("SaveFileData")            public static function SaveFileData(filename:RawPointer<UInt16>, data:RawPointer<Void>, byetsToWrite:UInt):Bool;
-    @:native("LoadFileText")            public static function LoadFileText(fileName:ConstCharStar):RawPointer<Char>;
-    @:native("UnloadFileText")          public static function UnloadFileText(text:RawPointer<Char>):Void;
-    @:native("SaveFileText")            public static function SaveFileText(fileName:ConstCharStar, text:RawPointer<Char>):Bool;
+    @:native("LoadFileData")            public static function LoadFileData(filename:ConstCharStar, bytesRead:Pointer<UInt>):Pointer<UInt16>;
+    @:native("UnloadFileData")          public static function UnloadFileData(data:Pointer<UInt16>):Void;
+    @:native("SaveFileData")            public static function SaveFileData(filename:Pointer<UInt16>, data:Star, byetsToWrite:UInt):Bool;
+    @:native("LoadFileText")            public static function LoadFileText(fileName:ConstCharStar):ConstCharStar;
+    @:native("UnloadFileText")          public static function UnloadFileText(text:ConstCharStar):Void;
+    @:native("SaveFileText")            public static function SaveFileText(fileName:ConstCharStar, text:ConstCharStar):Bool;
     @:native("FileExists")              public static function FileExists(fileName:ConstCharStar):Bool;
     @:native("DirectoryExists")         public static function DirectoryExists(dirPath:ConstCharStar):Bool;
     @:native("IsFileExtension")         public static function IsFileExtension(fileName:ConstCharStar, ext:ConstCharStar):Bool;
@@ -1639,11 +1649,11 @@ extern class Raylib
     @:native("GetDirectoryPath")        public static function GetDirectoryPath(filePath:ConstCharStar):ConstCharStar;
     @:native("GetPrevDirectoryPath")    public static function GetPrevDirectoryPath(dirPath:ConstCharStar):ConstCharStar;
     @:native("GetWorkingDirectory")     public static function GetWorkingDirectory():ConstCharStar;
-    @:native("GetDirectoryFiles")       public static function GetDirectoryFiles(dirPath:ConstCharStar, count:RawPointer<Int>):Pointer<Pointer<Char>>;
+    @:native("GetDirectoryFiles")       public static function GetDirectoryFiles(dirPath:ConstCharStar, count:Pointer<Int>):Pointer<ConstCharStar>;
     @:native("ClearDirectoryFiles")     public static function ClearDirectoryFiles():Void;
     @:native("ChangeDirectory")         public static function ChangeDirectory(dir:ConstCharStar):Bool;
     @:native("IsFileDropped")           public static function IsFiledDropped():Bool;
-    @:native("GetDroppedFiles")         public static function GetDroppedFiles(count:RawPointer<Int>):Pointer<Pointer<Char>>;
+    @:native("GetDroppedFiles")         public static function GetDroppedFiles(count:Pointer<Int>):Pointer<ConstCharStar>;
     @:native("ClearDroppedFiles")       public static function ClearDroppedFiles():Void;
     @:native("GetFileModTime")          public static function GetFileModeTime(fileName:ConstCharStar):Float;
 
@@ -1652,10 +1662,6 @@ extern class Raylib
     @:native("LoadStorageValue")        public static function LoadStorageValue(position:UInt):Int;
 
     @:native("OpenURL")                 public static function OpenURL(url:ConstCharStar):Void;
-
-    //------------------------------------------------------------------------------------
-    // Input Handling Functions (Module: core)
-    //------------------------------------------------------------------------------------
 
     // Input-related functions: keyboard
     @:native("IsKeyPressed")            public static function IsKeyPressed(key:Int):Bool;
@@ -1698,9 +1704,7 @@ extern class Raylib
     @:native("GetTouchY")               public static function GetTouchY():Int;
     @:native("GetTouchPosition")        public static function GetTouchPosition(index:Int):Vector2;
 
-    //------------------------------------------------------------------------------------
     // Gestures and Touch Handling Functions (Module: gestures)
-    //------------------------------------------------------------------------------------
     @:native("SetGestureEnabled")       public static function SetGestureEnabled(flags:UInt):Void;
     @:native("IsGestureDetected")       public static function IsGestureDetected(gesture:Int):Bool;
     @:native("GetGestureDetected")      public static function GetGestureDetected():Int;
@@ -1711,11 +1715,9 @@ extern class Raylib
     @:native("GetGesturePinchVector")   public static function GetGesturePinchVector():Vector2;
     @:native("GetGesturePinchAngle")    public static function GetGesturePinchAngle():Float;
 
-    //------------------------------------------------------------------------------------
-    // Camera System Functions (Module: camera)
-    //------------------------------------------------------------------------------------
+    // Camera system functions
     @:native("SetCameraMode")           public static function SetCameraMode(camera:Camera, mode:Int):Void;
-    @:native("UpdateCamera")            public static function UpdateCamera(camera:RawPointer<Camera>):Void;
+    @:native("UpdateCamera")            public static function UpdateCamera(camera:Pointer<Camera>):Void;
 
     @:native("SetCameraPanControl")     public static function SetCameraPanControl(keyPan:Int):Void;
     @:native("SetCameraAltControl")     public static function SetCameraAltControl(keyAlt:Int):Void;
@@ -1723,12 +1725,13 @@ extern class Raylib
     @:native("SetCameraMoveControls")   public static function SetCameraMoveControls(keyFron:Int, keyBack:Int, keyRight:Int, keyLeft:Int, keyUp:Int, keyDown:Int):Void;
 
     //------------------------------------------------------------------------------------
-    // Basic Shapes Drawing Functions (Module: shapes)
+    // Shapes module
     //------------------------------------------------------------------------------------
+
     @:native("SetShapesTexture")        public static function SetShapesTexture(texture:Texture2D, source:Rectangle):Void;
 
     // Basic shapes drawing functions
-    @:native("DrawPixel")               public function DrawPixel(posX:Int, posY:Int, color:Color):Void;
+    @:native("DrawPixel")               static function DrawPixel(posX:Int, posY:Int, color:Color):Void;
     @:native("DrawPixelV")              public static function DrawPixelV(position:Vector2, color:Color):Void;
     @:native("DrawLine")                public static function DrawLine(startPosX:Int, startPosY:Int, endPosX:Int, endPosY:Int, color:Color):Void;
     @:native("DrawLineV")               public static function DrawLineV(startPos:Vector2, endPos:Vector2, color:Color):Void;
@@ -1742,9 +1745,36 @@ extern class Raylib
     @:native("DrawCircleGradient")      public static function DrawCircleGradient(centerX:Int, centerY:Int, radius:Float, color1:Color, color2:Color):Void;
     @:native("DrawCircleV")             public static function DrawCircleV(center:Vector2, radius:Float, color:Color):Void;
     @:native("DrawRectangle")           public static function DrawRectangle(posX:Int, posY:Int, width:Int, height:Int, color:Color):Void;
+    @:native("DrawRectangleV")          static function DrawRectangleV(position:Vector2, size:Vector2, color:Color):Void;
+    @:native("DrawRectangleRec")        static function DrawRectangleRec(rec:Rectangle, color:Color):Void;
+    @:native("DrawRectanglePro")        static function DrawRectanglePro(rec:Rectangle, origin:Vector2, rotation:Float, color:Color):Void;
+    @:native("DrawRectangleGradientV")  static function DrawRectangleGradientV(posX:Int, posY:Int, width:Int, height:Int, color1:Color, color2:Color):Void;
+    @:native("DrawRectangleGradientH")  static function DrawRectangleGradientH(posX:Int, posY:Int, width:Int, height:Int, color1:Color, color2:Color):Void;
+    @:native("DrawRectangleLines")      static function DrawRectangleLines(posX:Int, posY:Int, width:Int, height:Int, color:Color):Void;
+    @:native("DrawRectangleLinesEx")    static function DrawRectangleLinesEx(rec:Rectangle, lineThick:Int, color:Color):Void;
+    @:native("DrawRectangleRounded")    static function DrawRectangleRounded(rec:Rectangle, roundness:Float, segments:Int, color:Color):Void;
+    @:native("DrawRectangleRoundedLines") static function DrawRectangleRoundedLines(rec:Rectangle, roundness:Float, segments:Int, lineThick:Int, color:Color):Void;
+    @:native("DrawTriangle")            static function DrawTriangle(v1:Vector2, v2:Vector2, v3:Vector3, color:Color):Void;
+    @:native("DrawTriangleLines")       static function DrawTriangleLines(v1:Vector2, v2:Vector2, v3:Vector3, color:Color):Void;
+    @:native("DrawTriangleFan")         static function DrawTriangleFan(points:Pointer<Vector2>, pointsCount:Int, color:Color):Void;
+    @:native("DrawTriangleStrip")       static function DrawTriangleStrip(points:Pointer<Vector2>, pointsCount:Int, color:Color):Void;
+    @:native("DrawPoly")                static function DrawPoly(center:Vector2, sides:Int, radius:Float, rotation:Float, color:Color):Void;
+    @:native("DrawPolyLines")           static function DrawPolyLines(center:Vector2, sides:Int, radius:Float, rotation:Float, color:Color):Void;
+    @:native("DrawPolyLinesEx")         static function DrawPolyLinesEx(center:Vector2, sides:Int, radius:Float, rotation:Float, lineThick:Float, color:Color):Void;
+
+    // Basic shapes collision detection functions
+    @:native("CheckCollisionRecs")      static function CheckCollisionRecs(rec1:Rectangle, rec2:Rectangle):Bool;
+    @:native("CheckCollisionCircles")   static function CheckCollisionCircles(center1:Vector2, radius1:Float, center2:Vector2, radius2:Float):Bool;
+    @:native("CheckCollisionCircleRec") static function CheckCollisionCircleRec(center:Vector2, radius:Float, rec:Rectangle):Bool;
+    @:native("CheckCollisionPointRec")  static function CheckCollisionPointRec(point:Vector2, rec:Rectangle):Bool;
+    @:native("CheckCollisionPointCircle") static function CheckCollisionPointCircle(point:Vector2, center:Vector2, radius:Float):Bool;
+    @:native("CheckCollisionPointTriangle") static function CheckCollisionPointTriangle(point:Vector2, p1:Vector2, p2:Vector2, p3:Vector2):Bool;
+    @:native("CheckCollisionLines")     static function CheckCollisionLines(startPos1:Vector2, endPos1:Vector2, startPos2:Vector2, endPos2:Vector2, collisionPoint:Pointer<Vector2>):Bool;
+    @:native("CheckCollisionPointLine") static function CheckCollisionPointLine(point:Vector2, p1:Vector2, p2:Vector2, threshold:Int):Bool;
+    @:native("CheckCollisionRec")       static function GetCollisionRec(rec1:Rectangle, rec2:Rectangle):Rectangle;
 
     //------------------------------------------------------------------------------------
-    // Texture Loading and Drawing Functions (Module: textures)
+    // Textures module
     //------------------------------------------------------------------------------------
 
     // Image loading functions
@@ -1752,39 +1782,99 @@ extern class Raylib
     @:native("LoadImageRaw")            public static function LoadImageRaw(fileName:ConstCharStar, width:Int, height:Int, format:Int, headerSize:Int):Image;
     @:native("LoadImageAnim")           public static function LoadImageAnim(fileName:ConstCharStar, frames:Int):Image;
     @:native("LoadImageFromMemory")     public static function LoadImageFromMemory(fileType:ConstCharStar, fileData:ConstStar<cpp.UInt8>, dataSize:Int):Image;
+    @:native("LoadImageFromTexture")    static function LoadImageFromTexture(texture:Texture2D):Image;
+    @:native("LoadImageFromScreen")     static function LoadImageFromScreen():Void;
     @:native("UnloadImage")             public static function UnloadImage(image:Image):Void;
     @:native("ExportImage")             public static function ExportImage(image:Image, fileName:ConstCharStar):Bool;
     @:native("ExportImageAsCode")       public static function ExportImageAsCode(image:Image, fileName:ConstCharStar):Bool;
 
     // Image generation functions
-    @:native("GenImageColor")           public static function GenImageColor(width:Int, height:Int, color:Color):Image;
+    @:native("GenImageColor")           static function GenImageColor(width:Int, height:Int, color:Color):Image;
+    @:native("GenImageGradientV")       static function GenImageGradientV(width:Int, height:Int, top:Color, bottom:Color):Image;
+    @:native("GenImageGradientH")       static function GenImageGradientH(width:Int, height:Int, left:Color, right:Color):Image;
+    @:native("GenImageGradientRadial")  static function GenImageGradientRadial(width:Int, height:Int, density:Float, inner:Color, outer:Color):Image;
+    @:native("GenImageChecked")         static function GenImageChecked(width:Int, height:Int, checksX:Int, checksY:Int, color:Color):Image;
+    @:native("GenImageWhiteNoise")      static function GenImageWhiteNoise(width:Int, height:Int, factor:Float):Image;
+    @:native("GenImageCellular")        static function GenImageCellular(width:Int, height:Int, tileSize:Int):Image;
 
     // Texture Loading functions
     @:native("LoadTexture")             public static function LoadTexture(fileName:ConstCharStar):Texture2D;
+    @:native("LoadTextureFromImage")    static function LoadTextureFromImage(image:Image):Texture2D;
+    @:native("LoadTextureCubemap")      static function LoadTextureCubemap(image:Image, layout:Int):TextureCubemap;
+    @:native("LoadRenderTexture")       static function LoadRenderTexture(width:Int, height:Int):RenderTexture2D;
     @:native("UnloadTexture")           public static function UnloadTexture(texture:Texture2D):Void;
-    @:native("LoadRenderTexture")       public static function LoadRenderTexture(width:Int, height:Int):RenderTexture2D;
+    @:native("UnloadRenderTexture")     static function UnloadRenderTexture(texture:RenderTexture2D):Void;
+    @:native("UpdateTexture")           static function UpdateTexture(texture:Texture2D, pixels:ConstStar):Void;
+    @:native("UpdateTextureRec")        static function UpdateTexture(texture:Texture2D, rec:Rectangle, pixels:ConstStar):Void;
+
+    // Texture configuration functions
+    @:native("GenTextureMipmaps")       static function GenTextureMipmaps(texture:Pointer<Texture2D>):Void;
+    @:native("SetTextureFilter")        static function SetTextureFilter(texture:Texture2D, filter:Int):Void;
+    @:native("SetTextureWrap")          static function SetTextureWrap(texture:Texture2D, wrap:Int):Void;
 
     // Texture drawing functions
     @:native("DrawTexture")             public static function DrawTexture(texture:Texture2D, posX:Int, posy:Int, tint:Color):Void;
     @:native("DrawTextureV")            public static function DrawTextureV(texture:Texture2D, position:Vector2, tint:Color):Void;
+    @:native("DrawTextureEx")           static function DrawTextureEx(texture:Texture2D, position:Vector2, rotation:Float, scale:Float, tint:Color):Void;
+    @:native("DrawTextureRec")          static function DrawTextureRec(texture:Texture2D, source:Rectangle, dest:Rectangle, tint:Color):Void;
+    @:native("DrawTextureQuad")         static function DrawTextureQuad(texture:Texture2D, tiling:Vector2, offset:Vector2, quad:Rectangle, tint:Color):Void;
+    @:native("DrawTextureTiled")        static function DrawTextureTiled(texture:Texture2D, source:Rectangle, dest:Rectangle, origin:Vector2, rotation:Float, scale:Float, tint:Color):Void;
+    @:native("DrawTexturePro")          static function DrawTexturePro(texture:Texture2D, source:Rectangle, dest:Rectangle, origin:Vector2, rotation:Float, tint:Color):Void;
+    @:native("DrawTextureNPatch")       static function DrawTextureNPatch(texture:Texture2D, nPatchInfo:NPatchInfo, dest:Rectangle, origin:Vector2, rotation:Float, tint:Color):Void;
+    @:native("DrawTexturePoly")         static function DrawTexturePoly(texture:Texture2D, center:Vector2, points:Pointer<Vector2>, texcoords:Pointer<Vector2>, pointsCount:Int, tint:Color):Void;
 
-    //Text Drawing Functions
-    @:native("DrawFPS")                 public static function DrawFPS(posX:Int, posY:Int):Void;
-    @:native("DrawText")				public static function DrawText(text:ConstCharStar, posX:Int, posY:Int, FontSize:Int, color:Color):Void;
-    
+    // Color pixel related functions
+    @:native("Fade")                    static function Fade(color:Color, alpha:Float):Void;
+    @:native("ColorToInt")              static function ColorToInt(color:Color):Int;
+    @:native("ColorNormalize")          static function ColorNormalize(color:Color):Vector4;
+    @:native("ColorFromNormalized")     static function ColorFromNormalized(normalized:Vector4):Color;
+    @:native("ColorToHSV")              static function ColorToHSV(color:Color):Vector3;
+    @:native("ColorFromHSV")            static function ColorFromHSV(hue:Float, saturation:Float, float:Value):Color;
+    @:native("ColorAlpha")              static function ColorAlpha(color:Color, alpha:Float):Color;
+    @:native("ColorAlphaBlend")         static function ColorAlphaBlend(dst:Color, src:Color, tint:Color):Color;
+    @:native("GetColor")                static function GetColor(hexValue:UInt):Color;
+    @:native("GetPixelColor")           static function GetPixelColor(srcPtr:Star, format:PixelFormat):Color;
+    @:native("SetPixelColor")           static function SetPixelColor(dstPtr:Star, color:Color, format:Int):Void;
+    @:native("GetPixelDataSize")        static function GetPixelDataSize(width:Int, height:Int, format:Int):Int;
+
     //------------------------------------------------------------------------------------
-    // Basic 3d Shapes Drawing Functions (Module: models)
+    // Font module
     //------------------------------------------------------------------------------------
-    
+
+    // Font loading/unloading functions
+    @:native("GetFontDefault")          static function GetFontDefault():Void;
+    @:native("LoadFont")                static function LoadFont(fileName:ConstCharStar):Font;
+    @:native("LoadFontEx")              static function LoadFontEx(fileName:ConstCharStar, fontSize:Int, fontChars:Pointer<Int>, glyphCount:Int):Font;
+    @:native("LoadFontFromImage")       static function LoadFontFromImage(image:Image, key:Color, firstChar:Int):Font;
+    @:native("LoadFontFromMemory")      static function LoadFontFromMemory(fileType:ConstCharStar, fileData:Pointer<UInt8>, dataSize:Int, fontSize:Int, fontChars:Pointer<Int>, glyphCount:Int):Font;
+    @:native("LoadFontData")            static function LoadFontData(fileData:ConstPointer<UInt8>, dataSize:Int, fontSize:Int, fontChars:Pointer<Int>, glyphCount:Int, type:Int):GlyphInfo;
+    @:native("GenImageFontAtlas")       static function GenImageFontAtlas(chars:ConstPointer<GlyphInfo>, recs:Pointer<Pointer<Rectangle>>, glyphCount:Int, fontSize:Int, padding:Int, packMethod:Int):Image;
+    @:native("UnloadFontData")          static function UnloadFontData(chars:Pointer<GlyphInfo>, glyphCount:Int):Void;
+    @:native("UnloadFont")              static function UnloadFont(font:Font):Void;
+
+    // Text drawing functions
+    @:native("DrawFPS")                 static function DrawFPS(posX:Int, posY:Int):Void;
+    @:native("DrawText")				static function DrawText(text:ConstCharStar, posX:Int, posY:Int, FontSize:Int, color:Color):Void;
+    @:native("DrawTextEx")              static function DrawTextEx(font:Font, text:ConstCharStar, position:Vector2, fontSize:Float, spacing:Float, tint:Color):Void;
+    @:native("DrawTextPro")             static function DrawTextPro(font:Font, text:ConstCharStar, position:Vector2, origin:Vector2, rotation:Float, fontSize:Float, spacing:Float, tint:Color):Void;
+    @:native("DrawTextCodePoint")       static function DrawTextCodePoint(font:Font, codepoint:Int, position:Vector2, fontSize:Float, tint:Color):Void;
+
+    // Text misc. functions
+    @:native("MeasureText")             static function MeasureText(text:ConstCharStar, fontSize:Int):Int;
+    @:native("MeasureTextEx")           static function MeasureTextEx(font:Font, text:ConstCharStar, fontsize:Float, tint:Color):Vector2;
+    @:native("GetGlyphIndex")           static function GetGlyphIndex(font:Font, codepoint:Int):Int;
+    @:native("GetGlyphInfo")            static function GetGlyphInfo(font:Font, codepoint:Int):GlyphInfo;
+    @:native("GetGlyphAtlasRec")        static function GetGlyphAtlasRec(font:Font, codepoint:Int):Rectangle;
+
+    //------------------------------------------------------------------------------------
+    // Models module
+    //------------------------------------------------------------------------------------
+
     // Basic geometric 3D shapes drawing functions
     @:native("DrawGrid")				public static function DrawGrid(slices:Int, spacing:Float):Void;
-    
-    //------------------------------------------------------------------------------------
-    // Model 3d Loading and Drawing Functions (Module: models)
-    //------------------------------------------------------------------------------------
-    
+
     // Model management functions
-    @:native("LoadModel")				public static function LoadModel(fileName:cpp.ConstCharStar):Model;
+    @:native("LoadModel")				public static function LoadModel(fileName:ConstCharStar):Model;
     @:native("UnloadModel")				public static function UnloadModel(model:Model):Void;
 
     // Model drawing functions
