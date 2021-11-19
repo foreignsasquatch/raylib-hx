@@ -29,6 +29,7 @@
 **********************************************************************************************/
 package;
 
+import cpp.ConstStar;
 #if cpp
 //import haxe.ds.Vector;
 import cpp.ArrayBase;
@@ -2010,5 +2011,73 @@ extern class Raylib
     @:native("GetRayCollisionMesh")     static function GetRayCollisionMesh(ray:Ray, mesh:Mesh, transform:Matrix):RayCollision;
     @:native("GetRayCollisionTriangle") static function GetRayCollisionTriangle(ray:Ray, p1:Vector3, p2:Vector3, p3:Vector3):RayCollision;
     @:native("GetRayCollisionQuad")     static function GetRayCollisionQuad(ray:Ray, p1:Vector3, p2:Vector3, p3:Vector3, p4:Vector3):RayCollision;
+
+    //------------------------------------------------------------------------------------
+    // Audio module
+    //------------------------------------------------------------------------------------
+
+    // Audio device management functions
+    @:native("InitAudioDevice")         static function InitAudioDevice():Void;
+    @:native("CloseAudioDevice")        static function CloseAudioDevice():Void;
+    @:native("IsAudioDeviceReady")      static function IsAudioDeviceReady():Bool;
+    @:native("SetMasterVolume")         static function SetMasterVolume(volume:Float):Void;
+
+    // Wave/Sound loading/unloading functions
+    @:native("LoadWave")                static function LoadWave(fileName:ConstCharStar):Wave;
+    @:native("LoadWaveFromMemory")      static function LoadWaveFromMemory(fileType:ConstCharStar, fileData:Pointer<UInt8>, dataSize:Int):Wave;
+    @:native("LoadSound")               static function LoadSound(fileName:ConstCharStar):Sound;
+    @:native("LoadSoundFromWave")       static function LoadSoundFromWave(wave:Wave):Sound;
+    @:native("UpdateSound")             static function UpdateSound(sound:Sound, data:ConstCharStar, samplesCount:Int):Void;
+    @:native("UnloadWave")              static function UnloadWave(wave:Wave):Void;
+    @:native("UnloadSound")             static function UnloadSound(sound:Sound):Void;
+    @:native("ExportWave")              static function ExportWave(wave:Wave, fileName:ConstCharStar):Bool;
+    @:native("ExportWaveAsCode")        static function ExportWaveAsCode(wave:Wave, fileName:ConstCharStar):Bool;
+
+    // Wave/Sound management functions
+    @:native("PlaySound")               static function PlaySound(sound:Sound):Void;
+    @:native("StopSound")               static function StopSound(sound:Sound):Void;
+    @:native("PauseSound")              static function PauseSound(sound:Sound):Void;
+    @:native("ResumeSound")             static function ResumeSound(sound:Sound):Void;
+    @:native("PlaySoundMulti")          static function PlaySoundMulti(sound:Sound):Void;
+    @:native("StopSoundMulti")          static function StopSoundMulti():Void;
+    @:native("GetSoundsPlaying")        static function GetSoundsPlaying():Int;
+    @:native("IsSoundPlaying")          static function IsSoundPlaying(sound:Sound):Bool;
+    @:native("SetSoundVolume")          static function SetSoundVolume(sound:Sound, volume:Float):Void;
+    @:native("SetSoundPitch")           static function SetSoundPitch(sound:Sound, pitch:Float):Void;
+    @:native("WaveFormat")              static function WaveFormat(wave:Pointer<Wave>, sampleRate:Int, sampleSize:Int, channels:Int):Void;
+    @:native("WaveCopy")                static function WaveCopy(wave:Wave):Wave;
+    @:native("WaveCrop")                static function WaveCrop(wave:Pointer<Wave>, initSample:Int, finalSample:Int):Void;
+    @:native("LoadWaveSamples")         static function LoadWaveSamples(wave:Wave):Pointer<Float>;
+    @:native("UnloadWaveSamples")       static function UnloadWaveSamples(samples:Pointer<Float>):Void;
+
+    // Music management functions
+    @:native("LoadMusicStream")           static function LoadMusicStream(fileName:ConstCharStar):Music;
+    @:native("LoadMusicStreamFromMemory") static function LoadMusicStreamFromMemory(fileType:ConstCharStar, data:Pointer<UInt8>, dataSize:Int):Music;
+    @:native("UnloadMusicStream")         static function UnloadMusicStream(music:Music):Void;
+    @:native("PlayMusicStream")           static function PlayMusicStream(music:Music):Void;
+    @:native("IsMusicStreamPlaying")      static function IsMusicStreamPlaying(music:Music):Bool;
+    @:native("UpdateMusicStream")         static function UpdateMusicStream(music:Music):Void;
+    @:native("StopMusicStream")           static function StopMusicStream(music:Music):Void;
+    @:native("PauseMusicStream")          static function PauseMusicStream(music:Music):Void;
+    @:native("ResumeMusicStream")         static function ResumeMusicStream(music:Music):Void;
+    @:native("SeekMusicStream")           static function SeekMusicStream(music:Music, position:Float):Void;
+    @:native("SetMusicVolume")            static function SetMusicVolume(music:Music, volume:Float):Void;
+    @:native("SetMusicPitch")             static function SetMusicPitch(music:Music, pitch:Float):Void;
+    @:native("GetMusicTimeLength")        static function GetMusicTimeLength(music:Music):Float;
+    @:native("GetMusicTimePlayed")        static function GetMusicTimePlayed(music:Music):Float;
+
+    // AudioStream management functions
+    @:native("InitAudioStream")                 static function InitAudioStream(sampleRate:UInt, sampleSize:UInt, channels:UInt):AudioStream;
+    @:native("UpdateAudioStream")               static function UpdateAudioStream(stream:AudioStream, data:ConstStar, samplesCount:Int):Void;
+    @:native("CloseAudioStream")                static function CloseAudioStream(stream:AudioStream):Void;
+    @:native("IsAudioStreamProcessed")          static function IsAudioStreamProcessed(stream:AudioStream):Bool;
+    @:native("PlayAudioStream")                 static function PlayAudioStream(stream:AudioStream):Void;
+    @:native("PauseAudioStream")                static function PauseAudioStream(stream:AudioStream):Void;
+    @:native("ResumeAudioStream")               static function ResumeAudioStream(stream:AudioStream):Void;
+    @:native("IsAudioStreamPlaying")            static function IsAudioStreamPlaying(stream:AudioStream):Bool;
+    @:native("StopAudioStream")                 static function StopAudioStream(stream:AudioStream):Void;
+    @:native("SetAudioStreamVolume")            static function SetAudioStreamVolume(stream:AudioStream, volume:Float):Void;
+    @:native("SetAudioStreamPitch")             static function SetAudioStreamPitch(stream:AudioStream, pitch:Float):Void;
+    @:native("SetAudioStreamBufferSizeDefault") static function SetAudioStreamBufferSizeDefault(size:Int):Void;
 }
 #end
