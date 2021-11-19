@@ -179,7 +179,7 @@ extern class Rectangle {
 @:native("Image")
 @:structAccess
 extern class Image {
-	var data:Pointer<cpp.Void>; // Image raw data
+	var data:Star; // Image raw data
 	var width:Int; // Image base width
 	var height:Int; // Image base height
 	var mipmaps:Int; // Mipmap levels, 1 by default
@@ -240,12 +240,12 @@ extern class NPatchInfo {
 @:native("GlyphInfo")
 @:structAccess
 extern class GlyphInfo {
-	baseSize:Int; // Base size (default chars height)
-	glyphCount:Int; // Number of glyph characters
-	glyphPadding:Int; // Padding around the glyph characters
-	texture:Texture2D; // Texture atlas containing the glyphs
-	recs:Pointer<Rectangle>; // Rectangles in texture for the glyphs
-	glyphs:Pointer<GlyphInfo>; // Glyphs info data
+	var baseSize:Int; // Base size (default chars height)
+	var glyphCount:Int; // Number of glyph characters
+	var glyphPadding:Int; // Padding around the glyph characters
+	var texture:Texture2D; // Texture atlas containing the glyphs
+	var recs:Pointer<Rectangle>; // Rectangles in texture for the glyphs
+	var glyphs:Pointer<GlyphInfo>; // Glyphs info data
 }
 
 // CharInfo, for font character info
@@ -449,7 +449,7 @@ extern class Wave {
 	var sampleRate:UInt;
 	var sampleSize:UInt;
 	var channels:UInt;
-	var data:Pointer<cpp.Void>;
+	var data:Star;
 }
 
 // TODO: Test Audio support
@@ -486,7 +486,7 @@ extern class Music {
 	var looping:Bool;
 
 	var ctxType:Int;
-	var ctxData:RawConstPointer<cpp.Void>;
+	var ctxData:RawConstStar;
 }
 
 // TODO
