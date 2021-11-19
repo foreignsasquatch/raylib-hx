@@ -1682,7 +1682,7 @@ extern class Raylib {
 		size:Vector2, origin:Vector2, rotation:Float, tint:Color):Void;
 
 	// Mesh management functions
-	@:native("UploadMesh") static function UploadMesh(mesh:Pointer<Mesh>, dynamic:Bool):Void;
+	@:native("UploadMesh") static function UploadMesh(mesh:Pointer<Mesh>, dyn:Bool):Void;
 	@:native("UpdateMeshBuffer") static function UpdateMeshBuffer(mesh:Mesh, index:Int, data:Star, dataSize:Int, offset:Int):Void;
 	@:native("UnloadMesh") static function UnloadMesh(mesh:Mesh):Void;
 	@:native("DrawMesh") static function DrawMesh(mesh:Mesh, material:Material, transform:Matrix):Void;
