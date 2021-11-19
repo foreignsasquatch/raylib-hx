@@ -37,7 +37,6 @@ import cpp.ConstPointer;
 import cpp.ConstStar;
 import cpp.NativeArray;
 import cpp.Pointer;
-import cpp.Star;
 import cpp.UInt16;
 import cpp.UInt8;
 import haxe.macro.Expr.Constant;
@@ -45,33 +44,33 @@ import haxe.macro.Expr.Constant;
 @:include("raylib.h")
 extern class Colors {
 	// Basic colors (colours)
-	@:native("LIGHTGRAY") public static var LIGHTGRAY:Color; // Light Gray
-	@:native("GRAY") public static var GRAY:Color; // Gray
-	@:native("DARKGRAY") public static var DARKGRAY:Color; // Dark Gray
-	@:native("YELLOW") public static var YELLOW:Color; // Yellow
-	@:native("GOLD") public static var GOLD:Color; // Gold
-	@:native("ORANGE") public static var ORANGE:Color; // Orange
-	@:native("PINK") public static var PINK:Color; // Pink
-	@:native("RED") public static var RED:Color; // Red
-	@:native("MAROON") public static var MAROON:Color; // Maroon
-	@:native("GREEN") public static var GREEN:Color; // Green
-	@:native("LIME") public static var LIME:Color; // Lime
-	@:native("DARKGREEN") public static var DARKGREEN:Color; // Dark Green
-	@:native("SKYBLUE") public static var SKYBLUE:Color; // Sky Blue
-	@:native("BLUE") public static var BLUE:Color; // Blue
-	@:native("DARKBLUE") public static var DARKBLUE:Color; // Dark Blue
-	@:native("PURPLE") public static var PURPLE:Color; // Purple
-	@:native("VIOLET") public static var VIOLET:Color; // Violet
-	@:native("DARKPURPLE") public static var DARKPURPLE:Color; // Dark Purple
-	@:native("BEIGE") public static var BEIGE:Color; // Beige
-	@:native("BROWN") public static var BROWN:Color; // Brown
-	@:native("DARKBROWN") public static var DARKBROWN:Color; // Dark Brown
+	@:native("LIGHTGRAY") static var LIGHTGRAY:Color; // Light Gray
+	@:native("GRAY") static var GRAY:Color; // Gray
+	@:native("DARKGRAY") static var DARKGRAY:Color; // Dark Gray
+	@:native("YELLOW") static var YELLOW:Color; // Yellow
+	@:native("GOLD") static var GOLD:Color; // Gold
+	@:native("ORANGE") static var ORANGE:Color; // Orange
+	@:native("PINK") static var PINK:Color; // Pink
+	@:native("RED") static var RED:Color; // Red
+	@:native("MAROON") static var MAROON:Color; // Maroon
+	@:native("GREEN") static var GREEN:Color; // Green
+	@:native("LIME") static var LIME:Color; // Lime
+	@:native("DARKGREEN") static var DARKGREEN:Color; // Dark Green
+	@:native("SKYBLUE") static var SKYBLUE:Color; // Sky Blue
+	@:native("BLUE") static var BLUE:Color; // Blue
+	@:native("DARKBLUE") static var DARKBLUE:Color; // Dark Blue
+	@:native("PURPLE") static var PURPLE:Color; // Purple
+	@:native("VIOLET") static var VIOLET:Color; // Violet
+	@:native("DARKPURPLE") static var DARKPURPLE:Color; // Dark Purple
+	@:native("BEIGE") static var BEIGE:Color; // Beige
+	@:native("BROWN") static var BROWN:Color; // Brown
+	@:native("DARKBROWN") static var DARKBROWN:Color; // Dark Brown
 
-	@:native("WHITE") public static var WHITE:Color; // White
-	@:native("BLACK") public static var BLACK:Color; // Black
-	@:native("BLANK") public static var BLANK:Color; // Blank (Transparent)
-	@:native("MAGENTA") public static var MAGENTA:Color; // Magenta
-	@:native("RAYWHITE") public static var RAYWHITE:Color; // Raysan's white (raylib logo)
+	@:native("WHITE") static var WHITE:Color; // White
+	@:native("BLACK") static var BLACK:Color; // Black
+	@:native("BLANK") static var BLANK:Color; // Blank (Transparent)
+	@:native("MAGENTA") static var MAGENTA:Color; // Magenta
+	@:native("RAYWHITE") static var RAYWHITE:Color; // Raysan's white (raylib logo)
 }
 
 // Vector2, 2 components
@@ -179,7 +178,7 @@ extern class Rectangle {
 @:native("Image")
 @:structAccess
 extern class Image {
-	var data:Star; // Image raw data
+	var data:Pointer<Void>; // Image raw data
 	var width:Int; // Image base width
 	var height:Int; // Image base height
 	var mipmaps:Int; // Mipmap levels, 1 by default
@@ -287,7 +286,7 @@ extern class Camera3D {
 	var fovy:Float; // Camera field-of-view apperture in Y (degrees) in perspective, used as near plane width in orthographic
 	var projection:Int; // Camera projection: CAMERA_PERSPECTIVE or CAMERA_ORTHOGRAPHIC
 
-	public static inline function create():Camera {
+	static inline function create():Camera {
 		return untyped __cpp__("{ 0 }");
 	}
 }
@@ -305,7 +304,7 @@ extern class Camera2D {
 	var rotation:Float; // Camera rotation in degrees
 	var zoom:Float; // Camera zoom (scaling), should be 1.0f by default
 
-	public static inline function create():Camera {
+	static inline function create():Camera {
 		return untyped __cpp__("{ 0 }");
 	}
 }
@@ -410,7 +409,7 @@ extern class Ray {
 	var position:Vector3;
 	var direction:Vector3;
 
-	public static inline function create():Ray {
+	static inline function create():Ray {
 		return untyped __cpp__("{ 0 }");
 	}
 }
@@ -424,7 +423,7 @@ extern class RayCollision {
 	var point:Vector3;
 	var normal:Vector3;
 
-	public static inline function create():RayCollision {
+	static inline function create():RayCollision {
 		return untyped __cpp__("{ 0 }");
 	}
 }
@@ -436,7 +435,7 @@ extern class BoundingBox {
 	var min:Vector3;
 	var max:Vector3;
 
-	public static inline function create(min:Vector3, max:Vector3):BoundingBox {
+	static inline function create(min:Vector3, max:Vector3):BoundingBox {
 		return untyped __cpp__("{ {0}, {1} }", min, max);
 	}
 }
@@ -449,7 +448,7 @@ extern class Wave {
 	var sampleRate:UInt;
 	var sampleSize:UInt;
 	var channels:UInt;
-	var data:Star;
+	var data:Pointer<Void>;
 }
 
 // TODO: Test Audio support
@@ -486,7 +485,7 @@ extern class Music {
 	var looping:Bool;
 
 	var ctxType:Int;
-	var ctxData:RawConstStar;
+	var ctxData:ConstPointer<Void>;
 }
 
 // TODO
@@ -527,68 +526,68 @@ extern class VrStereoConfig {
 @:include("raylib.h")
 extern enum abstract ConfigFlags(UInt) {
 	@:native("FLAG_VSYNC_HINT")
-	var FLAG_VSYNC_HINT;
+	var FLAG_VSYNC_HINT:UInt;
 	@:native("FLAG_FULLSCREEN_MODE")
-	var FLAG_FULLSCREEN_MODE;
+	var FLAG_FULLSCREEN_MODE:UInt;
 	@:native("FLAG_WINDOW_RESZIABLE")
-	var FLAG_WINDOW_RESIZABLE;
+	var FLAG_WINDOW_RESIZABLE:UInt;
 	@:native("FLAG_WINDOW_UNDECORATED")
-	var FLAG_WINDOW_UNDECORATED;
+	var FLAG_WINDOW_UNDECORATED:UInt;
 	@:native("FLAG_WINDOW_HIDDEN")
-	var FLAG_WINDOW_HIDDEN;
+	var FLAG_WINDOW_HIDDEN:UInt;
 	@:native("FLAG_WINDOW_MINIMIZED")
-	var FLAG_WINDOW_MINIMIZED;
+	var FLAG_WINDOW_MINIMIZED:UInt;
 	@:native("FLAG_WINDOW_MAXIMIZED")
-	var FLAG_WINDOW_MAXIMIZED;
+	var FLAG_WINDOW_MAXIMIZED:UInt;
 	@:native("FLAG_WINDOW_UNFOCUSED")
-	var FLAG_WINDOW_UNFOCUSED;
+	var FLAG_WINDOW_UNFOCUSED:UInt;
 	@:native("FLAG_WINDOW_TOPMOST")
-	var FLAG_WINDOW_TOPMOST;
+	var FLAG_WINDOW_TOPMOST:UInt;
 	@:native("FLAG_WINDOW_ALWAYS_RUN")
-	var FLAG_WINDOW_ALWAYS_RUN;
+	var FLAG_WINDOW_ALWAYS_RUN:UInt;
 	@:native("FLAG_WINDOW_TRANSPARENT")
-	var FLAG_WINDOW_TRANSPARENT;
+	var FLAG_WINDOW_TRANSPARENT:UInt;
 	@:native("FLAG_WINDOW_HIGHDPI")
-	var FLAG_WINDOW_HIGHDPI;
+	var FLAG_WINDOW_HIGHDPI:UInt;
 	@:native("FLAG_MSAA_4X_HINT")
-	var FLAG_MSAA_4X_HINT;
+	var FLAG_MSAA_4X_HINT:UInt;
 	@:native("FLAG_INTERLACED_HINT")
-	var FLAG_INTERLACED_HINT;
+	var FLAG_INTERLACED_HINT:UInt;
 }
 
 @:include("raylib.h")
-extern enum abstract TraceLogLevel(Int) from Int to Int {
+extern enum abstract TraceLogLevel(Int) {
 	@:native("LOG_ALL")
-	public static var ALL:Int;
+	static var ALL:Int;
 	@:native("LOG_TRACE")
-	public static var TRACE:Int;
+	static var TRACE:Int;
 	@:native("LOG_DEBUG")
-	public static var DEBUG:Int;
+	static var DEBUG:Int;
 	@:native("LOG_INFO")
-	public static var INFO:Int;
+	static var INFO:Int;
 	@:native("LOG_WARNING")
-	public static var WARNING:Int;
+	static var WARNING:Int;
 	@:native("LOG_ERROR")
-	public static var ERROR:Int;
+	static var ERROR:Int;
 	@:native("LOG_FATAL")
-	public static var FATAL:Int;
+	static var FATAL:Int;
 	@:native("LOG_NONE")
-	public static var NONE:Int;
+	static var NONE:Int;
 }
 
 @:include("raylib.h")
-extern class CameraProjection {
-	@:native("CAMERA_PERSPECTIVE") public static var CAMERA_PERSPECTIVE:Int;
-	@:native("CAMERA_ORTHOGRAPHIC") public static var CAMERA_ORTHOGRAPHIC:Int;
+extern enum abstract CameraProjection(Int) {
+	@:native("CAMERA_PERSPECTIVE") static var CAMERA_PERSPECTIVE:Int;
+	@:native("CAMERA_ORTHOGRAPHIC") static var CAMERA_ORTHOGRAPHIC:Int;
 }
 
 @:include("raylib.h")
-extern class CameraMode {
-	@:native("CAMERA_CUSTOM") public static var CUSTOM:Int;
-	@:native("CAMERA_FREE") public static var FREE:Int;
-	@:native("CAMERA_ORBITAL") public static var ORBITAL:Int;
-	@:native("CAMERA_FIRST_PERSON") public static var FIRST_PERSON:Int;
-	@:native("CAMERA_THIRD_PERSON") public static var THIRD_PERSON:Int;
+extern enum abstract CameraMode(Int) {
+	@:native("CAMERA_CUSTOM") static var CUSTOM:Int;
+	@:native("CAMERA_FREE") static var FREE:Int;
+	@:native("CAMERA_ORBITAL") static var ORBITAL:Int;
+	@:native("CAMERA_FIRST_PERSON") static var FIRST_PERSON:Int;
+	@:native("CAMERA_THIRD_PERSON") static var THIRD_PERSON:Int;
 }
 
 @:include("raylib.h")
@@ -599,267 +598,267 @@ extern enum abstract Config(UInt) {}
 // required keys for alternative layouts
 
 @:include("raylib.h")
-extern enum abstract KeyboardKey(Int) from Int to Int {
+extern enum abstract KeyboardKey(Int) {
 	@:native("KEY_NULL")
-	public static var NULL:Int;
+	static var NULL:Int;
 	@:native("KEY_APOSTROPHE")
-	public static var APOSTROPHE:Int;
+	static var APOSTROPHE:Int;
 	@:native("KEY_COMMA")
-	public static var COMMA:Int;
+	static var COMMA:Int;
 	@:native("KEY_MINUS")
-	public static var MINUS:Int;
+	static var MINUS:Int;
 	@:native("KEY_PERIOD")
-	public static var PERIOD:Int;
+	static var PERIOD:Int;
 	@:native("KEY_SLASH")
-	public static var SLASH:Int;
+	static var SLASH:Int;
 	@:native("KEY_ZERO")
-	public static var ZERO:Int;
+	static var ZERO:Int;
 	@:native("KEY_ONE")
-	public static var ONE:Int;
+	static var ONE:Int;
 	@:native("KEY_TWO")
-	public static var TWO:Int;
+	static var TWO:Int;
 	@:native("KEY_THREE")
-	public static var THREE:Int;
+	static var THREE:Int;
 	@:native("KEY_FOUR")
-	public static var FOUR:Int;
+	static var FOUR:Int;
 	@:native("KEY_FIVE")
-	public static var FIVE:Int;
+	static var FIVE:Int;
 	@:native("KEY_SIX")
-	public static var SIX:Int;
+	static var SIX:Int;
 	@:native("KEY_SEVEN")
-	public static var SEVEN:Int;
+	static var SEVEN:Int;
 	@:native("KEY_EIGHT")
-	public static var EIGHT:Int;
+	static var EIGHT:Int;
 	@:native("KEY_NINE")
-	public static var NINE:Int;
+	static var NINE:Int;
 	@:native("KEY_SEMICOLON")
-	public static var SEMICOLOR:Int;
+	static var SEMICOLOR:Int;
 	@:native("KEY_EQUAL")
-	public static var EQUAL:Int;
+	static var EQUAL:Int;
 	@:native("KEY_A")
-	public static var A:Int;
+	static var A:Int;
 	@:native("KEY_B")
-	public static var B:Int;
+	static var B:Int;
 	@:native("KEY_C")
-	public static var C:Int;
+	static var C:Int;
 	@:native("KEY_D")
-	public static var D:Int;
+	static var D:Int;
 	@:native("KEY_E")
-	public static var E:Int;
+	static var E:Int;
 	@:native("KEY_F")
-	public static var F:Int;
+	static var F:Int;
 	@:native("KEY_G")
-	public static var G:Int;
+	static var G:Int;
 	@:native("KEY_H")
-	public static var H:Int;
+	static var H:Int;
 	@:native("KEY_I")
-	public static var I:Int;
+	static var I:Int;
 	@:native("KEY_J")
-	public static var J:Int;
+	static var J:Int;
 	@:native("KEY_K")
-	public static var K:Int;
+	static var K:Int;
 	@:native("KEY_L")
-	public static var L:Int;
+	static var L:Int;
 	@:native("KEY_M")
-	public static var M:Int;
+	static var M:Int;
 	@:native("KEY_N")
-	public static var N:Int;
+	static var N:Int;
 	@:native("KEY_O")
-	public static var O:Int;
+	static var O:Int;
 	@:native("KEY_P")
-	public static var P:Int;
+	static var P:Int;
 	@:native("KEY_Q")
-	public static var Q:Int;
+	static var Q:Int;
 	@:native("KEY_R")
-	public static var R:Int;
+	static var R:Int;
 	@:native("KEY_S")
-	public static var S:Int;
+	static var S:Int;
 	@:native("KEY_T")
-	public static var T:Int;
+	static var T:Int;
 	@:native("KEY_U")
-	public static var U:Int;
+	static var U:Int;
 	@:native("KEY_V")
-	public static var V:Int;
+	static var V:Int;
 	@:native("KEY_W")
-	public static var W:Int;
+	static var W:Int;
 	@:native("KEY_X")
-	public static var X:Int;
+	static var X:Int;
 	@:native("KEY_Y")
-	public static var Y:Int;
+	static var Y:Int;
 	@:native("KEY_Z")
-	public static var Z:Int;
+	static var Z:Int;
 	@:native("KEY_SPACE")
-	public static var SPACE:Int;
+	static var SPACE:Int;
 	@:native("KEY_ESCAPE")
-	public static var ESCAPE:Int;
+	static var ESCAPE:Int;
 	@:native("KEY_ENTER")
-	public static var ENTER:Int;
+	static var ENTER:Int;
 	@:native("KEY_TAB")
-	public static var TAB:Int;
+	static var TAB:Int;
 	@:native("KEY_BACKSPACE")
-	public static var BACKSPACE:Int;
+	static var BACKSPACE:Int;
 	@:native("KEY_INSERT")
-	public static var INSERT:Int;
+	static var INSERT:Int;
 	@:native("KEY_DELETE")
-	public static var DELETE:Int;
+	static var DELETE:Int;
 	@:native("KEY_RIGHT")
-	public static var RIGHT:Int;
+	static var RIGHT:Int;
 	@:native("KEY_LEFT")
-	public static var LEFT:Int;
+	static var LEFT:Int;
 	@:native("KEY_DOWN")
-	public static var DOWN:Int;
+	static var DOWN:Int;
 	@:native("KEY_UP")
-	public static var UP:Int;
+	static var UP:Int;
 	@:native("KEY_PAGE_UP")
-	public static var PAGE_UP:Int;
+	static var PAGE_UP:Int;
 	@:native("KEY_PAGE_DOWN")
-	public static var PAGE_DOWN:Int;
+	static var PAGE_DOWN:Int;
 	@:native("KEY_HOME")
-	public static var HOME:Int;
+	static var HOME:Int;
 	@:native("KEY_END")
-	public static var END:Int;
+	static var END:Int;
 	@:native("KEY_CAPS_LOCK")
-	public static var CAPS_LOCK:Int;
+	static var CAPS_LOCK:Int;
 	@:native("KEY_SCROLL_LOCK")
-	public static var SCROLL_LOCK:Int;
+	static var SCROLL_LOCK:Int;
 	@:native("KEY_NUM_LOCK")
-	public static var NUM_LOCK:Int;
+	static var NUM_LOCK:Int;
 	@:native("KEY_PRINT_SCREEN")
-	public static var PRINT_SCREEN:Int;
+	static var PRINT_SCREEN:Int;
 	@:native("KEY_PAUSE")
-	public static var PAUSE:Int;
+	static var PAUSE:Int;
 	@:native("KEY_F1")
-	public static var F1:Int;
+	static var F1:Int;
 	@:native("KEY_F2")
-	public static var F2:Int;
+	static var F2:Int;
 	@:native("KEY_F3")
-	public static var F3:Int;
+	static var F3:Int;
 	@:native("KEY_F4")
-	public static var F4:Int;
+	static var F4:Int;
 	@:native("KEY_F5")
-	public static var F5:Int;
+	static var F5:Int;
 	@:native("KEY_F6")
-	public static var F6:Int;
+	static var F6:Int;
 	@:native("KEY_F7")
-	public static var F7:Int;
+	static var F7:Int;
 	@:native("KEY_F8")
-	public static var F8:Int;
+	static var F8:Int;
 	@:native("KEY_F9")
-	public static var F9:Int;
+	static var F9:Int;
 	@:native("KEY_F10")
-	public static var F10:Int;
+	static var F10:Int;
 	@:native("KEY_F11")
-	public static var F11:Int;
+	static var F11:Int;
 	@:native("KEY_F12")
-	public static var F12:Int;
+	static var F12:Int;
 	@:native("KEY_LEFT_SHIFT")
-	public static var LEFT_SHIFT:Int;
+	static var LEFT_SHIFT:Int;
 	@:native("KEY_LEFT_CONTROL")
-	public static var LEFT_CONTROL:Int;
+	static var LEFT_CONTROL:Int;
 	@:native("KEY_LEFT_ALT")
-	public static var LEFT_ALT:Int;
+	static var LEFT_ALT:Int;
 	@:native("KEY_LEFT_SUPER")
-	public static var LEFT_SUPER:Int;
+	static var LEFT_SUPER:Int;
 	@:native("KEY_RIGHT_SHIFT")
-	public static var RIGHT_SHIFT:Int;
+	static var RIGHT_SHIFT:Int;
 	@:native("KEY_RIGHT_CONTROL")
-	public static var RIGHT_CONTROL:Int;
+	static var RIGHT_CONTROL:Int;
 	@:native("KEY_RIGHT_ALT")
-	public static var RIGHT_ALT:Int;
+	static var RIGHT_ALT:Int;
 	@:native("KEY_RIGHT_SUPER")
-	public static var RIGHT_SUPER:Int;
+	static var RIGHT_SUPER:Int;
 	@:native("KEY_KB_MENU")
-	public static var KB_MENU:Int;
+	static var KB_MENU:Int;
 	@:native("KEY_LEFT_BRACKET")
-	public static var LEFT_BRACKET:Int;
+	static var LEFT_BRACKET:Int;
 	@:native("KEY_BACKSLASH")
-	public static var BACKLASH:Int;
+	static var BACKLASH:Int;
 	@:native("KEY_RIGHT_BRACKET")
-	public static var RIGHT_BRACKET:Int;
+	static var RIGHT_BRACKET:Int;
 	@:native("KEY_GRAVE")
-	public static var GRAVE:Int;
+	static var GRAVE:Int;
 	@:native("KEY_KP_0")
-	public static var KP_0:Int;
+	static var KP_0:Int;
 	@:native("KEY_KP_1")
-	public static var KP_1:Int;
+	static var KP_1:Int;
 	@:native("KEY_KP_2")
-	public static var KP_2:Int;
+	static var KP_2:Int;
 	@:native("KEY_KP_3")
-	public static var KP_3:Int;
+	static var KP_3:Int;
 	@:native("KEY_KP_4")
-	public static var KP_4:Int;
+	static var KP_4:Int;
 	@:native("KEY_KP_5")
-	public static var KP_5:Int;
+	static var KP_5:Int;
 	@:native("KEY_KP_6")
-	public static var KP_6:Int;
+	static var KP_6:Int;
 	@:native("KEY_KP_7")
-	public static var KP_7:Int;
+	static var KP_7:Int;
 	@:native("KEY_KP_8")
-	public static var KP_8:Int;
+	static var KP_8:Int;
 	@:native("KEY_KP_9")
-	public static var KP_9:Int;
+	static var KP_9:Int;
 	@:native("KEY_KP_DECIMAL")
-	public static var KP_DECIMAL:Int;
+	static var KP_DECIMAL:Int;
 	@:native("KEY_KP_DIVIDE")
-	public static var KP_DIVIDE:Int;
+	static var KP_DIVIDE:Int;
 	@:native("KEY_KP_MULTIPLY")
-	public static var KP_MULTIPLY:Int;
+	static var KP_MULTIPLY:Int;
 	@:native("KEY_KP_SUBTRACT")
-	public static var KP_SUBTRACT:Int;
+	static var KP_SUBTRACT:Int;
 	@:native("KEY_KP_ADD")
-	public static var KP_ADD:Int;
+	static var KP_ADD:Int;
 	@:native("KEY_KP_ENTER")
-	public static var KP_ENTER:Int;
+	static var KP_ENTER:Int;
 	@:native("KEY_KP_EQUAL")
-	public static var KP_EQUAL:Int;
+	static var KP_EQUAL:Int;
 }
 
 // Mouse buttons
 
 @:include("raylib.h")
-extern enum abstract MouseButton(Int) from Int to Int {
+extern enum abstract MouseButton(Int) {
 	@:native("MOUSE_BUTTON_LEFT")
-	public static var LEFT:Int;
+	static var LEFT:Int;
 	@:native("MOUSE_BUTTON_RIGHT")
-	public static var RIGHT:Int;
+	static var RIGHT:Int;
 	@:native("MOUSE_BUTTON_MIDDLE")
-	public static var MIDDLE:Int;
+	static var MIDDLE:Int;
 	@:native("MOUSE_BUTTON_SIDE")
-	public static var SIDE:Int;
+	static var SIDE:Int;
 	@:native("MOUSE_BUTTON_EXTRA")
-	public static var EXTRA:Int;
+	static var EXTRA:Int;
 	@:native("MOUSE_BUTTON_FORWARD")
-	public static var FORWARD:Int;
+	static var FORWARD:Int;
 	@:native("MOUSE_BUTTON_BACK")
-	public static var BACK:Int;
+	static var BACK:Int;
 }
 
 // Mouse cursor
 
 @:include("raylib.h")
-extern enum abstract MouseCursor(Int) from Int to Int {
+extern enum abstract MouseCursor(Int) {
 	@:native("MOUSE_CURSOR_DEFAULT")
-	var MOUSE_CURSOR_DEFAULT;
+	var MOUSE_CURSOR_DEFAULT:Int;
 	@:native("MOUSE_CURSOR_ARROW")
-	var MOUSE_CURSOR_ARROW;
+	var MOUSE_CURSOR_ARROW:Int;
 	@:native("MOUSE_CURSOR_IBEAM")
-	var MOUSE_CURSOR_IBEAM;
+	var MOUSE_CURSOR_IBEAM:Int;
 	@:native("MOUSE_CURSOR_CROSSHAIR")
-	var MOUSE_CURSOR_CROSSHAIR;
+	var MOUSE_CURSOR_CROSSHAIR:Int;
 	@:native("MOUSE_CURSOR_POINTING_HAND")
-	var MOUSE_CURSOR_POINTING_HAND;
+	var MOUSE_CURSOR_POINTING_HAND:Int;
 	@:native("MOUSE_CURSOR_RESIZE_EW") // The horizontal resize/move arrow shape
-	var MOUSE_CURSOR_RESIZE_EW;
+	var MOUSE_CURSOR_RESIZE_EW:Int;
 	@:native("MOUSE_CURSOR_RESIZE_NS") // The vertical resize/move arrow shape
-	var MOUSE_CURSOR_RESIZE_NS;
+	var MOUSE_CURSOR_RESIZE_NS:Int;
 	@:native("MOUSE_CURSOR_RESIZE_NWSE") // The top-left to bottom-right diagonal resize/move arrow shape
-	var MOUSE_CURSOR_RESIZE_NWSE;
+	var MOUSE_CURSOR_RESIZE_NWSE:Int;
 	@:native("MOUSE_CURSOR_RESIZE_NESW") // The top-right to bottom-left diagonal resize/move arrow shape
-	var MOUSE_CURSOR_RESIZE_NESW;
+	var MOUSE_CURSOR_RESIZE_NESW:Int;
 	@:native("MOUSE_CURSOR_RESIZE_ALL") // The omni-directional resize/move cursor shape
-	var MOUSE_CURSOR_RESIZE_ALL;
+	var MOUSE_CURSOR_RESIZE_ALL:Int;
 	@:native("MOUSE_CURSOR_NOT_ALLOWED") // The operation-not-allowed shape
-	var MOUSE_CURSOR_NOT_ALLOWED;
+	var MOUSE_CURSOR_NOT_ALLOWED:Int;
 }
 
 // Gamepad buttons
@@ -868,49 +867,49 @@ extern enum abstract MouseCursor(Int) from Int to Int {
 extern enum abstract GamepadButton(UInt) {
 	// This is here just for error checking
 	@:native("GAMEPAD_BUTTON_UNKOWN")
-	var GAMEPAD_BUTTON_UNKNOWN;
+	var GAMEPAD_BUTTON_UNKNOWN:UInt;
 	// This is normally a DPAD
 	@:native("GAMEPAD_BUTTON_LEFT_FACE_UP")
-	var GAMEPAD_BUTTON_LEFT_FACE_UP;
+	var GAMEPAD_BUTTON_LEFT_FACE_UP:UInt;
 	@:native("GAMEPAD_BUTTON_FACE_RIGHT")
-	var GAMEPAD_BUTTON_FACE_RIGHT;
+	var GAMEPAD_BUTTON_FACE_RIGHT:UInt;
 	@:native("GAMEPAD_BUTTON_FACE_DOWN")
-	var GAMEPAD_BUTTON_FACE_DOWN;
+	var GAMEPAD_BUTTON_FACE_DOWN:UInt;
 	@:native("GAMEPAD_BUTTON_FACE_LEFT")
-	var GAMEPAD_BUTTON_FACE_LEFT;
+	var GAMEPAD_BUTTON_FACE_LEFT:UInt;
 	// This normally corresponds with PlayStation and Xbox controllers
 	// XBOX: [Y,X,A,B]
 	// PS3: [Triangle,Square,Cross,Circle]
 	// No support for 6 button controllers though..
 	@:native("GAMEPAD_BUTTON_RIGHT_FACE_UP")
-	var GAMEPAD_BUTTON_RIGHT_FACE_UP;
+	var GAMEPAD_BUTTON_RIGHT_FACE_UP:UInt;
 	@:native("GAMEPAD_BUTTON_RIGHT_FACE_RIGHT")
-	var GAMEPAD_BUTTON_RIGHT_FACE_RIGHT;
+	var GAMEPAD_BUTTON_RIGHT_FACE_RIGHT:UInt;
 	@:native("GAMEPAD_BUTTON_RIGHT_FACE_DOWN")
-	var GAMEPAD_BUTTON_RIGHT_FACE_DOWN;
+	var GAMEPAD_BUTTON_RIGHT_FACE_DOWN:UInt;
 	@:native("GAMEPAD_BUTTON_RIGHT_FACE_LEFT")
-	var GAMEPAD_BUTTON_RIGHT_FACE_LEFT;
+	var GAMEPAD_BUTTON_RIGHT_FACE_LEFT:UInt;
 	// Triggers
 	@:native("GAMEPAD_BUTTON_LEFT_TRIGGER_1")
-	var GAMEPAD_BUTTON_LEFT_TRIGGER_1;
+	var GAMEPAD_BUTTON_LEFT_TRIGGER_1:UInt;
 	@:native("GAMEPAD_BUTTON_LEFT_TRIGGER_2")
-	var GAMEPAD_BUTTON_LEFT_TRIGGER_2;
+	var GAMEPAD_BUTTON_LEFT_TRIGGER_2:UInt;
 	@:native("GAMEPAD_BUTTON_RIGHT_TRIGGER_1")
-	var GAMEPAD_BUTTON_RIGHT_TRIGGER_1;
+	var GAMEPAD_BUTTON_RIGHT_TRIGGER_1:UInt;
 	@:native("GAMEPAD_BUTTON_RIGHT_TRIGGER_2")
-	var GAMEPAD_BUTTON_RIGHT_TRIGGER_2;
+	var GAMEPAD_BUTTON_RIGHT_TRIGGER_2:UInt;
 	// These are buttons in the center of the gamepad
 	@:native("GAMEPAD_BUTTON_MIDDLE_LEFT")
-	var GAMEPAD_BUTTON_MIDDLE_LEFT; // PS3 Select
+	var GAMEPAD_BUTTON_MIDDLE_LEFT:UInt; // PS3 Select
 	@:native("GAMEPAD_BUTTON_MIDDLE")
-	var GAMEPAD_BUTTON_MIDDLE; // PS Button/XBOX Button
+	var GAMEPAD_BUTTON_MIDDLE:UInt; // PS Button/XBOX Button
 	@:native("GAMEPAD_BUTTON_MIDDLE_RIGHT")
-	var GAMEPAD_BUTTON_MIDDLE_RIGHT; // PS3 Start
+	var GAMEPAD_BUTTON_MIDDLE_RIGHT:UInt; // PS3 Start
 	// These are the joystick press in buttons
 	@:native("GAMEPAD_BUTTON_LEFT_THUMB")
-	var GAMEPAD_BUTTON_LEFT_THUMB;
+	var GAMEPAD_BUTTON_LEFT_THUMB:UInt;
 	@:native("GAMEPAD_BUTTON_RIGHT_THUMB")
-	var GAMEPAD_BUTTON_RIGHT_THUMB;
+	var GAMEPAD_BUTTON_RIGHT_THUMB:UInt;
 }
 
 // Gampad axis
@@ -919,287 +918,287 @@ extern enum abstract GamepadButton(UInt) {
 extern enum abstract GamepadAxis(UInt) {
 	// Left stick
 	@:native("GAMEPAD_AXIS_LEFT_X")
-	var GAMEPAD_AXIS_LEFT_X;
+	var GAMEPAD_AXIS_LEFT_X:UInt;
 	@:native("GAMEPAD_AXIS_LEFT_Y")
-	var GAMEPAD_AXIS_LEFT_Y;
+	var GAMEPAD_AXIS_LEFT_Y:UInt;
 	// Right stick
 	@:native("GAMEPAD_AXIS_RIGHT_X")
-	var GAMEPAD_AXIS_RIGHT_X;
+	var GAMEPAD_AXIS_RIGHT_X:UInt;
 	@:native("GAMEPAD_AXIS_RIGHT_Y")
-	var GAMEPAD_AXIS_RIGHT_Y;
+	var GAMEPAD_AXIS_RIGHT_Y:UInt;
 	// Pressure levels for the back triggers
 	@:native("GAMEPAD_AXIS_LEFT_TRIGGER")
-	var GAMEPAD_AXIS_LEFT_TRIGGER;
+	var GAMEPAD_AXIS_LEFT_TRIGGER:UInt;
 	@:native("GAMEPAD_AXIS_RIGHT_TRIGGER")
-	var GAMEPAD_AXIS_RIGHT_TRIGGER;
+	var GAMEPAD_AXIS_RIGHT_TRIGGER:UInt;
 }
 
 @:include("raylib.h")
 extern enum abstract MaterialMapIndex(UInt) {
 	@:native("MATERIAL_MAP_ALBEDO")
-	var MATERIAL_MAP_ALBEDO;
+	var MATERIAL_MAP_ALBEDO:UInt;
 	@:native("MATERIAL_MAP_METALNESS")
-	var MATERIAL_MAP_METALNESS;
+	var MATERIAL_MAP_METALNESS:UInt;
 	@:native("MATERIAL_MAP_NORMAL")
-	var MATERIAL_MAP_NORMAL;
+	var MATERIAL_MAP_NORMAL:UInt;
 	@:native("MATERIAL_MAP_ROUGHNESS")
-	var MATERIAL_MAP_ROUGHNESS;
+	var MATERIAL_MAP_ROUGHNESS:UInt;
 	@:native("MATERIAL_MAP_OCCULSION")
-	var MATERIAL_MAP_OCCULSION;
+	var MATERIAL_MAP_OCCULSION:UInt;
 	@:native("MATERIAL_MAP_EMISSION")
-	var MATERIAL_MAP_EMISSION;
+	var MATERIAL_MAP_EMISSION:UInt;
 	@:native("MATERIAL_MAP_HEIGHT")
-	var MATERIAL_MAP_HEIGHT;
+	var MATERIAL_MAP_HEIGHT:UInt;
 	@:native("MATERIAL_MAP_CUBEMAP")
-	var MATERIAL_MAP_CUBEMAP;
+	var MATERIAL_MAP_CUBEMAP:UInt;
 	@:native("MATERIAL_MAP_IRRADIANCE")
-	var MATERIAL_MAP_IRRADIANCE;
+	var MATERIAL_MAP_IRRADIANCE:UInt;
 	@:native("MATERIAL_MAP_PREFILTER")
-	var MATERIAL_MAP_PREFILTER;
+	var MATERIAL_MAP_PREFILTER:UInt;
 	@:native("MATERIAL_MAP_BRDG")
-	var MATERIAL_MAP_BRDG;
+	var MATERIAL_MAP_BRDG:UInt;
 }
 
 @:include("raylib.h")
 extern enum abstract ShaderLocationIndex(UInt) {
 	@:native("SHADER_LOC_VERTEX_POSITION")
-	var SHADER_LOC_VERTEXT_POSITION;
+	var SHADER_LOC_VERTEXT_POSITION:UInt;
 	@:native("SHADER_LOC_VERTEX_TEXCOORD01")
-	var SHADER_LOC_VERTEX_TEXCOORD01;
+	var SHADER_LOC_VERTEX_TEXCOORD01:UInt;
 	@:native("SHADER_LOC_VERTEX_TEXCOORD02")
-	var SHADER_LOC_VERTEX_TEXCOORD02;
+	var SHADER_LOC_VERTEX_TEXCOORD02:UInt;
 	@:native("SHADER_LOC_VERTEX_NORMAL")
-	var SHADER_LOC_VERTEX_NORMAL;
+	var SHADER_LOC_VERTEX_NORMAL:UInt;
 	@:native("SHADER_LOC_VERTEX_TANGENT")
-	var SHADER_LOC_VERTEX_TANGENT;
+	var SHADER_LOC_VERTEX_TANGENT:UInt;
 	@:native("SHADER_LOC_VERTEX_COLOR")
-	var SHADER_LOC_VERTEX_COLOR;
+	var SHADER_LOC_VERTEX_COLOR:UInt;
 	@:native("SHADER_LOC_MATRIX_MVP")
-	var SHADER_LOC_MATRIX_MVP;
+	var SHADER_LOC_MATRIX_MVP:UInt;
 	@:native("SHADER_LOC_MATRIX_VIEW")
-	var SHADER_LOC_MATRIX_VIEW;
+	var SHADER_LOC_MATRIX_VIEW:UInt;
 	@:native("SHADER_LOC_MATRIX_PROJECTION")
-	var SHADER_LOC_MATRIX_PROJECTION;
+	var SHADER_LOC_MATRIX_PROJECTION:UInt;
 	@:native("SHADER_LOC_MATRIX_MODEL")
-	var SHADER_LOC_MATRIX_MODEL;
+	var SHADER_LOC_MATRIX_MODEL:UInt;
 	@:native("SHADER_LOC_MATRIX_NORMAL")
-	var SHADER_LOC_MATRIX_NORMAL;
+	var SHADER_LOC_MATRIX_NORMAL:UInt;
 	@:native("SHADER_LOC_VECTOR_VIEW")
-	var SHADER_LOC_VECTOR_VIEW;
+	var SHADER_LOC_VECTOR_VIEW:UInt;
 	@:native("SHADER_LOC_COLOR_DIFFUSE")
-	var SHADER_LOC_COLOR_DIFFUSE;
+	var SHADER_LOC_COLOR_DIFFUSE:UInt;
 	@:native("SHADER_LOC_COLOR_SPECULAR")
-	var SHADER_LOC_COLOR_SPECULAR;
+	var SHADER_LOC_COLOR_SPECULAR:UInt;
 	@:native("SHADER_LOC_COLOR_AMBIENT")
-	var SHADER_LOC_COLOR_AMBIENT;
+	var SHADER_LOC_COLOR_AMBIENT:UInt;
 	@:native("SHADER_LOC_MAP_ALBEDO")
-	var SHADER_LOC_MAP_ALBEDO;
+	var SHADER_LOC_MAP_ALBEDO:UInt;
 	@:native("SHADER_LOC_MAP_METALNESS")
-	var SHADER_LOC_MAP_METALNESS;
+	var SHADER_LOC_MAP_METALNESS:UInt;
 	@:native("SHADER_LOC_MAP_NORMAL")
-	var SHADER_LOC_MAP_NORMAL;
+	var SHADER_LOC_MAP_NORMAL:UInt;
 	@:native("SHADER_LOC_MAP_ROUGHNESS")
-	var SHADER_LOC_MAP_ROUGHNESS;
+	var SHADER_LOC_MAP_ROUGHNESS:UInt;
 	@:native("SHADER_LOC_MAP_OCCULSION")
-	var SHADER_LOC_MAP_OCCULSION;
+	var SHADER_LOC_MAP_OCCULSION:UInt;
 	@:native("SHADER_LOC_MAP_EMISSION")
-	var SHADER_LOC_MAP_EMISSION;
+	var SHADER_LOC_MAP_EMISSION:UInt;
 	@:native("SHADER_LOC_MAP_HEIGHT")
-	var SHADER_LOC_MAP_HEIGHT;
+	var SHADER_LOC_MAP_HEIGHT:UInt;
 	@:native("SHADER_LOC_MAP_CUBEMAP")
-	var SHADER_LOC_MAP_CUBEMAP;
+	var SHADER_LOC_MAP_CUBEMAP:UInt;
 	@:native("SHADER_LOC_MAP_IRRADIANCE")
-	var SHADER_LOC_MAP_IRRADIANCE;
+	var SHADER_LOC_MAP_IRRADIANCE:UInt;
 	@:native("SHADER_LOC_MAP_PREFILTER")
-	var SHADER_LOC_MAP_PREFILTER;
+	var SHADER_LOC_MAP_PREFILTER:UInt;
 	@:native("SHADER_LOC_MAP_BRDF")
-	var SHADER_LOC_MAP_BRDF;
+	var SHADER_LOC_MAP_BRDF:UInt;
 }
 
 @:include("raylib.h")
 extern enum abstract ShaderUniformDataType(UInt) {
 	@:native("SHADER_UNIFORM_FLOAT")
-	var SHADER_UNIFORM_FLOAT;
+	var SHADER_UNIFORM_FLOAT:UInt;
 	@:native("SHADER_UNIFORM_VEC2")
-	var SHADER_UNIFORM_VEC2;
+	var SHADER_UNIFORM_VEC2:UInt;
 	@:native("SHADER_UNIFORM_VEC3")
-	var SHADER_UNIFORM_VEC3;
+	var SHADER_UNIFORM_VEC3:UInt;
 	@:native("SHADER_UNIFORM_VEC4")
-	var SHADER_UNIFORM_VEC4;
+	var SHADER_UNIFORM_VEC4:UInt;
 	@:native("SHADER_UNIFORM_INT")
-	var SHADER_UNIFORM_INT;
+	var SHADER_UNIFORM_INT:UInt;
 	@:native("SHADER_UNIFORM_IVEC2")
-	var SHADER_UNIFORM_IVEC2;
+	var SHADER_UNIFORM_IVEC2:UInt;
 	@:native("SHADER_UNIFORM_IVEC3")
-	var SHADER_UNIFORM_IVEC3;
+	var SHADER_UNIFORM_IVEC3:UInt;
 	@:native("SHADER_UNIFORM_IVEC4")
-	var SHADER_UNIFORM_IVEC4;
+	var SHADER_UNIFORM_IVEC4:UInt;
 	@:native("SHADER_UNIFORM_SAMPLER2D")
-	var SHADER_UNIFORM_SAMPLER2D;
+	var SHADER_UNIFORM_SAMPLER2D:UInt;
 }
 
 @:include("raylib.h")
 extern enum abstract ShaderAttributeDataType(UInt) {
 	@:native("SHADER_ATTRIB_FLOAT")
-	var SHADER_ATTRIB_FLOAT;
+	var SHADER_ATTRIB_FLOAT:UInt;
 	@:native("SHADER_ATTRIB_VEC2")
-	var SHADER_ATTRIB_VEC2;
+	var SHADER_ATTRIB_VEC2:UInt;
 	@:native("SHADER_ATTRIB_VEC3")
-	var SHADER_ATTRIB_VEC3;
+	var SHADER_ATTRIB_VEC3:UInt;
 	@:native("SHADER_ATTRIB_VEC4")
-	var SHADER_ATTRIB_VEC4;
+	var SHADER_ATTRIB_VEC4:UInt;
 }
 
 @:include("raylib.h")
 extern enum abstract PixelFormat(UInt) {
 	@:native("PIXELFORMAT_UNCOMPRESSED_GRAYSCALE")
-	var PIXELFORMAT_UNCOMPRESSED_GRAYSCALE;
+	var PIXELFORMAT_UNCOMPRESSED_GRAYSCALE:UInt;
 	@:native("PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA")
-	var PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA;
+	var PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA:UInt;
 	@:native("PIXELFORMAT_UNCOMPRESSED_R5G6B5")
-	var PIXELFORMAT_UNCOMPRESSED_R5G6B5;
+	var PIXELFORMAT_UNCOMPRESSED_R5G6B5:UInt;
 	@:native("PIXELFORMAT_UNCOMPRESSED_R8G8B8")
-	var PIXELFORMAT_UNCOMPRESSED_R8G8B8;
+	var PIXELFORMAT_UNCOMPRESSED_R8G8B8:UInt;
 	@:native("PIXELFORMAT_UNCOMPRESSED_R5G5B5A1")
-	var PIXELFORMAT_UNCOMPRESSED_R5G5B5A1;
+	var PIXELFORMAT_UNCOMPRESSED_R5G5B5A1:UInt;
 	@:native("PIXELFORMAT_UNCOMPRESSED_R4G4B4A4")
-	var PIXELFORMAT_UNCOMPRESSED_R4G4B4A4;
+	var PIXELFORMAT_UNCOMPRESSED_R4G4B4A4:UInt;
 	@:native("PIXELFORMAT_UNCOMPRESSED_R8G8B8A8")
-	var PIXELFORMAT_UNCOMPRESSED_R8G8B8A8;
+	var PIXELFORMAT_UNCOMPRESSED_R8G8B8A8:UInt;
 	@:native("PIXELFORMAT_UNCOMPRESSED_R32")
-	var PIXELFORMAT_UNCOMPRESSED_R32;
+	var PIXELFORMAT_UNCOMPRESSED_R32:UInt;
 	@:native("PIXELFORMAT_UNCOMPRESSED_R32G32B32")
-	var PIXELFORMAT_UNCOMPRESSED_R32G32B32;
+	var PIXELFORMAT_UNCOMPRESSED_R32G32B32:UInt;
 	@:native("PIXELFORMAT_UNCOMPRESSED_R32G32B32A32")
-	var PIXELFORMAT_UNCOMPRESSED_R32G32B32A32;
+	var PIXELFORMAT_UNCOMPRESSED_R32G32B32A32:UInt;
 	@:native("PIXELFORMAT_COMPRESSED_DXT1_RGB")
-	var PIXELFORMAT_COMPRESSED_DXT1_RGB;
+	var PIXELFORMAT_COMPRESSED_DXT1_RGB:UInt;
 	@:native("PIXELFORMAT_COMPRESSED_DXT1_RGBA")
-	var PIXELFORMAT_COMPRESSED_DXT1_RGBA;
+	var PIXELFORMAT_COMPRESSED_DXT1_RGBA:UInt;
 	@:native("PIXELFORMAT_COMPRESSED_DXT3_RGBA")
-	var PIXELFORMAT_COMPRESSED_DXT3_RGBA;
+	var PIXELFORMAT_COMPRESSED_DXT3_RGBA:UInt;
 	@:native("PIXELFORMAT_COMPRESSED_DXT5_RGBA")
-	var PIXELFORMAT_COMPRESSED_DXT5_RGBA;
+	var PIXELFORMAT_COMPRESSED_DXT5_RGBA:UInt;
 	@:native("PIXELFORMAT_COMPRESSED_ETC1_RGB")
-	var PIXELFORMAT_COMPRESSED_ETC1_RGB;
+	var PIXELFORMAT_COMPRESSED_ETC1_RGB:UInt;
 	@:native("PIXELFORMAT_COMPRESSED_ETC2_RGB")
-	var PIXELFORMAT_COMPRESSED_ETC2_RGB;
+	var PIXELFORMAT_COMPRESSED_ETC2_RGB:UInt;
 	@:native("PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA")
-	var PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA;
+	var PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA:UInt;
 	@:native("PIXELFORMAT_COMPRESSED_PVRT_RGB")
-	var PIXELFORMAT_COMPRESSED_PVRT_RGB;
+	var PIXELFORMAT_COMPRESSED_PVRT_RGB:UInt;
 	@:native("PIXELFORMAT_COMPRESSED_PVRT_RGBA")
-	var PIXELFORMAT_COMPRESSED_PVRT_RGBA;
+	var PIXELFORMAT_COMPRESSED_PVRT_RGBA:UInt;
 	@:native("PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA")
-	var PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA;
+	var PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA:UInt;
 	@:native("PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA")
-	var PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA;
+	var PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA:UInt;
 }
 
 @:include("raylib.h")
 extern enum abstract TextureFilter(UInt) {
 	@:native("TEXTURE_FILTER_POINT")
-	var TEXTURE_FILTER_POINT;
+	var TEXTURE_FILTER_POINT:UInt;
 	@:native("TEXTURE_FILTER_BILINEAR")
-	var TEXTURE_FILTER_BILINEAR;
+	var TEXTURE_FILTER_BILINEAR:UInt;
 	@:native("TEXTURE_FILTER_TRILINEAR")
-	var TEXTURE_FILTER_TRILINEAR;
+	var TEXTURE_FILTER_TRILINEAR:UInt;
 	@:native("TEXTURE_FILTER_ANISOTROPIC_4X")
-	var TEXTURE_FILTER_ANISOTROPIC_4X;
+	var TEXTURE_FILTER_ANISOTROPIC_4X:UInt;
 	@:native("TEXTURE_FILTER_ANISOTROPIC_8X")
-	var TEXTURE_FILTER_ANISOTROPIC_8X;
+	var TEXTURE_FILTER_ANISOTROPIC_8X:UInt;
 	@:native("TEXTURE_FILTER_ANISOTROPIC_16X")
-	var TEXTURE_FILTER_ANISOTROPIC_16X;
+	var TEXTURE_FILTER_ANISOTROPIC_16X:UInt;
 }
 
 @:include("raylib.h")
 extern enum abstract TextureWrap(UInt) {
 	@:native("TEXTURE_WRAP_REPEAT")
-	var TEXTURE_WRAP_REPEAT;
+	var TEXTURE_WRAP_REPEAT:UInt;
 	@:native("TEXTURE_WRAP_CLAMP")
-	var TEXTURE_WRAP_CLAMP;
+	var TEXTURE_WRAP_CLAMP:UInt;
 	@:native("TEXTURE_WRAP_MIRROR_REPEAT")
-	var TEXTURE_WRAP_MIRROR_REPEAT;
+	var TEXTURE_WRAP_MIRROR_REPEAT:UInt;
 	@:native("TEXTURE_WRAP_MIRROR_CLAMP")
-	var TEXTURE_WRAP_MIRROR_CLAMP;
+	var TEXTURE_WRAP_MIRROR_CLAMP:UInt;
 }
 
 @:include("raylib.h")
 extern enum abstract CubemapLayout(UInt) {
 	@:native("CUBEMAP_LAYOUT_AUTO_DETECT")
-	var CUBEMAP_LAYOUT_AUTO_DETECT;
+	var CUBEMAP_LAYOUT_AUTO_DETECT:UInt;
 	@:native("CUBEMAP_LAYOUT_LINE_VERTICAL")
-	var CUBEMAP_LAYOUT_LINE_VERTICAL;
+	var CUBEMAP_LAYOUT_LINE_VERTICAL:UInt;
 	@:native("CUBEMAP_LAYOUT_LINE_HORIZONTAL")
-	var CUBEMAP_LAYOUT_LINE_HORIZONTAL;
+	var CUBEMAP_LAYOUT_LINE_HORIZONTAL:UInt;
 	@:native("CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR")
-	var CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR;
+	var CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR:UInt;
 	@:native("CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE")
-	var CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE;
+	var CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE:UInt;
 	@:native("CUBEMAP_LAYOUT_PANORAMA")
-	var CUBEMAP_LAYOUT_PANORAMA;
+	var CUBEMAP_LAYOUT_PANORAMA:UInt;
 }
 
 @:include("raylib.h")
 extern enum abstract FontType(UInt) {
 	@:native("FONT_DEFAULT")
-	var FONT_DEFAULT;
+	var FONT_DEFAULT:UInt;
 	@:native("FONT_BITMAP")
-	var FONT_BITMAP;
+	var FONT_BITMAP:UInt;
 	@:native("FONT_SDF")
-	var FONT_SDF;
+	var FONT_SDF:UInt;
 }
 
 @:include("raylib.h")
 extern enum abstract BlendMode(UInt) {
 	@:native("BLEND_ALPHA")
-	var BLEND_ALPHA;
+	var BLEND_ALPHA:UInt;
 	@:native("BLEND_ADDITIVE")
-	var BLEND_ADDITIVE;
+	var BLEND_ADDITIVE:UInt;
 	@:native("BLEND_MULTIPLIED")
-	var BLEND_MULTIPLIED;
+	var BLEND_MULTIPLIED:UInt;
 	@:native("BLEND_ADD_COLORS")
-	var BLEND_ADD_COLORS;
+	var BLEND_ADD_COLORS:UInt;
 	@:native("BLEND_SUBTRACT_COLORS")
-	var BLEND_SUBTRACT_COLORS;
+	var BLEND_SUBTRACT_COLORS:UInt;
 	@:native("BLEND_CUSTOM")
-	var BLEND_CUSTOM;
+	var BLEND_CUSTOM:UInt;
 }
 
 @:include("raylib.h")
 extern enum abstract Gesture(UInt) {
 	@:native("GESTURE_NONE")
-	var GESTURE_NONE;
+	var GESTURE_NONE:UInt;
 	@:native("GESTURE_TAP")
-	var GESTURE_TAP;
+	var GESTURE_TAP:UInt;
 	@:native("GESTURE_DOUBLETAP")
-	var GESTURE_DOUBLETAP;
+	var GESTURE_DOUBLETAP:UInt;
 	@:native("GESTURE_HOLD")
-	var GESTURE_HOLD;
+	var GESTURE_HOLD:UInt;
 	@:native("GESTURE_DRAG")
-	var GESTURE_DRAG;
+	var GESTURE_DRAG:UInt;
 	@:native("GESTURE_SWIPE_RIGHT")
-	var GESTURE_SWIPE_RIGHT;
+	var GESTURE_SWIPE_RIGHT:UInt;
 	@:native("GESTURE_SWIPE_LEFT")
-	var GESTURE_SWIPE_LEFT;
+	var GESTURE_SWIPE_LEFT:UInt;
 	@:native("GESTURE_SWIPE_UP")
-	var GESTURE_SWIPE_UP;
+	var GESTURE_SWIPE_UP:UInt;
 	@:native("GESTURE_SWIPE_DOWN")
-	var GESTURE_SWIPE_DOWN;
+	var GESTURE_SWIPE_DOWN:UInt;
 	@:native("GESTURE_PINCH_IN")
-	var GESTURE_PINCH_IN;
+	var GESTURE_PINCH_IN:UInt;
 	@:native("GESTURE_PINCH_OUT")
-	var GESTURE_PINCH_OUT;
+	var GESTURE_PINCH_OUT:UInt;
 }
 
 @:include("raylib.h")
 extern enum abstract NPatchLayout(UInt) {
 	@:native("NPATCH_NINE_PATCH")
-	var NPATCH_NINE_PATCH;
+	var NPATCH_NINE_PATCH:UInt;
 	@:native("NPATCH_THREE_PATCH_VERTICAL")
-	var NPATCH_THREE_PATCH_VERTICAL;
+	var NPATCH_THREE_PATCH_VERTICAL:UInt;
 	@:native("NPATCH_THREE_PATCH_HORIZONTAL")
-	var NPATCH_THREE_PATCH_HORIZONTAL;
+	var NPATCH_THREE_PATCH_HORIZONTAL:UInt;
 }
 
 #if mac
@@ -1238,7 +1237,7 @@ extern class Raylib {
 	@:native("SetWindowMonitor") static function SetWindowMonitor(monitor:Int):Void;
 	@:native("SetWindowMinSize") static function SetWindowMinSize(width:Int, height:Int):Void;
 	@:native("SetWindowSize") static function SetWindowsize(width:Int, height:Int):Void;
-	@:native("GetWindowHandle") static function GetWindowHandle():Star;
+	@:native("GetWindowHandle") static function GetWindowHandle():Pointer<Void>;
 	@:native("GetScreenWidth") static function GetScreenWidth():Int;
 	@:native("GetScreenHeight") static function GetScreenHeight():Int;
 	@:native("GetMonitorCount") static function GetMonitorCount():Int;
@@ -1327,16 +1326,16 @@ extern class Raylib {
 
 	@:native("TraceLog") static function TraceLog(logLevel:Int, text:ConstCharStar):Void;
 	@:native("SetTraceLogLevel") static function SetTraceLogLevel(logLevel:Int):Void;
-	@:native("MemAlloc") static function MemAlloc(size:Int):Star;
-	@:native("MemRealloc") static function MemRealloc(ptr:Star, size:Int):Star;
-	@:native("MemFree") static function MemFree(ptr:Star):Void;
+	@:native("MemAlloc") static function MemAlloc(size:Int):Pointer<Void>;
+	@:native("MemRealloc") static function MemRealloc(ptr:Pointer<Void>, size:Int):Pointer<Void>;
+	@:native("MemFree") static function MemFree(ptr:Pointer<Void>):Void;
 
 	// Set custom callback
 	// @:native("SetTraceLogCallback")     static function SetTraceLogCallback(callback:TraceLogCallback):Void;
 	// Files management functions
 	@:native("LoadFileData") static function LoadFileData(filename:ConstCharStar, bytesRead:Pointer<UInt>):Pointer<UInt16>;
 	@:native("UnloadFileData") static function UnloadFileData(data:Pointer<UInt16>):Void;
-	@:native("SaveFileData") static function SaveFileData(filename:Pointer<UInt16>, data:Star, byetsToWrite:UInt):Bool;
+	@:native("SaveFileData") static function SaveFileData(filename:Pointer<UInt16>, data:Pointer<Void>, byetsToWrite:UInt):Bool;
 	@:native("LoadFileText") static function LoadFileText(fileName:ConstCharStar):ConstCharStar;
 	@:native("UnloadFileText") static function UnloadFileText(text:ConstCharStar):Void;
 	@:native("SaveFileText") static function SaveFileText(fileName:ConstCharStar, text:ConstCharStar):Bool;
@@ -1483,7 +1482,7 @@ extern class Raylib {
 	@:native("LoadImage") static function LoadImage(fileName:ConstCharStar):Image;
 	@:native("LoadImageRaw") static function LoadImageRaw(fileName:ConstCharStar, width:Int, height:Int, format:Int, headerSize:Int):Image;
 	@:native("LoadImageAnim") static function LoadImageAnim(fileName:ConstCharStar, frames:Int):Image;
-	@:native("LoadImageFromMemory") static function LoadImageFromMemory(fileType:ConstCharStar, fileData:ConstStar<cpp.UInt8>, dataSize:Int):Image;
+	@:native("LoadImageFromMemory") static function LoadImageFromMemory(fileType:ConstCharStar, fileData:ConstPointer<UInt8>, dataSize:Int):Image;
 	@:native("LoadImageFromTexture") static function LoadImageFromTexture(texture:Texture2D):Image;
 	@:native("LoadImageFromScreen") static function LoadImageFromScreen():Void;
 	@:native("UnloadImage") static function UnloadImage(image:Image):Void;
@@ -1560,8 +1559,8 @@ extern class Raylib {
 	@:native("LoadRenderTexture") static function LoadRenderTexture(width:Int, height:Int):RenderTexture2D;
 	@:native("UnloadTexture") static function UnloadTexture(texture:Texture2D):Void;
 	@:native("UnloadRenderTexture") static function UnloadRenderTexture(texture:RenderTexture2D):Void;
-	@:native("UpdateTexture") static function UpdateTexture(texture:Texture2D, pixels:ConstStar):Void;
-	@:native("UpdateTextureRec") static function UpdateTexture(texture:Texture2D, rec:Rectangle, pixels:ConstStar):Void;
+	@:native("UpdateTexture") static function UpdateTexture(texture:Texture2D, pixels:ConstPointer<Void>):Void;
+	@:native("UpdateTextureRec") static function UpdateTextureRec(texture:Texture2D, rec:Rectangle, pixels:ConstPointer<Void>):Void;
 
 	// Texture configuration functions
 	@:native("GenTextureMipmaps") static function GenTextureMipmaps(texture:Pointer<Texture2D>):Void;
@@ -1589,12 +1588,12 @@ extern class Raylib {
 	@:native("ColorNormalize") static function ColorNormalize(color:Color):Vector4;
 	@:native("ColorFromNormalized") static function ColorFromNormalized(normalized:Vector4):Color;
 	@:native("ColorToHSV") static function ColorToHSV(color:Color):Vector3;
-	@:native("ColorFromHSV") static function ColorFromHSV(hue:Float, saturation:Float, float:Value):Color;
+	@:native("ColorFromHSV") static function ColorFromHSV(hue:Float, saturation:Float, Value:Float):Color;
 	@:native("ColorAlpha") static function ColorAlpha(color:Color, alpha:Float):Color;
 	@:native("ColorAlphaBlend") static function ColorAlphaBlend(dst:Color, src:Color, tint:Color):Color;
 	@:native("GetColor") static function GetColor(hexValue:UInt):Color;
-	@:native("GetPixelColor") static function GetPixelColor(srcPtr:Star, format:PixelFormat):Color;
-	@:native("SetPixelColor") static function SetPixelColor(dstPtr:Star, color:Color, format:Int):Void;
+	@:native("GetPixelColor") static function GetPixelColor(srcPtr:Pointer<Void>, format:PixelFormat):Color;
+	@:native("SetPixelColor") static function SetPixelColor(dstPtr:Pointer<Void>, color:Color, format:Int):Void;
 	@:native("GetPixelDataSize") static function GetPixelDataSize(width:Int, height:Int, format:Int):Int;
 
 	//------------------------------------------------------------------------------------
@@ -1671,8 +1670,8 @@ extern class Raylib {
 	@:native("DrawModel") static function DrawModel(model:Model, position:Vector3, scale:Float, tint:Color):Void;
 	@:native("DrawModelEx") static function DrawModelEx(model:Model, position:Vector3, rotationAxis:Vector3, rotationAngle:Float, scale:Vector3,
 		color:Color):Void;
-	@:native("DrawModelWires") static function DrawModel(model:Model, position:Vector3, scale:Float, tint:Color):Void;
-	@:native("DrawModelWiresEx") static function DrawModelEx(model:Model, position:Vector3, rotationAxis:Vector3, rotationAngle:Float, scale:Vector3,
+	@:native("DrawModelWires") static function DrawModelWires(model:Model, position:Vector3, scale:Float, tint:Color):Void;
+	@:native("DrawModelWiresEx") static function DrawModelWiresEx(model:Model, position:Vector3, rotationAxis:Vector3, rotationAngle:Float, scale:Vector3,
 		color:Color):Void;
 	@:native("DrawBoundingBox") static function DrawBoundingBox(box:BoundingBox, color:Color):Void;
 	@:native("DrawBillboard") static function DrawBillboard(camera:Camera, texture:Texture2D, position:Vector3, size:Float, tint:Color):Void;
@@ -1683,7 +1682,7 @@ extern class Raylib {
 
 	// Mesh management functions
 	@:native("UploadMesh") static function UploadMesh(mesh:Pointer<Mesh>, dyn:Bool):Void;
-	@:native("UpdateMeshBuffer") static function UpdateMeshBuffer(mesh:Mesh, index:Int, data:Star, dataSize:Int, offset:Int):Void;
+	@:native("UpdateMeshBuffer") static function UpdateMeshBuffer(mesh:Mesh, index:Int, data:Pointer<Void>, dataSize:Int, offset:Int):Void;
 	@:native("UnloadMesh") static function UnloadMesh(mesh:Mesh):Void;
 	@:native("DrawMesh") static function DrawMesh(mesh:Mesh, material:Material, transform:Matrix):Void;
 	@:native("DrawMeshInstanced") static function DrawMeshInstanced(mesh:Mesh, material:Material, transforms:Pointer<Matrix>, instances:Int):Void;
@@ -1710,7 +1709,7 @@ extern class Raylib {
 	@:native("LoadMaterialDefault") static function LoadMaterialDefault():Material;
 	@:native("UnloadMaterial") static function UnloadMaterial(material:Material):Void;
 	@:native("SetMaterialTexture") static function SetMaterialTexture(material:Pointer<Material>, mapType:Int, texture:Texture2D):Void;
-	@:native("SetModelMeshMaterial") static function SetModelMeshMaterial(model:Pointer<Model>, meshId:Int, materialId:Int);
+	@:native("SetModelMeshMaterial") static function SetModelMeshMaterial(model:Pointer<Model>, meshId:Int, materialId:Int):Void;
 
 	// Model animations loading/unloading functions
 	@:native("LoadModelAnimations") static function LoadModelAnimations(fileName:ConstCharStar, animCount:Pointer<UInt>):Pointer<ModelAnimation>;
@@ -1785,7 +1784,7 @@ extern class Raylib {
 
 	// AudioStream management functions
 	@:native("InitAudioStream") static function InitAudioStream(sampleRate:UInt, sampleSize:UInt, channels:UInt):AudioStream;
-	@:native("UpdateAudioStream") static function UpdateAudioStream(stream:AudioStream, data:ConstStar, samplesCount:Int):Void;
+	@:native("UpdateAudioStream") static function UpdateAudioStream(stream:AudioStream, data:ConstPointer<Void>, samplesCount:Int):Void;
 	@:native("CloseAudioStream") static function CloseAudioStream(stream:AudioStream):Void;
 	@:native("IsAudioStreamProcessed") static function IsAudioStreamProcessed(stream:AudioStream):Bool;
 	@:native("PlayAudioStream") static function PlayAudioStream(stream:AudioStream):Void;
