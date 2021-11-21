@@ -520,14 +520,14 @@ extern class Sound
 
 @:include("raylib.h")
 @:native("Music")
-extern class Music
-{
-    var stream:AudioStream;
-    var sampleCount:UInt;
-    var looping:Bool;
+@:structAccess
+extern class Music {
+	var stream:AudioStream;
+	var sampleCount:UInt;
+	var looping:Bool;
 
-    var ctxType:Int;
-    var ctxData:ConstPointer<Void>;
+	var ctxType:Int;
+	var ctxData:ConstPointer<Void>;
 }
 
 // TODO
