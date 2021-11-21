@@ -479,6 +479,7 @@ extern class Sound {
 
 @:include("raylib.h")
 @:native("Music")
+@:structAccess
 extern class Music {
 	var stream:AudioStream;
 	var sampleCount:UInt;
