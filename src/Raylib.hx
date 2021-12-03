@@ -37,6 +37,7 @@ import cpp.ConstStar;
 import cpp.Star;
 import cpp.UInt16;
 import cpp.UInt8;
+import cpp.Void;
 import haxe.macro.Expr.Constant;
 
 @:include("raylib.h")
