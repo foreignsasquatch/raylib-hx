@@ -30,7 +30,6 @@
 
 package;
 
-#if cpp
 import cpp.ArrayBase;
 import cpp.ConstCharStar;
 import cpp.ConstStar;
@@ -1863,4 +1862,3 @@ extern class Raylib
     @:native("SetAudioStreamPitch") static function SetAudioStreamPitch(stream:AudioStream, pitch:Float):Void;
     @:native("SetAudioStreamBufferSizeDefault") static function SetAudioStreamBufferSizeDefault(size:Int):Void;
 }
-#end
