@@ -5,6 +5,17 @@
 [Haxe](https://haxe.org/) bindings for [raylib](https://raylib.com), a simple and easy-to-use library to learn videogame programming.
 If you want to work on the binding feel free to fork and make a pull request.
 
+Haxe to JS port
+---------------
+A port of the original raylib library is being developed.
+
+### Why?
+- Faster compilation times.
+- No emscripten toolchain required to port your game for the web.
+- Since the appropriate classes are exposed from Haxe, it's possible to
+use the exposed data structures from JavaScript directly or other languages
+that compile to JavaScript (excluding Haxe).
+
 Requirements
 -------------
 - Haxe 4.0.0 or above
