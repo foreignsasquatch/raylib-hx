@@ -1,0 +1,10 @@
+--class-path test/src
+--js bin/main.js
+--main Main
+
+--library hxRaylib-dev
+
+--define analyzer-optimize
+--define js-es=6
+
+--cmd "cp -t bin src/web/index.html src/web/styles.css"
