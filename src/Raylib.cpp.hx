@@ -303,7 +303,7 @@ extern class Camera3D
     var fovy:Float; // Camera field-of-view apperture in Y (degrees) in perspective, used as near plane width in orthographic
     var projection:Int; // Camera projection: CAMERA_PERSPECTIVE or CAMERA_ORTHOGRAPHIC
 
-    static inline function create():Camera
+    static inline function create():Camera3D
     {
         return untyped __cpp__("{ 0 }");
     }
@@ -323,7 +323,7 @@ extern class Camera2D
     var rotation:Float; // Camera rotation in degrees
     var zoom:Float; // Camera zoom (scaling), should be 1.0f by default
 
-    static inline function create():Camera
+    static inline function create():Camera2D
     {
         return untyped __cpp__("{ 0 }");
     }
