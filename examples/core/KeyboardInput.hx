@@ -8,7 +8,7 @@ class Main
     static function main()
     {
         InitWindow(800, 450, "hxRaylib [core] example - keyboard input");
-        var ballPosition:Vector2 = Vector2.create(800/2, 450/2)
+        var ballPosition:Vector2 = Vector2.create(800/2, 450/2);
         SetTargetFPS(60);
 
         while(!WindowShouldClose())
