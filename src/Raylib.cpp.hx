@@ -1297,7 +1297,7 @@ extern class Raylib
     @:native("IsWindowFocused") static function IsWindowFocused():Bool;
     @:native("IsWindowResized") static function IsWindowResized():Bool;
     @:native("IsWindowState") static function IsWindowState(flag:UInt):Bool;
-    @:native("SetWindowState") static function SetWindowFlag(flag:UInt):Void;
+    @:native("SetWindowState") static function SetWindowState(flag:UInt):Void;
     @:native("ClearWindowState") static function ClearWindowState(flag:UInt):Void;
     @:native("ToggleFullscreen") static function ToggleFullscreen():Void;
     @:native("MaximizeWindow") static function MaximizeWindow():Void;
@@ -1308,19 +1308,19 @@ extern class Raylib
     @:native("SetWindowPosition") static function SetWindowPosition(x:Int, y:Int):Void;
     @:native("SetWindowMonitor") static function SetWindowMonitor(monitor:Int):Void;
     @:native("SetWindowMinSize") static function SetWindowMinSize(width:Int, height:Int):Void;
-    @:native("SetWindowSize") static function SetWindowsize(width:Int, height:Int):Void;
+    @:native("SetWindowSize") static function SetWindowSize(width:Int, height:Int):Void;
     @:native("GetWindowHandle") static function GetWindowHandle():Star<Void>;
     @:native("GetScreenWidth") static function GetScreenWidth():Int;
     @:native("GetScreenHeight") static function GetScreenHeight():Int;
     @:native("GetMonitorCount") static function GetMonitorCount():Int;
     @:native("GetCurrentMonitor") static function GetCurrentMonitor():Int;
-    @:native("GetMonitorPosition") static function GetMoniorPosition(monitor:Int):Vector2;
+    @:native("GetMonitorPosition") static function GetMonitorPosition(monitor:Int):Vector2;
     @:native("GetMonitorWidth") static function GetMonitorWidth(monitor:Int):Int;
     @:native("GetMonitorHeight") static function GetMonitorHeight(monitor:Int):Int;
     @:native("GetMonitorPhysicalWidth") static function GetMonitorPhysicalWidth(monitor:Int):Int;
     @:native("GetMonitorPhysicalHeight") static function GetMonitorPhysicalHeight(monitor:Int):Int;
     @:native("GetMonitorRefershRate") static function GetMonitorRefershRate(monitor:Int):Int;
-    @:native("GetWindowPosition") static function GetWndowPosition():Vector2;
+    @:native("GetWindowPosition") static function GetWindowPosition():Vector2;
     @:native("GetWindowScaleDPI") static function GetWindowScaleDPI():Vector2;
     @:native("GetMonitorName") static function GetMonitorName(monitor:Int):ConstCharStar;
     @:native("SetClipboardText") static function SetClipboardText(text:ConstCharStar):Void;
@@ -1330,7 +1330,7 @@ extern class Raylib
     // NOTE: Those functions are intended for advance users that want full control over the frame processing
     // By default EndDrawing() does this job: draws everything + SwapScreenBuffer() + manage frame timming + PollInputEvents()
     // To avoid that behaviour and control frame processes manually, enable in config.h: SUPPORT_CUSTOM_FRAME_CONTROL
-    @:native("InitTimer") static function InitTime():Void;
+    @:native("InitTimer") static function InitTimer():Void;
     @:native("WaitTime") static function WaitTime(ms:Float):Void;
     @:native("SwapScreenBuffer") static function SwapScreenBuffer():Void;
     @:native("PollInputEvents") static function PollInputEvents():Void;
@@ -1423,10 +1423,10 @@ extern class Raylib
     @:native("GetDirectoryFiles") static function GetDirectoryFiles(dirPath:ConstCharStar, count:Star<Int>):Star<ConstCharStar>;
     @:native("ClearDirectoryFiles") static function ClearDirectoryFiles():Void;
     @:native("ChangeDirectory") static function ChangeDirectory(dir:ConstCharStar):Bool;
-    @:native("IsFileDropped") static function IsFiledDropped():Bool;
+    @:native("IsFileDropped") static function IsFileDropped():Bool;
     @:native("GetDroppedFiles") static function GetDroppedFiles(count:Star<Int>):Star<ConstCharStar>;
     @:native("ClearDroppedFiles") static function ClearDroppedFiles():Void;
-    @:native("GetFileModTime") static function GetFileModeTime(fileName:ConstCharStar):Float;
+    @:native("GetFileModTime") static function GetFileModTime(fileName:ConstCharStar):Float;
 
     // Persistent storage management
     @:native("SaveStorageValue") static function SaveStorageValue(postition:UInt, value:Int):Bool;
@@ -1448,7 +1448,7 @@ extern class Raylib
     @:native("IsGamepadName") static function IsGamepadName(gamepad:Int, name:ConstCharStar):Bool;
     @:native("GetGamepadName") static function GetGamepadName(gamepad:Int):ConstCharStar;
     @:native("IsGamepadButtonPressed") static function IsGamepadButtonPressed(gamepad:Int, button:Int):Bool;
-    @:native("IsGamepadButtonDown") static function IsGamepadButtonDow(gamepad:Int, button:Int):Bool;
+    @:native("IsGamepadButtonDown") static function IsGamepadButtonDown(gamepad:Int, button:Int):Bool;
     @:native("IsGamepadButtonReleased") static function IsGamepadButtonReleased(gamepad:Int, button:Int):Bool;
     @:native("IsGamepadButtonUp") static function IsGamepadButtonUp(gamepad:Int, button:Int):Bool;
     @:native("GetGamepadButtonPressed") static function GetGamepadButtonPressed():Int;
@@ -1505,7 +1505,7 @@ extern class Raylib
     @:native("DrawPixelV") static function DrawPixelV(position:Vector2, color:Color):Void;
     @:native("DrawLine") static function DrawLine(startPosX:Int, startPosY:Int, endPosX:Int, endPosY:Int, color:Color):Void;
     @:native("DrawLineV") static function DrawLineV(startPos:Vector2, endPos:Vector2, color:Color):Void;
-    @:native("DrawLineEx") static function DrawLienEx(startPos:Vector2, endPos:Vector2, thick:Float, color:Color):Void;
+    @:native("DrawLineEx") static function DrawLineEx(startPos:Vector2, endPos:Vector2, thick:Float, color:Color):Void;
     @:native("DrawLineBezier") static function DrawLineBezier(startPos:Vector2, endPos:Vector2, thick:Float, color:Color):Void;
     @:native("DrawLineBezierQuad") static function DrawLineBezierQuad(startPos:Vector2, endPos:Vector2, controlPos:Vector2, thick:Float, color:Color):Void;
     @:native("DrawLineStrip") static function DrawLineStrip(points:Star<Vector2>, pointsCount:Int, color:Color):Void;
@@ -1545,7 +1545,7 @@ extern class Raylib
     @:native("CheckCollisionLines") static function CheckCollisionLines(startPos1:Vector2, endPos1:Vector2, startPos2:Vector2, endPos2:Vector2,
         collisionPoint:Star<Vector2>):Bool;
     @:native("CheckCollisionPointLine") static function CheckCollisionPointLine(point:Vector2, p1:Vector2, p2:Vector2, threshold:Int):Bool;
-    @:native("CheckCollisionRec") static function GetCollisionRec(rec1:Rectangle, rec2:Rectangle):Rectangle;
+    @:native("GetCollisionRec") static function GetCollisionRec(rec1:Rectangle, rec2:Rectangle):Rectangle;
 
     //------------------------------------------------------------------------------------
     // Textures module
