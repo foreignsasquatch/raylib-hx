@@ -173,8 +173,8 @@ extern class Rectangle
 {
     var x:Float; // Rectangle top-left corner position x
     var y:Float; // Rectangle top-left corner position y
-    var w:Float; // Rectangle width
-    var h:Float; // Rectangle height
+    var width:Float; // Rectangle width
+    var height:Float; // Rectangle height
 
     static inline function create(x:Float, y:Float, w:Float, h:Float):Rectangle
     {
