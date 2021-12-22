@@ -150,16 +150,17 @@ extern class Matrix
 
 @:include("raylib.h")
 @:native("Color")
+@:structAccess
 extern class Color
 {
-    var r:Int; // Color red value
-    var g:Int; // Color green value
-    var b:Int; // Color blue value
-    var a:Int; // Color alpha value
+    var r:cpp.UInt8;
+    var g:cpp.UInt8;
+    var b:cpp.UInt8;
+    var a:cpp.UInt8;
 
-    static inline function create(r:Int, g:Int, b:Int, a:Int):Color
+    public static inline function create(r:cpp.UInt8, g:cpp.UInt8, b:cpp.UInt8, a:cpp.UInt8):Color
     {
-        return untyped __cpp__("{ (float){0}, (float){1}, (float){2}, (float){3} }", r, g, b, a);
+        return untyped __cpp__("{ (unsigned char){0}, (unsigned char){1}, (unsigned char){2}, (unsigned char){3} }", r, g, b, a);
     }
 }
 
@@ -172,8 +173,8 @@ extern class Rectangle
 {
     var x:Float; // Rectangle top-left corner position x
     var y:Float; // Rectangle top-left corner position y
-    var w:Float; // Rectangle width
-    var h:Float; // Rectangle height
+    var width:Float; // Rectangle width
+    var height:Float; // Rectangle height
 
     static inline function create(x:Float, y:Float, w:Float, h:Float):Rectangle
     {
@@ -193,6 +194,10 @@ extern class Image
     var height:Int; // Image base height
     var mipmaps:Int; // Mipmap levels, 1 by default
     var format:Int; // Data format (PixelFormat type)
+
+    public static inline function create(data:cpp.RawPointer<cpp.Void>, width:Int, height:Int, mipmaps:Int, format:Int):Image {
+        return untyped __cpp__("{ (void *){0}, (int){1}, (int){2}, (int){3}, (int){4} }", data, width, height, mipmaps, format);
+    }
 }
 
 // Texture, tex data stored in GPU memory (VRAM)
@@ -1637,7 +1642,7 @@ extern class Raylib
     @:native("DrawTexture") static function DrawTexture(texture:Texture2D, posX:Int, posy:Int, tint:Color):Void;
     @:native("DrawTextureV") static function DrawTextureV(texture:Texture2D, position:Vector2, tint:Color):Void;
     @:native("DrawTextureEx") static function DrawTextureEx(texture:Texture2D, position:Vector2, rotation:Float, scale:Float, tint:Color):Void;
-    @:native("DrawTextureRec") static function DrawTextureRec(texture:Texture2D, source:Rectangle, dest:Rectangle, tint:Color):Void;
+    @:native("DrawTextureRec") static function DrawTextureRec(texture:Texture2D, source:Rectangle, position:Vector2, tint:Color):Void;
     @:native("DrawTextureQuad") static function DrawTextureQuad(texture:Texture2D, tiling:Vector2, offset:Vector2, quad:Rectangle, tint:Color):Void;
     @:native("DrawTextureTiled") static function DrawTextureTiled(texture:Texture2D, source:Rectangle, dest:Rectangle, origin:Vector2, rotation:Float,
         scale:Float, tint:Color):Void;
