@@ -1463,7 +1463,7 @@ extern class Raylib
     @:native("IsMouseButtonUp") static function IsMouseButtonUp(buttton:Int):Bool;
     @:native("GetMouseX") static function GetMouseX():Int;
     @:native("GetMouseY") static function GetMouseY():Int;
-    @:native("GetMousePosition") static function GetMousePositiin():Vector2;
+    @:native("GetMousePosition") static function GetMousePosition():Vector2;
     @:native("GetMouseDelta") static function GetMouseDelta():Vector2;
     @:native("SetMousePosition") static function SetMousePosition(x:Int, y:Int):Void;
     @:native("SetMouseOffset") static function SetMouseOffset(offsetX:Int, offsetY:Int):Void;
