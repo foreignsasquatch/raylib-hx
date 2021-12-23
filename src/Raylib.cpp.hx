@@ -578,7 +578,7 @@ extern enum abstract ConfigFlags(UInt)
     var FLAG_VSYNC_HINT:UInt;
     @:native("FLAG_FULLSCREEN_MODE")
     var FLAG_FULLSCREEN_MODE:UInt;
-    @:native("FLAG_WINDOW_RESZIABLE")
+    @:native("FLAG_WINDOW_RESIZABLE")
     var FLAG_WINDOW_RESIZABLE:UInt;
     @:native("FLAG_WINDOW_UNDECORATED")
     var FLAG_WINDOW_UNDECORATED:UInt;
@@ -687,7 +687,7 @@ extern enum abstract KeyboardKey(Int)
     @:native("KEY_NINE")
     static var NINE:Int;
     @:native("KEY_SEMICOLON")
-    static var SEMICOLOR:Int;
+    static var SEMICOLON:Int;
     @:native("KEY_EQUAL")
     static var EQUAL:Int;
     @:native("KEY_A")
@@ -827,7 +827,7 @@ extern enum abstract KeyboardKey(Int)
     @:native("KEY_LEFT_BRACKET")
     static var LEFT_BRACKET:Int;
     @:native("KEY_BACKSLASH")
-    static var BACKLASH:Int;
+    static var BACKSLASH:Int;
     @:native("KEY_RIGHT_BRACKET")
     static var RIGHT_BRACKET:Int;
     @:native("KEY_GRAVE")
@@ -924,17 +924,17 @@ extern enum abstract MouseCursor(Int)
 extern enum abstract GamepadButton(UInt)
 {
     // This is here just for error checking
-    @:native("GAMEPAD_BUTTON_UNKOWN")
+    @:native("GAMEPAD_BUTTON_UNKNOWN")
     var GAMEPAD_BUTTON_UNKNOWN:UInt;
     // This is normally a DPAD
     @:native("GAMEPAD_BUTTON_LEFT_FACE_UP")
     var GAMEPAD_BUTTON_LEFT_FACE_UP:UInt;
-    @:native("GAMEPAD_BUTTON_FACE_RIGHT")
-    var GAMEPAD_BUTTON_FACE_RIGHT:UInt;
-    @:native("GAMEPAD_BUTTON_FACE_DOWN")
-    var GAMEPAD_BUTTON_FACE_DOWN:UInt;
-    @:native("GAMEPAD_BUTTON_FACE_LEFT")
-    var GAMEPAD_BUTTON_FACE_LEFT:UInt;
+    @:native("GAMEPAD_BUTTON_LEFT_FACE_RIGHT")
+    var GAMEPAD_BUTTON_LEFT_FACE_RIGHT:UInt;
+    @:native("GAMEPAD_BUTTON_LEFT_FACE_DOWN")
+    var GAMEPAD_BUTTON_LEFT_FACE_DOWN:UInt;
+    @:native("GAMEPAD_BUTTON_LEFT_FACE_LEFT")
+    var GAMEPAD_BUTTON_LEFT_FACE_LEFT:UInt;
     // This normally corresponds with PlayStation and Xbox controllers
     // XBOX: [Y,X,A,B]
     // PS3: [Triangle,Square,Cross,Circle]
@@ -1003,8 +1003,8 @@ extern enum abstract MaterialMapIndex(UInt)
     var MATERIAL_MAP_NORMAL:UInt;
     @:native("MATERIAL_MAP_ROUGHNESS")
     var MATERIAL_MAP_ROUGHNESS:UInt;
-    @:native("MATERIAL_MAP_OCCULSION")
-    var MATERIAL_MAP_OCCULSION:UInt;
+    @:native("MATERIAL_MAP_OCCLUSION")
+    var MATERIAL_MAP_OCCLUSION:UInt;
     @:native("MATERIAL_MAP_EMISSION")
     var MATERIAL_MAP_EMISSION:UInt;
     @:native("MATERIAL_MAP_HEIGHT")
@@ -1015,15 +1015,15 @@ extern enum abstract MaterialMapIndex(UInt)
     var MATERIAL_MAP_IRRADIANCE:UInt;
     @:native("MATERIAL_MAP_PREFILTER")
     var MATERIAL_MAP_PREFILTER:UInt;
-    @:native("MATERIAL_MAP_BRDG")
-    var MATERIAL_MAP_BRDG:UInt;
+    @:native("MATERIAL_MAP_BRDF")
+    var MATERIAL_MAP_BRDF:UInt;
 }
 
 @:include("raylib.h")
 extern enum abstract ShaderLocationIndex(UInt)
 {
     @:native("SHADER_LOC_VERTEX_POSITION")
-    var SHADER_LOC_VERTEXT_POSITION:UInt;
+    var SHADER_LOC_VERTEX_POSITION:UInt;
     @:native("SHADER_LOC_VERTEX_TEXCOORD01")
     var SHADER_LOC_VERTEX_TEXCOORD01:UInt;
     @:native("SHADER_LOC_VERTEX_TEXCOORD02")
@@ -1060,8 +1060,8 @@ extern enum abstract ShaderLocationIndex(UInt)
     var SHADER_LOC_MAP_NORMAL:UInt;
     @:native("SHADER_LOC_MAP_ROUGHNESS")
     var SHADER_LOC_MAP_ROUGHNESS:UInt;
-    @:native("SHADER_LOC_MAP_OCCULSION")
-    var SHADER_LOC_MAP_OCCULSION:UInt;
+    @:native("SHADER_LOC_MAP_OCCLUSION")
+    var SHADER_LOC_MAP_OCCLUSION:UInt;
     @:native("SHADER_LOC_MAP_EMISSION")
     var SHADER_LOC_MAP_EMISSION:UInt;
     @:native("SHADER_LOC_MAP_HEIGHT")
