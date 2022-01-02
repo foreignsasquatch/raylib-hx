@@ -1,5 +1,5 @@
 import js.Browser;
-import web.internal.RayGL;
+import web.internal.rlgl.GL as RLGL;
 
 typedef Vector2 = web.internal.Types.Vector2;
 typedef Color = web.internal.Types.Color;
@@ -7,11 +7,11 @@ typedef Color = web.internal.Types.Color;
 @:expose
 class Raylib
 {
-    static var rayGl:RayGL;
+    static var rlgl:RLGL;
 
     public static function InitWindow(width:Int, height:Int, title:String)
     {
-        rayGl = new RayGL(width, height, title);
+        rlgl = new RLGL(width, height, title);
     }
 
     public static function CloseWindow()
@@ -64,8 +64,8 @@ class Raylib
 
     public static function ClearBackground(color:Color)
     {
-        rayGl.clearColor(color.r, color.g, color.b, color.a);
-        rayGl.clearScreenBuffers();
+        rlgl.clearColor(color.r, color.g, color.b, color.a);
+        rlgl.clearScreenBuffers();
     }
 
     public static function BeginDrawing()
