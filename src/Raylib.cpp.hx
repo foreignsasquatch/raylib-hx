@@ -2,8 +2,6 @@
  *
  *   hxRaylib - a Haxe binding for the library raylib, a simple and easy-to-use library to enjoy videogames programming
  *
- *   TODO: Test all the features
- *
  *   LICENSE: zlib/libpng
  *
  *   hxRaylib is licensed under an unmodified zlib/libpng license, which is an OSI-certified,
@@ -120,8 +118,6 @@ extern class Vector4
 
 // Quaternion, 4 components (Vector4 alias)
 typedef Quaternion = Vector4;
-
-// DONE: Complete matrix
 
 @:include("raylib.h")
 @:native("Matrix")
@@ -377,7 +373,6 @@ extern class MaterialMap
 }
 
 // TODO: figure out how to float[4]
-
 @:include("raylib.h")
 @:native("Material")
 @:structAccess
@@ -492,7 +487,6 @@ extern class Wave
 }
 
 // TODO: Test Audio support
-
 @:include("raylib.h")
 @:native("rAudioBuffer")
 @:structAccess
@@ -534,9 +528,6 @@ extern class Music
     var ctxData:ConstStar<Void>;
 }
 
-// TODO
-// TODO: Finish VR stuff
-
 @:include("raylib.h")
 @:native("VrDeviceInfo")
 @:structAccess
@@ -568,8 +559,6 @@ extern class VrStereoConfig
     var scale:Float;
     var scaleIn:Float;
 }
-
-// TODO
 
 @:include("raylib.h")
 extern enum abstract ConfigFlags(UInt)
