@@ -11,7 +11,7 @@ class Main
         {
             BeginDrawing();
                 ClearBackground(RAYWHITE);
-                DrawText("Congrats! You created your first window using hxRaylib!", 100, 100, 20, BLACK);
+                DrawText("WASM+RAYLIB+HAXE", 100, 100, 20, BLACK);
             EndDrawing();
         }
 

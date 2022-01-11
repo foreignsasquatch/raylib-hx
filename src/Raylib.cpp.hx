@@ -1276,6 +1276,8 @@ extern enum abstract NPatchLayout(UInt)
 @:buildXml("<include name='${haxelib:hxRaylib}/build_files/mac.xml'/>")
 #elseif linux
 @:buildXml("<include name='${haxelib:hxRaylib}/build_files/linux.xml'/>")
+#elseif wasm
+@:buildXml("<include name='${haxelib:hxRaylib}/build_files/web.xml'/>")
 #else
 @:buildXml("<include name='${haxelib:hxRaylib}/build_files/windows.xml'/>")
 #end
