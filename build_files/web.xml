@@ -22,7 +22,6 @@
             <compilerflag value="-DPLATFORM_WEB" />
             <compilerflag value="-DGRAPHICS_API_OPENGL_ES2" />
             <compilerflag value="-Os" />
-            <compilerflag value="-Wall" />
         </files>
 
         <linker id='exe' exe='em++'>
@@ -32,7 +31,8 @@
             <flag value='USE_GLFW=3' />
             <flag value='-s' />
             <flag value='ASYNCIFY' />
-            <flag value='--preload-file assets'/>
+            <flag value='--preload-file'/>
+            <flag value='${ASSET_PATH}'/>
         </linker>
     </section>
 </xml>

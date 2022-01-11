@@ -6,3 +6,5 @@
 -D EMSCRIPTEN_SDK="C:/Users/DELL/Desktop/Env/emsdk/upstream/emscripten"
 -D HXCPP_LINK_EMSCRIPTEN_EXT=.html
 -D emscripten
+-D ASSET_PATH=C:/Users/DELL/Desktop/Programming/libs/hxRaylib/test/assets@assets
+# it needs to have the @assets
