@@ -2,6 +2,8 @@
 	<img src="assets/logo.png" alt="Raylib Logo">
 </p>
 
+![Stars](https://img.shields.io/github/stars/ForeignSasquatch/hxRaylib?style=flat-square) ![License](https://img.shields.io/github/license/ForeignSasquatch/hxRaylib?style=flat-square) ![Forks](https://img.shields.io/github/forks/ForeignSasquatch/hxRaylib?style=flat-square)
+
 [Haxe](https://haxe.org/) bindings for [raylib](https://raylib.com), a simple and easy-to-use library to learn videogame programming.
 If you want to work on the binding feel free to fork and make a pull request.
 

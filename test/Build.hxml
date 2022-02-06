@@ -1,8 +1,10 @@
 -cp src
 -cpp temp
--lib hxRaylib-dev
+-lib hxRaylib
 -main Main
-# Uncomment for the platform
-#-D mac
--D windows
-#-D linux
+-D wasm
+-D EMSCRIPTEN_SDK="C:/Users/DELL/Desktop/Env/emsdk/upstream/emscripten"
+-D HXCPP_LINK_EMSCRIPTEN_EXT=.html
+-D emscripten
+-D ASSET_PATH=C:/Users/DELL/Desktop/Programming/libs/hxRaylib/test/assets@assets
+# it needs to have the @assets

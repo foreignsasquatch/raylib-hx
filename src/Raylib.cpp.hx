@@ -150,14 +150,15 @@ extern class Matrix
 
 @:include("raylib.h")
 @:native("Color")
+@:structAccess
 extern class Color
 {
-    var r:Int; // Color red value
-    var g:Int; // Color green value
-    var b:Int; // Color blue value
-    var a:Int; // Color alpha value
+    var r:cpp.UInt8;
+    var g:cpp.UInt8;
+    var b:cpp.UInt8;
+    var a:cpp.UInt8;
 
-    static inline function create(r:Int, g:Int, b:Int, a:Int):Color
+    public static inline function create(r:cpp.UInt8, g:cpp.UInt8, b:cpp.UInt8, a:cpp.UInt8):Color
     {
         return untyped __cpp__("(Color){ {0}, {1}, {2}, {3} }", r, g, b, a);
     }
@@ -172,8 +173,8 @@ extern class Rectangle
 {
     var x:Float; // Rectangle top-left corner position x
     var y:Float; // Rectangle top-left corner position y
-    var w:Float; // Rectangle width
-    var h:Float; // Rectangle height
+    var width:Float; // Rectangle width
+    var height:Float; // Rectangle height
 
     static inline function create(x:Float, y:Float, w:Float, h:Float):Rectangle
     {
@@ -193,6 +194,10 @@ extern class Image
     var height:Int; // Image base height
     var mipmaps:Int; // Mipmap levels, 1 by default
     var format:Int; // Data format (PixelFormat type)
+
+    public static inline function create(data:cpp.RawPointer<cpp.Void>, width:Int, height:Int, mipmaps:Int, format:Int):Image {
+        return untyped __cpp__("{ (void *){0}, (int){1}, (int){2}, (int){3}, (int){4} }", data, width, height, mipmaps, format);
+    }
 }
 
 // Texture, tex data stored in GPU memory (VRAM)
@@ -303,7 +308,7 @@ extern class Camera3D
     var fovy:Float; // Camera field-of-view apperture in Y (degrees) in perspective, used as near plane width in orthographic
     var projection:Int; // Camera projection: CAMERA_PERSPECTIVE or CAMERA_ORTHOGRAPHIC
 
-    static inline function create():Camera
+    static inline function create():Camera3D
     {
         return untyped __cpp__("(Camera){ 0 }");
     }
@@ -323,7 +328,7 @@ extern class Camera2D
     var rotation:Float; // Camera rotation in degrees
     var zoom:Float; // Camera zoom (scaling), should be 1.0f by default
 
-    static inline function create():Camera
+    static inline function create():Camera2D
     {
         return untyped __cpp__("(Camera){ 0 }");
     }
@@ -573,7 +578,7 @@ extern enum abstract ConfigFlags(UInt)
     var FLAG_VSYNC_HINT:UInt;
     @:native("FLAG_FULLSCREEN_MODE")
     var FLAG_FULLSCREEN_MODE:UInt;
-    @:native("FLAG_WINDOW_RESZIABLE")
+    @:native("FLAG_WINDOW_RESIZABLE")
     var FLAG_WINDOW_RESIZABLE:UInt;
     @:native("FLAG_WINDOW_UNDECORATED")
     var FLAG_WINDOW_UNDECORATED:UInt;
@@ -682,7 +687,7 @@ extern enum abstract KeyboardKey(Int)
     @:native("KEY_NINE")
     static var NINE:Int;
     @:native("KEY_SEMICOLON")
-    static var SEMICOLOR:Int;
+    static var SEMICOLON:Int;
     @:native("KEY_EQUAL")
     static var EQUAL:Int;
     @:native("KEY_A")
@@ -822,7 +827,7 @@ extern enum abstract KeyboardKey(Int)
     @:native("KEY_LEFT_BRACKET")
     static var LEFT_BRACKET:Int;
     @:native("KEY_BACKSLASH")
-    static var BACKLASH:Int;
+    static var BACKSLASH:Int;
     @:native("KEY_RIGHT_BRACKET")
     static var RIGHT_BRACKET:Int;
     @:native("KEY_GRAVE")
@@ -919,17 +924,17 @@ extern enum abstract MouseCursor(Int)
 extern enum abstract GamepadButton(UInt)
 {
     // This is here just for error checking
-    @:native("GAMEPAD_BUTTON_UNKOWN")
+    @:native("GAMEPAD_BUTTON_UNKNOWN")
     var GAMEPAD_BUTTON_UNKNOWN:UInt;
     // This is normally a DPAD
     @:native("GAMEPAD_BUTTON_LEFT_FACE_UP")
     var GAMEPAD_BUTTON_LEFT_FACE_UP:UInt;
-    @:native("GAMEPAD_BUTTON_FACE_RIGHT")
-    var GAMEPAD_BUTTON_FACE_RIGHT:UInt;
-    @:native("GAMEPAD_BUTTON_FACE_DOWN")
-    var GAMEPAD_BUTTON_FACE_DOWN:UInt;
-    @:native("GAMEPAD_BUTTON_FACE_LEFT")
-    var GAMEPAD_BUTTON_FACE_LEFT:UInt;
+    @:native("GAMEPAD_BUTTON_LEFT_FACE_RIGHT")
+    var GAMEPAD_BUTTON_LEFT_FACE_RIGHT:UInt;
+    @:native("GAMEPAD_BUTTON_LEFT_FACE_DOWN")
+    var GAMEPAD_BUTTON_LEFT_FACE_DOWN:UInt;
+    @:native("GAMEPAD_BUTTON_LEFT_FACE_LEFT")
+    var GAMEPAD_BUTTON_LEFT_FACE_LEFT:UInt;
     // This normally corresponds with PlayStation and Xbox controllers
     // XBOX: [Y,X,A,B]
     // PS3: [Triangle,Square,Cross,Circle]
@@ -998,8 +1003,8 @@ extern enum abstract MaterialMapIndex(UInt)
     var MATERIAL_MAP_NORMAL:UInt;
     @:native("MATERIAL_MAP_ROUGHNESS")
     var MATERIAL_MAP_ROUGHNESS:UInt;
-    @:native("MATERIAL_MAP_OCCULSION")
-    var MATERIAL_MAP_OCCULSION:UInt;
+    @:native("MATERIAL_MAP_OCCLUSION")
+    var MATERIAL_MAP_OCCLUSION:UInt;
     @:native("MATERIAL_MAP_EMISSION")
     var MATERIAL_MAP_EMISSION:UInt;
     @:native("MATERIAL_MAP_HEIGHT")
@@ -1010,15 +1015,15 @@ extern enum abstract MaterialMapIndex(UInt)
     var MATERIAL_MAP_IRRADIANCE:UInt;
     @:native("MATERIAL_MAP_PREFILTER")
     var MATERIAL_MAP_PREFILTER:UInt;
-    @:native("MATERIAL_MAP_BRDG")
-    var MATERIAL_MAP_BRDG:UInt;
+    @:native("MATERIAL_MAP_BRDF")
+    var MATERIAL_MAP_BRDF:UInt;
 }
 
 @:include("raylib.h")
 extern enum abstract ShaderLocationIndex(UInt)
 {
     @:native("SHADER_LOC_VERTEX_POSITION")
-    var SHADER_LOC_VERTEXT_POSITION:UInt;
+    var SHADER_LOC_VERTEX_POSITION:UInt;
     @:native("SHADER_LOC_VERTEX_TEXCOORD01")
     var SHADER_LOC_VERTEX_TEXCOORD01:UInt;
     @:native("SHADER_LOC_VERTEX_TEXCOORD02")
@@ -1055,8 +1060,8 @@ extern enum abstract ShaderLocationIndex(UInt)
     var SHADER_LOC_MAP_NORMAL:UInt;
     @:native("SHADER_LOC_MAP_ROUGHNESS")
     var SHADER_LOC_MAP_ROUGHNESS:UInt;
-    @:native("SHADER_LOC_MAP_OCCULSION")
-    var SHADER_LOC_MAP_OCCULSION:UInt;
+    @:native("SHADER_LOC_MAP_OCCLUSION")
+    var SHADER_LOC_MAP_OCCLUSION:UInt;
     @:native("SHADER_LOC_MAP_EMISSION")
     var SHADER_LOC_MAP_EMISSION:UInt;
     @:native("SHADER_LOC_MAP_HEIGHT")
@@ -1271,6 +1276,8 @@ extern enum abstract NPatchLayout(UInt)
 @:buildXml("<include name='${haxelib:hxRaylib}/build_files/mac.xml'/>")
 #elseif linux
 @:buildXml("<include name='${haxelib:hxRaylib}/build_files/linux.xml'/>")
+#elseif wasm
+@:buildXml("<include name='${haxelib:hxRaylib}/build_files/web.xml'/>")
 #else
 @:buildXml("<include name='${haxelib:hxRaylib}/build_files/windows.xml'/>")
 #end
@@ -1292,7 +1299,7 @@ extern class Raylib
     @:native("IsWindowFocused") static function IsWindowFocused():Bool;
     @:native("IsWindowResized") static function IsWindowResized():Bool;
     @:native("IsWindowState") static function IsWindowState(flag:UInt):Bool;
-    @:native("SetWindowState") static function SetWindowFlag(flag:UInt):Void;
+    @:native("SetWindowState") static function SetWindowState(flag:UInt):Void;
     @:native("ClearWindowState") static function ClearWindowState(flag:UInt):Void;
     @:native("ToggleFullscreen") static function ToggleFullscreen():Void;
     @:native("MaximizeWindow") static function MaximizeWindow():Void;
@@ -1303,19 +1310,19 @@ extern class Raylib
     @:native("SetWindowPosition") static function SetWindowPosition(x:Int, y:Int):Void;
     @:native("SetWindowMonitor") static function SetWindowMonitor(monitor:Int):Void;
     @:native("SetWindowMinSize") static function SetWindowMinSize(width:Int, height:Int):Void;
-    @:native("SetWindowSize") static function SetWindowsize(width:Int, height:Int):Void;
+    @:native("SetWindowSize") static function SetWindowSize(width:Int, height:Int):Void;
     @:native("GetWindowHandle") static function GetWindowHandle():Star<Void>;
     @:native("GetScreenWidth") static function GetScreenWidth():Int;
     @:native("GetScreenHeight") static function GetScreenHeight():Int;
     @:native("GetMonitorCount") static function GetMonitorCount():Int;
     @:native("GetCurrentMonitor") static function GetCurrentMonitor():Int;
-    @:native("GetMonitorPosition") static function GetMoniorPosition(monitor:Int):Vector2;
+    @:native("GetMonitorPosition") static function GetMonitorPosition(monitor:Int):Vector2;
     @:native("GetMonitorWidth") static function GetMonitorWidth(monitor:Int):Int;
     @:native("GetMonitorHeight") static function GetMonitorHeight(monitor:Int):Int;
     @:native("GetMonitorPhysicalWidth") static function GetMonitorPhysicalWidth(monitor:Int):Int;
     @:native("GetMonitorPhysicalHeight") static function GetMonitorPhysicalHeight(monitor:Int):Int;
     @:native("GetMonitorRefershRate") static function GetMonitorRefershRate(monitor:Int):Int;
-    @:native("GetWindowPosition") static function GetWndowPosition():Vector2;
+    @:native("GetWindowPosition") static function GetWindowPosition():Vector2;
     @:native("GetWindowScaleDPI") static function GetWindowScaleDPI():Vector2;
     @:native("GetMonitorName") static function GetMonitorName(monitor:Int):ConstCharStar;
     @:native("SetClipboardText") static function SetClipboardText(text:ConstCharStar):Void;
@@ -1325,7 +1332,7 @@ extern class Raylib
     // NOTE: Those functions are intended for advance users that want full control over the frame processing
     // By default EndDrawing() does this job: draws everything + SwapScreenBuffer() + manage frame timming + PollInputEvents()
     // To avoid that behaviour and control frame processes manually, enable in config.h: SUPPORT_CUSTOM_FRAME_CONTROL
-    @:native("InitTimer") static function InitTime():Void;
+    @:native("InitTimer") static function InitTimer():Void;
     @:native("WaitTime") static function WaitTime(ms:Float):Void;
     @:native("SwapScreenBuffer") static function SwapScreenBuffer():Void;
     @:native("PollInputEvents") static function PollInputEvents():Void;
@@ -1418,10 +1425,10 @@ extern class Raylib
     @:native("GetDirectoryFiles") static function GetDirectoryFiles(dirPath:ConstCharStar, count:Star<Int>):Star<ConstCharStar>;
     @:native("ClearDirectoryFiles") static function ClearDirectoryFiles():Void;
     @:native("ChangeDirectory") static function ChangeDirectory(dir:ConstCharStar):Bool;
-    @:native("IsFileDropped") static function IsFiledDropped():Bool;
+    @:native("IsFileDropped") static function IsFileDropped():Bool;
     @:native("GetDroppedFiles") static function GetDroppedFiles(count:Star<Int>):Star<ConstCharStar>;
     @:native("ClearDroppedFiles") static function ClearDroppedFiles():Void;
-    @:native("GetFileModTime") static function GetFileModeTime(fileName:ConstCharStar):Float;
+    @:native("GetFileModTime") static function GetFileModTime(fileName:ConstCharStar):Float;
 
     // Persistent storage management
     @:native("SaveStorageValue") static function SaveStorageValue(postition:UInt, value:Int):Bool;
@@ -1443,7 +1450,7 @@ extern class Raylib
     @:native("IsGamepadName") static function IsGamepadName(gamepad:Int, name:ConstCharStar):Bool;
     @:native("GetGamepadName") static function GetGamepadName(gamepad:Int):ConstCharStar;
     @:native("IsGamepadButtonPressed") static function IsGamepadButtonPressed(gamepad:Int, button:Int):Bool;
-    @:native("IsGamepadButtonDown") static function IsGamepadButtonDow(gamepad:Int, button:Int):Bool;
+    @:native("IsGamepadButtonDown") static function IsGamepadButtonDown(gamepad:Int, button:Int):Bool;
     @:native("IsGamepadButtonReleased") static function IsGamepadButtonReleased(gamepad:Int, button:Int):Bool;
     @:native("IsGamepadButtonUp") static function IsGamepadButtonUp(gamepad:Int, button:Int):Bool;
     @:native("GetGamepadButtonPressed") static function GetGamepadButtonPressed():Int;
@@ -1458,7 +1465,7 @@ extern class Raylib
     @:native("IsMouseButtonUp") static function IsMouseButtonUp(buttton:Int):Bool;
     @:native("GetMouseX") static function GetMouseX():Int;
     @:native("GetMouseY") static function GetMouseY():Int;
-    @:native("GetMousePosition") static function GetMousePositiin():Vector2;
+    @:native("GetMousePosition") static function GetMousePosition():Vector2;
     @:native("GetMouseDelta") static function GetMouseDelta():Vector2;
     @:native("SetMousePosition") static function SetMousePosition(x:Int, y:Int):Void;
     @:native("SetMouseOffset") static function SetMouseOffset(offsetX:Int, offsetY:Int):Void;
@@ -1500,7 +1507,7 @@ extern class Raylib
     @:native("DrawPixelV") static function DrawPixelV(position:Vector2, color:Color):Void;
     @:native("DrawLine") static function DrawLine(startPosX:Int, startPosY:Int, endPosX:Int, endPosY:Int, color:Color):Void;
     @:native("DrawLineV") static function DrawLineV(startPos:Vector2, endPos:Vector2, color:Color):Void;
-    @:native("DrawLineEx") static function DrawLienEx(startPos:Vector2, endPos:Vector2, thick:Float, color:Color):Void;
+    @:native("DrawLineEx") static function DrawLineEx(startPos:Vector2, endPos:Vector2, thick:Float, color:Color):Void;
     @:native("DrawLineBezier") static function DrawLineBezier(startPos:Vector2, endPos:Vector2, thick:Float, color:Color):Void;
     @:native("DrawLineBezierQuad") static function DrawLineBezierQuad(startPos:Vector2, endPos:Vector2, controlPos:Vector2, thick:Float, color:Color):Void;
     @:native("DrawLineStrip") static function DrawLineStrip(points:Star<Vector2>, pointsCount:Int, color:Color):Void;
@@ -1540,7 +1547,7 @@ extern class Raylib
     @:native("CheckCollisionLines") static function CheckCollisionLines(startPos1:Vector2, endPos1:Vector2, startPos2:Vector2, endPos2:Vector2,
         collisionPoint:Star<Vector2>):Bool;
     @:native("CheckCollisionPointLine") static function CheckCollisionPointLine(point:Vector2, p1:Vector2, p2:Vector2, threshold:Int):Bool;
-    @:native("CheckCollisionRec") static function GetCollisionRec(rec1:Rectangle, rec2:Rectangle):Rectangle;
+    @:native("GetCollisionRec") static function GetCollisionRec(rec1:Rectangle, rec2:Rectangle):Rectangle;
 
     //------------------------------------------------------------------------------------
     // Textures module
@@ -1637,7 +1644,7 @@ extern class Raylib
     @:native("DrawTexture") static function DrawTexture(texture:Texture2D, posX:Int, posy:Int, tint:Color):Void;
     @:native("DrawTextureV") static function DrawTextureV(texture:Texture2D, position:Vector2, tint:Color):Void;
     @:native("DrawTextureEx") static function DrawTextureEx(texture:Texture2D, position:Vector2, rotation:Float, scale:Float, tint:Color):Void;
-    @:native("DrawTextureRec") static function DrawTextureRec(texture:Texture2D, source:Rectangle, dest:Rectangle, tint:Color):Void;
+    @:native("DrawTextureRec") static function DrawTextureRec(texture:Texture2D, source:Rectangle, position:Vector2, tint:Color):Void;
     @:native("DrawTextureQuad") static function DrawTextureQuad(texture:Texture2D, tiling:Vector2, offset:Vector2, quad:Rectangle, tint:Color):Void;
     @:native("DrawTextureTiled") static function DrawTextureTiled(texture:Texture2D, source:Rectangle, dest:Rectangle, origin:Vector2, rotation:Float,
         scale:Float, tint:Color):Void;

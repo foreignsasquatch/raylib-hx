@@ -1,4 +1,4 @@
-Copyright (c) 2021 Ratul Krisna (@ForeignSasquatch)
+Copyright (c) 2021-2022 Ratul Krisna (@ForeignSasquatch)
 
 This software is provided "as-is", without any express or implied warranty. In no event 
 will the authors be held liable for any damages arising from the use of this software.
