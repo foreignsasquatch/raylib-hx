@@ -84,7 +84,7 @@ extern class Vector2
 
     static inline function create(x:Float, y:Float):Vector2
     {
-        return untyped __cpp__("{ (float){0}, (float){1} }", x, y);
+        return untyped __cpp__("(Vector2){ {0}, {1} }", x, y);
     }
 }
 
@@ -101,7 +101,7 @@ extern class Vector3
 
     static inline function create(x:Float, y:Float, z:Float):Vector3
     {
-        return untyped __cpp__("{ (float){0}, (float){1}, (float){2} }", x, y, z);
+        return untyped __cpp__("(Vector3){ {0}, {1}, {2} }", x, y, z);
     }
 }
 
@@ -160,7 +160,7 @@ extern class Color
 
     public static inline function create(r:cpp.UInt8, g:cpp.UInt8, b:cpp.UInt8, a:cpp.UInt8):Color
     {
-        return untyped __cpp__("{ (unsigned char){0}, (unsigned char){1}, (unsigned char){2}, (unsigned char){3} }", r, g, b, a);
+        return untyped __cpp__("(Color){ {0}, {1}, {2}, {3} }", r, g, b, a);
     }
 }
 
@@ -178,7 +178,7 @@ extern class Rectangle
 
     static inline function create(x:Float, y:Float, w:Float, h:Float):Rectangle
     {
-        return untyped __cpp__("{ (float){0}, (float){1}, (float){2}, (float){3} }", x, y, w, h);
+        return untyped __cpp__("(Rectangle){ {0}, {1}, {2}, {3} }", x, y, w, h);
     }
 }
 
@@ -310,7 +310,7 @@ extern class Camera3D
 
     static inline function create():Camera3D
     {
-        return untyped __cpp__("{ 0 }");
+        return untyped __cpp__("(Camera){ 0 }");
     }
 }
 
@@ -330,7 +330,7 @@ extern class Camera2D
 
     static inline function create():Camera2D
     {
-        return untyped __cpp__("{ 0 }");
+        return untyped __cpp__("(Camera){ 0 }");
     }
 }
 
@@ -445,7 +445,7 @@ extern class Ray
 
     static inline function create():Ray
     {
-        return untyped __cpp__("{ 0 }");
+        return untyped __cpp__("(Ray){ 0 }");
     }
 }
 
@@ -461,7 +461,7 @@ extern class RayCollision
 
     static inline function create():RayCollision
     {
-        return untyped __cpp__("{ 0 }");
+        return untyped __cpp__("(Ray){ 0 }");
     }
 }
 
@@ -475,7 +475,7 @@ extern class BoundingBox
 
     static inline function create(min:Vector3, max:Vector3):BoundingBox
     {
-        return untyped __cpp__("{ {0}, {1} }", min, max);
+        return untyped __cpp__("(BoundingBox){ {0}, {1} }", min, max);
     }
 }
 
