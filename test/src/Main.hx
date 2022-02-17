@@ -1,6 +1,8 @@
+import Raylib.Rectangle;
 import Raylib.Texture;
 import Raylib.*;
 import Raylib.Colors.*;
+import Raygui;
 
 class Main
 {
@@ -14,6 +16,7 @@ class Main
         {
             BeginDrawing();
                 ClearBackground(RAYWHITE);
+                Raygui.GuiWindowBox(Rectangle.create(0, 0, 200, 200), "Test");
                 DrawTexture(texture, 100, 100, WHITE);
             EndDrawing();
         }

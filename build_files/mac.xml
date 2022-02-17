@@ -18,6 +18,7 @@
             <file name="${raylib_folder}/rtextures.c" />
             <file name="${raylib_folder}/rtext.c" />
             <file name="${raylib_folder}/rmodels.c" />
+            <file name="${raylib_folder}/raygui.c" />
             
             <file name="${glfw_folder}/src/init.c" />
             <file name="${glfw_folder}/src/window.c" />
