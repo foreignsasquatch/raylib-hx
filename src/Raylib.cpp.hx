@@ -1278,6 +1278,8 @@ extern enum abstract NPatchLayout(UInt)
 @:buildXml("<include name='${haxelib:hxRaylib}/build_files/linux.xml'/>")
 #elseif wasm
 @:buildXml("<include name='${haxelib:hxRaylib}/build_files/web.xml'/>")
+#elseif windows_gcc
+@:buildXml("<include name='${haxelib:hxRaylib}/build_files/windows_gcc.xml'/>")
 #else
 @:buildXml("<include name='${haxelib:hxRaylib}/build_files/windows.xml'/>")
 #end

@@ -49,11 +49,11 @@ extern class Raygui
     @:native("GuiGetFont") public static function GuiGetFont():Font;
     
     @:native("GuiSetStyle") public static function GuiSetStyle(control:Int, property:Int, value:Int):Void;
-    @:native("GuiGetStyle") public static function GuiGetStyle(control:Int, property:Int);
+    @:native("GuiGetStyle") public static function GuiGetStyle(control:Int, property:Int):Void;
 
     @:native("GuiWindowBox") public static function GuiWindowBox(bounds:Rectangle, title:ConstCharStar):Bool;
     @:native("GuiGroupBox") public static function GuiGroupBox(bounds:Rectangle, text:ConstCharStar):Void;
     @:native("GuiLine") public static function GuiLine(bounds:Rectangle, text:ConstCharStar):Void;
     @:native("GuiPanel") public static function GuiPanel(bounds:Rectangle):Void;
-    @:native("GuiScrollPanel") public static function GuiScrollPanel(bounds:Rectangle, content:Rectangle, scroll:cpp.Pointer<Vector2>);
+    @:native("GuiScrollPanel") public static function GuiScrollPanel(bounds:Rectangle, content:Rectangle, scroll:cpp.Pointer<Vector2>):Void;
 }
