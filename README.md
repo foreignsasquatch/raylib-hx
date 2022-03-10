@@ -4,6 +4,8 @@
 
 [Haxe](https://haxe.org/) bindings for [raylib](https://raylib.com), a simple and easy-to-use library to learn videogame programming.
 
+> Check out the docs folder for info on how to use
+
 Requirements
 -------------
 - Haxe 4.0.0 or above
