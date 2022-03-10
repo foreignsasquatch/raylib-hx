@@ -25,6 +25,23 @@
  *     3. This notice may not be removed or altered from any source distribution.
  *
  */
+ abstract ExtDynamic<T>(Dynamic) from T to T {}
+
+@:structInit
+class Color {
+    public var r:Int;
+    public var g:Int;
+    public var b:Int;
+    public var a:Int;
+
+    public function new(r:Int, g:Int, b:Int, a:Int) {
+        this.r = r;
+        this.g = g;
+        this.b = b;
+        this.a = a;
+    }
+}
+
 typedef Texture =  {
     id:Int,
     width:Int,
@@ -59,6 +76,9 @@ extern class Raylib {
     static function getMonitorWidth(m:Int):Int;
     static function getMonitorHeight(m:Int):Int;
     static function setTargetFPS(f:Int):Void;
-    static function loadTexture(f:String):Dynamic;
-    static function drawTexture(t:Dynamic, x:Int, y:Int, c:Dynamic):Void;
+    static function getFrameTime():hl.F32;
+    static function drawFPS(x:Int, y:Int):Void;
+    static function loadTexture(f:String):ExtDynamic<Texture>;
+    static function drawTexture(t:ExtDynamic<Texture>, x:Int, y:Int, c:Dynamic):Void;
+    static function unloadTexture(t:ExtDynamic<Texture>):Void;
 }

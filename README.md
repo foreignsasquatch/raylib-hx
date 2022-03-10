@@ -14,7 +14,7 @@ Requirements
 
 Installation
 -------------
-- `git clone https://gitlab.com/ForeignSasquatch/raylib-hx --recurse-submodules -j8`
+- `git clone https://github.com/ForeignSasquatch/raylib-hx --recurse-submodules -j8`
 - `haxelib dev raylib-hx raylib-hx`
 
 Thanks to:

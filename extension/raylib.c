@@ -9,6 +9,15 @@
 #include "hl.h"
 #include "raylib.h"
 
+typedef struct hl_texture {
+    hl_type *t;
+    int id;
+    int width;
+    int height;
+    int mipmaps;
+    int format;
+} hl_texture;
+
 // Conversion functions
 Color col_from_dyn(vdynamic *c) {
     Color color;
@@ -29,7 +38,6 @@ Texture tex_from_dyn(vdynamic* t) {
     return tex;
 }
 
-// c -> haxe
 HL_PRIM void HL_NAME(init_window)(int width, int height, vstring* title) {
     InitWindow(width, height, hl_to_utf8(title->bytes));
 }
@@ -78,6 +86,14 @@ HL_PRIM void HL_NAME(set_target_fps)(int f) {
     SetTargetFPS(f);
 }
 
+HL_PRIM float HL_NAME(get_frame_time)() {
+    return GetFrameTime();
+}
+
+HL_PRIM void HL_NAME(draw_fps)(int x, int y) {
+    DrawFPS(x, y);
+}
+
 HL_PRIM vdynamic* HL_NAME(load_texture)(vstring* f) {
     Texture tx = LoadTexture(hl_to_utf8(f->bytes));
     vdynamic* obj = (vdynamic*)hl_alloc_dynobj();
@@ -93,7 +109,10 @@ HL_PRIM void HL_NAME(draw_texture)(vdynamic* t, int x, int y, vdynamic* c) {
     DrawTexture(tex_from_dyn(t), x, y, col_from_dyn(c));
 }
 
-// Defintions
+HL_PRIM void HL_NAME(unload_texture)(vdynamic* t) {
+    UnloadTexture(tex_from_dyn(t));
+}
+
 DEFINE_PRIM(_VOID, init_window, _I32 _I32 _DYN);
 DEFINE_PRIM(_VOID, close_window, _NO_ARG);
 DEFINE_PRIM(_BOOL, window_should_close, _NO_ARG);
@@ -106,5 +125,8 @@ DEFINE_PRIM(_I32, get_screen_height, _NO_ARG);
 DEFINE_PRIM(_I32, get_monitor_width, _I32);
 DEFINE_PRIM(_I32, get_monitor_height, _I32);
 DEFINE_PRIM(_VOID, set_target_fps, _I32);
+DEFINE_PRIM(_F32, get_frame_time, _NO_ARG);
+DEFINE_PRIM(_VOID, draw_fps, _I32 _I32);
 DEFINE_PRIM(_DYN, load_texture, _STRING);
 DEFINE_PRIM(_VOID, draw_texture, _DYN _I32 _I32 _DYN);
+DEFINE_PRIM(_VOID, unload_texture, _DYN);
