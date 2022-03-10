@@ -1,5 +1,0 @@
--cp src
--lib hxRaylib
--main Main
--cpp bin
--debug

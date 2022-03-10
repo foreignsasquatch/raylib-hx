@@ -1,9 +1,0 @@
-{
-    "lineEnds": {
-      "leftCurly": "both",
-      "emptyCurly": "break"
-    },
-    "indentation": {
-    "character": "    "
-    }
-}

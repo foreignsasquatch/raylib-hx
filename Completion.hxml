@@ -1,3 +1,4 @@
 -cp src
--cpp temp
--main Main
+-lib raylib-hx
+# -cpp non-existent-dir
+-hl non-existent-dir

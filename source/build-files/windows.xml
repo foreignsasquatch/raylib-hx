@@ -1,0 +1,53 @@
+<xml>
+    <set name="raylib_folder" value="${haxelib:raylib-hx}/source/lib/src" />
+    <set name="glfw_folder" value="${haxelib:raylib-hx}/source/lib/src/external/glfw" />
+
+    <echo value="Using raylib from: ${raylib_folder}" />
+    <echo value="Using glfw from: ${glfw_folder}" />
+    
+    <section>
+        <files id="haxe">
+            <lib name="-lraylib" />
+
+            <cache value="true" project="raylib-hx" asLibrary="true" />
+
+            <compilerflag value="-I${glfw_folder}/include" />
+            <compilerflag value="-I${raylib_folder}" />
+            <compilerflag value="-I${raylib_folder}/extras" />
+                        
+            <file name="${raylib_folder}/rcore.c" />
+            <file name="${raylib_folder}/utils.c" />
+            <file name="${raylib_folder}/rshapes.c" />
+            <file name="${raylib_folder}/rtextures.c" />
+            <file name="${raylib_folder}/rtext.c" />
+            <file name="${raylib_folder}/rmodels.c" />
+
+            <file name="${glfw_folder}/src/init.c" />
+            <file name="${glfw_folder}/src/window.c" />
+            <file name="${glfw_folder}/src/input.c" />
+            <file name="${glfw_folder}/src/monitor.c" />
+            <file name="${glfw_folder}/src/context.c" />
+            <file name="${glfw_folder}/src/wgl_context.c" />
+            <file name="${glfw_folder}/src/egl_context.c" />
+            <file name="${glfw_folder}/src/osmesa_context.c" />
+            <file name="${glfw_folder}/src/vulkan.c" />
+
+            <!-- WINDOWS SPECIFICS -->
+            <compilerflag value="-DPLATFORM_DESKTOP" />
+            <compilerflag value="-D_GLFW_WIN32" />
+            <file name="${glfw_folder}/src/win32_init.c" />
+            <file name="${glfw_folder}/src/win32_monitor.c" />
+            <file name="${glfw_folder}/src/win32_joystick.c" />
+            <file name="${glfw_folder}/src/win32_window.c" />
+            <file name="${glfw_folder}/src/win32_thread.c" />
+            <file name="${glfw_folder}/src/win32_time.c" />
+        </files>
+        
+        <!-- WINDOWS SPECIFICS -->
+        <target id="haxe" tool="linker" toolid="exe" if="windows">
+            <lib name="Winmm.lib" />
+            <lib name="Gdi32.lib" />
+            <lib name="Shell32.lib" />
+        </target>
+    </section>
+</xml>
