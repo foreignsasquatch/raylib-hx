@@ -6,8 +6,8 @@
 
 #define HL_NAME(n) raylib_##n
 
-#include "hl.h"
-#include "raylib.h"
+#include "include/hl.h"
+#include "include/raylib.h"
 
 typedef struct hl_texture {
     hl_type *t;
@@ -86,6 +86,10 @@ HL_PRIM void HL_NAME(set_target_fps)(int f) {
     SetTargetFPS(f);
 }
 
+HL_PRIM void HL_NAME(set_exit_key)(int k) {
+    SetExitKey(k);
+}
+
 HL_PRIM float HL_NAME(get_frame_time)() {
     return GetFrameTime();
 }
@@ -125,6 +129,7 @@ DEFINE_PRIM(_I32, get_screen_height, _NO_ARG);
 DEFINE_PRIM(_I32, get_monitor_width, _I32);
 DEFINE_PRIM(_I32, get_monitor_height, _I32);
 DEFINE_PRIM(_VOID, set_target_fps, _I32);
+DEFINE_PRIM(_VOID, set_exit_key, _I32);
 DEFINE_PRIM(_F32, get_frame_time, _NO_ARG);
 DEFINE_PRIM(_VOID, draw_fps, _I32 _I32);
 DEFINE_PRIM(_DYN, load_texture, _STRING);

@@ -24,8 +24,14 @@
  *
  *     3. This notice may not be removed or altered from any source distribution.
  *
- */
- abstract ExtDynamic<T>(Dynamic) from T to T {}
+*/
+abstract ExtDynamic<T>(Dynamic) from T to T {}
+
+class Colors {
+    public static var SASQUATCH:Color = {r: 33, g: 33, b: 33, a: 33};
+    public static var WHITE:Color = {r: 255, g: 255, b: 255, a: 255};
+    public static var BLACK:Color = {r: 0, g: 0, b: 0, a: 0};
+}
 
 @:structInit
 class Color {
@@ -39,6 +45,28 @@ class Color {
         this.g = g;
         this.b = b;
         this.a = a;
+    }
+
+    public static function create(r:Int, g:Int, b:Int, a:Int):Color {
+        return new Color(r, g, b, a);
+    }
+}
+
+class Rectangle {
+    public var x:Float;
+    public var y:Float;
+    public var width:Float;
+    public var height:Float;
+
+    public function new(x:Float, y:Float, width:Float, height:Float) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+
+    public static function create(x:Float, y:Float, width:Float, height:Float):Rectangle {
+        return new Rectangle(x, y, width, height);
     }
 }
 
@@ -64,21 +92,22 @@ enum abstract TraceLogLevel(Int)
 
 @:hlNative("raylib")
 extern class Raylib {
-    static function initWindow(width:Int, height:Int, title:Dynamic):Void;
+    static function initWindow(width:Int, height:Int, title:ExtDynamic<String>):Void;
     static function closeWindow():Void;
     static function windowShouldClose():Bool;
     static function beginDrawing():Void;
     static function endDrawing():Void;
-    static function clearBackground(c:Dynamic):Void;
+    static function clearBackground(c:ExtDynamic<Color>):Void;
     static function setTraceLogLevel(l:Int):Void;
     static function getScreenWidth():Int;
     static function getScreenHeight():Int;
     static function getMonitorWidth(m:Int):Int;
     static function getMonitorHeight(m:Int):Int;
     static function setTargetFPS(f:Int):Void;
+    static function setExitKey(k:Int):Void;
     static function getFrameTime():hl.F32;
     static function drawFPS(x:Int, y:Int):Void;
     static function loadTexture(f:String):ExtDynamic<Texture>;
-    static function drawTexture(t:ExtDynamic<Texture>, x:Int, y:Int, c:Dynamic):Void;
+    static function drawTexture(t:ExtDynamic<Texture>, x:Int, y:Int, c:ExtDynamic<Color>):Void;
     static function unloadTexture(t:ExtDynamic<Texture>):Void;
 }

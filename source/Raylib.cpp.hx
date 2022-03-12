@@ -160,8 +160,8 @@ extern class Rectangle {
     var width:Float; // Rectangle width
     var height:Float; // Rectangle height
 
-    static inline function create(x:Float, y:Float, w:Float, h:Float):Rectangle {
-        return untyped __cpp__("{ (float){0}, (float){1}, (float){2}, (float){3} }", x, y, w, h);
+    static inline function create(x:Float, y:Float, width:Float, height:Float):Rectangle {
+        return untyped __cpp__("{ (float){0}, (float){1}, (float){2}, (float){3} }", x, y, width, height);
     }
 }
 

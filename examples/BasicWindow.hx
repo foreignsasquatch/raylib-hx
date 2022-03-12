@@ -1,3 +1,5 @@
+import cpp.Pointer;
+import Raylib.Rectangle;
 import Raylib.*;
 
 class BasicWindow
@@ -10,7 +12,7 @@ class BasicWindow
         while(!windowShouldClose())
         {
             beginDrawing();
-                clearBackground({r: 255, g: 255, b: 255, a: 255});
+                clearBackground(Raylib.Colors.WHITE);
             endDrawing();
         }
 
