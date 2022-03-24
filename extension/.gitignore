@@ -2,3 +2,4 @@
 x64/
 *.vcxproj.user
 *.hdll
+build.bat

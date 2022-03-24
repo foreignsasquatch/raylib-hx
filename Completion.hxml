@@ -1,4 +1,4 @@
 -cp src
 -lib raylib-hx
--cpp non-existent-dir
-# -hl non-existent-dir
+# -cpp non-existent-dir
+-hl non-existent-dir

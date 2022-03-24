@@ -7,7 +7,7 @@
  *   hxRaylib is licensed under an unmodified zlib/libpng license, which is an OSI-certified,
  *   BSD-like license that allows static linking with closed source software:
  *
- *   Copyright (c) 2021 Ratul Krisna (@ForeignSasquatch)
+ *   Copyright (c) 2021-2022 Ratul Krisna (@ForeignSasquatch)
  *
  *   This software is provided "as-is", without any express or implied warranty. In no event
  *   will the authors be held liable for any damages arising from the use of this software.
@@ -30,7 +30,7 @@ abstract ExtDynamic<T>(Dynamic) from T to T {}
 class Colors {
     public static var SASQUATCH:Color = {r: 33, g: 33, b: 33, a: 33};
     public static var WHITE:Color = {r: 255, g: 255, b: 255, a: 255};
-    public static var BLACK:Color = {r: 0, g: 0, b: 0, a: 0};
+    public static var BLACK:Color = {r: 0, g: 0, b: 0, a: 255};
 }
 
 @:structInit
@@ -52,6 +52,7 @@ class Color {
     }
 }
 
+@:structInit
 class Rectangle {
     public var x:Float;
     public var y:Float;
@@ -78,8 +79,13 @@ typedef Texture =  {
     format:Int,
 }
 
-enum abstract TraceLogLevel(Int)
-{
+@:structInit
+class Vector2 {
+    public var x:hl.F32;
+    public var y:hl.F32;
+}
+
+enum abstract TraceLogLevel(Int) {
     public static var ALL:Int = 0;
     public static var TRACE:Int = 1;
     public static var DEBUG:Int = 2;
@@ -95,19 +101,29 @@ extern class Raylib {
     static function initWindow(width:Int, height:Int, title:ExtDynamic<String>):Void;
     static function closeWindow():Void;
     static function windowShouldClose():Bool;
-    static function beginDrawing():Void;
-    static function endDrawing():Void;
-    static function clearBackground(c:ExtDynamic<Color>):Void;
-    static function setTraceLogLevel(l:Int):Void;
     static function getScreenWidth():Int;
     static function getScreenHeight():Int;
     static function getMonitorWidth(m:Int):Int;
     static function getMonitorHeight(m:Int):Int;
+
+    static function beginDrawing():Void;
+    static function endDrawing():Void;
+    static function clearBackground(c:ExtDynamic<Color>):Void;
+
+    static function setTraceLogLevel(l:Int):Void;
+
     static function setTargetFPS(f:Int):Void;
-    static function setExitKey(k:Int):Void;
     static function getFrameTime():hl.F32;
     static function drawFPS(x:Int, y:Int):Void;
+
+    static function setExitKey(k:Int):Void;
+
     static function loadTexture(f:String):ExtDynamic<Texture>;
     static function drawTexture(t:ExtDynamic<Texture>, x:Int, y:Int, c:ExtDynamic<Color>):Void;
     static function unloadTexture(t:ExtDynamic<Texture>):Void;
+
+    static function drawRectangle(x:Int, y:Int, w:Int, h:Int, c:ExtDynamic<Color>):Void;
+    static function drawRectangleRec(r:ExtDynamic<Rectangle>, c:ExtDynamic<Color>):Void;
+
+    static function drawText(t:String, x:Int, y:Int, f:Int, c:ExtDynamic<Color>):Void;
 }
