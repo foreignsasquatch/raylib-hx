@@ -1,4 +1,3 @@
-import cpp.Pointer;
 import Raylib.Rectangle;
 import Raylib.*;
 
