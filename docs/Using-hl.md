@@ -1,6 +1,6 @@
 # Using the hashlink bindings
 ## On linux
-- Compile and install raylib in the `source/lib` directory and run the commands:
+- Compile and install raylib in the `source/lib/src` directory by using these commands:
 `make PLATFORM=PLATFORM_DESKTOP RAYLIB_LIBTYPE=SHARED` and `sudo make install RAYLIB_LIBTYPE=SHARED`
 - Next run the `linux.sh` script in `extension` and your good to go :D
 
