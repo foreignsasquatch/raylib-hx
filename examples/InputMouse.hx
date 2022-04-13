@@ -1,8 +1,8 @@
-import Raylib.MouseButton;
-import Raylib.Color;
-import Raylib.Vector2;
-import Raylib.Colors;
-import Raylib.*;
+import Rl.MouseButton;
+import Rl.Color;
+import Rl.Vector2;
+import Rl.Colors;
+import Rl.*;
 
 class Main
 {
@@ -10,7 +10,7 @@ class Main
     {
         var screenWidth = 800;
         var screenHeight = 450;
-        initWindow(screenWidth, screenHeight, "hxRaylib [core] example - keyboard input");
+        initWindow(screenWidth, screenHeight, "raylib-hx [core] example - keyboard input");
         setTargetFPS(60);
 
         var ballPosition:Vector2 = Vector2.create(-100.0, -100.0);

@@ -1,17 +1,17 @@
-import Raylib.Rectangle;
-import Raylib.*;
+import Rl.Rectangle;
+import Rl.*;
 
 class BasicWindow
 {
     static function main()
     {
-        initWindow(800, 450, "hxRaylib [core] example - basic window");
+        initWindow(800, 450, "raylib-hx [core] example - basic window");
         setTargetFPS(60);
 
         while(!windowShouldClose())
         {
             beginDrawing();
-                clearBackground(Raylib.Colors.WHITE);
+                clearBackground(Rl.Colors.WHITE);
             endDrawing();
         }
 

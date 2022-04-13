@@ -1,8 +1,8 @@
-import Raylib.CameraProjection;
-import Raylib.Vector3;
-import Raylib.Camera3D;
-import Raylib.Colors;
-import Raylib.*;
+import Rl.CameraProjection;
+import Rl.Vector3;
+import Rl.Camera3D;
+import Rl.Colors;
+import Rl.*;
 
 class Main
 {
@@ -10,7 +10,7 @@ class Main
     {
         var screenWidth = 800;
         var screenHeight = 450;
-        initWindow(screenWidth, screenHeight, "hxRaylib [core] example -  3d camera mode");
+        initWindow(screenWidth, screenHeight, "raylib-hx [core] example -  3d camera mode");
         setTargetFPS(60);
 
         var camera = Camera3D.create();

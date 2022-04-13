@@ -1,16 +1,16 @@
-import Raylib.KeyboardKey;
-import Raylib.CameraMode;
-import Raylib.CameraProjection;
-import Raylib.Vector3;
-import Raylib.Camera3D;
-import Raylib.Colors;
-import Raylib.*;
+import Rl.KeyboardKey;
+import Rl.CameraMode;
+import Rl.CameraProjection;
+import Rl.Vector3;
+import Rl.Camera3D;
+import Rl.Colors;
+import Rl.*;
 
 class Main {
     static function main() {
         var screenWidth = 800;
         var screenHeight = 450;
-        initWindow(screenWidth, screenHeight, "hxRaylib [core] example -  3d camera free");
+        initWindow(screenWidth, screenHeight, "raylib-hx [core] example -  3d camera free");
         setTargetFPS(60);
 
         var camera = Camera3D.create();

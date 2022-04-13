@@ -1210,7 +1210,7 @@ extern enum abstract NPatchLayout(UInt) {
 @:buildXml("<include name='${haxelib:raylib-hx}/source/build-files/windows.xml'/>")
 #end
 @:include("raylib.h")
-extern class Raylib {
+extern class Rl {
     //------------------------------------------------------------------------------------
     // Core module
     //------------------------------------------------------------------------------------

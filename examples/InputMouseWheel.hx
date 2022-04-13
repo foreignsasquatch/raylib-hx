@@ -1,5 +1,5 @@
-import Raylib.Colors;
-import Raylib.*;
+import Rl.Colors;
+import Rl.*;
 
 class Main
 {
@@ -7,7 +7,7 @@ class Main
     {
         var screenWidth = 800;
         var screenHeight = 450;
-        initWindow(screenWidth, screenHeight, "hxRaylib [core] example - keyboard input");
+        initWindow(screenWidth, screenHeight, "raylib-hx [core] example - keyboard input");
         setTargetFPS(60);
 
         var boxPositionY = screenHeight / 2 - 40;

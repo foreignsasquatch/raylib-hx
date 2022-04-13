@@ -1,13 +1,13 @@
-import Raylib.KeyboardKey;
-import Raylib.Vector2;
-import Raylib.Colors;
-import Raylib.*;
+import Rl.KeyboardKey;
+import Rl.Vector2;
+import Rl.Colors;
+import Rl.*;
 
 class Main
 {
     static function main()
     {
-        initWindow(800, 450, "hxRaylib [core] example - keyboard input");
+        initWindow(800, 450, "raylib-hx [core] example - keyboard input");
         var ballPosition:Vector2 = Vector2.create(800/2, 450/2);
         setTargetFPS(60);
 

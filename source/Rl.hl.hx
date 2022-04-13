@@ -97,7 +97,7 @@ enum abstract TraceLogLevel(Int) {
 }
 
 @:hlNative("raylib")
-extern class Raylib {
+extern class Rl {
     static function initWindow(width:Int, height:Int, title:ExtDynamic<String>):Void;
     static function closeWindow():Void;
     static function windowShouldClose():Bool;
