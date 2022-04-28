@@ -22,3 +22,6 @@ Thanks to:
 - **[Zeta](https://github.com/Apprentice-Alchemist)**
 - **[Ian Harrigan](https://github.com/ianharrigan)**
 - **[Raysan](https://github.com/raysan5)**
+
+### Consider supporting
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/W7W77EX85)
