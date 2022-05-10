@@ -9,7 +9,7 @@
 #include "include/hl.h"
 #include "include/raylib.h"
 
-// NOTE: Exams suck
+// NOTE: Life sucks
 // NOTE: IS THIS SLOW? so many questions
 // Conversion functions
 Color col_from_dyn(vdynamic *c) {
@@ -146,6 +146,14 @@ HL_PRIM void HL_NAME(set_target_fps)(int f) {
     SetTargetFPS(f);
 }
 
+HL_PRIM bool HL_NAME(is_key_down)(int k) {
+    return IsKeyDown(k);
+}
+
+HL_PRIM bool HL_NAME(is_key_pressed)(int k) {
+    return IsKeyPressed(k);
+}
+
 HL_PRIM void HL_NAME(set_exit_key)(int k) {
     SetExitKey(k);
 }
@@ -171,6 +179,10 @@ HL_PRIM vdynamic* HL_NAME(load_texture)(vstring* f) {
 
 HL_PRIM void HL_NAME(draw_texture)(vdynamic* t, int x, int y, vdynamic* c) {
     DrawTexture(tex_from_dyn(t), x, y, col_from_dyn(c));
+}
+
+HL_PRIM void HL_NAME(draw_texture_rec)(vdynamic* t, vdynamic* s, vdynamic* p, vdynamic* c) {
+    DrawTextureRec(tex_from_dyn(t), rec_from_dyn(s), vec2_from_dyn(p), col_from_dyn(c));
 }
 
 HL_PRIM void HL_NAME(unload_texture)(vdynamic* t) {
@@ -203,6 +215,8 @@ DEFINE_PRIM(_VOID, clear_background, _DYN);
 
 DEFINE_PRIM(_VOID, set_trace_log_level, _I32);
 
+DEFINE_PRIM(_BOOL, is_key_down, _I32);
+DEFINE_PRIM(_BOOL, is_key_pressed, _I32);
 DEFINE_PRIM(_VOID, set_exit_key, _I32);
 
 DEFINE_PRIM(_VOID, set_target_fps, _I32);
@@ -211,6 +225,7 @@ DEFINE_PRIM(_VOID, draw_fps, _I32 _I32);
 
 DEFINE_PRIM(_DYN, load_texture, _STRING);
 DEFINE_PRIM(_VOID, draw_texture, _DYN _I32 _I32 _DYN);
+DEFINE_PRIM(_VOID, draw_texture_rec, _DYN _DYN _DYN _DYN);
 DEFINE_PRIM(_VOID, unload_texture, _DYN);
 
 DEFINE_PRIM(_VOID, draw_rectangle, _I32 _I32 _I32 _I32 _DYN);
