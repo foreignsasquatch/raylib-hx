@@ -25,7 +25,6 @@
  *     3. This notice may not be removed or altered from any source distribution.
  *
 */
-abstract ExtDynamic<T>(Dynamic) from T to T {}
 
 class Colors {
     public static var SASQUATCH:Color = {r: 33, g: 33, b: 33, a: 33};
@@ -33,6 +32,7 @@ class Colors {
     public static var BLACK:Color = {r: 0, g: 0, b: 0, a: 255};
 }
 
+@:keep
 @:structInit
 class Color {
     public var r:Int;
@@ -52,37 +52,46 @@ class Color {
     }
 }
 
+@:keep
 @:structInit
 class Rectangle {
-    public var x:Float;
-    public var y:Float;
-    public var width:Float;
-    public var height:Float;
+    public var x:Single;
+    public var y:Single;
+    public var width:Single;
+    public var height:Single;
 
-    public function new(x:Float, y:Float, width:Float, height:Float) {
+    public function new(x:Single, y:Single, width:Single, height:Single) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
     }
+}
 
-    public static function create(x:Float, y:Float, width:Float, height:Float):Rectangle {
-        return new Rectangle(x, y, width, height);
+@:keep
+@:structInit
+class Texture {
+    public var id:Int;
+    public var width:Int;
+    public var height:Int;
+    public var mipmaps:Int;
+    public var format:Int;
+
+    public function new(path:String) {
+        Rl.loadTexture(path, this);
     }
 }
 
-typedef Texture =  {
-    id:Int,
-    width:Int,
-    height:Int,
-    mipmaps:Int,
-    format:Int,
-}
-
+@:keep
 @:structInit
 class Vector2 {
-    public var x:hl.F32;
-    public var y:hl.F32;
+    public var x:Single;
+    public var y:Single;
+
+    public function new(x:Single, y:Single) {
+        this.x = x;
+        this.y = y;
+    }
 }
 
 enum abstract TraceLogLevel(Int) {
@@ -219,7 +228,7 @@ enum abstract Keys(Int) from Int to Int {
 
 @:hlNative("raylib")
 extern class Rl {
-    static function initWindow(width:Int, height:Int, title:ExtDynamic<String>):Void;
+    static function initWindow(width:Int, height:Int, title:String):Void;
     static function closeWindow():Void;
     static function windowShouldClose():Bool;
     static function getScreenWidth():Int;
@@ -229,25 +238,44 @@ extern class Rl {
 
     static function beginDrawing():Void;
     static function endDrawing():Void;
-    static function clearBackground(c:ExtDynamic<Color>):Void;
+    static function clearBackground(c:Color):Void;
 
     static function setTraceLogLevel(l:Int):Void;
 
     static function setTargetFPS(f:Int):Void;
-    static function getFrameTime():hl.F32;
+    static function getFrameTime():Single;
     static function drawFPS(x:Int, y:Int):Void;
 
     static function isKeyDown(k:Int):Bool;
     static function isKeyPressed(k:Int):Bool;
     static function setExitKey(k:Int):Void;
 
-    static function loadTexture(f:String):ExtDynamic<Texture>;
-    static function drawTexture(t:ExtDynamic<Texture>, x:Int, y:Int, c:ExtDynamic<Color>):Void;
-    static function drawTextureRec(t:ExtDynamic<Texture>, s:ExtDynamic<Rectangle>, p:ExtDynamic<Vector2>, c:ExtDynamic<Color>):Void;
-    static function unloadTexture(t:ExtDynamic<Texture>):Void;
+    static function loadTexture(f:String, t:Texture):Void;
+    static function drawTexture(t:Texture, x:Int, y:Int, c:Color):Void;
+    static function drawTextureRec(t:Texture, s:Rectangle, p:Vector2, c:Color):Void;
+    static function unloadTexture(t:Texture):Void;
 
-    static function drawRectangle(x:Int, y:Int, w:Int, h:Int, c:ExtDynamic<Color>):Void;
-    static function drawRectangleRec(r:ExtDynamic<Rectangle>, c:ExtDynamic<Color>):Void;
+    static function drawRectangle(x:Int, y:Int, w:Int, h:Int, c:Color):Void;
+    static function drawRectangleRec(rec:Rectangle, c:Color):Void;
 
-    static function drawText(t:String, x:Int, y:Int, f:Int, c:ExtDynamic<Color>):Void;
+    static function drawText(t:String, x:Int, y:Int, f:Int, c:Color):Void;
+
+    // Extras - not in main raylib
+    #if ldtk_haxe_api
+    // Basic ldtk layer rendering (probably should not use)
+    public inline static function drawTilemap(layer:ldtk.Layer_Tiles, tilesetTexture:Texture, tileset:ldtk.Tileset, sizeX:Int, sizeY:Int):Void {
+        for(r in 0...layer.cHei) {
+            for(c in 0...layer.cWid) {
+                if(layer.hasAnyTileAt(c, r)) {
+                    var tileAtMapPos = layer.getTileStackAt(c, r);
+                    var tilesToDraw = tileAtMapPos[0];
+                    var x = c * sizeX;
+                    var y = r * sizeY;
+
+                    Rl.drawTextureRec(tilesetTexture, new Rectangle(tileset.getAtlasX(tilesToDraw.tileId), tileset.getAtlasY(tilesToDraw.tileId), sizeX, sizeY), {x: x, y: y}, Rl.Colors.WHITE);
+                }
+            }
+        }
+    }
+    #end
 }
