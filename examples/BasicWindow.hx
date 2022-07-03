@@ -1,20 +1,17 @@
-import Rl.Rectangle;
+import Rl.Vector2;
 import Rl.*;
 
-class BasicWindow
-{
-    static function main()
-    {
+class BasicWindow {
+    static function main() {
+        var pos = Vector2.create(100, 100);
+
         initWindow(800, 450, "raylib-hx [core] example - basic window");
         setTargetFPS(60);
-        var t:Rl.Texture = new Rl.Texture("parrot.png");
+        var t:Rl.Texture = LoadTexture("parrot.png");
 
-        while(!windowShouldClose())
-        {
+        while(!windowShouldClose()) {
             beginDrawing();
-            // drawText('Hi', 0, 0, 200, Rl.Colors.WHITE);
-            drawTexture(t, 0, 0, Rl.Colors.WHITE);
-            drawRectangleRec(new Rectangle(100, 100, 20, 20), new Rl.Color(255, 0, 0, 255));
+            DrawTextureV(t, pos, Rl.Colors.WHITE);
             clearBackground(Rl.Colors.BLACK);
             endDrawing();
         }

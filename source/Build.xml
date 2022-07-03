@@ -1,0 +1,98 @@
+<xml>
+    <set name="raylib_folder" value="${haxelib:raylib-hx}/source/lib/src" />
+    <set name="glfw_folder" value="${haxelib:raylib-hx}/source/lib/src/external/glfw" />
+
+    <section>
+        <files id="haxe">
+            <compilerflag value="-I${glfw_folder}/include" />
+            <compilerflag value="-I${raylib_folder}" />
+
+            <compilerflag value="-DSUPPORT_FILEFORMAT_JPG" unless="raylib-no-jpg" />
+            <compilerflag value="-DSUPPORT_FILEFORMAT_BMP" unless="raylib-no-bmp" />
+            <compilerflag value="-DSUPPORT_FILEFORMAT_TGA" unless="raylib-no-tga" />
+            
+            <file name="${raylib_folder}/rcore.c" />
+            <file name="${raylib_folder}/utils.c" />
+            <file name="${raylib_folder}/rshapes.c" />
+            <file name="${raylib_folder}/rtextures.c" />
+            <file name="${raylib_folder}/rtext.c" />
+            <file name="${raylib_folder}/rmodels.c" />
+            
+            <file name="${glfw_folder}/src/init.c" />
+            <file name="${glfw_folder}/src/window.c" />
+            <file name="${glfw_folder}/src/input.c" />
+            <file name="${glfw_folder}/src/monitor.c" />
+            <file name="${glfw_folder}/src/context.c" />
+            <file name="${glfw_folder}/src/egl_context.c" />
+            <file name="${glfw_folder}/src/osmesa_context.c" />
+            <file name="${glfw_folder}/src/vulkan.c" />
+        </files>
+        
+        <!-- WINDOWS COMPILER -->
+        <files id="haxe" if="windows">
+            <file name="${glfw_folder}/src/wgl_context.c" />
+
+            <compilerflag value="-DPLATFORM_DESKTOP" />
+            <compilerflag value="-D_GLFW_WIN32" />
+
+            <file name="${glfw_folder}/src/win32_init.c" />
+            <file name="${glfw_folder}/src/win32_monitor.c" />
+            <file name="${glfw_folder}/src/win32_joystick.c" />
+            <file name="${glfw_folder}/src/win32_window.c" />
+            <file name="${glfw_folder}/src/win32_thread.c" />
+            <file name="${glfw_folder}/src/win32_time.c" />
+        </files>
+
+        <!-- OSX COMPILER -->
+        <files id="haxe" if="macos">
+            <file name="${glfw_folder}/src/nsgl_context.m" />
+
+            <compilerflag value="-DPLATFORM_DESKTOP" />
+            <compilerflag value="-D_GLFW_COCOA" />
+
+            <file name="${glfw_folder}/src/cocoa_init.m" />
+            <file name="${glfw_folder}/src/cocoa_monitor.m" />
+            <file name="${glfw_folder}/src/cocoa_joystick.m" />
+            <file name="${glfw_folder}/src/cocoa_window.m" />
+            <file name="${glfw_folder}/src/posix_thread.c" />
+            <file name="${glfw_folder}/src/cocoa_time.c" />
+        </files>
+
+        <!-- LINUX COMPILER -->
+        <files id="haxe" if="linux">
+            <file name="${glfw_folder}/src/xkb_unicode.c" />
+            <file name="${glfw_folder}/src/glx_context.c" />
+
+            <compilerflag value="-DPLATFORM_DESKTOP" />
+            <compilerflag value="-D_GLFW_X11" />
+
+            <file name="${glfw_folder}/src/x11_init.c" />
+            <file name="${glfw_folder}/src/x11_monitor.c" />
+            <file name="${glfw_folder}/src/linux_joystick.c" />
+            <file name="${glfw_folder}/src/x11_window.c" />
+            <file name="${glfw_folder}/src/posix_thread.c" />
+            <file name="${glfw_folder}/src/posix_time.c" />
+        </files>
+
+        <!-- WINDOWS LINKER -->
+        <target id="haxe" tool="linker" toolid="exe" if="windows">
+            <lib name="Winmm.lib" />
+            <lib name="Gdi32.lib" />
+            <lib name="Shell32.lib" />
+        </target>
+
+        <!-- OSX LINKER -->
+        <target id="haxe" tool="linker" if="macos">
+            <flag value="-framework" />
+            <flag value="IOKit" />
+            <flag value="-framework" />
+            <flag value="Cocoa" />
+            <flag value="-framework" />
+            <flag value="OpenGL" />
+        </target>
+
+        <!-- LINUX LINKER -->
+        <target id="haxe" tool="linker" if="linux">
+        </target>
+    </section> 
+</xml>
