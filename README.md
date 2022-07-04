@@ -1,3 +1,6 @@
+<p align="center">
+	<img src="logo-by-logo.png" alt="raylib-hx Logo">
+</p>
 # raylib-hx
 
 ![Stars](https://img.shields.io/github/stars/ForeignSasquatch/hxRaylib?style=flat-square) ![License](https://img.shields.io/github/license/ForeignSasquatch/hxRaylib?style=flat-square) ![Forks](https://img.shields.io/github/forks/ForeignSasquatch/hxRaylib?style=flat-square)
@@ -16,6 +19,34 @@ Installation
 -------------
 - `git clone https://github.com/ForeignSasquatch/raylib-hx --recurse-submodules -j8`
 - `haxelib dev raylib-hx raylib-hx`
+
+Usage
+-----------
+This is a basic example of the bindings which creates a window.
+In your project make a ``Build.hxml`` file with the following:
+```
+-cp [source folder]
+-cpp [output folder]
+-lib raylib-hx
+-main [Main file]
+```
+Sample code:
+```haxe
+class Main {
+  static function main() {
+    Rl.initWindow(1280, 720, "Hi");
+    
+    while(!Rl.windowShouldClose()) {
+      rl.beginDrawing();
+      rl.clearBackground(Rl.Colors.WHITE);
+      rl.endDrawing();
+    }
+    
+    Rl.closeWindow();
+  }
+}
+
+```
 
 Thanks to:
 ----------
