@@ -38,9 +38,9 @@ class Main {
     Rl.initWindow(1280, 720, "Hi");
     
     while(!Rl.windowShouldClose()) {
-      rl.beginDrawing();
-      rl.clearBackground(Rl.Colors.WHITE);
-      rl.endDrawing();
+      Rl.beginDrawing();
+      Rl.clearBackground(Rl.Colors.WHITE);
+      Rl.endDrawing();
     }
     
     Rl.closeWindow();
