@@ -26,6 +26,7 @@
 
 package;
 
+import cpp.RawConstPointer;
 import cpp.Char;
 import cpp.ConstCharStar;
 import cpp.ConstStar;
@@ -149,7 +150,7 @@ extern class RlColor {
     var a:cpp.UInt8;
 
     public static inline function create(r:cpp.UInt8, g:cpp.UInt8, b:cpp.UInt8, a:cpp.UInt8):Color {
-        return untyped __cpp__("(Color){ (unsigned char){0}, (unsigned char){1}, (unsigned char){2}, (unsigned char){3} }", r, g, b, a);
+        return untyped __cpp__("{ (unsigned char){0}, (unsigned char){1}, (unsigned char){2}, (unsigned char){3} }", r, g, b, a);
     }
 }
 
@@ -166,7 +167,7 @@ extern class RlRectangle {
     var height:Float; // Rectangle height
 
     static inline function create(x:Float, y:Float, width:Float, height:Float):Rectangle {
-        return untyped __cpp__("(Rectangle){ (float){0}, (float){1}, (float){2}, (float){3} }", x, y, width, height);
+        return untyped __cpp__("{ (float){0}, (float){1}, (float){2}, (float){3} }", x, y, width, height);
     }
 }
 
@@ -184,7 +185,7 @@ extern class RlImage {
     var format:Int; // Data format (PixelFormat type)
 
     public static inline function create(data:cpp.RawPointer<cpp.Void>, width:Int, height:Int, mipmaps:Int, format:Int):Image {
-        return untyped __cpp__("(Image){ (void *){0}, (int){1}, (int){2}, (int){3}, (int){4} }", data, width, height, mipmaps, format);
+        return untyped __cpp__("{ (void *){0}, (int){1}, (int){2}, (int){3}, (int){4} }", data, width, height, mipmaps, format);
     }
 }
 
@@ -287,7 +288,8 @@ typedef Camera = Camera3D; // Camera type fallback, defaults to Camera3D
 @:include("raylib.h")
 @:native("Camera2D")
 @:structAccess
-extern class RlCamera2D {
+@:unreflective
+extern class Camera2D {
     var offset:Vector2; // Camera offset (displacement from target)
     var target:Vector2; // Camera target (rotation and zoom origin)
     var rotation:Float; // Camera rotation in degrees
@@ -297,8 +299,6 @@ extern class RlCamera2D {
         return untyped __cpp__("(Camera2D){ 0 }");
     }
 }
-
-typedef Camera2D = RlCamera2D;
 
 @:include("raylib.h")
 @:native("Mesh")
@@ -1294,7 +1294,7 @@ extern class Rl {
     @:native("LoadShaderFromMemory") static function loadShaderFromMemory(vsCode:ConstCharStar, fsCode:ConstCharStar):Shader;
     @:native("GetShaderLocation") static function getShaderLocation(shader:Shader, uniformName:ConstCharStar):Int;
     @:native("GetShaderLocationAttrib") static function getShaderLocationAttrib(shader:Shader, attribName:ConstCharStar):Int;
-    @:native("SetShaderValue") static function setShaderValue(shader:Shader, locIndex:Int, value:ConstStar<Void>, uniformType:Int):Void;
+    @:native("SetShaderValue") static function setShaderValue(shader:Shader, locIndex:Int, value:RawConstPointer<Void>, uniformType:Int):Void;
     @:native("SetShaderValueV") static function setShaderValueV(shader:Shader, locIndex:Int, value:ConstStar<Void>, uniformType:Int, count:Int):Void;
     @:native("SetShaderValueMatrix") static function setShaderValueMatrix(shader:Shader, locIndex:Int, mat:Matrix):Void;
     @:native("SetShaderValueTexture") static function setShaderValueTexture(shader:Shader, locIndex:Int, texture:Texture2D):Void;
