@@ -76,7 +76,7 @@ extern class RlVector2 {
     var y:Float; // Vector y component
 
     static inline function create(x:Float, y:Float):Vector2 {
-        return untyped __cpp__("(Vector2){ (Float){0}, (Float){1} }", x, y);
+        return untyped __cpp__("Vector2{ (Float){0}, (Float){1} }", x, y);
     }
 }
 
@@ -295,8 +295,8 @@ extern class Camera2D {
     var rotation:Float; // Camera rotation in degrees
     var zoom:Float; // Camera zoom (scaling), should be 1.0f by default
 
-    static inline function create():Camera2D {
-        return untyped __cpp__("(Camera2D){ 0 }");
+    static inline function create(offset:Vector2, target:Vector2, rotation:Float, zoom:Float):Camera2D {
+        return untyped __cpp__("Camera2D{ (Vector2){0}, (Vector2){1}, (Float){2}, (Float){3} }", offset, target, rotation, zoom );
     }
 }
 
