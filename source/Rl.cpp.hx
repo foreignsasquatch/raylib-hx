@@ -75,7 +75,7 @@ extern class RlVector2 {
     var x:Float; // Vector x component
     var y:Float; // Vector y component
 
-    static inline function create(x:Float, y:Float):Vector2 {
+    static inline function create(x:Float, y:Float):RlVector2 {
         return untyped __cpp__("Vector2{ (Float){0}, (Float){1} }", x, y);
     }
 }
@@ -290,12 +290,12 @@ typedef Camera = Camera3D; // Camera type fallback, defaults to Camera3D
 @:structAccess
 @:unreflective
 extern class Camera2D {
-    var offset:Vector2; // Camera offset (displacement from target)
-    var target:Vector2; // Camera target (rotation and zoom origin)
+    var offset:RlVector2; // Camera offset (displacement from target)
+    var target:RlVector2; // Camera target (rotation and zoom origin)
     var rotation:Float; // Camera rotation in degrees
     var zoom:Float; // Camera zoom (scaling), should be 1.0f by default
 
-    static inline function create(offset:Vector2, target:Vector2, rotation:Float, zoom:Float):Camera2D {
+    static inline function create(offset:RlVector2, target:RlVector2, rotation:Float, zoom:Float):Camera2D {
         return untyped __cpp__("Camera2D{ (Vector2){0}, (Vector2){1}, (Float){2}, (Float){3} }", offset, target, rotation, zoom );
     }
 }
