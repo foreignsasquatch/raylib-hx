@@ -295,7 +295,7 @@ extern class Camera2D {
     var rotation:Float; // Camera rotation in degrees
     var zoom:Float; // Camera zoom (scaling), should be 1.0f by default
 
-    static inline function create(offset:RlVector2, target:RlVector2, rotation:Float, zoom:Float):Camera2D {
+    static inline function create(offset:RlVector2, target:RlVector2, rotation:Float=0.0, zoom:Float=1.0):Camera2D {
         return untyped __cpp__("Camera2D{ (Vector2){0}, (Vector2){1}, (Float){2}, (Float){3} }", offset, target, rotation, zoom );
     }
 }
