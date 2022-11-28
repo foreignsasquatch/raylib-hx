@@ -150,11 +150,12 @@ extern class RlColor {
     var a:cpp.UInt8;
 
     public static inline function create(r:cpp.UInt8, g:cpp.UInt8, b:cpp.UInt8, a:cpp.UInt8):Color {
-        return untyped __cpp__("{ (unsigned char){0}, (unsigned char){1}, (unsigned char){2}, (unsigned char){3} }", r, g, b, a);
+        // return untyped __cpp__("Color { (unsigned char){0}, (unsigned char){1}, (unsigned char){2}, (unsigned char){3} }", r, g, b, a);
+        return untyped __cpp__(" { (unsigned char){0}, (unsigned char){1}, (unsigned char){2}, (unsigned char){3} }", r, g, b, a);
     }
 }
 
-typedef Color = RlColor;
+typedef Color = cpp.Struct<RlColor>;
 
 // Rectangle, 4 components
 @:include("raylib.h")
