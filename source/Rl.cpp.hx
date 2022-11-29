@@ -594,219 +594,219 @@ extern enum abstract Config(UInt) {}
 
 /** Keyboard keys (US keyboard layout) **/
 @:include("raylib.h")
-extern enum abstract Keys(Int) {
+extern enum abstract Keys(Int) to Int from Int {
     @:native("KEY_NULL")
-    static var NULL:Int;
+    var NULL;
     @:native("KEY_APOSTROPHE")
-    static var APOSTROPHE:Int;
+    var APOSTROPHE;
     @:native("KEY_COMMA")
-    static var COMMA:Int;
+    var COMMA;
     @:native("KEY_MINUS")
-    static var MINUS:Int;
+    var MINUS;
     @:native("KEY_PERIOD")
-    static var PERIOD:Int;
+    var PERIOD;
     @:native("KEY_SLASH")
-    static var SLASH:Int;
+    var SLASH;
     @:native("KEY_ZERO")
-    static var ZERO:Int;
+    var ZERO;
     @:native("KEY_ONE")
-    static var ONE:Int;
+    var ONE;
     @:native("KEY_TWO")
-    static var TWO:Int;
+    var TWO;
     @:native("KEY_THREE")
-    static var THREE:Int;
+    var THREE;
     @:native("KEY_FOUR")
-    static var FOUR:Int;
+    var FOUR;
     @:native("KEY_FIVE")
-    static var FIVE:Int;
+    var FIVE;
     @:native("KEY_SIX")
-    static var SIX:Int;
+    var SIX;
     @:native("KEY_SEVEN")
-    static var SEVEN:Int;
+    var SEVEN;
     @:native("KEY_EIGHT")
-    static var EIGHT:Int;
+    var EIGHT;
     @:native("KEY_NINE")
-    static var NINE:Int;
+    var NINE;
     @:native("KEY_SEMICOLON")
-    static var SEMICOLON:Int;
+    var SEMICOLON;
     @:native("KEY_EQUAL")
-    static var EQUAL:Int;
+    var EQUAL;
     @:native("KEY_A")
-    static var A:Int;
+    var A;
     @:native("KEY_B")
-    static var B:Int;
+    var B;
     @:native("KEY_C")
-    static var C:Int;
+    var C;
     @:native("KEY_D")
-    static var D:Int;
+    var D;
     @:native("KEY_E")
-    static var E:Int;
+    var E;
     @:native("KEY_F")
-    static var F:Int;
+    var F;
     @:native("KEY_G")
-    static var G:Int;
+    var G;
     @:native("KEY_H")
-    static var H:Int;
+    var H;
     @:native("KEY_I")
-    static var I:Int;
+    var I;
     @:native("KEY_J")
-    static var J:Int;
+    var J;
     @:native("KEY_K")
-    static var K:Int;
+    var K;
     @:native("KEY_L")
-    static var L:Int;
+    var L;
     @:native("KEY_M")
-    static var M:Int;
+    var M;
     @:native("KEY_N")
-    static var N:Int;
+    var N;
     @:native("KEY_O")
-    static var O:Int;
+    var O;
     @:native("KEY_P")
-    static var P:Int;
+    var P;
     @:native("KEY_Q")
-    static var Q:Int;
+    var Q;
     @:native("KEY_R")
-    static var R:Int;
+    var R;
     @:native("KEY_S")
-    static var S:Int;
+    var S;
     @:native("KEY_T")
-    static var T:Int;
+    var T;
     @:native("KEY_U")
-    static var U:Int;
+    var U;
     @:native("KEY_V")
-    static var V:Int;
+    var V;
     @:native("KEY_W")
-    static var W:Int;
+    var W;
     @:native("KEY_X")
-    static var X:Int;
+    var X;
     @:native("KEY_Y")
-    static var Y:Int;
+    var Y;
     @:native("KEY_Z")
-    static var Z:Int;
+    var Z;
     @:native("KEY_SPACE")
-    static var SPACE:Int;
+    var SPACE;
     @:native("KEY_ESCAPE")
-    static var ESCAPE:Int;
+    var ESCAPE;
     @:native("KEY_ENTER")
-    static var ENTER:Int;
+    var ENTER;
     @:native("KEY_TAB")
-    static var TAB:Int;
+    var TAB;
     @:native("KEY_BACKSPACE")
-    static var BACKSPACE:Int;
+    var BACKSPACE;
     @:native("KEY_INSERT")
-    static var INSERT:Int;
+    var INSERT;
     @:native("KEY_DELETE")
-    static var DELETE:Int;
+    var DELETE;
     @:native("KEY_RIGHT")
-    static var RIGHT:Int;
+    var RIGHT;
     @:native("KEY_LEFT")
-    static var LEFT:Int;
+    var LEFT;
     @:native("KEY_DOWN")
-    static var DOWN:Int;
+    var DOWN;
     @:native("KEY_UP")
-    static var UP:Int;
+    var UP;
     @:native("KEY_PAGE_UP")
-    static var PAGE_UP:Int;
+    var PAGE_UP;
     @:native("KEY_PAGE_DOWN")
-    static var PAGE_DOWN:Int;
+    var PAGE_DOWN;
     @:native("KEY_HOME")
-    static var HOME:Int;
+    var HOME;
     @:native("KEY_END")
-    static var END:Int;
+    var END;
     @:native("KEY_CAPS_LOCK")
-    static var CAPS_LOCK:Int;
+    var CAPS_LOCK;
     @:native("KEY_SCROLL_LOCK")
-    static var SCROLL_LOCK:Int;
+    var SCROLL_LOCK;
     @:native("KEY_NUM_LOCK")
-    static var NUM_LOCK:Int;
+    var NUM_LOCK;
     @:native("KEY_PRINT_SCREEN")
-    static var PRINT_SCREEN:Int;
+    var PRINT_SCREEN;
     @:native("KEY_PAUSE")
-    static var PAUSE:Int;
+    var PAUSE;
     @:native("KEY_F1")
-    static var F1:Int;
+    var F1;
     @:native("KEY_F2")
-    static var F2:Int;
+    var F2;
     @:native("KEY_F3")
-    static var F3:Int;
+    var F3;
     @:native("KEY_F4")
-    static var F4:Int;
+    var F4;
     @:native("KEY_F5")
-    static var F5:Int;
+    var F5;
     @:native("KEY_F6")
-    static var F6:Int;
+    var F6;
     @:native("KEY_F7")
-    static var F7:Int;
+    var F7;
     @:native("KEY_F8")
-    static var F8:Int;
+    var F8;
     @:native("KEY_F9")
-    static var F9:Int;
+    var F9;
     @:native("KEY_F10")
-    static var F10:Int;
+    var F10;
     @:native("KEY_F11")
-    static var F11:Int;
+    var F11;
     @:native("KEY_F12")
-    static var F12:Int;
+    var F12;
     @:native("KEY_LEFT_SHIFT")
-    static var LEFT_SHIFT:Int;
+    var LEFT_SHIFT;
     @:native("KEY_LEFT_CONTROL")
-    static var LEFT_CONTROL:Int;
+    var LEFT_CONTROL;
     @:native("KEY_LEFT_ALT")
-    static var LEFT_ALT:Int;
+    var LEFT_ALT;
     @:native("KEY_LEFT_SUPER")
-    static var LEFT_SUPER:Int;
+    var LEFT_SUPER;
     @:native("KEY_RIGHT_SHIFT")
-    static var RIGHT_SHIFT:Int;
+    var RIGHT_SHIFT;
     @:native("KEY_RIGHT_CONTROL")
-    static var RIGHT_CONTROL:Int;
+    var RIGHT_CONTROL;
     @:native("KEY_RIGHT_ALT")
-    static var RIGHT_ALT:Int;
+    var RIGHT_ALT;
     @:native("KEY_RIGHT_SUPER")
-    static var RIGHT_SUPER:Int;
+    var RIGHT_SUPER;
     @:native("KEY_KB_MENU")
-    static var KB_MENU:Int;
+    var KB_MENU;
     @:native("KEY_LEFT_BRACKET")
-    static var LEFT_BRACKET:Int;
+    var LEFT_BRACKET;
     @:native("KEY_BACKSLASH")
-    static var BACKSLASH:Int;
+    var BACKSLASH;
     @:native("KEY_RIGHT_BRACKET")
-    static var RIGHT_BRACKET:Int;
+    var RIGHT_BRACKET;
     @:native("KEY_GRAVE")
-    static var GRAVE:Int;
+    var GRAVE;
     @:native("KEY_KP_0")
-    static var KP_0:Int;
+    var KP_0;
     @:native("KEY_KP_1")
-    static var KP_1:Int;
+    var KP_1;
     @:native("KEY_KP_2")
-    static var KP_2:Int;
+    var KP_2;
     @:native("KEY_KP_3")
-    static var KP_3:Int;
+    var KP_3;
     @:native("KEY_KP_4")
-    static var KP_4:Int;
+    var KP_4;
     @:native("KEY_KP_5")
-    static var KP_5:Int;
+    var KP_5;
     @:native("KEY_KP_6")
-    static var KP_6:Int;
+    var KP_6;
     @:native("KEY_KP_7")
-    static var KP_7:Int;
+    var KP_7;
     @:native("KEY_KP_8")
-    static var KP_8:Int;
+    var KP_8;
     @:native("KEY_KP_9")
-    static var KP_9:Int;
+    var KP_9;
     @:native("KEY_KP_DECIMAL")
-    static var KP_DECIMAL:Int;
+    var KP_DECIMAL;
     @:native("KEY_KP_DIVIDE")
-    static var KP_DIVIDE:Int;
+    var KP_DIVIDE;
     @:native("KEY_KP_MULTIPLY")
-    static var KP_MULTIPLY:Int;
+    var KP_MULTIPLY;
     @:native("KEY_KP_SUBTRACT")
-    static var KP_SUBTRACT:Int;
+    var KP_SUBTRACT;
     @:native("KEY_KP_ADD")
-    static var KP_ADD:Int;
+    var KP_ADD;
     @:native("KEY_KP_ENTER")
-    static var KP_ENTER:Int;
+    var KP_ENTER;
     @:native("KEY_KP_EQUAL")
-    static var KP_EQUAL:Int;
+    var KP_EQUAL;
 }
 
 // Mouse buttons
