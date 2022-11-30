@@ -1722,6 +1722,7 @@ extern class Rl {
     @:native("CheckCollisionSpheres") static function checkCollisionSpheres(center1:Vector3, radius1:Float, center2:Vector3, radius2:Float):Bool;
     @:native("CheckCollisionBoxes") static function checkCollisionBoxes(box1:BoundingBox, box2:BoundingBox):Bool;
     @:native("CheckCollisionBoxSphere") static function checkCollisionBoxSphere(box:BoundingBox, center:Vector3, radius:Float):Bool;
+    @:native("GetRayCollisionRec") static function getRayCollisionRec(rec1:Rectangle, rec2:Rectangle):Rectangle;
     @:native("GetRayCollisionSphere") static function getRayCollisionSphere(ray:Ray, center:Vector3, radius:Float):RayCollision;
     @:native("GetRayCollisionBox") static function getRayCollisionBox(ray:Ray, box:BoundingBox):RayCollision;
     @:native("GetRayCollisionModel") static function getRayCollisionModel(ray:Ray, model:Model):RayCollision;
