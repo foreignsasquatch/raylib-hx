@@ -35,18 +35,18 @@ import Rl.Font;
 
 @:include("raygui.h")
 @:native("GuiState")
-extern enum abstract GuiState(Int) {
+extern enum abstract GuiState(Int) from Int to Int{
     @:native("STATE_NORMAL")
-    public static var NORMAL:Int;
+    public var NORMAL;
     
     @:native("STATE_FOCUSED")
-    public static var FOCUSED:Int;
+    public var FOCUSED;
 
     @:native("STATE_PRESSED")
-    public static var PRESSED:Int;
+    public var PRESSED;
 
     @:native("STATE_DISABLED")
-    public static var DISABLED:Int;
+    public var DISABLED;
 }
 
 @:include("raygui.h")
