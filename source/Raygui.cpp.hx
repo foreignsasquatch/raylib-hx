@@ -53,29 +53,29 @@ extern enum abstract GuiState(Int) from Int to Int{
 
 @:include("raygui.h")
 extern class Raygui {
-    @:native("GuiEnable") public static function GuiEnable():Void;
-    @:native("GuiDisable") public static function GuiDisable():Void;
-    @:native("GuiLock") public static function GuiLock():Void;
-    @:native("GuiUnlock") public static function GuiUnlock():Void;
-    @:native("GuiFade") public static function GuiFade(alpha:Float):Void;
-    @:native("GuiSetState") public static function GuiSetState(state:Int):Void;
-    @:native("GuiGetState") public static function GuiGetState():Int;
+    @:native("GuiEnable") public static function guiEnable():Void;
+    @:native("GuiDisable") public static function guiDisable():Void;
+    @:native("GuiLock") public static function guiLock():Void;
+    @:native("GuiUnlock") public static function guiUnlock():Void;
+    @:native("GuiFade") public static function guiFade(alpha:Float):Void;
+    @:native("GuiSetState") public static function guiSetState(state:Int):Void;
+    @:native("GuiGetState") public static function guiGetState():Int;
 
-    @:native("GuiSetFont") public static function GuiSetFont(font:Font):Void;
-    @:native("GuiGetFont") public static function GuiGetFont():Font;
+    @:native("GuiSetFont") public static function guiSetFont(font:Font):Void;
+    @:native("GuiGetFont") public static function guiGetFont():Font;
 
-    @:native("GuiSetStyle") public static function GuiSetStyle(control:Int, property:Int, value:Int):Void;
-    @:native("GuiGetStyle") public static function GuiGetStyle(control:Int, property:Int):Int;
+    @:native("GuiSetStyle") public static function guiSetStyle(control:Int, property:Int, value:Int):Void;
+    @:native("GuiGetStyle") public static function guiGetStyle(control:Int, property:Int):Int;
 
-    @:native("GuiWindowBox") public static function GuiWindowBox(bounds:Rectangle, title:ConstCharStar):Bool;
-    @:native("GuiGroupBox") public static function GuiGroupBox(bounds:Rectangle, text:ConstCharStar):Void;
-    @:native("GuiLine") public static function GuiLine(bounds:Rectangle, text:ConstCharStar):Void;
-    @:native("GuiPanel") public static function GuiPanel(bounds:Rectangle):Void;
-    @:native("GuiScrollPanel") public static function GuiScrollPanel(bounds:Rectangle, content:Rectangle, scroll:cpp.Pointer<Vector2>):Void;
+    @:native("GuiWindowBox") public static function guiWindowBox(bounds:Rectangle, title:ConstCharStar):Bool;
+    @:native("GuiGroupBox") public static function guiGroupBox(bounds:Rectangle, text:ConstCharStar):Void;
+    @:native("GuiLine") public static function guiLine(bounds:Rectangle, text:ConstCharStar):Void;
+    @:native("GuiPanel") public static function guiPanel(bounds:Rectangle):Void;
+    @:native("GuiScrollPanel") public static function guiScrollPanel(bounds:Rectangle, content:Rectangle, scroll:cpp.Pointer<Vector2>):Void;
 
-    @:native("GuiButton") static function GuiButton(bounds:Rl.Rectangle, text:ConstCharStar):Bool;
-    @:native("GuiSlider") static function GuiSlider(bounds:Rectangle, textLeft:ConstCharStar, textLeft:ConstCharStar, value:Float, minValue:Float, maxValue:Float):Float;
-    @:native("GuiGrid") static function GuiGrid(bounds:Rectangle, spacing:Float, subdivs:Int):Vector2;
+    @:native("GuiButton") static function guiButton(bounds:Rl.Rectangle, text:ConstCharStar):Bool;
+    @:native("GuiSlider") static function guiSlider(bounds:Rectangle, textLeft:ConstCharStar, textLeft:ConstCharStar, value:Float, minValue:Float, maxValue:Float):Float;
+    @:native("GuiGrid") static function guiGrid(bounds:Rectangle, spacing:Float, subdivs:Int):Vector2;
 
-    @:native("GuiListView") static function GuiListView(bounds:Rectangle, text:ConstCharStar, scrollIndex:Pointer<Int>, active:Int):Int;
+    @:native("GuiListView") static function guiListView(bounds:Rectangle, text:ConstCharStar, scrollIndex:Pointer<Int>, active:Int):Int;
 }
