@@ -22,8 +22,12 @@
  *     as being the original software.
  *
  *     3. This notice may not be removed or altered from any source distribution.
+ * --------------------------------------------------------------------------------------------------------------------
+ * Note: 3d is not tested nor supported properly. If you would want 3d make an issue in the repo and will improve it
+ * or it will be improved when im trying 3d. thanks.
+ *
+ * Shaders as well :sweat_smile:... i will fix shaders though (soon!).
  */
-
 package;
 
 import cpp.RawConstPointer;
@@ -35,7 +39,7 @@ import cpp.UInt16;
 import cpp.UInt8;
 import cpp.Void;
 
-// Basic colors (colours)
+/** Basic colors (colours) **/
 @:include("raylib.h")
 extern class Colors {
     @:native("LIGHTGRAY") static var LIGHTGRAY:Color; // Light Gray
@@ -67,54 +71,74 @@ extern class Colors {
     @:native("RAYWHITE") static var RAYWHITE:Color; // Raysan's white (raylib logo)
 }
 
-// Vector2, 2 components
 @:include("raylib.h")
 @:native("Vector2")
 @:structAccess
 extern class RlVector2 {
-    var x:Float; // Vector x component
-    var y:Float; // Vector y component
+    /** Vector x component **/
+    var x:Float;
+    /** Vector y component **/
+    var y:Float;
 
+    /** Creates new Vector2 type **/
     static inline function create(x:Float, y:Float):RlVector2 {
         return untyped __cpp__("Vector2{ (Float){0}, (Float){1} }", x, y);
     }
+
+    /** Creates new Vector2 with x and y as 0 **/
+    static inline function zero():Vector2 {
+        return untyped __cpp__("Vector2{ 0, 0 }");
+    }
 }
 
+/** Vector2, 2 components **/
 typedef Vector2 = cpp.Struct<RlVector2>;
 
-// Vector3, 3 components
 @:include("raylib.h")
 @:native("Vector3")
 @:structAccess
 extern class RlVector3 {
-    var x:Float; // Vector x component
-    var y:Float; // Vector y component
-    var z:Float; // Vector z component
+    /** Vector x component **/
+    var x:Float;
+    /** Vector y component **/
+    var y:Float;
+    /** Vector z component **/
+    var z:Float;
 
+    /** Creates new Vector3 type **/
     static inline function create(x:Float, y:Float, z:Float):Vector3 {
-        return untyped __cpp__("(Vector3){ (Float){0}, (Float){1}, (Float){2} }", x, y, z);
+        return untyped __cpp__("Vector3{ (Float){0}, (Float){1}, (Float){2} }", x, y, z);
     }
 }
 
+/** Vector3, 3 components **/
 typedef Vector3 = cpp.Struct<RlVector3>;
 
-// Vector4, 4 components
 @:include("raylib.h")
 @:native("Vector4")
 @:structAccess
 extern class RlVector4 {
-    var x:Float; // Vector x component
-    var y:Float; // Vector y component
-    var z:Float; // Vector z component
-    var w:Float; // Vector w component
+    /** Vector x component **/
+    var x:Float;
+    /** Vector y component **/
+    var y:Float;
+    /** Vector z component **/
+    var z:Float;
+    /** Vector w component **/
+    var w:Float;
+
+    /** Creates new Vector4 type **/
+    static inline function create(x:Float, y:Float, z:Float, w:Float):Vector4 {
+        return untyped __cpp__("Vector4{ (Float){0}, (Float){1}, (Float){2}, (Float){3} }", x, y, z, w);
+    }
 }
 
+/** Vector4, 4 components **/
 typedef Vector4 = cpp.Struct<RlVector4>;
 
-// Quaternion, 4 components (Vector4 alias)
+/** Quaternion, 4 components (Vector4 alias) **/
 typedef Quaternion = Vector4;
 
-// Matrix, 4x4 components, column major, OpenGL style, right handed
 @:include("raylib.h")
 @:native("Matrix")
 @:structAccess
@@ -137,181 +161,270 @@ extern class RlMatrix {
     var m15:Float;
 }
 
+/** Matrix, 4x4 components, column major, OpenGL style, right handed **/
 typedef Matrix = cpp.Struct<RlMatrix>;
 
-// Color (Colour), 4 components, R8G8B8A8 (32 bit)
 @:include("raylib.h")
 @:native("Color")
 @:structAccess
 extern class RlColor {
+    /** Color red value **/
     var r:cpp.UInt8;
+    /** Color green value **/
     var g:cpp.UInt8;
+    /** Color blue value **/
     var b:cpp.UInt8;
+    /** Color alpha value **/
     var a:cpp.UInt8;
 
+    /** Create new Color type **/
     public static inline function create(r:cpp.UInt8, g:cpp.UInt8, b:cpp.UInt8, a:cpp.UInt8):Color {
-        // return untyped __cpp__("Color { (unsigned char){0}, (unsigned char){1}, (unsigned char){2}, (unsigned char){3} }", r, g, b, a);
         return untyped __cpp__(" { (unsigned char){0}, (unsigned char){1}, (unsigned char){2}, (unsigned char){3} }", r, g, b, a);
     }
 }
 
+/** Color (Colour), 4 components, R8G8B8A8 (32 bit) **/
 typedef Color = cpp.Struct<RlColor>;
 
-// Rectangle, 4 components
 @:include("raylib.h")
 @:native("Rectangle")
 @:structAccess
 extern class RlRectangle {
-    var x:Float; // Rectangle top-left corner position x
-    var y:Float; // Rectangle top-left corner position y
-    var width:Float; // Rectangle width
-    var height:Float; // Rectangle height
+    /** Rectangle top-left corner position x **/
+    var x:Float;
+    /** Rectangle top-left corner position y **/
+    var y:Float;
+    /** Rectangle width **/
+    var width:Float;
+    /** Rectangle height **/
+    var height:Float;
 
+    /** Create new Rectangle type **/
     static inline function create(x:Float, y:Float, width:Float, height:Float):Rectangle {
         return untyped __cpp__("Rectangle{ (float){0}, (float){1}, (float){2}, (float){3} }", x, y, width, height);
     }
+
+    inline function left():Float {
+        return this.x;
+    }
+
+    inline function right():Float {
+        return this.x + this.width;
+    }
+
+    inline function top():Float {
+        return this.y;
+    }
+
+    inline function bottom():Float {
+        return this.y + this.height;
+    }
 }
 
+/** Rectangle, 4 components **/
 typedef Rectangle = cpp.Struct<RlRectangle>;
 
-// Image, pixel data stored in CPU memory (Ram)
 @:include("raylib.h")
 @:native("Image")
 @:structAccess
 extern class RlImage {
-    var data:Star<Void>; // Image raw data
-    var width:Int; // Image base width
-    var height:Int; // Image base height
-    var mipmaps:Int; // Mipmap levels, 1 by default
-    var format:Int; // Data format (PixelFormat type)
+    /** Image raw data **/
+    var data:Star<Void>;
+    /** Image base width **/
+    var width:Int;
+    /** Image base height **/
+    var height:Int;
+    /** Mipmap levels, 1 by default **/
+    var mipmaps:Int;
+    /** Data format (PixelFormat type) **/
+    var format:Int;
 
+    /** Create new Image type **/
     public static inline function create(data:cpp.RawPointer<cpp.Void>, width:Int, height:Int, mipmaps:Int, format:Int):Image {
         return untyped __cpp__("{ (void *){0}, (int){1}, (int){2}, (int){3}, (int){4} }", data, width, height, mipmaps, format);
     }
 }
 
+/** Image, pixel data stored in CPU memory (Ram) **/
 typedef Image = cpp.Struct<RlImage>;
 
-// Texture, tex data stored in GPU memory (VRAM)
 @:include("raylib.h")
 @:native("Texture")
 @:structAccess
 @:unreflective
 extern class RlTexture {
-    var id:UInt; // OpenGL texture id
-    var width:Int; // Texture base width
-    var height:Int; // Texture base height
-    var mipmaps:Int; // Mipmap levels, 1 by deafult
-    var format:Int; // Data format (PixelFormat type)
+    /**  OpenGL texture id **/
+    var id:UInt;
+    /** Texture base width **/
+    var width:Int;
+    /** Texture base height **/
+    var height:Int;
+    /** Mipmap levels, 1 by deafult **/
+    var mipmaps:Int;
+    /** Data format (PixelFormat type) **/
+    var format:Int;
 }
 
+/** Texture, tex data stored in GPU memory (VRAM) **/
 typedef Texture = cpp.Struct<RlTexture>;
 
-// Texture2D, same as Texture
+/** Texture2D, same as Texture **/
 typedef Texture2D = Texture;
 
-// TextureCubemap, same as Texture
+/** TextureCubemap, same as Texture **/
 typedef TextureCubemap = Texture;
 
-// RenderTexture, fbo for texture rendering
 @:include("raylib.h")
 @:native("RenderTexture")
 @:structAccess
 extern class RlRenderTexture {
-    var id:UInt; // OpenGL framebuffer object id
-    var texture:Texture; // Color buffer attachment texture
-    var depth:Texture; // Depth buffer attachment texture
+    /** OpenGL framebuffer object id **/
+    var id:UInt;
+    /** Color buffer attachment texture **/
+    var texture:Texture;
+    /** Depth buffer attachment texture **/
+    var depth:Texture;
 }
 
+/**  RenderTexture, fbo for texture rendering **/
 typedef RenderTexture = cpp.Struct<RlRenderTexture>;
 
-// RenderTexture2D, same as RenderTexture;
+/** RenderTexture2D, same as RenderTexture **/
 typedef RenderTexture2D = RenderTexture;
 
-// NPatchInfo, n-patch layout info
 @:include("raylib.h")
 @:native("NPatchInfo")
 @:structAccess
-extern class NPatchInfo {
-    var source:Rectangle; // Texture source rectangle
-    var left:Int; // Left border offset
-    var top:Int; // Top border offset
-    var right:Int; // Right border offset
-    var bottom:Int; // Bottom border offeset
-    var layout:Int; // Layout of n-patch: 3x3, 1x3 or 3x1
+extern class RlNPatchInfo {
+    /** Texture source rectangle **/
+    var source:Rectangle;
+    /** Left border offset **/
+    var left:Int;
+    /** Top border offset **/
+    var top:Int;
+    /** Right border offset **/
+    var right:Int;
+    /** Bottom border offeset **/
+    var bottom:Int;
+    /** Layout of n-patch: 3x3, 1x3 or 3x1 **/
+    var layout:Int;
 }
 
-// GlyphInfo, font characters glyphs info
+/** NPatchInfo, n-patch layout info **/
+typedef NPatchInfo = cpp.Struct<RlNPatchInfo>;
+
 @:include("raylib.h")
 @:native("GlyphInfo")
 @:structAccess
-extern class GlyphInfo {
-    var value:Int; // Base size (default chars height)
-    var offsetX:Int; // Number of glyph characters
-    var offsetY:Int; // Padding around the glyph characters
-    var advanceX:Int; // Texture atlas containing the glyphs
+extern class RlGlyphInfo {
+    /** Character value (Unicode) **/
+    var value:Int;
+    /** Character value (Unicode) **/
+    var offsetX:Int;
+    /** Character value (Unicode) **/
+    var offsetY:Int;
+    /** Character advance position X **/
+    var advanceX:Int;
+    /** Character image data **/
     var image:Image;
 }
 
-// Font, font texture and CharInfo array data
+/** GlyphInfo, font characters glyphs info **/
+typedef GlyphInfo = cpp.Struct<RlGlyphInfo>;
+
 @:include("raylib.h")
 @:native("Font")
 @:structAccess
-extern class Font {
-    var baseSize:Int; // Base size (default chars height)
-    var glyphCount:Int; // Number of characters
-    var glyphPadding:Int; // Padding around the chars
-    var texture:Texture2D; // Characters texture atlas
-    var recs:Star<Rectangle>; // Character rectabgle in texture
-    var glyphs:Star<GlyphInfo>; // Charcter info data
+extern class RlFont {
+    /** Base size (default chars height) **/
+    var baseSize:Int;
+    /** Number of characters **/
+    var glyphCount:Int;
+    /** Padding around the chars **/
+    var glyphPadding:Int;
+    /** Characters texture atlas **/
+    var texture:Texture2D;
+    /** Character rectabgle in texture **/
+    var recs:Star<Rectangle>;
+    /** Charcter info data **/
+    var glyphs:Star<GlyphInfo>;
 }
 
-// Camera, defines positon/oreientation in 3d space
+/** Font, font texture and CharInfo array data **/
+typedef Font = cpp.Struct<RlFont>;
+
 @:include("raylib.h")
 @:native("Camera3D")
 @:structAccess
 extern class RlCamera3D {
-    var position:Vector3; // Camera position
-    var target:Vector3; // Camera target it looks-at
-    var up:Vector3; // Camera up vector (rotation over its axis)
-    var fovy:Float; // Camera field-of-view apperture in Y (degrees) in perspective, used as near plane width in orthographic
-    var projection:Int; // Camera projection: CAMERA_PERSPECTIVE or CAMERA_ORTHOGRAPHIC
+    /** Camera position **/
+    var position:Vector3;
+    /** Camera target it looks-at **/
+    var target:Vector3;
+    /** Camera up vector (rotation over its axis) **/
+    var up:Vector3;
+    /** Camera field-of-view apperture in Y (degrees) in perspective, used as near plane width in orthographic **/
+    var fovy:Float;
+    /** Camera projection: PERSPECTIVE or ORTHOGRAPHIC **/
+    var projection:Int;
 
+    /** Create new Camera3D type **/
     static inline function create():Camera3D {
         return untyped __cpp__("(Camera){ 0 }");
     }
 }
 
+/** Camera, defines positon/oreientation in 3d space **/
 typedef Camera3D = cpp.Struct<RlCamera3D>;
-typedef Camera = Camera3D; // Camera type fallback, defaults to Camera3D
 
-// Camera2D, defines position/orientation in 2d space
+/** Camera type fallback, defaults to Camera3D **/
+typedef Camera = Camera3D;
+
 @:include("raylib.h")
 @:native("Camera2D")
 @:structAccess
 @:unreflective
-extern class Camera2D {
-    var offset:RlVector2; // Camera offset (displacement from target)
-    var target:RlVector2; // Camera target (rotation and zoom origin)
-    var rotation:Float; // Camera rotation in degrees
-    var zoom:Float; // Camera zoom (scaling), should be 1.0f by default
+extern class RlCamera2D {
+    /** Camera offset (displacement from target) **/
+    var offset:RlVector2;
+    /** Camera target (rotation and zoom origin) **/
+    var target:RlVector2;
+    /** Camera rotation in degrees **/
+    var rotation:Float;
+    /** Camera zoom (scaling), should be 1.0f by default **/
+    var zoom:Float;
 
+    /** Create new Camera2D type **/
     static inline function create(offset:RlVector2, target:RlVector2, rotation:Float=0.0, zoom:Float=1.0):Camera2D {
         return untyped __cpp__("Camera2D{ (Vector2){0}, (Vector2){1}, (Float){2}, (Float){3} }", offset, target, rotation, zoom );
     }
 }
 
+/** Camera2D, defines position/orientation in 2d space **/
+typedef Camera2D = cpp.Struct<RlCamera2D>;
+
+//
+// SECTION TO BE FIXED.
+//
 @:include("raylib.h")
 @:native("Mesh")
 @:structAccess
-extern class Mesh {
+extern class RlMesh {
+    /** Number of vertices stored in arrays **/
     var vertexCount:Int;
+    /** Number of triangles stored (indexed or not) **/
     var triangleCount:Int;
 
+    // Vertex attributes data
+    /** Vertex position (XYZ - 3 components per vertex) (shader-location = 0) **/
     var verticies:Star<Float>;
+    /** Vertex texture coordinates (UV - 2 components per vertex) (shader-location = 1) **/
     var textcoords:Star<Float>;
+    /** Vertex texture second coordinates (UV - 2 components per vertex) (shader-location = 5) **/
     var texcoord2:Star<Float>;
+    /** Vertex normals (XYZ - 3 components per vertex) (shader-location = 2) **/
     var normals:Star<Float>;
+    /** Vertex tangents (XYZW - 4 components per vertex) (shader-location = 4) **/
     var tangents:Star<Float>;
 
     var animVertices:Star<Float>;
@@ -322,6 +435,9 @@ extern class Mesh {
     var vaoId:UInt;
     var vboId:Star<UInt>;
 }
+
+/** Mesh, vertex data and vao/vbo **/
+typedef Mesh = cpp.Struct<RlMesh>;
 
 @:include("raylib.h")
 @:native("Shader")
@@ -513,6 +629,9 @@ extern class VrStereoConfig {
     var scale:Float;
     var scaleIn:Float;
 }
+//
+// END SECTION TO BE FIXED
+//
 
 @:include("raylib.h")
 @:native("FilePathList")
