@@ -1576,8 +1576,8 @@ extern class Rl {
     @:native("DrawRectangleRounded") static function drawRectangleRounded(rec:Rectangle, roundness:Float, segments:Int, color:Color):Void;
     @:native("DrawRectangleRoundedLines") static function drawRectangleRoundedLines(rec:Rectangle, roundness:Float, segments:Int, lineThick:Int,
         color:Color):Void;
-    @:native("DrawTriangle") static function drawTriangle(v1:Vector2, v2:Vector2, v3:Vector3, color:Color):Void;
-    @:native("DrawTriangleLines") static function drawTriangleLines(v1:Vector2, v2:Vector2, v3:Vector3, color:Color):Void;
+    @:native("DrawTriangle") static function drawTriangle(v1:Vector2, v2:Vector2, v3:Vector2, color:Color):Void;
+    @:native("DrawTriangleLines") static function drawTriangleLines(v1:Vector2, v2:Vector2, v3:Vector2, color:Color):Void;
     @:native("DrawTriangleFan") static function drawTriangleFan(points:Star<Vector2>, pointsCount:Int, color:Color):Void;
     @:native("DrawTriangleStrip") static function drawTriangleStrip(points:Star<Vector2>, pointsCount:Int, color:Color):Void;
     @:native("DrawPoly") static function drawPoly(center:Vector2, sides:Int, radius:Float, rotation:Float, color:Color):Void;
