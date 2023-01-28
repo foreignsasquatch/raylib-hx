@@ -38,8 +38,6 @@
             <flag value='ASYNCIFY' />
             <flag value='--preload-file'/>
             <flag value='${ASSET_PATH}'/>
-            <!-- <flag value='--shell-file'/> -->
-            <!-- <flag value='${SHELL_PATH}'/> -->
         </linker>
     </section>
 </xml>

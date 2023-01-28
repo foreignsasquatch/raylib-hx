@@ -6,7 +6,7 @@
  *   hxRaylib is licensed under an unmodified zlib/libpng license, which is an OSI-certified,
  *   BSD-like license that allows static linking with closed source software:
  *
- *   Copyright (c) 2021-2022 Ratul Krisna (@ForeignSasquatch)
+ *   Copyright (c) 2021-2023 Ratul Krisna (@ForeignSasquatch)
  *
  *   This software is provided "as-is", without any express or implied warranty. In no event
  *   will the authors be held liable for any damages arising from the use of this software.
@@ -26,14 +26,14 @@
  * Note: 3d is not tested nor supported properly. If you would want 3d make an issue in the repo and will improve it
  * or it will be improved when im trying 3d. thanks.
  *
- * Shaders as well :sweat_smile:... i will fix shaders though (soon!).
+ * Updated to 4.2 but im not sure about that still lol.
  */
 package;
 
-import cpp.RawConstPointer;
 import cpp.Char;
 import cpp.ConstCharStar;
 import cpp.ConstStar;
+import cpp.RawConstPointer;
 import cpp.Star;
 import cpp.UInt16;
 import cpp.UInt8;
@@ -82,7 +82,7 @@ extern class RlVector2 {
 
     /** Creates new Vector2 type **/
     static inline function create(x:Float, y:Float):RlVector2 {
-        return untyped __cpp__("Vector2{ (Float){0}, (Float){1} }", x, y);
+        return untyped __cpp__("Vector2{ (float){0}, (float){1} }", x, y);
     }
 
     /** Creates new Vector2 with x and y as 0 **/
@@ -396,7 +396,7 @@ extern class RlCamera2D {
 
     /** Create new Camera2D type **/
     static inline function create(offset:RlVector2, target:RlVector2, rotation:Float=0.0, zoom:Float=1.0):Camera2D {
-        return untyped __cpp__("Camera2D{ (Vector2){0}, (Vector2){1}, (Float){2}, (Float){3} }", offset, target, rotation, zoom );
+        return untyped __cpp__("Camera2D{ (Vector2){0}, (Vector2){1}, (float){2}, (float){3} }", offset, target, rotation, zoom );
     }
 }
 
@@ -443,7 +443,9 @@ typedef Mesh = cpp.Struct<RlMesh>;
 @:native("Shader")
 @:structAccess
 extern class Shader {
+    /** Shader program id **/
     var id:UInt;
+    /** Shader locations array (RL_MAX_SHADER_LOCATIONS) **/
     var locs:Star<Int>;
 }
 
@@ -1915,4 +1917,8 @@ extern class Rl {
     @:native("SetAudioStreamVolume") static function setAudioStreamVolume(stream:AudioStream, volume:Float):Void;
     @:native("SetAudioStreamPitch") static function setAudioStreamPitch(stream:AudioStream, pitch:Float):Void;
     @:native("SetAudioStreamBufferSizeDefault") static function setAudioStreamBufferSizeDefault(size:Int):Void;
+	  /** Attach audio stream processor to stream**/
+//    @:native("AttachAudioStreamProcessor") static function attachAudioStreamProcessor(stream:AudioStream, processor:AudioCallback):Void;
+	  /** Detach audio stream processor from stream**/
+//   	@:native("DetachAudioStreamProcessor") static function detachAudioStreamProcessor(stream:AudioStream, processor:AudioCallback):Void;
 }
