@@ -46,8 +46,13 @@ class Main {
     Rl.closeWindow();
   }
 }
-
 ```
+
+On Linux it's possible to use a system wide installation of Raylib instead of
+the source code provided with this repo.
+
+Just add the `--define shared_libs` flag to your *.hxml file or to the command
+line.
 
 Thanks to:
 ----------
