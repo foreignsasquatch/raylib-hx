@@ -8,7 +8,7 @@
 
 [Haxe](https://haxe.org/) bindings for [raylib](https://raylib.com), a simple and easy-to-use library to learn videogame programming.
 
-> Check out the docs folder for info on how to use
+> Check out the examples folder to see some code!
 
 Requirements
 -------------
@@ -53,12 +53,6 @@ the source code provided with this repo.
 
 Just add the `--define shared_libs` flag to your *.hxml file or to the command
 line.
-
-Thanks to:
-----------
-- **[Zeta](https://github.com/Apprentice-Alchemist)**
-- **[Ian Harrigan](https://github.com/ianharrigan)**
-- **[Raysan](https://github.com/raysan5)**
 
 ### Consider supporting
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/W7W77EX85)

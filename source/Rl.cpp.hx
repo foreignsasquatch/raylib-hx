@@ -356,7 +356,8 @@ typedef Font = cpp.Struct<RlFont>;
 @:include("raylib.h")
 @:native("Camera3D")
 @:structAccess
-extern class RlCamera3D {
+/** Camera, defines positon/oreientation in 3d space **/
+extern class Camera3D {
     /** Camera position **/
     var position:Vector3;
     /** Camera target it looks-at **/
@@ -373,9 +374,6 @@ extern class RlCamera3D {
         return untyped __cpp__("Camera3D{ 0 }");
     }
 }
-
-/** Camera, defines positon/oreientation in 3d space **/
-typedef Camera3D = cpp.Struct<RlCamera3D>;
 
 /** Camera type fallback, defaults to Camera3D **/
 typedef Camera = Camera3D;
@@ -1536,7 +1534,7 @@ extern class Rl {
 
     // Camera system functions
     @:native("SetCameraMode") static function setCameraMode(camera:Camera, mode:Int):Void;
-    @:native("UpdateCamera") static function updateCamera(camera:Star<Camera>):Void;
+    @:native("UpdateCamera") static function updateCamera(camera:Star<Camera3D>):Void;
 
     @:native("SetCameraPanControl") static function setCameraPanControl(keyPan:Int):Void;
     @:native("SetCameraAltControl") static function setCameraAltControl(keyAlt:Int):Void;
