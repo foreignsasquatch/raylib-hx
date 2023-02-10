@@ -179,7 +179,7 @@ extern class RlColor {
 
     /** Create new Color type **/
     public static inline function create(r:cpp.UInt8, g:cpp.UInt8, b:cpp.UInt8, a:cpp.UInt8):Color {
-        return untyped __cpp__(" { (unsigned char){0}, (unsigned char){1}, (unsigned char){2}, (unsigned char){3} }", r, g, b, a);
+        return untyped __cpp__("Color{ (unsigned char){0}, (unsigned char){1}, (unsigned char){2}, (unsigned char){3} }", r, g, b, a);
     }
 }
 
@@ -370,7 +370,7 @@ extern class RlCamera3D {
 
     /** Create new Camera3D type **/
     static inline function create():Camera3D {
-        return untyped __cpp__("(Camera){ 0 }");
+        return untyped __cpp__("Camera3D{ 0 }");
     }
 }
 
