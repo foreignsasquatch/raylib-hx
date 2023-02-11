@@ -1,3 +1,5 @@
 -cp src
 -lib raylib-hx
 -cpp non-existent-dir
+
+-D wasm
