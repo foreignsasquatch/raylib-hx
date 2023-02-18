@@ -1,0 +1,41 @@
+<xml>
+    <set name="raylib_folder" value="${haxelib:raylib-hx}/source/lib/src" />
+    <set name="glfw_folder" value="${haxelib:raylib-hx}/source/lib/src/external/glfw" />
+
+    <echo value="Using raylib from: ${raylib_folder}" />
+    <echo value="Using glfw from: ${glfw_folder}" />
+    
+    <section>
+        <files id="haxe">
+            <lib name="-lraylib" />
+
+            <cache value="true" project="raylib-hx" asLibrary="true" />
+
+            <compilerflag value="-I${raylib_folder}" />
+            <compilerflag value="-I${raylib_folder}/extras" />
+            
+            <file name="${raylib_folder}/rcore.c" />
+            <file name="${raylib_folder}/utils.c" />
+            <file name="${raylib_folder}/rshapes.c" />
+            <file name="${raylib_folder}/rtextures.c" />
+            <file name="${raylib_folder}/rtext.c" />
+            <file name="${raylib_folder}/rmodels.c" />
+            <file name="${raylib_folder}/raudio.c" />
+            <file name="${haxelib:raylib-hx}/source/raygui.c" />
+
+            <!-- WEB SPECIFICS -->
+            <compilerflag value="-DPLATFORM_WEB" />
+            <compilerflag value="-DGRAPHICS_API_OPENGL_ES2" />
+            <compilerflag value="-Os" />
+        </files>
+
+        <linker id='exe' exe='em++'>
+            <flag value='-s' />
+            <flag value='WASM=1' />
+            <flag value='-s' />
+            <flag value='USE_GLFW=3' />
+            <flag value='--preload-file'/>
+            <flag value='${ASSET_PATH}'/>
+        </linker>
+    </section>
+</xml>

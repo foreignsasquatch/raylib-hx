@@ -3,7 +3,7 @@
 --library raylib-hx
 --cpp bin/wasm/
 
---define wasm
+--define wasm_no_asnyc
 --define emscripten
 --define HXCPP_LINK_EMSCRIPTEN_EXT=.html
 # requires absolute path

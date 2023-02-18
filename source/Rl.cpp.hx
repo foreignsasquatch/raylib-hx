@@ -551,7 +551,7 @@ extern class BoundingBox {
 @:native("Wave")
 @:structAccess
 extern class Wave {
-    var sampleCount:UInt;
+    var frameCount:UInt;
     var sampleRate:UInt;
     var sampleSize:UInt;
     var channels:UInt;
@@ -585,7 +585,7 @@ extern class AudioStream {
 @:structAccess
 extern class Sound {
     var stream:AudioStream;
-    var sampleCount:UInt;
+    var frameCount:UInt;
 }
 
 @:include("raylib.h")
@@ -593,7 +593,7 @@ extern class Sound {
 @:structAccess
 extern class Music {
     var stream:AudioStream;
-    var sampleCount:UInt;
+    var frameCount:UInt;
     var looping:Bool;
 
     var ctxType:Int;
@@ -1319,6 +1319,8 @@ extern enum abstract NPatchLayout(UInt) {
 
 #if wasm
 @:buildXml("<include name='${haxelib:raylib-hx}/source/Web.xml'/>")
+#elseif wasm_no_asnyc
+@:buildXml("<include name='${haxelib:raylib-hx}/source/WebNoAsnyc.xml'/>")
 #elseif shared_libs
 @:buildXml("<include name='${haxelib:raylib-hx}/source/DynLib.xml'/>")
 #else

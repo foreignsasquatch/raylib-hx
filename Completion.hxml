@@ -2,4 +2,4 @@
 -lib raylib-hx
 -cpp non-existent-dir
 
--D wasm
+-D wasm_no_async
