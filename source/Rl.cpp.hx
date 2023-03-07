@@ -1746,7 +1746,7 @@ extern class Rl {
 
     // Text misc. functions
     @:native("MeasureText") static function measureText(text:ConstCharStar, fontSize:Int):Int;
-    @:native("MeasureTextEx") static function measureTextEx(font:Font, text:ConstCharStar, fontsize:Float, tint:Color):Vector2;
+    @:native("MeasureTextEx") static function measureTextEx(font:Font, text:ConstCharStar, fontsize:Float, spacing:Float):Vector2;
     @:native("GetGlyphIndex") static function getGlyphIndex(font:Font, codepoint:Int):Int;
     @:native("GetGlyphInfo") static function getGlyphInfo(font:Font, codepoint:Int):GlyphInfo;
     @:native("GetGlyphAtlasRec") static function getGlyphAtlasRec(font:Font, codepoint:Int):Rectangle;
