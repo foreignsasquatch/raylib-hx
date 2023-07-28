@@ -1,4 +1,5 @@
 /*
+ * --------------------------------------------------------------------------------------------------------------------
  *   raylib-hx - a Haxe binding for the library raylib, a simple and easy-to-use library to enjoy videogames programming
  *
  *   LICENSE: zlib/libpng
@@ -23,10 +24,6 @@
  *
  *     3. This notice may not be removed or altered from any source distribution.
  * --------------------------------------------------------------------------------------------------------------------
- * Note: 3d is not tested nor supported properly. If you would want 3d make an issue in the repo and will improve it
- * or it will be improved when im trying 3d. thanks.
- *
- * Updated to 4.2 but im not sure about that still lol.
  */
 package;
 
