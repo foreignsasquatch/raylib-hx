@@ -266,7 +266,7 @@ extern class RlTexture {
 }
 
 /** Texture, tex data stored in GPU memory (VRAM) **/
-typedef Texture = cpp.Struct<RlTexture>;
+typedef Texture = RlTexture;
 
 /** Texture2D, same as Texture **/
 typedef Texture2D = Texture;
@@ -1691,7 +1691,7 @@ extern class Rl {
     @:native("SetTextureWrap") static function setTextureWrap(texture:Texture2D, wrap:Int):Void;
 
     // Texture drawing functions
-    @:native("DrawTexture") static function drawTexture(texture:Texture2D, posX:Int, posy:Int, tint:Color):Void;
+    @:native("DrawTexture") static function drawTexture(texture:RlTexture, posX:Int, posy:Int, tint:Color):Void;
     @:native("DrawTextureV") static function drawTextureV(texture:Texture2D, position:Vector2, tint:Color):Void;
     @:native("DrawTextureEx") static function drawTextureEx(texture:Texture2D, position:Vector2, rotation:Float, scale:Float, tint:Color):Void;
     @:native("DrawTextureRec") static function drawTextureRec(texture:Texture2D, source:Rectangle, position:Vector2, tint:Color):Void;
