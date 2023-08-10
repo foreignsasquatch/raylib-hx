@@ -1532,8 +1532,7 @@ extern class Rl {
     @:native("GetGesturePinchAngle") static function getGesturePinchAngle():Float;
 
     // Camera system functions
-    @:native("SetCameraMode") static function setCameraMode(camera:Camera, mode:Int):Void;
-    @:native("UpdateCamera") static function updateCamera(camera:Star<Camera3D>):Void;
+    @:native("UpdateCamera") static function updateCamera(camera:Star<Camera3D>, cameraMode:Int):Void;
 
     @:native("SetCameraPanControl") static function setCameraPanControl(keyPan:Int):Void;
     @:native("SetCameraAltControl") static function setCameraAltControl(keyAlt:Int):Void;
