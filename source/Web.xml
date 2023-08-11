@@ -21,7 +21,7 @@
             <file name="${raylib_folder}/rtext.c" />
             <file name="${raylib_folder}/rmodels.c" />
             <file name="${raylib_folder}/raudio.c" />
-            <file name="${haxelib:raylib-hx}/source/raygui.c" />
+            <!-- <file name="${haxelib:raylib-hx}/source/raygui.c" /> -->
 
             <!-- WEB SPECIFICS -->
             <compilerflag value="-DPLATFORM_WEB" />
