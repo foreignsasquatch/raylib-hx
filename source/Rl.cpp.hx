@@ -1738,7 +1738,7 @@ extern class Rl {
     @:native("DrawTextEx") static function drawTextEx(font:Font, text:ConstCharStar, position:Vector2, fontSize:Float, spacing:Float, tint:Color):Void;
     @:native("DrawTextPro") static function drawTextPro(font:Font, text:ConstCharStar, position:Vector2, origin:Vector2, rotation:Float, fontSize:Float,
         spacing:Float, tint:Color):Void;
-    @:native("DrawTextCodePoint") static function drawTextCodePoint(font:Font, codepoint:Int, position:Vector2, fontSize:Float, tint:Color):Void;
+    @:native("DrawTextCodepoint") static function drawTextCodepoint(font:Font, codepoint:Int, position:Vector2, fontSize:Float, tint:Color):Void;
 
     // Text misc. functions
     @:native("MeasureText") static function measureText(text:ConstCharStar, fontSize:Int):Int;
