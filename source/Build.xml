@@ -11,7 +11,9 @@
             <compilerflag value="-DSUPPORT_FILEFORMAT_JPG" unless="raylib-no-jpg" />
             <compilerflag value="-DSUPPORT_FILEFORMAT_BMP" unless="raylib-no-bmp" />
             <compilerflag value="-DSUPPORT_FILEFORMAT_TGA" unless="raylib-no-tga" />
-            
+
+            <flag value="-mwindows" if="hide-console" />
+
             <file name="${raylib_folder}/rcore.c" />
             <file name="${raylib_folder}/utils.c" />
             <file name="${raylib_folder}/rshapes.c" />
