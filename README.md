@@ -54,7 +54,7 @@ the source code provided with this repo.
 Just add the `--define shared_libs` flag to your *.hxml file or to the command
 line.
 
-To hide the Raylib console window on desktop, add the `--D no_console` compiler flag.
+**Tip**: To hide the Raylib console window on desktop, add the `no_console` compiler flag.
 
 ### Consider supporting
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/W7W77EX85)
