@@ -106,6 +106,54 @@ extern class RlVector3 {
     static inline function create(x:Float, y:Float, z:Float):Vector3 {
         return untyped __cpp__("Vector3{ (Float){0}, (Float){1}, (Float){2} }", x, y, z);
     }
+
+    overload inline function add(v:Vector3):Vector3 {
+        var vec = Vector3.create(x, y, z);
+        vec.x = vec.x + v.x;       
+        vec.y = vec.y + v.y;       
+        vec.z = vec.z + v.z;      
+        return vec;
+    }
+
+    overload inline function add(f:Float):Vector3 {
+        var result = Vector3.create(x + f, y + f, z + f);
+        return result;
+    }
+
+    inline function multiply(v:Vector3):Vector3 {
+        var result = Vector3.create(x * v.x, y * v.y, z * v.z);
+        return result;
+    }
+
+    static inline function normalize(v:Vector3):Vector3 {
+        var result = v;
+
+        var length = Math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+        if(length != 0.0) {
+            var ilength = 1/length;
+
+            result.x = result.x * ilength;
+            result.y = result.y * ilength;
+            result.z = result.z * ilength;
+        }
+
+        return result;
+    }
+
+    overload inline function subtract(v:Vector3):Vector3 {
+        var result = Vector3.create(x - v.x, y - v.y, z - v.z);
+        return result;
+    }
+
+    overload inline function subtract(f:Float):Vector3 {
+        var result = Vector3.create(x - f, y - f, z - f);
+        return result;
+    }
+
+    inline function cross(v:Vector3):Vector3 {
+        var result = Vector3.create(y*v.z - z*v.y, z*v.x - x*v.z, x*v.y - y*v.x);
+        return result;
+    }
 }
 
 /** Vector3, 3 components **/
@@ -637,6 +685,13 @@ extern class FilePathList {
     var capacity:cpp.UInt32;
     var count:cpp.UInt32;
     var paths:Star<Star<cpp.Char>>;
+}
+
+// NOT IMPLEMENTED RN
+@:include("raylib.h")
+@:native("AutomationEvent")
+@:structAccess
+extern class AutomationEvent {
 }
 
 @:include("raylib.h")
@@ -1439,8 +1494,10 @@ extern class Rl {
     // Misc. functions
     @:native("GetRandomValue") static function getRandomValue(min:Int, max:Int):Int;
     @:native("SetRandomSeed") static function setRandomSeed(seed:cpp.UInt32):Void;
+    // insert RandomSequence Functions here
     @:native("TakeScreenshot") static function takeScreenshot(fileName:ConstCharStar):Void;
     @:native("SetConfigFlags") static function setConfigFlags(flags:UInt):Void;
+    @:native("OpenURL") static function openURL(url:ConstCharStar):Void;
 
     @:native("TraceLog") static function traceLog(logLevel:Int, text:ConstCharStar):Void;
     @:native("SetTraceLogLevel") static function setTraceLogLevel(logLevel:Int):Void;
@@ -1448,7 +1505,6 @@ extern class Rl {
     @:native("MemRealloc") static function memRealloc(ptr:Star<Void>, size:Int):Star<Void>;
     @:native("MemFree") static function memFree(ptr:Star<Void>):Void;
 
-    @:native("OpenURL") static function openURL(url:ConstCharStar):Void;
 
     // Files management functions
     @:native("LoadFileData") static function loadFileData(filename:ConstCharStar, bytesRead:Star<UInt>):Star<UInt16>;
@@ -1476,6 +1532,10 @@ extern class Rl {
     @:native("LoadDroppedFiles") static function loadDroppedFiles():FilePathList;
     @:native("UnloadDroppedFiles") static function unloadDroppedFiles(files:FilePathList):Void;
     @:native("GetFileModTime") static function getFileModTime(fileName:ConstCharStar):Float;
+
+    // COMPRESSION FUNCTIONS (NOT IMPLEMENTED YET)
+
+    // AUTOMATION FUNCTIONS (NOT IMPLEMENTED YET)
 
     // Input-related functions: keyboard
     @:native("IsKeyPressed") static function isKeyPressed(key:Int):Bool;
@@ -1533,6 +1593,7 @@ extern class Rl {
 
     // Camera system functions
     @:native("UpdateCamera") static function updateCamera(camera:Star<Camera3D>, cameraMode:Int):Void;
+    @:native("UpdateCameraPro") static function updateCameraPro(camera:Star<Camera>, movement:Vector3, rotation:Vector3, zoom:Float):Void;
 
     @:native("SetCameraPanControl") static function setCameraPanControl(keyPan:Int):Void;
     @:native("SetCameraAltControl") static function setCameraAltControl(keyAlt:Int):Void;
@@ -1584,6 +1645,11 @@ extern class Rl {
     @:native("DrawPolyLines") static function drawPolyLines(center:Vector2, sides:Int, radius:Float, rotation:Float, color:Color):Void;
     @:native("DrawPolyLinesEx") static function drawPolyLinesEx(center:Vector2, sides:Int, radius:Float, rotation:Float, lineThick:Float, color:Color):Void;
 
+    // IMPLEMENT DRAW SPLINE FUNCTIONS
+    @:native("DrawSplineLinear") static function drawSplineLinear(points:Star<Vector2>, pointCount:Int, thick:Float, color:Color):Void;
+
+    // IMPLEMENT GET SPLINE FUNCTIONS
+    
     // Basic shapes collision detection functions
     @:native("CheckCollisionRecs") static function checkCollisionRecs(rec1:Rectangle, rec2:Rectangle):Bool;
     @:native("CheckCollisionCircles") static function checkCollisionCircles(center1:Vector2, radius1:Float, center2:Vector2, radius2:Float):Bool;
@@ -1617,6 +1683,7 @@ extern class Rl {
     @:native("GenImageChecked") static function genImageChecked(width:Int, height:Int, checksX:Int, checksY:Int, color:Color):Image;
     @:native("GenImageWhiteNoise") static function genImageWhiteNoise(width:Int, height:Int, factor:Float):Image;
     @:native("GenImageCellular") static function genImageCellular(width:Int, height:Int, tileSize:Int):Image;
+    @:native("GenImageText") static function genImageText(width:Int, height:Int, text:cpp.ConstCharStar):Image;
 
     // Image manipulation functions
     @:native("ImageCopy") static function imageCopy(image:Image):Image;
@@ -1746,6 +1813,12 @@ extern class Rl {
     @:native("GetGlyphIndex") static function getGlyphIndex(font:Font, codepoint:Int):Int;
     @:native("GetGlyphInfo") static function getGlyphInfo(font:Font, codepoint:Int):GlyphInfo;
     @:native("GetGlyphAtlasRec") static function getGlyphAtlasRec(font:Font, codepoint:Int):Rectangle;
+
+    // CODEPOINT FUNCTIONS
+
+    // Text string management functions
+    @:native("TextCopy") static function textCopy(dst:cpp.Star<cpp.Char>, src:cpp.ConstCharStar):Int;
+    // TEXT FUNCTIONS NOT NECESSARY AS HAXE HAS STRING TOOLS
 
     //------------------------------------------------------------------------------------
     // Models module

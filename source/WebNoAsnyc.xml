@@ -3,7 +3,7 @@
     <set name="glfw_folder" value="${haxelib:raylib-hx}/source/lib/src/external/glfw" />
 
     <echo value="Using raylib from: ${raylib_folder}" />
-    <echo value="Using glfw from: ${glfw_folder}" />
+    <echo value="Using glfw from: ${glfw_folder}" />`
     
     <section>
         <files id="haxe">

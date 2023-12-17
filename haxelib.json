@@ -4,7 +4,7 @@
   "license": "MIT",
   "tags": ["bindings", "raylib", "game", "development"],
   "description": "Haxe bindings for raylib, a simple and easy-to-use library to learn videogame programming",
-  "version": "1.1.0",
+  "version": "5.0.0",
   "classPath": "source/",
   "releasenote": "",
   "contributors": ["ForeignSasquatch", "logo4poop"],
