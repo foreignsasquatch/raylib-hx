@@ -12,7 +12,7 @@
 
 Requirements
 -------------
-- Haxe 4.0.0 or above
+- Haxe
 - (Windows only) MSVC v142 - VS 2019 C++ x64/x86 build tools
 - (Windows only) Windows 10 SDK
 
@@ -35,7 +35,7 @@ Sample code:
 ```haxe
 class Main {
   static function main() {
-    Rl.initWindow(1280, 720, "Hi");
+    Rl.initWindow(1280, 720, "raylib-hx || Basic Window");
     
     while(!Rl.windowShouldClose()) {
       Rl.beginDrawing();
