@@ -1,12 +1,16 @@
 <xml>
     <set name="raylib_folder" value="${haxelib:raylib-hx}/source/lib/src" />
     <set name="glfw_folder" value="${haxelib:raylib-hx}/source/lib/src/external/glfw" />
+    <set name="raygui_folder" value="${haxelib:raylib-hx}/source/raygui/src" />
 
     <section>
         <files id="haxe">
             <compilerflag value="-I${glfw_folder}/include" />
             <compilerflag value="-I${raylib_folder}" />
             <compilerflag value="-I${raylib_folder}/extras" />
+            
+            <compilerflag value="-I${raygui_folder}" />
+            <compilerflag value="-DRAYGUI_IMPLEMENTATION" />
 
             <compilerflag value="-DSUPPORT_FILEFORMAT_JPG" unless="raylib-no-jpg" />
             <compilerflag value="-DSUPPORT_FILEFORMAT_BMP" unless="raylib-no-bmp" />
@@ -20,7 +24,6 @@
             <file name="${raylib_folder}/rmodels.c" />
             <file name="${raylib_folder}/raudio.c" />
             <file name="${raylib_folder}/rglfw.c" />
-            <!-- <file name="${haxelib:raylib-hx}/source/raygui.c" /> -->
         </files>
 
         <!-- WINDOWS COMPILER -->
