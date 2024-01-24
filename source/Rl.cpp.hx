@@ -104,7 +104,7 @@ extern class RlVector3 {
 
     /** Creates new Vector3 type **/
     static inline function create(x:Float, y:Float, z:Float):Vector3 {
-        return untyped __cpp__("Vector3{ (Float){0}, (Float){1}, (Float){2} }", x, y, z);
+        return untyped __cpp__("Vector3{ (float){0}, (float){1}, (float){2} }", x, y, z);
     }
 
     overload inline function add(v:Vector3):Vector3 {
@@ -174,7 +174,7 @@ extern class RlVector4 {
 
     /** Creates new Vector4 type **/
     static inline function create(x:Float, y:Float, z:Float, w:Float):Vector4 {
-        return untyped __cpp__("Vector4{ (Float){0}, (Float){1}, (Float){2}, (Float){3} }", x, y, z, w);
+        return untyped __cpp__("Vector4{ (float){0}, (float){1}, (float){2}, (float){3} }", x, y, z, w);
     }
 }
 
