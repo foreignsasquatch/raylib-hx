@@ -1417,7 +1417,7 @@ extern class Rl {
     @:native("GetMonitorHeight") static function getMonitorHeight(monitor:Int):Int;
     @:native("GetMonitorPhysicalWidth") static function getMonitorPhysicalWidth(monitor:Int):Int;
     @:native("GetMonitorPhysicalHeight") static function getMonitorPhysicalHeight(monitor:Int):Int;
-    @:native("GetMonitorRefershRate") static function getMonitorRefershRate(monitor:Int):Int;
+    @:native("GetMonitorRefreshRate") static function GetMonitorRefreshRate(monitor:Int):Int;
     @:native("GetWindowPosition") static function getWindowPosition():Vector2;
     @:native("GetWindowScaleDPI") static function getWindowScaleDPI():Vector2;
     @:native("GetMonitorName") static function getMonitorName(monitor:Int):ConstCharStar;
