@@ -1371,15 +1371,13 @@ extern enum abstract NPatchLayout(UInt) {
 
 #if wasm
 @:buildXml("<include name='${haxelib:raylib-hx}/source/Web.xml'/>")
-#elseif wasm_no_asnyc
-@:buildXml("<include name='${haxelib:raylib-hx}/source/WebNoAsnyc.xml'/>")
 #elseif shared_libs
 @:buildXml("<include name='${haxelib:raylib-hx}/source/DynLib.xml'/>")
 #else
 @:buildXml("<include name='${haxelib:raylib-hx}/source/Build.xml'/>")
 #end
 @:include("raylib.h")
-extern class Rl {
+extern class Raylib {
     //------------------------------------------------------------------------------------
     // Core module
     //------------------------------------------------------------------------------------
@@ -1417,7 +1415,7 @@ extern class Rl {
     @:native("GetMonitorHeight") static function getMonitorHeight(monitor:Int):Int;
     @:native("GetMonitorPhysicalWidth") static function getMonitorPhysicalWidth(monitor:Int):Int;
     @:native("GetMonitorPhysicalHeight") static function getMonitorPhysicalHeight(monitor:Int):Int;
-    @:native("GetMonitorRefreshRate") static function GetMonitorRefreshRate(monitor:Int):Int;
+    @:native("GetMonitorRefreshRate") static function getMonitorRefreshRate(monitor:Int):Int;
     @:native("GetWindowPosition") static function getWindowPosition():Vector2;
     @:native("GetWindowScaleDPI") static function getWindowScaleDPI():Vector2;
     @:native("GetMonitorName") static function getMonitorName(monitor:Int):ConstCharStar;
@@ -1680,7 +1678,7 @@ extern class Rl {
     @:native("GenImageGradientV") static function genImageGradientV(width:Int, height:Int, top:Color, bottom:Color):Image;
     @:native("GenImageGradientH") static function genImageGradientH(width:Int, height:Int, left:Color, right:Color):Image;
     @:native("GenImageGradientRadial") static function genImageGradientRadial(width:Int, height:Int, density:Float, inner:Color, outer:Color):Image;
-    @:native("GenImageChecked") static function genImageChecked(width:Int, height:Int, checksX:Int, checksY:Int, color:Color):Image;
+    @:native("GenImageChecked") static function genImageChecked(width:Int, height:Int, checksX:Int, checksY:Int, color:Color, color2:Color):Image;
     @:native("GenImageWhiteNoise") static function genImageWhiteNoise(width:Int, height:Int, factor:Float):Image;
     @:native("GenImageCellular") static function genImageCellular(width:Int, height:Int, tileSize:Int):Image;
     @:native("GenImageText") static function genImageText(width:Int, height:Int, text:cpp.ConstCharStar):Image;

@@ -42,6 +42,7 @@
         <files id="haxe" if="linux">
             <compilerflag value="-DPLATFORM_DESKTOP" />
             <compilerflag value="-D_GLFW_X11" />
+            <compilerflag value="-D_GNU_SOURCE" />
         </files>
 
         <!-- WINDOWS LINKER -->

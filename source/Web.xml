@@ -37,8 +37,6 @@
             <flag value='WASM=1' />
             <flag value='-s' />
             <flag value='USE_GLFW=3' />
-            <flag value='-s' />
-            <flag value='ASYNCIFY' />
             <flag value='--preload-file'/>
             <flag value='${ASSET_PATH}'/>
         </linker>
