@@ -1369,7 +1369,9 @@ extern enum abstract NPatchLayout(UInt) {
     var THREE_PATCH_HORIZONTAL:UInt;
 }
 
-#if wasm
+#if android
+@:buildXml("<include name='${haxelib:raylib-hx}/source/Android.xml'/>")
+#elseif wasm
 @:buildXml("<include name='${haxelib:raylib-hx}/source/Web.xml'/>")
 #elseif shared_libs
 @:buildXml("<include name='${haxelib:raylib-hx}/source/DynLib.xml'/>")
