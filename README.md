@@ -48,7 +48,7 @@ class Main {
 }
 ```
 
-For an example running on android (support added by @MAJigsaw77), check out (this repo)[https://github.com/MAJigsaw77/raylib-hx-android-example]! (also by @MAJigsaw77)
+For an example running on android, check out [this repo](https://github.com/MAJigsaw77/raylib-hx-android-example)!
 
 On Linux it's possible to use a system wide installation of Raylib instead of
 the source code provided with this repo.
