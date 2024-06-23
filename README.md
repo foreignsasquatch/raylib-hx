@@ -35,18 +35,20 @@ Sample code:
 ```haxe
 class Main {
   static function main() {
-    Rl.initWindow(1280, 720, "raylib-hx || Basic Window");
+    Raylib.initWindow(1280, 720, "Hello World!");
     
     while(!Rl.windowShouldClose()) {
-      Rl.beginDrawing();
-      Rl.clearBackground(Rl.Colors.WHITE);
-      Rl.endDrawing();
+      Raylib.beginDrawing();
+      Raylib.clearBackground(Rl.Colors.WHITE);
+      Raylib.endDrawing();
     }
     
-    Rl.closeWindow();
+    Raylib.closeWindow();
   }
 }
 ```
+
+For an example running on android (support added by @MAJigsaw77), check out (this repo)[https://github.com/MAJigsaw77/raylib-hx-android-example]! (also by @MAJigsaw77)
 
 On Linux it's possible to use a system wide installation of Raylib instead of
 the source code provided with this repo.
