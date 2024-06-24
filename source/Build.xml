@@ -24,6 +24,8 @@
             <file name="${raylib_folder}/rmodels.c" />
             <file name="${raylib_folder}/raudio.c" />
             <file name="${raylib_folder}/rglfw.c" />
+
+           <file name="${haxelib:raylib-hx}/source/rlImGui/rlImGui.cpp" />
         </files>
 
         <!-- WINDOWS COMPILER -->
