@@ -15,14 +15,14 @@
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src/extras" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
 
-		<file name="${haxelib:raylib-hx}/project/raylib/src/raudio.c" />
-		<file name="${haxelib:raylib-hx}/project/raylib/src/rcore.c" />
-		<file name="${haxelib:raylib-hx}/project/raylib/src/rglfw.c" unless="emscripten || android" />
-		<file name="${haxelib:raylib-hx}/project/raylib/src/rmodels.c" />
-		<file name="${haxelib:raylib-hx}/project/raylib/src/rshapes.c" />
-		<file name="${haxelib:raylib-hx}/project/raylib/src/rtext.c" />
-		<file name="${haxelib:raylib-hx}/project/raylib/src/rtextures.c" />
-		<file name="${haxelib:raylib-hx}/project/raylib/src/utils.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/raudio.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rcore.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rglfw.c" unless="emscripten || android" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rmodels.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rshapes.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtext.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtextures.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/utils.c" />
 
 		<compilerflag value="-DRAYGUI_IMPLEMENTATION" />
 
