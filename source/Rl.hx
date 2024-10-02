@@ -28,15 +28,6 @@
 
 package;
 
-import cpp.Char;
-import cpp.ConstCharStar;
-import cpp.ConstStar;
-import cpp.RawConstPointer;
-import cpp.Star;
-import cpp.UInt16;
-import cpp.UInt8;
-import cpp.Void;
-
 /** Basic colors (colours) **/
 @:include("raylib.h")
 extern class Colors
@@ -71,25 +62,28 @@ extern class Colors
 
 @:include("raylib.h")
 @:native("Vector2")
+@:unreflective
 @:structAccess
 extern class RlVector2
 {
-	/** Vector x component **/
+	/**
+	 * Vector x component
+	 */
 	var x:Float;
 
 	/** Vector y component **/
 	var y:Float;
 
 	/** Creates new Vector2 type **/
-	static inline function create(x:Float, y:Float):RlVector2
+	static inline function create(x:Single, y:Single):RlVector2
 	{
-		return untyped __cpp__("Vector2{ (float){0}, (float){1} }", x, y);
+		return untyped __cpp__('{ {0}, {1} }', x, y);
 	}
 
 	/** Creates new Vector2 with x and y as 0 **/
-	static inline function zero():Vector2
+	static inline function zero():RlVector2
 	{
-		return untyped __cpp__("Vector2{ 0, 0 }");
+		return untyped __cpp__('{ 0, 0 }');
 	}
 }
 
