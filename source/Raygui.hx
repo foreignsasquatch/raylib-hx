@@ -1,5 +1,3 @@
-package;
-
 /**********************************************************************************************
  *
  *   raylib-hx - a Haxe binding for the library raylib, a simple and easy-to-use library to enjoy videogames programming
@@ -27,14 +25,13 @@ package;
  *     3. This notice may not be removed or altered from any source distribution.
  *
 **********************************************************************************************/
+
+package;
+
 import Rl.Color;
 import Rl.Font;
 import Rl.Rectangle;
 import Rl.Vector2;
-import cpp.CastCharStar;
-import cpp.ConstCharStar;
-import cpp.Pointer;
-import cpp.Star;
 
 @:include("raygui.h")
 @:native("GuiControlState")
