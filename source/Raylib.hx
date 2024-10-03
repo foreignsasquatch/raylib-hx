@@ -1589,7 +1589,7 @@ extern class Raylib
 	@:native("LoadShaderFromMemory") static function loadShaderFromMemory(vsCode:cpp.ConstCharStar, fsCode:cpp.ConstCharStar):Shader;
 	@:native("GetShaderLocation") static function getShaderLocation(shader:Shader, uniformName:cpp.ConstCharStar):Int;
 	@:native("GetShaderLocationAttrib") static function getShaderLocationAttrib(shader:Shader, attribName:cpp.ConstCharStar):Int;
-	@:native("SetShaderValue") static function setShaderValue(shader:Shader, locIndex:Int, value:RawConstPointer<Void>, uniformType:Int):Void;
+	@:native("SetShaderValue") static function setShaderValue(shader:Shader, locIndex:Int, value:cpp.RawConstPointer<Void>, uniformType:Int):Void;
 	@:native("SetShaderValueV") static function setShaderValueV(shader:Shader, locIndex:Int, value:cpp.RawConstPointer<Void>, uniformType:Int, count:Int):Void;
 	@:native("SetShaderValueMatrix") static function setShaderValueMatrix(shader:Shader, locIndex:Int, mat:Matrix):Void;
 	@:native("SetShaderValueTexture") static function setShaderValueTexture(shader:Shader, locIndex:Int, texture:Texture2D):Void;
