@@ -48,8 +48,6 @@
 			<compilerflag value="-DGRAPHICS_API_OPENGL_ES2" />
 
 			<file name="${ANDROID_NDK_ROOT}/sources/android/native_app_glue/android_native_app_glue.c" />
-
-			<compilerflag name="-u" value="ANativeActivity_onCreate" />
 		</section>
 
 		<file name="${haxelib:raylib-hx}/project/src/android_main.c" if="android" />
@@ -108,12 +106,11 @@
 		<files id="raylib" />
 	</target>
 
-        <!--<linker id='exe' exe='em++' if="emscripten">
-            <flag value='-s' />
-            <flag value='WASM=1' />
-            <flag value='-s' />
-            <flag value='USE_GLFW=3' />
-            <flag value='--preload-file'/>
-            <flag value='${ASSET_PATH}'/>
-        </linker>-->
+	<linker id="exe" exe="em++" if="emscripten">
+		<flag name="-s" value="USE_GLFW=3" />
+
+		<section if="ASSET_PATH">
+			<flag name="--preload-file" value="${ASSET_PATH}" />
+		</section>
+        </linker>
 </xml>
