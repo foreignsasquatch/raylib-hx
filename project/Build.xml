@@ -12,7 +12,8 @@
 
 	<files id="raylib">
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" unless="emscripten || android" />
-		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src/extras" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/extras" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
 
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/raudio.c" />
