@@ -11,10 +11,10 @@ package;
 @:native('Vector2')
 extern class RayVector2
 {
-	@:native('Vector2')
-	static function create():RayVector2;
+	// @:native('Vector2')
+	// static function create():RayVector2;
 
-	static overload inline function create(x:Single, y:Single):RayVector2
+	static inline function create(x:Single, y:Single):RayVector2
 	{
 		return untyped __cpp__('Vector2{ {0}, {1} }', x, y);
 	}
