@@ -16,7 +16,7 @@ extern class RayVector2
 
 	static inline function create(x:Single, y:Single):RayVector2
 	{
-		return untyped __cpp__('Vector2{ {0}, {1} }', x, y);
+		return untyped __cpp__('Vector2{ (float) {0}, (float) {1} }', x, y);
 	}
 
 	var x:Single; // Vector x component
