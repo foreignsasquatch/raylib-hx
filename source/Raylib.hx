@@ -203,7 +203,8 @@ extern class RayGlyphInfo
 	@:native('GlyphInfo')
 	static function alloc():RayGlyphInfo;
 
-	var value:Int; // Character value (Unicode) var offsetX:Int; // Character offset X when drawing
+	var value:Int; // Character value (Unicode)
+	var offsetX:Int; // Character offset X when drawing
 	var offsetY:Int; // Character offset Y when drawing
 	var advanceX:Int; // Character advance position X
 	var image:RayImage; // Character image data
@@ -219,7 +220,8 @@ extern class RayFont
 	@:native('Font')
 	static function alloc():RayFont;
 
-	var baseSize:Int; // Base size (default chars height) var glyphCount:Int; // Number of glyph characters
+	var baseSize:Int; // Base size (default chars height)
+	var glyphCount:Int; // Number of glyph characters
 	var glyphPadding:Int; // Padding around the glyph characters
 	var texture:RayTexture; // Texture atlas containing the glyphs
 	var recs:cpp.RawPointer<RayRectangle>; // RayRectangles in texture for the glyphs
@@ -238,7 +240,8 @@ extern class RayCamera3D
 
 	var position:RayVector3; // Camera position
 	var target:RayVector3; // Camera target it looks-at
-	var up:RayVector3; // Camera up vector (rotation over its axis) var fovy:Single; // Camera field-of-view aperture in Y (degrees) in perspective, used as near plane width in orthographic
+	var up:RayVector3; // Camera up vector (rotation over its axis)
+	var fovy:Single; // Camera field-of-view aperture in Y (degrees) in perspective, used as near plane width in orthographic
 	var projection:Int; // Camera projection: CAMERA_PERSPECTIVE or CAMERA_ORTHOGRAPHIC
 }
 
@@ -252,7 +255,9 @@ extern class RayCamera2D
 	@:native('Camera2D')
 	static function alloc():RayCamera2D;
 
-	var offset:RayVector2; // Camera offset (displacement from target) var target:RayVector2; // Camera target (rotation and zoom origin) var rotation:Single; // Camera rotation in degrees
+	var offset:RayVector2; // Camera offset (displacement from target)
+	var target:RayVector2; // Camera target (rotation and zoom origin)
+	var rotation:Single; // Camera rotation in degrees
 	var zoom:Single; // Camera zoom (scaling), should be 1.0f by default
 }
 
@@ -398,7 +403,8 @@ extern class ModelAnimation
 
 	var boneCount:Int; // Number of bones
 	var frameCount:Int; // Number of animation frames
-	var bones:cpp.RawPointer<BoneInfo>; // Bones information (skeleton) var framePoses:cpp.RawPointer<cpp.RawPointer<Transform>>; // Poses cpp.RawPointer by frame
+	var bones:cpp.RawPointer<BoneInfo>; // Bones information (skeleton)
+	var framePoses:cpp.RawPointer<cpp.RawPointer<Transform>>; // Poses cpp.RawPointer by frame
 	var name:cpp.CastCharStar; // Animation name
 }
 
@@ -412,7 +418,8 @@ extern class Ray
 	@:native('Ray')
 	static function alloc():Ray;
 
-	var position:RayVector3; // Ray position (origin) var direction:RayVector3; // Ray direction
+	var position:RayVector3; // Ray position (origin)
+	var direction:RayVector3; // Ray direction
 }
 
 @:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
@@ -454,6 +461,9 @@ typedef AudioCallback = cpp.Callable<(bufferData:cpp.RawPointer<cpp.Void>, frame
 @:native('Wave')
 extern class Wave
 {
+	@:native('Wave')
+	static function alloc():Wave;
+
 	var frameCount:cpp.UInt32; // Total number of frames (considering channels) var sampleRate:cpp.UInt32; // Frequency (samples per second) var sampleSize:cpp.UInt32; // Bit depth (bits per sample): 8, 16, 32 (24 not supported) var channels:cpp.UInt32; // Number of channels (1-mono, 2-stereo, ...) var data:cpp.RawPointer<cpp.Void>; // Buffer data pointer
 }
 
@@ -474,6 +484,9 @@ extern class RAudioProcessor {}
 @:native('AudioStream')
 extern class AudioStream
 {
+	@:native('AudioStream')
+	static function alloc():AudioStream;
+
 	var buffer:cpp.RawPointer<RAudioBuffer>; // Pointer to internal data used by the audio system
 	var processor:cpp.RawPointer<RAudioProcessor>; // Pointer to internal data processor, useful for audio effects
 	var sampleRate:cpp.UInt32; // Frequency (samples per second) var sampleSize:cpp.UInt32; // Bit depth (bits per sample): 8, 16, 32 (24 not supported) var channels:cpp.UInt32; // Number of channels (1-mono, 2-stereo, ...)
@@ -486,6 +499,9 @@ extern class AudioStream
 @:native('Sound')
 extern class Sound
 {
+	@:native('Sound')
+	static function alloc():Sound;
+
 	var stream:AudioStream; // Audio stream
 	var frameCount:cpp.UInt32; // Total number of frames (considering channels)
 }
@@ -497,6 +513,9 @@ extern class Sound
 @:native('Music')
 extern class Music
 {
+	@:native('Music')
+	static function alloc():Music;
+
 	var stream:AudioStream; // Audio stream
 	var frameCount:cpp.UInt32; // Total number of frames (considering channels) var looping:Bool; // Music looping enable
 	var ctxType:Int; // Type of music context (audio filetype) var ctxData:cpp.RawPointer<cpp.Void>; // Audio context data, depends on type
