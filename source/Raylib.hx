@@ -1963,7 +1963,7 @@ extern class Raylib
 	@:native('LoadTexture') static function loadTexture(fileName:cpp.ConstCharStar):RayTexture;
 	@:native('LoadTextureFromImage') static function loadTextureFromImage(image:RayImage):RayTexture;
 	@:native('LoadTexture') static function loadTexture(image:RayImage, layout:Int):RayTexture;
-	@:native('LoadRenderTexture') static function loadRenderTexture(width:Int, height:Int):;
+	@:native('LoadRenderTexture') static function loadRenderTexture(width:Int, height:Int):RayRenderTexture;
 	@:native('IsTextureReady') static function isTextureReady(texture:RayTexture):Bool;
 	@:native('UnloadTexture') static function unloadTexture(texture:RayTexture):Void;
 	@:native('IsRenderTextureReady') static function isRenderTextureReady(target:RayRenderTexture):Bool;
