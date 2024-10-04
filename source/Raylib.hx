@@ -12,7 +12,7 @@ package;
 extern class RayVector2
 {
 	@:native('Vector2')
-	static function alloc():RayVector2;
+	static function create():RayVector2;
 
 	var x:Single; // Vector x component
 	var y:Single; // Vector y component
@@ -28,7 +28,7 @@ typedef Vector2 = cpp.Struct<RayVector2>;
 extern class RayVector3
 {
 	@:native('Vector3')
-	static function alloc():RayVector3;
+	static function create():RayVector3;
 
 	var x:Single; // Vector x component
 	var y:Single; // Vector y component
@@ -45,7 +45,7 @@ typedef Vector3 = cpp.Struct<RayVector3>;
 extern class RayVector4
 {
 	@:native('RayVector4')
-	static function alloc():RayVector4;
+	static function create():RayVector4;
 
 	var x:Single; // Vector x component
 	var y:Single; // Vector y component
@@ -63,7 +63,7 @@ typedef Vector4 = cpp.Struct<RayVector4>;
 extern class RayMatrix
 {
 	@:native('Matrix')
-	static function alloc():RayMatrix;
+	static function create():RayMatrix;
 
 	// Matrix first row (4 components)
 	var m0:Single;
@@ -100,7 +100,7 @@ typedef Matrix = cpp.Struct<RayMatrix>;
 extern class RayColor
 {
 	@:native('Color')
-	static function alloc():RayColor;
+	static function create():RayColor;
 
 	var r:cpp.UInt8; // Color red value
 	var g:cpp.UInt8; // Color green value
@@ -118,7 +118,7 @@ typedef Color = cpp.Struct<RayColor>;
 extern class RayRectangle
 {
 	@:native('Rectangle')
-	static function alloc():RayRectangle;
+	static function create():RayRectangle;
 
 	var x:Single; // RayRectangle top-left corner position x
 	var y:Single; // RayRectangle top-left corner position y
@@ -134,7 +134,7 @@ extern class RayRectangle
 extern class RayImage
 {
 	@:native('Image')
-	static function alloc():RayImage;
+	static function create():RayImage;
 
 	var data:cpp.RawPointer<cpp.Void>; // Image raw data
 	var width:Int; // Image base width
@@ -151,7 +151,7 @@ extern class RayImage
 extern class RayTexture
 {
 	@:native('Texture')
-	static function alloc():RayTexture;
+	static function create():RayTexture;
 
 	var id:cpp.UInt32; // OpenGL texture id
 	var width:Int; // Texture base width
@@ -170,7 +170,7 @@ typedef Texture = cpp.Struct<RayTexture>;
 extern class RayRenderTexture
 {
 	@:native('RenderTexture')
-	static function alloc():RayRenderTexture;
+	static function create():RayRenderTexture;
 
 	var id:cpp.UInt32; // OpenGL framebuffer object id
 	var texture:RayTexture; // Color buffer attachment texture
@@ -185,7 +185,7 @@ extern class RayRenderTexture
 extern class RayNPatchInfo
 {
 	@:native('NPatchInfo')
-	static function alloc():RayNPatchInfo;
+	static function create():RayNPatchInfo;
 
 	var source:RayRectangle; // Texture source rectangle
 	var left:Int; // Left border offset
@@ -203,7 +203,7 @@ extern class RayNPatchInfo
 extern class RayGlyphInfo
 {
 	@:native('GlyphInfo')
-	static function alloc():RayGlyphInfo;
+	static function create():RayGlyphInfo;
 
 	var value:Int; // Character value (Unicode)
 	var offsetX:Int; // Character offset X when drawing
@@ -220,7 +220,7 @@ extern class RayGlyphInfo
 extern class RayFont
 {
 	@:native('Font')
-	static function alloc():RayFont;
+	static function create():RayFont;
 
 	var baseSize:Int; // Base size (default chars height)
 	var glyphCount:Int; // Number of glyph characters
@@ -238,7 +238,7 @@ extern class RayFont
 extern class RayCamera3D
 {
 	@:native('Camera3D')
-	static function alloc():RayCamera3D;
+	static function create():RayCamera3D;
 
 	var position:RayVector3; // Camera position
 	var target:RayVector3; // Camera target it looks-at
@@ -255,7 +255,7 @@ extern class RayCamera3D
 extern class RayCamera2D
 {
 	@:native('Camera2D')
-	static function alloc():RayCamera2D;
+	static function create():RayCamera2D;
 
 	var offset:RayVector2; // Camera offset (displacement from target)
 	var target:RayVector2; // Camera target (rotation and zoom origin)
@@ -271,7 +271,7 @@ extern class RayCamera2D
 extern class RayMesh
 {
 	@:native('Mesh')
-	static function alloc():RayMesh;
+	static function create():RayMesh;
 
 	var vertexCount:Int; // Number of vertices stored in arrays
 	var triangleCount:Int; // Number of triangles stored (indexed or not)
@@ -304,7 +304,7 @@ extern class RayMesh
 extern class Shader
 {
 	@:native('Shader')
-	static function alloc():Shader;
+	static function create():Shader;
 
 	var id:cpp.UInt32; // Shader program id
 	var locs:cpp.RawPointer<Int>; // Shader locations array (RL_MAX_SHADER_LOCATIONS)
@@ -318,7 +318,7 @@ extern class Shader
 extern class MaterialMap
 {
 	@:native('MaterialMap')
-	static function alloc():MaterialMap;
+	static function create():MaterialMap;
 
 	var texture:RayTexture; // Material map texture
 	var color:RayColor; // Material map color
@@ -333,7 +333,7 @@ extern class MaterialMap
 extern class Material
 {
 	@:native('Material')
-	static function alloc():Material;
+	static function create():Material;
 
 	var shader:Shader; // Material shader
 	var maps:cpp.RawPointer<MaterialMap>; // Material maps cpp.RawPointer (MAX_MATERIAL_MAPS)
@@ -348,7 +348,7 @@ extern class Material
 extern class Transform
 {
 	@:native('Transform')
-	static function alloc():Transform;
+	static function create():Transform;
 
 	var translation:RayVector3; // Translation
 	var rotation:RayVector4; // Rotation
@@ -363,7 +363,7 @@ extern class Transform
 extern class BoneInfo
 {
 	@:native('BoneInfo')
-	static function alloc():BoneInfo;
+	static function create():BoneInfo;
 
 	var name:cpp.CastCharStar; // Bone name
 	var parent:Int; // Bone parent
@@ -377,7 +377,7 @@ extern class BoneInfo
 extern class Model
 {
 	@:native('Model')
-	static function alloc():Model;
+	static function create():Model;
 
 	var transform:RayMatrix; // Local transform matrix
 
@@ -401,7 +401,7 @@ extern class Model
 extern class ModelAnimation
 {
 	@:native('ModelAnimation')
-	static function alloc():ModelAnimation;
+	static function create():ModelAnimation;
 
 	var boneCount:Int; // Number of bones
 	var frameCount:Int; // Number of animation frames
@@ -418,7 +418,7 @@ extern class ModelAnimation
 extern class Ray
 {
 	@:native('Ray')
-	static function alloc():Ray;
+	static function create():Ray;
 
 	var position:RayVector3; // Ray position (origin)
 	var direction:RayVector3; // Ray direction
@@ -432,7 +432,7 @@ extern class Ray
 extern class RayCollision
 {
 	@:native('RayCollision')
-	static function alloc():RayCollision;
+	static function create():RayCollision;
 
 	var hit:Bool; // Did the ray hit something?
 	var distance:Single; // Distance to the nearest hit
@@ -448,7 +448,7 @@ extern class RayCollision
 extern class BoundingBox
 {
 	@:native('BoundingBox')
-	static function alloc():BoundingBox;
+	static function create():BoundingBox;
 
 	var min:RayVector3; // Minimum vertex box-corner
 	var max:RayVector3; // Maximum vertex box-corner
@@ -464,7 +464,7 @@ typedef AudioCallback = cpp.Callable<(bufferData:cpp.RawPointer<cpp.Void>, frame
 extern class Wave
 {
 	@:native('Wave')
-	static function alloc():Wave;
+	static function create():Wave;
 
 	var frameCount:cpp.UInt32; // Total number of frames (considering channels) var sampleRate:cpp.UInt32; // Frequency (samples per second) var sampleSize:cpp.UInt32; // Bit depth (bits per sample): 8, 16, 32 (24 not supported) var channels:cpp.UInt32; // Number of channels (1-mono, 2-stereo, ...) var data:cpp.RawPointer<cpp.Void>; // Buffer data pointer
 }
@@ -487,7 +487,7 @@ extern class RAudioProcessor {}
 extern class AudioStream
 {
 	@:native('AudioStream')
-	static function alloc():AudioStream;
+	static function create():AudioStream;
 
 	var buffer:cpp.RawPointer<RAudioBuffer>; // Pointer to internal data used by the audio system
 	var processor:cpp.RawPointer<RAudioProcessor>; // Pointer to internal data processor, useful for audio effects
@@ -502,7 +502,7 @@ extern class AudioStream
 extern class Sound
 {
 	@:native('Sound')
-	static function alloc():Sound;
+	static function create():Sound;
 
 	var stream:AudioStream; // Audio stream
 	var frameCount:cpp.UInt32; // Total number of frames (considering channels)
@@ -516,7 +516,7 @@ extern class Sound
 extern class Music
 {
 	@:native('Music')
-	static function alloc():Music;
+	static function create():Music;
 
 	var stream:AudioStream; // Audio stream
 	var frameCount:cpp.UInt32; // Total number of frames (considering channels) var looping:Bool; // Music looping enable
@@ -531,7 +531,7 @@ extern class Music
 extern class VrDeviceInfo
 {
 	@:native('VrDeviceInfo')
-	static function alloc():VrDeviceInfo;
+	static function create():VrDeviceInfo;
 
 	var hResolution:Int; // Horizontal resolution in pixels
 	var vResolution:Int; // Vertical resolution in pixels
@@ -552,7 +552,7 @@ extern class VrDeviceInfo
 extern class VrStereoConfig
 {
 	@:native('VrStereoConfig')
-	static function alloc():VrStereoConfig;
+	static function create():VrStereoConfig;
 
 	var projection:cpp.RawPointer<RayMatrix>; // VR projection matrices (per eye) var viewOffset:cpp.RawPointer<RayMatrix>; // VR view offset matrices (per eye) var leftLensCenter:cpp.RawPointer<Single>; // VR left lens center
 	var rightLensCenter:cpp.RawPointer<Single>; // VR right lens center
@@ -570,7 +570,7 @@ extern class VrStereoConfig
 extern class FilePathList
 {
 	@:native('FilePathList')
-	static function alloc():FilePathList;
+	static function create():FilePathList;
 
 	var capacity:cpp.UInt32; // Filepaths max entries
 	var count:cpp.UInt32; // Filepaths entries count
@@ -585,7 +585,7 @@ extern class FilePathList
 extern class AutomationEvent
 {
 	@:native('AutomationEvent')
-	static function alloc():AutomationEvent;
+	static function create():AutomationEvent;
 
 	var frame:cpp.UInt32; // Event frame
 	var type:cpp.UInt32; // Event type (AutomationEventType) var params:cpp.RawPointer<Int>; // Event parameters (if required)
@@ -599,7 +599,7 @@ extern class AutomationEvent
 extern class AutomationEventList
 {
 	@:native('AutomationEventList')
-	static function alloc():AutomationEventList;
+	static function create():AutomationEventList;
 
 	var capacity:cpp.UInt32; // Events max entries (MAX_AUTOMATION_EVENTS) var count:cpp.UInt32; // Events entries count
 	var events:cpp.RawPointer<AutomationEvent>; // Events entries
@@ -1474,7 +1474,7 @@ private extern class TouchActionImpl {}
 extern class GestureEvent
 {
 	@:native('GestureEvent')
-	static function alloc():GestureEvent;
+	static function create():GestureEvent;
 
 	var touchAction:Int;
 	var pointCount:Int;
@@ -1621,14 +1621,14 @@ extern class Raylib
 
 	// Screen-space-related functions
 
-	@:native('GetMouseRay') static function getMouseRay(mousePosition:RayVector2, camera:RayCamera):Ray;
-	@:native('GetScreenToWorldRay') static function getScreenToWorldRay(mousePosition:RayVector2, camera:RayCamera):Ray;
+	@:native('GetMouseRay') static function getMouseRay(mousePosition:RayVector2, camera:RayCamera3D):Ray;
+	@:native('GetScreenToWorldRay') static function getScreenToWorldRay(mousePosition:RayVector2, camera:RayCamera3D):Ray;
 	@:native('GetScreenToWorldRayEx') static function getScreenToWorldRayEx(mousePosition:RayVector2, camera:RayCamera3D, width:Int, height:Int):Ray;
-	@:native('GetWorldToScreen') static function getWorldToScreen(position:RayVector3, camera:RayCamera):RayVector2;
+	@:native('GetWorldToScreen') static function getWorldToScreen(position:RayVector3, camera:RayCamera3D):RayVector2;
 	@:native('GetWorldToScreenEx') static function getWorldToScreenEx(position:RayVector3, camera:RayCamera3D, width:Int, height:Int):RayVector2;
 	@:native('GetWorldToScreen2D') static function getWorldToScreen2D(position:RayVector2, camera:RayCamera2D):RayVector2;
 	@:native('GetScreenToWorld2D') static function getScreenToWorld2D(position:RayVector2, camera:RayCamera2D):RayVector2;
-	@:native('GetCameraRayMatrix') static function getCameraRayMatrix(camera:RayCamera):RayMatrix;
+	@:native('GetCameraRayMatrix') static function getCameraRayMatrix(camera:RayCamera3D):RayMatrix;
 	@:native('GetCameraRayMatrix2D') static function getCameraRayMatrix2D(camera:RayCamera2D):RayMatrix;
 
 	// Timing-related functions
