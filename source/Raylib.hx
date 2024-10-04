@@ -38,6 +38,15 @@ extern class RayVector3
 	@:native('Vector3')
 	static function alloc():RayVector3;
 
+	static inline function create(x:Single, y:Single, z:Single):RayVector3
+	{
+		final vec3:RayVector3 = RayVector3.alloc();
+		vec3.x = x;
+		vec3.y = y;
+		vec3.z = z;
+		return vec3;
+	}
+
 	var x:Single; // Vector x component
 	var y:Single; // Vector y component
 	var z:Single; // Vector z component
@@ -54,6 +63,16 @@ extern class RayVector4
 {
 	@:native('RayVector4')
 	static function alloc():RayVector4;
+
+	static inline function create(x:Single, y:Single, z:Single, w:Single):RayVector4
+	{
+		final vec4:RayVector4 = RayVector4.alloc();
+		vec4.x = x;
+		vec4.y = y;
+		vec4.z = z;
+		vec4.w = w;
+		return vec4;
+	}
 
 	var x:Single; // Vector x component
 	var y:Single; // Vector y component
@@ -110,6 +129,16 @@ extern class RayColor
 	@:native('Color')
 	static function alloc():RayColor;
 
+	static inline function create(r:cpp.UInt8, g:cpp.UInt8, b:cpp.UInt8, a:cpp.UInt8):RayColor
+	{
+		final color:RayColor = RayColor.alloc();
+		color.r = r;
+		color.g = g;
+		color.b = b;
+		color.a = a;
+		return color;
+	}
+
 	var r:cpp.UInt8; // Color red value
 	var g:cpp.UInt8; // Color green value
 	var b:cpp.UInt8; // Color blue value
@@ -127,6 +156,16 @@ extern class RayRectangle
 {
 	@:native('Rectangle')
 	static function alloc():RayRectangle;
+
+	static inline function create(x:Single, y:Single, width:Single, height:Single):RayRectangle
+	{
+		final rect:RayRectangle = RayRectangle.alloc();
+		rect.x = x;
+		rect.y = y;
+		rect.width = width;
+		rect.height = width;
+		return rect;
+	}
 
 	var x:Single; // RayRectangle top-left corner position x
 	var y:Single; // RayRectangle top-left corner position y
