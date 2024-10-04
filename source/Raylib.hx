@@ -1525,7 +1525,7 @@ extern class Raylib
 
 	@:native('InitWindow') static function initWindow(width:Int, height:Int, title:cpp.ConstCharStar):Void;
 	@:native('CloseWindow') static function closeWindow():Void;
-	@:native('WindowShouldClose') static function WindowShouldClose():Bool;
+	@:native('WindowShouldClose') static function windowShouldClose():Bool;
 	@:native('IsWindowReady') static function isWindowReady():Bool;
 	@:native('IsWindowFullscreen') static function isWindowFullscreen():Bool;
 	@:native('IsWindowHidden') static function isWindowHidden():Bool;
@@ -1623,9 +1623,9 @@ extern class Raylib
 
 	@:native('GetMouseRay') static function getMouseRay(mousePosition:RayVector2, camera:RayCamera):Ray;
 	@:native('GetScreenToWorldRay') static function getScreenToWorldRay(mousePosition:RayVector2, camera:RayCamera):Ray;
-	@:native('GetScreenToWorldRayEx') static function getScreenToWorldRayEx(mousePosition:RayVector2, camera:RayCamera, width:Int, height:Int):Ray;
+	@:native('GetScreenToWorldRayEx') static function getScreenToWorldRayEx(mousePosition:RayVector2, camera:RayCamera3D, width:Int, height:Int):Ray;
 	@:native('GetWorldToScreen') static function getWorldToScreen(position:RayVector3, camera:RayCamera):RayVector2;
-	@:native('GetWorldToScreenEx') static function getWorldToScreenEx(position:RayVector3, camera:RayCamera, width:Int, height:Int):RayVector2;
+	@:native('GetWorldToScreenEx') static function getWorldToScreenEx(position:RayVector3, camera:RayCamera3D, width:Int, height:Int):RayVector2;
 	@:native('GetWorldToScreen2D') static function getWorldToScreen2D(position:RayVector2, camera:RayCamera2D):RayVector2;
 	@:native('GetScreenToWorld2D') static function getScreenToWorld2D(position:RayVector2, camera:RayCamera2D):RayVector2;
 	@:native('GetCameraRayMatrix') static function getCameraRayMatrix(camera:RayCamera):RayMatrix;
@@ -1789,8 +1789,8 @@ extern class Raylib
 	// Camera System Functions (Module: rcamera)
 	//------------------------------------------------------------------------------------
 
-	@:native('UpdateCamera') static function updateCamera(camera:cpp.RawPointer<RayCamera>, mode:Int):Void;
-	@:native('UpdateCameraPro') static function updateCameraPro(camera:cpp.RawPointer<RayCamera>, movement:RayVector3, rotation:RayVector3, zoom:Single):Void;
+	@:native('UpdateCamera') static function updateCamera(camera:cpp.RawPointer<RayCamera3D>, mode:Int):Void;
+	@:native('UpdateCameraPro') static function updateCameraPro(camera:cpp.RawPointer<RayCamera3D>, movement:RayVector3, rotation:RayVector3, zoom:Single):Void;
 
 	//------------------------------------------------------------------------------------
 	// Basic Shapes Drawing Functions (Module: shapes)
@@ -2109,9 +2109,9 @@ extern class Raylib
 	@:native('DrawModelWires') static function drawModelWires(model:Model, position:RayVector3, scale:Single, tint:RayColor):Void;
 	@:native('DrawModelWiresEx') static function drawModelWiresEx(model:Model, position:RayVector3, rotationAxis:RayVector3, rotationAngle:Single, scale:RayVector3, tint:RayColor):Void;
 	@:native('DrawBoundingBox') static function drawBoundingBox(box:BoundingBox, color:RayColor):Void;
-	@:native('DrawBillboard') static function drawBillboard(camera:RayCamera, texture:RayTexture, position:RayVector3, size:Single, tint:RayColor):Void;
-	@:native('DrawBillboardRec') static function drawBillboardRec(camera:RayCamera, texture:RayTexture, source:RayRectangle, position:RayVector3, size:RayVector2, tint:RayColor):Void;
-	@:native('DrawBillboardPro') static function drawBillboardPro(camera:RayCamera, texture:RayTexture, source:RayRectangle, position:RayVector3, up:RayVector3, size:RayVector2, origin:RayVector2,
+	@:native('DrawBillboard') static function drawBillboard(camera:RayCamera3D, texture:RayTexture, position:RayVector3, size:Single, tint:RayColor):Void;
+	@:native('DrawBillboardRec') static function drawBillboardRec(camera:RayCamera3D, texture:RayTexture, source:RayRectangle, position:RayVector3, size:RayVector2, tint:RayColor):Void;
+	@:native('DrawBillboardPro') static function drawBillboardPro(camera:RayCamera3D, texture:RayTexture, source:RayRectangle, position:RayVector3, up:RayVector3, size:RayVector2, origin:RayVector2,
 		rotation:Single, tint:RayColor):Void;
 
 	// Mesh management functions
