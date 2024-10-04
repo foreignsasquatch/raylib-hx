@@ -160,6 +160,8 @@ extern class RayTexture
 	var format:Int; // Data format (PixelFormat type)
 }
 
+typedef Texture = cpp.Struct<RayTexture>;
+
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
