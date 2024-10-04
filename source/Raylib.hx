@@ -108,7 +108,7 @@ extern class RayColor
 	var a:cpp.UInt8; // Color alpha value
 }
 
-typedef Matrix = cpp.Struct<RayMatrix>;
+typedef Color = cpp.Struct<RayColor>;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
