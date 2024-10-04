@@ -987,6 +987,10 @@ extern enum abstract ShaderLocationIndex(ShaderLocationIndexImpl)
 	@:native('SHADER_LOC_MAP_PREFILTER') var SHADER_LOC_MAP_PREFILTER;
 	@:native('SHADER_LOC_MAP_BRDF') var SHADER_LOC_MAP_BRDF;
 
+	@:from
+	static public inline function fromInt(i:Int):ShaderLocationIndex
+		return cast i;
+
 	@:to extern public inline function toInt():Int
 		return untyped this;
 }
@@ -1008,6 +1012,10 @@ extern enum abstract ShaderUniformDataType(ShaderUniformDataTypeImpl)
 	@:native('SHADER_UNIFORM_IVEC4') var SHADER_UNIFORM_IVEC4;
 	@:native('SHADER_UNIFORM_SAMPLER2D') var SHADER_UNIFORM_SAMPLER2D;
 
+	@:from
+	static public inline function fromInt(i:Int):ShaderUniformDataType
+		return cast i;
+
 	@:to extern public inline function toInt():Int
 		return untyped this;
 }
@@ -1023,6 +1031,10 @@ extern enum abstract ShaderAttributeDataType(ShaderAttributeDataTypeImpl)
 	@:native('SHADER_ATTRIB_VEC2') var SHADER_ATTRIB_VEC2;
 	@:native('SHADER_ATTRIB_VEC3') var SHADER_ATTRIB_VEC3;
 	@:native('SHADER_ATTRIB_VEC4') var SHADER_ATTRIB_VEC4;
+
+	@:from
+	static public inline function fromInt(i:Int):MaterialMapIndex
+		return cast i;
 
 	@:to extern public inline function toInt():Int
 		return untyped this;
@@ -1060,6 +1072,10 @@ extern enum abstract PixelFormat(PixelFormatImpl)
 	@:native('PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA') var PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA;
 	@:native('PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA') var PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA;
 
+	@:from
+	static public inline function fromInt(i:Int):PixelFormat
+		return cast i;
+
 	@:to extern public inline function toInt():Int
 		return untyped this;
 }
@@ -1078,6 +1094,10 @@ extern enum abstract TextureFilter(TextureFilterImpl)
 	@:native('TEXTURE_FILTER_ANISOTROPIC_8X') var TEXTURE_FILTER_ANISOTROPIC_8X;
 	@:native('TEXTURE_FILTER_ANISOTROPIC_16X') var TEXTURE_FILTER_ANISOTROPIC_16X;
 
+	@:from
+	static public inline function fromInt(i:Int):TextureFilter
+		return cast i;
+
 	@:to extern public inline function toInt():Int
 		return untyped this;
 }
@@ -1093,6 +1113,10 @@ extern enum abstract TextureWrap(TextureWrapImpl)
 	@:native('TEXTURE_WRAP_CLAMP') var TEXTURE_WRAP_CLAMP;
 	@:native('TEXTURE_WRAP_MIRROR_REPEAT') var TEXTURE_WRAP_MIRROR_REPEAT;
 	@:native('TEXTURE_WRAP_MIRROR_CLAMP') var TEXTURE_WRAP_MIRROR_CLAMP;
+
+	@:from
+	static public inline function fromInt(i:Int):TextureWrap
+		return cast i;
 
 	@:to extern public inline function toInt():Int
 		return untyped this;
@@ -1112,6 +1136,10 @@ extern enum abstract CubemapLayout(CubemapLayoutImpl)
 	@:native('CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE') var CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE;
 	@:native('CUBEMAP_LAYOUT_PANORAMA') var CUBEMAP_LAYOUT_PANORAMA;
 
+	@:from
+	static public inline function fromInt(i:Int):CubemapLayout
+		return cast i;
+
 	@:to extern public inline function toInt():Int
 		return untyped this;
 }
@@ -1126,6 +1154,10 @@ extern enum abstract FontType(FontTypeImpl)
 	@:native('FONT_DEFAULT') var FONT_DEFAULT;
 	@:native('FONT_BITMAP') var FONT_BITMAP;
 	@:native('FONT_SDF') var FONT_SDF;
+
+	@:from
+	static public inline function fromInt(i:Int):FontType
+		return cast i;
 
 	@:to extern public inline function toInt():Int
 		return untyped this;
@@ -1146,6 +1178,10 @@ extern enum abstract BlendMode(BlendModeImpl)
 	@:native('BLEND_ALPHA_PREMULTIPLY') var BLEND_ALPHA_PREMULTIPLY;
 	@:native('BLEND_CUSTOM') var BLEND_CUSTOM;
 	@:native('BLEND_CUSTOM_SEPARATE') var BLEND_CUSTOM_SEPARATE;
+
+	@:from
+	static public inline function fromInt(i:Int):BlendMode
+		return cast i;
 
 	@:to extern public inline function toInt():Int
 		return untyped this;
@@ -1170,6 +1206,10 @@ extern enum abstract Gesture(GestureImpl)
 	@:native('GESTURE_PINCH_IN') var GESTURE_PINCH_IN;
 	@:native('GESTURE_PINCH_OUT') var GESTURE_PINCH_OUT;
 
+	@:from
+	static public inline function fromInt(i:Int):Gesture
+		return cast i;
+
 	@:to extern public inline function toInt():Int
 		return untyped this;
 }
@@ -1187,6 +1227,10 @@ extern enum abstract CameraMode(CameraModeImpl)
 	@:native('CAMERA_FIRST_PERSON') var CAMERA_FIRST_PERSON;
 	@:native('CAMERA_THIRD_PERSON') var CAMERA_THIRD_PERSON;
 
+	@:from
+	static public inline function fromInt(i:Int):CameraMode
+		return cast i;
+
 	@:to extern public inline function toInt():Int
 		return untyped this;
 }
@@ -1200,6 +1244,10 @@ extern enum abstract CameraProjection(CameraProjectionImpl)
 {
 	@:native('CAMERA_PERSPECTIVE') var CAMERA_PERSPECTIVE;
 	@:native('CAMERA_ORTHOGRAPHIC') var CAMERA_ORTHOGRAPHIC;
+
+	@:from
+	static public inline function fromInt(i:Int):CameraProjection
+		return cast i;
 
 	@:to extern public inline function toInt():Int
 		return untyped this;
@@ -1215,6 +1263,10 @@ extern enum abstract NPatchLayout(NPatchLayoutImpl)
 	@:native('NPATCH_NINE_PATCH') var NPATCH_NINE_PATCH;
 	@:native('NPATCH_THREE_PATCH_VERTICAL') var NPATCH_THREE_PATCH_VERTICAL;
 	@:native('NPATCH_THREE_PATCH_HORIZONTAL') var NPATCH_THREE_PATCH_HORIZONTAL;
+
+	@:from
+	static public inline function fromInt(i:Int):NPatchLayout
+		return cast i;
 
 	@:to extern public inline function toInt():Int
 		return untyped this;
@@ -1237,6 +1289,10 @@ extern enum abstract TouchAction(TouchActionImpl)
 	@:native('TOUCH_ACTION_DOWN') var TOUCH_ACTION_DOWN;
 	@:native('TOUCH_ACTION_MOVE') var TOUCH_ACTION_MOVE;
 	@:native('TOUCH_ACTION_CANCEL') var TOUCH_ACTION_CANCEL;
+
+	@:from
+	static public inline function fromInt(i:Int):TouchAction
+		return cast i;
 
 	@:to extern public inline function toInt():Int
 		return untyped this;
