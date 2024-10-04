@@ -662,6 +662,10 @@ extern enum abstract ConfigFlags(ConfigFlagsImpl)
 	@:native('FLAG_MSAA_4X_HINT') var FLAG_MSAA_4X_HINT;
 	@:native('FLAG_INTERLACED_HINT') var FLAG_INTERLACED_HINT;
 
+	@:from
+	static public inline function fromInt(i:Int):ConfigFlags
+		return cast i;
+
 	@:to extern public inline function toInt():Int
 		return untyped this;
 }
@@ -681,6 +685,10 @@ extern enum abstract TraceLogLevel(TraceLogLevelImpl)
 	@:native('LOG_ERROR') var LOG_ERROR;
 	@:native('LOG_FATAL') var LOG_FATAL;
 	@:native('LOG_NONE') var LOG_NONE;
+
+	@:from
+	static public inline function fromInt(i:Int):TraceLogLevel
+		return cast i;
 
 	@:to extern public inline function toInt():Int
 		return untyped this;
@@ -804,6 +812,10 @@ extern enum abstract KeyboardKey(KeyboardKeyImpl)
 	@:native('KEY_VOLUME_UP') var KEY_VOLUME_UP;
 	@:native('KEY_VOLUME_DOWN') var KEY_VOLUME_DOWN;
 
+	@:from
+	static public inline function fromInt(i:Int):KeyboardKey
+		return cast i;
+
 	@:to extern public inline function toInt():Int
 		return untyped this;
 }
@@ -822,6 +834,10 @@ extern enum abstract MouseButton(MouseButtonImpl)
 	@:native('MOUSE_BUTTON_EXTRA') var MOUSE_BUTTON_EXTRA;
 	@:native('MOUSE_BUTTON_FORWARD') var MOUSE_BUTTON_FORWARD;
 	@:native('MOUSE_BUTTON_BACK') var MOUSE_BUTTON_BACK;
+
+	@:from
+	static public inline function fromInt(i:Int):MouseButton
+		return cast i;
 
 	@:to extern public inline function toInt():Int
 		return untyped this;
@@ -845,6 +861,10 @@ extern enum abstract MouseCursor(MouseCursorImpl)
 	@:native('MOUSE_CURSOR_RESIZE_NESW') var MOUSE_CURSOR_RESIZE_NESW;
 	@:native('MOUSE_CURSOR_RESIZE_ALL') var MOUSE_CURSOR_RESIZE_ALL;
 	@:native('MOUSE_CURSOR_NOT_ALLOWED') var MOUSE_CURSOR_NOT_ALLOWED;
+
+	@:from
+	static public inline function fromInt(i:Int):MouseCursor
+		return cast i;
 
 	@:to extern public inline function toInt():Int
 		return untyped this;
@@ -876,6 +896,10 @@ extern enum abstract GamepadButton(GamepadButtonImpl)
 	@:native('GAMEPAD_BUTTON_LEFT_THUMB') var GAMEPAD_BUTTON_LEFT_THUMB;
 	@:native('GAMEPAD_BUTTON_RIGHT_THUMB') var GAMEPAD_BUTTON_RIGHT_THUMB;
 
+	@:from
+	static public inline function fromInt(i:Int):GamepadButton
+		return cast i;
+
 	@:to extern public inline function toInt():Int
 		return untyped this;
 }
@@ -893,6 +917,10 @@ extern enum abstract GamepadAxis(GamepadAxisImpl)
 	@:native('GAMEPAD_AXIS_RIGHT_Y') var GAMEPAD_AXIS_RIGHT_Y;
 	@:native('GAMEPAD_AXIS_LEFT_TRIGGER') var GAMEPAD_AXIS_LEFT_TRIGGER;
 	@:native('GAMEPAD_AXIS_RIGHT_TRIGGER') var GAMEPAD_AXIS_RIGHT_TRIGGER;
+
+	@:from
+	static public inline function fromInt(i:Int):GamepadAxis
+		return cast i;
 
 	@:to extern public inline function toInt():Int
 		return untyped this;
@@ -916,6 +944,10 @@ extern enum abstract MaterialMapIndex(MaterialMapIndexImpl)
 	@:native('MATERIAL_MAP_IRRADIANCE') var MATERIAL_MAP_IRRADIANCE;
 	@:native('MATERIAL_MAP_PREFILTER') var MATERIAL_MAP_PREFILTER;
 	@:native('MATERIAL_MAP_BRDF') var MATERIAL_MAP_BRDF;
+
+	@:from
+	static public inline function fromInt(i:Int):MaterialMapIndex
+		return cast i;
 
 	@:to extern public inline function toInt():Int
 		return untyped this;
