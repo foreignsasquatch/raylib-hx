@@ -4,7 +4,7 @@ package;
 #error 'Raylib supports only C++ target platforms.'
 #end
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -20,7 +20,7 @@ extern class RayVector2
 
 typedef Vector2 = cpp.Struct<RayVector2>;
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -37,7 +37,7 @@ extern class RayVector3
 
 typedef Vector3 = cpp.Struct<RayVector3>;
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -55,7 +55,7 @@ extern class RayVector4
 
 typedef Vector4 = cpp.Struct<RayVector4>;
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -92,7 +92,7 @@ extern class RayMatrix
 
 typedef Matrix = cpp.Struct<RayMatrix>;
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -110,7 +110,7 @@ extern class RayColor
 
 typedef Matrix = cpp.Struct<RayMatrix>;
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -126,7 +126,7 @@ extern class RayRectangle
 	var height:Single; // RayRectangle height
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -143,7 +143,7 @@ extern class RayImage
 	var format:Int; // Data format (PixelFormat type)
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -160,7 +160,7 @@ extern class RayTexture
 	var format:Int; // Data format (PixelFormat type)
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -175,7 +175,7 @@ extern class RayRenderTexture
 	var depth:RayTexture; // Depth buffer attachment texture
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -193,7 +193,7 @@ extern class RayNPatchInfo
 	var layout:Int; // Layout of the n-patch: 3x3, 1x3 or 3x1
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -210,7 +210,7 @@ extern class RayGlyphInfo
 	var image:RayImage; // Character image data
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -228,7 +228,7 @@ extern class RayFont
 	var glyphs:cpp.RawPointer<RayGlyphInfo>; // Glyphs info data
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -245,7 +245,7 @@ extern class RayCamera3D
 	var projection:Int; // Camera projection: CAMERA_PERSPECTIVE or CAMERA_ORTHOGRAPHIC
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -261,7 +261,7 @@ extern class RayCamera2D
 	var zoom:Single; // Camera zoom (scaling), should be 1.0f by default
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -294,7 +294,7 @@ extern class RayMesh
 	var vboId:cpp.RawPointer<cpp.UInt32>; // OpenGL Vertex Buffer Objects id (default vertex data)
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -308,7 +308,7 @@ extern class Shader
 	var locs:cpp.RawPointer<Int>; // Shader locations array (RL_MAX_SHADER_LOCATIONS)
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -323,7 +323,7 @@ extern class MaterialMap
 	var value:Single; // Material map value
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -338,7 +338,7 @@ extern class Material
 	var params:cpp.RawPointer<Single>; // Material generic parameters (if required)
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -353,7 +353,7 @@ extern class Transform
 	var scale:RayVector3; // Scale
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -367,7 +367,7 @@ extern class BoneInfo
 	var parent:Int; // Bone parent
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -391,7 +391,7 @@ extern class Model
 	var bindPose:cpp.RawPointer<Transform>; // Bones base transformation (pose)
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -408,7 +408,7 @@ extern class ModelAnimation
 	var name:cpp.CastCharStar; // Animation name
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -422,7 +422,7 @@ extern class Ray
 	var direction:RayVector3; // Ray direction
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -438,7 +438,7 @@ extern class RayCollision
 	var normal:RayVector3; // Surface normal of hit
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -454,7 +454,7 @@ extern class BoundingBox
 
 typedef AudioCallback = cpp.Callable<(bufferData:cpp.RawPointer<cpp.Void>, frames:cpp.UInt32) -> Void>;
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -467,17 +467,17 @@ extern class Wave
 	var frameCount:cpp.UInt32; // Total number of frames (considering channels) var sampleRate:cpp.UInt32; // Frequency (samples per second) var sampleSize:cpp.UInt32; // Bit depth (bits per sample): 8, 16, 32 (24 not supported) var channels:cpp.UInt32; // Number of channels (1-mono, 2-stereo, ...) var data:cpp.RawPointer<cpp.Void>; // Buffer data pointer
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('rAudioBuffer')
 extern class RAudioBuffer {}
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('rAudioProcessor')
 extern class RAudioProcessor {}
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -492,7 +492,7 @@ extern class AudioStream
 	var sampleRate:cpp.UInt32; // Frequency (samples per second) var sampleSize:cpp.UInt32; // Bit depth (bits per sample): 8, 16, 32 (24 not supported) var channels:cpp.UInt32; // Number of channels (1-mono, 2-stereo, ...)
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -506,7 +506,7 @@ extern class Sound
 	var frameCount:cpp.UInt32; // Total number of frames (considering channels)
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -521,7 +521,7 @@ extern class Music
 	var ctxType:Int; // Type of music context (audio filetype) var ctxData:cpp.RawPointer<cpp.Void>; // Audio context data, depends on type
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -542,7 +542,7 @@ extern class VrDeviceInfo
 	var chromaAbCorrection:cpp.RawPointer<Single>; // Chromatic aberration correction parameters
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -560,7 +560,7 @@ extern class VrStereoConfig
 	var scaleIn:cpp.RawPointer<Single>; // VR distortion scale in
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -575,7 +575,7 @@ extern class FilePathList
 	var paths:cpp.RawPointer<cpp.CastCharStar>; // Filepaths entries
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -589,7 +589,7 @@ extern class AutomationEvent
 	var type:cpp.UInt32; // Event type (AutomationEventType) var params:cpp.RawPointer<Int>; // Event parameters (if required)
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
@@ -641,7 +641,7 @@ extern enum abstract ConfigFlags(ConfigFlagsImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('ConfigFlags')
 private extern class ConfigFlagsImpl {}
@@ -668,7 +668,7 @@ extern enum abstract TraceLogLevel(TraceLogLevelImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('TraceLogLevel')
 private extern class TraceLogLevelImpl {}
@@ -908,7 +908,7 @@ extern enum abstract KeyboardKey(KeyboardKeyImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('KeyboardKey')
 private extern class KeyboardKeyImpl {}
@@ -933,7 +933,7 @@ extern enum abstract MouseButton(MouseButtonImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('MouseButton')
 private extern class MouseButtonImpl {}
@@ -966,7 +966,7 @@ extern enum abstract MouseCursor(MouseCursorImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('MouseCursor')
 private extern class MouseCursorImpl {}
@@ -1013,7 +1013,7 @@ extern enum abstract GamepadButton(GamepadButtonImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('GamepadButton')
 private extern class GamepadButtonImpl {}
@@ -1036,7 +1036,7 @@ extern enum abstract GamepadAxis(GamepadAxisImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('GamepadAxis')
 private extern class GamepadAxisImpl {}
@@ -1069,7 +1069,7 @@ extern enum abstract MaterialMapIndex(MaterialMapIndexImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('MaterialMapIndex')
 private extern class MaterialMapIndexImpl {}
@@ -1132,7 +1132,7 @@ extern enum abstract ShaderLocationIndex(ShaderLocationIndexImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('ShaderLocationIndex')
 private extern class ShaderLocationIndexImpl {}
@@ -1161,7 +1161,7 @@ extern enum abstract ShaderUniformDataType(ShaderUniformDataTypeImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('ShaderUniformDataType')
 private extern class ShaderUniformDataTypeImpl {}
@@ -1180,7 +1180,7 @@ extern enum abstract ShaderAttributeDataType(ShaderAttributeDataTypeImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('ShaderAttributeDataType')
 private extern class ShaderAttributeDataTypeImpl {}
@@ -1239,7 +1239,7 @@ extern enum abstract PixelFormat(PixelFormatImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('PixelFormat')
 private extern class PixelFormatImpl {}
@@ -1262,7 +1262,7 @@ extern enum abstract TextureFilter(TextureFilterImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('TextureFilter')
 private extern class TextureFilterImpl {}
@@ -1281,7 +1281,7 @@ extern enum abstract TextureWrap(TextureWrapImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('TextureWrap')
 private extern class TextureWrapImpl {}
@@ -1304,7 +1304,7 @@ extern enum abstract CubemapLayout(CubemapLayoutImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('CubemapLayout')
 private extern class CubemapLayoutImpl {}
@@ -1321,7 +1321,7 @@ extern enum abstract FontType(FontTypeImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('FontType')
 private extern class FontTypeImpl {}
@@ -1348,7 +1348,7 @@ extern enum abstract BlendMode(BlendModeImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('BlendMode')
 private extern class BlendModeImpl {}
@@ -1381,7 +1381,7 @@ extern enum abstract Gesture(GestureImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('Gesture')
 private extern class GestureImpl {}
@@ -1402,7 +1402,7 @@ extern enum abstract CameraMode(CameraModeImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('CameraMode')
 private extern class CameraModeImpl {}
@@ -1417,7 +1417,7 @@ extern enum abstract CameraProjection(CameraProjectionImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('CameraProjection')
 private extern class CameraProjectionImpl {}
@@ -1434,7 +1434,7 @@ extern enum abstract NPatchLayout(NPatchLayoutImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:native('NPatchLayout')
 private extern class NPatchLayoutImpl {}
@@ -1459,12 +1459,12 @@ extern enum abstract TouchAction(TouchActionImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('rgestures.h')
 @:native('TouchAction')
 private extern class TouchActionImpl {}
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('rgestures.h')
 @:unreflective
 @:structAccess
@@ -1480,7 +1480,7 @@ extern class GestureEvent
 	var position:cpp.RawPointer<RayVector2>;
 }
 
-@:buildXml('<include name="${haxelib:hxraylib}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 extern class Raylib
@@ -1588,7 +1588,7 @@ extern class Raylib
 	@:native('EndMode2D') static function endMode2D():Void;
 	@:native('BeginMode3D') static function beginMode3D(camera:RayCamera3D):Void;
 	@:native('EndMode3D') static function endMode3D():Void;
-	@:native('BeginTextureMode') static function beginTextureMode(target:):Void;
+	@:native('BeginTextureMode') static function beginTextureMode(target:RayRenderTexture):Void;
 	@:native('EndTextureMode') static function endTextureMode():Void;
 	@:native('BeginShaderMode') static function beginShaderMode(shader:Shader):Void;
 	@:native('EndShaderMode') static function endShaderMode():Void;
@@ -1966,8 +1966,8 @@ extern class Raylib
 	@:native('LoadRenderTexture') static function loadRenderTexture(width:Int, height:Int):;
 	@:native('IsTextureReady') static function isTextureReady(texture:RayTexture):Bool;
 	@:native('UnloadTexture') static function unloadTexture(texture:RayTexture):Void;
-	@:native('IsRenderTextureReady') static function isRenderTextureReady(target:):Bool;
-	@:native('UnloadRenderTexture') static function unloadRenderTexture(target:):Void;
+	@:native('IsRenderTextureReady') static function isRenderTextureReady(target:RayRenderTexture):Bool;
+	@:native('UnloadRenderTexture') static function unloadRenderTexture(target:RayRenderTexture):Void;
 	@:native('UpdateTexture') static function updateTexture(texture:RayTexture, pixels:cpp.RawConstPointer<cpp.Void>):Void;
 	@:native('UpdateTextureRec') static function updateTextureRec(texture:RayTexture, rec:RayRectangle, pixels:cpp.RawConstPointer<cpp.Void>):Void;
 
