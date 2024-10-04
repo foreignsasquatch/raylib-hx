@@ -1283,42 +1283,6 @@ typedef SaveFileDataCallback = cpp.Callable<(fileName:cpp.ConstCharStar, data:cp
 typedef LoadFileTextCallback = cpp.Callable<(fileName:cpp.ConstCharStar) -> cpp.CastCharStar>;
 typedef SaveFileTextCallback = cpp.Callable<(fileName:cpp.ConstCharStar, text:cpp.CastCharStar) -> Bool>;
 
-extern enum abstract TouchAction(TouchActionImpl)
-{
-	@:native('TOUCH_ACTION_UP') var TOUCH_ACTION_UP;
-	@:native('TOUCH_ACTION_DOWN') var TOUCH_ACTION_DOWN;
-	@:native('TOUCH_ACTION_MOVE') var TOUCH_ACTION_MOVE;
-	@:native('TOUCH_ACTION_CANCEL') var TOUCH_ACTION_CANCEL;
-
-	@:from
-	static public inline function fromInt(i:Int):TouchAction
-		return cast i;
-
-	@:to extern public inline function toInt():Int
-		return untyped this;
-}
-
-@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('rgestures.h')
-@:native('TouchAction')
-private extern class TouchActionImpl {}
-
-@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('rgestures.h')
-@:unreflective
-@:structAccess
-@:native('GestureEvent')
-extern class GestureEvent
-{
-	@:native('GestureEvent')
-	static function alloc():GestureEvent;
-
-	var touchAction:Int;
-	var pointCount:Int;
-	var pointId:cpp.RawPointer<Int>;
-	var position:cpp.RawPointer<RayVector2>;
-}
-
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
