@@ -1077,7 +1077,7 @@ extern enum abstract ShaderAttributeDataType(ShaderAttributeDataTypeImpl)
 	@:native('SHADER_ATTRIB_VEC4') var SHADER_ATTRIB_VEC4;
 
 	@:from
-	static public inline function fromInt(i:Int):MaterialMapIndex
+	static public inline function fromInt(i:Int):ShaderAttributeDataType
 		return cast i;
 
 	@:to extern public inline function toInt():Int
