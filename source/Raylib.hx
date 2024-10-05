@@ -194,6 +194,8 @@ extern class RayRectangle
 	var height:Single;
 }
 
+typedef Rectangle = cpp.Struct<RayRectangle>;
+
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
@@ -210,6 +212,8 @@ extern class RayImage
 	var mipmaps:Int;
 	var format:Int;
 }
+
+typedef Image = cpp.Struct<RayImage>;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -245,6 +249,8 @@ extern class RayRenderTexture
 	var depth:RayTexture;
 }
 
+typedef RenderTexture = cpp.Struct<RayRenderTexture>;
+
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
@@ -263,6 +269,8 @@ extern class RayNPatchInfo
 	var layout:Int;
 }
 
+typedef NPatchInfo = cpp.Struct<RayNPatchInfo>;
+
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
@@ -279,6 +287,8 @@ extern class RayGlyphInfo
 	var advanceX:Int;
 	var image:RayImage;
 }
+
+typedef GlyphInfo = cpp.Struct<RayGlyphInfo>;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -298,6 +308,8 @@ extern class RayFont
 	var glyphs:cpp.RawPointer<RayGlyphInfo>;
 }
 
+typedef Font = cpp.Struct<RayFont>;
+
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
@@ -315,6 +327,8 @@ extern class RayCamera3D
 	var projection:Int;
 }
 
+typedef Camera3D = cpp.Struct<RayCamera3D>;
+
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
@@ -330,6 +344,8 @@ extern class RayCamera2D
 	var rotation:Single;
 	var zoom:Single;
 }
+
+typedef Camera2D = cpp.Struct<RayCamera2D>;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -360,6 +376,8 @@ extern class RayMesh
 	var vaoId:cpp.UInt32;
 	var vboId:cpp.RawPointer<cpp.UInt32>;
 }
+
+typedef Mesh = cpp.Struct<RayMesh>;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
