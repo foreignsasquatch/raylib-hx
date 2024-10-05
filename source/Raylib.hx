@@ -602,7 +602,9 @@ extern class Music
 
 	var stream:AudioStream;
 	var frameCount:cpp.UInt32;
+	var looping:Bool;
 	var ctxType:Int;
+	var ctxData:cpp.RawPointer<cpp.Void>;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -1620,22 +1622,22 @@ extern class Raylib
 		color:RayColor):Void;
 	@:native('DrawRingLines') static function drawRingLines(center:RayVector2, innerRadius:Single, outerRadius:Single, startAngle:Single, endAngle:Single,
 		segments:Int, color:RayColor):Void;
-	@:native('DrawRayRectangle') static function drawRayRectangle(posX:Int, posY:Int, width:Int, height:Int, color:RayColor):Void;
-	@:native('DrawRayRectangleV') static function drawRayRectangleV(position:RayVector2, size:RayVector2, color:RayColor):Void;
-	@:native('DrawRayRectangleRec') static function drawRayRectangleRec(rec:RayRectangle, color:RayColor):Void;
-	@:native('DrawRayRectanglePro') static function drawRayRectanglePro(rec:RayRectangle, origin:RayVector2, rotation:Single, color:RayColor):Void;
-	@:native('DrawRayRectangleGradientV') static function drawRayRectangleGradientV(posX:Int, posY:Int, width:Int, height:Int, color1:RayColor,
+	@:native('DrawRectangle') static function drawRectangle(posX:Int, posY:Int, width:Int, height:Int, color:RayColor):Void;
+	@:native('DrawRectangleV') static function drawRectangleV(position:RayVector2, size:RayVector2, color:RayColor):Void;
+	@:native('DrawRectangleRec') static function drawRectangleRec(rec:RayRectangle, color:RayColor):Void;
+	@:native('DrawRectanglePro') static function drawRectanglePro(rec:RayRectangle, origin:RayVector2, rotation:Single, color:RayColor):Void;
+	@:native('DrawRectangleGradientV') static function drawRectangleGradientV(posX:Int, posY:Int, width:Int, height:Int, color1:RayColor,
 		color2:RayColor):Void;
-	@:native('DrawRayRectangleGradientH') static function drawRayRectangleGradientH(posX:Int, posY:Int, width:Int, height:Int, color1:RayColor,
+	@:native('DrawRectangleGradientH') static function drawRectangleGradientH(posX:Int, posY:Int, width:Int, height:Int, color1:RayColor,
 		color2:RayColor):Void;
-	@:native('DrawRayRectangleGradientEx') static function drawRayRectangleGradientEx(rec:RayRectangle, col1:RayColor, col2:RayColor, col3:RayColor,
+	@:native('DrawRectangleGradientEx') static function drawRectangleGradientEx(rec:RayRectangle, col1:RayColor, col2:RayColor, col3:RayColor,
 		col4:RayColor):Void;
-	@:native('DrawRayRectangleLines') static function drawRayRectangleLines(posX:Int, posY:Int, width:Int, height:Int, color:RayColor):Void;
-	@:native('DrawRayRectangleLinesEx') static function drawRayRectangleLinesEx(rec:RayRectangle, lineThick:Single, color:RayColor):Void;
-	@:native('DrawRayRectangleRounded') static function drawRayRectangleRounded(rec:RayRectangle, roundness:Single, segments:Int, color:RayColor):Void;
-	@:native('DrawRayRectangleRoundedLines') static function drawRayRectangleRoundedLines(rec:RayRectangle, roundness:Single, segments:Int,
+	@:native('DrawRectangleLines') static function drawRectangleLines(posX:Int, posY:Int, width:Int, height:Int, color:RayColor):Void;
+	@:native('DrawRectangleLinesEx') static function drawRectangleLinesEx(rec:RayRectangle, lineThick:Single, color:RayColor):Void;
+	@:native('DrawRectangleRounded') static function drawRectangleRounded(rec:RayRectangle, roundness:Single, segments:Int, color:RayColor):Void;
+	@:native('DrawRectangleRoundedLines') static function drawRectangleRoundedLines(rec:RayRectangle, roundness:Single, segments:Int,
 		color:RayColor):Void;
-	@:native('DrawRayRectangleRoundedLinesEx') static function drawRayRectangleRoundedLinesEx(rec:RayRectangle, roundness:Single, segments:Int,
+	@:native('DrawRectangleRoundedLinesEx') static function drawRectangleRoundedLinesEx(rec:RayRectangle, roundness:Single, segments:Int,
 		lineThick:Single, color:RayColor):Void;
 	@:native('DrawTriangle') static function drawTriangle(v1:RayVector2, v2:RayVector2, v3:RayVector2, color:RayColor):Void;
 	@:native('DrawTriangleLines') static function drawTriangleLines(v1:RayVector2, v2:RayVector2, v3:RayVector2, color:RayColor):Void;
@@ -1760,12 +1762,12 @@ extern class Raylib
 	@:native('ImageDrawCircleLines') static function imageDrawCircleLines(dst:cpp.RawPointer<RayImage>, centerX:Int, centerY:Int, radius:Int,
 		color:RayColor):Void;
 	@:native('ImageDrawCircleLinesV') static function imageDrawCircleLinesV(dst:cpp.RawPointer<RayImage>, center:RayVector2, radius:Int, color:RayColor):Void;
-	@:native('ImageDrawRayRectangle') static function imageDrawRayRectangle(dst:cpp.RawPointer<RayImage>, posX:Int, posY:Int, width:Int, height:Int,
+	@:native('ImageDrawRectangle') static function imageDrawRectangle(dst:cpp.RawPointer<RayImage>, posX:Int, posY:Int, width:Int, height:Int,
 		color:RayColor):Void;
-	@:native('ImageDrawRayRectangleV') static function imageDrawRayRectangleV(dst:cpp.RawPointer<RayImage>, position:RayVector2, size:RayVector2,
+	@:native('ImageDrawRectangleV') static function imageDrawRectangleV(dst:cpp.RawPointer<RayImage>, position:RayVector2, size:RayVector2,
 		color:RayColor):Void;
-	@:native('ImageDrawRayRectangleRec') static function imageDrawRayRectangleRec(dst:cpp.RawPointer<RayImage>, rec:RayRectangle, color:RayColor):Void;
-	@:native('ImageDrawRayRectangleLines') static function imageDrawRayRectangleLines(dst:cpp.RawPointer<RayImage>, rec:RayRectangle, thick:Int,
+	@:native('ImageDrawRectangleRec') static function imageDrawRectangleRec(dst:cpp.RawPointer<RayImage>, rec:RayRectangle, color:RayColor):Void;
+	@:native('ImageDrawRectangleLines') static function imageDrawRectangleLines(dst:cpp.RawPointer<RayImage>, rec:RayRectangle, thick:Int,
 		color:RayColor):Void;
 	@:native('ImageDraw') static function imageDraw(dst:cpp.RawPointer<RayImage>, src:RayImage, srcRec:RayRectangle, dstRec:RayRectangle, tint:RayColor):Void;
 	@:native('ImageDrawText') static function imageDrawText(dst:cpp.RawPointer<RayImage>, text:cpp.ConstCharStar, posX:Int, posY:Int, fontSize:Int,
