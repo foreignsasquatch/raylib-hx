@@ -50,7 +50,7 @@ extern class Vector2 extends cpp.Struct<RayVector2>
 		final vec2:RayVector2 = RayVector2.alloc();
 		vec2.x = x;
 		vec2.y = y;
-		return vec2;
+		return cast vec2;
 	}
 }
 
