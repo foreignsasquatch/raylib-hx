@@ -44,14 +44,10 @@ extern class RayVector2
 }
 
 @:unreflective
-@:native('cpp.Refrence<Vector2>')
-extern class Vector2Refrence extends RayVector2 {}
-
-@:unreflective
 @:native('cpp.Struct<Vector2>')
-extern class Vector2 extends Vector2Refrence
+extern class Vector2 extends RayVector2
 {
-	static inline function create(x:Single, y:Single):Vector2Refrence
+	static inline function create(x:Single, y:Single):Vector2
 	{
 		final vec2:RayVector2 = RayVector2.alloc();
 		vec2.x = x;
