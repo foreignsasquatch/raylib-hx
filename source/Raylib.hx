@@ -39,19 +39,26 @@ extern class RayVector2
 	@:native('Vector2')
 	static function alloc():RayVector2;
 
-	static inline function create(x:Single, y:Single):RayVector2
-	{
-		final vec2:RayVector2 = RayVector2.alloc();
-		vec2.x = x;
-		vec2.y = y;
-		return vec2;
-	}
-
 	var x:Single;
 	var y:Single;
 }
 
-typedef Vector2 = cpp.Struct<RayVector2>;
+@:unreflective
+@:native('cpp.Refrence<Vector2>')
+extern class Vector2Refrence extends RayVector2 {}
+
+@:unreflective
+@:native('cpp.Struct<Vector2>')
+extern class Vector2 extends Vector2Refrence
+{
+	static inline function create(x:Single, y:Single):Vector2Refrence
+	{
+		final vec2:RayVector2 = RayVector2.alloc();
+		vec2.x = x;
+		vec2.y = y;
+		return cast vec2;
+	}
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
