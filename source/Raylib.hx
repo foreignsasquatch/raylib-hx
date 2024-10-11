@@ -444,7 +444,7 @@ extern class RayTransform
 	var scale:RayVector3;
 }
 
-typedef Transform = cpp.Struct<Transform>;
+typedef Transform = cpp.Struct<RayTransform>;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
