@@ -1027,7 +1027,7 @@ extern enum abstract MaterialMapIndex(MaterialMapIndexImpl)
 	@:native('MATERIAL_MAP_BRDF') var MATERIAL_MAP_BRDF;
 
 	@:from
-	static public inline function fromInt(i:Int):RayMaterialMapIndex
+	static public inline function fromInt(i:Int):MaterialMapIndex
 		return cast i;
 
 	@:to extern public inline function toInt():Int
@@ -1069,7 +1069,7 @@ extern enum abstract ShaderLocationIndex(ShaderLocationIndexImpl)
 	@:native('SHADER_LOC_MAP_BRDF') var SHADER_LOC_MAP_BRDF;
 
 	@:from
-	static public inline function fromInt(i:Int):RayShaderLocationIndex
+	static public inline function fromInt(i:Int):ShaderLocationIndex
 		return cast i;
 
 	@:to extern public inline function toInt():Int
@@ -1094,7 +1094,7 @@ extern enum abstract ShaderUniformDataType(ShaderUniformDataTypeImpl)
 	@:native('SHADER_UNIFORM_SAMPLER2D') var SHADER_UNIFORM_SAMPLER2D;
 
 	@:from
-	static public inline function fromInt(i:Int):RayShaderUniformDataType
+	static public inline function fromInt(i:Int):ShaderUniformDataType
 		return cast i;
 
 	@:to extern public inline function toInt():Int
@@ -1114,7 +1114,7 @@ extern enum abstract ShaderAttributeDataType(ShaderAttributeDataTypeImpl)
 	@:native('SHADER_ATTRIB_VEC4') var SHADER_ATTRIB_VEC4;
 
 	@:from
-	static public inline function fromInt(i:Int):RayShaderAttributeDataType
+	static public inline function fromInt(i:Int):ShaderAttributeDataType
 		return cast i;
 
 	@:to extern public inline function toInt():Int
