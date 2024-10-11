@@ -384,114 +384,129 @@ typedef Mesh = cpp.Struct<RayMesh>;
 @:unreflective
 @:structAccess
 @:native('Shader')
-extern class Shader
+extern class RayShader
 {
 	@:native('Shader')
-	static function alloc():Shader;
+	static function alloc():RayShader;
 
 	var id:cpp.UInt32;
 	var locs:cpp.RawPointer<cpp.Int32>;
 }
+
+typedef Shader = cpp.Struct<RayShader>;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
 @:native('MaterialMap')
-extern class MaterialMap
+extern class RayMaterialMap
 {
 	@:native('MaterialMap')
-	static function alloc():MaterialMap;
+	static function alloc():RayMaterialMap;
 
 	var texture:RayTexture;
 	var color:RayColor;
 	var value:Single;
 }
 
+typedef MaterialMap = cpp.Struct<RayMaterialMap>;
+
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
 @:native('Material')
-extern class Material
+extern class RayMaterial
 {
 	@:native('Material')
-	static function alloc():Material;
+	static function alloc():RayMaterial;
 
-	var shader:Shader;
-	var maps:cpp.RawPointer<MaterialMap>;
+	var shader:RayShader;
+	var maps:cpp.RawPointer<RayMaterialMap>;
 	var params:cpp.RawPointer<cpp.Float32>;
 }
+
+typedef Material = cpp.Struct<RayMaterial>;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
 @:native('Transform')
-extern class Transform
+extern class RayTransform
 {
 	@:native('Transform')
-	static function alloc():Transform;
+	static function alloc():RayTransform;
 
 	var translation:RayVector3;
 	var rotation:RayVector4;
 	var scale:RayVector3;
 }
 
+typedef Transform = cpp.Struct<Transform>;
+
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
 @:native('BoneInfo')
-extern class BoneInfo
+extern class RayBoneInfo
 {
 	@:native('BoneInfo')
-	static function alloc():BoneInfo;
+	static function alloc():RayBoneInfo;
 
 	var name:cpp.CastCharStar;
 	var parent:Int;
 }
+
+typedef BoneInfo = cpp.Struct<RayBoneInfo>;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
 @:native('Model')
-extern class Model
+extern class RayModel
 {
 	@:native('Model')
-	static function alloc():Model;
+	static function alloc():RayModel;
 
 	var transform:RayMatrix;
 
 	var meshCount:Int;
 	var materialCount:Int;
 	var meshes:cpp.RawPointer<RayMesh>;
-	var materials:cpp.RawPointer<Material>;
+	var materials:cpp.RawPointer<RayMaterial>;
 	var meshMaterial:cpp.RawPointer<cpp.Int32>;
 
 	var boneCount:Int;
 	var bones:cpp.RawPointer<BoneInfo>;
-	var bindPose:cpp.RawPointer<Transform>;
+	var bindPose:cpp.RawPointer<RayTransform>;
 }
+
+typedef Model = cpp.Struct<RayModel>;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
 @:native('ModelAnimation')
-extern class ModelAnimation
+extern class RayModelAnimation
 {
 	@:native('ModelAnimation')
-	static function alloc():ModelAnimation;
+	static function alloc():RayModelAnimation;
 
 	var boneCount:Int;
 	var frameCount:Int;
 	var bones:cpp.RawPointer<BoneInfo>;
-	var framePoses:cpp.RawPointer<cpp.RawPointer<Transform>>;
+	var framePoses:cpp.RawPointer<cpp.RawPointer<RayTransform>>;
 	var name:cpp.CastCharStar;
 }
 
+typedef ModelAnimation = cpp.Struct<RayModelAnimation>;
+
+// Todo: find name solution
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
@@ -527,14 +542,16 @@ extern class RayCollision
 @:unreflective
 @:structAccess
 @:native('BoundingBox')
-extern class BoundingBox
+extern class RayBoundingBox
 {
 	@:native('BoundingBox')
-	static function alloc():BoundingBox;
+	static function alloc():RayBoundingBox;
 
 	var min:RayVector3;
 	var max:RayVector3;
 }
+
+typedef BoundingBox = cpp.Struct<RayBoundingBox>;
 
 typedef AudioCallback = cpp.Callable<(bufferData:cpp.RawPointer<cpp.Void>, frames:cpp.UInt32) -> Void>;
 
@@ -543,13 +560,15 @@ typedef AudioCallback = cpp.Callable<(bufferData:cpp.RawPointer<cpp.Void>, frame
 @:unreflective
 @:structAccess
 @:native('Wave')
-extern class Wave
+extern class RayWave
 {
 	@:native('Wave')
-	static function alloc():Wave;
+	static function alloc():RayWave;
 
 	var frameCount:cpp.UInt32;
 }
+
+typedef Wave = cpp.Struct<RayWave>;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -566,56 +585,62 @@ extern class RAudioProcessor {}
 @:unreflective
 @:structAccess
 @:native('AudioStream')
-extern class AudioStream
+extern class RayAudioStream
 {
 	@:native('AudioStream')
-	static function alloc():AudioStream;
+	static function alloc():RayAudioStream;
 
 	var buffer:cpp.RawPointer<RAudioBuffer>;
 	var processor:cpp.RawPointer<RAudioProcessor>;
 	var sampleRate:cpp.UInt32;
 }
 
+typedef AudioStream = cpp.Struct<RayAudioStream>;
+
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
 @:native('Sound')
-extern class Sound
+extern class RaySound
 {
 	@:native('Sound')
-	static function alloc():Sound;
+	static function alloc():RaySound;
 
-	var stream:AudioStream;
+	var stream:RayAudioStream;
 	var frameCount:cpp.UInt32;
 }
+
+typedef Sound = cpp.Struct<RaySound>;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
 @:native('Music')
-extern class Music
+extern class RayMusic
 {
 	@:native('Music')
-	static function alloc():Music;
+	static function alloc():RayMusic;
 
-	var stream:AudioStream;
+	var stream:RayAudioStream;
 	var frameCount:cpp.UInt32;
 	var looping:Bool;
 	var ctxType:Int;
 	var ctxData:cpp.RawPointer<cpp.Void>;
 }
 
+typedef Music = cpp.Struct<RayMusic>;
+
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
 @:native('VrDeviceInfo')
-extern class VrDeviceInfo
+extern class RayVrDeviceInfo
 {
 	@:native('VrDeviceInfo')
-	static function alloc():VrDeviceInfo;
+	static function alloc():RayVrDeviceInfo;
 
 	var hResolution:Int;
 	var vResolution:Int;
@@ -628,15 +653,17 @@ extern class VrDeviceInfo
 	var chromaAbCorrection:cpp.RawPointer<cpp.Float32>;
 }
 
+typedef VrDeviceInfo = cpp.Struct<RayVrDeviceInfo>;
+
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
 @:native('VrStereoConfig')
-extern class VrStereoConfig
+extern class RayVrStereoConfig
 {
 	@:native('VrStereoConfig')
-	static function alloc():VrStereoConfig;
+	static function alloc():RayVrStereoConfig;
 
 	var projection:cpp.RawPointer<RayMatrix>;
 	var rightLensCenter:cpp.RawPointer<cpp.Float32>;
@@ -646,48 +673,56 @@ extern class VrStereoConfig
 	var scaleIn:cpp.RawPointer<cpp.Float32>;
 }
 
+typedef VrStereoConfig = cpp.Struct<RayVrStereoConfig>;
+
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
 @:native('FilePathList')
-extern class FilePathList
+extern class RayFilePathList
 {
 	@:native('FilePathList')
-	static function alloc():FilePathList;
+	static function alloc():RayFilePathList;
 
 	var capacity:cpp.UInt32;
 	var count:cpp.UInt32;
 	var paths:cpp.RawPointer<cpp.CastCharStar>;
 }
 
+typedef FilePathList = cpp.Struct<RayFilePathList>;
+
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
 @:native('AutomationEvent')
-extern class AutomationEvent
+extern class RayAutomationEvent
 {
 	@:native('AutomationEvent')
-	static function alloc():AutomationEvent;
+	static function alloc():RayAutomationEvent;
 
 	var frame:cpp.UInt32;
 	var type:cpp.UInt32;
 }
+
+typedef AutomationEvent = cpp.Struct<RayAutomationEvent>;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
 @:native('AutomationEventList')
-extern class AutomationEventList
+extern class RayAutomationEventList
 {
 	@:native('AutomationEventList')
-	static function alloc():AutomationEventList;
+	static function alloc():RayAutomationEventList;
 
 	var capacity:cpp.UInt32;
-	var events:cpp.RawPointer<AutomationEvent>;
+	var events:cpp.RawPointer<RayAutomationEvent>;
 }
+
+typedef AutomationEventList = cpp.Struct<RayAutomationEventList>;
 
 extern enum abstract ConfigFlags(ConfigFlagsImpl)
 {
@@ -992,7 +1027,7 @@ extern enum abstract MaterialMapIndex(MaterialMapIndexImpl)
 	@:native('MATERIAL_MAP_BRDF') var MATERIAL_MAP_BRDF;
 
 	@:from
-	static public inline function fromInt(i:Int):MaterialMapIndex
+	static public inline function fromInt(i:Int):RayMaterialMapIndex
 		return cast i;
 
 	@:to extern public inline function toInt():Int
@@ -1034,7 +1069,7 @@ extern enum abstract ShaderLocationIndex(ShaderLocationIndexImpl)
 	@:native('SHADER_LOC_MAP_BRDF') var SHADER_LOC_MAP_BRDF;
 
 	@:from
-	static public inline function fromInt(i:Int):ShaderLocationIndex
+	static public inline function fromInt(i:Int):RayShaderLocationIndex
 		return cast i;
 
 	@:to extern public inline function toInt():Int
@@ -1059,7 +1094,7 @@ extern enum abstract ShaderUniformDataType(ShaderUniformDataTypeImpl)
 	@:native('SHADER_UNIFORM_SAMPLER2D') var SHADER_UNIFORM_SAMPLER2D;
 
 	@:from
-	static public inline function fromInt(i:Int):ShaderUniformDataType
+	static public inline function fromInt(i:Int):RayShaderUniformDataType
 		return cast i;
 
 	@:to extern public inline function toInt():Int
@@ -1079,7 +1114,7 @@ extern enum abstract ShaderAttributeDataType(ShaderAttributeDataTypeImpl)
 	@:native('SHADER_ATTRIB_VEC4') var SHADER_ATTRIB_VEC4;
 
 	@:from
-	static public inline function fromInt(i:Int):ShaderAttributeDataType
+	static public inline function fromInt(i:Int):RayShaderAttributeDataType
 		return cast i;
 
 	@:to extern public inline function toInt():Int
@@ -1431,29 +1466,29 @@ extern class Raylib
 	@:native('EndMode3D') static function endMode3D():Void;
 	@:native('BeginTextureMode') static function beginTextureMode(target:RayRenderTexture):Void;
 	@:native('EndTextureMode') static function endTextureMode():Void;
-	@:native('BeginShaderMode') static function beginShaderMode(shader:Shader):Void;
+	@:native('BeginShaderMode') static function beginShaderMode(shader:RayShader):Void;
 	@:native('EndShaderMode') static function endShaderMode():Void;
 	@:native('BeginBlendMode') static function beginBlendMode(mode:Int):Void;
 	@:native('EndBlendMode') static function endBlendMode():Void;
 	@:native('BeginScissorMode') static function beginScissorMode(x:Int, y:Int, width:Int, height:Int):Void;
 	@:native('EndScissorMode') static function endScissorMode():Void;
-	@:native('BeginVrStereoMode') static function beginVrStereoMode(config:VrStereoConfig):Void;
+	@:native('BeginVrStereoMode') static function beginVrStereoMode(config:RayVrStereoConfig):Void;
 	@:native('EndVrStereoMode') static function endVrStereoMode():Void;
 
-	@:native('LoadVrStereoConfig') static function loadVrStereoConfig(device:VrDeviceInfo):VrStereoConfig;
-	@:native('UnloadVrStereoConfig') static function unloadVrStereoConfig(config:VrStereoConfig):Void;
+	@:native('LoadVrStereoConfig') static function loadVrStereoConfig(device:RayVrDeviceInfo):RayVrStereoConfig;
+	@:native('UnloadVrStereoConfig') static function unloadVrStereoConfig(config:RayVrStereoConfig):Void;
 
-	@:native('LoadShader') static function loadShader(vsFileName:cpp.ConstCharStar, fsFileName:cpp.ConstCharStar):Shader;
-	@:native('LoadShaderFromMemory') static function loadShaderFromMemory(vsCode:cpp.ConstCharStar, fsCode:cpp.ConstCharStar):Shader;
-	@:native('IsShaderReady') static function isShaderReady(shader:Shader):Bool;
-	@:native('GetShaderLocation') static function getShaderLocation(shader:Shader, uniformName:cpp.ConstCharStar):Int;
-	@:native('GetShaderLocationAttrib') static function getShaderLocationAttrib(shader:Shader, attribName:cpp.ConstCharStar):Int;
-	@:native('SetShaderValue') static function setShaderValue(shader:Shader, locIndex:Int, value:cpp.RawConstPointer<cpp.Void>, uniformType:Int):Void;
-	@:native('SetShaderValueV') static function setShaderValueV(shader:Shader, locIndex:Int, value:cpp.RawConstPointer<cpp.Void>, uniformType:Int,
+	@:native('LoadShader') static function loadShader(vsFileName:cpp.ConstCharStar, fsFileName:cpp.ConstCharStar):RayShader;
+	@:native('LoadShaderFromMemory') static function loadShaderFromMemory(vsCode:cpp.ConstCharStar, fsCode:cpp.ConstCharStar):RayShader;
+	@:native('IsShaderReady') static function isShaderReady(shader:RayShader):Bool;
+	@:native('GetShaderLocation') static function getShaderLocation(shader:RayShader, uniformName:cpp.ConstCharStar):Int;
+	@:native('GetShaderLocationAttrib') static function getShaderLocationAttrib(shader:RayShader, attribName:cpp.ConstCharStar):Int;
+	@:native('SetShaderValue') static function setShaderValue(shader:RayShader, locIndex:Int, value:cpp.RawConstPointer<cpp.Void>, uniformType:Int):Void;
+	@:native('SetShaderValueV') static function setShaderValueV(shader:RayShader, locIndex:Int, value:cpp.RawConstPointer<cpp.Void>, uniformType:Int,
 		count:Int):Void;
-	@:native('SetShaderValueRayMatrix') static function setShaderValueRayMatrix(shader:Shader, locIndex:Int, mat:RayMatrix):Void;
-	@:native('SetShaderValueTexture') static function setShaderValueTexture(shader:Shader, locIndex:Int, texture:RayTexture):Void;
-	@:native('UnloadShader') static function unloadShader(shader:Shader):Void;
+	@:native('SetShaderValueRayMatrix') static function setShaderValueRayMatrix(shader:RayShader, locIndex:Int, mat:RayMatrix):Void;
+	@:native('SetShaderValueTexture') static function setShaderValueTexture(shader:RayShader, locIndex:Int, texture:RayTexture):Void;
+	@:native('UnloadShader') static function unloadShader(shader:RayShader):Void;
 
 	@:native('GetMouseRay') static function getMouseRay(mousePosition:RayVector2, camera:RayCamera3D):Ray;
 	@:native('GetScreenToWorldRay') static function getScreenToWorldRay(mousePosition:RayVector2, camera:RayCamera3D):Ray;
@@ -1516,12 +1551,12 @@ extern class Raylib
 	@:native('ChangeDirectory') static function changeDirectory(dir:cpp.ConstCharStar):Bool;
 	@:native('IsPathFile') static function isPathFile(path:cpp.ConstCharStar):Bool;
 	@:native('IsFileNameValid') static function isFileNameValid(fileName:cpp.ConstCharStar):Bool;
-	@:native('LoadDirectoryFiles') static function loadDirectoryFiles(dirPath:cpp.ConstCharStar):FilePathList;
-	@:native('LoadDirectoryFilesEx') static function loadDirectoryFilesEx(basePath:cpp.ConstCharStar, filter:cpp.ConstCharStar, scanSubdirs:Bool):FilePathList;
-	@:native('UnloadDirectoryFiles') static function unloadDirectoryFiles(files:FilePathList):Void;
+	@:native('LoadDirectoryFiles') static function loadDirectoryFiles(dirPath:cpp.ConstCharStar):RayFilePathList;
+	@:native('LoadDirectoryFilesEx') static function loadDirectoryFilesEx(basePath:cpp.ConstCharStar, filter:cpp.ConstCharStar, scanSubdirs:Bool):RayFilePathList;
+	@:native('UnloadDirectoryFiles') static function unloadDirectoryFiles(files:RayFilePathList):Void;
 	@:native('IsFileDropped') static function isFileDropped():Bool;
-	@:native('LoadDroppedFiles') static function loadDroppedFiles():FilePathList;
-	@:native('UnloadDroppedFiles') static function unloadDroppedFiles(files:FilePathList):Void;
+	@:native('LoadDroppedFiles') static function loadDroppedFiles():RayFilePathList;
+	@:native('UnloadDroppedFiles') static function unloadDroppedFiles(files:RayFilePathList):Void;
 	@:native('GetFileModTime') static function getFileModTime(fileName:cpp.ConstCharStar):cpp.Long;
 
 	@:native('CompressData') static function compressData(data:cpp.RawConstPointer<cpp.UInt8>, dataSize:Int,
@@ -1533,14 +1568,14 @@ extern class Raylib
 	@:native('DecodeDataBase64') static function decodeDataBase64(data:cpp.RawConstPointer<cpp.UInt8>,
 		outputSize:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<cpp.UInt8>;
 
-	@:native('LoadAutomationEventList') static function loadAutomationEventList(fileName:cpp.ConstCharStar):AutomationEventList;
-	@:native('UnloadAutomationEventList') static function unloadAutomationEventList(list:AutomationEventList):Void;
-	@:native('ExportAutomationEventList') static function exportAutomationEventList(list:AutomationEventList, fileName:cpp.ConstCharStar):Bool;
+	@:native('LoadAutomationEventList') static function loadAutomationEventList(fileName:cpp.ConstCharStar):RayAutomationEventList;
+	@:native('UnloadAutomationEventList') static function unloadAutomationEventList(list:RayAutomationEventList):Void;
+	@:native('ExportAutomationEventList') static function exportAutomationEventList(list:RayAutomationEventList, fileName:cpp.ConstCharStar):Bool;
 	@:native('SetAutomationEventList') static function setAutomationEventList(list:cpp.RawPointer<AutomationEventList>):Void;
 	@:native('SetAutomationEventBaseFrame') static function setAutomationEventBaseFrame(frame:Int):Void;
 	@:native('StartAutomationEventRecording') static function startAutomationEventRecording():Void;
 	@:native('StopAutomationEventRecording') static function stopAutomationEventRecording():Void;
-	@:native('PlayAutomationEvent') static function playAutomationEvent(event:AutomationEvent):Void;
+	@:native('PlayAutomationEvent') static function playAutomationEvent(event:RayAutomationEvent):Void;
 
 	@:native('IsKeyPressed') static function isKeyPressed(key:Int):Bool;
 	@:native('IsKeyPressedRepeat') static function isKeyPressedRepeat(key:Int):Bool;
@@ -1903,19 +1938,19 @@ extern class Raylib
 	@:native('DrawRay') static function drawRay(ray:Ray, color:RayColor):Void;
 	@:native('DrawGrid') static function drawGrid(slices:Int, spacing:Single):Void;
 
-	@:native('LoadModel') static function loadModel(fileName:cpp.ConstCharStar):Model;
-	@:native('LoadModelFromMesh') static function loadModelFromMesh(mesh:RayMesh):Model;
-	@:native('IsModelReady') static function isModelReady(model:Model):Bool;
-	@:native('UnloadModel') static function unloadModel(model:Model):Void;
-	@:native('GetModelBoundingBox') static function getModelBoundingBox(model:Model):BoundingBox;
+	@:native('LoadModel') static function loadModel(fileName:cpp.ConstCharStar):RayModel;
+	@:native('LoadModelFromMesh') static function loadModelFromMesh(mesh:RayMesh):RayModel;
+	@:native('IsModelReady') static function isModelReady(model:RayModel):Bool;
+	@:native('UnloadModel') static function unloadModel(model:RayModel):Void;
+	@:native('GetModelBoundingBox') static function getModelBoundingBox(model:RayModel):RayBoundingBox;
 
-	@:native('DrawModel') static function drawModel(model:Model, position:RayVector3, scale:Single, tint:RayColor):Void;
-	@:native('DrawModelEx') static function drawModelEx(model:Model, position:RayVector3, rotationAxis:RayVector3, rotationAngle:Single, scale:RayVector3,
+	@:native('DrawModel') static function drawModel(model:RayModel, position:RayVector3, scale:Single, tint:RayColor):Void;
+	@:native('DrawModelEx') static function drawModelEx(model:RayModel, position:RayVector3, rotationAxis:RayVector3, rotationAngle:Single, scale:RayVector3,
 		tint:RayColor):Void;
-	@:native('DrawModelWires') static function drawModelWires(model:Model, position:RayVector3, scale:Single, tint:RayColor):Void;
-	@:native('DrawModelWiresEx') static function drawModelWiresEx(model:Model, position:RayVector3, rotationAxis:RayVector3, rotationAngle:Single,
+	@:native('DrawModelWires') static function drawModelWires(model:RayModel, position:RayVector3, scale:Single, tint:RayColor):Void;
+	@:native('DrawModelWiresEx') static function drawModelWiresEx(model:RayModel, position:RayVector3, rotationAxis:RayVector3, rotationAngle:Single,
 		scale:RayVector3, tint:RayColor):Void;
-	@:native('DrawBoundingBox') static function drawBoundingBox(box:BoundingBox, color:RayColor):Void;
+	@:native('DrawBoundingBox') static function drawBoundingBox(box:RayBoundingBox, color:RayColor):Void;
 	@:native('DrawBillboard') static function drawBillboard(camera:RayCamera3D, texture:RayTexture, position:RayVector3, size:Single, tint:RayColor):Void;
 	@:native('DrawBillboardRec') static function drawBillboardRec(camera:RayCamera3D, texture:RayTexture, source:RayRectangle, position:RayVector3,
 		size:RayVector2, tint:RayColor):Void;
@@ -1925,9 +1960,9 @@ extern class Raylib
 	@:native('UploadMesh') static function uploadMesh(mesh:RayMesh, dynamicBuffer:Bool):Void;
 	@:native('UpdateMeshBuffer') static function updateMeshBuffer(mesh:RayMesh, index:Int, data:cpp.RawPointer<cpp.Void>, dataSize:Int, offset:Int):Void;
 	@:native('UnloadMesh') static function unloadMesh(mesh:RayMesh):Void;
-	@:native('DrawMesh') static function drawMesh(mesh:RayMesh, material:Material, transform:RayMatrix):Void;
-	@:native('DrawMeshInstanced') static function drawMeshInstanced(mesh:RayMesh, material:Material, transforms:cpp.RawPointer<RayMatrix>, instances:Int):Void;
-	@:native('GetMeshBoundingBox') static function getMeshBoundingBox(mesh:RayMesh):BoundingBox;
+	@:native('DrawMesh') static function drawMesh(mesh:RayMesh, material:RayMaterial, transform:RayMatrix):Void;
+	@:native('DrawMeshInstanced') static function drawMeshInstanced(mesh:RayMesh, material:RayMaterial, transforms:cpp.RawPointer<RayMatrix>, instances:Int):Void;
+	@:native('GetMeshBoundingBox') static function getMeshBoundingBox(mesh:RayMesh):RayBoundingBox;
 	@:native('GenMeshTangents') static function genMeshTangents(mesh:RayMesh):Void;
 	@:native('ExportMesh') static function exportMesh(mesh:RayMesh, fileName:cpp.ConstCharStar):Bool;
 	@:native('ExportMeshAsCode') static function exportMeshAsCode(mesh:RayMesh, fileName:cpp.ConstCharStar):Bool;
@@ -1944,25 +1979,25 @@ extern class Raylib
 	@:native('GenMeshHeightmap') static function genMeshHeightmap(heightmap:RayImage, size:RayVector3):RayMesh;
 	@:native('GenMeshCubicmap') static function genMeshCubicmap(cubicmap:RayImage, cubeSize:RayVector3):RayMesh;
 
-	@:native('LoadMaterials') static function loadMaterials(fileName:cpp.ConstCharStar, materialCount:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<Material>;
-	@:native('LoadMaterialDefault') static function loadMaterialDefault():Material;
-	@:native('IsMaterialReady') static function isMaterialReady(material:Material):Bool;
-	@:native('UnloadMaterial') static function unloadMaterial(material:Material):Void;
-	@:native('SetMaterialTexture') static function setMaterialTexture(material:cpp.RawPointer<Material>, mapType:Int, texture:RayTexture):Void;
-	@:native('SetModelMeshMaterial') static function setModelMeshMaterial(model:cpp.RawPointer<Model>, meshId:Int, materialId:Int):Void;
+	@:native('LoadMaterials') static function loadMaterials(fileName:cpp.ConstCharStar, materialCount:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<RayMaterial>;
+	@:native('LoadMaterialDefault') static function loadMaterialDefault():RayMaterial;
+	@:native('IsMaterialReady') static function isMaterialReady(material:RayMaterial):Bool;
+	@:native('UnloadMaterial') static function unloadMaterial(material:RayMaterial):Void;
+	@:native('SetMaterialTexture') static function setMaterialTexture(material:cpp.RawPointer<RayMaterial>, mapType:Int, texture:RayTexture):Void;
+	@:native('SetModelMeshMaterial') static function setModelMeshMaterial(model:cpp.RawPointer<RayModel>, meshId:Int, materialId:Int):Void;
 
 	@:native('LoadModelAnimations') static function loadModelAnimations(fileName:cpp.ConstCharStar,
-		animCount:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<ModelAnimation>;
-	@:native('UpdateModelAnimation') static function updateModelAnimation(model:Model, anim:ModelAnimation, frame:Int):Void;
-	@:native('UnloadModelAnimation') static function unloadModelAnimation(anim:ModelAnimation):Void;
-	@:native('UnloadModelAnimations') static function unloadModelAnimations(animations:cpp.RawPointer<ModelAnimation>, animCount:Int):Void;
-	@:native('IsModelAnimationValid') static function isModelAnimationValid(model:Model, anim:ModelAnimation):Bool;
+		animCount:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<RayModelAnimation>;
+	@:native('UpdateModelAnimation') static function updateModelAnimation(model:RayModel, anim:RayModelAnimation, frame:Int):Void;
+	@:native('UnloadModelAnimation') static function unloadModelAnimation(anim:RayModelAnimation):Void;
+	@:native('UnloadModelAnimations') static function unloadModelAnimations(animations:cpp.RawPointer<RayModelAnimation>, animCount:Int):Void;
+	@:native('IsModelAnimationValid') static function isModelAnimationValid(model:RayModel, anim:RayModelAnimation):Bool;
 
 	@:native('CheckCollisionSpheres') static function checkCollisionSpheres(center1:RayVector3, radius1:Single, center2:RayVector3, radius2:Single):Bool;
-	@:native('CheckCollisionBoxes') static function checkCollisionBoxes(box1:BoundingBox, box2:BoundingBox):Bool;
-	@:native('CheckCollisionBoxSphere') static function checkCollisionBoxSphere(box:BoundingBox, center:RayVector3, radius:Single):Bool;
+	@:native('CheckCollisionBoxes') static function checkCollisionBoxes(box1:RayBoundingBox, box2:RayBoundingBox):Bool;
+	@:native('CheckCollisionBoxSphere') static function checkCollisionBoxSphere(box:RayBoundingBox, center:RayVector3, radius:Single):Bool;
 	@:native('GetRayCollisionSphere') static function getRayCollisionSphere(ray:Ray, center:RayVector3, radius:Single):RayCollision;
-	@:native('GetRayCollisionBox') static function getRayCollisionBox(ray:Ray, box:BoundingBox):RayCollision;
+	@:native('GetRayCollisionBox') static function getRayCollisionBox(ray:Ray, box:RayBoundingBox):RayCollision;
 	@:native('GetRayCollisionMesh') static function getRayCollisionMesh(ray:Ray, mesh:RayMesh, transform:RayMatrix):RayCollision;
 	@:native('GetRayCollisionTriangle') static function getRayCollisionTriangle(ray:Ray, p1:RayVector3, p2:RayVector3, p3:RayVector3):RayCollision;
 	@:native('GetRayCollisionQuad') static function getRayCollisionQuad(ray:Ray, p1:RayVector3, p2:RayVector3, p3:RayVector3, p4:RayVector3):RayCollision;
@@ -1973,69 +2008,69 @@ extern class Raylib
 	@:native('SetMasterVolume') static function setMasterVolume(volume:Single):Void;
 	@:native('GetMasterVolume') static function getMasterVolume():Single;
 
-	@:native('LoadWave') static function loadWave(fileName:cpp.ConstCharStar):Wave;
-	@:native('LoadWaveFromMemory') static function loadWaveFromMemory(fileType:cpp.ConstCharStar, fileData:cpp.RawConstPointer<cpp.UInt8>, dataSize:Int):Wave;
-	@:native('IsWaveReady') static function isWaveReady(wave:Wave):Bool;
-	@:native('LoadSound') static function loadSound(fileName:cpp.ConstCharStar):Sound;
-	@:native('LoadSoundFromWave') static function loadSoundFromWave(wave:Wave):Sound;
-	@:native('LoadSoundAlias') static function loadSoundAlias(source:Sound):Sound;
-	@:native('IsSoundReady') static function isSoundReady(sound:Sound):Bool;
-	@:native('UpdateSound') static function updateSound(sound:Sound, data:cpp.RawConstPointer<cpp.Void>, frameCount:Int):Void;
-	@:native('UnloadWave') static function unloadWave(wave:Wave):Void;
-	@:native('UnloadSound') static function unloadSound(sound:Sound):Void;
-	@:native('UnloadSoundAlias') static function unloadSoundAlias(alias:Sound):Void;
-	@:native('ExportWave') static function exportWave(wave:Wave, fileName:cpp.ConstCharStar):Bool;
-	@:native('ExportWaveAsCode') static function exportWaveAsCode(wave:Wave, fileName:cpp.ConstCharStar):Bool;
+	@:native('LoadWave') static function loadWave(fileName:cpp.ConstCharStar):RayWave;
+	@:native('LoadWaveFromMemory') static function loadWaveFromMemory(fileType:cpp.ConstCharStar, fileData:cpp.RawConstPointer<cpp.UInt8>, dataSize:Int):RayWave;
+	@:native('IsWaveReady') static function isWaveReady(wave:RayWave):Bool;
+	@:native('LoadSound') static function loadSound(fileName:cpp.ConstCharStar):RaySound;
+	@:native('LoadSoundFromWave') static function loadSoundFromWave(wave:RayWave):RaySound;
+	@:native('LoadSoundAlias') static function loadSoundAlias(source:RaySound):RaySound;
+	@:native('IsSoundReady') static function isSoundReady(sound:RaySound):Bool;
+	@:native('UpdateSound') static function updateSound(sound:RaySound, data:cpp.RawConstPointer<cpp.Void>, frameCount:Int):Void;
+	@:native('UnloadWave') static function unloadWave(wave:RayWave):Void;
+	@:native('UnloadSound') static function unloadSound(sound:RaySound):Void;
+	@:native('UnloadSoundAlias') static function unloadSoundAlias(alias:RaySound):Void;
+	@:native('ExportWave') static function exportWave(wave:RayWave, fileName:cpp.ConstCharStar):Bool;
+	@:native('ExportWaveAsCode') static function exportWaveAsCode(wave:RayWave, fileName:cpp.ConstCharStar):Bool;
 
-	@:native('PlaySound') static function playSound(sound:Sound):Void;
-	@:native('StopSound') static function stopSound(sound:Sound):Void;
-	@:native('PauseSound') static function pauseSound(sound:Sound):Void;
-	@:native('ResumeSound') static function resumeSound(sound:Sound):Void;
-	@:native('IsSoundPlaying') static function isSoundPlaying(sound:Sound):Bool;
-	@:native('SetSoundVolume') static function setSoundVolume(sound:Sound, volume:Single):Void;
-	@:native('SetSoundPitch') static function setSoundPitch(sound:Sound, pitch:Single):Void;
-	@:native('SetSoundPan') static function setSoundPan(sound:Sound, pan:Single):Void;
-	@:native('WaveCopy') static function WaveCopy(wave:Wave):Wave;
-	@:native('WaveCrop') static function WaveCrop(wave:cpp.RawPointer<Wave>, initFrame:Int, finalFrame:Int):Void;
-	@:native('WaveFormat') static function WaveFormat(wave:cpp.RawPointer<Wave>, initSample:Int, finalSample:Int, channels:Int):Void;
-	@:native('LoadWaveSamples') static function loadWaveSamples(wave:Wave):cpp.RawPointer<cpp.Float32>;
+	@:native('PlaySound') static function playSound(sound:RaySound):Void;
+	@:native('StopSound') static function stopSound(sound:RaySound):Void;
+	@:native('PauseSound') static function pauseSound(sound:RaySound):Void;
+	@:native('ResumeSound') static function resumeSound(sound:RaySound):Void;
+	@:native('IsSoundPlaying') static function isSoundPlaying(sound:RaySound):Bool;
+	@:native('SetSoundVolume') static function setSoundVolume(sound:RaySound, volume:Single):Void;
+	@:native('SetSoundPitch') static function setSoundPitch(sound:RaySound, pitch:Single):Void;
+	@:native('SetSoundPan') static function setSoundPan(sound:RaySound, pan:Single):Void;
+	@:native('WaveCopy') static function WaveCopy(wave:RayWave):RayWave;
+	@:native('WaveCrop') static function WaveCrop(wave:cpp.RawPointer<RayWave>, initFrame:Int, finalFrame:Int):Void;
+	@:native('WaveFormat') static function WaveFormat(wave:cpp.RawPointer<RayWave>, initSample:Int, finalSample:Int, channels:Int):Void;
+	@:native('LoadWaveSamples') static function loadWaveSamples(wave:RayWave):cpp.RawPointer<cpp.Float32>;
 	@:native('UnloadWaveSamples') static function unloadWaveSamples(samples:cpp.RawPointer<cpp.Float32>):Void;
 
-	@:native('LoadMusicStream') static function loadMusicStream(fileName:cpp.ConstCharStar):Music;
+	@:native('LoadMusicStream') static function loadMusicStream(fileName:cpp.ConstCharStar):RayMusic;
 	@:native('LoadMusicStreamFromMemory') static function loadMusicStreamFromMemory(fileType:cpp.ConstCharStar, fileData:cpp.RawConstPointer<cpp.UInt8>,
-		dataSize:Int):Music;
-	@:native('IsMusicReady') static function isMusicReady(music:Music):Bool;
-	@:native('UnloadMusicStream') static function unloadMusicStream(music:Music):Void;
-	@:native('PlayMusicStream') static function playMusicStream(music:Music):Void;
-	@:native('IsMusicStreamPlaying') static function isMusicStreamPlaying(music:Music):Bool;
-	@:native('UpdateMusicStream') static function updateMusicStream(music:Music):Void;
-	@:native('StopMusicStream') static function stopMusicStream(music:Music):Void;
-	@:native('PauseMusicStream') static function pauseMusicStream(music:Music):Void;
-	@:native('ResumeMusicStream') static function resumeMusicStream(music:Music):Void;
-	@:native('SeekMusicStream') static function seekMusicStream(music:Music, position:Single):Void;
-	@:native('SetMusicVolume') static function setMusicVolume(music:Music, volume:Single):Void;
-	@:native('SetMusicPitch') static function setMusicPitch(music:Music, pitch:Single):Void;
-	@:native('SetMusicPan') static function setMusicPan(music:Music, pan:Single):Void;
-	@:native('GetMusicTimeLength') static function getMusicTimeLength(music:Music):Single;
-	@:native('GetMusicTimePlayed') static function getMusicTimePlayed(music:Music):Single;
+		dataSize:Int):RayMusic;
+	@:native('IsMusicReady') static function isMusicReady(music:RayMusic):Bool;
+	@:native('UnloadMusicStream') static function unloadMusicStream(music:RayMusic):Void;
+	@:native('PlayMusicStream') static function playMusicStream(music:RayMusic):Void;
+	@:native('IsMusicStreamPlaying') static function isMusicStreamPlaying(music:RayMusic):Bool;
+	@:native('UpdateMusicStream') static function updateMusicStream(music:RayMusic):Void;
+	@:native('StopMusicStream') static function stopMusicStream(music:RayMusic):Void;
+	@:native('PauseMusicStream') static function pauseMusicStream(music:RayMusic):Void;
+	@:native('ResumeMusicStream') static function resumeMusicStream(music:RayMusic):Void;
+	@:native('SeekMusicStream') static function seekMusicStream(music:RayMusic, position:Single):Void;
+	@:native('SetMusicVolume') static function setMusicVolume(music:RayMusic, volume:Single):Void;
+	@:native('SetMusicPitch') static function setMusicPitch(music:RayMusic, pitch:Single):Void;
+	@:native('SetMusicPan') static function setMusicPan(music:RayMusic, pan:Single):Void;
+	@:native('GetMusicTimeLength') static function getMusicTimeLength(music:RayMusic):Single;
+	@:native('GetMusicTimePlayed') static function getMusicTimePlayed(music:RayMusic):Single;
 
-	@:native('LoadAudioStream') static function loadAudioStream(sampleRate:cpp.UInt32, sampleSize:cpp.UInt32, channels:cpp.UInt32):AudioStream;
-	@:native('IsAudioStreamReady') static function isAudioStreamReady(stream:AudioStream):Bool;
-	@:native('UnloadAudioStream') static function unloadAudioStream(stream:AudioStream):Void;
-	@:native('UpdateAudioStream') static function updateAudioStream(stream:AudioStream, data:cpp.RawConstPointer<cpp.Void>, samplesCount:Int):Void;
-	@:native('IsAudioStreamProcessed') static function isAudioStreamProcessed(stream:AudioStream):Bool;
-	@:native('PlayAudioStream') static function playAudioStream(stream:AudioStream):Void;
-	@:native('PauseAudioStream') static function pauseAudioStream(stream:AudioStream):Void;
-	@:native('ResumeAudioStream') static function resumeAudioStream(stream:AudioStream):Void;
-	@:native('IsAudioStreamPlaying') static function isAudioStreamPlaying(stream:AudioStream):Bool;
-	@:native('StopAudioStream') static function stopAudioStream(stream:AudioStream):Void;
-	@:native('SetAudioStreamVolume') static function setAudioStreamVolume(stream:AudioStream, volume:Single):Void;
-	@:native('SetAudioStreamPitch') static function setAudioStreamPitch(stream:AudioStream, pitch:Single):Void;
-	@:native('SetAudioStreamPan') static function setAudioStreamPan(stream:AudioStream, pan:Single):Void;
+	@:native('LoadAudioStream') static function loadAudioStream(sampleRate:cpp.UInt32, sampleSize:cpp.UInt32, channels:cpp.UInt32):RayAudioStream;
+	@:native('IsAudioStreamReady') static function isAudioStreamReady(stream:RayAudioStream):Bool;
+	@:native('UnloadAudioStream') static function unloadAudioStream(stream:RayAudioStream):Void;
+	@:native('UpdateAudioStream') static function updateAudioStream(stream:RayAudioStream, data:cpp.RawConstPointer<cpp.Void>, samplesCount:Int):Void;
+	@:native('IsAudioStreamProcessed') static function isAudioStreamProcessed(stream:RayAudioStream):Bool;
+	@:native('PlayAudioStream') static function playAudioStream(stream:RayAudioStream):Void;
+	@:native('PauseAudioStream') static function pauseAudioStream(stream:RayAudioStream):Void;
+	@:native('ResumeAudioStream') static function resumeAudioStream(stream:RayAudioStream):Void;
+	@:native('IsAudioStreamPlaying') static function isAudioStreamPlaying(stream:RayAudioStream):Bool;
+	@:native('StopAudioStream') static function stopAudioStream(stream:RayAudioStream):Void;
+	@:native('SetAudioStreamVolume') static function setAudioStreamVolume(stream:RayAudioStream, volume:Single):Void;
+	@:native('SetAudioStreamPitch') static function setAudioStreamPitch(stream:RayAudioStream, pitch:Single):Void;
+	@:native('SetAudioStreamPan') static function setAudioStreamPan(stream:RayAudioStream, pan:Single):Void;
 	@:native('SetAudioStreamBufferSizeDefault') static function setAudioStreamBufferSizeDefault(size:Int):Void;
-	@:native('SetAudioStreamCallback') static function setAudioStreamCallback(stream:AudioStream, callback:AudioCallback):Void;
-	@:native('AttachAudioStreamProcessor') static function attachAudioStreamProcessor(stream:AudioStream, processor:AudioCallback):Void;
-	@:native('DetachAudioStreamProcessor') static function detachAudioStreamProcessor(stream:AudioStream, processor:AudioCallback):Void;
+	@:native('SetAudioStreamCallback') static function setAudioStreamCallback(stream:RayAudioStream, callback:AudioCallback):Void;
+	@:native('AttachAudioStreamProcessor') static function attachAudioStreamProcessor(stream:RayAudioStream, processor:AudioCallback):Void;
+	@:native('DetachAudioStreamProcessor') static function detachAudioStreamProcessor(stream:RayAudioStream, processor:AudioCallback):Void;
 	@:native('AttachAudioMixedProcessor') static function attachAudioMixedProcessor(processor:AudioCallback):Void;
 	@:native('DetachAudioMixedProcessor') static function detachAudioMixedProcessor(processor:AudioCallback):Void;
 }
