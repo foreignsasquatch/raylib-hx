@@ -45,8 +45,6 @@ extern class RCamera
 	@:native('GetCameraRight')
 	static function GetCameraRight(camera:cpp.RawPointer<RayCamera>):RayVector3;
 
-	// Camera movement
-
 	@:native('CameraMoveForward')
 	static function CameraMoveForward(camera:cpp.RawPointer<RayCamera3D>, distance:Single, moveInWorldPlane:Bool):Void;
 
@@ -58,8 +56,6 @@ extern class RCamera
 
 	@:native('CameraMoveToTarget')
 	static function CameraMoveToTarget(camera:cpp.RawPointer<RayCamera3D>, delta:Single):Void;
-
-	// Camera rotation
 
 	@:native('CameraYaw')
 	static function CameraYaw(camera:cpp.RawPointer<RayCamera3D>, angle:Single, rotateAroundTarget:Bool):Void;
