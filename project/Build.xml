@@ -53,6 +53,7 @@
 		<file name="${haxelib:raylib-hx}/project/src/android_main.c" if="android" />
 
 		<section unless="MSVC_VER">
+			<compilerflag value="-Wno-implicit-const-int-float-conversion" />
 			<compilerflag value="-Wno-missing-braces" />
 			<compilerflag value="-Wno-unused-result" />
 		</section>

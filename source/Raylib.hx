@@ -39,19 +39,51 @@ extern class RayVector2
 	@:native('Vector2')
 	static function alloc():RayVector2;
 
-	static inline function create(x:Single, y:Single):RayVector2
-	{
-		final vec2:RayVector2 = RayVector2.alloc();
-		vec2.x = x;
-		vec2.y = y;
-		return vec2;
-	}
-
 	var x:Single;
 	var y:Single;
 }
 
-typedef Vector2 = cpp.Struct<RayVector2>;
+extern abstract Vector2(cpp.Struct<RayVector2>) to cpp.Struct<RayVector2>
+{
+	var x(get, set):Single;
+
+	inline function get_x():Single
+	{
+		return this.x;
+	}
+
+	inline function set_x(value:Single):Single
+	{
+		return this.x = value;
+	}
+
+	var y(get, set):Single;
+
+	inline function get_y():Single
+	{
+		return this.y;
+	}
+
+	inline function set_y(value:Single):Single
+	{
+		return this.y = value;
+	}
+
+	inline function new(x:Single, y:Single):Void
+	{
+		final vec2:RayVector2 = RayVector2.alloc();
+		vec2.x = x;
+		vec2.y = y;
+		this = vec2;
+	}
+
+	@:from
+	static public inline function fromNative(value:RayVector2):Vector2
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayVector2>
+		return cpp.RawConstPointer.addressOf((this : RayVector2));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -63,21 +95,65 @@ extern class RayVector3
 	@:native('Vector3')
 	static function alloc():RayVector3;
 
-	static inline function create(x:Single, y:Single, z:Single):RayVector3
-	{
-		final vec3:RayVector3 = RayVector3.alloc();
-		vec3.x = x;
-		vec3.y = y;
-		vec3.z = z;
-		return vec3;
-	}
-
 	var x:Single;
 	var y:Single;
 	var z:Single;
 }
 
-typedef Vector3 = cpp.Struct<RayVector3>;
+extern abstract Vector3(cpp.Struct<RayVector3>) to cpp.Struct<RayVector3>
+{
+	var x(get, set):Single;
+
+	inline function get_x():Single
+	{
+		return this.x;
+	}
+
+	inline function set_x(value:Single):Single
+	{
+		return this.x = value;
+	}
+
+	var y(get, set):Single;
+
+	inline function get_y():Single
+	{
+		return this.y;
+	}
+
+	inline function set_y(value:Single):Single
+	{
+		return this.y = value;
+	}
+
+	var z(get, set):Single;
+
+	inline function get_z():Single
+	{
+		return this.z;
+	}
+
+	inline function set_z(value:Single):Single
+	{
+		return this.z = value;
+	}
+
+	inline function new(x:Single, y:Single, z:Single):Void
+	{
+		final vec3:RayVector3 = RayVector3.alloc();
+		vec3.x = x;
+		vec3.y = y;
+		vec3.z = z;
+		this = vec3;
+	}
+
+	@:from
+	static public inline function fromNative(value:RayVector3):Vector3
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayVector3>
+		return cpp.RawConstPointer.addressOf((this : RayVector3));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -89,23 +165,79 @@ extern class RayVector4
 	@:native('RayVector4')
 	static function alloc():RayVector4;
 
-	static inline function create(x:Single, y:Single, z:Single, w:Single):RayVector4
-	{
-		final vec4:RayVector4 = RayVector4.alloc();
-		vec4.x = x;
-		vec4.y = y;
-		vec4.z = z;
-		vec4.w = w;
-		return vec4;
-	}
-
 	var x:Single;
 	var y:Single;
 	var z:Single;
 	var w:Single;
 }
 
-typedef Vector4 = cpp.Struct<RayVector4>;
+extern abstract Vector4(cpp.Struct<RayVector4>) to cpp.Struct<RayVector4>
+{
+	var x(get, set):Single;
+
+	inline function get_x():Single
+	{
+		return this.x;
+	}
+
+	inline function set_x(value:Single):Single
+	{
+		return this.x = value;
+	}
+
+	var y(get, set):Single;
+
+	inline function get_y():Single
+	{
+		return this.y;
+	}
+
+	inline function set_y(value:Single):Single
+	{
+		return this.y = value;
+	}
+
+	var z(get, set):Single;
+
+	inline function get_z():Single
+	{
+		return this.z;
+	}
+
+	inline function set_z(value:Single):Single
+	{
+		return this.z = value;
+	}
+
+	var w(get, set):Single;
+
+	inline function get_w():Single
+	{
+		return this.w;
+	}
+
+	inline function set_w(value:Single):Single
+	{
+		return this.w = value;
+	}
+
+	inline function new(x:Single, y:Single, z:Single, w:Single):Void
+	{
+		final vec4:RayVector4 = RayVector4.alloc();
+		vec4.x = x;
+		vec4.y = y;
+		vec4.z = z;
+		vec4.w = w;
+		this = vec4;
+	}
+
+	@:from
+	static public inline function fromNative(value:RayVector4):Vector4
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayVector4>
+		return cpp.RawConstPointer.addressOf((this : RayVector4));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -150,23 +282,79 @@ extern class RayColor
 	@:native('Color')
 	static function alloc():RayColor;
 
-	static inline function create(r:cpp.UInt8, g:cpp.UInt8, b:cpp.UInt8, a:cpp.UInt8):RayColor
-	{
-		final color:RayColor = RayColor.alloc();
-		color.r = r;
-		color.g = g;
-		color.b = b;
-		color.a = a;
-		return color;
-	}
-
 	var r:cpp.UInt8;
 	var g:cpp.UInt8;
 	var b:cpp.UInt8;
 	var a:cpp.UInt8;
 }
 
-typedef Color = cpp.Struct<RayColor>;
+extern abstract Color(cpp.Struct<RayColor>) to cpp.Struct<RayColor>
+{
+	var r(get, set):cpp.UInt8;
+
+	inline function get_r():cpp.UInt8
+	{
+		return this.r;
+	}
+
+	inline function set_r(value:cpp.UInt8):cpp.UInt8
+	{
+		return this.r = value;
+	}
+
+	var g(get, set):cpp.UInt8;
+
+	inline function get_g():cpp.UInt8
+	{
+		return this.g;
+	}
+
+	inline function set_g(value:cpp.UInt8):cpp.UInt8
+	{
+		return this.g = value;
+	}
+
+	var b(get, set):cpp.UInt8;
+
+	inline function get_b():cpp.UInt8
+	{
+		return this.b;
+	}
+
+	inline function set_b(value:cpp.UInt8):cpp.UInt8
+	{
+		return this.b = value;
+	}
+
+	var a(get, set):cpp.UInt8;
+
+	inline function get_a():cpp.UInt8
+	{
+		return this.a;
+	}
+
+	inline function set_a(value:cpp.UInt8):cpp.UInt8
+	{
+		return this.a = value;
+	}
+
+	inline function new(r:cpp.UInt8, g:cpp.UInt8, b:cpp.UInt8, a:cpp.UInt8):Void
+	{
+		final color:RayColor = RayColor.alloc();
+		color.r = r;
+		color.g = g;
+		color.b = b;
+		color.a = a;
+		this = color;
+	}
+
+	@:from
+	static public inline function fromNative(value:RayColor):Color
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayColor>
+		return cpp.RawConstPointer.addressOf((this : RayColor));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -178,23 +366,79 @@ extern class RayRectangle
 	@:native('Rectangle')
 	static function alloc():RayRectangle;
 
-	static inline function create(x:Single, y:Single, width:Single, height:Single):RayRectangle
-	{
-		final rect:RayRectangle = RayRectangle.alloc();
-		rect.x = x;
-		rect.y = y;
-		rect.width = width;
-		rect.height = width;
-		return rect;
-	}
-
 	var x:Single;
 	var y:Single;
 	var width:Single;
 	var height:Single;
 }
 
-typedef Rectangle = cpp.Struct<RayRectangle>;
+extern abstract Rectangle(cpp.Struct<RayRectangle>) to cpp.Struct<RayRectangle>
+{
+	var x(get, set):Single;
+
+	inline function get_x():Single
+	{
+		return this.x;
+	}
+
+	inline function set_x(value:Single):Single
+	{
+		return this.x = value;
+	}
+
+	var y(get, set):Single;
+
+	inline function get_y():Single
+	{
+		return this.y;
+	}
+
+	inline function set_y(value:Single):Single
+	{
+		return this.y = value;
+	}
+
+	var width(get, set):Single;
+
+	inline function get_width():Single
+	{
+		return this.width;
+	}
+
+	inline function set_width(value:Single):Single
+	{
+		return this.width = value;
+	}
+
+	var height(get, set):Single;
+
+	inline function get_height():Single
+	{
+		return this.height;
+	}
+
+	inline function set_height(value:Single):Single
+	{
+		return this.height = value;
+	}
+
+	inline function new(x:Single, y:Single, width:Single, height:Single):Void
+	{
+		final rect:RayRectangle = RayRectangle.alloc();
+		rect.x = x;
+		rect.y = y;
+		rect.width = width;
+		rect.height = height;
+		this = rect;
+	}
+
+	@:from
+	static public inline function fromNative(value:RayRectangle):Rectangle
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayRectangle>
+		return cpp.RawConstPointer.addressOf((this : RayRectangle));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -213,7 +457,80 @@ extern class RayImage
 	var format:Int;
 }
 
-typedef Image = cpp.Struct<RayImage>;
+extern abstract Image(cpp.Struct<RayImage>) to cpp.Struct<RayImage>
+{
+	var data(get, set):cpp.RawPointer<cpp.Void>;
+
+	inline function get_data():cpp.RawPointer<cpp.Void>
+	{
+		return this.data;
+	}
+
+	inline function set_data(value:cpp.RawPointer<cpp.Void>):cpp.RawPointer<cpp.Void>
+	{
+		return this.data = value;
+	}
+
+	var width(get, set):Int;
+
+	inline function get_width():Int
+	{
+		return this.width;
+	}
+
+	inline function set_width(value:Int):Int
+	{
+		return this.width = value;
+	}
+
+	var height(get, set):Int;
+
+	inline function get_height():Int
+	{
+		return this.height;
+	}
+
+	inline function set_height(value:Int):Int
+	{
+		return this.height = value;
+	}
+
+	var mipmaps(get, set):Int;
+
+	inline function get_mipmaps():Int
+	{
+		return this.mipmaps;
+	}
+
+	inline function set_mipmaps(value:Int):Int
+	{
+		return this.mipmaps = value;
+	}
+
+	var format(get, set):Int;
+
+	inline function get_format():Int
+	{
+		return this.format;
+	}
+
+	inline function set_format(value:Int):Int
+	{
+		return this.format = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayImage.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayImage):Image
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayImage>
+		return cpp.RawConstPointer.addressOf((this : RayImage));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -232,7 +549,80 @@ extern class RayTexture
 	var format:Int;
 }
 
-typedef Texture = cpp.Struct<RayTexture>;
+extern abstract Texture(cpp.Struct<RayTexture>) to cpp.Struct<RayTexture>
+{
+	var id(get, set):cpp.UInt32;
+
+	inline function get_id():cpp.UInt32
+	{
+		return this.id;
+	}
+
+	inline function set_id(value:cpp.UInt32):cpp.UInt32
+	{
+		return this.id = value;
+	}
+
+	var width(get, set):Int;
+
+	inline function get_width():Int
+	{
+		return this.width;
+	}
+
+	inline function set_width(value:Int):Int
+	{
+		return this.width = value;
+	}
+
+	var height(get, set):Int;
+
+	inline function get_height():Int
+	{
+		return this.height;
+	}
+
+	inline function set_height(value:Int):Int
+	{
+		return this.height = value;
+	}
+
+	var mipmaps(get, set):Int;
+
+	inline function get_mipmaps():Int
+	{
+		return this.mipmaps;
+	}
+
+	inline function set_mipmaps(value:Int):Int
+	{
+		return this.mipmaps = value;
+	}
+
+	var format(get, set):Int;
+
+	inline function get_format():Int
+	{
+		return this.format;
+	}
+
+	inline function set_format(value:Int):Int
+	{
+		return this.format = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayTexture.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayTexture):Texture
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayTexture>
+		return cpp.RawConstPointer.addressOf((this : RayTexture));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -249,7 +639,56 @@ extern class RayRenderTexture
 	var depth:RayTexture;
 }
 
-typedef RenderTexture = cpp.Struct<RayRenderTexture>;
+extern abstract RenderTexture(cpp.Struct<RayRenderTexture>) to cpp.Struct<RayRenderTexture>
+{
+	var id(get, set):cpp.UInt32;
+
+	inline function get_id():cpp.UInt32
+	{
+		return this.id;
+	}
+
+	inline function set_id(value:cpp.UInt32):cpp.UInt32
+	{
+		return this.id = value;
+	}
+
+	var texture(get, set):RayTexture;
+
+	inline function get_texture():RayTexture
+	{
+		return this.texture;
+	}
+
+	inline function set_texture(value:RayTexture):RayTexture
+	{
+		return this.texture = value;
+	}
+
+	var depth(get, set):RayTexture;
+
+	inline function get_depth():RayTexture
+	{
+		return this.depth;
+	}
+
+	inline function set_depth(value:RayTexture):RayTexture
+	{
+		return this.depth = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayRenderTexture.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayRenderTexture):RenderTexture
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayRenderTexture>
+		return cpp.RawConstPointer.addressOf((this : RayRenderTexture));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -269,7 +708,92 @@ extern class RayNPatchInfo
 	var layout:Int;
 }
 
-typedef NPatchInfo = cpp.Struct<RayNPatchInfo>;
+extern abstract NPatchInfo(cpp.Struct<RayNPatchInfo>) to cpp.Struct<RayNPatchInfo>
+{
+	var source(get, set):RayRectangle;
+
+	inline function get_source():RayRectangle
+	{
+		return this.source;
+	}
+
+	inline function set_source(value:RayRectangle):RayRectangle
+	{
+		return this.source = value;
+	}
+
+	var left(get, set):Int;
+
+	inline function get_left():Int
+	{
+		return this.left;
+	}
+
+	inline function set_left(value:Int):Int
+	{
+		return this.left = value;
+	}
+
+	var top(get, set):Int;
+
+	inline function get_top():Int
+	{
+		return this.top;
+	}
+
+	inline function set_top(value:Int):Int
+	{
+		return this.top = value;
+	}
+
+	var right(get, set):Int;
+
+	inline function get_right():Int
+	{
+		return this.right;
+	}
+
+	inline function set_right(value:Int):Int
+	{
+		return this.right = value;
+	}
+
+	var bottom(get, set):Int;
+
+	inline function get_bottom():Int
+	{
+		return this.bottom;
+	}
+
+	inline function set_bottom(value:Int):Int
+	{
+		return this.bottom = value;
+	}
+
+	var layout(get, set):Int;
+
+	inline function get_layout():Int
+	{
+		return this.layout;
+	}
+
+	inline function set_layout(value:Int):Int
+	{
+		return this.layout = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayNPatchInfo.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayNPatchInfo):NPatchInfo
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayNPatchInfo>
+		return cpp.RawConstPointer.addressOf((this : RayNPatchInfo));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -288,7 +812,80 @@ extern class RayGlyphInfo
 	var image:RayImage;
 }
 
-typedef GlyphInfo = cpp.Struct<RayGlyphInfo>;
+extern abstract GlyphInfo(cpp.Struct<RayGlyphInfo>) to cpp.Struct<RayGlyphInfo>
+{
+	var value(get, set):Int;
+
+	inline function get_value():Int
+	{
+		return this.value;
+	}
+
+	inline function set_value(value:Int):Int
+	{
+		return this.value = value;
+	}
+
+	var offsetX(get, set):Int;
+
+	inline function get_offsetX():Int
+	{
+		return this.offsetX;
+	}
+
+	inline function set_offsetX(value:Int):Int
+	{
+		return this.offsetX = value;
+	}
+
+	var offsetY(get, set):Int;
+
+	inline function get_offsetY():Int
+	{
+		return this.offsetY;
+	}
+
+	inline function set_offsetY(value:Int):Int
+	{
+		return this.offsetY = value;
+	}
+
+	var advanceX(get, set):Int;
+
+	inline function get_advanceX():Int
+	{
+		return this.advanceX;
+	}
+
+	inline function set_advanceX(value:Int):Int
+	{
+		return this.advanceX = value;
+	}
+
+	var image(get, set):RayImage;
+
+	inline function get_image():RayImage
+	{
+		return this.image;
+	}
+
+	inline function set_image(value:RayImage):RayImage
+	{
+		return this.image = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayGlyphInfo.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayGlyphInfo):GlyphInfo
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayGlyphInfo>
+		return cpp.RawConstPointer.addressOf((this : RayGlyphInfo));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -308,7 +905,92 @@ extern class RayFont
 	var glyphs:cpp.RawPointer<RayGlyphInfo>;
 }
 
-typedef Font = cpp.Struct<RayFont>;
+extern abstract Font(cpp.Struct<RayFont>) to cpp.Struct<RayFont>
+{
+	var baseSize(get, set):Int;
+
+	inline function get_baseSize():Int
+	{
+		return this.baseSize;
+	}
+
+	inline function set_baseSize(value:Int):Int
+	{
+		return this.baseSize = value;
+	}
+
+	var glyphCount(get, set):Int;
+
+	inline function get_glyphCount():Int
+	{
+		return this.glyphCount;
+	}
+
+	inline function set_glyphCount(value:Int):Int
+	{
+		return this.glyphCount = value;
+	}
+
+	var glyphPadding(get, set):Int;
+
+	inline function get_glyphPadding():Int
+	{
+		return this.glyphPadding;
+	}
+
+	inline function set_glyphPadding(value:Int):Int
+	{
+		return this.glyphPadding = value;
+	}
+
+	var texture(get, set):RayTexture;
+
+	inline function get_texture():RayTexture
+	{
+		return this.texture;
+	}
+
+	inline function set_texture(value:RayTexture):RayTexture
+	{
+		return this.texture = value;
+	}
+
+	var recs(get, set):cpp.RawPointer<RayRectangle>;
+
+	inline function get_recs():cpp.RawPointer<RayRectangle>
+	{
+		return this.recs;
+	}
+
+	inline function set_recs(value:cpp.RawPointer<RayRectangle>):cpp.RawPointer<RayRectangle>
+	{
+		return this.recs = value;
+	}
+
+	var glyphs(get, set):cpp.RawPointer<RayGlyphInfo>;
+
+	inline function get_glyphs():cpp.RawPointer<RayGlyphInfo>
+	{
+		return this.glyphs;
+	}
+
+	inline function set_glyphs(value:cpp.RawPointer<RayGlyphInfo>):cpp.RawPointer<RayGlyphInfo>
+	{
+		return this.glyphs = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayFont.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayFont):Font
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayFont>
+		return cpp.RawConstPointer.addressOf((this : RayFont));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -327,7 +1009,80 @@ extern class RayCamera3D
 	var projection:Int;
 }
 
-typedef Camera3D = cpp.Struct<RayCamera3D>;
+extern abstract Camera3D(cpp.Struct<RayCamera3D>) to cpp.Struct<RayCamera3D>
+{
+	var position(get, set):RayVector3;
+
+	inline function get_position():RayVector3
+	{
+		return this.position;
+	}
+
+	inline function set_position(value:RayVector3):RayVector3
+	{
+		return this.position = value;
+	}
+
+	var target(get, set):RayVector3;
+
+	inline function get_target():RayVector3
+	{
+		return this.target;
+	}
+
+	inline function set_target(value:RayVector3):RayVector3
+	{
+		return this.target = value;
+	}
+
+	var up(get, set):RayVector3;
+
+	inline function get_up():RayVector3
+	{
+		return this.up;
+	}
+
+	inline function set_up(value:RayVector3):RayVector3
+	{
+		return this.up = value;
+	}
+
+	var fovy(get, set):Single;
+
+	inline function get_fovy():Single
+	{
+		return this.fovy;
+	}
+
+	inline function set_fovy(value:Single):Single
+	{
+		return this.fovy = value;
+	}
+
+	var projection(get, set):Int;
+
+	inline function get_projection():Int
+	{
+		return this.projection;
+	}
+
+	inline function set_projection(value:Int):Int
+	{
+		return this.projection = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayCamera3D.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayCamera3D):Camera3D
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayCamera3D>
+		return cpp.RawConstPointer.addressOf((this : RayCamera3D));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -345,7 +1100,68 @@ extern class RayCamera2D
 	var zoom:Single;
 }
 
-typedef Camera2D = cpp.Struct<RayCamera2D>;
+extern abstract Camera2D(cpp.Struct<RayCamera2D>) to cpp.Struct<RayCamera2D>
+{
+	var offset(get, set):RayVector2;
+
+	inline function get_offset():RayVector2
+	{
+		return this.offset;
+	}
+
+	inline function set_offset(value:RayVector2):RayVector2
+	{
+		return this.offset = value;
+	}
+
+	var target(get, set):RayVector2;
+
+	inline function get_target():RayVector2
+	{
+		return this.target;
+	}
+
+	inline function set_target(value:RayVector2):RayVector2
+	{
+		return this.target = value;
+	}
+
+	var rotation(get, set):Single;
+
+	inline function get_rotation():Single
+	{
+		return this.rotation;
+	}
+
+	inline function set_rotation(value:Single):Single
+	{
+		return this.rotation = value;
+	}
+
+	var zoom(get, set):Single;
+
+	inline function get_zoom():Single
+	{
+		return this.zoom;
+	}
+
+	inline function set_zoom(value:Single):Single
+	{
+		return this.zoom = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayCamera2D.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayCamera2D):Camera2D
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayCamera2D>
+		return cpp.RawConstPointer.addressOf((this : RayCamera2D));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -377,7 +1193,200 @@ extern class RayMesh
 	var vboId:cpp.RawPointer<cpp.UInt32>;
 }
 
-typedef Mesh = cpp.Struct<RayMesh>;
+extern abstract Mesh(cpp.Struct<RayMesh>) to cpp.Struct<RayMesh>
+{
+	var vertexCount(get, set):Int;
+
+	inline function get_vertexCount():Int
+	{
+		return this.vertexCount;
+	}
+
+	inline function set_vertexCount(value:Int):Int
+	{
+		return this.vertexCount = value;
+	}
+
+	var triangleCount(get, set):Int;
+
+	inline function get_triangleCount():Int
+	{
+		return this.triangleCount;
+	}
+
+	inline function set_triangleCount(value:Int):Int
+	{
+		return this.triangleCount = value;
+	}
+
+	var vertices(get, set):cpp.RawPointer<cpp.Float32>;
+
+	inline function get_vertices():cpp.RawPointer<cpp.Float32>
+	{
+		return this.vertices;
+	}
+
+	inline function set_vertices(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	{
+		return this.vertices = value;
+	}
+
+	var texcoords(get, set):cpp.RawPointer<cpp.Float32>;
+
+	inline function get_texcoords():cpp.RawPointer<cpp.Float32>
+	{
+		return this.texcoords;
+	}
+
+	inline function set_texcoords(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	{
+		return this.texcoords = value;
+	}
+
+	var texcoords2(get, set):cpp.RawPointer<cpp.Float32>;
+
+	inline function get_texcoords2():cpp.RawPointer<cpp.Float32>
+	{
+		return this.texcoords2;
+	}
+
+	inline function set_texcoords2(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	{
+		return this.texcoords2 = value;
+	}
+
+	var normals(get, set):cpp.RawPointer<cpp.Float32>;
+
+	inline function get_normals():cpp.RawPointer<cpp.Float32>
+	{
+		return this.normals;
+	}
+
+	inline function set_normals(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	{
+		return this.normals = value;
+	}
+
+	var tangents(get, set):cpp.RawPointer<cpp.Float32>;
+
+	inline function get_tangents():cpp.RawPointer<cpp.Float32>
+	{
+		return this.tangents;
+	}
+
+	inline function set_tangents(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	{
+		return this.tangents = value;
+	}
+
+	var colors(get, set):cpp.RawPointer<cpp.UInt8>;
+
+	inline function get_colors():cpp.RawPointer<cpp.UInt8>
+	{
+		return this.colors;
+	}
+
+	inline function set_colors(value:cpp.RawPointer<cpp.UInt8>):cpp.RawPointer<cpp.UInt8>
+	{
+		return this.colors = value;
+	}
+
+	var indices(get, set):cpp.RawPointer<cpp.UInt16>;
+
+	inline function get_indices():cpp.RawPointer<cpp.UInt16>
+	{
+		return this.indices;
+	}
+
+	inline function set_indices(value:cpp.RawPointer<cpp.UInt16>):cpp.RawPointer<cpp.UInt16>
+	{
+		return this.indices = value;
+	}
+
+	var animVertices(get, set):cpp.RawPointer<cpp.Float32>;
+
+	inline function get_animVertices():cpp.RawPointer<cpp.Float32>
+	{
+		return this.animVertices;
+	}
+
+	inline function set_animVertices(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	{
+		return this.animVertices = value;
+	}
+
+	var animNormals(get, set):cpp.RawPointer<cpp.Float32>;
+
+	inline function get_animNormals():cpp.RawPointer<cpp.Float32>
+	{
+		return this.animNormals;
+	}
+
+	inline function set_animNormals(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	{
+		return this.animNormals = value;
+	}
+
+	var boneIds(get, set):cpp.RawPointer<cpp.UInt8>;
+
+	inline function get_boneIds():cpp.RawPointer<cpp.UInt8>
+	{
+		return this.boneIds;
+	}
+
+	inline function set_boneIds(value:cpp.RawPointer<cpp.UInt8>):cpp.RawPointer<cpp.UInt8>
+	{
+		return this.boneIds = value;
+	}
+
+	var boneWeights(get, set):cpp.RawPointer<cpp.Float32>;
+
+	inline function get_boneWeights():cpp.RawPointer<cpp.Float32>
+	{
+		return this.boneWeights;
+	}
+
+	inline function set_boneWeights(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	{
+		return this.boneWeights = value;
+	}
+
+	var vaoId(get, set):cpp.UInt32;
+
+	inline function get_vaoId():cpp.UInt32
+	{
+		return this.vaoId;
+	}
+
+	inline function set_vaoId(value:cpp.UInt32):cpp.UInt32
+	{
+		return this.vaoId = value;
+	}
+
+	var vboId(get, set):cpp.RawPointer<cpp.UInt32>;
+
+	inline function get_vboId():cpp.RawPointer<cpp.UInt32>
+	{
+		return this.vboId;
+	}
+
+	inline function set_vboId(value:cpp.RawPointer<cpp.UInt32>):cpp.RawPointer<cpp.UInt32>
+	{
+		return this.vboId = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayMesh.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayMesh):Mesh
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayMesh>
+		return cpp.RawConstPointer.addressOf((this : RayMesh));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -393,7 +1402,44 @@ extern class RayShader
 	var locs:cpp.RawPointer<cpp.Int32>;
 }
 
-typedef Shader = cpp.Struct<RayShader>;
+extern abstract Shader(cpp.Struct<RayShader>) to cpp.Struct<RayShader>
+{
+	var id(get, set):cpp.UInt32;
+
+	inline function get_id():cpp.UInt32
+	{
+		return this.id;
+	}
+
+	inline function set_id(value:cpp.UInt32):cpp.UInt32
+	{
+		return this.id = value;
+	}
+
+	var locs(get, set):cpp.RawPointer<cpp.Int32>;
+
+	inline function get_locs():cpp.RawPointer<cpp.Int32>
+	{
+		return this.locs;
+	}
+
+	inline function set_locs(value:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<cpp.Int32>
+	{
+		return this.locs = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayShader.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayShader):Shader
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayShader>
+		return cpp.RawConstPointer.addressOf((this : RayShader));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -410,7 +1456,56 @@ extern class RayMaterialMap
 	var value:Single;
 }
 
-typedef MaterialMap = cpp.Struct<RayMaterialMap>;
+extern abstract MaterialMap(cpp.Struct<RayMaterialMap>) to cpp.Struct<RayMaterialMap>
+{
+	var texture(get, set):RayTexture;
+
+	inline function get_texture():RayTexture
+	{
+		return this.texture;
+	}
+
+	inline function set_texture(value:RayTexture):RayTexture
+	{
+		return this.texture = value;
+	}
+
+	var color(get, set):RayColor;
+
+	inline function get_color():RayColor
+	{
+		return this.color;
+	}
+
+	inline function set_color(value:RayColor):RayColor
+	{
+		return this.color = value;
+	}
+
+	var value(get, set):Single;
+
+	inline function get_value():Single
+	{
+		return this.value;
+	}
+
+	inline function set_value(value:Single):Single
+	{
+		return this.value = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayMaterialMap.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayMaterialMap):MaterialMap
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayMaterialMap>
+		return cpp.RawConstPointer.addressOf((this : RayMaterialMap));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -427,7 +1522,56 @@ extern class RayMaterial
 	var params:cpp.RawPointer<cpp.Float32>;
 }
 
-typedef Material = cpp.Struct<RayMaterial>;
+extern abstract Material(cpp.Struct<RayMaterial>) to cpp.Struct<RayMaterial>
+{
+	var shader(get, set):RayShader;
+
+	inline function get_shader():RayShader
+	{
+		return this.shader;
+	}
+
+	inline function set_shader(value:RayShader):RayShader
+	{
+		return this.shader = value;
+	}
+
+	var maps(get, set):cpp.RawPointer<RayMaterialMap>;
+
+	inline function get_maps():cpp.RawPointer<RayMaterialMap>
+	{
+		return this.maps;
+	}
+
+	inline function set_maps(value:cpp.RawPointer<RayMaterialMap>):cpp.RawPointer<RayMaterialMap>
+	{
+		return this.maps = value;
+	}
+
+	var params(get, set):cpp.RawPointer<cpp.Float32>;
+
+	inline function get_params():cpp.RawPointer<cpp.Float32>
+	{
+		return this.params;
+	}
+
+	inline function set_params(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	{
+		return this.params = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayMaterial.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayMaterial):Material
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayMaterial>
+		return cpp.RawConstPointer.addressOf((this : RayMaterial));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -444,7 +1588,56 @@ extern class RayTransform
 	var scale:RayVector3;
 }
 
-typedef Transform = cpp.Struct<RayTransform>;
+extern abstract Transform(cpp.Struct<RayTransform>) to cpp.Struct<RayTransform>
+{
+	var translation(get, set):RayVector3;
+
+	inline function get_translation():RayVector3
+	{
+		return this.translation;
+	}
+
+	inline function set_translation(value:RayVector3):RayVector3
+	{
+		return this.translation = value;
+	}
+
+	var rotation(get, set):RayVector4;
+
+	inline function get_rotation():RayVector4
+	{
+		return this.rotation;
+	}
+
+	inline function set_rotation(value:RayVector4):RayVector4
+	{
+		return this.rotation = value;
+	}
+
+	var scale(get, set):RayVector3;
+
+	inline function get_scale():RayVector3
+	{
+		return this.scale;
+	}
+
+	inline function set_scale(value:RayVector3):RayVector3
+	{
+		return this.scale = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayTransform.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayTransform):Transform
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayTransform>
+		return cpp.RawConstPointer.addressOf((this : RayTransform));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -460,7 +1653,44 @@ extern class RayBoneInfo
 	var parent:Int;
 }
 
-typedef BoneInfo = cpp.Struct<RayBoneInfo>;
+extern abstract BoneInfo(cpp.Struct<RayBoneInfo>) to cpp.Struct<RayBoneInfo>
+{
+	var name(get, set):cpp.CastCharStar;
+
+	inline function get_name():cpp.CastCharStar
+	{
+		return this.name;
+	}
+
+	inline function set_name(value:cpp.CastCharStar):cpp.CastCharStar
+	{
+		return this.name = value;
+	}
+
+	var parent(get, set):Int;
+
+	inline function get_parent():Int
+	{
+		return this.parent;
+	}
+
+	inline function set_parent(value:Int):Int
+	{
+		return this.parent = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayBoneInfo.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayBoneInfo):BoneInfo
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayBoneInfo>
+		return cpp.RawConstPointer.addressOf((this : RayBoneInfo));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -485,7 +1715,128 @@ extern class RayModel
 	var bindPose:cpp.RawPointer<RayTransform>;
 }
 
-typedef Model = cpp.Struct<RayModel>;
+extern abstract Model(cpp.Struct<RayModel>) to cpp.Struct<RayModel>
+{
+	var transform(get, set):RayMatrix;
+
+	inline function get_transform():RayMatrix
+	{
+		return this.transform;
+	}
+
+	inline function set_transform(value:RayMatrix):RayMatrix
+	{
+		return this.transform = value;
+	}
+
+	var meshCount(get, set):Int;
+
+	inline function get_meshCount():Int
+	{
+		return this.meshCount;
+	}
+
+	inline function set_meshCount(value:Int):Int
+	{
+		return this.meshCount = value;
+	}
+
+	var materialCount(get, set):Int;
+
+	inline function get_materialCount():Int
+	{
+		return this.materialCount;
+	}
+
+	inline function set_materialCount(value:Int):Int
+	{
+		return this.materialCount = value;
+	}
+
+	var meshes(get, set):cpp.RawPointer<RayMesh>;
+
+	inline function get_meshes():cpp.RawPointer<RayMesh>
+	{
+		return this.meshes;
+	}
+
+	inline function set_meshes(value:cpp.RawPointer<RayMesh>):cpp.RawPointer<RayMesh>
+	{
+		return this.meshes = value;
+	}
+
+	var materials(get, set):cpp.RawPointer<RayMaterial>;
+
+	inline function get_materials():cpp.RawPointer<RayMaterial>
+	{
+		return this.materials;
+	}
+
+	inline function set_materials(value:cpp.RawPointer<RayMaterial>):cpp.RawPointer<RayMaterial>
+	{
+		return this.materials = value;
+	}
+
+	var meshMaterial(get, set):cpp.RawPointer<cpp.Int32>;
+
+	inline function get_meshMaterial():cpp.RawPointer<cpp.Int32>
+	{
+		return this.meshMaterial;
+	}
+
+	inline function set_meshMaterial(value:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<cpp.Int32>
+	{
+		return this.meshMaterial = value;
+	}
+
+	var boneCount(get, set):Int;
+
+	inline function get_boneCount():Int
+	{
+		return this.boneCount;
+	}
+
+	inline function set_boneCount(value:Int):Int
+	{
+		return this.boneCount = value;
+	}
+
+	var bones(get, set):cpp.RawPointer<BoneInfo>;
+
+	inline function get_bones():cpp.RawPointer<BoneInfo>
+	{
+		return this.bones;
+	}
+
+	inline function set_bones(value:cpp.RawPointer<BoneInfo>):cpp.RawPointer<BoneInfo>
+	{
+		return this.bones = value;
+	}
+
+	var bindPose(get, set):cpp.RawPointer<RayTransform>;
+
+	inline function get_bindPose():cpp.RawPointer<RayTransform>
+	{
+		return this.bindPose;
+	}
+
+	inline function set_bindPose(value:cpp.RawPointer<RayTransform>):cpp.RawPointer<RayTransform>
+	{
+		return this.bindPose = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayModel.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayModel):Model
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayModel>
+		return cpp.RawConstPointer.addressOf((this : RayModel));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -504,9 +1855,83 @@ extern class RayModelAnimation
 	var name:cpp.CastCharStar;
 }
 
-typedef ModelAnimation = cpp.Struct<RayModelAnimation>;
+extern abstract ModelAnimation(cpp.Struct<RayModelAnimation>) to cpp.Struct<RayModelAnimation>
+{
+	var boneCount(get, set):Int;
+
+	inline function get_boneCount():Int
+	{
+		return this.boneCount;
+	}
+
+	inline function set_boneCount(value:Int):Int
+	{
+		return this.boneCount = value;
+	}
+
+	var frameCount(get, set):Int;
+
+	inline function get_frameCount():Int
+	{
+		return this.frameCount;
+	}
+
+	inline function set_frameCount(value:Int):Int
+	{
+		return this.frameCount = value;
+	}
+
+	var bones(get, set):cpp.RawPointer<BoneInfo>;
+
+	inline function get_bones():cpp.RawPointer<BoneInfo>
+	{
+		return this.bones;
+	}
+
+	inline function set_bones(value:cpp.RawPointer<BoneInfo>):cpp.RawPointer<BoneInfo>
+	{
+		return this.bones = value;
+	}
+
+	var framePoses(get, set):cpp.RawPointer<cpp.RawPointer<RayTransform>>;
+
+	inline function get_framePoses():cpp.RawPointer<cpp.RawPointer<RayTransform>>
+	{
+		return this.framePoses;
+	}
+
+	inline function set_framePoses(value:cpp.RawPointer<cpp.RawPointer<RayTransform>>):cpp.RawPointer<cpp.RawPointer<RayTransform>>
+	{
+		return this.framePoses = value;
+	}
+
+	var name(get, set):cpp.CastCharStar;
+
+	inline function get_name():cpp.CastCharStar
+	{
+		return this.name;
+	}
+
+	inline function set_name(value:cpp.CastCharStar):cpp.CastCharStar
+	{
+		return this.name = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayModelAnimation.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayModelAnimation):ModelAnimation
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayModelAnimation>
+		return cpp.RawConstPointer.addressOf((this : RayModelAnimation));
+}
 
 // Todo: find name solution
+
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
@@ -520,6 +1945,8 @@ extern class Ray
 	var position:RayVector3;
 	var direction:RayVector3;
 }
+
+// Todo: find name solution
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -551,7 +1978,44 @@ extern class RayBoundingBox
 	var max:RayVector3;
 }
 
-typedef BoundingBox = cpp.Struct<RayBoundingBox>;
+extern abstract BoundingBox(cpp.Struct<RayBoundingBox>) to cpp.Struct<RayBoundingBox>
+{
+	var min(get, set):RayVector3;
+
+	inline function get_min():RayVector3
+	{
+		return this.min;
+	}
+
+	inline function set_min(value:RayVector3):RayVector3
+	{
+		return this.min = value;
+	}
+
+	var max(get, set):RayVector3;
+
+	inline function get_max():RayVector3
+	{
+		return this.max;
+	}
+
+	inline function set_max(value:RayVector3):RayVector3
+	{
+		return this.max = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayBoundingBox.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayBoundingBox):BoundingBox
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayBoundingBox>
+		return cpp.RawConstPointer.addressOf((this : RayBoundingBox));
+}
 
 typedef AudioCallback = cpp.Callable<(bufferData:cpp.RawPointer<cpp.Void>, frames:cpp.UInt32) -> Void>;
 
@@ -568,7 +2032,32 @@ extern class RayWave
 	var frameCount:cpp.UInt32;
 }
 
-typedef Wave = cpp.Struct<RayWave>;
+extern abstract Wave(cpp.Struct<RayWave>) to cpp.Struct<RayWave>
+{
+	var frameCount(get, set):cpp.UInt32;
+
+	inline function get_frameCount():cpp.UInt32
+	{
+		return this.frameCount;
+	}
+
+	inline function set_frameCount(value:cpp.UInt32):cpp.UInt32
+	{
+		return this.frameCount = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayWave.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayWave):Wave
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayWave>
+		return cpp.RawConstPointer.addressOf((this : RayWave));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -595,7 +2084,56 @@ extern class RayAudioStream
 	var sampleRate:cpp.UInt32;
 }
 
-typedef AudioStream = cpp.Struct<RayAudioStream>;
+extern abstract AudioStream(cpp.Struct<RayAudioStream>) to cpp.Struct<RayAudioStream>
+{
+	var buffer(get, set):cpp.RawPointer<RAudioBuffer>;
+
+	inline function get_buffer():cpp.RawPointer<RAudioBuffer>
+	{
+		return this.buffer;
+	}
+
+	inline function set_buffer(value:cpp.RawPointer<RAudioBuffer>):cpp.RawPointer<RAudioBuffer>
+	{
+		return this.buffer = value;
+	}
+
+	var processor(get, set):cpp.RawPointer<RAudioProcessor>;
+
+	inline function get_processor():cpp.RawPointer<RAudioProcessor>
+	{
+		return this.processor;
+	}
+
+	inline function set_processor(value:cpp.RawPointer<RAudioProcessor>):cpp.RawPointer<RAudioProcessor>
+	{
+		return this.processor = value;
+	}
+
+	var sampleRate(get, set):cpp.UInt32;
+
+	inline function get_sampleRate():cpp.UInt32
+	{
+		return this.sampleRate;
+	}
+
+	inline function set_sampleRate(value:cpp.UInt32):cpp.UInt32
+	{
+		return this.sampleRate = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayAudioStream.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayAudioStream):AudioStream
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayAudioStream>
+		return cpp.RawConstPointer.addressOf((this : RayAudioStream));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -611,7 +2149,44 @@ extern class RaySound
 	var frameCount:cpp.UInt32;
 }
 
-typedef Sound = cpp.Struct<RaySound>;
+extern abstract Sound(cpp.Struct<RaySound>) to cpp.Struct<RaySound>
+{
+	var stream(get, set):RayAudioStream;
+
+	inline function get_stream():RayAudioStream
+	{
+		return this.stream;
+	}
+
+	inline function set_stream(value:RayAudioStream):RayAudioStream
+	{
+		return this.stream = value;
+	}
+
+	var frameCount(get, set):cpp.UInt32;
+
+	inline function get_frameCount():cpp.UInt32
+	{
+		return this.frameCount;
+	}
+
+	inline function set_frameCount(value:cpp.UInt32):cpp.UInt32
+	{
+		return this.frameCount = value;
+	}
+
+	inline function new():Void
+	{
+		this = RaySound.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RaySound):Sound
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RaySound>
+		return cpp.RawConstPointer.addressOf((this : RaySound));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -630,7 +2205,80 @@ extern class RayMusic
 	var ctxData:cpp.RawPointer<cpp.Void>;
 }
 
-typedef Music = cpp.Struct<RayMusic>;
+extern abstract Music(cpp.Struct<RayMusic>) to cpp.Struct<RayMusic>
+{
+	var stream(get, set):RayAudioStream;
+
+	inline function get_stream():RayAudioStream
+	{
+		return this.stream;
+	}
+
+	inline function set_stream(value:RayAudioStream):RayAudioStream
+	{
+		return this.stream = value;
+	}
+
+	var frameCount(get, set):cpp.UInt32;
+
+	inline function get_frameCount():cpp.UInt32
+	{
+		return this.frameCount;
+	}
+
+	inline function set_frameCount(value:cpp.UInt32):cpp.UInt32
+	{
+		return this.frameCount = value;
+	}
+
+	var looping(get, set):Bool;
+
+	inline function get_looping():Bool
+	{
+		return this.looping;
+	}
+
+	inline function set_looping(value:Bool):Bool
+	{
+		return this.looping = value;
+	}
+
+	var ctxType(get, set):Int;
+
+	inline function get_ctxType():Int
+	{
+		return this.ctxType;
+	}
+
+	inline function set_ctxType(value:Int):Int
+	{
+		return this.ctxType = value;
+	}
+
+	var ctxData(get, set):cpp.RawPointer<cpp.Void>;
+
+	inline function get_ctxData():cpp.RawPointer<cpp.Void>
+	{
+		return this.ctxData;
+	}
+
+	inline function set_ctxData(value:cpp.RawPointer<cpp.Void>):cpp.RawPointer<cpp.Void>
+	{
+		return this.ctxData = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayMusic.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayMusic):Music
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayMusic>
+		return cpp.RawConstPointer.addressOf((this : RayMusic));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -653,7 +2301,128 @@ extern class RayVrDeviceInfo
 	var chromaAbCorrection:cpp.RawPointer<cpp.Float32>;
 }
 
-typedef VrDeviceInfo = cpp.Struct<RayVrDeviceInfo>;
+extern abstract VrDeviceInfo(cpp.Struct<RayVrDeviceInfo>) to cpp.Struct<RayVrDeviceInfo>
+{
+	var hResolution(get, set):Int;
+
+	inline function get_hResolution():Int
+	{
+		return this.hResolution;
+	}
+
+	inline function set_hResolution(value:Int):Int
+	{
+		return this.hResolution = value;
+	}
+
+	var vResolution(get, set):Int;
+
+	inline function get_vResolution():Int
+	{
+		return this.vResolution;
+	}
+
+	inline function set_vResolution(value:Int):Int
+	{
+		return this.vResolution = value;
+	}
+
+	var hScreenSize(get, set):Single;
+
+	inline function get_hScreenSize():Single
+	{
+		return this.hScreenSize;
+	}
+
+	inline function set_hScreenSize(value:Single):Single
+	{
+		return this.hScreenSize = value;
+	}
+
+	var vScreenSize(get, set):Single;
+
+	inline function get_vScreenSize():Single
+	{
+		return this.vScreenSize;
+	}
+
+	inline function set_vScreenSize(value:Single):Single
+	{
+		return this.vScreenSize = value;
+	}
+
+	var eyeToScreenDistance(get, set):Single;
+
+	inline function get_eyeToScreenDistance():Single
+	{
+		return this.eyeToScreenDistance;
+	}
+
+	inline function set_eyeToScreenDistance(value:Single):Single
+	{
+		return this.eyeToScreenDistance = value;
+	}
+
+	var lensSeparationDistance(get, set):Single;
+
+	inline function get_lensSeparationDistance():Single
+	{
+		return this.lensSeparationDistance;
+	}
+
+	inline function set_lensSeparationDistance(value:Single):Single
+	{
+		return this.lensSeparationDistance = value;
+	}
+
+	var interpupillaryDistance(get, set):Single;
+
+	inline function get_interpupillaryDistance():Single
+	{
+		return this.interpupillaryDistance;
+	}
+
+	inline function set_interpupillaryDistance(value:Single):Single
+	{
+		return this.interpupillaryDistance = value;
+	}
+
+	var lensDistortionValues(get, set):cpp.RawPointer<cpp.Float32>;
+
+	inline function get_lensDistortionValues():cpp.RawPointer<cpp.Float32>
+	{
+		return this.lensDistortionValues;
+	}
+
+	inline function set_lensDistortionValues(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	{
+		return this.lensDistortionValues = value;
+	}
+
+	var chromaAbCorrection(get, set):cpp.RawPointer<cpp.Float32>;
+
+	inline function get_chromaAbCorrection():cpp.RawPointer<cpp.Float32>
+	{
+		return this.chromaAbCorrection;
+	}
+
+	inline function set_chromaAbCorrection(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	{
+		return this.chromaAbCorrection = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayVrDeviceInfo.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayVrDeviceInfo):VrDeviceInfo
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayVrDeviceInfo>
+		return cpp.RawConstPointer.addressOf((this : RayVrDeviceInfo));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -673,7 +2442,92 @@ extern class RayVrStereoConfig
 	var scaleIn:cpp.RawPointer<cpp.Float32>;
 }
 
-typedef VrStereoConfig = cpp.Struct<RayVrStereoConfig>;
+extern abstract VrStereoConfig(cpp.Struct<RayVrStereoConfig>) to cpp.Struct<RayVrStereoConfig>
+{
+	var projection(get, set):cpp.RawPointer<RayMatrix>;
+
+	inline function get_projection():cpp.RawPointer<RayMatrix>
+	{
+		return this.projection;
+	}
+
+	inline function set_projection(value:cpp.RawPointer<RayMatrix>):cpp.RawPointer<RayMatrix>
+	{
+		return this.projection = value;
+	}
+
+	var rightLensCenter(get, set):cpp.RawPointer<cpp.Float32>;
+
+	inline function get_rightLensCenter():cpp.RawPointer<cpp.Float32>
+	{
+		return this.rightLensCenter;
+	}
+
+	inline function set_rightLensCenter(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	{
+		return this.rightLensCenter = value;
+	}
+
+	var leftScreenCenter(get, set):cpp.RawPointer<cpp.Float32>;
+
+	inline function get_leftScreenCenter():cpp.RawPointer<cpp.Float32>
+	{
+		return this.leftScreenCenter;
+	}
+
+	inline function set_leftScreenCenter(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	{
+		return this.leftScreenCenter = value;
+	}
+
+	var rightScreenCenter(get, set):cpp.RawPointer<cpp.Float32>;
+
+	inline function get_rightScreenCenter():cpp.RawPointer<cpp.Float32>
+	{
+		return this.rightScreenCenter;
+	}
+
+	inline function set_rightScreenCenter(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	{
+		return this.rightScreenCenter = value;
+	}
+
+	var scale(get, set):cpp.RawPointer<cpp.Float32>;
+
+	inline function get_scale():cpp.RawPointer<cpp.Float32>
+	{
+		return this.scale;
+	}
+
+	inline function set_scale(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	{
+		return this.scale = value;
+	}
+
+	var scaleIn(get, set):cpp.RawPointer<cpp.Float32>;
+
+	inline function get_scaleIn():cpp.RawPointer<cpp.Float32>
+	{
+		return this.scaleIn;
+	}
+
+	inline function set_scaleIn(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	{
+		return this.scaleIn = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayVrStereoConfig.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayVrStereoConfig):VrStereoConfig
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayVrStereoConfig>
+		return cpp.RawConstPointer.addressOf((this : RayVrStereoConfig));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -690,7 +2544,56 @@ extern class RayFilePathList
 	var paths:cpp.RawPointer<cpp.CastCharStar>;
 }
 
-typedef FilePathList = cpp.Struct<RayFilePathList>;
+extern abstract FilePathList(cpp.Struct<RayFilePathList>) to cpp.Struct<RayFilePathList>
+{
+	var capacity(get, set):cpp.UInt32;
+
+	inline function get_capacity():cpp.UInt32
+	{
+		return this.capacity;
+	}
+
+	inline function set_capacity(value:cpp.UInt32):cpp.UInt32
+	{
+		return this.capacity = value;
+	}
+
+	var count(get, set):cpp.UInt32;
+
+	inline function get_count():cpp.UInt32
+	{
+		return this.count;
+	}
+
+	inline function set_count(value:cpp.UInt32):cpp.UInt32
+	{
+		return this.count = value;
+	}
+
+	var paths(get, set):cpp.RawPointer<cpp.CastCharStar>;
+
+	inline function get_paths():cpp.RawPointer<cpp.CastCharStar>
+	{
+		return this.paths;
+	}
+
+	inline function set_paths(value:cpp.RawPointer<cpp.CastCharStar>):cpp.RawPointer<cpp.CastCharStar>
+	{
+		return this.paths = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayFilePathList.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayFilePathList):FilePathList
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayFilePathList>
+		return cpp.RawConstPointer.addressOf((this : RayFilePathList));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -706,7 +2609,44 @@ extern class RayAutomationEvent
 	var type:cpp.UInt32;
 }
 
-typedef AutomationEvent = cpp.Struct<RayAutomationEvent>;
+extern abstract AutomationEvent(cpp.Struct<RayAutomationEvent>) to cpp.Struct<RayAutomationEvent>
+{
+	var frame(get, set):cpp.UInt32;
+
+	inline function get_frame():cpp.UInt32
+	{
+		return this.frame;
+	}
+
+	inline function set_frame(value:cpp.UInt32):cpp.UInt32
+	{
+		return this.frame = value;
+	}
+
+	var type(get, set):cpp.UInt32;
+
+	inline function get_type():cpp.UInt32
+	{
+		return this.type;
+	}
+
+	inline function set_type(value:cpp.UInt32):cpp.UInt32
+	{
+		return this.type = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayAutomationEvent.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayAutomationEvent):AutomationEvent
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayAutomationEvent>
+		return cpp.RawConstPointer.addressOf((this : RayAutomationEvent));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
@@ -722,7 +2662,44 @@ extern class RayAutomationEventList
 	var events:cpp.RawPointer<RayAutomationEvent>;
 }
 
-typedef AutomationEventList = cpp.Struct<RayAutomationEventList>;
+extern abstract AutomationEventList(cpp.Struct<RayAutomationEventList>) to cpp.Struct<RayAutomationEventList>
+{
+	var capacity(get, set):cpp.UInt32;
+
+	inline function get_capacity():cpp.UInt32
+	{
+		return this.capacity;
+	}
+
+	inline function set_capacity(value:cpp.UInt32):cpp.UInt32
+	{
+		return this.capacity = value;
+	}
+
+	var events(get, set):cpp.RawPointer<RayAutomationEvent>;
+
+	inline function get_events():cpp.RawPointer<RayAutomationEvent>
+	{
+		return this.events;
+	}
+
+	inline function set_events(value:cpp.RawPointer<RayAutomationEvent>):cpp.RawPointer<RayAutomationEvent>
+	{
+		return this.events = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayAutomationEventList.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayAutomationEventList):AutomationEventList
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayAutomationEventList>
+		return cpp.RawConstPointer.addressOf((this : RayAutomationEventList));
+}
 
 extern enum abstract ConfigFlags(ConfigFlagsImpl)
 {
@@ -1552,7 +3529,8 @@ extern class Raylib
 	@:native('IsPathFile') static function isPathFile(path:cpp.ConstCharStar):Bool;
 	@:native('IsFileNameValid') static function isFileNameValid(fileName:cpp.ConstCharStar):Bool;
 	@:native('LoadDirectoryFiles') static function loadDirectoryFiles(dirPath:cpp.ConstCharStar):RayFilePathList;
-	@:native('LoadDirectoryFilesEx') static function loadDirectoryFilesEx(basePath:cpp.ConstCharStar, filter:cpp.ConstCharStar, scanSubdirs:Bool):RayFilePathList;
+	@:native('LoadDirectoryFilesEx') static function loadDirectoryFilesEx(basePath:cpp.ConstCharStar, filter:cpp.ConstCharStar,
+		scanSubdirs:Bool):RayFilePathList;
 	@:native('UnloadDirectoryFiles') static function unloadDirectoryFiles(files:RayFilePathList):Void;
 	@:native('IsFileDropped') static function isFileDropped():Bool;
 	@:native('LoadDroppedFiles') static function loadDroppedFiles():RayFilePathList;
@@ -1670,10 +3648,9 @@ extern class Raylib
 	@:native('DrawRectangleLines') static function drawRectangleLines(posX:Int, posY:Int, width:Int, height:Int, color:RayColor):Void;
 	@:native('DrawRectangleLinesEx') static function drawRectangleLinesEx(rec:RayRectangle, lineThick:Single, color:RayColor):Void;
 	@:native('DrawRectangleRounded') static function drawRectangleRounded(rec:RayRectangle, roundness:Single, segments:Int, color:RayColor):Void;
-	@:native('DrawRectangleRoundedLines') static function drawRectangleRoundedLines(rec:RayRectangle, roundness:Single, segments:Int,
+	@:native('DrawRectangleRoundedLines') static function drawRectangleRoundedLines(rec:RayRectangle, roundness:Single, segments:Int, color:RayColor):Void;
+	@:native('DrawRectangleRoundedLinesEx') static function drawRectangleRoundedLinesEx(rec:RayRectangle, roundness:Single, segments:Int, lineThick:Single,
 		color:RayColor):Void;
-	@:native('DrawRectangleRoundedLinesEx') static function drawRectangleRoundedLinesEx(rec:RayRectangle, roundness:Single, segments:Int,
-		lineThick:Single, color:RayColor):Void;
 	@:native('DrawTriangle') static function drawTriangle(v1:RayVector2, v2:RayVector2, v3:RayVector2, color:RayColor):Void;
 	@:native('DrawTriangleLines') static function drawTriangleLines(v1:RayVector2, v2:RayVector2, v3:RayVector2, color:RayColor):Void;
 	@:native('DrawTriangleFan') static function drawTriangleFan(points:cpp.RawPointer<RayVector2>, pointCount:Int, color:RayColor):Void;
@@ -1780,7 +3757,8 @@ extern class Raylib
 	@:native('ImageColorBrightness') static function imageColorBrightness(image:cpp.RawPointer<RayImage>, brightness:Int):Void;
 	@:native('ImageColorReplace') static function imageColorReplace(image:cpp.RawPointer<RayImage>, color:RayColor, replace:RayColor):Void;
 	@:native('LoadImageRayColors') static function loadImageRayColors(image:RayImage):cpp.RawPointer<RayColor>;
-	@:native('LoadImagePalette') static function loadImagePalette(image:RayImage, maxPaletteSize:Int, colorCount:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<RayColor>;
+	@:native('LoadImagePalette') static function loadImagePalette(image:RayImage, maxPaletteSize:Int,
+		colorCount:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<RayColor>;
 	@:native('UnloadImageRayColors') static function unloadImageRayColors(colors:cpp.RawPointer<RayColor>):Void;
 	@:native('UnloadImagePalette') static function unloadImagePalette(colors:cpp.RawPointer<RayColor>):Void;
 	@:native('GetImageAlphaBorder') static function getImageAlphaBorder(image:RayImage, threshold:Single):RayRectangle;
@@ -1853,13 +3831,14 @@ extern class Raylib
 
 	@:native('GetFontDefault') static function getFontDefault():RayFont;
 	@:native('LoadFont') static function loadFont(fileName:cpp.ConstCharStar):RayFont;
-	@:native('LoadFontEx') static function loadFontEx(fileName:cpp.ConstCharStar, fontSize:Int, codepoints:cpp.RawPointer<cpp.Int32>, codepointCount:Int):RayFont;
+	@:native('LoadFontEx') static function loadFontEx(fileName:cpp.ConstCharStar, fontSize:Int, codepoints:cpp.RawPointer<cpp.Int32>,
+		codepointCount:Int):RayFont;
 	@:native('LoadFontFromImage') static function loadFontFromImage(image:RayImage, key:RayColor, firstChar:Int):RayFont;
 	@:native('LoadFontFromMemory') static function loadFontFromMemory(fileType:cpp.ConstCharStar, fileData:cpp.RawConstPointer<cpp.UInt8>, dataSize:Int,
 		fontSize:Int, codepoints:cpp.RawPointer<cpp.Int32>, codepointCount:Int):RayFont;
 	@:native('IsFontReady') static function isFontReady(font:RayFont):Bool;
-	@:native('LoadFontData') static function loadFontData(fileData:cpp.RawConstPointer<cpp.UInt8>, dataSize:Int, fontSize:Int, codepoints:cpp.RawPointer<cpp.Int32>,
-		codepointCount:Int, type:Int):cpp.RawPointer<RayGlyphInfo>;
+	@:native('LoadFontData') static function loadFontData(fileData:cpp.RawConstPointer<cpp.UInt8>, dataSize:Int, fontSize:Int,
+		codepoints:cpp.RawPointer<cpp.Int32>, codepointCount:Int, type:Int):cpp.RawPointer<RayGlyphInfo>;
 	@:native('GenImageFontAtlas') static function genImageFontAtlas(glyphs:cpp.RawPointer<RayGlyphInfo>,
 		glyphRecs:cpp.RawPointer<cpp.RawPointer<RayRectangle>>, glyphCount:Int, fontSize:Int, padding:Int, packMethod:Int):RayImage;
 	@:native('UnloadFontData') static function unloadFontData(glyphs:cpp.RawPointer<RayGlyphInfo>, glyphCount:Int):Void;
@@ -1873,8 +3852,8 @@ extern class Raylib
 	@:native('DrawTextPro') static function drawTextPro(font:RayFont, text:cpp.ConstCharStar, position:RayVector2, origin:RayVector2, rotation:Single,
 		fontSize:Single, spacing:Single, tint:RayColor):Void;
 	@:native('DrawTextCodepoint') static function drawTextCodepoint(font:RayFont, codepoint:Int, position:RayVector2, fontSize:Single, tint:RayColor):Void;
-	@:native('DrawTextCodepoints') static function drawTextCodepoints(font:RayFont, codepoints:cpp.RawPointer<cpp.Int32>, codepointCount:Int, position:RayVector2,
-		fontSize:Single, spacing:Single, tint:RayColor):Void;
+	@:native('DrawTextCodepoints') static function drawTextCodepoints(font:RayFont, codepoints:cpp.RawPointer<cpp.Int32>, codepointCount:Int,
+		position:RayVector2, fontSize:Single, spacing:Single, tint:RayColor):Void;
 
 	@:native('SetTextLineSpacing') static function setTextLineSpacing(spacing:Int):Void;
 	@:native('MeasureText') static function measureText(text:cpp.ConstCharStar, fontSize:Int):Int;
@@ -1901,7 +3880,8 @@ extern class Raylib
 	@:native('TextReplace') static function textReplace(text:cpp.ConstCharStar, replace:cpp.ConstCharStar, by:cpp.ConstCharStar):cpp.ConstCharStar;
 	@:native('TextInsert') static function textInsert(text:cpp.ConstCharStar, insert:cpp.ConstCharStar, position:Int):cpp.ConstCharStar;
 	@:native('TextJoin') static function textJoin(textList:cpp.RawPointer<cpp.ConstCharStar>, count:Int, delimiter:cpp.ConstCharStar):cpp.ConstCharStar;
-	@:native('TextSplit') static function textSplit(text:cpp.ConstCharStar, delimiter:cpp.Char, count:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<cpp.ConstCharStar>;
+	@:native('TextSplit') static function textSplit(text:cpp.ConstCharStar, delimiter:cpp.Char,
+		count:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<cpp.ConstCharStar>;
 	@:native('TextAppend') static function textAppend(text:cpp.RawPointer<cpp.UInt8>, append:cpp.ConstCharStar, position:cpp.RawPointer<cpp.Int32>):Void;
 	@:native('TextFindIndex') static function textFindIndex(text:cpp.ConstCharStar, find:cpp.ConstCharStar):Int;
 	@:native('TextToUpper') static function textToUpper(text:cpp.ConstCharStar):cpp.ConstCharStar;
@@ -1961,7 +3941,8 @@ extern class Raylib
 	@:native('UpdateMeshBuffer') static function updateMeshBuffer(mesh:RayMesh, index:Int, data:cpp.RawPointer<cpp.Void>, dataSize:Int, offset:Int):Void;
 	@:native('UnloadMesh') static function unloadMesh(mesh:RayMesh):Void;
 	@:native('DrawMesh') static function drawMesh(mesh:RayMesh, material:RayMaterial, transform:RayMatrix):Void;
-	@:native('DrawMeshInstanced') static function drawMeshInstanced(mesh:RayMesh, material:RayMaterial, transforms:cpp.RawPointer<RayMatrix>, instances:Int):Void;
+	@:native('DrawMeshInstanced') static function drawMeshInstanced(mesh:RayMesh, material:RayMaterial, transforms:cpp.RawPointer<RayMatrix>,
+		instances:Int):Void;
 	@:native('GetMeshBoundingBox') static function getMeshBoundingBox(mesh:RayMesh):RayBoundingBox;
 	@:native('GenMeshTangents') static function genMeshTangents(mesh:RayMesh):Void;
 	@:native('ExportMesh') static function exportMesh(mesh:RayMesh, fileName:cpp.ConstCharStar):Bool;
@@ -2009,7 +3990,8 @@ extern class Raylib
 	@:native('GetMasterVolume') static function getMasterVolume():Single;
 
 	@:native('LoadWave') static function loadWave(fileName:cpp.ConstCharStar):RayWave;
-	@:native('LoadWaveFromMemory') static function loadWaveFromMemory(fileType:cpp.ConstCharStar, fileData:cpp.RawConstPointer<cpp.UInt8>, dataSize:Int):RayWave;
+	@:native('LoadWaveFromMemory') static function loadWaveFromMemory(fileType:cpp.ConstCharStar, fileData:cpp.RawConstPointer<cpp.UInt8>,
+		dataSize:Int):RayWave;
 	@:native('IsWaveReady') static function isWaveReady(wave:RayWave):Bool;
 	@:native('LoadSound') static function loadSound(fileName:cpp.ConstCharStar):RaySound;
 	@:native('LoadSoundFromWave') static function loadSoundFromWave(wave:RayWave):RaySound;
