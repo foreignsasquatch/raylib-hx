@@ -5,11 +5,15 @@
 	<files id="haxe">
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
+
+		<include name="${haxelib:raylib-hx}/project/lib/raygui-defines.xml" />
 	</files>
 
 	<files id="__main__">
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
+
+		<include name="${haxelib:raylib-hx}/project/lib/raygui-defines.xml" />
 	</files>
 
 	<files id="raylib">
