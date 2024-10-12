@@ -6,6 +6,7 @@
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
 
+		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
 		<include name="${haxelib:raylib-hx}/project/lib/raygui-defines.xml" />
 	</files>
 
@@ -13,6 +14,7 @@
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
 
+		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
 		<include name="${haxelib:raylib-hx}/project/lib/raygui-defines.xml" />
 	</files>
 
@@ -20,6 +22,8 @@
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" unless="emscripten || android" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/extras" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
+
+		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
 
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/raudio.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rcore.c" />
