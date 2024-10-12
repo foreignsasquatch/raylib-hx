@@ -4,17 +4,18 @@
 
 	<files id="haxe">
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
 	</files>
 
 	<files id="__main__">
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
 	</files>
 
 	<files id="raylib">
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" unless="emscripten || android" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/extras" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
-		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
 
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/raudio.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rcore.c" />
@@ -24,8 +25,6 @@
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtext.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtextures.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/utils.c" />
-
-		<compilerflag value="-DRAYGUI_IMPLEMENTATION" />
 
 		<section if="windows || linux">
 			<compilerflag value="-DPLATFORM_DESKTOP_GLFW" />
