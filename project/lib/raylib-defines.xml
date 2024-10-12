@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+	<compilerflag value="-DRLGL_RENDER_TEXTURES_HINT" if="RLGL_RENDER_TEXTURES_HINT" />
+	<compilerflag value="-DRLGL_SHOW_GL_DETAILS_INFO" if="RLGL_SHOW_GL_DETAILS_INFO" />
+	<compilerflag value="-DRLGL_ENABLE_OPENGL_DEBUG_CONTEXT" if="RLGL_ENABLE_OPENGL_DEBUG_CONTEXT" />
+</xml>
