@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="logo-by-logo.png" alt="raylib-hx Logo">
+	<img src="assets/logo.png" alt="raylib-hx Logo">
 </p>
 
 # raylib-hx

@@ -813,7 +813,7 @@ extern class Raygui
     @:native('GuiMessageBox') static function guiMessageBox(bounds:RayRectangle, title:cpp.ConstCharStar, message:cpp.ConstCharStar,
         buttons:cpp.ConstCharStar):Int;
     @:native('GuiTextInputBox') static function guiTextInputBox(bounds:RayRectangle, title:cpp.ConstCharStar, message:cpp.ConstCharStar,
-        buttons:cpp.ConstCharStar, text:cpp.RawPointer<cpp.Char>, textMaxSize:Int, secretViewActive:utils.BoolPointer):Int;
+        buttons:cpp.ConstCharStar, text:cpp.CastCharStar, textMaxSize:Int, secretViewActive:utils.BoolPointer):Int;
     @:native('GuiColorPicker') static function guiColorPicker(bounds:RayRectangle, text:cpp.ConstCharStar, color:cpp.RawPointer<RayColor>):Int;
     @:native('GuiColorPanel') static function guiColorPanel(bounds:RayRectangle, text:cpp.ConstCharStar, color:cpp.RawPointer<RayColor>):Int;
     @:native('GuiColorBarAlpha') static function guiColorBarAlpha(bounds:RayRectangle, text:cpp.ConstCharStar, alpha:utils.FloatPointer):Int;

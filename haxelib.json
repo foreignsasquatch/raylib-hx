@@ -5,8 +5,8 @@
   "tags": ["bindings", "raylib", "game", "development"],
   "description": "Haxe bindings for raylib, a simple and easy-to-use library to learn videogame programming",
   "version": "5.0.0",
-  "classPath": "source/",
+  "classPath": "source",
   "releasenote": "",
-  "contributors": ["ForeignSasquatch", "logo4poop"],
+  "contributors": ["ForeignSasquatch", "MAJigsaw77", "logo4poop"],
   "dependencies": {}
 }
