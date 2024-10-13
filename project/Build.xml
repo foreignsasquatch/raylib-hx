@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml>
+	<pragma once="true" />
+
+	<files id="haxe">
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/include" />
+
+		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
+		<include name="${haxelib:raylib-hx}/project/lib/raygui-defines.xml" />
+	</files>
+
+	<files id="__main__">
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/include" />
+
+		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
+		<include name="${haxelib:raylib-hx}/project/lib/raygui-defines.xml" />
+	</files>
+
+	<files id="raylib">
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" unless="emscripten || android" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/extras" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
+
+		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
+
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/raudio.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rcore.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rglfw.c" unless="emscripten || android" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rmodels.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rshapes.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtext.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtextures.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/utils.c" />
+
+		<section if="windows || linux">
+			<compilerflag value="-DPLATFORM_DESKTOP_GLFW" />
+			<compilerflag value="-DGRAPHICS_API_OPENGL_33" />
+		</section>
+
+		<section if="emscripten">
+			<compilerflag value="-DPLATFORM_WEB" />
+			<compilerflag value="-DGRAPHICS_API_OPENGL_ES2" />
+		</section>
+
+		<section if="rpi">
+			<compilerflag value="-DEGL_NO_X11" />
+		</section>
+
+		<section if="android">
+			<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" />
+
+			<compilerflag value="-DPLATFORM_ANDROID" />
+			<compilerflag value="-DGRAPHICS_API_OPENGL_ES2" />
+
+			<file name="${ANDROID_NDK_ROOT}/sources/android/native_app_glue/android_native_app_glue.c" />
+		</section>
+
+		<file name="${haxelib:raylib-hx}/project/src/android_main.c" if="android" />
+
+		<section unless="MSVC_VER">
+			<compilerflag value="-Wno-implicit-const-int-float-conversion" />
+			<compilerflag value="-Wno-missing-braces" />
+			<compilerflag value="-Wno-unused-result" />
+		</section>
+	</files>
+
+	<target id="haxe">
+		<section if="mingw">
+			<lib name="-lopengl32" />
+			<lib name="-lgdi32" />
+			<lib name="-lwinmm" />
+			<lib name="-lshell32" />
+		</section>
+
+		<section if="windows" unless="mingw">
+			<lib name="opengl32.lib" />
+			<lib name="gdi32.lib" />
+			<lib name="winmm.lib" />
+			<lib name="shell32.lib" />
+		</section>
+
+		<section if="linux">
+			<lib name="-lGL" />
+			<lib name="-lpthread" />
+			<lib name="-lm" />
+			<lib name="-ldl" />
+			<lib name="-lrt" />
+			<lib name="-lX11" />
+		</section>
+
+		<section if="rpi">
+			<lib name="-lGLESv2" />
+			<lib name="-lEGL" />
+			<lib name="-ldrm" />
+			<lib name="-lgbm" />
+			<lib name="-lpthread" />
+			<lib name="-lrt" />
+			<lib name="-lm" />
+			<lib name="-ldl" />
+			<lib name="-latomic" />
+		</section>
+
+		<section if="android">
+			<lib name="-llog" />
+			<lib name="-landroid" />
+			<lib name="-lEGL" />
+			<lib name="-lGLESv2" />
+			<lib name="-lOpenSLES" />
+			<lib name="-lm" />
+		</section>
+
+		<files id="raylib" />
+	</target>
+
+	<linker id="exe" exe="em++" if="emscripten">
+		<flag name="-s" value="USE_GLFW=3" />
+
+		<section if="ASSET_PATH">
+			<flag name="--preload-file" value="${ASSET_PATH}" />
+		</section>
+        </linker>
+</xml>
