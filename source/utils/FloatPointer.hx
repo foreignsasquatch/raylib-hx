@@ -12,7 +12,7 @@ abstract FloatPointer(cpp.RawPointer<Single>) from cpp.RawPointer<Single> to cpp
 	@:from
 	public static inline function fromValue(value:Single):FloatPointer
 	{
-		return new FloatPointer(cpp.RawPointer.addressOf((value : AsVar<Single>));
+		return new FloatPointer(cpp.RawPointer.addressOf((value : AsVar<Single>)));
 	}
 
 	@:from
