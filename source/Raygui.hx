@@ -92,11 +92,12 @@ extern abstract GuiStyleProp(cpp.Struct<RayGuiStyleProp>) to cpp.Struct<RayGuiSt
     }
 
     @:from
-    static public inline function fromNative(value:RayGuiStyleProp):GuiStyleProp
+    public static inline function fromNative(value:RayGuiStyleProp):GuiStyleProp
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayGuiStyleProp>
-        return cpp.RawConstPointer.addressOf((this : RayGuiStyleProp));
+    @:to
+    public inline function toPointer():cpp.RawPointer<RayGuiStyleProp>
+        return cast cpp.RawPointer.addressOf(this);
 }
 
 extern enum abstract GuiState(GuiStateImpl)
@@ -107,10 +108,11 @@ extern enum abstract GuiState(GuiStateImpl)
     @:native('STATE_DISABLED') var STATE_DISABLED;
 
     @:from
-    static public inline function fromInt(i:Int):GuiState
+    public static inline function fromInt(i:Int):GuiState
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -126,10 +128,11 @@ extern enum abstract GuiTextAlignment(GuiTextAlignmentImpl)
     @:native('TEXT_ALIGN_RIGHT') var TEXT_ALIGN_RIGHT;
 
     @:from
-    static public inline function fromInt(i:Int):GuiTextAlignment
+    public static inline function fromInt(i:Int):GuiTextAlignment
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -145,10 +148,11 @@ extern enum abstract GuiTextAlignmentVertical(GuiTextAlignmentVerticalImpl)
     @:native('TEXT_ALIGN_BOTTOM') var TEXT_ALIGN_BOTTOM;
 
     @:from
-    static public inline function fromInt(i:Int):GuiTextAlignmentVertical
+    public static inline function fromInt(i:Int):GuiTextAlignmentVertical
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -164,10 +168,11 @@ extern enum abstract GuiTextWrapMode(GuiTextWrapModeImpl)
     @:native('TEXT_WRAP_WORD') var TEXT_WRAP_WORD;
 
     @:from
-    static public inline function fromInt(i:Int):GuiTextWrapMode
+    public static inline function fromInt(i:Int):GuiTextWrapMode
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -196,10 +201,11 @@ extern enum abstract GuiControl(GuiControlImpl)
     @:native('STATUSBAR') var STATUSBAR;
 
     @:from
-    static public inline function fromInt(i:Int):GuiControl
+    public static inline function fromInt(i:Int):GuiControl
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -227,10 +233,11 @@ extern enum abstract GuiControlProperty(GuiControlPropertyImpl)
     @:native('TEXT_ALIGNMENT') var TEXT_ALIGNMENT;
 
     @:from
-    static public inline function fromInt(i:Int):GuiControlProperty
+    public static inline function fromInt(i:Int):GuiControlProperty
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -250,10 +257,11 @@ extern enum abstract GuiDefaultProperty(GuiDefaultPropertyImpl)
     @:native('TEXT_WRAP_MODE') var TEXT_WRAP_MODE;
 
     @:from
-    static public inline function fromInt(i:Int):GuiDefaultProperty
+    public static inline function fromInt(i:Int):GuiDefaultProperty
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -267,10 +275,11 @@ extern enum abstract GuiToggleProperty(GuiTogglePropertyImpl)
     @:native('GROUP_PADDING') var GROUP_PADDING;
 
     @:from
-    static public inline function fromInt(i:Int):GuiToggleProperty
+    public static inline function fromInt(i:Int):GuiToggleProperty
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -285,10 +294,11 @@ extern enum abstract GuiSliderProperty(GuiSliderPropertyImpl)
     @:native('SLIDER_PADDING') var SLIDER_PADDING;
 
     @:from
-    static public inline function fromInt(i:Int):GuiSliderProperty
+    public static inline function fromInt(i:Int):GuiSliderProperty
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -302,10 +312,11 @@ extern enum abstract GuiProgressBarProperty(GuiProgressBarPropertyImpl)
     @:native('PROGRESS_PADDING') var PROGRESS_PADDING;
 
     @:from
-    static public inline function fromInt(i:Int):GuiProgressBarProperty
+    public static inline function fromInt(i:Int):GuiProgressBarProperty
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -324,10 +335,11 @@ extern enum abstract GuiScrollBarProperty(GuiScrollBarPropertyImpl)
     @:native('SCROLL_SPEED') var SCROLL_SPEED;
 
     @:from
-    static public inline function fromInt(i:Int):GuiScrollBarProperty
+    public static inline function fromInt(i:Int):GuiScrollBarProperty
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -341,10 +353,11 @@ extern enum abstract GuiCheckBoxProperty(GuiCheckBoxPropertyImpl)
     @:native('CHECK_PADDING') var CHECK_PADDING;
 
     @:from
-    static public inline function fromInt(i:Int):GuiCheckBoxProperty
+    public static inline function fromInt(i:Int):GuiCheckBoxProperty
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -359,10 +372,11 @@ extern enum abstract GuiComboBoxProperty(GuiComboBoxPropertyImpl)
     @:native('COMBO_BUTTON_SPACING') var COMBO_BUTTON_SPACING;
 
     @:from
-    static public inline function fromInt(i:Int):GuiComboBoxProperty
+    public static inline function fromInt(i:Int):GuiComboBoxProperty
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -377,10 +391,11 @@ extern enum abstract GuiDropdownBoxProperty(GuiDropdownBoxPropertyImpl)
     @:native('DROPDOWN_ITEMS_SPACING') var DROPDOWN_ITEMS_SPACING;
 
     @:from
-    static public inline function fromInt(i:Int):GuiDropdownBoxProperty
+    public static inline function fromInt(i:Int):GuiDropdownBoxProperty
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -394,10 +409,11 @@ extern enum abstract GuiTextBoxProperty(GuiTextBoxPropertyImpl)
     @:native('TEXT_READONLY') var TEXT_READONLY;
 
     @:from
-    static public inline function fromInt(i:Int):GuiTextBoxProperty
+    public static inline function fromInt(i:Int):GuiTextBoxProperty
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -412,10 +428,11 @@ extern enum abstract GuiSpinnerProperty(GuiSpinnerPropertyImpl)
     @:native('SPIN_BUTTON_SPACING') var SPIN_BUTTON_SPACING;
 
     @:from
-    static public inline function fromInt(i:Int):GuiSpinnerProperty
+    public static inline function fromInt(i:Int):GuiSpinnerProperty
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -432,10 +449,11 @@ extern enum abstract GuiListViewProperty(GuiListViewPropertyImpl)
     @:native('SCROLLBAR_SIDE') var SCROLLBAR_SIDE;
 
     @:from
-    static public inline function fromInt(i:Int):GuiListViewProperty
+    public static inline function fromInt(i:Int):GuiListViewProperty
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -453,10 +471,11 @@ extern enum abstract GuiColorPickerProperty(GuiColorPickerPropertyImpl)
     @:native('HUEBAR_SELECTOR_OVERFLOW') var HUEBAR_SELECTOR_OVERFLOW;
 
     @:from
-    static public inline function fromInt(i:Int):GuiColorPickerProperty
+    public static inline function fromInt(i:Int):GuiColorPickerProperty
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -726,10 +745,11 @@ extern enum abstract GuiIconName(GuiIconNameImpl)
     @:native('ICON_255') var ICON_255;
 
     @:from
-    static public inline function fromInt(i:Int):GuiIconName
+    public static inline function fromInt(i:Int):GuiIconName
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
