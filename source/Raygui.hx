@@ -95,8 +95,8 @@ extern abstract GuiStyleProp(cpp.Struct<RayGuiStyleProp>) to cpp.Struct<RayGuiSt
     static public inline function fromNative(value:RayGuiStyleProp):GuiStyleProp
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayGuiStyleProp>
-        return cpp.RawConstPointer.addressOf((this : RayGuiStyleProp));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayGuiStyleProp>
+        return cpp.RawPointer.addressOf((this : RayGuiStyleProp));
 }
 
 extern enum abstract GuiState(GuiStateImpl)
