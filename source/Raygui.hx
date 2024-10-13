@@ -748,4 +748,13 @@ extern class Raygui
 
 	@:native('SCROLLBAR_LEFT_SIDE') static var SCROLLBAR_LEFT_SIDE:Int;
 	@:native('SCROLLBAR_RIGHT_SIDE') static var SCROLLBAR_RIGHT_SIDE:Int;
+
+	@:native('GuiEnable') static function guiEnable():Void;
+	@:native('GuiDisable') static function guiDisable():Void;
+	@:native('GuiLock') static function guiLock():Void;
+	@:native('GuiUnlock') static function guiUnlock():Void;
+	@:native('GuiIsLocked') static function guiIsLocked():Bool;
+	@:native('GuiSetAlpha') static function guiSetAlpha(alpha:Single):Void;
+	@:native('GuiSetState') static function guiSetState(state:Int):Void;
+	@:native('GuiGetState') static function guiGetState():Int;
 }
