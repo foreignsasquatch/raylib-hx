@@ -39,10 +39,11 @@ extern enum abstract TouchAction(TouchActionImpl)
     @:native('TOUCH_ACTION_CANCEL') var TOUCH_ACTION_CANCEL;
 
     @:from
-    static public inline function fromInt(i:Int):TouchAction
+    public static inline function fromInt(i:Int):TouchAction
         return cast i;
 
-    @:to extern public inline function toInt():Int
+    @:to
+    public inline function toInt():Int
         return untyped this;
 }
 
@@ -123,11 +124,12 @@ extern abstract GestureEvent(cpp.Struct<RayGestureEvent>) to cpp.Struct<RayGestu
     }
 
     @:from
-    static public inline function fromNative(value:RayGestureEvent):GestureEvent
+    public static inline function fromNative(value:RayGestureEvent):GestureEvent
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawPointer<RayGestureEvent>
-        return cpp.RawPointer.addressOf(cast(this, RayGestureEvent));
+    @:to
+    public inline function toPointer():cpp.RawPointer<RayGestureEvent>
+        return cast cpp.RawPointer.addressOf(this);
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
