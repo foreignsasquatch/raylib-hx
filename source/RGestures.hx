@@ -127,7 +127,7 @@ extern abstract GestureEvent(cpp.Struct<RayGestureEvent>) to cpp.Struct<RayGestu
         return cast value;
 
     @:to extern public inline function toPointer():cpp.RawPointer<RayGestureEvent>
-        return cpp.RawPointer.addressOf((this : RayGestureEvent));
+        return cpp.RawPointer.addressOf(cast(this, RayGestureEvent));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
