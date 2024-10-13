@@ -28,6 +28,9 @@
 
 package;
 
+#if !cpp
+#error 'Raylib supports only C++ target platforms.'
+#end
 import Raylib;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
