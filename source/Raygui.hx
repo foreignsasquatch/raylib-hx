@@ -760,8 +760,8 @@ extern class Raygui
 	@:native('GuiSetAlpha') static function guiSetAlpha(alpha:Single):Void;
 	@:native('GuiSetState') static function guiSetState(state:Int):Void;
 	@:native('GuiGetState') static function guiGetState():Int;
-	@:native('GuiSetFont') static function guiSetState(font:RayFont):Void;
-	@:native('GuiGetFont') static function guiGetState():RayFont;
+	@:native('GuiSetFont') static function guiSetFont(font:RayFont):Void;
+	@:native('GuiGetFont') static function guiGetFont():RayFont;
 	@:native('GuiSetStyle') static function guiSetStyle(control:Int, property:Int, value:Int):Void;
 	@:native('GuiGetStyle') static function guiGetStyle(control:Int, property:Int):Int;
 	@:native('GuiLoadStyle') static function guiLoadStyle(fileName:cpp.ConstCharStar):Void;
