@@ -81,8 +81,8 @@ extern abstract Vector2(cpp.Struct<RayVector2>) to cpp.Struct<RayVector2>
     static public inline function fromNative(value:RayVector2):Vector2
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayVector2>
-        return cpp.RawConstPointer.addressOf((this : RayVector2));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayVector2>
+        return cpp.RawPointer.addressOf((this : RayVector2));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -151,8 +151,8 @@ extern abstract Vector3(cpp.Struct<RayVector3>) to cpp.Struct<RayVector3>
     static public inline function fromNative(value:RayVector3):Vector3
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayVector3>
-        return cpp.RawConstPointer.addressOf((this : RayVector3));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayVector3>
+        return cpp.RawPointer.addressOf((this : RayVector3));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -235,8 +235,8 @@ extern abstract Vector4(cpp.Struct<RayVector4>) to cpp.Struct<RayVector4>
     static public inline function fromNative(value:RayVector4):Vector4
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayVector4>
-        return cpp.RawConstPointer.addressOf((this : RayVector4));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayVector4>
+        return cpp.RawPointer.addressOf((this : RayVector4));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -473,8 +473,8 @@ extern abstract Matrix(cpp.Struct<RayMatrix>) to cpp.Struct<RayMatrix>
     static public inline function fromNative(value:RayMatrix):Matrix
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayMatrix>
-        return cpp.RawConstPointer.addressOf((this : RayMatrix));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayMatrix>
+        return cpp.RawPointer.addressOf((this : RayMatrix));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -557,8 +557,8 @@ extern abstract Color(cpp.Struct<RayColor>) to cpp.Struct<RayColor>
     static public inline function fromNative(value:RayColor):Color
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayColor>
-        return cpp.RawConstPointer.addressOf((this : RayColor));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayColor>
+        return cpp.RawPointer.addressOf((this : RayColor));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -641,8 +641,8 @@ extern abstract Rectangle(cpp.Struct<RayRectangle>) to cpp.Struct<RayRectangle>
     static public inline function fromNative(value:RayRectangle):Rectangle
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayRectangle>
-        return cpp.RawConstPointer.addressOf((this : RayRectangle));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayRectangle>
+        return cpp.RawPointer.addressOf((this : RayRectangle));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -733,8 +733,8 @@ extern abstract Image(cpp.Struct<RayImage>) to cpp.Struct<RayImage>
     static public inline function fromNative(value:RayImage):Image
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayImage>
-        return cpp.RawConstPointer.addressOf((this : RayImage));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayImage>
+        return cpp.RawPointer.addressOf((this : RayImage));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -825,8 +825,8 @@ extern abstract Texture(cpp.Struct<RayTexture>) to cpp.Struct<RayTexture>
     static public inline function fromNative(value:RayTexture):Texture
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayTexture>
-        return cpp.RawConstPointer.addressOf((this : RayTexture));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayTexture>
+        return cpp.RawPointer.addressOf((this : RayTexture));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -891,8 +891,8 @@ extern abstract RenderTexture(cpp.Struct<RayRenderTexture>) to cpp.Struct<RayRen
     static public inline function fromNative(value:RayRenderTexture):RenderTexture
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayRenderTexture>
-        return cpp.RawConstPointer.addressOf((this : RayRenderTexture));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayRenderTexture>
+        return cpp.RawPointer.addressOf((this : RayRenderTexture));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -996,8 +996,8 @@ extern abstract NPatchInfo(cpp.Struct<RayNPatchInfo>) to cpp.Struct<RayNPatchInf
     static public inline function fromNative(value:RayNPatchInfo):NPatchInfo
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayNPatchInfo>
-        return cpp.RawConstPointer.addressOf((this : RayNPatchInfo));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayNPatchInfo>
+        return cpp.RawPointer.addressOf((this : RayNPatchInfo));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -1088,8 +1088,8 @@ extern abstract GlyphInfo(cpp.Struct<RayGlyphInfo>) to cpp.Struct<RayGlyphInfo>
     static public inline function fromNative(value:RayGlyphInfo):GlyphInfo
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayGlyphInfo>
-        return cpp.RawConstPointer.addressOf((this : RayGlyphInfo));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayGlyphInfo>
+        return cpp.RawPointer.addressOf((this : RayGlyphInfo));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -1193,8 +1193,8 @@ extern abstract Font(cpp.Struct<RayFont>) to cpp.Struct<RayFont>
     static public inline function fromNative(value:RayFont):Font
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayFont>
-        return cpp.RawConstPointer.addressOf((this : RayFont));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayFont>
+        return cpp.RawPointer.addressOf((this : RayFont));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -1285,8 +1285,8 @@ extern abstract Camera3D(cpp.Struct<RayCamera3D>) to cpp.Struct<RayCamera3D>
     static public inline function fromNative(value:RayCamera3D):Camera3D
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayCamera3D>
-        return cpp.RawConstPointer.addressOf((this : RayCamera3D));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayCamera3D>
+        return cpp.RawPointer.addressOf((this : RayCamera3D));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -1364,8 +1364,8 @@ extern abstract Camera2D(cpp.Struct<RayCamera2D>) to cpp.Struct<RayCamera2D>
     static public inline function fromNative(value:RayCamera2D):Camera2D
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayCamera2D>
-        return cpp.RawConstPointer.addressOf((this : RayCamera2D));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayCamera2D>
+        return cpp.RawPointer.addressOf((this : RayCamera2D));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -1589,8 +1589,8 @@ extern abstract Mesh(cpp.Struct<RayMesh>) to cpp.Struct<RayMesh>
     static public inline function fromNative(value:RayMesh):Mesh
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayMesh>
-        return cpp.RawConstPointer.addressOf((this : RayMesh));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayMesh>
+        return cpp.RawPointer.addressOf((this : RayMesh));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -1642,8 +1642,8 @@ extern abstract Shader(cpp.Struct<RayShader>) to cpp.Struct<RayShader>
     static public inline function fromNative(value:RayShader):Shader
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayShader>
-        return cpp.RawConstPointer.addressOf((this : RayShader));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayShader>
+        return cpp.RawPointer.addressOf((this : RayShader));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -1708,8 +1708,8 @@ extern abstract MaterialMap(cpp.Struct<RayMaterialMap>) to cpp.Struct<RayMateria
     static public inline function fromNative(value:RayMaterialMap):MaterialMap
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayMaterialMap>
-        return cpp.RawConstPointer.addressOf((this : RayMaterialMap));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayMaterialMap>
+        return cpp.RawPointer.addressOf((this : RayMaterialMap));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -1774,8 +1774,8 @@ extern abstract Material(cpp.Struct<RayMaterial>) to cpp.Struct<RayMaterial>
     static public inline function fromNative(value:RayMaterial):Material
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayMaterial>
-        return cpp.RawConstPointer.addressOf((this : RayMaterial));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayMaterial>
+        return cpp.RawPointer.addressOf((this : RayMaterial));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -1840,8 +1840,8 @@ extern abstract Transform(cpp.Struct<RayTransform>) to cpp.Struct<RayTransform>
     static public inline function fromNative(value:RayTransform):Transform
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayTransform>
-        return cpp.RawConstPointer.addressOf((this : RayTransform));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayTransform>
+        return cpp.RawPointer.addressOf((this : RayTransform));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -1893,8 +1893,8 @@ extern abstract BoneInfo(cpp.Struct<RayBoneInfo>) to cpp.Struct<RayBoneInfo>
     static public inline function fromNative(value:RayBoneInfo):BoneInfo
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayBoneInfo>
-        return cpp.RawConstPointer.addressOf((this : RayBoneInfo));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayBoneInfo>
+        return cpp.RawPointer.addressOf((this : RayBoneInfo));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -2039,8 +2039,8 @@ extern abstract Model(cpp.Struct<RayModel>) to cpp.Struct<RayModel>
     static public inline function fromNative(value:RayModel):Model
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayModel>
-        return cpp.RawConstPointer.addressOf((this : RayModel));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayModel>
+        return cpp.RawPointer.addressOf((this : RayModel));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -2131,8 +2131,8 @@ extern abstract ModelAnimation(cpp.Struct<RayModelAnimation>) to cpp.Struct<RayM
     static public inline function fromNative(value:RayModelAnimation):ModelAnimation
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayModelAnimation>
-        return cpp.RawConstPointer.addressOf((this : RayModelAnimation));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayModelAnimation>
+        return cpp.RawPointer.addressOf((this : RayModelAnimation));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -2184,8 +2184,8 @@ extern abstract Ray(cpp.Struct<RlRay>) to cpp.Struct<RlRay>
     static public inline function fromNative(value:RlRay):Ray
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RlRay>
-        return cpp.RawConstPointer.addressOf((this : RlRay));
+    @:to extern public inline function toPointer():cpp.RawPointer<RlRay>
+        return cpp.RawPointer.addressOf((this : RlRay));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -2263,8 +2263,8 @@ extern abstract RayCollision(cpp.Struct<RlRayCollision>) to cpp.Struct<RlRayColl
     static public inline function fromNative(value:RlRayCollision):RayCollision
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RlRayCollision>
-        return cpp.RawConstPointer.addressOf((this : RlRayCollision));
+    @:to extern public inline function toPointer():cpp.RawPointer<RlRayCollision>
+        return cpp.RawPointer.addressOf((this : RlRayCollision));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -2316,8 +2316,8 @@ extern abstract BoundingBox(cpp.Struct<RayBoundingBox>) to cpp.Struct<RayBoundin
     static public inline function fromNative(value:RayBoundingBox):BoundingBox
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayBoundingBox>
-        return cpp.RawConstPointer.addressOf((this : RayBoundingBox));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayBoundingBox>
+        return cpp.RawPointer.addressOf((this : RayBoundingBox));
 }
 
 typedef AudioCallback = cpp.Callable<(bufferData:cpp.RawPointer<cpp.Void>, frames:cpp.UInt32) -> Void>;
@@ -2358,8 +2358,8 @@ extern abstract Wave(cpp.Struct<RayWave>) to cpp.Struct<RayWave>
     static public inline function fromNative(value:RayWave):Wave
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayWave>
-        return cpp.RawConstPointer.addressOf((this : RayWave));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayWave>
+        return cpp.RawPointer.addressOf((this : RayWave));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -2434,8 +2434,8 @@ extern abstract AudioStream(cpp.Struct<RayAudioStream>) to cpp.Struct<RayAudioSt
     static public inline function fromNative(value:RayAudioStream):AudioStream
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayAudioStream>
-        return cpp.RawConstPointer.addressOf((this : RayAudioStream));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayAudioStream>
+        return cpp.RawPointer.addressOf((this : RayAudioStream));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -2487,8 +2487,8 @@ extern abstract Sound(cpp.Struct<RaySound>) to cpp.Struct<RaySound>
     static public inline function fromNative(value:RaySound):Sound
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RaySound>
-        return cpp.RawConstPointer.addressOf((this : RaySound));
+    @:to extern public inline function toPointer():cpp.RawPointer<RaySound>
+        return cpp.RawPointer.addressOf((this : RaySound));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -2579,8 +2579,8 @@ extern abstract Music(cpp.Struct<RayMusic>) to cpp.Struct<RayMusic>
     static public inline function fromNative(value:RayMusic):Music
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayMusic>
-        return cpp.RawConstPointer.addressOf((this : RayMusic));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayMusic>
+        return cpp.RawPointer.addressOf((this : RayMusic));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -2723,8 +2723,8 @@ extern abstract VrDeviceInfo(cpp.Struct<RayVrDeviceInfo>) to cpp.Struct<RayVrDev
     static public inline function fromNative(value:RayVrDeviceInfo):VrDeviceInfo
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayVrDeviceInfo>
-        return cpp.RawConstPointer.addressOf((this : RayVrDeviceInfo));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayVrDeviceInfo>
+        return cpp.RawPointer.addressOf((this : RayVrDeviceInfo));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -2828,8 +2828,8 @@ extern abstract VrStereoConfig(cpp.Struct<RayVrStereoConfig>) to cpp.Struct<RayV
     static public inline function fromNative(value:RayVrStereoConfig):VrStereoConfig
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayVrStereoConfig>
-        return cpp.RawConstPointer.addressOf((this : RayVrStereoConfig));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayVrStereoConfig>
+        return cpp.RawPointer.addressOf((this : RayVrStereoConfig));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -2894,8 +2894,8 @@ extern abstract FilePathList(cpp.Struct<RayFilePathList>) to cpp.Struct<RayFileP
     static public inline function fromNative(value:RayFilePathList):FilePathList
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayFilePathList>
-        return cpp.RawConstPointer.addressOf((this : RayFilePathList));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayFilePathList>
+        return cpp.RawPointer.addressOf((this : RayFilePathList));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -2947,8 +2947,8 @@ extern abstract AutomationEvent(cpp.Struct<RayAutomationEvent>) to cpp.Struct<Ra
     static public inline function fromNative(value:RayAutomationEvent):AutomationEvent
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayAutomationEvent>
-        return cpp.RawConstPointer.addressOf((this : RayAutomationEvent));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayAutomationEvent>
+        return cpp.RawPointer.addressOf((this : RayAutomationEvent));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -3000,8 +3000,8 @@ extern abstract AutomationEventList(cpp.Struct<RayAutomationEventList>) to cpp.S
     static public inline function fromNative(value:RayAutomationEventList):AutomationEventList
         return cast value;
 
-    @:to extern public inline function toPointer():cpp.RawConstPointer<RayAutomationEventList>
-        return cpp.RawConstPointer.addressOf((this : RayAutomationEventList));
+    @:to extern public inline function toPointer():cpp.RawPointer<RayAutomationEventList>
+        return cpp.RawPointer.addressOf((this : RayAutomationEventList));
 }
 
 extern enum abstract ConfigFlags(ConfigFlagsImpl)
