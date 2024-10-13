@@ -33,8 +33,8 @@ jobs:
 
       - name: Build Unix
         if: startsWith(matrix.os, 'ubuntu')
-        run: cd samples/${{matrix.example}} && haxe build-unix.hxml
+        run: cd examples/${{matrix.example}} && haxe build-unix.hxml
 
       - name: Build Windows
         if: startsWith(matrix.os, 'windows')
-        run: cd samples/${{matrix.example}} && haxe build-win.hxml
+        run: cd examples/${{matrix.example}} && haxe build-win.hxml
