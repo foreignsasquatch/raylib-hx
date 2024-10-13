@@ -1,5 +1,8 @@
 package styles;
 
+#if !cpp
+#error 'Raygui supports only C++ target platforms.'
+#end
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('candy/style_candy.h')
 @:unreflective
