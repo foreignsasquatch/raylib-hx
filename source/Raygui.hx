@@ -32,17 +32,17 @@ import Raylib;
 
 extern enum abstract GuiState(GuiStateImpl)
 {
-    @:native('STATE_NORMAL') var STATE_NORMAL;
-    @:native('STATE_FOCUSED') var STATE_FOCUSED;
-    @:native('STATE_PRESSED') var STATE_PRESSED;
-    @:native('STATE_DISABLED') var STATE_DISABLED;
+	@:native('STATE_NORMAL') var STATE_NORMAL;
+	@:native('STATE_FOCUSED') var STATE_FOCUSED;
+	@:native('STATE_PRESSED') var STATE_PRESSED;
+	@:native('STATE_DISABLED') var STATE_DISABLED;
 
-    @:from
-    static public inline function fromInt(i:Int):GuiState
-        return cast i;
+	@:from
+	static public inline function fromInt(i:Int):GuiState
+		return cast i;
 
-    @:to extern public inline function toInt():Int
-        return untyped this;
+	@:to extern public inline function toInt():Int
+		return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -52,16 +52,16 @@ private extern class GuiStateImpl {}
 
 extern enum abstract GuiTextAlignment(GuiTextAlignmentImpl)
 {
-    @:native('TEXT_ALIGN_LEFT') var TEXT_ALIGN_LEFT;
-    @:native('TEXT_ALIGN_CENTER') var TEXT_ALIGN_CENTER;
-    @:native('TEXT_ALIGN_RIGHT') var TEXT_ALIGN_RIGHT;
+	@:native('TEXT_ALIGN_LEFT') var TEXT_ALIGN_LEFT;
+	@:native('TEXT_ALIGN_CENTER') var TEXT_ALIGN_CENTER;
+	@:native('TEXT_ALIGN_RIGHT') var TEXT_ALIGN_RIGHT;
 
-    @:from
-    static public inline function fromInt(i:Int):GuiTextAlignment
-        return cast i;
+	@:from
+	static public inline function fromInt(i:Int):GuiTextAlignment
+		return cast i;
 
-    @:to extern public inline function toInt():Int
-        return untyped this;
+	@:to extern public inline function toInt():Int
+		return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -71,16 +71,16 @@ private extern class GuiTextAlignmentImpl {}
 
 extern enum abstract GuiTextAlignmentVertical(GuiTextAlignmentVerticalImpl)
 {
-    @:native('TEXT_ALIGN_TOP') var TEXT_ALIGN_TOP;
-    @:native('TEXT_ALIGN_MIDDLE') var TEXT_ALIGN_MIDDLE;
-    @:native('TEXT_ALIGN_BOTTOM') var TEXT_ALIGN_BOTTOM;
+	@:native('TEXT_ALIGN_TOP') var TEXT_ALIGN_TOP;
+	@:native('TEXT_ALIGN_MIDDLE') var TEXT_ALIGN_MIDDLE;
+	@:native('TEXT_ALIGN_BOTTOM') var TEXT_ALIGN_BOTTOM;
 
-    @:from
-    static public inline function fromInt(i:Int):GuiTextAlignmentVertical
-        return cast i;
+	@:from
+	static public inline function fromInt(i:Int):GuiTextAlignmentVertical
+		return cast i;
 
-    @:to extern public inline function toInt():Int
-        return untyped this;
+	@:to extern public inline function toInt():Int
+		return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -90,16 +90,16 @@ private extern class GuiTextAlignmentVerticalImpl {}
 
 extern enum abstract GuiTextWrapMode(GuiTextWrapModeImpl)
 {
-    @:native('TEXT_WRAP_NONE') var TEXT_WRAP_NONE;
-    @:native('TEXT_WRAP_CHAR') var TEXT_WRAP_CHAR;
-    @:native('TEXT_WRAP_WORD') var TEXT_WRAP_WORD;
+	@:native('TEXT_WRAP_NONE') var TEXT_WRAP_NONE;
+	@:native('TEXT_WRAP_CHAR') var TEXT_WRAP_CHAR;
+	@:native('TEXT_WRAP_WORD') var TEXT_WRAP_WORD;
 
-    @:from
-    static public inline function fromInt(i:Int):GuiTextWrapMode
-        return cast i;
+	@:from
+	static public inline function fromInt(i:Int):GuiTextWrapMode
+		return cast i;
 
-    @:to extern public inline function toInt():Int
-        return untyped this;
+	@:to extern public inline function toInt():Int
+		return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -109,29 +109,29 @@ private extern class GuiTextWrapModeImpl {}
 
 extern enum abstract GuiControl(GuiControlImpl)
 {
-    @:native('DEFAULT') var DEFAULT;
-    @:native('LABEL') var LABEL;
-    @:native('BUTTON') var BUTTON;
-    @:native('TOGGLE') var TOGGLE;
-    @:native('SLIDER') var SLIDER;
-    @:native('PROGRESSBAR') var PROGRESSBAR;
-    @:native('CHECKBOX') var CHECKBOX;
-    @:native('COMBOBOX') var COMBOBOX;
-    @:native('DROPDOWNBOX') var DROPDOWNBOX;
-    @:native('TEXTBOX') var TEXTBOX;
-    @:native('VALUEBOX') var VALUEBOX;
-    @:native('SPINNER') var SPINNER;
-    @:native('LISTVIEW') var LISTVIEW;
-    @:native('COLORPICKER') var COLORPICKER;
-    @:native('SCROLLBAR') var SCROLLBAR;
-    @:native('STATUSBAR') var STATUSBAR;
+	@:native('DEFAULT') var DEFAULT;
+	@:native('LABEL') var LABEL;
+	@:native('BUTTON') var BUTTON;
+	@:native('TOGGLE') var TOGGLE;
+	@:native('SLIDER') var SLIDER;
+	@:native('PROGRESSBAR') var PROGRESSBAR;
+	@:native('CHECKBOX') var CHECKBOX;
+	@:native('COMBOBOX') var COMBOBOX;
+	@:native('DROPDOWNBOX') var DROPDOWNBOX;
+	@:native('TEXTBOX') var TEXTBOX;
+	@:native('VALUEBOX') var VALUEBOX;
+	@:native('SPINNER') var SPINNER;
+	@:native('LISTVIEW') var LISTVIEW;
+	@:native('COLORPICKER') var COLORPICKER;
+	@:native('SCROLLBAR') var SCROLLBAR;
+	@:native('STATUSBAR') var STATUSBAR;
 
-    @:from
-    static public inline function fromInt(i:Int):GuiControl
-        return cast i;
+	@:from
+	static public inline function fromInt(i:Int):GuiControl
+		return cast i;
 
-    @:to extern public inline function toInt():Int
-        return untyped this;
+	@:to extern public inline function toInt():Int
+		return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -141,28 +141,28 @@ private extern class GuiControlImpl {}
 
 extern enum abstract GuiControlProperty(GuiControlPropertyImpl)
 {
-    @:native('BORDER_COLOR_NORMAL') var BORDER_COLOR_NORMAL;
-    @:native('BASE_COLOR_NORMAL') var BASE_COLOR_NORMAL;
-    @:native('TEXT_COLOR_NORMAL') var TEXT_COLOR_NORMAL;
-    @:native('BORDER_COLOR_FOCUSED') var BORDER_COLOR_FOCUSED;
-    @:native('BASE_COLOR_FOCUSED') var BASE_COLOR_FOCUSED;
-    @:native('TEXT_COLOR_FOCUSED') var TEXT_COLOR_FOCUSED;
-    @:native('BORDER_COLOR_PRESSED') var BORDER_COLOR_PRESSED;
-    @:native('BASE_COLOR_PRESSED') var BASE_COLOR_PRESSED;
-    @:native('TEXT_COLOR_PRESSED') var TEXT_COLOR_PRESSED;
-    @:native('BORDER_COLOR_DISABLED') var BORDER_COLOR_DISABLED;
-    @:native('BASE_COLOR_DISABLED') var BASE_COLOR_DISABLED;
-    @:native('TEXT_COLOR_DISABLED') var TEXT_COLOR_DISABLED;
-    @:native('BORDER_WIDTH') var BORDER_WIDTH;
-    @:native('TEXT_PADDING') var TEXT_PADDING;
-    @:native('TEXT_ALIGNMENT') var TEXT_ALIGNMENT;
+	@:native('BORDER_COLOR_NORMAL') var BORDER_COLOR_NORMAL;
+	@:native('BASE_COLOR_NORMAL') var BASE_COLOR_NORMAL;
+	@:native('TEXT_COLOR_NORMAL') var TEXT_COLOR_NORMAL;
+	@:native('BORDER_COLOR_FOCUSED') var BORDER_COLOR_FOCUSED;
+	@:native('BASE_COLOR_FOCUSED') var BASE_COLOR_FOCUSED;
+	@:native('TEXT_COLOR_FOCUSED') var TEXT_COLOR_FOCUSED;
+	@:native('BORDER_COLOR_PRESSED') var BORDER_COLOR_PRESSED;
+	@:native('BASE_COLOR_PRESSED') var BASE_COLOR_PRESSED;
+	@:native('TEXT_COLOR_PRESSED') var TEXT_COLOR_PRESSED;
+	@:native('BORDER_COLOR_DISABLED') var BORDER_COLOR_DISABLED;
+	@:native('BASE_COLOR_DISABLED') var BASE_COLOR_DISABLED;
+	@:native('TEXT_COLOR_DISABLED') var TEXT_COLOR_DISABLED;
+	@:native('BORDER_WIDTH') var BORDER_WIDTH;
+	@:native('TEXT_PADDING') var TEXT_PADDING;
+	@:native('TEXT_ALIGNMENT') var TEXT_ALIGNMENT;
 
-    @:from
-    static public inline function fromInt(i:Int):GuiControlProperty
-        return cast i;
+	@:from
+	static public inline function fromInt(i:Int):GuiControlProperty
+		return cast i;
 
-    @:to extern public inline function toInt():Int
-        return untyped this;
+	@:to extern public inline function toInt():Int
+		return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -172,20 +172,20 @@ private extern class GuiControlPropertyImpl {}
 
 extern enum abstract GuiDefaultProperty(GuiDefaultPropertyImpl)
 {
-    @:native('TEXT_SIZE') var TEXT_SIZE;
-    @:native('TEXT_SPACING') var TEXT_SPACING;
-    @:native('LINE_COLOR') var LINE_COLOR;
-    @:native('BACKGROUND_COLOR') var BACKGROUND_COLOR;
-    @:native('TEXT_LINE_SPACING') var TEXT_LINE_SPACING;
-    @:native('TEXT_ALIGNMENT_VERTICAL') var TEXT_ALIGNMENT_VERTICAL;
-    @:native('TEXT_WRAP_MODE') var TEXT_WRAP_MODE;
+	@:native('TEXT_SIZE') var TEXT_SIZE;
+	@:native('TEXT_SPACING') var TEXT_SPACING;
+	@:native('LINE_COLOR') var LINE_COLOR;
+	@:native('BACKGROUND_COLOR') var BACKGROUND_COLOR;
+	@:native('TEXT_LINE_SPACING') var TEXT_LINE_SPACING;
+	@:native('TEXT_ALIGNMENT_VERTICAL') var TEXT_ALIGNMENT_VERTICAL;
+	@:native('TEXT_WRAP_MODE') var TEXT_WRAP_MODE;
 
-    @:from
-    static public inline function fromInt(i:Int):GuiDefaultProperty
-        return cast i;
+	@:from
+	static public inline function fromInt(i:Int):GuiDefaultProperty
+		return cast i;
 
-    @:to extern public inline function toInt():Int
-        return untyped this;
+	@:to extern public inline function toInt():Int
+		return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -193,65 +193,205 @@ extern enum abstract GuiDefaultProperty(GuiDefaultPropertyImpl)
 @:native('GuiDefaultProperty')
 private extern class GuiDefaultPropertyImpl {}
 
-@:include("raygui.h")
-extern class Raygui
+extern enum abstract GuiToggleProperty(GuiTogglePropertyImpl)
 {
-	@:native("GuiEnable") public static function guiEnable():Void;
-	@:native("GuiDisable") public static function guiDisable():Void;
-	@:native("GuiLock") public static function guiLock():Void;
-	@:native("GuiUnlock") public static function guiUnlock():Void;
-	@:native("GuiFade") public static function guiFade(alpha:Float):Void;
-	@:native("GuiSetState") public static function guiSetState(state:Int):Void;
-	@:native("GuiGetState") public static function guiGetState():Int;
+	@:native('GROUP_PADDING') var GROUP_PADDING;
 
-	@:native("GuiSetFont") public static function guiSetFont(font:Font):Void;
-	@:native("GuiGetFont") public static function guiGetFont():Font;
+	@:from
+	static public inline function fromInt(i:Int):GuiToggleProperty
+		return cast i;
 
-	@:native("GuiSetStyle") public static function guiSetStyle(control:Int, property:Int, value:Int):Void;
-	@:native("GuiGetStyle") public static function guiGetStyle(control:Int, property:Int):Int;
-
-	@:native("GuiWindowBox") public static function guiWindowBox(bounds:Rectangle, title:ConstCharStar):Bool;
-	@:native("GuiGroupBox") public static function guiGroupBox(bounds:Rectangle, text:ConstCharStar):Void;
-	@:native("GuiLine") public static function guiLine(bounds:Rectangle, text:ConstCharStar):Void;
-	@:native("GuiPanel") public static function guiPanel(bounds:Rectangle):Void;
-	@:native("GuiScrollPanel") public static function guiScrollPanel(bounds:Rectangle, content:Rectangle, scroll:cpp.Pointer<Vector2>):Void;
-
-	@:native("GuiLabel") static function guiLabel(bounds:Rectangle, text:ConstCharStar):Void;
-	@:native("GuiButton") static function guiButton(bounds:Rectangle, text:ConstCharStar):Bool;
-	@:native("GuiLabelButton") static function guiLabelButton(bounds:Rectangle, text:ConstCharStar):Bool;
-	@:native("GuiToggle") static function guiToggle(bounds:Rectangle, text:ConstCharStar, active:Bool):Bool;
-	@:native("GuiToggleGroup") static function guiToggleGroup(bounds:Rectangle, text:ConstCharStar, active:Int):Int;
-	@:native("GuiCheckBox") static function guiCheckBox(bounds:Rectangle, text:ConstCharStar, checked:Bool):Int;
-	@:native("GuiComboBox") static function guiComboBox(bounds:Rectangle, text:ConstCharStar, active:Int):Int;
-	@:native("GuiDropDownBox") static function guiDropDownBox(bounds:Rectangle, text:ConstCharStar, active:cpp.RawPointer<cpp.Int32>, editMode:Bool):Bool;
-	@:native("GuiSpinner") static function guiSpinner(bounds:Rectangle, text:ConstCharStar, value:cpp.RawPointer<cpp.Int32>, minValue:Int, maxValue:Int, editMode:Bool):Bool;
-	@:native("GuiValueBox") static function guiValueBox(bounds:Rectangle, text:ConstCharStar, value:Pointer<cpp.Int32>, minValue:Int, maxValue:Int,
-		editMode:Bool):Bool;
-	@:native("GuiTextBox") static function guiTextBox(bounds:Rectangle, text:CastCharStar, textSize:Int, editMode:Bool):Bool;
-	@:native("GuiTextBoxMulti") static function guiTextBoxMulti(bounds:Rectangle, text:CastCharStar, textSize:Int, editMode:Bool):Bool;
-	@:native("GuiSlider") static function guiSlider(bounds:Rectangle, textLeft:CastCharStar, textRight:CastCharStar, value:Float, minValue:Float,
-		maxValue:Float):Bool;
-	@:native("GuiSliderBar") static function guiSliderBar(bounds:Rectangle, textLeft:CastCharStar, textRight:CastCharStar, value:Float, minValue:Float,
-		maxValue:Float):Bool;
-	@:native("GuiProgressBar") static function guiProgressBar(bounds:Rectangle, textLeft:CastCharStar, textRight:CastCharStar, value:Float, minValue:Float,
-		maxValue:Float):Bool;
-	@:native("GuiStatusBar") static function guiStatusBar(bounds:Rectangle, text:ConstCharStar):Void;
-	@:native("GuiDummyRec") static function guiDummyRec(bounds:Rectangle, text:ConstCharStar):Void;
-	@:native("GuiGrid") static function guiGrid(bounds:Rectangle, spacing:Float, subdivs:Int):Vector2;
-
-	@:native("GuiListView") static function guiListView(bounds:Rectangle, text:ConstCharStar, scrollIndex:Pointer<cpp.Int32>, active:Int):Int;
-	@:native("GuiListViewEx") static function guiListViewEx(bounds:Rectangle, text:cpp.RawPointer<cpp.RawPointer<ConstCharStar>>, count:Int, focus:cpp.RawPointer<cpp.Int32>,
-		scrollIndex:cpp.RawPointer<cpp.Int32>, active:Int):Int;
-	@:native("GuiMessageBox") static function guiMessageBox(bounds:Rectangle, title:ConstCharStar, message:ConstCharStar, buttons:ConstCharStar):Int;
-	@:native("GuiTextInputBox") static function guiTextInputBox(bounds:Rectangle, title:ConstCharStar, message:ConstCharStar, buttons:ConstCharStar,
-		text:CastCharStar, textMaxSize:Int, secretViewActive:cpp.RawPointer<cpp.Int32>):Int;
-	@:native("GuiColorPicker") static function guiColorPicker(bounds:Rectangle, text:ConstCharStar, color:Color):Color;
-	@:native("GuiColorPanel") static function guiColorPanel(bounds:Rectangle, text:ConstCharStar, color:Color):Color;
-	@:native("GuiColorBarAlpha") static function guiColorBarAlpha(bounds:Rectangle, text:ConstCharStar, alpha:Float):Float;
-	@:native("GuiColorBarHue") static function guiColorBarHue(bounds:Rectangle, text:ConstCharStar, value:Float):Float;
-
-	@:native("GuiLoadStyle") static function guiLoadStyle(fileName:ConstCharStar):Void;
-	@:native("GuiLoadStyleDefault") static function guiLoadStyleDefault():Void;
-
-	@:native("GuiIconText") static function guiIconText(iconId:Int, text:ConstCharStar):ConstCharStar;
+	@:to extern public inline function toInt():Int
+		return untyped this;
 }
+
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:native('GuiToggleProperty')
+private extern class GuiTogglePropertyImpl {}
+
+extern enum abstract GuiSliderProperty(GuiSliderPropertyImpl)
+{
+	@:native('SLIDER_WIDTH') var SLIDER_WIDTH;
+	@:native('SLIDER_PADDING') var SLIDER_PADDING;
+
+	@:from
+	static public inline function fromInt(i:Int):GuiSliderProperty
+		return cast i;
+
+	@:to extern public inline function toInt():Int
+		return untyped this;
+}
+
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:native('GuiSliderProperty')
+private extern class GuiSliderPropertyImpl {}
+
+extern enum abstract GuiProgressBarProperty(GuiProgressBarPropertyImpl)
+{
+	@:native('PROGRESS_PADDING') var PROGRESS_PADDING;
+
+	@:from
+	static public inline function fromInt(i:Int):GuiProgressBarProperty
+		return cast i;
+
+	@:to extern public inline function toInt():Int
+		return untyped this;
+}
+
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:native('GuiProgressBarProperty')
+private extern class GuiProgressBarPropertyImpl {}
+
+extern enum abstract GuiScrollBarProperty(GuiScrollBarPropertyImpl)
+{
+	@:native('ARROWS_SIZE') var ARROWS_SIZE;
+	@:native('ARROWS_VISIBLE') var ARROWS_VISIBLE;
+	@:native('SCROLL_SLIDER_PADDING') var SCROLL_SLIDER_PADDING;
+	@:native('SCROLL_SLIDER_SIZE') var SCROLL_SLIDER_SIZE;
+	@:native('SCROLL_PADDING') var SCROLL_PADDING;
+	@:native('SCROLL_SPEED') var SCROLL_SPEED;
+
+	@:from
+	static public inline function fromInt(i:Int):GuiScrollBarProperty
+		return cast i;
+
+	@:to extern public inline function toInt():Int
+		return untyped this;
+}
+
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:native('GuiScrollBarProperty')
+private extern class GuiScrollBarPropertyImpl {}
+
+extern enum abstract GuiCheckBoxProperty(GuiCheckBoxPropertyImpl)
+{
+	@:native('CHECK_PADDING') var CHECK_PADDING;
+
+	@:from
+	static public inline function fromInt(i:Int):GuiCheckBoxProperty
+		return cast i;
+
+	@:to extern public inline function toInt():Int
+		return untyped this;
+}
+
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:native('GuiCheckBoxProperty')
+private extern class GuiCheckBoxPropertyImpl {}
+
+extern enum abstract GuiComboBoxProperty(GuiComboBoxPropertyImpl)
+{
+	@:native('COMBO_BUTTON_WIDTH') var COMBO_BUTTON_WIDTH;
+	@:native('COMBO_BUTTON_SPACING') var COMBO_BUTTON_SPACING;
+
+	@:from
+	static public inline function fromInt(i:Int):GuiComboBoxProperty
+		return cast i;
+
+	@:to extern public inline function toInt():Int
+		return untyped this;
+}
+
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:native('GuiComboBoxProperty')
+private extern class GuiComboBoxPropertyImpl {}
+
+extern enum abstract GuiDropdownBoxProperty(GuiDropdownBoxPropertyImpl)
+{
+	@:native('ARROW_PADDING') var ARROW_PADDING;
+	@:native('DROPDOWN_ITEMS_SPACING') var DROPDOWN_ITEMS_SPACING;
+
+	@:from
+	static public inline function fromInt(i:Int):GuiDropdownBoxProperty
+		return cast i;
+
+	@:to extern public inline function toInt():Int
+		return untyped this;
+}
+
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:native('GuiDropdownBoxProperty')
+private extern class GuiDropdownBoxPropertyImpl {}
+
+extern enum abstract GuiTextBoxProperty(GuiTextBoxPropertyImpl)
+{
+	@:native('TEXT_READONLY') var TEXT_READONLY;
+
+	@:from
+	static public inline function fromInt(i:Int):GuiTextBoxProperty
+		return cast i;
+
+	@:to extern public inline function toInt():Int
+		return untyped this;
+}
+
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:native('GuiTextBoxProperty')
+private extern class GuiTextBoxPropertyImpl {}
+
+extern enum abstract GuiSpinnerProperty(GuiSpinnerPropertyImpl)
+{
+	@:native('SPIN_BUTTON_WIDTH') var SPIN_BUTTON_WIDTH;
+	@:native('SPIN_BUTTON_SPACING') var SPIN_BUTTON_SPACING;
+
+	@:from
+	static public inline function fromInt(i:Int):GuiSpinnerProperty
+		return cast i;
+
+	@:to extern public inline function toInt():Int
+		return untyped this;
+}
+
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:native('GuiSpinnerProperty')
+private extern class GuiSpinnerPropertyImpl {}
+
+extern enum abstract GuiListViewProperty(GuiListViewPropertyImpl)
+{
+	@:native('LIST_ITEMS_HEIGHT') var LIST_ITEMS_HEIGHT;
+	@:native('LIST_ITEMS_SPACING') var LIST_ITEMS_SPACING;
+	@:native('SCROLLBAR_WIDTH') var SCROLLBAR_WIDTH;
+	@:native('SCROLLBAR_SIDE') var SCROLLBAR_SIDE;
+
+	@:from
+	static public inline function fromInt(i:Int):GuiListViewProperty
+		return cast i;
+
+	@:to extern public inline function toInt():Int
+		return untyped this;
+}
+
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:native('GuiListViewProperty')
+private extern class GuiListViewPropertyImpl {}
+
+extern enum abstract GuiColorPickerProperty(GuiColorPickerPropertyImpl)
+{
+	@:native('COLOR_SELECTOR_SIZE') var COLOR_SELECTOR_SIZE;
+	@:native('HUEBAR_WIDTH') var HUEBAR_WIDTH;
+	@:native('HUEBAR_PADDING') var HUEBAR_PADDING;
+	@:native('HUEBAR_SELECTOR_HEIGHT') var HUEBAR_SELECTOR_HEIGHT;
+	@:native('HUEBAR_SELECTOR_OVERFLOW') var HUEBAR_SELECTOR_OVERFLOW;
+
+	@:from
+	static public inline function fromInt(i:Int):GuiColorPickerProperty
+		return cast i;
+
+	@:to extern public inline function toInt():Int
+		return untyped this;
+}
+
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:native('GuiColorPickerProperty')
+private extern class GuiColorPickerPropertyImpl {}
