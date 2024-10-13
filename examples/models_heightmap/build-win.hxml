@@ -1,0 +1,6 @@
+-cp ./
+-D analyzer-optimize
+-lib raylib-hx
+-main Main
+-cpp bin
+-cmd xcopy /E /I /Y resources bin\resources

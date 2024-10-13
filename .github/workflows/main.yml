@@ -1,27 +1,46 @@
-name: Formatter
-on: workflow_dispatch
+name: Testing
+on:
+  push:
+    branches: main
+    paths-ignore:
+      - '.github/workflows/format.yml'
+      - 'LICENSE'
+      - 'README.md'
+      - 'haxelib.json'
+      - 'hxformat.json'
+  workflow_dispatch:
 jobs:
   Job:
-    runs-on: ubuntu-latest
+    runs-on: ${{matrix.os}}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        example: [core_basic_window, models_heightmap]
     steps:
       - name: Checkout
         uses: actions/checkout@main
+        with:
+          submodules: true
 
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
         with:
           haxe-version: latest
 
-      - name: Installing Libraries
+      - name: Install Libs
+        if: startsWith(matrix.os, 'ubuntu')
+        run: sudo apt-get update && sudo apt install libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxcursor-dev libxinerama-dev libwayland-dev libxkbcommon-dev
+
+      - name: Install Dependencies
         run: |
-          haxelib install formatter --quiet
+          haxelib install hxcpp --quiet
+          haxelib dev raylib-hx .
 
-      - name: Formatting
-        run: haxelib run formatter -s ./source
+      - name: Build Unix
+        if: startsWith(matrix.os, 'ubuntu')
+        run: cd examples/${{matrix.example}} && haxe build-unix.hxml
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@main
-        with:
-          name: formattedSource
-          path: source
-          if-no-files-found: error
+      - name: Build Windows
+        if: startsWith(matrix.os, 'windows')
+        run: cd examples/${{matrix.example}} && haxe build-win.hxml
