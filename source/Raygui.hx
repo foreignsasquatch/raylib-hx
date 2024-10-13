@@ -395,3 +395,10 @@ extern enum abstract GuiColorPickerProperty(GuiColorPickerPropertyImpl)
 @:include('raygui.h')
 @:native('GuiColorPickerProperty')
 private extern class GuiColorPickerPropertyImpl {}
+
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:unreflective
+extern class Raygui
+{
+}
