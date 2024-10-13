@@ -22,7 +22,7 @@ extern class Emscripten
 	static function set_main_loop_timing(mode:Int, value:Int):Int;
 
 	@:native('emscripten_get_main_loop_timing')
-	static function get_main_loop_timing(mode:cpp.RawPointer<cpp.Int32>, value:cpp.RawPointer<cpp.Int32>):Void;
+	static function get_main_loop_timing(mode:utils.IntPointer, value:utils.IntPointer):Void;
 
 	@:native('emscripten_set_main_loop_arg')
 	static function set_main_loop_arg(func:Em_Arg_Callback_Func, arg:cpp.RawPointer<cpp.Void>, fps:Int, simulate_infinite_loop:Bool):Void;

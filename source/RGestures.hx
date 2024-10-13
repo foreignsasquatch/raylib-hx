@@ -63,7 +63,7 @@ extern class RayGestureEvent
 
 	var touchAction:Int;
 	var pointCount:Int;
-	var pointId:cpp.RawPointer<cpp.Int32>;
+	var pointId:utils.IntPointer;
 	var position:cpp.RawPointer<RayVector2>;
 }
 
@@ -93,14 +93,14 @@ extern abstract GestureEvent(cpp.Struct<RayGestureEvent>) to cpp.Struct<RayGestu
 		return this.pointCount = value;
 	}
 
-	var pointId(get, set):cpp.RawPointer<cpp.Int32>;
+	var pointId(get, set):utils.IntPointer;
 
-	inline function get_pointId():cpp.RawPointer<cpp.Int32>
+	inline function get_pointId():utils.IntPointer
 	{
 		return this.pointId;
 	}
 
-	inline function set_pointId(value:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<cpp.Int32>
+	inline function set_pointId(value:utils.IntPointer):utils.IntPointer
 	{
 		return this.pointId = value;
 	}

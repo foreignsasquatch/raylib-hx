@@ -771,7 +771,7 @@ extern class Raygui
 	@:native('GuiIconText') static function guiIconText(iconId:Int, text:cpp.ConstCharStar):cpp.ConstCharStar;
 	#if !RAYGUI_NO_ICONS
 	@:native('GuiSetIconScale') static function guiSetIconScale(scale:Int):Void;
-	@:native('GuiGetIcons') static function guiGetIcons():cpp.RawPointer<cpp.UInt32>;
+	@:native('GuiGetIcons') static function guiGetIcons():utils.UnsignedPointer;
 	@:native('GuiLoadIcons') static function guiLoadIcons(fileName:cpp.ConstCharStar, loadIconsName:Bool):cpp.RawPointer<cpp.CastCharStar>;
 	@:native('GuiDrawIcon') static function guiDrawIcon(iconId:Int, posX:Int, posY:Int, pixelSize:Int, color:RayColor):Void;
 	#end
@@ -779,19 +779,19 @@ extern class Raygui
 	@:native('GuiGroupBox') static function guiGroupBox(bounds:RayRectangle, text:cpp.ConstCharStar):Int;
 	@:native('GuiLine') static function guiLine(bounds:RayRectangle, text:cpp.ConstCharStar):Int;
 	@:native('GuiPanel') static function guiPanel(bounds:RayRectangle, text:cpp.ConstCharStar):Int;
-	@:native('GuiTabBar') static function guiTabBar(bounds:RayRectangle, text:cpp.RawPointer<cpp.ConstCharStar>, count:Int, active:cpp.RawPointer<cpp.Int32>):Int;
+	@:native('GuiTabBar') static function guiTabBar(bounds:RayRectangle, text:cpp.RawPointer<cpp.ConstCharStar>, count:Int, active:utils.IntPointer):Int;
 	@:native('GuiScrollPanel') static function guiScrollPanel(bounds:RayRectangle, text:cpp.ConstCharStar, content:RayRectangle, scroll:cpp.RawPointer<RayVector2>, view:cpp.RawPointer<RayRectangle>):Int;
 	@:native('GuiLabel') static function guiLabel(bounds:RayRectangle, text:cpp.ConstCharStar):Int;
 	@:native('GuiButton') static function guiButton(bounds:RayRectangle, text:cpp.ConstCharStar):Int;
 	@:native('GuiLabelButton') static function guiLabelButton(bounds:RayRectangle, text:cpp.ConstCharStar):Int;
 	@:native('GuiToggle') static function guiToggle(bounds:RayRectangle, text:cpp.ConstCharStar, active:cpp.RawPointer<Bool>):Int;
-	@:native('GuiToggleGroup') static function guiToggleGroup(bounds:RayRectangle, text:cpp.ConstCharStar, active:cpp.RawPointer<cpp.Int32>):Int;
-	@:native('GuiToggleSlider') static function guiToggleSlider(bounds:RayRectangle, text:cpp.ConstCharStar, active:cpp.RawPointer<cpp.Int32>):Int;
+	@:native('GuiToggleGroup') static function guiToggleGroup(bounds:RayRectangle, text:cpp.ConstCharStar, active:utils.IntPointer):Int;
+	@:native('GuiToggleSlider') static function guiToggleSlider(bounds:RayRectangle, text:cpp.ConstCharStar, active:utils.IntPointer):Int;
 	@:native('GuiCheckBox') static function guiCheckBox(bounds:RayRectangle, text:cpp.ConstCharStar, checked:cpp.RawPointer<Bool>):Int;
-	@:native('GuiComboBox') static function guiComboBox(bounds:RayRectangle, text:cpp.ConstCharStar, active:cpp.RawPointer<cpp.Int32>):Int;
-	@:native('GuiDropdownBox') static function guiDropdownBox(bounds:RayRectangle, text:cpp.ConstCharStar, active:cpp.RawPointer<cpp.Int32>, editMode:Bool):Int;
-	@:native('GuiSpinner') static function guiSpinner(bounds:RayRectangle, text:cpp.ConstCharStar, value:cpp.RawPointer<cpp.Int32>, minValue:Int, maxValue:Int, editMode:Bool):Int;
-	@:native('GuiValueBox') static function guiValueBox(bounds:RayRectangle, text:cpp.ConstCharStar, value:cpp.RawPointer<cpp.Int32>, minValue:Int, maxValue:Int, editMode:Bool):Int;
+	@:native('GuiComboBox') static function guiComboBox(bounds:RayRectangle, text:cpp.ConstCharStar, active:utils.IntPointer):Int;
+	@:native('GuiDropdownBox') static function guiDropdownBox(bounds:RayRectangle, text:cpp.ConstCharStar, active:utils.IntPointer, editMode:Bool):Int;
+	@:native('GuiSpinner') static function guiSpinner(bounds:RayRectangle, text:cpp.ConstCharStar, value:utils.IntPointer, minValue:Int, maxValue:Int, editMode:Bool):Int;
+	@:native('GuiValueBox') static function guiValueBox(bounds:RayRectangle, text:cpp.ConstCharStar, value:utils.IntPointer, minValue:Int, maxValue:Int, editMode:Bool):Int;
 	@:native('GuiTextBox') static function guiTextBox(bounds:RayRectangle, text:cpp.CastCharStar, textSize:Int, editMode:Bool):Int;
 	@:native('GuiSlider') static function guiSlider(bounds:RayRectangle, textLeft:cpp.ConstCharStar, textRight:cpp.ConstCharStar, value:utils.FloatPointer, minValue:Single, maxValue:Single):Int;
 	@:native('GuiSliderBar') static function guiSliderBar(bounds:RayRectangle, textLeft:cpp.ConstCharStar, textRight:cpp.ConstCharStar, value:utils.FloatPointer, minValue:Single, maxValue:Single):Int;
@@ -799,8 +799,8 @@ extern class Raygui
 	@:native('GuiStatusBar') static function guiStatusBar(bounds:RayRectangle, text:cpp.ConstCharStar):Int;
 	@:native('GuiDummyRec') static function guiDummyRec(bounds:RayRectangle, text:cpp.ConstCharStar):Int;
 	@:native('GuiGrid') static function guiGrid(bounds:RayRectangle, text:cpp.ConstCharStar, spacing:Single, subdivs:Int, mouseCell:cpp.RawPointer<RayVector2>):Int;
-	@:native('GuiListView') static function guiListView(bounds:RayRectangle, text:cpp.ConstCharStar, scrollIndex:cpp.RawPointer<cpp.Int32>, active:cpp.RawPointer<cpp.Int32>):Int;
-	@:native('GuiListViewEx') static function guiListViewEx(bounds:RayRectangle, text:cpp.RawPointer<cpp.ConstCharStar>, count:Int, scrollIndex:cpp.RawPointer<cpp.Int32>, active:cpp.RawPointer<cpp.Int32>, focus:cpp.RawPointer<cpp.Int32>):Int;
+	@:native('GuiListView') static function guiListView(bounds:RayRectangle, text:cpp.ConstCharStar, scrollIndex:utils.IntPointer, active:utils.IntPointer):Int;
+	@:native('GuiListViewEx') static function guiListViewEx(bounds:RayRectangle, text:cpp.RawPointer<cpp.ConstCharStar>, count:Int, scrollIndex:utils.IntPointer, active:utils.IntPointer, focus:utils.IntPointer):Int;
 	@:native('GuiMessageBox') static function guiMessageBox(bounds:RayRectangle, title:cpp.ConstCharStar, message:cpp.ConstCharStar, buttons:cpp.ConstCharStar):Int;
 	@:native('GuiTextInputBox') static function guiTextInputBox(bounds:RayRectangle, title:cpp.ConstCharStar, message:cpp.ConstCharStar, buttons:cpp.ConstCharStar, text:cpp.RawPointer<cpp.Char>, textMaxSize:Int, secretViewActive:cpp.RawPointer<Bool>):Int;
 	@:native('GuiColorPicker') static function guiColorPicker(bounds:RayRectangle, text:cpp.ConstCharStar, color:cpp.RawPointer<RayColor>):Int;

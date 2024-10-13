@@ -1395,7 +1395,7 @@ extern class RayMesh
 	var boneWeights:utils.FloatPointer;
 
 	var vaoId:cpp.UInt32;
-	var vboId:cpp.RawPointer<cpp.UInt32>;
+	var vboId:utils.UnsignedPointer;
 }
 
 extern abstract Mesh(cpp.Struct<RayMesh>) to cpp.Struct<RayMesh>
@@ -1568,14 +1568,14 @@ extern abstract Mesh(cpp.Struct<RayMesh>) to cpp.Struct<RayMesh>
 		return this.vaoId = value;
 	}
 
-	var vboId(get, set):cpp.RawPointer<cpp.UInt32>;
+	var vboId(get, set):utils.UnsignedPointer;
 
-	inline function get_vboId():cpp.RawPointer<cpp.UInt32>
+	inline function get_vboId():utils.UnsignedPointer
 	{
 		return this.vboId;
 	}
 
-	inline function set_vboId(value:cpp.RawPointer<cpp.UInt32>):cpp.RawPointer<cpp.UInt32>
+	inline function set_vboId(value:utils.UnsignedPointer):utils.UnsignedPointer
 	{
 		return this.vboId = value;
 	}
@@ -1604,7 +1604,7 @@ extern class RayShader
 	static function alloc():RayShader;
 
 	var id:cpp.UInt32;
-	var locs:cpp.RawPointer<cpp.Int32>;
+	var locs:utils.IntPointer;
 }
 
 extern abstract Shader(cpp.Struct<RayShader>) to cpp.Struct<RayShader>
@@ -1621,14 +1621,14 @@ extern abstract Shader(cpp.Struct<RayShader>) to cpp.Struct<RayShader>
 		return this.id = value;
 	}
 
-	var locs(get, set):cpp.RawPointer<cpp.Int32>;
+	var locs(get, set):utils.IntPointer;
 
-	inline function get_locs():cpp.RawPointer<cpp.Int32>
+	inline function get_locs():utils.IntPointer
 	{
 		return this.locs;
 	}
 
-	inline function set_locs(value:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<cpp.Int32>
+	inline function set_locs(value:utils.IntPointer):utils.IntPointer
 	{
 		return this.locs = value;
 	}
@@ -1913,7 +1913,7 @@ extern class RayModel
 	var materialCount:Int;
 	var meshes:cpp.RawPointer<RayMesh>;
 	var materials:cpp.RawPointer<RayMaterial>;
-	var meshMaterial:cpp.RawPointer<cpp.Int32>;
+	var meshMaterial:utils.IntPointer;
 
 	var boneCount:Int;
 	var bones:cpp.RawPointer<BoneInfo>;
@@ -1982,14 +1982,14 @@ extern abstract Model(cpp.Struct<RayModel>) to cpp.Struct<RayModel>
 		return this.materials = value;
 	}
 
-	var meshMaterial(get, set):cpp.RawPointer<cpp.Int32>;
+	var meshMaterial(get, set):utils.IntPointer;
 
-	inline function get_meshMaterial():cpp.RawPointer<cpp.Int32>
+	inline function get_meshMaterial():utils.IntPointer
 	{
 		return this.meshMaterial;
 	}
 
-	inline function set_meshMaterial(value:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<cpp.Int32>
+	inline function set_meshMaterial(value:utils.IntPointer):utils.IntPointer
 	{
 		return this.meshMaterial = value;
 	}
@@ -3639,7 +3639,7 @@ extern enum abstract NPatchLayout(NPatchLayoutImpl)
 private extern class NPatchLayoutImpl {}
 
 typedef TraceLogCallback = cpp.Callable<(logLevel:Int, text:cpp.ConstCharStar, args:cpp.VarList) -> Void>;
-typedef LoadFileDataCallback = cpp.Callable<(fileName:cpp.ConstCharStar, dataSize:cpp.RawPointer<cpp.Int32>) -> cpp.RawPointer<cpp.UInt8>>;
+typedef LoadFileDataCallback = cpp.Callable<(fileName:cpp.ConstCharStar, dataSize:utils.IntPointer) -> cpp.RawPointer<cpp.UInt8>>;
 typedef SaveFileDataCallback = cpp.Callable<(fileName:cpp.ConstCharStar, data:cpp.RawPointer<cpp.Void>, dataSize:Int) -> Bool>;
 typedef LoadFileTextCallback = cpp.Callable<(fileName:cpp.ConstCharStar) -> cpp.CastCharStar>;
 typedef SaveFileTextCallback = cpp.Callable<(fileName:cpp.ConstCharStar, text:cpp.CastCharStar) -> Bool>;
@@ -3791,8 +3791,8 @@ extern class Raylib
 
 	@:native('SetRandomSeed') static function setRandomSeed(seed:cpp.UInt32):Void;
 	@:native('GetRandomValue') static function getRandomValue(min:Int, max:Int):Int;
-	@:native('LoadRandomSequence') static function loadRandomSequence(count:cpp.UInt32, min:Int, max:Int):cpp.RawPointer<cpp.Int32>;
-	@:native('UnloadRandomSequence') static function unloadRandomSequence(sequence:cpp.RawPointer<cpp.Int32>):Void;
+	@:native('LoadRandomSequence') static function loadRandomSequence(count:cpp.UInt32, min:Int, max:Int):utils.IntPointer;
+	@:native('UnloadRandomSequence') static function unloadRandomSequence(sequence:utils.IntPointer):Void;
 
 	@:native('TakeScreenshot') static function takeScreenshot(fileName:cpp.ConstCharStar):Void;
 	@:native('SetConfigFlags') static function setConfigFlags(flags:cpp.UInt32):Void;
@@ -3809,7 +3809,7 @@ extern class Raylib
 	@:native('SetLoadFileTextCallback') static function setLoadFileTextCallback(callback:LoadFileTextCallback):Void;
 	@:native('SetSaveFileTextCallback') static function setSaveFileTextCallback(callback:SaveFileTextCallback):Void;
 
-	@:native('LoadFileData') static function loadFileData(fileName:cpp.ConstCharStar, dataSize:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<cpp.UInt8>;
+	@:native('LoadFileData') static function loadFileData(fileName:cpp.ConstCharStar, dataSize:utils.IntPointer):cpp.RawPointer<cpp.UInt8>;
 	@:native('UnloadFileData') static function unloadFileData(data:cpp.RawPointer<cpp.UInt8>):Void;
 	@:native('SaveFileData') static function saveFileData(fileName:cpp.ConstCharStar, data:cpp.RawPointer<cpp.Void>, dataSize:Int):Bool;
 	@:native('ExportDataAsCode') static function exportDataAsCode(data:cpp.RawPointer<cpp.UInt8>, dataSize:Int, fileName:cpp.ConstCharStar):Bool;
@@ -3841,13 +3841,13 @@ extern class Raylib
 	@:native('GetFileModTime') static function getFileModTime(fileName:cpp.ConstCharStar):cpp.Long;
 
 	@:native('CompressData') static function compressData(data:cpp.RawConstPointer<cpp.UInt8>, dataSize:Int,
-		compDataSize:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<cpp.UInt8>;
+		compDataSize:utils.IntPointer):cpp.RawPointer<cpp.UInt8>;
 	@:native('DecompressData') static function decompressData(compData:cpp.RawConstPointer<cpp.UInt8>, compDataSize:Int,
-		dataSize:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<cpp.UInt8>;
+		dataSize:utils.IntPointer):cpp.RawPointer<cpp.UInt8>;
 	@:native('EncodeDataBase64') static function encodeDataBase64(data:cpp.RawConstPointer<cpp.UInt8>, dataSize:Int,
-		outputSize:cpp.RawPointer<cpp.Int32>):cpp.CastCharStar;
+		outputSize:utils.IntPointer):cpp.CastCharStar;
 	@:native('DecodeDataBase64') static function decodeDataBase64(data:cpp.RawConstPointer<cpp.UInt8>,
-		outputSize:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<cpp.UInt8>;
+		outputSize:utils.IntPointer):cpp.RawPointer<cpp.UInt8>;
 
 	@:native('LoadAutomationEventList') static function loadAutomationEventList(fileName:cpp.ConstCharStar):RayAutomationEventList;
 	@:native('UnloadAutomationEventList') static function unloadAutomationEventList(list:RayAutomationEventList):Void;
@@ -4004,9 +4004,9 @@ extern class Raylib
 	@:native('LoadImage') static function loadImage(fileName:cpp.ConstCharStar):RayImage;
 	@:native('LoadImageRaw') static function loadImageRaw(fileName:cpp.ConstCharStar, width:Int, height:Int, format:Int, headerSize:Int):RayImage;
 	@:native('LoadImageSvg') static function loadImageSvg(fileNameOrString:cpp.ConstCharStar, width:Int, height:Int):RayImage;
-	@:native('LoadImageAnim') static function loadImageAnim(fileName:cpp.ConstCharStar, frames:cpp.RawPointer<cpp.Int32>):RayImage;
+	@:native('LoadImageAnim') static function loadImageAnim(fileName:cpp.ConstCharStar, frames:utils.IntPointer):RayImage;
 	@:native('LoadImageAnimFromMemory') static function loadImageAnimFromMemory(fileType:cpp.ConstCharStar, fileData:cpp.RawConstPointer<cpp.UInt8>,
-		dataSize:Int, frames:cpp.RawPointer<cpp.Int32>):RayImage;
+		dataSize:Int, frames:utils.IntPointer):RayImage;
 	@:native('LoadImageFromMemory') static function loadImageFromMemory(fileType:cpp.ConstCharStar, fileData:cpp.RawConstPointer<cpp.UInt8>,
 		dataSize:Int):RayImage;
 	@:native('LoadImageFromTexture') static function loadImageFromTexture(texture:RayTexture):RayImage;
@@ -4015,7 +4015,7 @@ extern class Raylib
 	@:native('UnloadImage') static function unloadImage(image:RayImage):Void;
 	@:native('ExportImage') static function exportImage(image:RayImage, fileName:cpp.ConstCharStar):Bool;
 	@:native('ExportImageToMemory') static function exportImageToMemory(image:RayImage, fileType:cpp.ConstCharStar,
-		fileSize:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<cpp.UInt8>;
+		fileSize:utils.IntPointer):cpp.RawPointer<cpp.UInt8>;
 	@:native('ExportImageAsCode') static function exportImageAsCode(image:RayImage, fileName:cpp.ConstCharStar):Bool;
 
 	@:native('GenImageColor') static function genImageColor(width:Int, height:Int, color:RayColor):RayImage;
@@ -4061,7 +4061,7 @@ extern class Raylib
 	@:native('ImageColorReplace') static function imageColorReplace(image:cpp.RawPointer<RayImage>, color:RayColor, replace:RayColor):Void;
 	@:native('LoadImageRayColors') static function loadImageRayColors(image:RayImage):cpp.RawPointer<RayColor>;
 	@:native('LoadImagePalette') static function loadImagePalette(image:RayImage, maxPaletteSize:Int,
-		colorCount:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<RayColor>;
+		colorCount:utils.IntPointer):cpp.RawPointer<RayColor>;
 	@:native('UnloadImageRayColors') static function unloadImageRayColors(colors:cpp.RawPointer<RayColor>):Void;
 	@:native('UnloadImagePalette') static function unloadImagePalette(colors:cpp.RawPointer<RayColor>):Void;
 	@:native('GetImageAlphaBorder') static function getImageAlphaBorder(image:RayImage, threshold:Single):RayRectangle;
@@ -4134,14 +4134,14 @@ extern class Raylib
 
 	@:native('GetFontDefault') static function getFontDefault():RayFont;
 	@:native('LoadFont') static function loadFont(fileName:cpp.ConstCharStar):RayFont;
-	@:native('LoadFontEx') static function loadFontEx(fileName:cpp.ConstCharStar, fontSize:Int, codepoints:cpp.RawPointer<cpp.Int32>,
+	@:native('LoadFontEx') static function loadFontEx(fileName:cpp.ConstCharStar, fontSize:Int, codepoints:utils.IntPointer,
 		codepointCount:Int):RayFont;
 	@:native('LoadFontFromImage') static function loadFontFromImage(image:RayImage, key:RayColor, firstChar:Int):RayFont;
 	@:native('LoadFontFromMemory') static function loadFontFromMemory(fileType:cpp.ConstCharStar, fileData:cpp.RawConstPointer<cpp.UInt8>, dataSize:Int,
-		fontSize:Int, codepoints:cpp.RawPointer<cpp.Int32>, codepointCount:Int):RayFont;
+		fontSize:Int, codepoints:utils.IntPointer, codepointCount:Int):RayFont;
 	@:native('IsFontReady') static function isFontReady(font:RayFont):Bool;
 	@:native('LoadFontData') static function loadFontData(fileData:cpp.RawConstPointer<cpp.UInt8>, dataSize:Int, fontSize:Int,
-		codepoints:cpp.RawPointer<cpp.Int32>, codepointCount:Int, type:Int):cpp.RawPointer<RayGlyphInfo>;
+		codepoints:utils.IntPointer, codepointCount:Int, type:Int):cpp.RawPointer<RayGlyphInfo>;
 	@:native('GenImageFontAtlas') static function genImageFontAtlas(glyphs:cpp.RawPointer<RayGlyphInfo>,
 		glyphRecs:cpp.RawPointer<cpp.RawPointer<RayRectangle>>, glyphCount:Int, fontSize:Int, padding:Int, packMethod:Int):RayImage;
 	@:native('UnloadFontData') static function unloadFontData(glyphs:cpp.RawPointer<RayGlyphInfo>, glyphCount:Int):Void;
@@ -4155,7 +4155,7 @@ extern class Raylib
 	@:native('DrawTextPro') static function drawTextPro(font:RayFont, text:cpp.ConstCharStar, position:RayVector2, origin:RayVector2, rotation:Single,
 		fontSize:Single, spacing:Single, tint:RayColor):Void;
 	@:native('DrawTextCodepoint') static function drawTextCodepoint(font:RayFont, codepoint:Int, position:RayVector2, fontSize:Single, tint:RayColor):Void;
-	@:native('DrawTextCodepoints') static function drawTextCodepoints(font:RayFont, codepoints:cpp.RawPointer<cpp.Int32>, codepointCount:Int,
+	@:native('DrawTextCodepoints') static function drawTextCodepoints(font:RayFont, codepoints:utils.IntPointer, codepointCount:Int,
 		position:RayVector2, fontSize:Single, spacing:Single, tint:RayColor):Void;
 
 	@:native('SetTextLineSpacing') static function setTextLineSpacing(spacing:Int):Void;
@@ -4165,15 +4165,15 @@ extern class Raylib
 	@:native('GetGlyphInfo') static function getGlyphInfo(font:RayFont, codepoint:Int):RayGlyphInfo;
 	@:native('GetGlyphAtlasRec') static function getGlyphAtlasRec(font:RayFont, codepoint:Int):RayRectangle;
 
-	@:native('LoadUTF8') static function loadUTF8(codepoints:cpp.RawPointer<cpp.Int32>, length:Int):cpp.ConstCharStar;
+	@:native('LoadUTF8') static function loadUTF8(codepoints:utils.IntPointer, length:Int):cpp.ConstCharStar;
 	@:native('UnloadUTF8') static function unloadUTF8(text:cpp.ConstCharStar):Void;
-	@:native('LoadCodepoints') static function loadCodepoints(text:cpp.ConstCharStar, count:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<cpp.Int32>;
-	@:native('UnloadCodepoints') static function unloadCodepoints(codepoints:cpp.RawPointer<cpp.Int32>):Void;
+	@:native('LoadCodepoints') static function loadCodepoints(text:cpp.ConstCharStar, count:utils.IntPointer):utils.IntPointer;
+	@:native('UnloadCodepoints') static function unloadCodepoints(codepoints:utils.IntPointer):Void;
 	@:native('GetCodepointCount') static function getCodepointCount(text:cpp.ConstCharStar):Int;
-	@:native('GetCodepoint') static function getCodepoint(text:cpp.ConstCharStar, codepointSize:cpp.RawPointer<cpp.Int32>):Int;
-	@:native('GetCodepointNext') static function getCodepointNext(text:cpp.ConstCharStar, codepointSize:cpp.RawPointer<cpp.Int32>):Int;
-	@:native('GetCodepointPrevious') static function getCodepointPrevious(text:cpp.ConstCharStar, codepointSize:cpp.RawPointer<cpp.Int32>):Int;
-	@:native('CodepointToUTF8') static function codepointToUTF8(codepoint:Int, utf8Size:cpp.RawPointer<cpp.Int32>):cpp.ConstCharStar;
+	@:native('GetCodepoint') static function getCodepoint(text:cpp.ConstCharStar, codepointSize:utils.IntPointer):Int;
+	@:native('GetCodepointNext') static function getCodepointNext(text:cpp.ConstCharStar, codepointSize:utils.IntPointer):Int;
+	@:native('GetCodepointPrevious') static function getCodepointPrevious(text:cpp.ConstCharStar, codepointSize:utils.IntPointer):Int;
+	@:native('CodepointToUTF8') static function codepointToUTF8(codepoint:Int, utf8Size:utils.IntPointer):cpp.ConstCharStar;
 
 	@:native('TextCopy') static function textCopy(dst:cpp.RawPointer<cpp.UInt8>, src:cpp.ConstCharStar):Int;
 	@:native('TextIsEqual') static function textIsEqual(text1:cpp.ConstCharStar, text2:cpp.ConstCharStar):Bool;
@@ -4184,8 +4184,8 @@ extern class Raylib
 	@:native('TextInsert') static function textInsert(text:cpp.ConstCharStar, insert:cpp.ConstCharStar, position:Int):cpp.ConstCharStar;
 	@:native('TextJoin') static function textJoin(textList:cpp.RawPointer<cpp.ConstCharStar>, count:Int, delimiter:cpp.ConstCharStar):cpp.ConstCharStar;
 	@:native('TextSplit') static function textSplit(text:cpp.ConstCharStar, delimiter:cpp.Char,
-		count:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<cpp.ConstCharStar>;
-	@:native('TextAppend') static function textAppend(text:cpp.RawPointer<cpp.UInt8>, append:cpp.ConstCharStar, position:cpp.RawPointer<cpp.Int32>):Void;
+		count:utils.IntPointer):cpp.RawPointer<cpp.ConstCharStar>;
+	@:native('TextAppend') static function textAppend(text:cpp.RawPointer<cpp.UInt8>, append:cpp.ConstCharStar, position:utils.IntPointer):Void;
 	@:native('TextFindIndex') static function textFindIndex(text:cpp.ConstCharStar, find:cpp.ConstCharStar):Int;
 	@:native('TextToUpper') static function textToUpper(text:cpp.ConstCharStar):cpp.ConstCharStar;
 	@:native('TextToLower') static function textToLower(text:cpp.ConstCharStar):cpp.ConstCharStar;
@@ -4263,7 +4263,7 @@ extern class Raylib
 	@:native('GenMeshHeightmap') static function genMeshHeightmap(heightmap:RayImage, size:RayVector3):RayMesh;
 	@:native('GenMeshCubicmap') static function genMeshCubicmap(cubicmap:RayImage, cubeSize:RayVector3):RayMesh;
 
-	@:native('LoadMaterials') static function loadMaterials(fileName:cpp.ConstCharStar, materialCount:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<RayMaterial>;
+	@:native('LoadMaterials') static function loadMaterials(fileName:cpp.ConstCharStar, materialCount:utils.IntPointer):cpp.RawPointer<RayMaterial>;
 	@:native('LoadMaterialDefault') static function loadMaterialDefault():RayMaterial;
 	@:native('IsMaterialReady') static function isMaterialReady(material:RayMaterial):Bool;
 	@:native('UnloadMaterial') static function unloadMaterial(material:RayMaterial):Void;
@@ -4271,7 +4271,7 @@ extern class Raylib
 	@:native('SetModelMeshMaterial') static function setModelMeshMaterial(model:cpp.RawPointer<RayModel>, meshId:Int, materialId:Int):Void;
 
 	@:native('LoadModelAnimations') static function loadModelAnimations(fileName:cpp.ConstCharStar,
-		animCount:cpp.RawPointer<cpp.Int32>):cpp.RawPointer<RayModelAnimation>;
+		animCount:utils.IntPointer):cpp.RawPointer<RayModelAnimation>;
 	@:native('UpdateModelAnimation') static function updateModelAnimation(model:RayModel, anim:RayModelAnimation, frame:Int):Void;
 	@:native('UnloadModelAnimation') static function unloadModelAnimation(anim:RayModelAnimation):Void;
 	@:native('UnloadModelAnimations') static function unloadModelAnimations(animations:cpp.RawPointer<RayModelAnimation>, animCount:Int):Void;
