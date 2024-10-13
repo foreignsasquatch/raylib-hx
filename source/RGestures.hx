@@ -33,17 +33,17 @@ import Raylib;
 
 extern enum abstract TouchAction(TouchActionImpl)
 {
-	@:native('TOUCH_ACTION_UP') var TOUCH_ACTION_UP;
-	@:native('TOUCH_ACTION_DOWN') var TOUCH_ACTION_DOWN;
-	@:native('TOUCH_ACTION_MOVE') var TOUCH_ACTION_MOVE;
-	@:native('TOUCH_ACTION_CANCEL') var TOUCH_ACTION_CANCEL;
+    @:native('TOUCH_ACTION_UP') var TOUCH_ACTION_UP;
+    @:native('TOUCH_ACTION_DOWN') var TOUCH_ACTION_DOWN;
+    @:native('TOUCH_ACTION_MOVE') var TOUCH_ACTION_MOVE;
+    @:native('TOUCH_ACTION_CANCEL') var TOUCH_ACTION_CANCEL;
 
-	@:from
-	static public inline function fromInt(i:Int):TouchAction
-		return cast i;
+    @:from
+    static public inline function fromInt(i:Int):TouchAction
+        return cast i;
 
-	@:to extern public inline function toInt():Int
-		return untyped this;
+    @:to extern public inline function toInt():Int
+        return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -58,76 +58,76 @@ private extern class TouchActionImpl {}
 @:native('GestureEvent')
 extern class RayGestureEvent
 {
-	@:native('GestureEvent')
-	static function alloc():RayGestureEvent;
+    @:native('GestureEvent')
+    static function alloc():RayGestureEvent;
 
-	var touchAction:Int;
-	var pointCount:Int;
-	var pointId:utils.IntPointer;
-	var position:cpp.RawPointer<RayVector2>;
+    var touchAction:Int;
+    var pointCount:Int;
+    var pointId:utils.IntPointer;
+    var position:cpp.RawPointer<RayVector2>;
 }
 
 extern abstract GestureEvent(cpp.Struct<RayGestureEvent>) to cpp.Struct<RayGestureEvent>
 {
-	var touchAction(get, set):Int;
+    var touchAction(get, set):Int;
 
-	inline function get_touchAction():Int
-	{
-		return this.touchAction;
-	}
+    inline function get_touchAction():Int
+    {
+        return this.touchAction;
+    }
 
-	inline function set_touchAction(value:Int):Int
-	{
-		return this.touchAction = value;
-	}
+    inline function set_touchAction(value:Int):Int
+    {
+        return this.touchAction = value;
+    }
 
-	var pointCount(get, set):Int;
+    var pointCount(get, set):Int;
 
-	inline function get_pointCount():Int
-	{
-		return this.pointCount;
-	}
+    inline function get_pointCount():Int
+    {
+        return this.pointCount;
+    }
 
-	inline function set_pointCount(value:Int):Int
-	{
-		return this.pointCount = value;
-	}
+    inline function set_pointCount(value:Int):Int
+    {
+        return this.pointCount = value;
+    }
 
-	var pointId(get, set):utils.IntPointer;
+    var pointId(get, set):utils.IntPointer;
 
-	inline function get_pointId():utils.IntPointer
-	{
-		return this.pointId;
-	}
+    inline function get_pointId():utils.IntPointer
+    {
+        return this.pointId;
+    }
 
-	inline function set_pointId(value:utils.IntPointer):utils.IntPointer
-	{
-		return this.pointId = value;
-	}
+    inline function set_pointId(value:utils.IntPointer):utils.IntPointer
+    {
+        return this.pointId = value;
+    }
 
-	var position(get, set):cpp.RawPointer<RayVector2>;
+    var position(get, set):cpp.RawPointer<RayVector2>;
 
-	inline function get_position():cpp.RawPointer<RayVector2>
-	{
-		return this.position;
-	}
+    inline function get_position():cpp.RawPointer<RayVector2>
+    {
+        return this.position;
+    }
 
-	inline function set_position(value:cpp.RawPointer<RayVector2>):cpp.RawPointer<RayVector2>
-	{
-		return this.position = value;
-	}
+    inline function set_position(value:cpp.RawPointer<RayVector2>):cpp.RawPointer<RayVector2>
+    {
+        return this.position = value;
+    }
 
-	inline function new():Void
-	{
-		this = RayGestureEvent.alloc();
-	}
+    inline function new():Void
+    {
+        this = RayGestureEvent.alloc();
+    }
 
-	@:from
-	static public inline function fromNative(value:RayGestureEvent):GestureEvent
-		return cast value;
+    @:from
+    static public inline function fromNative(value:RayGestureEvent):GestureEvent
+        return cast value;
 
-	@:to extern public inline function toPointer():cpp.RawConstPointer<RayGestureEvent>
-		return cpp.RawConstPointer.addressOf((this : RayGestureEvent));
+    @:to extern public inline function toPointer():cpp.RawConstPointer<RayGestureEvent>
+        return cpp.RawConstPointer.addressOf((this : RayGestureEvent));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -135,9 +135,9 @@ extern abstract GestureEvent(cpp.Struct<RayGestureEvent>) to cpp.Struct<RayGestu
 @:unreflective
 extern class RGestures
 {
-	@:native('ProcessGestureEvent')
-	static function ProcessGestureEvent(event:RayGestureEvent):Void;
+    @:native('ProcessGestureEvent')
+    static function ProcessGestureEvent(event:RayGestureEvent):Void;
 
-	@:native('UpdateGestures')
-	static function UpdateGestures():Void;
+    @:native('UpdateGestures')
+    static function UpdateGestures():Void;
 }
