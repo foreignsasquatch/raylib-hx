@@ -28,262 +28,170 @@
 
 package;
 
-import Rl.Color;
-import Rl.Font;
-import Rl.Rectangle;
-import Rl.Vector2;
+import Raylib;
 
-@:include("raygui.h")
-@:native("GuiControlState")
-extern enum abstract GuiControlState(Int) from Int to Int
+extern enum abstract GuiState(GuiStateImpl)
 {
-	@:native("GUI_STATE_NORMAL")
-	public var NORMAL;
-	@:native("GUI_STATE_FOCUSED")
-	public var FOCUSED;
-	@:native("GUI_STATE_PRESSED")
-	public var PRESSED;
-	@:native("GUI_STATE_DISABLED")
-	public var DISABLED;
+    @:native('STATE_NORMAL') var STATE_NORMAL;
+    @:native('STATE_FOCUSED') var STATE_FOCUSED;
+    @:native('STATE_PRESSED') var STATE_PRESSED;
+    @:native('STATE_DISABLED') var STATE_DISABLED;
+
+    @:from
+    static public inline function fromInt(i:Int):GuiState
+        return cast i;
+
+    @:to extern public inline function toInt():Int
+        return untyped this;
 }
 
-@:include("raygui.h")
-@:native("GuiTextAlignment")
-extern enum abstract GuiTextAlignment(Int) from Int to Int
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:native('GuiState')
+private extern class GuiStateImpl {}
+
+extern enum abstract GuiTextAlignment(GuiTextAlignmentImpl)
 {
-	@:native("GUI_TEXT_ALIGN_LEFT")
-	public var LEFT;
-	@:native("GUI_TEXT_ALIGN_CENTER")
-	public var CENTER;
-	@:native("GUI_TEXT_ALIGN_RIGHT")
-	public var RIGHT;
+    @:native('TEXT_ALIGN_LEFT') var TEXT_ALIGN_LEFT;
+    @:native('TEXT_ALIGN_CENTER') var TEXT_ALIGN_CENTER;
+    @:native('TEXT_ALIGN_RIGHT') var TEXT_ALIGN_RIGHT;
+
+    @:from
+    static public inline function fromInt(i:Int):GuiTextAlignment
+        return cast i;
+
+    @:to extern public inline function toInt():Int
+        return untyped this;
 }
 
-@:include("raygui.h")
-@:native("GuiControl")
-extern enum abstract GuiControl(Int) from Int to Int
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:native('GuiTextAlignment')
+private extern class GuiTextAlignmentImpl {}
+
+extern enum abstract GuiTextAlignmentVertical(GuiTextAlignmentVerticalImpl)
 {
-	@:native("DEFAULT")
-	public var DEFAULT;
-	@:native("LABEL")
-	public var LABEL;
-	@:native("BUTTON")
-	public var BUTTON;
-	@:native("TOGGLE")
-	public var TOGGLE;
-	@:native("SLIDER")
-	public var SLIDER;
-	@:native("PROGRESSBAR")
-	public var PROGRESSBAR;
-	@:native("CHECKBOX")
-	public var CHECKBOX;
-	@:native("COMBOBOX")
-	public var COMBOBOX;
-	@:native("DROPDOWNBOX")
-	public var DROPDOWNBOX;
-	@:native("TEXTBOX")
-	public var TEXTBOX;
-	@:native("VALUEBOX")
-	public var VALUEBOX;
-	@:native("SPINNER")
-	public var SPINNER;
-	@:native("LISTVIEW")
-	public var LISTVIEW;
-	@:native("COLORPICKER")
-	public var COLORPICKER;
-	@:native("SCROLLBAR")
-	public var SCROLLBAR;
-	@:native("STATUSBAR")
-	public var STATUSBAR;
+    @:native('TEXT_ALIGN_TOP') var TEXT_ALIGN_TOP;
+    @:native('TEXT_ALIGN_MIDDLE') var TEXT_ALIGN_MIDDLE;
+    @:native('TEXT_ALIGN_BOTTOM') var TEXT_ALIGN_BOTTOM;
+
+    @:from
+    static public inline function fromInt(i:Int):GuiTextAlignmentVertical
+        return cast i;
+
+    @:to extern public inline function toInt():Int
+        return untyped this;
 }
 
-@:include("raygui.h")
-@:native("GuiControlProperty")
-extern enum abstract GuiControlProperty(Int) from Int to Int
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:native('GuiTextAlignmentVertical')
+private extern class GuiTextAlignmentVerticalImpl {}
+
+extern enum abstract GuiTextWrapMode(GuiTextWrapModeImpl)
 {
-	@:native("BORDER_COLOR_NORMAL")
-	public var BORDER_COLOR_NORMAL;
-	@:native("BASE_COLOR_NORMAL")
-	public var BASE_COLOR_NORMAL;
-	@:native("TEXT_COLOR_NORMAL")
-	public var TEXT_COLOR_NORMAL;
-	@:native("BORDER_COLOR_FOCUSED")
-	public var BORDER_COLOR_FOCUSED;
-	@:native("BASE_COLOR_FOCUSED")
-	public var BASE_COLOR_FOCUSED;
-	@:native("TEXT_COLOR_FOCUSED")
-	public var TEXT_COLOR_FOCUSED;
-	@:native("BORDER_COLOR_PRESSED")
-	public var BORDER_COLOR_PRESSED;
-	@:native("BASE_COLOR_PRESSED")
-	public var BASE_COLOR_PRESSED;
-	@:native("TEXT_COLOR_PRESSED")
-	public var TEXT_COLOR_PRESSED;
-	@:native("BORDER_COLOR_DISABLED")
-	public var BORDER_COLOR_DISABLED;
-	@:native("BASE_COLOR_DISABLED")
-	public var BASE_COLOR_DISABLED;
-	@:native("TEXT_COLOR_DISABLED")
-	public var TEXT_COLOR_DISABLED;
-	@:native("BORDER_WIDTH")
-	public var BORDER_WIDTH;
-	@:native("TEXT_PADDING")
-	public var TEXT_PADDING;
-	@:native("TEXT_ALIGNMENT")
-	public var TEXT_ALIGNMENT;
-	@:native("RESERVED")
-	public var RESERVED;
+    @:native('TEXT_WRAP_NONE') var TEXT_WRAP_NONE;
+    @:native('TEXT_WRAP_CHAR') var TEXT_WRAP_CHAR;
+    @:native('TEXT_WRAP_WORD') var TEXT_WRAP_WORD;
+
+    @:from
+    static public inline function fromInt(i:Int):GuiTextWrapMode
+        return cast i;
+
+    @:to extern public inline function toInt():Int
+        return untyped this;
 }
 
-@:include("raygui.h")
-@:native("GuiDefaultProperty")
-extern enum abstract GuiDefaultProperty(Int) from Int to Int
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:native('GuiTextWrapMode')
+private extern class GuiTextWrapModeImpl {}
+
+extern enum abstract GuiControl(GuiControlImpl)
 {
-	@:native("TEXT_SIZE")
-	public var TEXT_SIZE;
-	@:native("TEXT_SPACING")
-	public var TEXT_SPACING;
-	@:native("LINE_COLOR")
-	public var LINE_COLOR;
-	@:native("BACKGROUND_COLOR")
-	public var BACKGROUND_COLOR;
+    @:native('DEFAULT') var DEFAULT;
+    @:native('LABEL') var LABEL;
+    @:native('BUTTON') var BUTTON;
+    @:native('TOGGLE') var TOGGLE;
+    @:native('SLIDER') var SLIDER;
+    @:native('PROGRESSBAR') var PROGRESSBAR;
+    @:native('CHECKBOX') var CHECKBOX;
+    @:native('COMBOBOX') var COMBOBOX;
+    @:native('DROPDOWNBOX') var DROPDOWNBOX;
+    @:native('TEXTBOX') var TEXTBOX;
+    @:native('VALUEBOX') var VALUEBOX;
+    @:native('SPINNER') var SPINNER;
+    @:native('LISTVIEW') var LISTVIEW;
+    @:native('COLORPICKER') var COLORPICKER;
+    @:native('SCROLLBAR') var SCROLLBAR;
+    @:native('STATUSBAR') var STATUSBAR;
+
+    @:from
+    static public inline function fromInt(i:Int):GuiControl
+        return cast i;
+
+    @:to extern public inline function toInt():Int
+        return untyped this;
 }
 
-@:include("raygui.h")
-@:native("GuiToggleProperty")
-extern enum abstract GuiToggleProperty(Int) from Int to Int
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:native('GuiControl')
+private extern class GuiControlImpl {}
+
+extern enum abstract GuiControlProperty(GuiControlPropertyImpl)
 {
-	@:native("GROUP_PADDING")
-	public var GROUP_PADDING;
+    @:native('BORDER_COLOR_NORMAL') var BORDER_COLOR_NORMAL;
+    @:native('BASE_COLOR_NORMAL') var BASE_COLOR_NORMAL;
+    @:native('TEXT_COLOR_NORMAL') var TEXT_COLOR_NORMAL;
+    @:native('BORDER_COLOR_FOCUSED') var BORDER_COLOR_FOCUSED;
+    @:native('BASE_COLOR_FOCUSED') var BASE_COLOR_FOCUSED;
+    @:native('TEXT_COLOR_FOCUSED') var TEXT_COLOR_FOCUSED;
+    @:native('BORDER_COLOR_PRESSED') var BORDER_COLOR_PRESSED;
+    @:native('BASE_COLOR_PRESSED') var BASE_COLOR_PRESSED;
+    @:native('TEXT_COLOR_PRESSED') var TEXT_COLOR_PRESSED;
+    @:native('BORDER_COLOR_DISABLED') var BORDER_COLOR_DISABLED;
+    @:native('BASE_COLOR_DISABLED') var BASE_COLOR_DISABLED;
+    @:native('TEXT_COLOR_DISABLED') var TEXT_COLOR_DISABLED;
+    @:native('BORDER_WIDTH') var BORDER_WIDTH;
+    @:native('TEXT_PADDING') var TEXT_PADDING;
+    @:native('TEXT_ALIGNMENT') var TEXT_ALIGNMENT;
+
+    @:from
+    static public inline function fromInt(i:Int):GuiControlProperty
+        return cast i;
+
+    @:to extern public inline function toInt():Int
+        return untyped this;
 }
 
-@:include("raygui.h")
-@:native("GuiSliderProperty")
-extern enum abstract GuiSliderProperty(Int) from Int to Int
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:native('GuiControlProperty')
+private extern class GuiControlPropertyImpl {}
+
+extern enum abstract GuiDefaultProperty(GuiDefaultPropertyImpl)
 {
-	@:native("SLIDER_WIDTH")
-	public var SLIDER_WIDTH;
-	@:native("SLIDER_PADDING")
-	public var SLIDER_PADDING;
+    @:native('TEXT_SIZE') var TEXT_SIZE;
+    @:native('TEXT_SPACING') var TEXT_SPACING;
+    @:native('LINE_COLOR') var LINE_COLOR;
+    @:native('BACKGROUND_COLOR') var BACKGROUND_COLOR;
+    @:native('TEXT_LINE_SPACING') var TEXT_LINE_SPACING;
+    @:native('TEXT_ALIGNMENT_VERTICAL') var TEXT_ALIGNMENT_VERTICAL;
+    @:native('TEXT_WRAP_MODE') var TEXT_WRAP_MODE;
+
+    @:from
+    static public inline function fromInt(i:Int):GuiDefaultProperty
+        return cast i;
+
+    @:to extern public inline function toInt():Int
+        return untyped this;
 }
 
-@:include("raygui.h")
-@:native("GuiProgressBarProperty")
-extern enum abstract GuiProgressBarProperty(Int) from Int to Int
-{
-	@:native("PROGRESS_PADDING")
-	public var PROGRESS_PADDING;
-}
-
-@:include("raygui.h")
-@:native("GuiCheckBoxProperty")
-extern enum abstract GuiCheckBoxProperty(Int) from Int to Int
-{
-	@:native("CHECK_PADDING")
-	public var CHECK_PADDING;
-}
-
-@:include("raygui.h")
-@:native("GuiComboBoxProperty")
-extern enum abstract GuiComboBoxProperty(Int) from Int to Int
-{
-	@:native("COMBO_BUTTON_WIDTH")
-	public var COMBO_BUTTON_WIDTH;
-	@:native("COMBO_BUTTON_PADDING")
-	public var COMBO_BUTTON_PADDING;
-}
-
-@:include("raygui.h")
-@:native("GuiDropdownBoxProperty")
-extern enum abstract GuiDropdownBoxProperty(Int) from Int to Int
-{
-	@:native("ARROW_PADDING")
-	public var ARROW_PADDING;
-	@:native("DROPDOWN_ITEMS_PADDING")
-	public var DROPDOWN_ITEMS_PADDING;
-}
-
-@:include("raygui.h")
-@:native("GuiTextBoxProperty")
-extern enum abstract GuiTextBoxProperty(Int) from Int to Int
-{
-	@:native("TEXT_INNER_PADDING")
-	public var TEXT_INNER_PADDING;
-	@:native("TEXT_LINES_PADDING")
-	public var TEXT_LINES_PADDING;
-	@:native("COLOR_SELECTED_FG")
-	public var COLOR_SELECTED_FG;
-	@:native("COLOR_SELECTED_BG")
-	public var COLOR_SELECTED_BG;
-}
-
-@:include("raygui.h")
-@:native("GuiSpinnerProperty")
-extern enum abstract GuiSpinnerProperty(Int) from Int to Int
-{
-	@:native("SPIN_BUTTON_WIDTH")
-	public var SPIN_BUTTON_WIDTH;
-	@:native("SPIN_BUTTON_PADDING")
-	public var SPIN_BUTTON_PADDING;
-}
-
-@:include("raygui.h")
-@:native("GuiScrollBarProperty")
-extern enum abstract GuiScrollBarProperty(Int) from Int to Int
-{
-	@:native("ARROWS_SIZE")
-	public var ARROWS_SIZE;
-	@:native("ARROWS_VISIBLE")
-	public var ARROWS_VISIBLE;
-	@:native("SCROLL_SLIDER_PADDING")
-	public var SCROLL_SLIDER_PADDING;
-	@:native("SCROLL_SLIDER_SIZE")
-	public var SCROLL_SLIDER_SIZE;
-	@:native("SCROLL_PADDING")
-	public var SCROLL_PADDING;
-	@:native("SCROLL_SPEED")
-	public var SCROLL_SPEED;
-}
-
-@:include("raygui.h")
-@:native("GuiScrollBarSide")
-extern enum abstract GuiScrollBarSide(Int) from Int to Int
-{
-	@:native("SCROLLBAR_LEFT_SIDE")
-	public var SCROLLBAR_LEFT_SIDE;
-	@:native("SCROLLBAR_RIGHT_SIDE")
-	public var SCROLLBAR_RIGHT_SIDE;
-}
-
-@:include("raygui.h")
-@:native("GuiListViewProperty")
-extern enum abstract GuiListViewProperty(Int) from Int to Int
-{
-	@:native("LIST_ITEMS_HEIGHT")
-	public var LIST_ITEMS_HEIGHT;
-	@:native("LIST_ITEMS_PADDING")
-	public var LIST_ITEMS_PADDING;
-	@:native("SCROLLBAR_WIDTH")
-	public var SCROLLBAR_WIDTH;
-	@:native("SCROLLBAR_SIDE")
-	public var SCROLLBAR_SIDE;
-}
-
-@:include("raygui.h")
-@:native("GuiColorPickerProperty")
-extern enum abstract GuiColorPickerProperty(Int) from Int to Int
-{
-	@:native("COLOR_SELECTOR_SIZE")
-	public var COLOR_SELECTOR_SIZE;
-	@:native("HUEBAR_WIDTH")
-	public var HUEBAR_WIDTH;
-	@:native("HUEBAR_PADDING")
-	public var HUEBAR_PADDING;
-	@:native("HUEBAR_SELECTOR_HEIGHT")
-	public var HUEBAR_SELECTOR_HEIGHT;
-	@:native("HUEBAR_SELECTOR_OVERFLOW")
-	public var HUEBAR_SELECTOR_OVERFLOW;
-}
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raygui.h')
+@:native('GuiDefaultProperty')
+private extern class GuiDefaultPropertyImpl {}
 
 @:include("raygui.h")
 extern class Raygui
