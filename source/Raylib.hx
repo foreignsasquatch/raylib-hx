@@ -1286,7 +1286,7 @@ extern abstract Camera3D(cpp.Struct<RayCamera3D>) to cpp.Struct<RayCamera3D>
         return cast value;
 
     @:to extern public inline function toPointer():cpp.RawPointer<RayCamera3D>
-        return cpp.RawPointer.addressOf(untyped __cpp__('{0}->value', this));
+        return cpp.RawPointer.addressOf(this);
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
