@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xml>
-	<compilerflag value="-DRAYGUI_IMPLEMENTATION" />
 	<compilerflag value="-DRAYGUI_NO_ICONS" if="RAYGUI_NO_ICONS" />
 	<compilerflag value="-DRAYGUI_CUSTOM_ICONS" if="RAYGUI_CUSTOM_ICONS" />
 	<compilerflag value="-DRAYGUI_DEBUG_RECS_BOUNDS" if="RAYGUI_DEBUG_RECS_BOUNDS" />
