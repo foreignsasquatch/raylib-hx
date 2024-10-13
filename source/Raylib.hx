@@ -2135,38 +2135,136 @@ extern abstract ModelAnimation(cpp.Struct<RayModelAnimation>) to cpp.Struct<RayM
 		return cpp.RawConstPointer.addressOf((this : RayModelAnimation));
 }
 
-// Todo: find name solution
-
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
 @:native('Ray')
-extern class Ray
+extern class RlRay
 {
 	@:native('Ray')
-	static function alloc():Ray;
+	static function alloc():RlRay;
 
 	var position:RayVector3;
 	var direction:RayVector3;
 }
 
-// Todo: find name solution
+extern abstract Ray(cpp.Struct<RlRay>) to cpp.Struct<RlRay>
+{
+	var position(get, set):RayVector3;
+
+	inline function get_position():RayVector3
+	{
+		return this.position;
+	}
+
+	inline function set_position(value:RayVector3):RayVector3
+	{
+		return this.position = value;
+	}
+
+	var direction(get, set):RayVector3;
+
+	inline function get_direction():RayVector3
+	{
+		return this.direction;
+	}
+
+	inline function set_direction(value:RayVector3):RayVector3
+	{
+		return this.direction = value;
+	}
+
+	inline function new():Void
+	{
+		this = RlRay.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RlRay):Ray
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RlRay>
+		return cpp.RawConstPointer.addressOf((this : RlRay));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
 @:unreflective
 @:structAccess
 @:native('RayCollision')
-extern class RayCollision
+extern class RlRayCollision
 {
 	@:native('RayCollision')
-	static function alloc():RayCollision;
+	static function alloc():RlRayCollision;
 
 	var hit:Bool;
 	var distance:Single;
 	var point:RayVector3;
 	var normal:RayVector3;
+}
+
+extern abstract RayCollision(cpp.Struct<RlRayCollision>) to cpp.Struct<RlRayCollision>
+{
+	var hit(get, set):Bool;
+
+	inline function get_hit():Bool
+	{
+		return this.hit;
+	}
+
+	inline function set_hit(value:Bool):Bool
+	{
+		return this.hit = value;
+	}
+
+	var distance(get, set):Single;
+
+	inline function get_distance():Single
+	{
+		return this.distance;
+	}
+
+	inline function set_distance(value:Single):Single
+	{
+		return this.distance = value;
+	}
+
+	var point(get, set):RayVector3;
+
+	inline function get_point():RayVector3
+	{
+		return this.point;
+	}
+
+	inline function set_point(value:RayVector3):RayVector3
+	{
+		return this.point = value;
+	}
+
+	var normal(get, set):RayVector3;
+
+	inline function get_normal():RayVector3
+	{
+		return this.normal;
+	}
+
+	inline function set_normal(value:RayVector3):RayVector3
+	{
+		return this.normal = value;
+	}
+
+	inline function new():Void
+	{
+		this = RlRayCollision.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RlRayCollision):RayCollision
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RlRayCollision>
+		return cpp.RawConstPointer.addressOf((this : RlRayCollision));
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
@@ -3672,9 +3770,9 @@ extern class Raylib
 	@:native('SetShaderValueTexture') static function setShaderValueTexture(shader:RayShader, locIndex:Int, texture:RayTexture):Void;
 	@:native('UnloadShader') static function unloadShader(shader:RayShader):Void;
 
-	@:native('GetMouseRay') static function getMouseRay(mousePosition:RayVector2, camera:RayCamera3D):Ray;
-	@:native('GetScreenToWorldRay') static function getScreenToWorldRay(mousePosition:RayVector2, camera:RayCamera3D):Ray;
-	@:native('GetScreenToWorldRayEx') static function getScreenToWorldRayEx(mousePosition:RayVector2, camera:RayCamera3D, width:Int, height:Int):Ray;
+	@:native('GetMouseRay') static function getMouseRay(mousePosition:RayVector2, camera:RayCamera3D):RlRay;
+	@:native('GetScreenToWorldRay') static function getScreenToWorldRay(mousePosition:RayVector2, camera:RayCamera3D):RlRay;
+	@:native('GetScreenToWorldRayEx') static function getScreenToWorldRayEx(mousePosition:RayVector2, camera:RayCamera3D, width:Int, height:Int):RlRay;
 	@:native('GetWorldToScreen') static function getWorldToScreen(position:RayVector3, camera:RayCamera3D):RayVector2;
 	@:native('GetWorldToScreenEx') static function getWorldToScreenEx(position:RayVector3, camera:RayCamera3D, width:Int, height:Int):RayVector2;
 	@:native('GetWorldToScreen2D') static function getWorldToScreen2D(position:RayVector2, camera:RayCamera2D):RayVector2;
@@ -4120,7 +4218,7 @@ extern class Raylib
 	@:native('DrawCapsuleWires') static function drawCapsuleWires(startPos:RayVector3, endPos:RayVector3, radius:Single, slices:Int, rings:Int,
 		color:RayColor):Void;
 	@:native('DrawPlane') static function drawPlane(centerPos:RayVector3, size:RayVector2, color:RayColor):Void;
-	@:native('DrawRay') static function drawRay(ray:Ray, color:RayColor):Void;
+	@:native('DrawRay') static function drawRay(ray:RlRay, color:RayColor):Void;
 	@:native('DrawGrid') static function drawGrid(slices:Int, spacing:Single):Void;
 
 	@:native('LoadModel') static function loadModel(fileName:cpp.ConstCharStar):RayModel;
@@ -4182,11 +4280,11 @@ extern class Raylib
 	@:native('CheckCollisionSpheres') static function checkCollisionSpheres(center1:RayVector3, radius1:Single, center2:RayVector3, radius2:Single):Bool;
 	@:native('CheckCollisionBoxes') static function checkCollisionBoxes(box1:RayBoundingBox, box2:RayBoundingBox):Bool;
 	@:native('CheckCollisionBoxSphere') static function checkCollisionBoxSphere(box:RayBoundingBox, center:RayVector3, radius:Single):Bool;
-	@:native('GetRayCollisionSphere') static function getRayCollisionSphere(ray:Ray, center:RayVector3, radius:Single):RayCollision;
-	@:native('GetRayCollisionBox') static function getRayCollisionBox(ray:Ray, box:RayBoundingBox):RayCollision;
-	@:native('GetRayCollisionMesh') static function getRayCollisionMesh(ray:Ray, mesh:RayMesh, transform:RayMatrix):RayCollision;
-	@:native('GetRayCollisionTriangle') static function getRayCollisionTriangle(ray:Ray, p1:RayVector3, p2:RayVector3, p3:RayVector3):RayCollision;
-	@:native('GetRayCollisionQuad') static function getRayCollisionQuad(ray:Ray, p1:RayVector3, p2:RayVector3, p3:RayVector3, p4:RayVector3):RayCollision;
+	@:native('GetRayCollisionSphere') static function getRayCollisionSphere(ray:RlRay, center:RayVector3, radius:Single):RlRayCollision;
+	@:native('GetRayCollisionBox') static function getRayCollisionBox(ray:RlRay, box:RayBoundingBox):RlRayCollision;
+	@:native('GetRayCollisionMesh') static function getRayCollisionMesh(ray:RlRay, mesh:RayMesh, transform:RayMatrix):RlRayCollision;
+	@:native('GetRayCollisionTriangle') static function getRayCollisionTriangle(ray:RlRay, p1:RayVector3, p2:RayVector3, p3:RayVector3):RlRayCollision;
+	@:native('GetRayCollisionQuad') static function getRayCollisionQuad(ray:RlRay, p1:RayVector3, p2:RayVector3, p3:RayVector3, p4:RayVector3):RlRayCollision;
 
 	@:native('InitAudioDevice') static function initAudioDevice():Void;
 	@:native('CloseAudioDevice') static function closeAudioDevice():Void;
