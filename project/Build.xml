@@ -37,7 +37,7 @@
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/utils.c" />
 
 		<section if="windows || linux">
-			<compilerflag value="-DPLATFORM_DESKTOP_GLFW" />
+			<compilerflag value="-DPLATFORM_DESKTOP" />
 			<compilerflag value="-DGRAPHICS_API_OPENGL_33" />
 		</section>
 
