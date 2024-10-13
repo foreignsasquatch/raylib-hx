@@ -270,7 +270,212 @@ extern class RayMatrix
 	var m15:Single;
 }
 
-typedef Matrix = cpp.Struct<RayMatrix>;
+extern abstract Matrix(cpp.Struct<RayMatrix>) to cpp.Struct<RayMatrix>
+{
+	var m0(get, set):Single;
+
+	inline function get_m0():Single
+	{
+		return this.m0;
+	}
+
+	inline function set_m0(value:Single):Single
+	{
+		return this.m0 = value;
+	}
+
+	var m4(get, set):Single;
+
+	inline function get_m4():Single
+	{
+		return this.m4;
+	}
+
+	inline function set_m4(value:Single):Single
+	{
+		return this.m4 = value;
+	}
+
+	var m8(get, set):Single;
+
+	inline function get_m8():Single
+	{
+		return this.m8;
+	}
+
+	inline function set_m8(value:Single):Single
+	{
+		return this.m8 = value;
+	}
+
+	var m12(get, set):Single;
+
+	inline function get_m12():Single
+	{
+		return this.m12;
+	}
+
+	inline function set_m12(value:Single):Single
+	{
+		return this.m12 = value;
+	}
+
+	var m1(get, set):Single;
+
+	inline function get_m1():Single
+	{
+		return this.m1;
+	}
+
+	inline function set_m1(value:Single):Single
+	{
+		return this.m1 = value;
+	}
+
+	var m5(get, set):Single;
+
+	inline function get_m5():Single
+	{
+		return this.m5;
+	}
+
+	inline function set_m5(value:Single):Single
+	{
+		return this.m5 = value;
+	}
+
+	var m9(get, set):Single;
+
+	inline function get_m9():Single
+	{
+		return this.m9;
+	}
+
+	inline function set_m9(value:Single):Single
+	{
+		return this.m9 = value;
+	}
+
+	var m13(get, set):Single;
+
+	inline function get_m13():Single
+	{
+		return this.m13;
+	}
+
+	inline function set_m13(value:Single):Single
+	{
+		return this.m13 = value;
+	}
+
+	var m2(get, set):Single;
+
+	inline function get_m2():Single
+	{
+		return this.m2;
+	}
+
+	inline function set_m2(value:Single):Single
+	{
+		return this.m2 = value;
+	}
+
+	var m6(get, set):Single;
+
+	inline function get_m6():Single
+	{
+		return this.m6;
+	}
+
+	inline function set_m6(value:Single):Single
+	{
+		return this.m6 = value;
+	}
+
+	var m10(get, set):Single;
+
+	inline function get_m10():Single
+	{
+		return this.m10;
+	}
+
+	inline function set_m10(value:Single):Single
+	{
+		return this.m10 = value;
+	}
+
+	var m14(get, set):Single;
+
+	inline function get_m14():Single
+	{
+		return this.m14;
+	}
+
+	inline function set_m14(value:Single):Single
+	{
+		return this.m14 = value;
+	}
+
+	var m3(get, set):Single;
+
+	inline function get_m3():Single
+	{
+		return this.m3;
+	}
+
+	inline function set_m3(value:Single):Single
+	{
+		return this.m3 = value;
+	}
+
+	var m7(get, set):Single;
+
+	inline function get_m7():Single
+	{
+		return this.m7;
+	}
+
+	inline function set_m7(value:Single):Single
+	{
+		return this.m7 = value;
+	}
+
+	var m11(get, set):Single;
+
+	inline function get_m11():Single
+	{
+		return this.m11;
+	}
+
+	inline function set_m11(value:Single):Single
+	{
+		return this.m11 = value;
+	}
+
+	var m15(get, set):Single;
+
+	inline function get_m15():Single
+	{
+		return this.m15;
+	}
+
+	inline function set_m15(value:Single):Single
+	{
+		return this.m15 = value;
+	}
+
+	inline function new():Void
+	{
+		this = RayMatrix.alloc();
+	}
+
+	@:from
+	static public inline function fromNative(value:RayMatrix):Matrix
+		return cast value;
+
+	@:to extern public inline function toPointer():cpp.RawConstPointer<RayMatrix>
+		return cpp.RawConstPointer.addressOf((this : RayMatrix));
+}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
