@@ -739,4 +739,13 @@ private extern class GuiIconNameImpl {}
 @:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
 @:include('raygui-impl.h')
 @:unreflective
-extern class Raygui {}
+extern class Raygui
+{
+	@:native('RAYGUI_VERSION_MAJOR') static var VERSION_MAJOR:Int;
+	@:native('RAYGUI_VERSION_MINOR') static var VERSION_MINOR:Int;
+	@:native('RAYGUI_VERSION_PATCH') static var VERSION_PATCH:Int;
+	@:native('::String(RAYGUI_VERSION)') static var VERSION:String;
+
+	@:native('SCROLLBAR_LEFT_SIDE') static var SCROLLBAR_LEFT_SIDE:Int;
+	@:native('SCROLLBAR_RIGHT_SIDE') static var SCROLLBAR_RIGHT_SIDE:Int;
+}
