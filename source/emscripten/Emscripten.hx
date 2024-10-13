@@ -4,6 +4,7 @@ typedef Em_Callback_Func = cpp.Callable<Void->Void>;
 typedef Em_Arg_Callback_Func = cpp.Callable<(cpp.RawPointer<cpp.Void>) -> Void>;
 
 @:include('emscripten.h')
+@:unreflective
 extern class Emscripten
 {
     @:native('emscripten_set_main_loop')
