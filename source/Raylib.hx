@@ -1381,18 +1381,18 @@ extern class RayMesh
 	var vertexCount:Int;
 	var triangleCount:Int;
 
-	var vertices:cpp.RawPointer<cpp.Float32>;
-	var texcoords:cpp.RawPointer<cpp.Float32>;
-	var texcoords2:cpp.RawPointer<cpp.Float32>;
-	var normals:cpp.RawPointer<cpp.Float32>;
-	var tangents:cpp.RawPointer<cpp.Float32>;
+	var vertices:utils.FloatPointer;
+	var texcoords:utils.FloatPointer;
+	var texcoords2:utils.FloatPointer;
+	var normals:utils.FloatPointer;
+	var tangents:utils.FloatPointer;
 	var colors:cpp.RawPointer<cpp.UInt8>;
 	var indices:cpp.RawPointer<cpp.UInt16>;
 
-	var animVertices:cpp.RawPointer<cpp.Float32>;
-	var animNormals:cpp.RawPointer<cpp.Float32>;
+	var animVertices:utils.FloatPointer;
+	var animNormals:utils.FloatPointer;
 	var boneIds:cpp.RawPointer<cpp.UInt8>;
-	var boneWeights:cpp.RawPointer<cpp.Float32>;
+	var boneWeights:utils.FloatPointer;
 
 	var vaoId:cpp.UInt32;
 	var vboId:cpp.RawPointer<cpp.UInt32>;
@@ -1424,62 +1424,62 @@ extern abstract Mesh(cpp.Struct<RayMesh>) to cpp.Struct<RayMesh>
 		return this.triangleCount = value;
 	}
 
-	var vertices(get, set):cpp.RawPointer<cpp.Float32>;
+	var vertices(get, set):utils.FloatPointer;
 
-	inline function get_vertices():cpp.RawPointer<cpp.Float32>
+	inline function get_vertices():utils.FloatPointer
 	{
 		return this.vertices;
 	}
 
-	inline function set_vertices(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	inline function set_vertices(value:utils.FloatPointer):utils.FloatPointer
 	{
 		return this.vertices = value;
 	}
 
-	var texcoords(get, set):cpp.RawPointer<cpp.Float32>;
+	var texcoords(get, set):utils.FloatPointer;
 
-	inline function get_texcoords():cpp.RawPointer<cpp.Float32>
+	inline function get_texcoords():utils.FloatPointer
 	{
 		return this.texcoords;
 	}
 
-	inline function set_texcoords(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	inline function set_texcoords(value:utils.FloatPointer):utils.FloatPointer
 	{
 		return this.texcoords = value;
 	}
 
-	var texcoords2(get, set):cpp.RawPointer<cpp.Float32>;
+	var texcoords2(get, set):utils.FloatPointer;
 
-	inline function get_texcoords2():cpp.RawPointer<cpp.Float32>
+	inline function get_texcoords2():utils.FloatPointer
 	{
 		return this.texcoords2;
 	}
 
-	inline function set_texcoords2(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	inline function set_texcoords2(value:utils.FloatPointer):utils.FloatPointer
 	{
 		return this.texcoords2 = value;
 	}
 
-	var normals(get, set):cpp.RawPointer<cpp.Float32>;
+	var normals(get, set):utils.FloatPointer;
 
-	inline function get_normals():cpp.RawPointer<cpp.Float32>
+	inline function get_normals():utils.FloatPointer
 	{
 		return this.normals;
 	}
 
-	inline function set_normals(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	inline function set_normals(value:utils.FloatPointer):utils.FloatPointer
 	{
 		return this.normals = value;
 	}
 
-	var tangents(get, set):cpp.RawPointer<cpp.Float32>;
+	var tangents(get, set):utils.FloatPointer;
 
-	inline function get_tangents():cpp.RawPointer<cpp.Float32>
+	inline function get_tangents():utils.FloatPointer
 	{
 		return this.tangents;
 	}
 
-	inline function set_tangents(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	inline function set_tangents(value:utils.FloatPointer):utils.FloatPointer
 	{
 		return this.tangents = value;
 	}
@@ -1508,26 +1508,26 @@ extern abstract Mesh(cpp.Struct<RayMesh>) to cpp.Struct<RayMesh>
 		return this.indices = value;
 	}
 
-	var animVertices(get, set):cpp.RawPointer<cpp.Float32>;
+	var animVertices(get, set):utils.FloatPointer;
 
-	inline function get_animVertices():cpp.RawPointer<cpp.Float32>
+	inline function get_animVertices():utils.FloatPointer
 	{
 		return this.animVertices;
 	}
 
-	inline function set_animVertices(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	inline function set_animVertices(value:utils.FloatPointer):utils.FloatPointer
 	{
 		return this.animVertices = value;
 	}
 
-	var animNormals(get, set):cpp.RawPointer<cpp.Float32>;
+	var animNormals(get, set):utils.FloatPointer;
 
-	inline function get_animNormals():cpp.RawPointer<cpp.Float32>
+	inline function get_animNormals():utils.FloatPointer
 	{
 		return this.animNormals;
 	}
 
-	inline function set_animNormals(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	inline function set_animNormals(value:utils.FloatPointer):utils.FloatPointer
 	{
 		return this.animNormals = value;
 	}
@@ -1544,14 +1544,14 @@ extern abstract Mesh(cpp.Struct<RayMesh>) to cpp.Struct<RayMesh>
 		return this.boneIds = value;
 	}
 
-	var boneWeights(get, set):cpp.RawPointer<cpp.Float32>;
+	var boneWeights(get, set):utils.FloatPointer;
 
-	inline function get_boneWeights():cpp.RawPointer<cpp.Float32>
+	inline function get_boneWeights():utils.FloatPointer
 	{
 		return this.boneWeights;
 	}
 
-	inline function set_boneWeights(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	inline function set_boneWeights(value:utils.FloatPointer):utils.FloatPointer
 	{
 		return this.boneWeights = value;
 	}
@@ -1724,7 +1724,7 @@ extern class RayMaterial
 
 	var shader:RayShader;
 	var maps:cpp.RawPointer<RayMaterialMap>;
-	var params:cpp.RawPointer<cpp.Float32>;
+	var params:utils.FloatPointer;
 }
 
 extern abstract Material(cpp.Struct<RayMaterial>) to cpp.Struct<RayMaterial>
@@ -1753,14 +1753,14 @@ extern abstract Material(cpp.Struct<RayMaterial>) to cpp.Struct<RayMaterial>
 		return this.maps = value;
 	}
 
-	var params(get, set):cpp.RawPointer<cpp.Float32>;
+	var params(get, set):utils.FloatPointer;
 
-	inline function get_params():cpp.RawPointer<cpp.Float32>
+	inline function get_params():utils.FloatPointer
 	{
 		return this.params;
 	}
 
-	inline function set_params(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	inline function set_params(value:utils.FloatPointer):utils.FloatPointer
 	{
 		return this.params = value;
 	}
@@ -2600,8 +2600,8 @@ extern class RayVrDeviceInfo
 	var eyeToScreenDistance:Single;
 	var lensSeparationDistance:Single;
 	var interpupillaryDistance:Single;
-	var lensDistortionValues:cpp.RawPointer<cpp.Float32>;
-	var chromaAbCorrection:cpp.RawPointer<cpp.Float32>;
+	var lensDistortionValues:utils.FloatPointer;
+	var chromaAbCorrection:utils.FloatPointer;
 }
 
 extern abstract VrDeviceInfo(cpp.Struct<RayVrDeviceInfo>) to cpp.Struct<RayVrDeviceInfo>
@@ -2690,26 +2690,26 @@ extern abstract VrDeviceInfo(cpp.Struct<RayVrDeviceInfo>) to cpp.Struct<RayVrDev
 		return this.interpupillaryDistance = value;
 	}
 
-	var lensDistortionValues(get, set):cpp.RawPointer<cpp.Float32>;
+	var lensDistortionValues(get, set):utils.FloatPointer;
 
-	inline function get_lensDistortionValues():cpp.RawPointer<cpp.Float32>
+	inline function get_lensDistortionValues():utils.FloatPointer
 	{
 		return this.lensDistortionValues;
 	}
 
-	inline function set_lensDistortionValues(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	inline function set_lensDistortionValues(value:utils.FloatPointer):utils.FloatPointer
 	{
 		return this.lensDistortionValues = value;
 	}
 
-	var chromaAbCorrection(get, set):cpp.RawPointer<cpp.Float32>;
+	var chromaAbCorrection(get, set):utils.FloatPointer;
 
-	inline function get_chromaAbCorrection():cpp.RawPointer<cpp.Float32>
+	inline function get_chromaAbCorrection():utils.FloatPointer
 	{
 		return this.chromaAbCorrection;
 	}
 
-	inline function set_chromaAbCorrection(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	inline function set_chromaAbCorrection(value:utils.FloatPointer):utils.FloatPointer
 	{
 		return this.chromaAbCorrection = value;
 	}
@@ -2738,11 +2738,11 @@ extern class RayVrStereoConfig
 	static function alloc():RayVrStereoConfig;
 
 	var projection:cpp.RawPointer<RayMatrix>;
-	var rightLensCenter:cpp.RawPointer<cpp.Float32>;
-	var leftScreenCenter:cpp.RawPointer<cpp.Float32>;
-	var rightScreenCenter:cpp.RawPointer<cpp.Float32>;
-	var scale:cpp.RawPointer<cpp.Float32>;
-	var scaleIn:cpp.RawPointer<cpp.Float32>;
+	var rightLensCenter:utils.FloatPointer;
+	var leftScreenCenter:utils.FloatPointer;
+	var rightScreenCenter:utils.FloatPointer;
+	var scale:utils.FloatPointer;
+	var scaleIn:utils.FloatPointer;
 }
 
 extern abstract VrStereoConfig(cpp.Struct<RayVrStereoConfig>) to cpp.Struct<RayVrStereoConfig>
@@ -2759,62 +2759,62 @@ extern abstract VrStereoConfig(cpp.Struct<RayVrStereoConfig>) to cpp.Struct<RayV
 		return this.projection = value;
 	}
 
-	var rightLensCenter(get, set):cpp.RawPointer<cpp.Float32>;
+	var rightLensCenter(get, set):utils.FloatPointer;
 
-	inline function get_rightLensCenter():cpp.RawPointer<cpp.Float32>
+	inline function get_rightLensCenter():utils.FloatPointer
 	{
 		return this.rightLensCenter;
 	}
 
-	inline function set_rightLensCenter(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	inline function set_rightLensCenter(value:utils.FloatPointer):utils.FloatPointer
 	{
 		return this.rightLensCenter = value;
 	}
 
-	var leftScreenCenter(get, set):cpp.RawPointer<cpp.Float32>;
+	var leftScreenCenter(get, set):utils.FloatPointer;
 
-	inline function get_leftScreenCenter():cpp.RawPointer<cpp.Float32>
+	inline function get_leftScreenCenter():utils.FloatPointer
 	{
 		return this.leftScreenCenter;
 	}
 
-	inline function set_leftScreenCenter(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	inline function set_leftScreenCenter(value:utils.FloatPointer):utils.FloatPointer
 	{
 		return this.leftScreenCenter = value;
 	}
 
-	var rightScreenCenter(get, set):cpp.RawPointer<cpp.Float32>;
+	var rightScreenCenter(get, set):utils.FloatPointer;
 
-	inline function get_rightScreenCenter():cpp.RawPointer<cpp.Float32>
+	inline function get_rightScreenCenter():utils.FloatPointer
 	{
 		return this.rightScreenCenter;
 	}
 
-	inline function set_rightScreenCenter(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	inline function set_rightScreenCenter(value:utils.FloatPointer):utils.FloatPointer
 	{
 		return this.rightScreenCenter = value;
 	}
 
-	var scale(get, set):cpp.RawPointer<cpp.Float32>;
+	var scale(get, set):utils.FloatPointer;
 
-	inline function get_scale():cpp.RawPointer<cpp.Float32>
+	inline function get_scale():utils.FloatPointer
 	{
 		return this.scale;
 	}
 
-	inline function set_scale(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	inline function set_scale(value:utils.FloatPointer):utils.FloatPointer
 	{
 		return this.scale = value;
 	}
 
-	var scaleIn(get, set):cpp.RawPointer<cpp.Float32>;
+	var scaleIn(get, set):utils.FloatPointer;
 
-	inline function get_scaleIn():cpp.RawPointer<cpp.Float32>
+	inline function get_scaleIn():utils.FloatPointer
 	{
 		return this.scaleIn;
 	}
 
-	inline function set_scaleIn(value:cpp.RawPointer<cpp.Float32>):cpp.RawPointer<cpp.Float32>
+	inline function set_scaleIn(value:utils.FloatPointer):utils.FloatPointer
 	{
 		return this.scaleIn = value;
 	}
@@ -4040,7 +4040,7 @@ extern class Raylib
 	@:native('ImageAlphaMask') static function imageAlphaMask(image:cpp.RawPointer<RayImage>, alphaMask:RayImage):Void;
 	@:native('ImageAlphaPremultiply') static function imageAlphaPremultiply(image:cpp.RawPointer<RayImage>):Void;
 	@:native('ImageBlurGaussian') static function imageBlurGaussian(image:cpp.RawPointer<RayImage>, blurSize:Int):Void;
-	@:native('ImageKernelConvolution') static function imageKernelConvolution(image:cpp.RawPointer<RayImage>, kernel:cpp.RawPointer<cpp.Float32>,
+	@:native('ImageKernelConvolution') static function imageKernelConvolution(image:cpp.RawPointer<RayImage>, kernel:utils.FloatPointer,
 		kernelSize:Int):Void;
 	@:native('ImageResize') static function imageResize(image:cpp.RawPointer<RayImage>, newWidth:Int, newHeight:Int):Void;
 	@:native('ImageResizeNN') static function imageResizeNN(image:cpp.RawPointer<RayImage>, newWidth:Int, newHeight:Int):Void;
@@ -4318,8 +4318,8 @@ extern class Raylib
 	@:native('WaveCopy') static function WaveCopy(wave:RayWave):RayWave;
 	@:native('WaveCrop') static function WaveCrop(wave:cpp.RawPointer<RayWave>, initFrame:Int, finalFrame:Int):Void;
 	@:native('WaveFormat') static function WaveFormat(wave:cpp.RawPointer<RayWave>, initSample:Int, finalSample:Int, channels:Int):Void;
-	@:native('LoadWaveSamples') static function loadWaveSamples(wave:RayWave):cpp.RawPointer<cpp.Float32>;
-	@:native('UnloadWaveSamples') static function unloadWaveSamples(samples:cpp.RawPointer<cpp.Float32>):Void;
+	@:native('LoadWaveSamples') static function loadWaveSamples(wave:RayWave):utils.FloatPointer;
+	@:native('UnloadWaveSamples') static function unloadWaveSamples(samples:utils.FloatPointer):Void;
 
 	@:native('LoadMusicStream') static function loadMusicStream(fileName:cpp.ConstCharStar):RayMusic;
 	@:native('LoadMusicStreamFromMemory') static function loadMusicStreamFromMemory(fileType:cpp.ConstCharStar, fileData:cpp.RawConstPointer<cpp.UInt8>,
