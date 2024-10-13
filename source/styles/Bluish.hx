@@ -1,6 +1,6 @@
 package styles;
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('bluish/style_bluish.h')
 @:unreflective
 extern class Bluish

@@ -1,6 +1,6 @@
 package styles;
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('enefete/style_enefete.h')
 @:unreflective
 extern class Enefe

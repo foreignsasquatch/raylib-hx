@@ -1,6 +1,6 @@
 package styles;
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('ashes/style_ashes.h')
 @:unreflective
 extern class Ashes

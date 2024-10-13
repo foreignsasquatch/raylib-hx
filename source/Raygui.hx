@@ -30,8 +30,8 @@ package;
 
 import Raylib;
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:unreflective
 @:structAccess
 @:native('GuiStyleProp')
@@ -111,8 +111,8 @@ extern enum abstract GuiState(GuiStateImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiState')
 private extern class GuiStateImpl {}
 
@@ -130,8 +130,8 @@ extern enum abstract GuiTextAlignment(GuiTextAlignmentImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiTextAlignment')
 private extern class GuiTextAlignmentImpl {}
 
@@ -149,8 +149,8 @@ extern enum abstract GuiTextAlignmentVertical(GuiTextAlignmentVerticalImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiTextAlignmentVertical')
 private extern class GuiTextAlignmentVerticalImpl {}
 
@@ -168,8 +168,8 @@ extern enum abstract GuiTextWrapMode(GuiTextWrapModeImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiTextWrapMode')
 private extern class GuiTextWrapModeImpl {}
 
@@ -200,8 +200,8 @@ extern enum abstract GuiControl(GuiControlImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiControl')
 private extern class GuiControlImpl {}
 
@@ -231,8 +231,8 @@ extern enum abstract GuiControlProperty(GuiControlPropertyImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiControlProperty')
 private extern class GuiControlPropertyImpl {}
 
@@ -254,8 +254,8 @@ extern enum abstract GuiDefaultProperty(GuiDefaultPropertyImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiDefaultProperty')
 private extern class GuiDefaultPropertyImpl {}
 
@@ -271,8 +271,8 @@ extern enum abstract GuiToggleProperty(GuiTogglePropertyImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiToggleProperty')
 private extern class GuiTogglePropertyImpl {}
 
@@ -289,8 +289,8 @@ extern enum abstract GuiSliderProperty(GuiSliderPropertyImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiSliderProperty')
 private extern class GuiSliderPropertyImpl {}
 
@@ -306,8 +306,8 @@ extern enum abstract GuiProgressBarProperty(GuiProgressBarPropertyImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiProgressBarProperty')
 private extern class GuiProgressBarPropertyImpl {}
 
@@ -328,8 +328,8 @@ extern enum abstract GuiScrollBarProperty(GuiScrollBarPropertyImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiScrollBarProperty')
 private extern class GuiScrollBarPropertyImpl {}
 
@@ -345,8 +345,8 @@ extern enum abstract GuiCheckBoxProperty(GuiCheckBoxPropertyImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiCheckBoxProperty')
 private extern class GuiCheckBoxPropertyImpl {}
 
@@ -363,8 +363,8 @@ extern enum abstract GuiComboBoxProperty(GuiComboBoxPropertyImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiComboBoxProperty')
 private extern class GuiComboBoxPropertyImpl {}
 
@@ -381,8 +381,8 @@ extern enum abstract GuiDropdownBoxProperty(GuiDropdownBoxPropertyImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiDropdownBoxProperty')
 private extern class GuiDropdownBoxPropertyImpl {}
 
@@ -398,8 +398,8 @@ extern enum abstract GuiTextBoxProperty(GuiTextBoxPropertyImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiTextBoxProperty')
 private extern class GuiTextBoxPropertyImpl {}
 
@@ -416,8 +416,8 @@ extern enum abstract GuiSpinnerProperty(GuiSpinnerPropertyImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiSpinnerProperty')
 private extern class GuiSpinnerPropertyImpl {}
 
@@ -436,8 +436,8 @@ extern enum abstract GuiListViewProperty(GuiListViewPropertyImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiListViewProperty')
 private extern class GuiListViewPropertyImpl {}
 
@@ -457,8 +457,8 @@ extern enum abstract GuiColorPickerProperty(GuiColorPickerPropertyImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiColorPickerProperty')
 private extern class GuiColorPickerPropertyImpl {}
 
@@ -730,14 +730,14 @@ extern enum abstract GuiIconName(GuiIconNameImpl)
 		return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:native('GuiIconName')
 private extern class GuiIconNameImpl {}
 #end
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib-hx')
 @:unreflective
 extern class Raygui
 {

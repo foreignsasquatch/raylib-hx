@@ -1,6 +1,6 @@
 package styles;
 
-@:buildXml('<include name="${haxelib:raygui-impl.h}/project/Build.xml" />')
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('jungle/style_jungle.h')
 @:unreflective
 extern class Jungle
