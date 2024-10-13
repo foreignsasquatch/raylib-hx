@@ -1,5 +1,0 @@
-# change to what example you want to compile
---main core.InputKeyboard
---library raylib-hx
---cpp bin/cpp/
-
