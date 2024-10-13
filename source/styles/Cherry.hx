@@ -4,6 +4,8 @@ package styles;
 #error 'Raygui supports only C++ target platforms.'
 #end
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('raylib.h')
+@:include('raygui-impl.h')
 @:include('cherry/style_cherry.h')
 @:unreflective
 extern class Cherry
