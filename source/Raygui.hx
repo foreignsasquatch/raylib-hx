@@ -29,7 +29,7 @@
 package;
 
 #if !cpp
-#error 'Raylib supports only C++ target platforms.'
+#error 'Raygui supports only C++ target platforms.'
 #end
 import Raylib;
 
