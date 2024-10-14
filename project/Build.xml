@@ -75,6 +75,13 @@
 		<compilerflag value="-D_GLFW_USE_MENUBAR" />
 		<compilerflag value="-D_GLFW_USE_RETINA" />
 
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/init.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/platform.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/context.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/monitor.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/window.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/input.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/vulkan.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/posix_module.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/posix_thread.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_init.m" />
@@ -139,11 +146,11 @@
 			<lib name="-lm" />
 		</section>
 
+		<files id="raylib-base" />
+
 		<section if="macos">
 			<files id="raylib-glfw" />
 		</section>
-
-		<files id="raylib-base" />
 	</target>
 
 	<linker id="exe" exe="em++" if="emscripten">
