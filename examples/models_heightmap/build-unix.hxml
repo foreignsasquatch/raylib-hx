@@ -2,5 +2,5 @@
 -D analyzer-optimize
 -lib raylib-hx
 -main Main
--cpp bin
--cmd cp -rf resources bin/resources
+-cpp bin/unix
+-cmd cp -rf resources bin/unix/resources

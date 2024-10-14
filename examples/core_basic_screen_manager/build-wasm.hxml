@@ -2,4 +2,4 @@
 -D analyzer-optimize
 -lib raylib-hx
 -main Main
--cpp bin/unix
+-cpp bin/wasm
