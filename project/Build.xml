@@ -152,12 +152,4 @@
 			<files id="raylib-glfw" />
 		</section>
 	</target>
-
-	<linker id="exe" exe="em++" if="emscripten">
-		<flag name="-s" value="USE_GLFW=3" />
-
-		<section if="ASSET_PATH">
-			<flag name="--preload-file" value="${ASSET_PATH}" />
-		</section>
-        </linker>
 </xml>
