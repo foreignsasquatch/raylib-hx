@@ -8,7 +8,7 @@ import Raylib;
 enum GameScreen
 {
     LOGO;
-    TITILE;
+    TITLE;
     GAMEPLAY;
     ENDING;
 }
@@ -40,7 +40,7 @@ class Main
         {
             // Update
             //----------------------------------------------------------------------------------
-            switch(currentScreen)
+            switch (currentScreen)
             {
                 case GameScreen.LOGO:
                     // TODO: Update LOGO screen variables here!
@@ -72,7 +72,6 @@ class Main
                     {
                         currentScreen = GameScreen.TITLE;
                     }
-                default: break;
             }
             //----------------------------------------------------------------------------------
 
@@ -81,7 +80,7 @@ class Main
             Raylib.beginDrawing();
             Raylib.clearBackground(Raylib.RAYWHITE);
 
-            switch(currentScreen)
+            switch (currentScreen)
             {
                 case GameScreen.LOGO:
                     // TODO: Draw LOGO screen here!
@@ -102,7 +101,7 @@ class Main
                     Raylib.drawRectangle(0, 0, screenWidth, screenHeight, Raylib.BLUE);
                     Raylib.drawText("ENDING SCREEN", 20, 20, 40, Raylib.DARKBLUE);
                     Raylib.drawText("PRESS ENTER or TAP to RETURN to TITLE SCREEN", 120, 220, 20, Raylib.DARKBLUE);
-                default: break;
+                default:
             }
 
             Raylib.endDrawing();
