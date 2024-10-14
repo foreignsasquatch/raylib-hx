@@ -139,11 +139,11 @@
 			<lib name="-lm" />
 		</section>
 
-		<files id="raylib-base" />
-
 		<section if="macos">
 			<files id="raylib-glfw" />
 		</section>
+
+		<files id="raylib-base" />
 	</target>
 
 	<linker id="exe" exe="em++" if="emscripten">
