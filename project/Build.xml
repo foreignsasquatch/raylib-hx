@@ -20,7 +20,7 @@
 		<include name="${haxelib:raylib-hx}/project/lib/raygui-defines.xml" />
 	</files>
 
-	<files id="raylib">
+	<files id="raylib-base">
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" unless="emscripten || android" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/extras" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
@@ -29,14 +29,14 @@
 
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/raudio.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rcore.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rglfw.c" unless="emscripten || android" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rglfw.c" unless="macos || emscripten || android" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rmodels.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rshapes.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtext.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtextures.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/utils.c" />
 
-		<section if="windows || linux">
+		<section if="windows || macos || linux">
 			<compilerflag value="-DPLATFORM_DESKTOP" />
 			<compilerflag value="-DGRAPHICS_API_OPENGL_33" />
 		</section>
@@ -68,6 +68,32 @@
 		</section>
 	</files>
 
+	<files id="raylib-glfw">
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" />
+
+		<compilerflag value="-D_GLFW_COCOA" />
+		<compilerflag value="-D_GLFW_USE_MENUBAR" />
+		<compilerflag value="-D_GLFW_USE_RETINA" />
+
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/init.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/platform.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/context.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/monitor.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/window.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/input.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/vulkan.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/posix_module.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/posix_thread.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_init.m" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_joystick.m" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_monitor.m" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_window.m" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_time.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/nsgl_context.m" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/egl_context.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/osmesa_context.c" />
+	</files>
+
 	<target id="haxe">
 		<section if="mingw">
 			<lib name="-lopengl32" />
@@ -81,6 +107,13 @@
 			<lib name="gdi32.lib" />
 			<lib name="winmm.lib" />
 			<lib name="shell32.lib" />
+		</section>
+
+		<section if="macos">
+			<vflag name="-framework" value="OpenGL" />
+			<vflag name="-framework" value="IOKit" />
+			<vflag name="-framework" value="CoreAudio" />
+			<vflag name="-framework" value="CoreVideo" />
 		</section>
 
 		<section if="linux">
@@ -113,7 +146,11 @@
 			<lib name="-lm" />
 		</section>
 
-		<files id="raylib" />
+		<files id="raylib-base" />
+
+		<section if="macos">
+			<files id="raylib-glfw" />
+		</section>
 	</target>
 
 	<linker id="exe" exe="em++" if="emscripten">

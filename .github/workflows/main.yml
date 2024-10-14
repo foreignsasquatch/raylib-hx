@@ -15,8 +15,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, ubuntu-latest]
-        example: [core_basic_window, models_heightmap]
+        os: [windows-latest, macos-latest, ubuntu-latest]
+        example: [core_basic_screen_manager, core_basic_window, models_heightmap]
     steps:
       - name: Checkout
         uses: actions/checkout@main
@@ -38,7 +38,7 @@ jobs:
           haxelib dev raylib-hx .
 
       - name: Build Unix
-        if: startsWith(matrix.os, 'ubuntu')
+        if: startsWith(matrix.os, 'macos') || startsWith(matrix.os, 'ubuntu')
         run: cd examples/${{matrix.example}} && haxe build-unix.hxml
 
       - name: Build Windows
