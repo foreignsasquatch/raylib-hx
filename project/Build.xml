@@ -36,7 +36,7 @@
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtextures.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/utils.c" />
 
-		<section if="windows || linux">
+		<section if="windows || macos || linux">
 			<compilerflag value="-DPLATFORM_DESKTOP" />
 			<compilerflag value="-DGRAPHICS_API_OPENGL_33" />
 		</section>
@@ -83,6 +83,13 @@
 			<lib name="shell32.lib" />
 		</section>
 
+		<section if="macos">
+			<vflag name="-framework" value="OpenGL" />
+			<vflag name="-framework" value="IOKit" />
+			<vflag name="-framework" value="CoreAudio" />
+			<vflag name="-framework" value="CoreVideo" />
+		</section>
+
 		<section if="linux">
 			<lib name="-lGL" />
 			<lib name="-lpthread" />
@@ -123,4 +130,8 @@
 			<flag name="--preload-file" value="${ASSET_PATH}" />
 		</section>
         </linker>
+
+	<compiler id="darwin" exe="g++" if="macos">
+		<vflag name="-x" value="objective-c" />
+	</compiler>
 </xml>
