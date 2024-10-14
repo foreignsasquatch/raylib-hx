@@ -152,4 +152,9 @@
 			<files id="raylib-glfw" />
 		</section>
 	</target>
+
+	<linker id="exe" exe="em++" if="emscripten">
+		<flag value="-s" />
+		<flag value="USE_GLFW=3" />
+        </linker>
 </xml>
