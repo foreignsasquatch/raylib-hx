@@ -130,9 +130,4 @@
 			<flag name="--preload-file" value="${ASSET_PATH}" />
 		</section>
         </linker>
-
-	<compiler id="darwin" exe="g++" if="macos">
-		<flag value="-x" />
-		<flag value="objective-c" />
-	</compiler>
 </xml>
