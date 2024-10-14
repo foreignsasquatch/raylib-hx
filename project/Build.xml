@@ -20,7 +20,7 @@
 		<include name="${haxelib:raylib-hx}/project/lib/raygui-defines.xml" />
 	</files>
 
-	<files id="raylib">
+	<files id="raylib-base">
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" unless="emscripten || android" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/extras" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
@@ -29,7 +29,7 @@
 
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/raudio.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rcore.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rglfw.c" unless="emscripten || android" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rglfw.c" unless="macos || emscripten || android" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rmodels.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rshapes.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtext.c" />
@@ -66,6 +66,25 @@
 			<compilerflag value="-Wno-missing-braces" />
 			<compilerflag value="-Wno-unused-result" />
 		</section>
+	</files>
+
+	<files id="raylib-glfw">
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" />
+
+		<compilerflag value="-D_GLFW_COCOA" />
+		<compilerflag value="-D_GLFW_USE_MENUBAR" />
+		<compilerflag value="-D_GLFW_USE_RETINA" />
+
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/posix_module.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/posix_thread.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_init.m" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_joystick.m" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_monitor.m" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_window.m" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_time.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/nsgl_context.m" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/egl_context.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/osmesa_context.c" />
 	</files>
 
 	<target id="haxe">
@@ -120,7 +139,11 @@
 			<lib name="-lm" />
 		</section>
 
-		<files id="raylib" />
+		<files id="raylib-base" />
+
+		<section if="macos">
+			<files id="raylib-glfw" />
+		</section>
 	</target>
 
 	<linker id="exe" exe="em++" if="emscripten">
