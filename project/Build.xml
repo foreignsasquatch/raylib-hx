@@ -132,6 +132,7 @@
         </linker>
 
 	<compiler id="darwin" exe="g++" if="macos">
-		<vflag name="-x" value="objective-c" />
+		<pchflag value="-x" />
+		<pchflag value="objective-c" />
 	</compiler>
 </xml>
