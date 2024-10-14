@@ -1,5 +1,6 @@
 -cp ./
 -D analyzer-optimize
+-D emscripten
 -lib raylib-hx
 -main Main
 -cpp bin/wasm
