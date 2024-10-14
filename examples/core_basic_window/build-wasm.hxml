@@ -1,0 +1,7 @@
+-cp ./
+-D analyzer-optimize
+-D emscripten
+-D HXCPP_LINK_EMSCRIPTEN_EXT=.html
+-lib raylib-hx
+-main Main
+-cpp bin/wasm

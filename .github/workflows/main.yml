@@ -10,7 +10,7 @@ on:
       - 'hxformat.json'
   workflow_dispatch:
 jobs:
-  Job:
+  Desktop:
     runs-on: ${{matrix.os}}
     strategy:
       fail-fast: false
@@ -44,3 +44,30 @@ jobs:
       - name: Build Windows
         if: startsWith(matrix.os, 'windows')
         run: cd examples/${{matrix.example}} && haxe build-win.hxml
+  Emscripten:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        example: [core_basic_screen_manager, core_basic_window, models_heightmap]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+        with:
+          submodules: true
+
+      - name: Setup emsdk
+        uses: mymindstorm/setup-emsdk@master
+
+      - name: Setup Haxe
+        uses: krdlab/setup-haxe@master
+        with:
+          haxe-version: latest
+
+      - name: Install Dependencies
+        run: |
+          haxelib install hxcpp --quiet
+          haxelib dev raylib-hx .
+
+      - name: Build
+        run: cd examples/${{matrix.example}} && haxe build-wasm.hxml -D EMSDK=$EMSDK
