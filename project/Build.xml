@@ -39,6 +39,10 @@
 		<section if="windows || macos || linux">
 			<compilerflag value="-DPLATFORM_DESKTOP" />
 			<compilerflag value="-DGRAPHICS_API_OPENGL_33" />
+
+			<section if="linux">
+				<compilerflag value="-D_GLFW_WAYLAND" if="RAYLIB_WAYLAND_DISPLAY" />
+			</section>
 		</section>
 
 		<section if="emscripten">
@@ -122,7 +126,15 @@
 			<lib name="-lm" />
 			<lib name="-ldl" />
 			<lib name="-lrt" />
-			<lib name="-lX11" />
+
+			<lib name="-lX11" unless="RAYLIB_WAYLAND_DISPLAY" />
+
+			<section if="RAYLIB_WAYLAND_DISPLAY">
+				<lib name="-lwayland-client" />
+				<lib name="-lwayland-cursor" />
+				<lib name="-lwayland-egl" />
+				<lib name="-lxkbcommon" />
+			</section>
 		</section>
 
 		<section if="rpi">
