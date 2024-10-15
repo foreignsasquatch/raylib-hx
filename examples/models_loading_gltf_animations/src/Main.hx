@@ -19,9 +19,8 @@ class Main {
 		final camera:Camera3D = new Camera3D();
 		final modelFilePath:String = "../assets/model.glb";
 		final position:Vector3 = new Vector3(0.0, 0.0, 0.0);
-		final animationsCountReference:IntPointer = IntPointer.fromValue(animationsCount);
-
 		final model:RayModel = Raylib.loadModel(modelFilePath);
+		final animationsCountReference:IntPointer = IntPointer.fromValue(animationsCount);
 		final modelAnimation:RawPointer<RayModelAnimation> = Raylib.loadModelAnimations(modelFilePath, animationsCountReference);
 
 		camera.fovy = 45.0;
