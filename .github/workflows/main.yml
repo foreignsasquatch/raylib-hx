@@ -39,7 +39,7 @@ jobs:
 
       - name: Build Unix
         if: startsWith(matrix.os, 'macos') || startsWith(matrix.os, 'ubuntu')
-        run: cd examples/${{matrix.example}} && haxe build-unix.hxml
+        run: cd examples/${{matrix.example}} && haxe build-unix.hxml -D RAYLIB_WAYLAND_DISPLAY
 
       - name: Build Windows
         if: startsWith(matrix.os, 'windows')
