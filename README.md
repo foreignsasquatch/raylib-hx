@@ -29,6 +29,12 @@ Or through `Git`, if you want the latest updates
 haxelib git raylib-hx https://github.com/foreignsasquatch/raylib-hx.git
 ```
 
+If you wish to use `Wayland` for windowing instead of `X11` on ***Linux***, make sure to define `RAYLIB_WAYLAND_DISPLAY` and execute the following command in the `project/scripts` directory:
+
+```bash
+chmod +x glfw-generate-wayland.sh && ./glfw-generate-wayland.sh
+```
+
 ### Dependencies
 
 On ***Linux***, you need to install the required libraries for your distribution.
