@@ -6,7 +6,7 @@
 
 ![](https://img.shields.io/github/repo-size/foreignsasquatch/raylib-hx) ![](https://badgen.net/github/open-issues/foreignsasquatch/raylib-hx) ![](https://badgen.net/badge/license/Zlib/green)
 
-Haxe/hxcpp @:native bindings for [Raylib](https://raylib.com).
+Haxe/hxcpp @:native bindings for [raylib](https://raylib.com).
 
 ### Installation
 
@@ -28,11 +28,12 @@ Check out the [Examples Folder](examples/) for some examples on how to use this 
 
 ### Licensing
 
-**raylib-hx** is made available under the **Zlib License**. Check [LICENSE](./LICENSE) for more information.
-
 ![](https://github.com/raysan5/raylib/blob/master/logo/raylib_logo_animation.gif)
 
-**Raylib** is made available under the **Zlib License**. Check [Raylib's LICENSE](https://github.com/raysan5/raylib/blob/master/LICENSE) for more information.
+**raylib-hx** and **raylib** are made available under the **Zlib License**.
+
+- Check [raylib-hx's LICENSE](./LICENSE) for more information.
+- Check [raylib's LICENSE](https://github.com/raysan5/raylib/blob/master/LICENSE) for more information.
 
 ### Consider supporting
 
