@@ -4,59 +4,36 @@
 
 # raylib-hx
 
-![Stars](https://img.shields.io/github/stars/ForeignSasquatch/hxRaylib?style=flat-square) ![License](https://img.shields.io/github/license/ForeignSasquatch/hxRaylib?style=flat-square) ![Forks](https://img.shields.io/github/forks/ForeignSasquatch/hxRaylib?style=flat-square)
+![](https://img.shields.io/github/repo-size/foreignsasquatch/raylib-hx) ![](https://badgen.net/github/open-issues/foreignsasquatch/raylib-hx) ![](https://badgen.net/badge/license/Zlib/green)
 
-[Haxe](https://haxe.org/) bindings for [raylib](https://raylib.com), a simple and easy-to-use library to learn videogame programming.
+Haxe/hxcpp @:native bindings for [Raylib](https://raylib.com).
 
-> Check out the examples folder to see some code!
+### Installation
 
-Requirements
--------------
-- Haxe
-- (Windows only) MSVC v142 - VS 2019 C++ x64/x86 build tools
-- (Windows only) Windows 10 SDK
-
-Installation
--------------
-- `git clone https://github.com/ForeignSasquatch/raylib-hx --recurse-submodules -j8`
-- `haxelib dev raylib-hx raylib-hx`
-
-Usage
------------
-This is a basic example of the bindings which creates a window.
-In your project make a ``Build.hxml`` file with the following:
+You can install it through `Haxelib`
+```bash
+haxelib install raylib-hx
 ```
--cp [source folder]
--cpp [output folder]
--lib raylib-hx
--main [Main file]
-```
-Sample code:
-```haxe
-class Main {
-  static function main() {
-    Raylib.initWindow(1280, 720, "Hello World!");
-    
-    while(!Rl.windowShouldClose()) {
-      Raylib.beginDrawing();
-      Raylib.clearBackground(Rl.Colors.WHITE);
-      Raylib.endDrawing();
-    }
-    
-    Raylib.closeWindow();
-  }
-}
+Or through `Git`, if you want the latest updates
+```bash
+haxelib git raylib-hx https://github.com/foreignsasquatch/raylib-hx.git
 ```
 
-For an example running on android, check out [this repo](https://github.com/MAJigsaw77/raylib-hx-android-example)!
+### Usage
 
-On Linux it's possible to use a system wide installation of Raylib instead of
-the source code provided with this repo.
+Check out the [Examples Folder](examples/) for some examples on how to use this library.
 
-Just add the `--define shared_libs` flag to your *.hxml file or to the command
-line.
+> [!TIP]
+> To hide the console window on desktop, add the `no_console` compiler flag.
 
-**Tip**: To hide the Raylib console window on desktop, add the `no_console` compiler flag.
+### Licensing
+
+**raylib-hx** is made available under the **Zlib License**. Check [LICENSE](./LICENSE) for more information.
+
+![](https://github.com/raysan5/raylib/blob/master/logo/raylib_logo_animation.gif)
+
+**Raylib** is made available under the **Zlib License**. Check [Raylib's LICENSE](https://github.com/raysan5/raylib/blob/master/LICENSE) for more information.
 
 ### Consider supporting
+
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/W7W77EX85)
