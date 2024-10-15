@@ -1,9 +1,6 @@
--cp src
---library raylib-hx
+-cp ./
+-D analyzer-optimize
+-lib raylib-hx
 -main Main
---cpp cpp
---dce full
--D no-debug
--D no-traces
-#-D analyzer-optimize
--D HXCPP_OPTIMIZE_FOR_SIZE
+-cpp bin/win
+-cmd xcopy /E /I /Y resources bin\win\resources
