@@ -8,6 +8,16 @@
 
 Haxe/hxcpp @:native bindings for [raylib](https://raylib.com).
 
+### Supported Platforms
+
+- ![Windows](https://img.shields.io/badge/-Windows-0078D6?logo=windows&logoColor=white&style=flat)
+- ![macOS](https://img.shields.io/badge/-macOS-000000?logo=apple&logoColor=white&style=flat)
+- ![Linux](https://img.shields.io/badge/-Linux-FCC624?logo=linux&logoColor=black&style=flat)
+- ![Emscripten](https://img.shields.io/badge/-Emscripten-FFB900?logo=javascript&logoColor=black&style=flat)
+- ![Android](https://img.shields.io/badge/-Android-3DDC84?logo=android&logoColor=white&style=flat)
+
+***Hashlink or Neko are not supported***
+
 ### Installation
 
 You can install it through `Haxelib`
@@ -18,6 +28,12 @@ Or through `Git`, if you want the latest updates
 ```bash
 haxelib git raylib-hx https://github.com/foreignsasquatch/raylib-hx.git
 ```
+
+### Dependencies
+
+On ***Linux***, you need to install the required libraries for your distribution.
+
+For detailed instructions, refer to the [raylib wiki: Working on GNU Linux - Install Required Libraries](https://github.com/raysan5/raylib/wiki/Working-on-GNU-Linux#install-required-libraries).
 
 ### Usage
 
