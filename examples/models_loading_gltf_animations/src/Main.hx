@@ -15,8 +15,8 @@ class Main {
 		var currentAnimationIndex:Int = 0;
 		var currentAnimation:RayModelAnimation;
 
-		final camera = new Camera3D();
 		final animationsCount:Int = 0;
+		final camera:Camera3D = new Camera3D();
 		final modelFilePath:String = "../assets/model.glb";
 		final position:Vector3 = new Vector3(0.0, 0.0, 0.0);
 		final animationsCountReference:IntPointer = IntPointer.fromValue(animationsCount);
