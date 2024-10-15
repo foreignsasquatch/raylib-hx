@@ -5,7 +5,7 @@
 # Credits to the contributors of raylib-go for the original implementation.
 
 TMPDIR="/tmp"
-GLGLFW_PATH="$(dirname "$0")/../lib/raylib/src/external/glfw/src"
+GLGLFW_PATH="$(realpath "$(dirname "$0")/../lib/raylib/src/external/glfw/src")"
 
 # Log the paths
 echo "Temporary directory: $TMPDIR"
