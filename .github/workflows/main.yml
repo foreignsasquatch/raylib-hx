@@ -32,10 +32,6 @@ jobs:
         if: startsWith(matrix.os, 'ubuntu')
         run: sudo apt-get update && sudo apt install libasound2-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libglu1-mesa-dev libxcursor-dev libxinerama-dev libwayland-dev libxkbcommon-dev
 
-      - name: Generate Wayland
-        if: startsWith(matrix.os, 'ubuntu')
-        run: chmod +x project/scripts/glfw-generate-wayland.sh && ./project/scripts/glfw-generate-wayland.sh
-
       - name: Install Dependencies
         run: |
           haxelib install hxcpp --quiet
@@ -43,7 +39,7 @@ jobs:
 
       - name: Build Unix
         if: startsWith(matrix.os, 'macos') || startsWith(matrix.os, 'ubuntu')
-        run: cd examples/${{matrix.example}} && haxe build-unix.hxml -D RAYLIB_WAYLAND_DISPLAY
+        run: cd examples/${{matrix.example}} && haxe build-unix.hxml
 
       - name: Build Windows
         if: startsWith(matrix.os, 'windows')
