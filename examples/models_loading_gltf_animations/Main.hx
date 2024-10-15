@@ -71,7 +71,7 @@ class Main
             Raylib.endMode3D();
 
             Raylib.drawText("Use the LEFT/RIGHT mouse buttons to switch animation", 10, 10, 20, Raylib.GRAY);
-            Raylib.drawText("Animation: " + anim.name, 10, Raylib.getScreenHeight() - 20, 10, Raylib.DARKGRAY);
+            Raylib.drawText("Animation: " + cast(anim.name, String), 10, Raylib.getScreenHeight() - 20, 10, Raylib.DARKGRAY);
 
             Raylib.endDrawing();
             //----------------------------------------------------------------------------------
