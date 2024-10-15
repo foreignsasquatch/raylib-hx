@@ -3,5 +3,6 @@
 -D emscripten
 -D HXCPP_LINK_EMSCRIPTEN_EXT=.html
 -lib raylib-hx
+-dce full
 -main Main
 -cpp bin/wasm
