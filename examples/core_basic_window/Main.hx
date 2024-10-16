@@ -20,7 +20,7 @@ class Main
         Raylib.initWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 
         #if emscripten
-        Emscripten.set_main_loop(cpp.Callable.fromStaticFunction(updateDrawFrame), 0, 1);
+        Emscripten.set_main_loop(cpp.Callable.fromStaticFunction(updateDrawFrame), 0, true);
         #else
         Raylib.setTargetFPS(60); // Set our game to run at 60 frames-per-second
         //--------------------------------------------------------------------------------------
