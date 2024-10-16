@@ -189,6 +189,6 @@
 		</section>
 
 		<flag value="--shell-file" />
-		<flag value="${haxelib:raylib-hx}/project/lib/raylib/src/minshell.html" />
+		<flag value="${haxelib:raylib-hx}/project/lib/raylib/src/shell.html" />
         </linker>
 </xml>
