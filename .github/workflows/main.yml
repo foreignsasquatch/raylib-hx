@@ -70,7 +70,7 @@ jobs:
           haxelib dev raylib-hx .
 
       - name: Build
-        run: cd examples/${{matrix.example}} && haxe build-wasm.hxml -D EMSDK=$EMSDK
+        run: cd examples/${{matrix.example}} && haxe build-wasm.hxml -D EMSDK=$EMSDK -D RAYLIB_WEB_MINSHELL
 
       - name: Upload Artifact
         uses: actions/upload-artifact@main
