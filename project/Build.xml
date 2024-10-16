@@ -168,5 +168,27 @@
 	<linker id="exe" exe="em++" if="emscripten">
 		<flag value="-s" />
 		<flag value="USE_GLFW=3" />
+
+		<flag value="-s" />
+		<flag value="FORCE_FILESYSTEM=1" />
+
+		<section if="RAYLIB_WEB_ASYNCIFY">
+			<flag value="-s" />
+			<flag value="ASYNCIFY" />
+		</section>
+
+		<section if="RAYLIB_WEB_RESOURCES_PATH">
+			<flag value="--preload-file" />
+			<flag value="${RAYLIB_WEB_RESOURCES_PATH}" />
+		</section>
+
+		<section if="debug">
+			<flag value="-s" />
+			<flag value="ASSERTIONS=1" />
+			<flag value="--profiling" />
+		</section>
+
+		<flag value="--shell-file" />
+		<flag value="${haxelib:raylib-hx}/project/lib/raylib/src/minshell.html" />
         </linker>
 </xml>
