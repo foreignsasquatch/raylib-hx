@@ -2,11 +2,11 @@ package macros;
 
 #if macro
 @:nullSafety
-class DefinesMacro
+class DefineMacro
 {
     public static function run():Void
     {
-        if (haxe.macro.Context.defined('RAYLIB_WEB_RESOURCES_PATH'))
+        if (haxe.macro.Context.defined('emscripten') && haxe.macro.Context.defined('RAYLIB_WEB_RESOURCES_PATH'))
         {
             final resourcesPath:Null<String> = haxe.macro.Context.definedValue('RAYLIB_WEB_RESOURCES_PATH');
 
