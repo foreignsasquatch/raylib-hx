@@ -1,6 +1,7 @@
 -cp ./
 -D analyzer-optimize
 -D emscripten
+-D RAYLIB_WEB_ASYNCIFY
 -D HXCPP_LINK_EMSCRIPTEN_EXT=.html
 -lib raylib-hx
 -dce full
