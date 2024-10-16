@@ -1,9 +1,9 @@
 -cp ./
 -D analyzer-optimize
 -D emscripten
+-D RAYLIB_WEB_RESOURCES_PATH=./resources
 -D HXCPP_LINK_EMSCRIPTEN_EXT=.html
 -lib raylib-hx
 -dce full
 -main Main
 -cpp bin/wasm
--cmd cp -rf resources bin/wasm/resources
