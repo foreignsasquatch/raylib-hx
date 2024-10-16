@@ -9,4 +9,3 @@
 -dce full
 -main Main
 -cpp bin/wasm
--cmd cp -rf resources bin/wasm/resources
