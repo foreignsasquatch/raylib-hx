@@ -1,8 +1,5 @@
 package;
 
-#if emscripten
-import emscripten.Emscripten;
-#end
 import Raylib;
 
 class Main
@@ -19,44 +16,32 @@ class Main
 
         Raylib.initWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 
-        #if emscripten
-        Emscripten.set_main_loop(cpp.Callable.fromStaticFunction(updateDrawFrame), 0, true);
-        #else
         Raylib.setTargetFPS(60); // Set our game to run at 60 frames-per-second
         //--------------------------------------------------------------------------------------
 
         // Main game loop
         while (!Raylib.windowShouldClose()) // Detect window close button or ESC key
         {
-            updateDrawFrame();
+            // Update
+            //----------------------------------------------------------------------------------
+            // TODO: Update your variables here
+            //----------------------------------------------------------------------------------
+
+            // Draw
+            //----------------------------------------------------------------------------------
+            Raylib.beginDrawing();
+
+            Raylib.clearBackground(Raylib.RAYWHITE);
+
+            Raylib.drawText("Congrats! You created your first window!", 190, 200, 20, Raylib.LIGHTGRAY);
+
+            Raylib.endDrawing();
+            //----------------------------------------------------------------------------------
         }
-        #end
 
         // De-Initialization
         //--------------------------------------------------------------------------------------
         Raylib.closeWindow(); // Close window and OpenGL context
         //--------------------------------------------------------------------------------------
-    }
-
-    //----------------------------------------------------------------------------------
-    // Module Functions Definition
-    //----------------------------------------------------------------------------------
-    private static function updateDrawFrame():Void
-    {
-        // Update
-        //----------------------------------------------------------------------------------
-        // TODO: Update your variables here
-        //----------------------------------------------------------------------------------
-
-        // Draw
-        //----------------------------------------------------------------------------------
-        Raylib.beginDrawing();
-
-        Raylib.clearBackground(Raylib.RAYWHITE);
-
-        Raylib.drawText("Congrats! You created your first window!", 190, 200, 20, Raylib.LIGHTGRAY);
-
-        Raylib.endDrawing();
-        //----------------------------------------------------------------------------------
     }
 }
