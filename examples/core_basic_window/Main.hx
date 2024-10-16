@@ -41,22 +41,22 @@ class Main
     //----------------------------------------------------------------------------------
     // Module Functions Definition
     //----------------------------------------------------------------------------------
-    private static function updateFrame():Void
+    private static function updateDrawFrame():Void
     {
-            // Update
-            //----------------------------------------------------------------------------------
-            // TODO: Update your variables here
-            //----------------------------------------------------------------------------------
+        // Update
+        //----------------------------------------------------------------------------------
+        // TODO: Update your variables here
+        //----------------------------------------------------------------------------------
 
-            // Draw
-            //----------------------------------------------------------------------------------
-            Raylib.beginDrawing();
+        // Draw
+        //----------------------------------------------------------------------------------
+        Raylib.beginDrawing();
 
-            Raylib.clearBackground(Raylib.RAYWHITE);
+        Raylib.clearBackground(Raylib.RAYWHITE);
 
-            Raylib.drawText("Congrats! You created your first window!", 190, 200, 20, Raylib.LIGHTGRAY);
+        Raylib.drawText("Congrats! You created your first window!", 190, 200, 20, Raylib.LIGHTGRAY);
 
-            Raylib.endDrawing();
-            //----------------------------------------------------------------------------------
+        Raylib.endDrawing();
+        //----------------------------------------------------------------------------------
     }
 }
