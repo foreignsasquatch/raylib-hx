@@ -71,3 +71,10 @@ jobs:
 
       - name: Build
         run: cd examples/${{matrix.example}} && haxe build-wasm.hxml -D EMSDK=$EMSDK
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: wasmBuild-${{matrix.example}}
+          path: examples/${{matrix.example}}/bin/wasm
+          if-no-files-found: warn
