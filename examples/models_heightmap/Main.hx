@@ -19,7 +19,7 @@ class Main
         // Define our custom camera to look into our 3d world
         final camera:Camera3D = new Camera3D();
         camera.position = new Vector3(18.0, 21.0, 18.0); // Camera position
-        camera.target = new Vector3(0.0, 0.0, 0.0); // Camera looking at point
+        camera.target = Raymath.vector3Zero(); // Camera looking at point
         camera.up = new Vector3(0.0, 1.0, 0.0); // Camera up vector (rotation towards target)
         camera.fovy = 45.0; // Camera field-of-view Y
         camera.projection = CAMERA_PERSPECTIVE; // Camera projection type

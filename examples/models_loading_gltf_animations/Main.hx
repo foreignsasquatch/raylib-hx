@@ -33,7 +33,7 @@ class Main
         var animCurrentFrame:UInt = 0;
         var modelAnimation:cpp.RawPointer<RayModelAnimation> = Raylib.loadModelAnimations("resources/robot.glb", animsCount);
 
-        final position:Vector3 = new Vector3(0.0, 0.0, 0.0);    // Set model position
+        final position:Vector3 = Raymath.vector3Zero();    // Set model position
 
         Raylib.setTargetFPS(60); // Set our game to run at 60 frames-per-second
         //--------------------------------------------------------------------------------------
