@@ -309,4 +309,72 @@ private extern class RlCullModeImpl {}
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('rlgl-impl.h')
 @:unreflective
-extern class Rlgl {}
+extern class Rlgl
+{
+@:native('RL_TEXTURE_WRAP_S') static var TEXTURE_WRAP_S:Int;
+@:native('RL_TEXTURE_WRAP_T') static var TEXTURE_WRAP_T:Int;
+@:native('RL_TEXTURE_MAG_FILTER') static var TEXTURE_MAG_FILTER:Int;
+@:native('RL_TEXTURE_MIN_FILTER') static var TEXTURE_MIN_FILTER:Int;
+@:native('RL_TEXTURE_FILTER_NEAREST') static var TEXTURE_FILTER_NEAREST:Int;
+@:native('RL_TEXTURE_FILTER_LINEAR') static var TEXTURE_FILTER_LINEAR:Int;
+@:native('RL_TEXTURE_FILTER_MIP_NEAREST') static var TEXTURE_FILTER_MIP_NEAREST:Int;
+@:native('RL_TEXTURE_FILTER_NEAREST_MIP_LINEAR') static var TEXTURE_FILTER_NEAREST_MIP_LINEAR:Int;
+@:native('RL_TEXTURE_FILTER_LINEAR_MIP_NEAREST') static var TEXTURE_FILTER_LINEAR_MIP_NEAREST:Int;
+@:native('RL_TEXTURE_FILTER_MIP_LINEAR') static var TEXTURE_FILTER_MIP_LINEAR:Int;
+@:native('RL_TEXTURE_FILTER_ANISOTROPIC') static var TEXTURE_FILTER_ANISOTROPIC:Int;
+@:native('RL_TEXTURE_MIPMAP_BIAS_RATIO') static var TEXTURE_MIPMAP_BIAS_RATIO:Int;
+@:native('RL_TEXTURE_WRAP_REPEAT') static var TEXTURE_WRAP_REPEAT:Int;
+@:native('RL_TEXTURE_WRAP_CLAMP') static var TEXTURE_WRAP_CLAMP:Int;
+@:native('RL_TEXTURE_WRAP_MIRROR_REPEAT') static var TEXTURE_WRAP_MIRROR_REPEAT:Int;
+@:native('RL_TEXTURE_WRAP_MIRROR_CLAMP') static var TEXTURE_WRAP_MIRROR_CLAMP:Int;
+@:native('RL_MODELVIEW') static var MODELVIEW:Int;
+@:native('RL_PROJECTION') static var PROJECTION:Int;
+@:native('RL_TEXTURE') static var TEXTURE:Int;
+@:native('RL_LINES') static var LINES:Int;
+@:native('RL_TRIANGLES') static var TRIANGLES:Int;
+@:native('RL_QUADS') static var QUADS:Int;
+@:native('RL_UNSIGNED_BYTE') static var UNSIGNED_BYTE:Int;
+@:native('RL_FLOAT') static var FLOAT:Int;
+@:native('RL_STREAM_DRAW') static var STREAM_DRAW:Int;
+@:native('RL_STREAM_READ') static var STREAM_READ:Int;
+@:native('RL_STREAM_COPY') static var STREAM_COPY:Int;
+@:native('RL_STATIC_DRAW') static var STATIC_DRAW:Int;
+@:native('RL_STATIC_READ') static var STATIC_READ:Int;
+@:native('RL_STATIC_COPY') static var STATIC_COPY:Int;
+@:native('RL_DYNAMIC_DRAW') static var DYNAMIC_DRAW:Int;
+@:native('RL_DYNAMIC_READ') static var DYNAMIC_READ:Int;
+@:native('RL_DYNAMIC_COPY') static var DYNAMIC_COPY:Int;
+@:native('RL_FRAGMENT_SHADER') static var FRAGMENT_SHADER:Int;
+@:native('RL_VERTEX_SHADER') static var VERTEX_SHADER:Int;
+@:native('RL_COMPUTE_SHADER') static var COMPUTE_SHADER:Int;
+@:native('RL_ZERO') static var ZERO:Int;
+@:native('RL_ONE') static var ONE:Int;
+@:native('RL_SRC_COLOR') static var SRC_COLOR:Int;
+@:native('RL_ONE_MINUS_SRC_COLOR') static var ONE_MINUS_SRC_COLOR:Int;
+@:native('RL_SRC_ALPHA') static var SRC_ALPHA:Int;
+@:native('RL_ONE_MINUS_SRC_ALPHA') static var ONE_MINUS_SRC_ALPHA:Int;
+@:native('RL_DST_ALPHA') static var DST_ALPHA:Int;
+@:native('RL_ONE_MINUS_DST_ALPHA') static var ONE_MINUS_DST_ALPHA:Int;
+@:native('RL_DST_COLOR') static var DST_COLOR:Int;
+@:native('RL_ONE_MINUS_DST_COLOR') static var ONE_MINUS_DST_COLOR:Int;
+@:native('RL_SRC_ALPHA_SATURATE') static var SRC_ALPHA_SATURATE:Int;
+@:native('RL_CONSTANT_COLOR') static var CONSTANT_COLOR:Int;
+@:native('RL_ONE_MINUS_CONSTANT_COLOR') static var ONE_MINUS_CONSTANT_COLOR:Int;
+@:native('RL_CONSTANT_ALPHA') static var CONSTANT_ALPHA:Int;
+@:native('RL_ONE_MINUS_CONSTANT_ALPHA') static var ONE_MINUS_CONSTANT_ALPHA:Int;
+@:native('RL_FUNC_ADD') static var FUNC_ADD:Int;
+@:native('RL_MIN') static var MIN:Int;
+@:native('RL_MAX') static var MAX:Int;
+@:native('RL_FUNC_SUBTRACT') static var FUNC_SUBTRACT:Int;
+@:native('RL_FUNC_REVERSE_SUBTRACT') static var FUNC_REVERSE_SUBTRACT:Int;
+@:native('RL_BLEND_EQUATION') static var BLEND_EQUATION:Int;
+@:native('RL_BLEND_EQUATION_RGB') static var BLEND_EQUATION_RGB:Int;
+@:native('RL_BLEND_EQUATION_ALPHA') static var BLEND_EQUATION_ALPHA:Int;
+@:native('RL_BLEND_DST_RGB') static var BLEND_DST_RGB:Int;
+@:native('RL_BLEND_SRC_RGB') static var BLEND_SRC_RGB:Int;
+@:native('RL_BLEND_DST_ALPHA') static var BLEND_DST_ALPHA:Int;
+@:native('RL_BLEND_SRC_ALPHA') static var BLEND_SRC_ALPHA:Int;
+@:native('RL_BLEND_COLOR') static var BLEND_COLOR:Int;
+@:native('RL_READ_FRAMEBUFFER') static var READ_FRAMEBUFFER:Int;
+@:native('RL_DRAW_FRAMEBUFFER') static var DRAW_FRAMEBUFFER:Int;
+}
