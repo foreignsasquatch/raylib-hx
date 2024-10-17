@@ -107,8 +107,8 @@ extern class Raymath
     @:native('Vector3Clamp') static function vector3Clamp(v:RayVector3, min:RayVector3, max:RayVector3):RayVector3;
     @:native('Vector3ClampValue') static function vector3ClampValue(v:RayVector3, min:Single, max:Single):RayVector3;
 
-    @:native('MatrixDeterminant') static function matrixDeterminant(mat:Matrix):Float;
-    @:native('MatrixTrace') static function matrixTrace(mat:Matrix):Float;
+    @:native('MatrixDeterminant') static function matrixDeterminant(mat:Matrix):Single;
+    @:native('MatrixTrace') static function matrixTrace(mat:Matrix):Single;
     @:native('MatrixTranspose') static function matrixTranspose(mat:Matrix):Matrix;
     @:native('MatrixInvert') static function matrixInvert(mat:Matrix):Matrix;
     @:native('MatrixIdentity') static function matrixIdentity():Matrix;
