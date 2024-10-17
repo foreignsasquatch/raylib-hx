@@ -42,6 +42,7 @@ class DefineMacro
             if (Context.defined('RAYLIB_WEB_RESOURCES_PATH'))
             {
                 final resourcesPath:Null<String> = Context.definedValue('RAYLIB_WEB_RESOURCES_PATH');
+
                 if (resourcesPath != null && resourcesPath.length > 0)
                     Compiler.define('RAYLIB_WEB_RESOURCES_PATH', FileSystem.absolutePath(resourcesPath) + '@' + resourcesPath);
             }
@@ -58,12 +59,14 @@ class DefineMacro
         }
     }
 
+    @:noCompletion
     private static function ensureGLES():Void
     {
         if (!Context.defined('GRAPHICS_API_OPENGL_ES3'))
             Compiler.define('GRAPHICS_API_OPENGL_ES2');
     }
 
+    @:noCompletion
     private static function checkForOpenGL():Bool
     {
         for (key => value in Context.getDefines())
@@ -75,6 +78,7 @@ class DefineMacro
         return false;
     }
 
+    @:noCompletion
     private static function checkForOpenGLES():Bool
     {
         for (key => value in Context.getDefines())
