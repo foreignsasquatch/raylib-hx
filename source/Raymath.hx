@@ -102,7 +102,7 @@ extern class Raymath
     @:native('Vector3Max') static function vector3Max(v1:RayVector3, v2:RayVector3):RayVector3;
     @:native('Vector3Barycenter') static function vector3Barycenter(p:RayVector3, a:RayVector3, b:RayVector3, c:RayVector3):RayVector3;
     @:native('Vector3Unproject') static function vector3Unproject(source:RayVector3, projection:RayMatrix, view:RayMatrix):RayVector3;
-    @:native('Vector3ToFloat') static function vector3ToFloat(v:RayVector3):utils.FloatArray;
+    @:native('Vector3ToFloat') static function vector3ToFloat(v:RayVector3):utils.FloatPointer;
     @:native('Vector3Invert') static function vector3Invert(v:RayVector3):RayVector3;
     @:native('Vector3Clamp') static function vector3Clamp(v:RayVector3, min:RayVector3, max:RayVector3):RayVector3;
     @:native('Vector3ClampValue') static function vector3ClampValue(v:RayVector3, min:Single, max:Single):RayVector3;
@@ -127,7 +127,7 @@ extern class Raymath
     @:native('MatrixPerspective') static function matrixPerspective(fovY:Float, aspect:Float, nearPlane:Float, farPlane:Float):RayMatrix;
     @:native('MatrixOrtho') static function matrixOrtho(left:Float, right:Float, bottom:Float, top:Float, nearPlane:Float, farPlane:Float):RayMatrix;
     @:native('MatrixLookAt') static function matrixLookAt(eye:RayVector3, target:RayVector3, up:RayVector3):RayMatrix;
-    @:native('MatrixToFloat') static function matrixToFloatV(mat:RayMatrix):utils.FloatArray;
+    @:native('MatrixToFloat') static function matrixToFloat(mat:RayMatrix):utils.FloatPointer;
 
     @:native('QuaternionAdd') static function quaternionAdd(q1:RayVector4, q2:RayVector4):RayVector4;
     @:native('QuaternionAddValue') static function quaternionAddValue(q:RayVector4, add:Single):RayVector4;
