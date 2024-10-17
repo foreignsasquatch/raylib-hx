@@ -34,7 +34,4 @@ import Raylib;
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('rlgl-impl.h')
 @:unreflective
-extern class RlGL
-{
-
-}
+extern class Rlgl {}
