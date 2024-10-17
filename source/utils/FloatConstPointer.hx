@@ -8,20 +8,14 @@ extern abstract FloatConstPointer(cpp.RawConstPointer<Single>) from cpp.RawConst
     }
 
     @:from
-    public static inline function fromValue(value:Single):FloatConstPointer
+    static inline function fromValue(value:Single):FloatConstPointer
     {
         return new FloatConstPointer(cpp.Pointer.addressOf(value).constRaw);
     }
 
     @:from
-    public static inline function fromArray(value:Array<Single>):FloatConstPointer
+    static inline function fromArray(value:Array<Single>):FloatConstPointer
     {
         return new FloatConstPointer(cpp.Pointer.ofArray(value).constRaw);
-    }
-
-    @:to
-    public inline function toSingle():Single
-    {
-        return this[0];
     }
 }

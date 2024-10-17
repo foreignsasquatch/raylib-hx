@@ -11,13 +11,13 @@ extern abstract BytesConstPointer(cpp.RawConstPointer<cpp.UInt8>) from cpp.RawCo
     }
 
     @:from
-    public static inline function fromBytes(value:Bytes):BytesConstPointer
+    static inline function fromBytes(value:Bytes):BytesConstPointer
     {
         return fromBytesData(value.getData());
     }
 
     @:from
-    public static inline function fromBytesData(value:BytesData):BytesConstPointer
+    static inline function fromBytesData(value:BytesData):BytesConstPointer
     {
         return new BytesConstPointer(cpp.Pointer.ofArray(value).constRaw);
     }
