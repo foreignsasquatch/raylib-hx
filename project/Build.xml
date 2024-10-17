@@ -21,6 +21,7 @@
 	</files>
 
 	<files id="raylib-base">
+			<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" unless="emscripten || android" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/extras" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
@@ -35,35 +36,17 @@
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtext.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtextures.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/utils.c" />
+		<file name="${haxelib:raylib-hx}/project/src/android_main.c" if="android" />
 
-		<section if="windows || macos || linux">
-			<compilerflag value="-DPLATFORM_DESKTOP" />
-			<compilerflag value="-DGRAPHICS_API_OPENGL_33" />
+		<file name="${ANDROID_NDK_ROOT}/sources/android/native_app_glue/android_native_app_glue.c" if="android" />
 
-			<section if="linux">
-				<compilerflag value="-D_GLFW_WAYLAND" if="RAYLIB_WAYLAND_DISPLAY" />
-			</section>
-		</section>
-
-		<section if="emscripten">
-			<compilerflag value="-DPLATFORM_WEB" />
-			<compilerflag value="-DGRAPHICS_API_OPENGL_ES2" />
+		<section if="linux">
+			<compilerflag value="-D_GLFW_WAYLAND" if="RAYLIB_WAYLAND_DISPLAY" />
 		</section>
 
 		<section if="rpi">
 			<compilerflag value="-DEGL_NO_X11" />
 		</section>
-
-		<section if="android">
-			<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" />
-
-			<compilerflag value="-DPLATFORM_ANDROID" />
-			<compilerflag value="-DGRAPHICS_API_OPENGL_ES2" />
-
-			<file name="${ANDROID_NDK_ROOT}/sources/android/native_app_glue/android_native_app_glue.c" />
-		</section>
-
-		<file name="${haxelib:raylib-hx}/project/src/android_main.c" if="android" />
 
 		<section unless="MSVC_VER">
 			<compilerflag value="-Wno-implicit-const-int-float-conversion" />
@@ -168,6 +151,14 @@
 	<linker id="exe" exe="em++" if="emscripten">
 		<flag value="-s" />
 		<flag value="USE_GLFW=3" />
+
+		<section if="GRAPHICS_API_OPENGL_ES3">
+			<flag value="-s" />
+			<flag value="MIN_WEBGL_VERSION=2" />
+
+			<flag value="-s" />
+			<flag value="MAX_WEBGL_VERSION=2" />
+		</section>
 
 		<flag value="-s" />
 		<flag value="FORCE_FILESYSTEM=1" />
