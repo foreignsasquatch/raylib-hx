@@ -78,11 +78,11 @@ extern abstract Vector2(cpp.Struct<RayVector2>) to cpp.Struct<RayVector2>
     }
 
     @:from
-    public static inline function fromNative(value:RayVector2):Vector2
+    static inline function fromNative(value:RayVector2):Vector2
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayVector2>
+    inline function toPointer():cpp.RawPointer<RayVector2>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -149,11 +149,11 @@ extern abstract Vector3(cpp.Struct<RayVector3>) to cpp.Struct<RayVector3>
     }
 
     @:from
-    public static inline function fromNative(value:RayVector3):Vector3
+    static inline function fromNative(value:RayVector3):Vector3
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayVector3>
+    inline function toPointer():cpp.RawPointer<RayVector3>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -234,11 +234,11 @@ extern abstract Vector4(cpp.Struct<RayVector4>) to cpp.Struct<RayVector4>
     }
 
     @:from
-    public static inline function fromNative(value:RayVector4):Vector4
+    static inline function fromNative(value:RayVector4):Vector4
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayVector4>
+    inline function toPointer():cpp.RawPointer<RayVector4>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -473,11 +473,11 @@ extern abstract Matrix(cpp.Struct<RayMatrix>) to cpp.Struct<RayMatrix>
     }
 
     @:from
-    public static inline function fromNative(value:RayMatrix):Matrix
+    static inline function fromNative(value:RayMatrix):Matrix
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayMatrix>
+    inline function toPointer():cpp.RawPointer<RayMatrix>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -558,11 +558,11 @@ extern abstract Color(cpp.Struct<RayColor>) to cpp.Struct<RayColor>
     }
 
     @:from
-    public static inline function fromNative(value:RayColor):Color
+    static inline function fromNative(value:RayColor):Color
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayColor>
+    inline function toPointer():cpp.RawPointer<RayColor>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -643,11 +643,11 @@ extern abstract Rectangle(cpp.Struct<RayRectangle>) to cpp.Struct<RayRectangle>
     }
 
     @:from
-    public static inline function fromNative(value:RayRectangle):Rectangle
+    static inline function fromNative(value:RayRectangle):Rectangle
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayRectangle>
+    inline function toPointer():cpp.RawPointer<RayRectangle>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -736,11 +736,11 @@ extern abstract Image(cpp.Struct<RayImage>) to cpp.Struct<RayImage>
     }
 
     @:from
-    public static inline function fromNative(value:RayImage):Image
+    static inline function fromNative(value:RayImage):Image
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayImage>
+    inline function toPointer():cpp.RawPointer<RayImage>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -829,11 +829,11 @@ extern abstract Texture(cpp.Struct<RayTexture>) to cpp.Struct<RayTexture>
     }
 
     @:from
-    public static inline function fromNative(value:RayTexture):Texture
+    static inline function fromNative(value:RayTexture):Texture
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayTexture>
+    inline function toPointer():cpp.RawPointer<RayTexture>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -896,11 +896,11 @@ extern abstract RenderTexture(cpp.Struct<RayRenderTexture>) to cpp.Struct<RayRen
     }
 
     @:from
-    public static inline function fromNative(value:RayRenderTexture):RenderTexture
+    static inline function fromNative(value:RayRenderTexture):RenderTexture
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayRenderTexture>
+    inline function toPointer():cpp.RawPointer<RayRenderTexture>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -1002,11 +1002,11 @@ extern abstract NPatchInfo(cpp.Struct<RayNPatchInfo>) to cpp.Struct<RayNPatchInf
     }
 
     @:from
-    public static inline function fromNative(value:RayNPatchInfo):NPatchInfo
+    static inline function fromNative(value:RayNPatchInfo):NPatchInfo
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayNPatchInfo>
+    inline function toPointer():cpp.RawPointer<RayNPatchInfo>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -1095,11 +1095,11 @@ extern abstract GlyphInfo(cpp.Struct<RayGlyphInfo>) to cpp.Struct<RayGlyphInfo>
     }
 
     @:from
-    public static inline function fromNative(value:RayGlyphInfo):GlyphInfo
+    static inline function fromNative(value:RayGlyphInfo):GlyphInfo
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayGlyphInfo>
+    inline function toPointer():cpp.RawPointer<RayGlyphInfo>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -1201,11 +1201,11 @@ extern abstract Font(cpp.Struct<RayFont>) to cpp.Struct<RayFont>
     }
 
     @:from
-    public static inline function fromNative(value:RayFont):Font
+    static inline function fromNative(value:RayFont):Font
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayFont>
+    inline function toPointer():cpp.RawPointer<RayFont>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -1294,11 +1294,11 @@ extern abstract Camera3D(cpp.Struct<RayCamera3D>) to cpp.Struct<RayCamera3D>
     }
 
     @:from
-    public static inline function fromNative(value:RayCamera3D):Camera3D
+    static inline function fromNative(value:RayCamera3D):Camera3D
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayCamera3D>
+    inline function toPointer():cpp.RawPointer<RayCamera3D>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -1374,11 +1374,11 @@ extern abstract Camera2D(cpp.Struct<RayCamera2D>) to cpp.Struct<RayCamera2D>
     }
 
     @:from
-    public static inline function fromNative(value:RayCamera2D):Camera2D
+    static inline function fromNative(value:RayCamera2D):Camera2D
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayCamera2D>
+    inline function toPointer():cpp.RawPointer<RayCamera2D>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -1600,11 +1600,11 @@ extern abstract Mesh(cpp.Struct<RayMesh>) to cpp.Struct<RayMesh>
     }
 
     @:from
-    public static inline function fromNative(value:RayMesh):Mesh
+    static inline function fromNative(value:RayMesh):Mesh
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayMesh>
+    inline function toPointer():cpp.RawPointer<RayMesh>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -1654,11 +1654,11 @@ extern abstract Shader(cpp.Struct<RayShader>) to cpp.Struct<RayShader>
     }
 
     @:from
-    public static inline function fromNative(value:RayShader):Shader
+    static inline function fromNative(value:RayShader):Shader
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayShader>
+    inline function toPointer():cpp.RawPointer<RayShader>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -1721,11 +1721,11 @@ extern abstract MaterialMap(cpp.Struct<RayMaterialMap>) to cpp.Struct<RayMateria
     }
 
     @:from
-    public static inline function fromNative(value:RayMaterialMap):MaterialMap
+    static inline function fromNative(value:RayMaterialMap):MaterialMap
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayMaterialMap>
+    inline function toPointer():cpp.RawPointer<RayMaterialMap>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -1788,11 +1788,11 @@ extern abstract Material(cpp.Struct<RayMaterial>) to cpp.Struct<RayMaterial>
     }
 
     @:from
-    public static inline function fromNative(value:RayMaterial):Material
+    static inline function fromNative(value:RayMaterial):Material
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayMaterial>
+    inline function toPointer():cpp.RawPointer<RayMaterial>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -1855,11 +1855,11 @@ extern abstract Transform(cpp.Struct<RayTransform>) to cpp.Struct<RayTransform>
     }
 
     @:from
-    public static inline function fromNative(value:RayTransform):Transform
+    static inline function fromNative(value:RayTransform):Transform
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayTransform>
+    inline function toPointer():cpp.RawPointer<RayTransform>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -1909,11 +1909,11 @@ extern abstract BoneInfo(cpp.Struct<RayBoneInfo>) to cpp.Struct<RayBoneInfo>
     }
 
     @:from
-    public static inline function fromNative(value:RayBoneInfo):BoneInfo
+    static inline function fromNative(value:RayBoneInfo):BoneInfo
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayBoneInfo>
+    inline function toPointer():cpp.RawPointer<RayBoneInfo>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -2056,11 +2056,11 @@ extern abstract Model(cpp.Struct<RayModel>) to cpp.Struct<RayModel>
     }
 
     @:from
-    public static inline function fromNative(value:RayModel):Model
+    static inline function fromNative(value:RayModel):Model
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayModel>
+    inline function toPointer():cpp.RawPointer<RayModel>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -2149,11 +2149,11 @@ extern abstract ModelAnimation(cpp.Struct<RayModelAnimation>) to cpp.Struct<RayM
     }
 
     @:from
-    public static inline function fromNative(value:RayModelAnimation):ModelAnimation
+    static inline function fromNative(value:RayModelAnimation):ModelAnimation
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayModelAnimation>
+    inline function toPointer():cpp.RawPointer<RayModelAnimation>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -2203,11 +2203,11 @@ extern abstract Ray(cpp.Struct<RlRay>) to cpp.Struct<RlRay>
     }
 
     @:from
-    public static inline function fromNative(value:RlRay):Ray
+    static inline function fromNative(value:RlRay):Ray
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RlRay>
+    inline function toPointer():cpp.RawPointer<RlRay>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -2283,11 +2283,11 @@ extern abstract RayCollision(cpp.Struct<RlRayCollision>) to cpp.Struct<RlRayColl
     }
 
     @:from
-    public static inline function fromNative(value:RlRayCollision):RayCollision
+    static inline function fromNative(value:RlRayCollision):RayCollision
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RlRayCollision>
+    inline function toPointer():cpp.RawPointer<RlRayCollision>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -2337,11 +2337,11 @@ extern abstract BoundingBox(cpp.Struct<RayBoundingBox>) to cpp.Struct<RayBoundin
     }
 
     @:from
-    public static inline function fromNative(value:RayBoundingBox):BoundingBox
+    static inline function fromNative(value:RayBoundingBox):BoundingBox
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayBoundingBox>
+    inline function toPointer():cpp.RawPointer<RayBoundingBox>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -2380,11 +2380,11 @@ extern abstract Wave(cpp.Struct<RayWave>) to cpp.Struct<RayWave>
     }
 
     @:from
-    public static inline function fromNative(value:RayWave):Wave
+    static inline function fromNative(value:RayWave):Wave
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayWave>
+    inline function toPointer():cpp.RawPointer<RayWave>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -2457,11 +2457,11 @@ extern abstract AudioStream(cpp.Struct<RayAudioStream>) to cpp.Struct<RayAudioSt
     }
 
     @:from
-    public static inline function fromNative(value:RayAudioStream):AudioStream
+    static inline function fromNative(value:RayAudioStream):AudioStream
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayAudioStream>
+    inline function toPointer():cpp.RawPointer<RayAudioStream>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -2511,11 +2511,11 @@ extern abstract Sound(cpp.Struct<RaySound>) to cpp.Struct<RaySound>
     }
 
     @:from
-    public static inline function fromNative(value:RaySound):Sound
+    static inline function fromNative(value:RaySound):Sound
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RaySound>
+    inline function toPointer():cpp.RawPointer<RaySound>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -2604,11 +2604,11 @@ extern abstract Music(cpp.Struct<RayMusic>) to cpp.Struct<RayMusic>
     }
 
     @:from
-    public static inline function fromNative(value:RayMusic):Music
+    static inline function fromNative(value:RayMusic):Music
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayMusic>
+    inline function toPointer():cpp.RawPointer<RayMusic>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -2749,11 +2749,11 @@ extern abstract VrDeviceInfo(cpp.Struct<RayVrDeviceInfo>) to cpp.Struct<RayVrDev
     }
 
     @:from
-    public static inline function fromNative(value:RayVrDeviceInfo):VrDeviceInfo
+    static inline function fromNative(value:RayVrDeviceInfo):VrDeviceInfo
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayVrDeviceInfo>
+    inline function toPointer():cpp.RawPointer<RayVrDeviceInfo>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -2855,11 +2855,11 @@ extern abstract VrStereoConfig(cpp.Struct<RayVrStereoConfig>) to cpp.Struct<RayV
     }
 
     @:from
-    public static inline function fromNative(value:RayVrStereoConfig):VrStereoConfig
+    static inline function fromNative(value:RayVrStereoConfig):VrStereoConfig
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayVrStereoConfig>
+    inline function toPointer():cpp.RawPointer<RayVrStereoConfig>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -2922,11 +2922,11 @@ extern abstract FilePathList(cpp.Struct<RayFilePathList>) to cpp.Struct<RayFileP
     }
 
     @:from
-    public static inline function fromNative(value:RayFilePathList):FilePathList
+    static inline function fromNative(value:RayFilePathList):FilePathList
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayFilePathList>
+    inline function toPointer():cpp.RawPointer<RayFilePathList>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -2976,11 +2976,11 @@ extern abstract AutomationEvent(cpp.Struct<RayAutomationEvent>) to cpp.Struct<Ra
     }
 
     @:from
-    public static inline function fromNative(value:RayAutomationEvent):AutomationEvent
+    static inline function fromNative(value:RayAutomationEvent):AutomationEvent
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayAutomationEvent>
+    inline function toPointer():cpp.RawPointer<RayAutomationEvent>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -3030,11 +3030,11 @@ extern abstract AutomationEventList(cpp.Struct<RayAutomationEventList>) to cpp.S
     }
 
     @:from
-    public static inline function fromNative(value:RayAutomationEventList):AutomationEventList
+    static inline function fromNative(value:RayAutomationEventList):AutomationEventList
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayAutomationEventList>
+    inline function toPointer():cpp.RawPointer<RayAutomationEventList>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -3058,11 +3058,11 @@ extern enum abstract ConfigFlags(ConfigFlagsImpl)
     @:native('FLAG_INTERLACED_HINT') var FLAG_INTERLACED_HINT;
 
     @:from
-    public static inline function fromInt(i:Int):ConfigFlags
+    static inline function fromInt(i:Int):ConfigFlags
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3083,11 +3083,11 @@ extern enum abstract TraceLogLevel(TraceLogLevelImpl)
     @:native('LOG_NONE') var LOG_NONE;
 
     @:from
-    public static inline function fromInt(i:Int):TraceLogLevel
+    static inline function fromInt(i:Int):TraceLogLevel
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3210,11 +3210,11 @@ extern enum abstract KeyboardKey(KeyboardKeyImpl)
     @:native('KEY_VOLUME_DOWN') var KEY_VOLUME_DOWN;
 
     @:from
-    public static inline function fromInt(i:Int):KeyboardKey
+    static inline function fromInt(i:Int):KeyboardKey
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3234,11 +3234,11 @@ extern enum abstract MouseButton(MouseButtonImpl)
     @:native('MOUSE_BUTTON_BACK') var MOUSE_BUTTON_BACK;
 
     @:from
-    public static inline function fromInt(i:Int):MouseButton
+    static inline function fromInt(i:Int):MouseButton
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3262,11 +3262,11 @@ extern enum abstract MouseCursor(MouseCursorImpl)
     @:native('MOUSE_CURSOR_NOT_ALLOWED') var MOUSE_CURSOR_NOT_ALLOWED;
 
     @:from
-    public static inline function fromInt(i:Int):MouseCursor
+    static inline function fromInt(i:Int):MouseCursor
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3297,11 +3297,11 @@ extern enum abstract GamepadButton(GamepadButtonImpl)
     @:native('GAMEPAD_BUTTON_RIGHT_THUMB') var GAMEPAD_BUTTON_RIGHT_THUMB;
 
     @:from
-    public static inline function fromInt(i:Int):GamepadButton
+    static inline function fromInt(i:Int):GamepadButton
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3320,11 +3320,11 @@ extern enum abstract GamepadAxis(GamepadAxisImpl)
     @:native('GAMEPAD_AXIS_RIGHT_TRIGGER') var GAMEPAD_AXIS_RIGHT_TRIGGER;
 
     @:from
-    public static inline function fromInt(i:Int):GamepadAxis
+    static inline function fromInt(i:Int):GamepadAxis
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3348,11 +3348,11 @@ extern enum abstract MaterialMapIndex(MaterialMapIndexImpl)
     @:native('MATERIAL_MAP_BRDF') var MATERIAL_MAP_BRDF;
 
     @:from
-    public static inline function fromInt(i:Int):MaterialMapIndex
+    static inline function fromInt(i:Int):MaterialMapIndex
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3391,11 +3391,11 @@ extern enum abstract ShaderLocationIndex(ShaderLocationIndexImpl)
     @:native('SHADER_LOC_MAP_BRDF') var SHADER_LOC_MAP_BRDF;
 
     @:from
-    public static inline function fromInt(i:Int):ShaderLocationIndex
+    static inline function fromInt(i:Int):ShaderLocationIndex
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3417,11 +3417,11 @@ extern enum abstract ShaderUniformDataType(ShaderUniformDataTypeImpl)
     @:native('SHADER_UNIFORM_SAMPLER2D') var SHADER_UNIFORM_SAMPLER2D;
 
     @:from
-    public static inline function fromInt(i:Int):ShaderUniformDataType
+    static inline function fromInt(i:Int):ShaderUniformDataType
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3438,11 +3438,11 @@ extern enum abstract ShaderAttributeDataType(ShaderAttributeDataTypeImpl)
     @:native('SHADER_ATTRIB_VEC4') var SHADER_ATTRIB_VEC4;
 
     @:from
-    public static inline function fromInt(i:Int):ShaderAttributeDataType
+    static inline function fromInt(i:Int):ShaderAttributeDataType
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3479,11 +3479,11 @@ extern enum abstract PixelFormat(PixelFormatImpl)
     @:native('PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA') var PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA;
 
     @:from
-    public static inline function fromInt(i:Int):PixelFormat
+    static inline function fromInt(i:Int):PixelFormat
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3502,11 +3502,11 @@ extern enum abstract TextureFilter(TextureFilterImpl)
     @:native('TEXTURE_FILTER_ANISOTROPIC_16X') var TEXTURE_FILTER_ANISOTROPIC_16X;
 
     @:from
-    public static inline function fromInt(i:Int):TextureFilter
+    static inline function fromInt(i:Int):TextureFilter
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3523,11 +3523,11 @@ extern enum abstract TextureWrap(TextureWrapImpl)
     @:native('TEXTURE_WRAP_MIRROR_CLAMP') var TEXTURE_WRAP_MIRROR_CLAMP;
 
     @:from
-    public static inline function fromInt(i:Int):TextureWrap
+    static inline function fromInt(i:Int):TextureWrap
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3546,11 +3546,11 @@ extern enum abstract CubemapLayout(CubemapLayoutImpl)
     @:native('CUBEMAP_LAYOUT_PANORAMA') var CUBEMAP_LAYOUT_PANORAMA;
 
     @:from
-    public static inline function fromInt(i:Int):CubemapLayout
+    static inline function fromInt(i:Int):CubemapLayout
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3566,11 +3566,11 @@ extern enum abstract FontType(FontTypeImpl)
     @:native('FONT_SDF') var FONT_SDF;
 
     @:from
-    public static inline function fromInt(i:Int):FontType
+    static inline function fromInt(i:Int):FontType
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3591,11 +3591,11 @@ extern enum abstract BlendMode(BlendModeImpl)
     @:native('BLEND_CUSTOM_SEPARATE') var BLEND_CUSTOM_SEPARATE;
 
     @:from
-    public static inline function fromInt(i:Int):BlendMode
+    static inline function fromInt(i:Int):BlendMode
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3619,11 +3619,11 @@ extern enum abstract Gesture(GestureImpl)
     @:native('GESTURE_PINCH_OUT') var GESTURE_PINCH_OUT;
 
     @:from
-    public static inline function fromInt(i:Int):Gesture
+    static inline function fromInt(i:Int):Gesture
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3641,11 +3641,11 @@ extern enum abstract CameraMode(CameraModeImpl)
     @:native('CAMERA_THIRD_PERSON') var CAMERA_THIRD_PERSON;
 
     @:from
-    public static inline function fromInt(i:Int):CameraMode
+    static inline function fromInt(i:Int):CameraMode
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3660,11 +3660,11 @@ extern enum abstract CameraProjection(CameraProjectionImpl)
     @:native('CAMERA_ORTHOGRAPHIC') var CAMERA_ORTHOGRAPHIC;
 
     @:from
-    public static inline function fromInt(i:Int):CameraProjection
+    static inline function fromInt(i:Int):CameraProjection
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -3680,11 +3680,11 @@ extern enum abstract NPatchLayout(NPatchLayoutImpl)
     @:native('NPATCH_THREE_PATCH_HORIZONTAL') var NPATCH_THREE_PATCH_HORIZONTAL;
 
     @:from
-    public static inline function fromInt(i:Int):NPatchLayout
+    static inline function fromInt(i:Int):NPatchLayout
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 

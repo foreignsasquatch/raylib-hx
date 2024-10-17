@@ -43,11 +43,11 @@ extern enum abstract RlTraceLogLevel(RlTraceLogLevelImpl)
     @:native('RL_LOG_NONE') var Rl_LOG_NONE;
 
     @:from
-    public static inline function fromInt(i:Int):RlTraceLogLevel
+    static inline function fromInt(i:Int):RlTraceLogLevel
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -84,11 +84,11 @@ extern enum abstract RlPixelFormat(RlPixelFormatImpl)
     @:native('RL_PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA') var Rl_PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA;
 
     @:from
-    public static inline function fromInt(i:Int):RlPixelFormat
+    static inline function fromInt(i:Int):RlPixelFormat
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -107,11 +107,11 @@ extern enum abstract RlTextureFilter(RlTextureFilterImpl)
     @:native('RL_TEXTURE_FILTER_ANISOTROPIC_16X') var Rl_TEXTURE_FILTER_ANISOTROPIC_16X;
 
     @:from
-    public static inline function fromInt(i:Int):RlTextureFilter
+    static inline function fromInt(i:Int):RlTextureFilter
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -132,11 +132,11 @@ extern enum abstract RlBlendMode(RlBlendModeImpl)
     @:native('RL_BLEND_CUSTOM_SEPARATE') var Rl_BLEND_CUSTOM_SEPARATE;
 
     @:from
-    public static inline function fromInt(i:Int):RlBlendMode
+    static inline function fromInt(i:Int):RlBlendMode
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -175,11 +175,11 @@ extern enum abstract RlShaderLocationIndex(RlShaderLocationIndexImpl)
     @:native('RL_SHADER_LOC_MAP_BRDF') var Rl_SHADER_LOC_MAP_BRDF;
 
     @:from
-    public static inline function fromInt(i:Int):RlShaderLocationIndex
+    static inline function fromInt(i:Int):RlShaderLocationIndex
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -201,11 +201,11 @@ extern enum abstract RlShaderUniformDataType(RlShaderUniformDataTypeImpl)
     @:native('RL_SHADER_UNIFORM_SAMPLER2D') var Rl_SHADER_UNIFORM_SAMPLER2D;
 
     @:from
-    public static inline function fromInt(i:Int):RlShaderUniformDataType
+    static inline function fromInt(i:Int):RlShaderUniformDataType
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -222,11 +222,11 @@ extern enum abstract RlShaderAttributeDataType(RlShaderAttributeDataTypeImpl)
     @:native('RL_SHADER_ATTRIB_VEC4') var Rl_SHADER_ATTRIB_VEC4;
 
     @:from
-    public static inline function fromInt(i:Int):RlShaderAttributeDataType
+    static inline function fromInt(i:Int):RlShaderAttributeDataType
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -249,11 +249,11 @@ extern enum abstract RlFramebufferAttachType(RlFramebufferAttachTypeImpl)
     @:native('RL_ATTACHMENT_STENCIL') var Rl_ATTACHMENT_STENCIL;
 
     @:from
-    public static inline function fromInt(i:Int):RlFramebufferAttachType
+    static inline function fromInt(i:Int):RlFramebufferAttachType
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -274,11 +274,11 @@ extern enum abstract RlFramebufferAttachTextureType(RlFramebufferAttachTextureTy
     @:native('RL_ATTACHMENT_RENDERBUFFER') var Rl_ATTACHMENT_RENDERBUFFER;
 
     @:from
-    public static inline function fromInt(i:Int):RlFramebufferAttachTextureType
+    static inline function fromInt(i:Int):RlFramebufferAttachTextureType
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
@@ -293,11 +293,11 @@ extern enum abstract RlCullMode(RlCullModeImpl)
     @:native('RL_CULL_FACE_BACK') var Rl_CULL_FACE_BACK;
 
     @:from
-    public static inline function fromInt(i:Int):RlCullMode
+    static inline function fromInt(i:Int):RlCullMode
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
