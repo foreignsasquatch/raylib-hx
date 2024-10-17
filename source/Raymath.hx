@@ -36,6 +36,11 @@ import Raylib;
 @:unreflective
 extern class Raymath
 {
+    @:native('PI') static var PI:Single;
+    @:native('EPSILON') static var EPSILON:Single;
+    @:native('DEG2RAD') static var DEG2RAD:Single;
+    @:native('RAD2DEG') static var RAD2DEG:Single;
+    
     @:native('Clamp') static function clamp(value:Single, min:Single, max:Single):Single;
     @:native('Lerp') static function lerp(start:Single, end:Single, amount:Single):Single;
     @:native('Normalize') static function normalize(value:Single, start:Single, end:Single):Single;
