@@ -7,6 +7,18 @@ extern abstract FloatPointer(cpp.RawPointer<Single>) from cpp.RawPointer<Single>
         this = ptr;
     }
 
+    @:arrayAccess
+    inline function get(index:Int):Single
+    {
+        return this[index];
+    }
+
+    @:arrayAccess
+    inline function set(index:Int, value:Single):Void
+    {
+        this[index] = value;
+    }
+
     @:from
     static inline function fromValue(value:Single):FloatPointer
     {
