@@ -44,7 +44,7 @@ class Main
         shader.locs[untyped SHADER_LOC_VECTOR_VIEW] = Raylib.getShaderLocation(shader, "viewPos");
 
         // Ambient light level (some basic lighting)
-        Raylib.setShaderValue(shader, Raylib.getShaderLocation(shader, "ambient"), cast utils.FloatPointer.fromArray([0.1, 0.1, 0.1, 1.0]),
+        Raylib.setShaderValue(shader, Raylib.getShaderLocation(shader, "ambient"), cast utils.FloatConstPointer.fromArray([0.1, 0.1, 0.1, 1.0]),
             SHADER_UNIFORM_VEC4);
 
         // Assign out lighting shader to model
@@ -71,7 +71,7 @@ class Main
 
             // Update the shader with the camera view vector (points towards { 0.0f, 0.0f, 0.0f })
             Raylib.setShaderValue(shader, shader.locs[untyped SHADER_LOC_VECTOR_VIEW],
-                cast utils.FloatPointer.fromArray([camera.position.x, camera.position.y, camera.position.z]), SHADER_UNIFORM_VEC3);
+                cast utils.FloatConstPointer.fromArray([camera.position.x, camera.position.y, camera.position.z]), SHADER_UNIFORM_VEC3);
 
             // Check key inputs to enable/disable lights
             if (Raylib.isKeyPressed(KEY_Y))
