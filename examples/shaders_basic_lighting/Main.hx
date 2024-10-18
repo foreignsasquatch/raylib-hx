@@ -88,7 +88,7 @@ class Main
 
             // Update light values (actually, only enable/disable them)
             for (i in 0...lights.length)
-                Raylib.updateLightValues(shader, lights[i]);
+                RLights.updateLightValues(shader, lights[i]);
             //----------------------------------------------------------------------------------
 
             // Draw
