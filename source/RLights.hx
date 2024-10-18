@@ -117,14 +117,14 @@ extern abstract Light(cpp.Struct<RayLight>) to cpp.Struct<RayLight>
         return this.color = value;
     }
 
-    var attenuation(get, set):Float;
+    var attenuation(get, set):Single;
 
-    inline function get_attenuation():Float
+    inline function get_attenuation():Single
     {
         return this.attenuation;
     }
 
-    inline function set_attenuation(value:Float):Float
+    inline function set_attenuation(value:Single):Single
     {
         return this.attenuation = value;
     }
