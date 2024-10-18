@@ -217,8 +217,8 @@ extern abstract Light(cpp.Struct<RayLight>) to cpp.Struct<RayLight>
 
 extern enum abstract LightType(LightTypeImpl)
 {
-    @:native('LIGHT_DIRECTIONAL') var DIRECTIONAL;
-    @:native('LIGHT_POINT') var POINT;
+    @:native('LIGHT_DIRECTIONAL') var LIGHT_DIRECTIONAL;
+    @:native('LIGHT_POINT') var LIGHT_POINT;
 
     @:from
     public static inline function fromInt(i:Int):LightType
