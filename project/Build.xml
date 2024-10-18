@@ -5,7 +5,7 @@
 	<files id="haxe">
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
-		<compilerflag value="-I${haxelib:raylib-hx}/project/include" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/include/impl" />
 
 		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
 		<include name="${haxelib:raylib-hx}/project/lib/raygui-defines.xml" />
@@ -14,14 +14,15 @@
 	<files id="__main__">
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
-		<compilerflag value="-I${haxelib:raylib-hx}/project/include" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/include/impl" />
 
 		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
 		<include name="${haxelib:raylib-hx}/project/lib/raygui-defines.xml" />
 	</files>
 
 	<files id="raylib-base">
-			<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
+		<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
+
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" unless="emscripten || android" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/extras" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
