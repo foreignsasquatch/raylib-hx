@@ -44,7 +44,7 @@ class Main
         shader.locs[untyped SHADER_LOC_VECTOR_VIEW] = Raylib.getShaderLocation(shader, "viewPos");
 
         // Ambient light level (some basic lighting)
-        Raylib.setShaderValue(shader, Raylib.getShaderLocation(shader, "ambient"), cast utils.FloatPointer.fromArray([[0.1, 0.1, 0.1, 1.0]),
+        Raylib.setShaderValue(shader, Raylib.getShaderLocation(shader, "ambient"), cast utils.FloatPointer.fromArray([0.1, 0.1, 0.1, 1.0]),
             SHADER_UNIFORM_VEC4);
 
         // Assign out lighting shader to model
