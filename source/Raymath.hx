@@ -32,7 +32,7 @@ package;
 import Raylib;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raymath-impl.h')
+@:include('impl/raymath-impl.h')
 @:unreflective
 extern class Raymath
 {

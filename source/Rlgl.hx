@@ -52,7 +52,7 @@ extern enum abstract RlTraceLogLevel(RlTraceLogLevelImpl)
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('rlgl-impl.h')
+@:include('impl/rlgl-impl.h')
 @:native('rlTraceLogLevel')
 private extern class RlTraceLogLevelImpl {}
 
@@ -93,7 +93,7 @@ extern enum abstract RlPixelFormat(RlPixelFormatImpl)
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('rlgl-impl.h')
+@:include('impl/rlgl-impl.h')
 @:native('rlPixelFormat')
 private extern class RlPixelFormatImpl {}
 
@@ -116,7 +116,7 @@ extern enum abstract RlTextureFilter(RlTextureFilterImpl)
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('rlgl-impl.h')
+@:include('impl/rlgl-impl.h')
 @:native('rlTextureFilter')
 private extern class RlTextureFilterImpl {}
 
@@ -141,7 +141,7 @@ extern enum abstract RlBlendMode(RlBlendModeImpl)
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('rlgl-impl.h')
+@:include('impl/rlgl-impl.h')
 @:native('rlBlendMode')
 private extern class RlBlendModeImpl {}
 
@@ -184,7 +184,7 @@ extern enum abstract RlShaderLocationIndex(RlShaderLocationIndexImpl)
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('rlgl-impl.h')
+@:include('impl/rlgl-impl.h')
 @:native('rlShaderLocationIndex')
 private extern class RlShaderLocationIndexImpl {}
 
@@ -210,7 +210,7 @@ extern enum abstract RlShaderUniformDataType(RlShaderUniformDataTypeImpl)
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('rlgl-impl.h')
+@:include('impl/rlgl-impl.h')
 @:native('rlShaderUniformDataType')
 private extern class RlShaderUniformDataTypeImpl {}
 
@@ -231,7 +231,7 @@ extern enum abstract RlShaderAttributeDataType(RlShaderAttributeDataTypeImpl)
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('rlgl-impl.h')
+@:include('impl/rlgl-impl.h')
 @:native('rlShaderAttributeDataType')
 private extern class RlShaderAttributeDataTypeImpl {}
 
@@ -258,7 +258,7 @@ extern enum abstract RlFramebufferAttachType(RlFramebufferAttachTypeImpl)
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('rlgl-impl.h')
+@:include('impl/rlgl-impl.h')
 @:native('rlFramebufferAttachType')
 private extern class RlFramebufferAttachTypeImpl {}
 
@@ -283,7 +283,7 @@ extern enum abstract RlFramebufferAttachTextureType(RlFramebufferAttachTextureTy
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('rlgl-impl.h')
+@:include('impl/rlgl-impl.h')
 @:native('rlFramebufferAttachTextureType')
 private extern class RlFramebufferAttachTextureTypeImpl {}
 
@@ -302,12 +302,12 @@ extern enum abstract RlCullMode(RlCullModeImpl)
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('rlgl-impl.h')
+@:include('impl/rlgl-impl.h')
 @:native('rlCullMode')
 private extern class RlCullModeImpl {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('rlgl-impl.h')
+@:include('impl/rlgl-impl.h')
 @:unreflective
 extern class Rlgl
 {

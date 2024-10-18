@@ -48,12 +48,12 @@ extern enum abstract TouchAction(TouchActionImpl)
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('rgestures-impl.h')
+@:include('impl/rgestures-impl.h')
 @:native('TouchAction')
 private extern class TouchActionImpl {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('rgestures-impl.h')
+@:include('impl/rgestures-impl.h')
 @:unreflective
 @:structAccess
 @:native('GestureEvent')
@@ -133,7 +133,7 @@ extern abstract GestureEvent(cpp.Struct<RayGestureEvent>) to cpp.Struct<RayGestu
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('rgestures-impl.h')
+@:include('impl/rgestures-impl.h')
 @:unreflective
 extern class RGestures
 {
