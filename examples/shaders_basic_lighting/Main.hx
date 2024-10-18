@@ -95,20 +95,20 @@ class Main
             //----------------------------------------------------------------------------------
             Raylib.beginDrawing();
 
-            Raylib.clearBackground(RAYWHITE);
+            Raylib.clearBackground(Raylib.RAYWHITE);
 
             Raylib.beginMode3D(camera);
 
-            Raylib.drawModel(model, Vector3Zero(), 1.0 f, WHITE);
-            Raylib.drawModel(cube, Vector3Zero(), 1.0 f, WHITE);
+            Raylib.drawModel(model, RayMath.vector3Zero(), 1.0, Raylib.WHITE);
+            Raylib.drawModel(cube, RayMath.vector3Zero(), 1.0, Raylib.WHITE);
 
             // Draw spheres to show where the lights are
             for (i in 0...lights.length)
             {
                 if (lights[i].enabled)
-                    DrawSphereEx(lights[i].position, 0.2, 8, 8, lights[i].color);
+                    Raylib.drawSphereEx(lights[i].position, 0.2, 8, 8, lights[i].color);
                 else
-                    DrawSphereWires(lights[i].position, 0.2, 8, 8, Raylib.colorAlpha(lights[i].color, 0.3));
+                    Raylib.drawSphereWires(lights[i].position, 0.2, 8, 8, Raylib.colorAlpha(lights[i].color, 0.3));
             }
 
             Raylib.drawGrid(10, 1.0);
@@ -117,7 +117,7 @@ class Main
 
             Raylib.drawFPS(10, 10);
 
-            Raylib.drawText("Use keys [Y][R][G][B] to toggle lights", 10, 40, 20, DARKGRAY);
+            Raylib.drawText("Use keys [Y][R][G][B] to toggle lights", 10, 40, 20, Raylib.DARKGRAY);
 
             Raylib.endDrawing();
             //----------------------------------------------------------------------------------
