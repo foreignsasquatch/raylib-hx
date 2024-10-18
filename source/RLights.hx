@@ -24,7 +24,7 @@
  *     3. This notice may not be removed or altered from any source distribution.
  */
 
-package hxraylib;
+package;
 
 #if !cpp
 #error 'Raylib supports only C++ target platforms.'
@@ -46,8 +46,7 @@ extern class RayLight
     var position:cpp.RawPointer<RayVector3>;
     var target:cpp.RawPointer<RayVector3>;
     var color:RayColor;
-    var attenuation:Float;
-
+    var attenuation:Single;
     var enabledLoc:Int;
     var typeLoc:Int;
     var positionLoc:Int;
@@ -216,14 +215,33 @@ extern abstract Light(cpp.Struct<RayLight>) to cpp.Struct<RayLight>
         return cast cpp.RawPointer.addressOf(this);
 }
 
+extern enum abstract LightType(LightTypeImpl)
+{
+    @:native('LIGHT_DIRECTIONAL') var DIRECTIONAL;
+    @:native('LIGHT_POINT') var POINT;
+
+    @:from
+    public static inline function fromInt(i:Int):LightType
+        return cast i;
+
+    @:to
+    public inline function toInt():Int
+        return untyped this;
+}
+
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('impl/rlights-impl.h')
+@:native('LightType')
+private extern class LightTypeImpl {}
+
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('impl/rlights-impl.h')
 @:unreflective
 extern class RLights
 {
     @:native('CreateLight')
-    static function CreateLight(type:Int, position:RayVector3, target:RayVector3, color:RayColor, attenuation:Float):RayLight;
+    static function CreateLight(type:Int, position:RayVector3, target:RayVector3, color:RayColor, shader:RayShader):RayLight;
 
     @:native('UpdateLightValues')
-    static function UpdateLightValues(light:RayLight):Void;
+    static function UpdateLightValues(shader:RayShader, light:RayLight):Void;
 }
