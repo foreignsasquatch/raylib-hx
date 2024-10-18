@@ -7,6 +7,18 @@ extern abstract IntPointer(cpp.RawPointer<Int>) from cpp.RawPointer<Int> to cpp.
         this = ptr;
     }
 
+    @:arrayAccess
+    inline function get(index:Int):Int
+    {
+        return this[index];
+    }
+
+    @:arrayAccess
+    inline function set(index:Int, value:Int):Void
+    {
+        this[index] = value;
+    }
+
     @:from
     static inline function fromValue(value:Int):IntPointer
     {
