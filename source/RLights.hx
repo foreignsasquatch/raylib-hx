@@ -43,8 +43,8 @@ extern class RayLight
 
     var type:Int;
     var enabled:Bool;
-    var position:cpp.RawPointer<RayVector3>;
-    var target:cpp.RawPointer<RayVector3>;
+    var position:RayVector3;
+    var target:RayVector3;
     var color:RayColor;
     var attenuation:Single;
     var enabledLoc:Int;
@@ -81,26 +81,26 @@ extern abstract Light(cpp.Struct<RayLight>) to cpp.Struct<RayLight>
         return this.enabled = value;
     }
 
-    var position(get, set):cpp.RawPointer<RayVector3>;
+    var position(get, set):RayVector3;
 
-    inline function get_position():cpp.RawPointer<RayVector3>
+    inline function get_position():RayVector3
     {
         return this.position;
     }
 
-    inline function set_position(value:cpp.RawPointer<RayVector3>):cpp.RawPointer<RayVector3>
+    inline function set_position(value:RayVector3):RayVector3
     {
         return this.position = value;
     }
 
-    var target(get, set):cpp.RawPointer<RayVector3>;
+    var target(get, set):RayVector3;
 
-    inline function get_target():cpp.RawPointer<RayVector3>
+    inline function get_target():RayVector3
     {
         return this.target;
     }
 
-    inline function set_target(value:cpp.RawPointer<RayVector3>):cpp.RawPointer<RayVector3>
+    inline function set_target(value:RayVector3):RayVector3
     {
         return this.target = value;
     }
@@ -240,8 +240,8 @@ private extern class LightTypeImpl {}
 extern class RLights
 {
     @:native('CreateLight')
-    static function CreateLight(type:Int, position:RayVector3, target:RayVector3, color:RayColor, shader:RayShader):RayLight;
+    static function createLight(type:Int, position:RayVector3, target:RayVector3, color:RayColor, shader:RayShader):RayLight;
 
     @:native('UpdateLightValues')
-    static function UpdateLightValues(shader:RayShader, light:RayLight):Void;
+    static function updateLightValues(shader:RayShader, light:RayLight):Void;
 }
