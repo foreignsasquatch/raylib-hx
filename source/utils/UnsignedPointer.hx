@@ -7,6 +7,18 @@ extern abstract UnsignedPointer(cpp.RawPointer<cpp.UInt32>) from cpp.RawPointer<
         this = ptr;
     }
 
+    @:arrayAccess
+    inline function get(index:Int):cpp.UInt32
+    {
+        return this[index];
+    }
+
+    @:arrayAccess
+    inline function set(index:Int, value:cpp.UInt32):Void
+    {
+        this[index] = value;
+    }
+
     @:from
     static inline function fromValue(value:cpp.UInt32):UnsignedPointer
     {
