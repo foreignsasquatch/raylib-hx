@@ -1,7 +1,7 @@
 package;
 
 import Raylib;
-import RayMath;
+import Raymath;
 import RLights;
 
 class Main
@@ -54,10 +54,10 @@ class Main
         // Create lights
         final lights:Array<Light> = [];
 
-        lights.push(RLights.createLight(LIGHT_POINT, new Vector3(-2, 1, -2), RayMath.vector3Zero(), Raylib.YELLOW, shader));
-        lights.push(RLights.createLight(LIGHT_POINT, new Vector3(2, 1, 2), RayMath.vector3Zero(), Raylib.RED, shader));
-        lights.push(RLights.createLight(LIGHT_POINT, new Vector3(-2, 1, 2), RayMath.vector3Zero(), Raylib.GREEN, shader));
-        lights.push(RLights.createLight(LIGHT_POINT, new Vector3(2, 1, -2), RayMath.vector3Zero(), Raylib.BLUE, shader));
+        lights.push(RLights.createLight(LIGHT_POINT, new Vector3(-2, 1, -2), Raymath.vector3Zero(), Raylib.YELLOW, shader));
+        lights.push(RLights.createLight(LIGHT_POINT, new Vector3(2, 1, 2), Raymath.vector3Zero(), Raylib.RED, shader));
+        lights.push(RLights.createLight(LIGHT_POINT, new Vector3(-2, 1, 2), Raymath.vector3Zero(), Raylib.GREEN, shader));
+        lights.push(RLights.createLight(LIGHT_POINT, new Vector3(2, 1, -2), Raymath.vector3Zero(), Raylib.BLUE, shader));
 
         Raylib.setTargetFPS(60); // Set our game to run at 60 frames-per-second
         //--------------------------------------------------------------------------------------
@@ -99,8 +99,8 @@ class Main
 
             Raylib.beginMode3D(camera);
 
-            Raylib.drawModel(model, RayMath.vector3Zero(), 1.0, Raylib.WHITE);
-            Raylib.drawModel(cube, RayMath.vector3Zero(), 1.0, Raylib.WHITE);
+            Raylib.drawModel(model, Raymath.vector3Zero(), 1.0, Raylib.WHITE);
+            Raylib.drawModel(cube, Raymath.vector3Zero(), 1.0, Raylib.WHITE);
 
             // Draw spheres to show where the lights are
             for (i in 0...lights.length)
