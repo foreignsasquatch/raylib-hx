@@ -7,21 +7,27 @@ extern abstract BoolPointer(cpp.RawPointer<Bool>) from cpp.RawPointer<Bool> to c
         this = ptr;
     }
 
+    @:arrayAccess
+    inline function get(index:Int):Bool
+    {
+        return this[index];
+    }
+
+    @:arrayAccess
+    inline function set(index:Int, value:Bool):Void
+    {
+        this[index] = value;
+    }
+
     @:from
-    public static inline function fromValue(value:Bool):BoolPointer
+    static inline function fromValue(value:Bool):BoolPointer
     {
         return new BoolPointer(cpp.Pointer.addressOf(value).raw);
     }
 
     @:from
-    public static inline function fromArray(value:Array<Bool>):BoolPointer
+    static inline function fromArray(value:Array<Bool>):BoolPointer
     {
         return new BoolPointer(cpp.Pointer.ofArray(value).raw);
-    }
-
-    @:to
-    public inline function toBool():Bool
-    {
-        return this[0];
     }
 }

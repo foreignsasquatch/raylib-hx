@@ -31,68 +31,74 @@ package;
 #end
 import Raylib;
 
-extern enum abstract TouchAction(TouchActionImpl)
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('impl/rlights-impl.h')
+@:unreflective
+@:structAccess
+@:native('Light')
+extern class RayLight
 {
-    @:native('TOUCH_ACTION_UP') var TOUCH_ACTION_UP;
-    @:native('TOUCH_ACTION_DOWN') var TOUCH_ACTION_DOWN;
-    @:native('TOUCH_ACTION_MOVE') var TOUCH_ACTION_MOVE;
-    @:native('TOUCH_ACTION_CANCEL') var TOUCH_ACTION_CANCEL;
+    @:native('Light')
+    static function alloc():RayLight;
+
+    var type:Int;
+    var enabled:Bool;
+    var position:RayVector3;
+    var target:RayVector3;
+    var color:RayColor;
+    var attenuation:Single;
+    var enabledLoc:Int;
+    var typeLoc:Int;
+    var positionLoc:Int;
+    var targetLoc:Int;
+    var colorLoc:Int;
+    var attenuationLoc:Int;
+}
+
+@:forward
+extern abstract Light(cpp.Struct<RayLight>) to cpp.Struct<RayLight>
+{
+    inline function new():Void
+    {
+        this = RayLight.alloc();
+    }
 
     @:from
-    static inline function fromInt(i:Int):TouchAction
+    static inline function fromNative(value:RayLight):Light
+        return cast value;
+
+    @:to
+    inline function toPointer():cpp.RawPointer<RayLight>
+        return cast cpp.RawPointer.addressOf(this);
+}
+
+extern enum abstract LightType(LightTypeImpl)
+{
+    @:native('LIGHT_DIRECTIONAL') var LIGHT_DIRECTIONAL;
+    @:native('LIGHT_POINT') var LIGHT_POINT;
+
+    @:from
+    public static inline function fromInt(i:Int):LightType
         return cast i;
 
     @:to
-    inline function toInt():Int
+    public inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('impl/rgestures-impl.h')
-@:native('TouchAction')
-private extern class TouchActionImpl {}
+@:include('impl/rlights-impl.h')
+@:native('LightType')
+private extern class LightTypeImpl {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('impl/rgestures-impl.h')
+@:include('impl/rlights-impl.h')
 @:unreflective
-@:structAccess
-@:native('GestureEvent')
-extern class RayGestureEvent
+extern class RLights
 {
-    @:native('GestureEvent')
-    static function alloc():RayGestureEvent;
+    @:native('CreateLight')
+    static function createLight(type:Int, position:RayVector3, target:RayVector3, color:RayColor, shader:RayShader):RayLight;
 
-    var touchAction:Int;
-    var pointCount:Int;
-    var pointId:utils.IntPointer;
-    var position:cpp.RawPointer<RayVector2>;
-}
-
-@:forward
-extern abstract GestureEvent(cpp.Struct<RayGestureEvent>) to cpp.Struct<RayGestureEvent>
-{
-    inline function new():Void
-    {
-        this = RayGestureEvent.alloc();
-    }
-
-    @:from
-    static inline function fromNative(value:RayGestureEvent):GestureEvent
-        return cast value;
-
-    @:to
-    inline function toPointer():cpp.RawPointer<RayGestureEvent>
-        return cast cpp.RawPointer.addressOf(this);
-}
-
-@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('impl/rgestures-impl.h')
-@:unreflective
-extern class RGestures
-{
-    @:native('ProcessGestureEvent')
-    static function ProcessGestureEvent(event:RayGestureEvent):Void;
-
-    @:native('UpdateGestures')
-    static function UpdateGestures():Void;
+    @:native('UpdateLightValues')
+    static function updateLightValues(shader:RayShader, light:RayLight):Void;
 }

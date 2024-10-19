@@ -34,7 +34,7 @@ package;
 import Raylib;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:unreflective
 @:structAccess
 @:native('GuiStyleProp')
@@ -48,55 +48,20 @@ extern class RayGuiStyleProp
     var propertyValue:Int;
 }
 
+@:forward
 extern abstract GuiStyleProp(cpp.Struct<RayGuiStyleProp>) to cpp.Struct<RayGuiStyleProp>
 {
-    var controlId(get, set):cpp.UInt16;
-
-    inline function get_controlId():cpp.UInt16
-    {
-        return this.controlId;
-    }
-
-    inline function set_controlId(value:cpp.UInt16):cpp.UInt16
-    {
-        return this.controlId = value;
-    }
-
-    var propertyId(get, set):cpp.UInt16;
-
-    inline function get_propertyId():cpp.UInt16
-    {
-        return this.propertyId;
-    }
-
-    inline function set_propertyId(value:cpp.UInt16):cpp.UInt16
-    {
-        return this.propertyId = value;
-    }
-
-    var propertyValue(get, set):Int;
-
-    inline function get_propertyValue():Int
-    {
-        return this.propertyValue;
-    }
-
-    inline function set_propertyValue(value:Int):Int
-    {
-        return this.propertyValue = value;
-    }
-
     inline function new():Void
     {
         this = RayGuiStyleProp.alloc();
     }
 
     @:from
-    public static inline function fromNative(value:RayGuiStyleProp):GuiStyleProp
+    static inline function fromNative(value:RayGuiStyleProp):GuiStyleProp
         return cast value;
 
     @:to
-    public inline function toPointer():cpp.RawPointer<RayGuiStyleProp>
+    inline function toPointer():cpp.RawPointer<RayGuiStyleProp>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -108,16 +73,16 @@ extern enum abstract GuiState(GuiStateImpl)
     @:native('STATE_DISABLED') var STATE_DISABLED;
 
     @:from
-    public static inline function fromInt(i:Int):GuiState
+    static inline function fromInt(i:Int):GuiState
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiState')
 private extern class GuiStateImpl {}
 
@@ -128,16 +93,16 @@ extern enum abstract GuiTextAlignment(GuiTextAlignmentImpl)
     @:native('TEXT_ALIGN_RIGHT') var TEXT_ALIGN_RIGHT;
 
     @:from
-    public static inline function fromInt(i:Int):GuiTextAlignment
+    static inline function fromInt(i:Int):GuiTextAlignment
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiTextAlignment')
 private extern class GuiTextAlignmentImpl {}
 
@@ -148,16 +113,16 @@ extern enum abstract GuiTextAlignmentVertical(GuiTextAlignmentVerticalImpl)
     @:native('TEXT_ALIGN_BOTTOM') var TEXT_ALIGN_BOTTOM;
 
     @:from
-    public static inline function fromInt(i:Int):GuiTextAlignmentVertical
+    static inline function fromInt(i:Int):GuiTextAlignmentVertical
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiTextAlignmentVertical')
 private extern class GuiTextAlignmentVerticalImpl {}
 
@@ -168,16 +133,16 @@ extern enum abstract GuiTextWrapMode(GuiTextWrapModeImpl)
     @:native('TEXT_WRAP_WORD') var TEXT_WRAP_WORD;
 
     @:from
-    public static inline function fromInt(i:Int):GuiTextWrapMode
+    static inline function fromInt(i:Int):GuiTextWrapMode
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiTextWrapMode')
 private extern class GuiTextWrapModeImpl {}
 
@@ -201,16 +166,16 @@ extern enum abstract GuiControl(GuiControlImpl)
     @:native('STATUSBAR') var STATUSBAR;
 
     @:from
-    public static inline function fromInt(i:Int):GuiControl
+    static inline function fromInt(i:Int):GuiControl
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiControl')
 private extern class GuiControlImpl {}
 
@@ -233,16 +198,16 @@ extern enum abstract GuiControlProperty(GuiControlPropertyImpl)
     @:native('TEXT_ALIGNMENT') var TEXT_ALIGNMENT;
 
     @:from
-    public static inline function fromInt(i:Int):GuiControlProperty
+    static inline function fromInt(i:Int):GuiControlProperty
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiControlProperty')
 private extern class GuiControlPropertyImpl {}
 
@@ -257,16 +222,16 @@ extern enum abstract GuiDefaultProperty(GuiDefaultPropertyImpl)
     @:native('TEXT_WRAP_MODE') var TEXT_WRAP_MODE;
 
     @:from
-    public static inline function fromInt(i:Int):GuiDefaultProperty
+    static inline function fromInt(i:Int):GuiDefaultProperty
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiDefaultProperty')
 private extern class GuiDefaultPropertyImpl {}
 
@@ -275,16 +240,16 @@ extern enum abstract GuiToggleProperty(GuiTogglePropertyImpl)
     @:native('GROUP_PADDING') var GROUP_PADDING;
 
     @:from
-    public static inline function fromInt(i:Int):GuiToggleProperty
+    static inline function fromInt(i:Int):GuiToggleProperty
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiToggleProperty')
 private extern class GuiTogglePropertyImpl {}
 
@@ -294,16 +259,16 @@ extern enum abstract GuiSliderProperty(GuiSliderPropertyImpl)
     @:native('SLIDER_PADDING') var SLIDER_PADDING;
 
     @:from
-    public static inline function fromInt(i:Int):GuiSliderProperty
+    static inline function fromInt(i:Int):GuiSliderProperty
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiSliderProperty')
 private extern class GuiSliderPropertyImpl {}
 
@@ -312,16 +277,16 @@ extern enum abstract GuiProgressBarProperty(GuiProgressBarPropertyImpl)
     @:native('PROGRESS_PADDING') var PROGRESS_PADDING;
 
     @:from
-    public static inline function fromInt(i:Int):GuiProgressBarProperty
+    static inline function fromInt(i:Int):GuiProgressBarProperty
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiProgressBarProperty')
 private extern class GuiProgressBarPropertyImpl {}
 
@@ -335,16 +300,16 @@ extern enum abstract GuiScrollBarProperty(GuiScrollBarPropertyImpl)
     @:native('SCROLL_SPEED') var SCROLL_SPEED;
 
     @:from
-    public static inline function fromInt(i:Int):GuiScrollBarProperty
+    static inline function fromInt(i:Int):GuiScrollBarProperty
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiScrollBarProperty')
 private extern class GuiScrollBarPropertyImpl {}
 
@@ -353,16 +318,16 @@ extern enum abstract GuiCheckBoxProperty(GuiCheckBoxPropertyImpl)
     @:native('CHECK_PADDING') var CHECK_PADDING;
 
     @:from
-    public static inline function fromInt(i:Int):GuiCheckBoxProperty
+    static inline function fromInt(i:Int):GuiCheckBoxProperty
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiCheckBoxProperty')
 private extern class GuiCheckBoxPropertyImpl {}
 
@@ -372,16 +337,16 @@ extern enum abstract GuiComboBoxProperty(GuiComboBoxPropertyImpl)
     @:native('COMBO_BUTTON_SPACING') var COMBO_BUTTON_SPACING;
 
     @:from
-    public static inline function fromInt(i:Int):GuiComboBoxProperty
+    static inline function fromInt(i:Int):GuiComboBoxProperty
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiComboBoxProperty')
 private extern class GuiComboBoxPropertyImpl {}
 
@@ -391,16 +356,16 @@ extern enum abstract GuiDropdownBoxProperty(GuiDropdownBoxPropertyImpl)
     @:native('DROPDOWN_ITEMS_SPACING') var DROPDOWN_ITEMS_SPACING;
 
     @:from
-    public static inline function fromInt(i:Int):GuiDropdownBoxProperty
+    static inline function fromInt(i:Int):GuiDropdownBoxProperty
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiDropdownBoxProperty')
 private extern class GuiDropdownBoxPropertyImpl {}
 
@@ -409,16 +374,16 @@ extern enum abstract GuiTextBoxProperty(GuiTextBoxPropertyImpl)
     @:native('TEXT_READONLY') var TEXT_READONLY;
 
     @:from
-    public static inline function fromInt(i:Int):GuiTextBoxProperty
+    static inline function fromInt(i:Int):GuiTextBoxProperty
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiTextBoxProperty')
 private extern class GuiTextBoxPropertyImpl {}
 
@@ -428,16 +393,16 @@ extern enum abstract GuiSpinnerProperty(GuiSpinnerPropertyImpl)
     @:native('SPIN_BUTTON_SPACING') var SPIN_BUTTON_SPACING;
 
     @:from
-    public static inline function fromInt(i:Int):GuiSpinnerProperty
+    static inline function fromInt(i:Int):GuiSpinnerProperty
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiSpinnerProperty')
 private extern class GuiSpinnerPropertyImpl {}
 
@@ -449,16 +414,16 @@ extern enum abstract GuiListViewProperty(GuiListViewPropertyImpl)
     @:native('SCROLLBAR_SIDE') var SCROLLBAR_SIDE;
 
     @:from
-    public static inline function fromInt(i:Int):GuiListViewProperty
+    static inline function fromInt(i:Int):GuiListViewProperty
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiListViewProperty')
 private extern class GuiListViewPropertyImpl {}
 
@@ -471,16 +436,16 @@ extern enum abstract GuiColorPickerProperty(GuiColorPickerPropertyImpl)
     @:native('HUEBAR_SELECTOR_OVERFLOW') var HUEBAR_SELECTOR_OVERFLOW;
 
     @:from
-    public static inline function fromInt(i:Int):GuiColorPickerProperty
+    static inline function fromInt(i:Int):GuiColorPickerProperty
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiColorPickerProperty')
 private extern class GuiColorPickerPropertyImpl {}
 
@@ -745,22 +710,22 @@ extern enum abstract GuiIconName(GuiIconNameImpl)
     @:native('ICON_255') var ICON_255;
 
     @:from
-    public static inline function fromInt(i:Int):GuiIconName
+    static inline function fromInt(i:Int):GuiIconName
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:native('GuiIconName')
 private extern class GuiIconNameImpl {}
 #end
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('raygui-impl.h')
+@:include('impl/raygui-impl.h')
 @:unreflective
 extern class Raygui
 {
