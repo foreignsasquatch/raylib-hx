@@ -6,7 +6,7 @@ extern abstract StructArray<T>(Array<T>) from Array<T> to Array<T>
     @:arrayAccess
     inline function get(index:Int):T
     {
-        return this[i];
+        return this[index];
     }
 
     @:arrayAccess
