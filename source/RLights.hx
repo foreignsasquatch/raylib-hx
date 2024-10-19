@@ -56,13 +56,8 @@ extern class RayLight
 }
 
 @:forward
-extern abstract Light(cpp.Struct<RayLight>) to cpp.Struct<RayLight>
+extern abstract Light(cpp.Struct<RayLight>) to RayLight
 {
-    inline function set_attenuationLoc(value:Int):Int
-    {
-        return this.attenuationLoc = value;
-    }
-
     inline function new():Void
     {
         this = RayLight.alloc();
