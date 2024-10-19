@@ -56,7 +56,7 @@ extern class RayLight
 }
 
 @:forward
-extern abstract Light(cpp.Struct<RayLight>) to RayLight
+extern abstract Light(cpp.Struct<RayLight>) to cpp.Struct<RayLight>
 {
     inline function new():Void
     {
