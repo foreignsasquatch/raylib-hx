@@ -31,6 +31,97 @@ package;
 #end
 import Raylib;
 
+/*
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('impl/rlgl-impl.h')
+@:unreflective
+@:structAccess
+@:native('rlVertexBuffer')
+extern class RayRlVertexBuffer
+{
+    @:native('rlVertexBuffer')
+    static function alloc():RayRlVertexBuffer;
+
+    var elementCount:Int;
+    var vertices:utils.FloatArray;
+    var texcoords:utils.FloatArray;
+    
+}
+
+// Dynamic vertex buffers (position + texcoords + colors + indices arrays)
+typedef struct rlVertexBuffer {
+    int elementCount;           // Number of elements in the buffer (QUADS)
+
+    float *vertices;            // Vertex position (XYZ - 3 components per vertex) (shader-location = 0)
+    float *texcoords;           // Vertex texture coordinates (UV - 2 components per vertex) (shader-location = 1)
+    unsigned char *colors;      // Vertex colors (RGBA - 4 components per vertex) (shader-location = 3)
+#if defined(GRAPHICS_API_OPENGL_11) || defined(GRAPHICS_API_OPENGL_33)
+    unsigned int *indices;      // Vertex indices (in case vertex data comes indexed) (6 indices per quad)
+#endif
+#if defined(GRAPHICS_API_OPENGL_ES2)
+    unsigned short *indices;    // Vertex indices (in case vertex data comes indexed) (6 indices per quad)
+#endif
+    unsigned int vaoId;         // OpenGL Vertex Array Object id
+    unsigned int vboId[4];      // OpenGL Vertex Buffer Objects id (4 types of vertex data)
+} rlVertexBuffer;
+
+@:forward
+extern abstract Vector2(cpp.Struct<RayVector2>) to cpp.Struct<RayVector2>
+{
+    inline function new(x:Single, y:Single):Void
+    {
+        final vec2:RayVector2 = RayVector2.alloc();
+        vec2.x = x;
+        vec2.y = y;
+        this = vec2;
+    }
+
+    @:from
+    static inline function fromNative(value:RayVector2):Vector2
+        return cast value;
+
+    @:to
+    inline function toPointer():cpp.RawPointer<RayVector2>
+        return cast cpp.RawPointer.addressOf(this);
+}
+
+// Draw call type
+// NOTE: Only texture changes register a new draw, other state-change-related elements are not
+// used at this moment (vaoId, shaderId, matrices), raylib just forces a batch draw call if any
+// of those state-change happens (this is done in core module)
+typedef struct rlDrawCall {
+    int mode;                   // Drawing mode: LINES, TRIANGLES, QUADS
+    int vertexCount;            // Number of vertex of the draw
+    int vertexAlignment;        // Number of vertex required for index alignment (LINES, TRIANGLES)
+    //unsigned int vaoId;       // Vertex array id to be used on the draw -> Using RLGL.currentBatch->vertexBuffer.vaoId
+    //unsigned int shaderId;    // Shader id to be used on the draw -> Using RLGL.currentShaderId
+    unsigned int textureId;     // Texture id to be used on the draw -> Use to create new draw call if changes
+
+    //Matrix projection;        // Projection matrix for this draw -> Using RLGL.projection by default
+    //Matrix modelview;         // Modelview matrix for this draw -> Using RLGL.modelview by default
+} rlDrawCall;
+
+// rlRenderBatch type
+typedef struct rlRenderBatch {
+    int bufferCount;            // Number of vertex buffers (multi-buffering support)
+    int currentBuffer;          // Current buffer tracking in case of multi-buffering
+    rlVertexBuffer *vertexBuffer; // Dynamic buffer(s) for vertex data
+
+    rlDrawCall *draws;          // Draw calls array, depends on textureId
+    int drawCounter;            // Draw calls counter
+    float currentDepth;         // Current depth value for next draw
+} rlRenderBatch;
+
+// OpenGL version
+typedef enum {
+    RL_OPENGL_11 = 1,           // OpenGL 1.1
+    RL_OPENGL_21,               // OpenGL 2.1 (GLSL 120)
+    RL_OPENGL_33,               // OpenGL 3.3 (GLSL 330)
+    RL_OPENGL_43,               // OpenGL 4.3 (using GLSL 330)
+    RL_OPENGL_ES_20,            // OpenGL ES 2.0 (GLSL 100)
+    RL_OPENGL_ES_30             // OpenGL ES 3.0 (GLSL 300 es)
+} rlGlVersion;*/
+
 extern enum abstract RlTraceLogLevel(RlTraceLogLevelImpl)
 {
     @:native('RL_LOG_ALL') var Rl_LOG_ALL;
@@ -399,4 +490,77 @@ extern class Rlgl
 @:native("rlColor4ub") static function rlColor4ub(r:cpp.UInt8, g:cpp.UInt8, b:cpp.UInt8, a:cpp.UInt8):Void;
 @:native("rlColor3f") static function rlColor3f(x:Single, y:Single, z:Single):Void;
 @:native("rlColor4f") static function rlColor4f(x:Single, y:Single, z:Single, w:Single):Void;
+@:native("rlEnableVertexArray") static function rlEnableVertexArray(vaoId:cpp.UInt32):Bool;
+@:native("rlDisableVertexArray") static function rlDisableVertexArray():Void;
+@:native("rlEnableVertexBuffer") static function rlEnableVertexBuffer(id:cpp.UInt32):Void;
+@:native("rlDisableVertexBuffer") static function rlDisableVertexBuffer():Void;
+@:native("rlEnableVertexBufferElement") static function rlEnableVertexBufferElement(id:cpp.UInt32):Void;
+@:native("rlDisableVertexBufferElement") static function rlDisableVertexBufferElement():Void;
+@:native("rlEnableVertexAttribute") static function rlEnableVertexAttribute(index:cpp.UInt32):Void;
+@:native("rlDisableVertexAttribute") static function rlDisableVertexAttribute(index:cpp.UInt32):Void;
+#if GRAPHICS_API_OPENGL_11
+@:native("rlEnableStatePointer") static function rlEnableStatePointer(vertexAttribType:Int, buffer:cpp.RawPointer<cpp.Void>):Void;
+@:native("rlDisableStatePointer") static function rlDisableStatePointer(vertexAttribType:Int):Void;
+#end
+@:native("rlActiveTextureSlot") static function rlActiveTextureSlot(slot:Int):Void;
+@:native("rlEnableTexture") static function rlEnableTexture(id:cpp.UInt32):Void;
+@:native("rlDisableTexture") static function rlDisableTexture():Void;
+@:native("rlEnableTextureCubemap") static function rlEnableTextureCubemap(id:cpp.UInt32):Void;
+@:native("rlDisableTextureCubemap") static function rlDisableTextureCubemap():Void;
+@:native("rlTextureParameters") static function rlTextureParameters(id:cpp.UInt32, param:Int, value:Int):Void;
+@:native("rlCubemapParameters") static function rlCubemapParameters(id:cpp.UInt32, param:Int, value:Int):Void;
+@:native("rlEnableShader") static function rlEnableShader(id:cpp.UInt32):Void;
+@:native("rlDisableShader") static function rlDisableShader():Void;
+@:native("rlEnableFramebuffer") static function rlEnableFramebuffer(id:cpp.UInt32):Void;
+@:native("rlDisableFramebuffer") static function rlDisableFramebuffer():Void;
+@:native("rlActiveDrawBuffers") static function rlActiveDrawBuffers(count:Int):Void;
+@:native("rlBlitFramebuffer") static function rlBlitFramebuffer(srcX:Int, srcY:Int, srcWidth:Int, srcHeight:Int, dstX:Int, dstY:Int, dstWidth:Int, dstHeight:Int, bufferMask:Int):Void;
+@:native("rlBindFramebuffer") static function rlBindFramebuffer(target:cpp.UInt32, framebuffer:cpp.UInt32):Void;
+@:native("rlEnableColorBlend") static function rlEnableColorBlend():Void;
+@:native("rlDisableColorBlend") static function rlDisableColorBlend():Void;
+@:native("rlEnableDepthTest") static function rlEnableDepthTest():Void;
+@:native("rlDisableDepthTest") static function rlDisableDepthTest():Void;
+@:native("rlEnableDepthMask") static function rlEnableDepthMask():Void;
+@:native("rlDisableDepthMask") static function rlDisableDepthMask():Void;
+@:native("rlEnableBackfaceCulling") static function rlEnableBackfaceCulling():Void;
+@:native("rlDisableBackfaceCulling") static function rlDisableBackfaceCulling():Void;
+@:native("rlColorMask") static function rlColorMask(r:Bool, g:Bool, b:Bool, a:Bool):Void;
+@:native("rlSetCullFace") static function rlSetCullFace(mode:Int):Void;
+@:native("rlEnableScissorTest") static function rlEnableScissorTest():Void;
+@:native("rlDisableScissorTest") static function rlDisableScissorTest():Void;
+@:native("rlScissor") static function rlScissor(x:Int, y:Int, width:Int, height:Int):Void;
+@:native("rlEnableWireMode") static function rlEnableWireMode():Void;
+@:native("rlEnablePointMode") static function rlEnablePointMode():Void;
+@:native("rlDisableWireMode") static function rlDisableWireMode():Void;
+@:native("rlSetLineWidth") static function rlSetLineWidth(width:Single):Void;
+@:native("rlGetLineWidth") static function rlGetLineWidth():Single;
+@:native("rlEnableSmoothLines") static function rlEnableSmoothLines():Void;
+@:native("rlDisableSmoothLines") static function rlDisableSmoothLines():Void;
+@:native("rlEnableStereoRender") static function rlEnableStereoRender():Void;
+@:native("rlDisableStereoRender") static function rlDisableStereoRender():Void;
+@:native("rlIsStereoRenderEnabled") static function rlIsStereoRenderEnabled():Bool;
+@:native("rlClearColor") static function rlClearColor(r:cpp.UInt8, g:cpp.UInt8, b:cpp.UInt8, a:cpp.UInt8):Void;
+@:native("rlClearScreenBuffers") static function rlClearScreenBuffers():Void;
+@:native("rlCheckErrors") static function rlCheckErrors():Void;
+@:native("rlSetBlendMode") static function rlSetBlendMode(mode:Int):Void;
+@:native("rlSetBlendFactors") static function rlSetBlendFactors(glSrcFactor:Int, glDstFactor:Int, glEquation:Int):Void;
+@:native("rlSetBlendFactorsSeparate") static function rlSetBlendFactorsSeparate(glSrcRGB:Int, glDstRGB:Int, glSrcAlpha:Int, glDstAlpha:Int, glEqRGB:Int, glEqAlpha:Int):Void;
+@:native("rlglInit") static function rlglInit(width:Int, height:Int):Void;
+@:native("rlglClose") static function rlglClose():Void;
+@:native("rlLoadExtensions") static function rlLoadExtensions(loader:cpp.RawPointer<cpp.Void>):Void;
+@:native("rlGetVersion") static function rlGetVersion():Int;
+@:native("rlSetFramebufferWidth") static function rlSetFramebufferWidth(width:Int):Void;
+@:native("rlGetFramebufferWidth") static function rlGetFramebufferWidth():Int;
+@:native("rlSetFramebufferHeight") static function rlSetFramebufferHeight(height:Int):Void;
+@:native("rlGetFramebufferHeight") static function rlGetFramebufferHeight():Int;
+@:native("rlGetTextureIdDefault") static function rlGetTextureIdDefault():cpp.UInt32;
+@:native("rlGetShaderIdDefault") static function rlGetShaderIdDefault():cpp.UInt32;
+@:native("rlGetShaderLocsDefault") static function rlGetShaderLocsDefault():utils.IntPointer;
+@:native("rlLoadRenderBatch") static function rlLoadRenderBatch(numBuffers:Int, bufferElements:Int):RlRenderBatch;
+@:native("rlUnloadRenderBatch") static function rlUnloadRenderBatch(batch:RlRenderBatch):Void;
+@:native("rlDrawRenderBatch") static function rlDrawRenderBatch(batch:cpp.RawPointer<RlRenderBatch>):Void;
+@:native("rlSetRenderBatchActive") static function rlSetRenderBatchActive(batch:cpp.RawPointer<RlRenderBatch>):Void;
+@:native("rlDrawRenderBatchActive") static function rlDrawRenderBatchActive():Void;
+@:native("rlCheckRenderBatchLimit") static function rlCheckRenderBatchLimit(vCount:Int):Bool;
+@:native("rlSetTexture") static function rlSetTexture(id:cpp.UInt32):Void;
 }
