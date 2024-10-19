@@ -48,44 +48,9 @@ extern class RayGuiStyleProp
     var propertyValue:Int;
 }
 
+@:forward
 extern abstract GuiStyleProp(cpp.Struct<RayGuiStyleProp>) to cpp.Struct<RayGuiStyleProp>
 {
-    var controlId(get, set):cpp.UInt16;
-
-    inline function get_controlId():cpp.UInt16
-    {
-        return this.controlId;
-    }
-
-    inline function set_controlId(value:cpp.UInt16):cpp.UInt16
-    {
-        return this.controlId = value;
-    }
-
-    var propertyId(get, set):cpp.UInt16;
-
-    inline function get_propertyId():cpp.UInt16
-    {
-        return this.propertyId;
-    }
-
-    inline function set_propertyId(value:cpp.UInt16):cpp.UInt16
-    {
-        return this.propertyId = value;
-    }
-
-    var propertyValue(get, set):Int;
-
-    inline function get_propertyValue():Int
-    {
-        return this.propertyValue;
-    }
-
-    inline function set_propertyValue(value:Int):Int
-    {
-        return this.propertyValue = value;
-    }
-
     inline function new():Void
     {
         this = RayGuiStyleProp.alloc();
