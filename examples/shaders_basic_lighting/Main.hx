@@ -52,12 +52,10 @@ class Main
         cube.materials[0].shader = shader;
 
         // Create lights
-        final lights:utils.StructArray<Light> = [];
-
-        lights.push(RLights.createLight(LIGHT_POINT, new Vector3(-2, 1, -2), Raymath.vector3Zero(), Raylib.YELLOW, shader));
-        lights.push(RLights.createLight(LIGHT_POINT, new Vector3(2, 1, 2), Raymath.vector3Zero(), Raylib.RED, shader));
-        lights.push(RLights.createLight(LIGHT_POINT, new Vector3(-2, 1, 2), Raymath.vector3Zero(), Raylib.GREEN, shader));
-        lights.push(RLights.createLight(LIGHT_POINT, new Vector3(2, 1, -2), Raymath.vector3Zero(), Raylib.BLUE, shader));
+        final light1:Light = RLights.createLight(LIGHT_POINT, new Vector3(-2, 1, -2), Raymath.vector3Zero(), Raylib.YELLOW, shader);
+        final light2:Light = RLights.createLight(LIGHT_POINT, new Vector3(2, 1, 2), Raymath.vector3Zero(), Raylib.RED, shader);
+        final light3:Light = RLights.createLight(LIGHT_POINT, new Vector3(-2, 1, 2), Raymath.vector3Zero(), Raylib.GREEN, shader);
+        final light4:Light = RLights.createLight(LIGHT_POINT, new Vector3(2, 1, -2), Raymath.vector3Zero(), Raylib.BLUE, shader);
 
         Raylib.setTargetFPS(60); // Set our game to run at 60 frames-per-second
         //--------------------------------------------------------------------------------------
@@ -75,20 +73,23 @@ class Main
 
             // Check key inputs to enable/disable lights
             if (Raylib.isKeyPressed(KEY_Y))
-                lights[0].enabled = !lights[0].enabled;
+                light1.enabled = !light1.enabled;
 
             if (Raylib.isKeyPressed(KEY_R))
-                lights[1].enabled = !lights[1].enabled;
+                light2.enabled = !light2.enabled;
 
             if (Raylib.isKeyPressed(KEY_G))
-                lights[2].enabled = !lights[2].enabled;
+                light3.enabled = !light3.enabled;
 
             if (Raylib.isKeyPressed(KEY_B))
-                lights[3].enabled = !lights[3].enabled;
+                light4.enabled = !light4.enabled;
 
             // Update light values (actually, only enable/disable them)
-            for (i in 0...lights.length)
-                RLights.updateLightValues(shader, lights[i]);
+            // for (i in 0...lights.length)
+            RLights.updateLightValues(shader, light1);
+            RLights.updateLightValues(shader, light2);
+            RLights.updateLightValues(shader, light3);
+            RLights.updateLightValues(shader, light4);
             //----------------------------------------------------------------------------------
 
             // Draw
@@ -103,13 +104,25 @@ class Main
             Raylib.drawModel(cube, Raymath.vector3Zero(), 1.0, Raylib.WHITE);
 
             // Draw spheres to show where the lights are
-            for (i in 0...lights.length)
-            {
-                if (lights[i].enabled)
-                    Raylib.drawSphereEx(lights[i].position, 0.2, 8, 8, lights[i].color);
-                else
-                    Raylib.drawSphereWires(lights[i].position, 0.2, 8, 8, Raylib.colorAlpha(lights[i].color, 0.3));
-            }
+            if (light1.enabled)
+                Raylib.drawSphereEx(light1.position, 0.2, 8, 8, light1.color);
+            else
+                Raylib.drawSphereWires(light1.position, 0.2, 8, 8, Raylib.colorAlpha(light1.color, 0.3));
+
+            if (light2.enabled)
+                Raylib.drawSphereEx(light2.position, 0.2, 8, 8, light2.color);
+            else
+                Raylib.drawSphereWires(light2.position, 0.2, 8, 8, Raylib.colorAlpha(light2.color, 0.3));
+
+            if (light3.enabled)
+                Raylib.drawSphereEx(light3.position, 0.2, 8, 8, light3.color);
+            else
+                Raylib.drawSphereWires(light3.position, 0.2, 8, 8, Raylib.colorAlpha(light3.color, 0.3));
+
+            if (light4.enabled)
+                Raylib.drawSphereEx(light4.position, 0.2, 8, 8, light4.color);
+            else
+                Raylib.drawSphereWires(light4.position, 0.2, 8, 8, Raylib.colorAlpha(light4.color, 0.3));
 
             Raylib.drawGrid(10, 1.0);
 
