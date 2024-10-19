@@ -68,56 +68,9 @@ extern class RayGestureEvent
     var position:cpp.RawPointer<RayVector2>;
 }
 
+@:forward
 extern abstract GestureEvent(cpp.Struct<RayGestureEvent>) to cpp.Struct<RayGestureEvent>
 {
-    var touchAction(get, set):Int;
-
-    inline function get_touchAction():Int
-    {
-        return this.touchAction;
-    }
-
-    inline function set_touchAction(value:Int):Int
-    {
-        return this.touchAction = value;
-    }
-
-    var pointCount(get, set):Int;
-
-    inline function get_pointCount():Int
-    {
-        return this.pointCount;
-    }
-
-    inline function set_pointCount(value:Int):Int
-    {
-        return this.pointCount = value;
-    }
-
-    var pointId(get, set):utils.IntPointer;
-
-    inline function get_pointId():utils.IntPointer
-    {
-        return this.pointId;
-    }
-
-    inline function set_pointId(value:utils.IntPointer):utils.IntPointer
-    {
-        return this.pointId = value;
-    }
-
-    var position(get, set):cpp.RawPointer<RayVector2>;
-
-    inline function get_position():cpp.RawPointer<RayVector2>
-    {
-        return this.position;
-    }
-
-    inline function set_position(value:cpp.RawPointer<RayVector2>):cpp.RawPointer<RayVector2>
-    {
-        return this.position = value;
-    }
-
     inline function new():Void
     {
         this = RayGestureEvent.alloc();
