@@ -43,32 +43,9 @@ extern class RayVector2
     var y:Single;
 }
 
+@:forward
 extern abstract Vector2(cpp.Struct<RayVector2>) to cpp.Struct<RayVector2>
 {
-    var x(get, set):Single;
-
-    inline function get_x():Single
-    {
-        return this.x;
-    }
-
-    inline function set_x(value:Single):Single
-    {
-        return this.x = value;
-    }
-
-    var y(get, set):Single;
-
-    inline function get_y():Single
-    {
-        return this.y;
-    }
-
-    inline function set_y(value:Single):Single
-    {
-        return this.y = value;
-    }
-
     inline function new(x:Single, y:Single):Void
     {
         final vec2:RayVector2 = RayVector2.alloc();
@@ -101,44 +78,9 @@ extern class RayVector3
     var z:Single;
 }
 
+@:forward
 extern abstract Vector3(cpp.Struct<RayVector3>) to cpp.Struct<RayVector3>
 {
-    var x(get, set):Single;
-
-    inline function get_x():Single
-    {
-        return this.x;
-    }
-
-    inline function set_x(value:Single):Single
-    {
-        return this.x = value;
-    }
-
-    var y(get, set):Single;
-
-    inline function get_y():Single
-    {
-        return this.y;
-    }
-
-    inline function set_y(value:Single):Single
-    {
-        return this.y = value;
-    }
-
-    var z(get, set):Single;
-
-    inline function get_z():Single
-    {
-        return this.z;
-    }
-
-    inline function set_z(value:Single):Single
-    {
-        return this.z = value;
-    }
-
     inline function new(x:Single, y:Single, z:Single):Void
     {
         final vec3:RayVector3 = RayVector3.alloc();
@@ -173,56 +115,9 @@ extern class RayVector4
     var w:Single;
 }
 
+@:forward
 extern abstract Vector4(cpp.Struct<RayVector4>) to cpp.Struct<RayVector4>
 {
-    var x(get, set):Single;
-
-    inline function get_x():Single
-    {
-        return this.x;
-    }
-
-    inline function set_x(value:Single):Single
-    {
-        return this.x = value;
-    }
-
-    var y(get, set):Single;
-
-    inline function get_y():Single
-    {
-        return this.y;
-    }
-
-    inline function set_y(value:Single):Single
-    {
-        return this.y = value;
-    }
-
-    var z(get, set):Single;
-
-    inline function get_z():Single
-    {
-        return this.z;
-    }
-
-    inline function set_z(value:Single):Single
-    {
-        return this.z = value;
-    }
-
-    var w(get, set):Single;
-
-    inline function get_w():Single
-    {
-        return this.w;
-    }
-
-    inline function set_w(value:Single):Single
-    {
-        return this.w = value;
-    }
-
     inline function new(x:Single, y:Single, z:Single, w:Single):Void
     {
         final vec4:RayVector4 = RayVector4.alloc();
@@ -273,200 +168,9 @@ extern class RayMatrix
     var m15:Single;
 }
 
+@:forward
 extern abstract Matrix(cpp.Struct<RayMatrix>) to cpp.Struct<RayMatrix>
 {
-    var m0(get, set):Single;
-
-    inline function get_m0():Single
-    {
-        return this.m0;
-    }
-
-    inline function set_m0(value:Single):Single
-    {
-        return this.m0 = value;
-    }
-
-    var m4(get, set):Single;
-
-    inline function get_m4():Single
-    {
-        return this.m4;
-    }
-
-    inline function set_m4(value:Single):Single
-    {
-        return this.m4 = value;
-    }
-
-    var m8(get, set):Single;
-
-    inline function get_m8():Single
-    {
-        return this.m8;
-    }
-
-    inline function set_m8(value:Single):Single
-    {
-        return this.m8 = value;
-    }
-
-    var m12(get, set):Single;
-
-    inline function get_m12():Single
-    {
-        return this.m12;
-    }
-
-    inline function set_m12(value:Single):Single
-    {
-        return this.m12 = value;
-    }
-
-    var m1(get, set):Single;
-
-    inline function get_m1():Single
-    {
-        return this.m1;
-    }
-
-    inline function set_m1(value:Single):Single
-    {
-        return this.m1 = value;
-    }
-
-    var m5(get, set):Single;
-
-    inline function get_m5():Single
-    {
-        return this.m5;
-    }
-
-    inline function set_m5(value:Single):Single
-    {
-        return this.m5 = value;
-    }
-
-    var m9(get, set):Single;
-
-    inline function get_m9():Single
-    {
-        return this.m9;
-    }
-
-    inline function set_m9(value:Single):Single
-    {
-        return this.m9 = value;
-    }
-
-    var m13(get, set):Single;
-
-    inline function get_m13():Single
-    {
-        return this.m13;
-    }
-
-    inline function set_m13(value:Single):Single
-    {
-        return this.m13 = value;
-    }
-
-    var m2(get, set):Single;
-
-    inline function get_m2():Single
-    {
-        return this.m2;
-    }
-
-    inline function set_m2(value:Single):Single
-    {
-        return this.m2 = value;
-    }
-
-    var m6(get, set):Single;
-
-    inline function get_m6():Single
-    {
-        return this.m6;
-    }
-
-    inline function set_m6(value:Single):Single
-    {
-        return this.m6 = value;
-    }
-
-    var m10(get, set):Single;
-
-    inline function get_m10():Single
-    {
-        return this.m10;
-    }
-
-    inline function set_m10(value:Single):Single
-    {
-        return this.m10 = value;
-    }
-
-    var m14(get, set):Single;
-
-    inline function get_m14():Single
-    {
-        return this.m14;
-    }
-
-    inline function set_m14(value:Single):Single
-    {
-        return this.m14 = value;
-    }
-
-    var m3(get, set):Single;
-
-    inline function get_m3():Single
-    {
-        return this.m3;
-    }
-
-    inline function set_m3(value:Single):Single
-    {
-        return this.m3 = value;
-    }
-
-    var m7(get, set):Single;
-
-    inline function get_m7():Single
-    {
-        return this.m7;
-    }
-
-    inline function set_m7(value:Single):Single
-    {
-        return this.m7 = value;
-    }
-
-    var m11(get, set):Single;
-
-    inline function get_m11():Single
-    {
-        return this.m11;
-    }
-
-    inline function set_m11(value:Single):Single
-    {
-        return this.m11 = value;
-    }
-
-    var m15(get, set):Single;
-
-    inline function get_m15():Single
-    {
-        return this.m15;
-    }
-
-    inline function set_m15(value:Single):Single
-    {
-        return this.m15 = value;
-    }
-
     inline function new():Void
     {
         this = RayMatrix.alloc();
@@ -497,56 +201,9 @@ extern class RayColor
     var a:cpp.UInt8;
 }
 
+@:forward
 extern abstract Color(cpp.Struct<RayColor>) to cpp.Struct<RayColor>
 {
-    var r(get, set):cpp.UInt8;
-
-    inline function get_r():cpp.UInt8
-    {
-        return this.r;
-    }
-
-    inline function set_r(value:cpp.UInt8):cpp.UInt8
-    {
-        return this.r = value;
-    }
-
-    var g(get, set):cpp.UInt8;
-
-    inline function get_g():cpp.UInt8
-    {
-        return this.g;
-    }
-
-    inline function set_g(value:cpp.UInt8):cpp.UInt8
-    {
-        return this.g = value;
-    }
-
-    var b(get, set):cpp.UInt8;
-
-    inline function get_b():cpp.UInt8
-    {
-        return this.b;
-    }
-
-    inline function set_b(value:cpp.UInt8):cpp.UInt8
-    {
-        return this.b = value;
-    }
-
-    var a(get, set):cpp.UInt8;
-
-    inline function get_a():cpp.UInt8
-    {
-        return this.a;
-    }
-
-    inline function set_a(value:cpp.UInt8):cpp.UInt8
-    {
-        return this.a = value;
-    }
-
     inline function new(r:cpp.UInt8, g:cpp.UInt8, b:cpp.UInt8, a:cpp.UInt8):Void
     {
         final color:RayColor = RayColor.alloc();
@@ -582,56 +239,9 @@ extern class RayRectangle
     var height:Single;
 }
 
+@:forward
 extern abstract Rectangle(cpp.Struct<RayRectangle>) to cpp.Struct<RayRectangle>
 {
-    var x(get, set):Single;
-
-    inline function get_x():Single
-    {
-        return this.x;
-    }
-
-    inline function set_x(value:Single):Single
-    {
-        return this.x = value;
-    }
-
-    var y(get, set):Single;
-
-    inline function get_y():Single
-    {
-        return this.y;
-    }
-
-    inline function set_y(value:Single):Single
-    {
-        return this.y = value;
-    }
-
-    var width(get, set):Single;
-
-    inline function get_width():Single
-    {
-        return this.width;
-    }
-
-    inline function set_width(value:Single):Single
-    {
-        return this.width = value;
-    }
-
-    var height(get, set):Single;
-
-    inline function get_height():Single
-    {
-        return this.height;
-    }
-
-    inline function set_height(value:Single):Single
-    {
-        return this.height = value;
-    }
-
     inline function new(x:Single, y:Single, width:Single, height:Single):Void
     {
         final rect:RayRectangle = RayRectangle.alloc();
@@ -668,68 +278,9 @@ extern class RayImage
     var format:Int;
 }
 
+@:forward
 extern abstract Image(cpp.Struct<RayImage>) to cpp.Struct<RayImage>
 {
-    var data(get, set):cpp.RawPointer<cpp.Void>;
-
-    inline function get_data():cpp.RawPointer<cpp.Void>
-    {
-        return this.data;
-    }
-
-    inline function set_data(value:cpp.RawPointer<cpp.Void>):cpp.RawPointer<cpp.Void>
-    {
-        return this.data = value;
-    }
-
-    var width(get, set):Int;
-
-    inline function get_width():Int
-    {
-        return this.width;
-    }
-
-    inline function set_width(value:Int):Int
-    {
-        return this.width = value;
-    }
-
-    var height(get, set):Int;
-
-    inline function get_height():Int
-    {
-        return this.height;
-    }
-
-    inline function set_height(value:Int):Int
-    {
-        return this.height = value;
-    }
-
-    var mipmaps(get, set):Int;
-
-    inline function get_mipmaps():Int
-    {
-        return this.mipmaps;
-    }
-
-    inline function set_mipmaps(value:Int):Int
-    {
-        return this.mipmaps = value;
-    }
-
-    var format(get, set):Int;
-
-    inline function get_format():Int
-    {
-        return this.format;
-    }
-
-    inline function set_format(value:Int):Int
-    {
-        return this.format = value;
-    }
-
     inline function new():Void
     {
         this = RayImage.alloc();
@@ -761,68 +312,9 @@ extern class RayTexture
     var format:Int;
 }
 
+@:forward
 extern abstract Texture(cpp.Struct<RayTexture>) to cpp.Struct<RayTexture>
 {
-    var id(get, set):cpp.UInt32;
-
-    inline function get_id():cpp.UInt32
-    {
-        return this.id;
-    }
-
-    inline function set_id(value:cpp.UInt32):cpp.UInt32
-    {
-        return this.id = value;
-    }
-
-    var width(get, set):Int;
-
-    inline function get_width():Int
-    {
-        return this.width;
-    }
-
-    inline function set_width(value:Int):Int
-    {
-        return this.width = value;
-    }
-
-    var height(get, set):Int;
-
-    inline function get_height():Int
-    {
-        return this.height;
-    }
-
-    inline function set_height(value:Int):Int
-    {
-        return this.height = value;
-    }
-
-    var mipmaps(get, set):Int;
-
-    inline function get_mipmaps():Int
-    {
-        return this.mipmaps;
-    }
-
-    inline function set_mipmaps(value:Int):Int
-    {
-        return this.mipmaps = value;
-    }
-
-    var format(get, set):Int;
-
-    inline function get_format():Int
-    {
-        return this.format;
-    }
-
-    inline function set_format(value:Int):Int
-    {
-        return this.format = value;
-    }
-
     inline function new():Void
     {
         this = RayTexture.alloc();
@@ -852,44 +344,9 @@ extern class RayRenderTexture
     var depth:RayTexture;
 }
 
+@:forward
 extern abstract RenderTexture(cpp.Struct<RayRenderTexture>) to cpp.Struct<RayRenderTexture>
 {
-    var id(get, set):cpp.UInt32;
-
-    inline function get_id():cpp.UInt32
-    {
-        return this.id;
-    }
-
-    inline function set_id(value:cpp.UInt32):cpp.UInt32
-    {
-        return this.id = value;
-    }
-
-    var texture(get, set):RayTexture;
-
-    inline function get_texture():RayTexture
-    {
-        return this.texture;
-    }
-
-    inline function set_texture(value:RayTexture):RayTexture
-    {
-        return this.texture = value;
-    }
-
-    var depth(get, set):RayTexture;
-
-    inline function get_depth():RayTexture
-    {
-        return this.depth;
-    }
-
-    inline function set_depth(value:RayTexture):RayTexture
-    {
-        return this.depth = value;
-    }
-
     inline function new():Void
     {
         this = RayRenderTexture.alloc();
@@ -922,80 +379,9 @@ extern class RayNPatchInfo
     var layout:Int;
 }
 
+@:forward
 extern abstract NPatchInfo(cpp.Struct<RayNPatchInfo>) to cpp.Struct<RayNPatchInfo>
 {
-    var source(get, set):RayRectangle;
-
-    inline function get_source():RayRectangle
-    {
-        return this.source;
-    }
-
-    inline function set_source(value:RayRectangle):RayRectangle
-    {
-        return this.source = value;
-    }
-
-    var left(get, set):Int;
-
-    inline function get_left():Int
-    {
-        return this.left;
-    }
-
-    inline function set_left(value:Int):Int
-    {
-        return this.left = value;
-    }
-
-    var top(get, set):Int;
-
-    inline function get_top():Int
-    {
-        return this.top;
-    }
-
-    inline function set_top(value:Int):Int
-    {
-        return this.top = value;
-    }
-
-    var right(get, set):Int;
-
-    inline function get_right():Int
-    {
-        return this.right;
-    }
-
-    inline function set_right(value:Int):Int
-    {
-        return this.right = value;
-    }
-
-    var bottom(get, set):Int;
-
-    inline function get_bottom():Int
-    {
-        return this.bottom;
-    }
-
-    inline function set_bottom(value:Int):Int
-    {
-        return this.bottom = value;
-    }
-
-    var layout(get, set):Int;
-
-    inline function get_layout():Int
-    {
-        return this.layout;
-    }
-
-    inline function set_layout(value:Int):Int
-    {
-        return this.layout = value;
-    }
-
     inline function new():Void
     {
         this = RayNPatchInfo.alloc();
@@ -1027,68 +413,9 @@ extern class RayGlyphInfo
     var image:RayImage;
 }
 
+@:forward
 extern abstract GlyphInfo(cpp.Struct<RayGlyphInfo>) to cpp.Struct<RayGlyphInfo>
 {
-    var value(get, set):Int;
-
-    inline function get_value():Int
-    {
-        return this.value;
-    }
-
-    inline function set_value(value:Int):Int
-    {
-        return this.value = value;
-    }
-
-    var offsetX(get, set):Int;
-
-    inline function get_offsetX():Int
-    {
-        return this.offsetX;
-    }
-
-    inline function set_offsetX(value:Int):Int
-    {
-        return this.offsetX = value;
-    }
-
-    var offsetY(get, set):Int;
-
-    inline function get_offsetY():Int
-    {
-        return this.offsetY;
-    }
-
-    inline function set_offsetY(value:Int):Int
-    {
-        return this.offsetY = value;
-    }
-
-    var advanceX(get, set):Int;
-
-    inline function get_advanceX():Int
-    {
-        return this.advanceX;
-    }
-
-    inline function set_advanceX(value:Int):Int
-    {
-        return this.advanceX = value;
-    }
-
-    var image(get, set):RayImage;
-
-    inline function get_image():RayImage
-    {
-        return this.image;
-    }
-
-    inline function set_image(value:RayImage):RayImage
-    {
-        return this.image = value;
-    }
-
     inline function new():Void
     {
         this = RayGlyphInfo.alloc();
@@ -1123,78 +450,6 @@ extern class RayFont
 
 extern abstract Font(cpp.Struct<RayFont>) to cpp.Struct<RayFont>
 {
-    var baseSize(get, set):Int;
-
-    inline function get_baseSize():Int
-    {
-        return this.baseSize;
-    }
-
-    inline function set_baseSize(value:Int):Int
-    {
-        return this.baseSize = value;
-    }
-
-    var glyphCount(get, set):Int;
-
-    inline function get_glyphCount():Int
-    {
-        return this.glyphCount;
-    }
-
-    inline function set_glyphCount(value:Int):Int
-    {
-        return this.glyphCount = value;
-    }
-
-    var glyphPadding(get, set):Int;
-
-    inline function get_glyphPadding():Int
-    {
-        return this.glyphPadding;
-    }
-
-    inline function set_glyphPadding(value:Int):Int
-    {
-        return this.glyphPadding = value;
-    }
-
-    var texture(get, set):RayTexture;
-
-    inline function get_texture():RayTexture
-    {
-        return this.texture;
-    }
-
-    inline function set_texture(value:RayTexture):RayTexture
-    {
-        return this.texture = value;
-    }
-
-    var recs(get, set):cpp.RawPointer<RayRectangle>;
-
-    inline function get_recs():cpp.RawPointer<RayRectangle>
-    {
-        return this.recs;
-    }
-
-    inline function set_recs(value:cpp.RawPointer<RayRectangle>):cpp.RawPointer<RayRectangle>
-    {
-        return this.recs = value;
-    }
-
-    var glyphs(get, set):cpp.RawPointer<RayGlyphInfo>;
-
-    inline function get_glyphs():cpp.RawPointer<RayGlyphInfo>
-    {
-        return this.glyphs;
-    }
-
-    inline function set_glyphs(value:cpp.RawPointer<RayGlyphInfo>):cpp.RawPointer<RayGlyphInfo>
-    {
-        return this.glyphs = value;
-    }
-
     inline function new():Void
     {
         this = RayFont.alloc();
@@ -1226,68 +481,9 @@ extern class RayCamera3D
     var projection:Int;
 }
 
+@:forward
 extern abstract Camera3D(cpp.Struct<RayCamera3D>) to cpp.Struct<RayCamera3D>
 {
-    var position(get, set):RayVector3;
-
-    inline function get_position():RayVector3
-    {
-        return this.position;
-    }
-
-    inline function set_position(value:RayVector3):RayVector3
-    {
-        return this.position = value;
-    }
-
-    var target(get, set):RayVector3;
-
-    inline function get_target():RayVector3
-    {
-        return this.target;
-    }
-
-    inline function set_target(value:RayVector3):RayVector3
-    {
-        return this.target = value;
-    }
-
-    var up(get, set):RayVector3;
-
-    inline function get_up():RayVector3
-    {
-        return this.up;
-    }
-
-    inline function set_up(value:RayVector3):RayVector3
-    {
-        return this.up = value;
-    }
-
-    var fovy(get, set):Single;
-
-    inline function get_fovy():Single
-    {
-        return this.fovy;
-    }
-
-    inline function set_fovy(value:Single):Single
-    {
-        return this.fovy = value;
-    }
-
-    var projection(get, set):Int;
-
-    inline function get_projection():Int
-    {
-        return this.projection;
-    }
-
-    inline function set_projection(value:Int):Int
-    {
-        return this.projection = value;
-    }
-
     inline function new():Void
     {
         this = RayCamera3D.alloc();
@@ -1318,56 +514,9 @@ extern class RayCamera2D
     var zoom:Single;
 }
 
+@:forward
 extern abstract Camera2D(cpp.Struct<RayCamera2D>) to cpp.Struct<RayCamera2D>
 {
-    var offset(get, set):RayVector2;
-
-    inline function get_offset():RayVector2
-    {
-        return this.offset;
-    }
-
-    inline function set_offset(value:RayVector2):RayVector2
-    {
-        return this.offset = value;
-    }
-
-    var target(get, set):RayVector2;
-
-    inline function get_target():RayVector2
-    {
-        return this.target;
-    }
-
-    inline function set_target(value:RayVector2):RayVector2
-    {
-        return this.target = value;
-    }
-
-    var rotation(get, set):Single;
-
-    inline function get_rotation():Single
-    {
-        return this.rotation;
-    }
-
-    inline function set_rotation(value:Single):Single
-    {
-        return this.rotation = value;
-    }
-
-    var zoom(get, set):Single;
-
-    inline function get_zoom():Single
-    {
-        return this.zoom;
-    }
-
-    inline function set_zoom(value:Single):Single
-    {
-        return this.zoom = value;
-    }
-
     inline function new():Void
     {
         this = RayCamera2D.alloc();
@@ -1412,188 +561,9 @@ extern class RayMesh
     var vboId:utils.UnsignedPointer;
 }
 
+@:forward
 extern abstract Mesh(cpp.Struct<RayMesh>) to cpp.Struct<RayMesh>
 {
-    var vertexCount(get, set):Int;
-
-    inline function get_vertexCount():Int
-    {
-        return this.vertexCount;
-    }
-
-    inline function set_vertexCount(value:Int):Int
-    {
-        return this.vertexCount = value;
-    }
-
-    var triangleCount(get, set):Int;
-
-    inline function get_triangleCount():Int
-    {
-        return this.triangleCount;
-    }
-
-    inline function set_triangleCount(value:Int):Int
-    {
-        return this.triangleCount = value;
-    }
-
-    var vertices(get, set):utils.FloatPointer;
-
-    inline function get_vertices():utils.FloatPointer
-    {
-        return this.vertices;
-    }
-
-    inline function set_vertices(value:utils.FloatPointer):utils.FloatPointer
-    {
-        return this.vertices = value;
-    }
-
-    var texcoords(get, set):utils.FloatPointer;
-
-    inline function get_texcoords():utils.FloatPointer
-    {
-        return this.texcoords;
-    }
-
-    inline function set_texcoords(value:utils.FloatPointer):utils.FloatPointer
-    {
-        return this.texcoords = value;
-    }
-
-    var texcoords2(get, set):utils.FloatPointer;
-
-    inline function get_texcoords2():utils.FloatPointer
-    {
-        return this.texcoords2;
-    }
-
-    inline function set_texcoords2(value:utils.FloatPointer):utils.FloatPointer
-    {
-        return this.texcoords2 = value;
-    }
-
-    var normals(get, set):utils.FloatPointer;
-
-    inline function get_normals():utils.FloatPointer
-    {
-        return this.normals;
-    }
-
-    inline function set_normals(value:utils.FloatPointer):utils.FloatPointer
-    {
-        return this.normals = value;
-    }
-
-    var tangents(get, set):utils.FloatPointer;
-
-    inline function get_tangents():utils.FloatPointer
-    {
-        return this.tangents;
-    }
-
-    inline function set_tangents(value:utils.FloatPointer):utils.FloatPointer
-    {
-        return this.tangents = value;
-    }
-
-    var colors(get, set):utils.BytesPointer;
-
-    inline function get_colors():utils.BytesPointer
-    {
-        return this.colors;
-    }
-
-    inline function set_colors(value:utils.BytesPointer):utils.BytesPointer
-    {
-        return this.colors = value;
-    }
-
-    var indices(get, set):cpp.RawPointer<cpp.UInt16>;
-
-    inline function get_indices():cpp.RawPointer<cpp.UInt16>
-    {
-        return this.indices;
-    }
-
-    inline function set_indices(value:cpp.RawPointer<cpp.UInt16>):cpp.RawPointer<cpp.UInt16>
-    {
-        return this.indices = value;
-    }
-
-    var animVertices(get, set):utils.FloatPointer;
-
-    inline function get_animVertices():utils.FloatPointer
-    {
-        return this.animVertices;
-    }
-
-    inline function set_animVertices(value:utils.FloatPointer):utils.FloatPointer
-    {
-        return this.animVertices = value;
-    }
-
-    var animNormals(get, set):utils.FloatPointer;
-
-    inline function get_animNormals():utils.FloatPointer
-    {
-        return this.animNormals;
-    }
-
-    inline function set_animNormals(value:utils.FloatPointer):utils.FloatPointer
-    {
-        return this.animNormals = value;
-    }
-
-    var boneIds(get, set):utils.BytesPointer;
-
-    inline function get_boneIds():utils.BytesPointer
-    {
-        return this.boneIds;
-    }
-
-    inline function set_boneIds(value:utils.BytesPointer):utils.BytesPointer
-    {
-        return this.boneIds = value;
-    }
-
-    var boneWeights(get, set):utils.FloatPointer;
-
-    inline function get_boneWeights():utils.FloatPointer
-    {
-        return this.boneWeights;
-    }
-
-    inline function set_boneWeights(value:utils.FloatPointer):utils.FloatPointer
-    {
-        return this.boneWeights = value;
-    }
-
-    var vaoId(get, set):cpp.UInt32;
-
-    inline function get_vaoId():cpp.UInt32
-    {
-        return this.vaoId;
-    }
-
-    inline function set_vaoId(value:cpp.UInt32):cpp.UInt32
-    {
-        return this.vaoId = value;
-    }
-
-    var vboId(get, set):utils.UnsignedPointer;
-
-    inline function get_vboId():utils.UnsignedPointer
-    {
-        return this.vboId;
-    }
-
-    inline function set_vboId(value:utils.UnsignedPointer):utils.UnsignedPointer
-    {
-        return this.vboId = value;
-    }
-
     inline function new():Void
     {
         this = RayMesh.alloc();
@@ -1622,32 +592,9 @@ extern class RayShader
     var locs:utils.IntPointer;
 }
 
+@:forward
 extern abstract Shader(cpp.Struct<RayShader>) to cpp.Struct<RayShader>
 {
-    var id(get, set):cpp.UInt32;
-
-    inline function get_id():cpp.UInt32
-    {
-        return this.id;
-    }
-
-    inline function set_id(value:cpp.UInt32):cpp.UInt32
-    {
-        return this.id = value;
-    }
-
-    var locs(get, set):utils.IntPointer;
-
-    inline function get_locs():utils.IntPointer
-    {
-        return this.locs;
-    }
-
-    inline function set_locs(value:utils.IntPointer):utils.IntPointer
-    {
-        return this.locs = value;
-    }
-
     inline function new():Void
     {
         this = RayShader.alloc();
@@ -1677,44 +624,9 @@ extern class RayMaterialMap
     var value:Single;
 }
 
+@:forward
 extern abstract MaterialMap(cpp.Struct<RayMaterialMap>) to cpp.Struct<RayMaterialMap>
 {
-    var texture(get, set):RayTexture;
-
-    inline function get_texture():RayTexture
-    {
-        return this.texture;
-    }
-
-    inline function set_texture(value:RayTexture):RayTexture
-    {
-        return this.texture = value;
-    }
-
-    var color(get, set):RayColor;
-
-    inline function get_color():RayColor
-    {
-        return this.color;
-    }
-
-    inline function set_color(value:RayColor):RayColor
-    {
-        return this.color = value;
-    }
-
-    var value(get, set):Single;
-
-    inline function get_value():Single
-    {
-        return this.value;
-    }
-
-    inline function set_value(value:Single):Single
-    {
-        return this.value = value;
-    }
-
     inline function new():Void
     {
         this = RayMaterialMap.alloc();
@@ -1744,44 +656,9 @@ extern class RayMaterial
     var params:utils.FloatPointer;
 }
 
+@:forward
 extern abstract Material(cpp.Struct<RayMaterial>) to cpp.Struct<RayMaterial>
 {
-    var shader(get, set):RayShader;
-
-    inline function get_shader():RayShader
-    {
-        return this.shader;
-    }
-
-    inline function set_shader(value:RayShader):RayShader
-    {
-        return this.shader = value;
-    }
-
-    var maps(get, set):cpp.RawPointer<RayMaterialMap>;
-
-    inline function get_maps():cpp.RawPointer<RayMaterialMap>
-    {
-        return this.maps;
-    }
-
-    inline function set_maps(value:cpp.RawPointer<RayMaterialMap>):cpp.RawPointer<RayMaterialMap>
-    {
-        return this.maps = value;
-    }
-
-    var params(get, set):utils.FloatPointer;
-
-    inline function get_params():utils.FloatPointer
-    {
-        return this.params;
-    }
-
-    inline function set_params(value:utils.FloatPointer):utils.FloatPointer
-    {
-        return this.params = value;
-    }
-
     inline function new():Void
     {
         this = RayMaterial.alloc();
@@ -1811,44 +688,9 @@ extern class RayTransform
     var scale:RayVector3;
 }
 
+@:forward
 extern abstract Transform(cpp.Struct<RayTransform>) to cpp.Struct<RayTransform>
 {
-    var translation(get, set):RayVector3;
-
-    inline function get_translation():RayVector3
-    {
-        return this.translation;
-    }
-
-    inline function set_translation(value:RayVector3):RayVector3
-    {
-        return this.translation = value;
-    }
-
-    var rotation(get, set):RayVector4;
-
-    inline function get_rotation():RayVector4
-    {
-        return this.rotation;
-    }
-
-    inline function set_rotation(value:RayVector4):RayVector4
-    {
-        return this.rotation = value;
-    }
-
-    var scale(get, set):RayVector3;
-
-    inline function get_scale():RayVector3
-    {
-        return this.scale;
-    }
-
-    inline function set_scale(value:RayVector3):RayVector3
-    {
-        return this.scale = value;
-    }
-
     inline function new():Void
     {
         this = RayTransform.alloc();
@@ -1877,32 +719,9 @@ extern class RayBoneInfo
     var parent:Int;
 }
 
+@:forward
 extern abstract BoneInfo(cpp.Struct<RayBoneInfo>) to cpp.Struct<RayBoneInfo>
 {
-    var name(get, set):cpp.CastCharStar;
-
-    inline function get_name():cpp.CastCharStar
-    {
-        return this.name;
-    }
-
-    inline function set_name(value:cpp.CastCharStar):cpp.CastCharStar
-    {
-        return this.name = value;
-    }
-
-    var parent(get, set):Int;
-
-    inline function get_parent():Int
-    {
-        return this.parent;
-    }
-
-    inline function set_parent(value:Int):Int
-    {
-        return this.parent = value;
-    }
-
     inline function new():Void
     {
         this = RayBoneInfo.alloc();
@@ -1940,116 +759,9 @@ extern class RayModel
     var bindPose:cpp.RawPointer<RayTransform>;
 }
 
+@:forward
 extern abstract Model(cpp.Struct<RayModel>) to cpp.Struct<RayModel>
 {
-    var transform(get, set):RayMatrix;
-
-    inline function get_transform():RayMatrix
-    {
-        return this.transform;
-    }
-
-    inline function set_transform(value:RayMatrix):RayMatrix
-    {
-        return this.transform = value;
-    }
-
-    var meshCount(get, set):Int;
-
-    inline function get_meshCount():Int
-    {
-        return this.meshCount;
-    }
-
-    inline function set_meshCount(value:Int):Int
-    {
-        return this.meshCount = value;
-    }
-
-    var materialCount(get, set):Int;
-
-    inline function get_materialCount():Int
-    {
-        return this.materialCount;
-    }
-
-    inline function set_materialCount(value:Int):Int
-    {
-        return this.materialCount = value;
-    }
-
-    var meshes(get, set):cpp.RawPointer<RayMesh>;
-
-    inline function get_meshes():cpp.RawPointer<RayMesh>
-    {
-        return this.meshes;
-    }
-
-    inline function set_meshes(value:cpp.RawPointer<RayMesh>):cpp.RawPointer<RayMesh>
-    {
-        return this.meshes = value;
-    }
-
-    var materials(get, set):cpp.RawPointer<RayMaterial>;
-
-    inline function get_materials():cpp.RawPointer<RayMaterial>
-    {
-        return this.materials;
-    }
-
-    inline function set_materials(value:cpp.RawPointer<RayMaterial>):cpp.RawPointer<RayMaterial>
-    {
-        return this.materials = value;
-    }
-
-    var meshMaterial(get, set):utils.IntPointer;
-
-    inline function get_meshMaterial():utils.IntPointer
-    {
-        return this.meshMaterial;
-    }
-
-    inline function set_meshMaterial(value:utils.IntPointer):utils.IntPointer
-    {
-        return this.meshMaterial = value;
-    }
-
-    var boneCount(get, set):Int;
-
-    inline function get_boneCount():Int
-    {
-        return this.boneCount;
-    }
-
-    inline function set_boneCount(value:Int):Int
-    {
-        return this.boneCount = value;
-    }
-
-    var bones(get, set):cpp.RawPointer<BoneInfo>;
-
-    inline function get_bones():cpp.RawPointer<BoneInfo>
-    {
-        return this.bones;
-    }
-
-    inline function set_bones(value:cpp.RawPointer<BoneInfo>):cpp.RawPointer<BoneInfo>
-    {
-        return this.bones = value;
-    }
-
-    var bindPose(get, set):cpp.RawPointer<RayTransform>;
-
-    inline function get_bindPose():cpp.RawPointer<RayTransform>
-    {
-        return this.bindPose;
-    }
-
-    inline function set_bindPose(value:cpp.RawPointer<RayTransform>):cpp.RawPointer<RayTransform>
-    {
-        return this.bindPose = value;
-    }
-
     inline function new():Void
     {
         this = RayModel.alloc();
@@ -2081,68 +793,9 @@ extern class RayModelAnimation
     var name:cpp.CastCharStar;
 }
 
+@:forward
 extern abstract ModelAnimation(cpp.Struct<RayModelAnimation>) to cpp.Struct<RayModelAnimation>
 {
-    var boneCount(get, set):Int;
-
-    inline function get_boneCount():Int
-    {
-        return this.boneCount;
-    }
-
-    inline function set_boneCount(value:Int):Int
-    {
-        return this.boneCount = value;
-    }
-
-    var frameCount(get, set):Int;
-
-    inline function get_frameCount():Int
-    {
-        return this.frameCount;
-    }
-
-    inline function set_frameCount(value:Int):Int
-    {
-        return this.frameCount = value;
-    }
-
-    var bones(get, set):cpp.RawPointer<BoneInfo>;
-
-    inline function get_bones():cpp.RawPointer<BoneInfo>
-    {
-        return this.bones;
-    }
-
-    inline function set_bones(value:cpp.RawPointer<BoneInfo>):cpp.RawPointer<BoneInfo>
-    {
-        return this.bones = value;
-    }
-
-    var framePoses(get, set):cpp.RawPointer<cpp.RawPointer<RayTransform>>;
-
-    inline function get_framePoses():cpp.RawPointer<cpp.RawPointer<RayTransform>>
-    {
-        return this.framePoses;
-    }
-
-    inline function set_framePoses(value:cpp.RawPointer<cpp.RawPointer<RayTransform>>):cpp.RawPointer<cpp.RawPointer<RayTransform>>
-    {
-        return this.framePoses = value;
-    }
-
-    var name(get, set):cpp.CastCharStar;
-
-    inline function get_name():cpp.CastCharStar
-    {
-        return this.name;
-    }
-
-    inline function set_name(value:cpp.CastCharStar):cpp.CastCharStar
-    {
-        return this.name = value;
-    }
-
     inline function new():Void
     {
         this = RayModelAnimation.alloc();
@@ -2171,32 +824,9 @@ extern class RlRay
     var direction:RayVector3;
 }
 
+@:forward
 extern abstract Ray(cpp.Struct<RlRay>) to cpp.Struct<RlRay>
 {
-    var position(get, set):RayVector3;
-
-    inline function get_position():RayVector3
-    {
-        return this.position;
-    }
-
-    inline function set_position(value:RayVector3):RayVector3
-    {
-        return this.position = value;
-    }
-
-    var direction(get, set):RayVector3;
-
-    inline function get_direction():RayVector3
-    {
-        return this.direction;
-    }
-
-    inline function set_direction(value:RayVector3):RayVector3
-    {
-        return this.direction = value;
-    }
-
     inline function new():Void
     {
         this = RlRay.alloc();
@@ -2227,56 +857,9 @@ extern class RlRayCollision
     var normal:RayVector3;
 }
 
+@:forward
 extern abstract RayCollision(cpp.Struct<RlRayCollision>) to cpp.Struct<RlRayCollision>
 {
-    var hit(get, set):Bool;
-
-    inline function get_hit():Bool
-    {
-        return this.hit;
-    }
-
-    inline function set_hit(value:Bool):Bool
-    {
-        return this.hit = value;
-    }
-
-    var distance(get, set):Single;
-
-    inline function get_distance():Single
-    {
-        return this.distance;
-    }
-
-    inline function set_distance(value:Single):Single
-    {
-        return this.distance = value;
-    }
-
-    var point(get, set):RayVector3;
-
-    inline function get_point():RayVector3
-    {
-        return this.point;
-    }
-
-    inline function set_point(value:RayVector3):RayVector3
-    {
-        return this.point = value;
-    }
-
-    var normal(get, set):RayVector3;
-
-    inline function get_normal():RayVector3
-    {
-        return this.normal;
-    }
-
-    inline function set_normal(value:RayVector3):RayVector3
-    {
-        return this.normal = value;
-    }
-
     inline function new():Void
     {
         this = RlRayCollision.alloc();
@@ -2305,32 +888,9 @@ extern class RayBoundingBox
     var max:RayVector3;
 }
 
+@:forward
 extern abstract BoundingBox(cpp.Struct<RayBoundingBox>) to cpp.Struct<RayBoundingBox>
 {
-    var min(get, set):RayVector3;
-
-    inline function get_min():RayVector3
-    {
-        return this.min;
-    }
-
-    inline function set_min(value:RayVector3):RayVector3
-    {
-        return this.min = value;
-    }
-
-    var max(get, set):RayVector3;
-
-    inline function get_max():RayVector3
-    {
-        return this.max;
-    }
-
-    inline function set_max(value:RayVector3):RayVector3
-    {
-        return this.max = value;
-    }
-
     inline function new():Void
     {
         this = RayBoundingBox.alloc();
@@ -2360,20 +920,9 @@ extern class RayWave
     var frameCount:cpp.UInt32;
 }
 
+@:forward
 extern abstract Wave(cpp.Struct<RayWave>) to cpp.Struct<RayWave>
 {
-    var frameCount(get, set):cpp.UInt32;
-
-    inline function get_frameCount():cpp.UInt32
-    {
-        return this.frameCount;
-    }
-
-    inline function set_frameCount(value:cpp.UInt32):cpp.UInt32
-    {
-        return this.frameCount = value;
-    }
-
     inline function new():Void
     {
         this = RayWave.alloc();
@@ -2413,44 +962,9 @@ extern class RayAudioStream
     var sampleRate:cpp.UInt32;
 }
 
+@:forward
 extern abstract AudioStream(cpp.Struct<RayAudioStream>) to cpp.Struct<RayAudioStream>
 {
-    var buffer(get, set):cpp.RawPointer<RAudioBuffer>;
-
-    inline function get_buffer():cpp.RawPointer<RAudioBuffer>
-    {
-        return this.buffer;
-    }
-
-    inline function set_buffer(value:cpp.RawPointer<RAudioBuffer>):cpp.RawPointer<RAudioBuffer>
-    {
-        return this.buffer = value;
-    }
-
-    var processor(get, set):cpp.RawPointer<RAudioProcessor>;
-
-    inline function get_processor():cpp.RawPointer<RAudioProcessor>
-    {
-        return this.processor;
-    }
-
-    inline function set_processor(value:cpp.RawPointer<RAudioProcessor>):cpp.RawPointer<RAudioProcessor>
-    {
-        return this.processor = value;
-    }
-
-    var sampleRate(get, set):cpp.UInt32;
-
-    inline function get_sampleRate():cpp.UInt32
-    {
-        return this.sampleRate;
-    }
-
-    inline function set_sampleRate(value:cpp.UInt32):cpp.UInt32
-    {
-        return this.sampleRate = value;
-    }
-
     inline function new():Void
     {
         this = RayAudioStream.alloc();
@@ -2479,32 +993,9 @@ extern class RaySound
     var frameCount:cpp.UInt32;
 }
 
+@:forward
 extern abstract Sound(cpp.Struct<RaySound>) to cpp.Struct<RaySound>
 {
-    var stream(get, set):RayAudioStream;
-
-    inline function get_stream():RayAudioStream
-    {
-        return this.stream;
-    }
-
-    inline function set_stream(value:RayAudioStream):RayAudioStream
-    {
-        return this.stream = value;
-    }
-
-    var frameCount(get, set):cpp.UInt32;
-
-    inline function get_frameCount():cpp.UInt32
-    {
-        return this.frameCount;
-    }
-
-    inline function set_frameCount(value:cpp.UInt32):cpp.UInt32
-    {
-        return this.frameCount = value;
-    }
-
     inline function new():Void
     {
         this = RaySound.alloc();
@@ -2536,68 +1027,9 @@ extern class RayMusic
     var ctxData:cpp.RawPointer<cpp.Void>;
 }
 
+@:forward
 extern abstract Music(cpp.Struct<RayMusic>) to cpp.Struct<RayMusic>
 {
-    var stream(get, set):RayAudioStream;
-
-    inline function get_stream():RayAudioStream
-    {
-        return this.stream;
-    }
-
-    inline function set_stream(value:RayAudioStream):RayAudioStream
-    {
-        return this.stream = value;
-    }
-
-    var frameCount(get, set):cpp.UInt32;
-
-    inline function get_frameCount():cpp.UInt32
-    {
-        return this.frameCount;
-    }
-
-    inline function set_frameCount(value:cpp.UInt32):cpp.UInt32
-    {
-        return this.frameCount = value;
-    }
-
-    var looping(get, set):Bool;
-
-    inline function get_looping():Bool
-    {
-        return this.looping;
-    }
-
-    inline function set_looping(value:Bool):Bool
-    {
-        return this.looping = value;
-    }
-
-    var ctxType(get, set):Int;
-
-    inline function get_ctxType():Int
-    {
-        return this.ctxType;
-    }
-
-    inline function set_ctxType(value:Int):Int
-    {
-        return this.ctxType = value;
-    }
-
-    var ctxData(get, set):cpp.RawPointer<cpp.Void>;
-
-    inline function get_ctxData():cpp.RawPointer<cpp.Void>
-    {
-        return this.ctxData;
-    }
-
-    inline function set_ctxData(value:cpp.RawPointer<cpp.Void>):cpp.RawPointer<cpp.Void>
-    {
-        return this.ctxData = value;
-    }
-
     inline function new():Void
     {
         this = RayMusic.alloc();
@@ -2633,116 +1065,9 @@ extern class RayVrDeviceInfo
     var chromaAbCorrection:utils.FloatPointer;
 }
 
+@:forward
 extern abstract VrDeviceInfo(cpp.Struct<RayVrDeviceInfo>) to cpp.Struct<RayVrDeviceInfo>
 {
-    var hResolution(get, set):Int;
-
-    inline function get_hResolution():Int
-    {
-        return this.hResolution;
-    }
-
-    inline function set_hResolution(value:Int):Int
-    {
-        return this.hResolution = value;
-    }
-
-    var vResolution(get, set):Int;
-
-    inline function get_vResolution():Int
-    {
-        return this.vResolution;
-    }
-
-    inline function set_vResolution(value:Int):Int
-    {
-        return this.vResolution = value;
-    }
-
-    var hScreenSize(get, set):Single;
-
-    inline function get_hScreenSize():Single
-    {
-        return this.hScreenSize;
-    }
-
-    inline function set_hScreenSize(value:Single):Single
-    {
-        return this.hScreenSize = value;
-    }
-
-    var vScreenSize(get, set):Single;
-
-    inline function get_vScreenSize():Single
-    {
-        return this.vScreenSize;
-    }
-
-    inline function set_vScreenSize(value:Single):Single
-    {
-        return this.vScreenSize = value;
-    }
-
-    var eyeToScreenDistance(get, set):Single;
-
-    inline function get_eyeToScreenDistance():Single
-    {
-        return this.eyeToScreenDistance;
-    }
-
-    inline function set_eyeToScreenDistance(value:Single):Single
-    {
-        return this.eyeToScreenDistance = value;
-    }
-
-    var lensSeparationDistance(get, set):Single;
-
-    inline function get_lensSeparationDistance():Single
-    {
-        return this.lensSeparationDistance;
-    }
-
-    inline function set_lensSeparationDistance(value:Single):Single
-    {
-        return this.lensSeparationDistance = value;
-    }
-
-    var interpupillaryDistance(get, set):Single;
-
-    inline function get_interpupillaryDistance():Single
-    {
-        return this.interpupillaryDistance;
-    }
-
-    inline function set_interpupillaryDistance(value:Single):Single
-    {
-        return this.interpupillaryDistance = value;
-    }
-
-    var lensDistortionValues(get, set):utils.FloatPointer;
-
-    inline function get_lensDistortionValues():utils.FloatPointer
-    {
-        return this.lensDistortionValues;
-    }
-
-    inline function set_lensDistortionValues(value:utils.FloatPointer):utils.FloatPointer
-    {
-        return this.lensDistortionValues = value;
-    }
-
-    var chromaAbCorrection(get, set):utils.FloatPointer;
-
-    inline function get_chromaAbCorrection():utils.FloatPointer
-    {
-        return this.chromaAbCorrection;
-    }
-
-    inline function set_chromaAbCorrection(value:utils.FloatPointer):utils.FloatPointer
-    {
-        return this.chromaAbCorrection = value;
-    }
-
     inline function new():Void
     {
         this = RayVrDeviceInfo.alloc();
@@ -2775,80 +1100,9 @@ extern class RayVrStereoConfig
     var scaleIn:utils.FloatPointer;
 }
 
+@:forward
 extern abstract VrStereoConfig(cpp.Struct<RayVrStereoConfig>) to cpp.Struct<RayVrStereoConfig>
 {
-    var projection(get, set):cpp.RawPointer<RayMatrix>;
-
-    inline function get_projection():cpp.RawPointer<RayMatrix>
-    {
-        return this.projection;
-    }
-
-    inline function set_projection(value:cpp.RawPointer<RayMatrix>):cpp.RawPointer<RayMatrix>
-    {
-        return this.projection = value;
-    }
-
-    var rightLensCenter(get, set):utils.FloatPointer;
-
-    inline function get_rightLensCenter():utils.FloatPointer
-    {
-        return this.rightLensCenter;
-    }
-
-    inline function set_rightLensCenter(value:utils.FloatPointer):utils.FloatPointer
-    {
-        return this.rightLensCenter = value;
-    }
-
-    var leftScreenCenter(get, set):utils.FloatPointer;
-
-    inline function get_leftScreenCenter():utils.FloatPointer
-    {
-        return this.leftScreenCenter;
-    }
-
-    inline function set_leftScreenCenter(value:utils.FloatPointer):utils.FloatPointer
-    {
-        return this.leftScreenCenter = value;
-    }
-
-    var rightScreenCenter(get, set):utils.FloatPointer;
-
-    inline function get_rightScreenCenter():utils.FloatPointer
-    {
-        return this.rightScreenCenter;
-    }
-
-    inline function set_rightScreenCenter(value:utils.FloatPointer):utils.FloatPointer
-    {
-        return this.rightScreenCenter = value;
-    }
-
-    var scale(get, set):utils.FloatPointer;
-
-    inline function get_scale():utils.FloatPointer
-    {
-        return this.scale;
-    }
-
-    inline function set_scale(value:utils.FloatPointer):utils.FloatPointer
-    {
-        return this.scale = value;
-    }
-
-    var scaleIn(get, set):utils.FloatPointer;
-
-    inline function get_scaleIn():utils.FloatPointer
-    {
-        return this.scaleIn;
-    }
-
-    inline function set_scaleIn(value:utils.FloatPointer):utils.FloatPointer
-    {
-        return this.scaleIn = value;
-    }
-
     inline function new():Void
     {
         this = RayVrStereoConfig.alloc();
@@ -2878,44 +1132,9 @@ extern class RayFilePathList
     var paths:cpp.RawPointer<cpp.CastCharStar>;
 }
 
+@:forward
 extern abstract FilePathList(cpp.Struct<RayFilePathList>) to cpp.Struct<RayFilePathList>
 {
-    var capacity(get, set):cpp.UInt32;
-
-    inline function get_capacity():cpp.UInt32
-    {
-        return this.capacity;
-    }
-
-    inline function set_capacity(value:cpp.UInt32):cpp.UInt32
-    {
-        return this.capacity = value;
-    }
-
-    var count(get, set):cpp.UInt32;
-
-    inline function get_count():cpp.UInt32
-    {
-        return this.count;
-    }
-
-    inline function set_count(value:cpp.UInt32):cpp.UInt32
-    {
-        return this.count = value;
-    }
-
-    var paths(get, set):cpp.RawPointer<cpp.CastCharStar>;
-
-    inline function get_paths():cpp.RawPointer<cpp.CastCharStar>
-    {
-        return this.paths;
-    }
-
-    inline function set_paths(value:cpp.RawPointer<cpp.CastCharStar>):cpp.RawPointer<cpp.CastCharStar>
-    {
-        return this.paths = value;
-    }
-
     inline function new():Void
     {
         this = RayFilePathList.alloc();
@@ -2944,32 +1163,9 @@ extern class RayAutomationEvent
     var type:cpp.UInt32;
 }
 
+@:forward
 extern abstract AutomationEvent(cpp.Struct<RayAutomationEvent>) to cpp.Struct<RayAutomationEvent>
 {
-    var frame(get, set):cpp.UInt32;
-
-    inline function get_frame():cpp.UInt32
-    {
-        return this.frame;
-    }
-
-    inline function set_frame(value:cpp.UInt32):cpp.UInt32
-    {
-        return this.frame = value;
-    }
-
-    var type(get, set):cpp.UInt32;
-
-    inline function get_type():cpp.UInt32
-    {
-        return this.type;
-    }
-
-    inline function set_type(value:cpp.UInt32):cpp.UInt32
-    {
-        return this.type = value;
-    }
-
     inline function new():Void
     {
         this = RayAutomationEvent.alloc();
@@ -2998,32 +1194,9 @@ extern class RayAutomationEventList
     var events:cpp.RawPointer<RayAutomationEvent>;
 }
 
+@:forward
 extern abstract AutomationEventList(cpp.Struct<RayAutomationEventList>) to cpp.Struct<RayAutomationEventList>
 {
-    var capacity(get, set):cpp.UInt32;
-
-    inline function get_capacity():cpp.UInt32
-    {
-        return this.capacity;
-    }
-
-    inline function set_capacity(value:cpp.UInt32):cpp.UInt32
-    {
-        return this.capacity = value;
-    }
-
-    var events(get, set):cpp.RawPointer<RayAutomationEvent>;
-
-    inline function get_events():cpp.RawPointer<RayAutomationEvent>
-    {
-        return this.events;
-    }
-
-    inline function set_events(value:cpp.RawPointer<RayAutomationEvent>):cpp.RawPointer<RayAutomationEvent>
-    {
-        return this.events = value;
-    }
-
     inline function new():Void
     {
         this = RayAutomationEventList.alloc();
