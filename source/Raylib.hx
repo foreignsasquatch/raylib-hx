@@ -2397,8 +2397,8 @@ extern class Raylib
     @:native('TextSubtext') static function textSubtext(text:cpp.ConstCharStar, position:Int, length:Int):cpp.ConstCharStar;
     @:native('TextReplace') static function textReplace(text:cpp.ConstCharStar, replace:cpp.ConstCharStar, by:cpp.ConstCharStar):cpp.ConstCharStar;
     @:native('TextInsert') static function textInsert(text:cpp.ConstCharStar, insert:cpp.ConstCharStar, position:Int):cpp.ConstCharStar;
-    @:native('TextJoin') static function textJoin(textList:utils ConstCharStarPointer, count:Int, delimiter:cpp.ConstCharStar):cpp.ConstCharStar;
-    @:native('TextSplit') static function textSplit(text:cpp.ConstCharStar, delimiter:cpp.Char, count:utils.IntPointer):utils ConstCharStarPointer;
+    @:native('TextJoin') static function textJoin(textList:utils.ConstCharStarPointer, count:Int, delimiter:cpp.ConstCharStar):cpp.ConstCharStar;
+    @:native('TextSplit') static function textSplit(text:cpp.ConstCharStar, delimiter:cpp.Char, count:utils.IntPointer):utils.ConstCharStarPointer;
     @:native('TextAppend') static function textAppend(text:utils.BytesPointer, append:cpp.ConstCharStar, position:utils.IntPointer):Void;
     @:native('TextFindIndex') static function textFindIndex(text:cpp.ConstCharStar, find:cpp.ConstCharStar):Int;
     @:native('TextToUpper') static function textToUpper(text:cpp.ConstCharStar):cpp.ConstCharStar;

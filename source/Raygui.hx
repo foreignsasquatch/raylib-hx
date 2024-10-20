@@ -765,7 +765,7 @@ extern class Raygui
     @:native('GuiGroupBox') static function guiGroupBox(bounds:RectangleImpl, text:cpp.ConstCharStar):Int;
     @:native('GuiLine') static function guiLine(bounds:RectangleImpl, text:cpp.ConstCharStar):Int;
     @:native('GuiPanel') static function guiPanel(bounds:RectangleImpl, text:cpp.ConstCharStar):Int;
-    @:native('GuiTabBar') static function guiTabBar(bounds:RectangleImpl, text:utils ConstCharStarPointer, count:Int, active:utils.IntPointer):Int;
+    @:native('GuiTabBar') static function guiTabBar(bounds:RectangleImpl, text:utils.ConstCharStarPointer, count:Int, active:utils.IntPointer):Int;
     @:native('GuiScrollPanel') static function guiScrollPanel(bounds:RectangleImpl, text:cpp.ConstCharStar, content:RectangleImpl,
         scroll:cpp.RawPointer<Vector2Impl>, view:cpp.RawPointer<RectangleImpl>):Int;
     @:native('GuiLabel') static function guiLabel(bounds:RectangleImpl, text:cpp.ConstCharStar):Int;
@@ -793,7 +793,7 @@ extern class Raygui
     @:native('GuiGrid') static function guiGrid(bounds:RectangleImpl, text:cpp.ConstCharStar, spacing:Single, subdivs:Int,
         mouseCell:cpp.RawPointer<Vector2Impl>):Int;
     @:native('GuiListView') static function guiListView(bounds:RectangleImpl, text:cpp.ConstCharStar, scrollIndex:utils.IntPointer, active:utils.IntPointer):Int;
-    @:native('GuiListViewEx') static function guiListViewEx(bounds:RectangleImpl, text:utils ConstCharStarPointer, count:Int,
+    @:native('GuiListViewEx') static function guiListViewEx(bounds:RectangleImpl, text:utils.ConstCharStarPointer, count:Int,
         scrollIndex:utils.IntPointer, active:utils.IntPointer, focus:utils.IntPointer):Int;
     @:native('GuiMessageBox') static function guiMessageBox(bounds:RectangleImpl, title:cpp.ConstCharStar, message:cpp.ConstCharStar,
         buttons:cpp.ConstCharStar):Int;
