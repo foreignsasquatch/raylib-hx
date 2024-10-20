@@ -3,6 +3,7 @@ package utils;
 import haxe.io.Bytes;
 import haxe.io.BytesData;
 
+@:semantics(variable)
 extern abstract BytesConstPointer(cpp.RawConstPointer<cpp.UInt8>) from cpp.RawConstPointer<cpp.UInt8> to cpp.RawConstPointer<cpp.UInt8>
 {
     inline function new(ptr:cpp.RawConstPointer<cpp.UInt8>):Void

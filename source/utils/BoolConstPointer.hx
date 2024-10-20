@@ -1,5 +1,6 @@
 package utils;
 
+@:semantics(variable)
 extern abstract BoolConstPointer(cpp.RawConstPointer<Bool>) from cpp.RawConstPointer<Bool> to cpp.RawConstPointer<Bool>
 {
     inline function new(ptr:cpp.RawConstPointer<Bool>):Void
@@ -22,7 +23,7 @@ extern abstract BoolConstPointer(cpp.RawConstPointer<Bool>) from cpp.RawConstPoi
     @:from
     static inline function fromValue(value:Bool):BoolConstPointer
     {
-        return new BoolConstPointer(cpp.Pointer.addressOf(value).constRaw);
+        return new BoolConstPointer(cpp.RawPointer.addressOf(value).constRaw);
     }
 
     @:from
