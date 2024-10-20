@@ -57,31 +57,31 @@ private extern class TouchActionImpl {}
 @:unreflective
 @:structAccess
 @:native('GestureEvent')
-extern class RayGestureEvent
+extern class GestureEventImpl
 {
     @:native('GestureEvent')
-    static function alloc():RayGestureEvent;
+    static function alloc():GestureEventImpl;
 
     var touchAction:Int;
     var pointCount:Int;
     var pointId:utils.IntPointer;
-    var position:cpp.RawPointer<RayVector2>;
+    var position:cpp.RawPointer<Vector2Impl>;
 }
 
 @:forward
-extern abstract GestureEvent(cpp.Struct<RayGestureEvent>) to cpp.Struct<RayGestureEvent>
+extern abstract GestureEvent(cpp.Struct<GestureEventImpl>) to cpp.Struct<GestureEventImpl>
 {
     inline function new():Void
     {
-        this = RayGestureEvent.alloc();
+        this = GestureEventImpl.alloc();
     }
 
     @:from
-    static inline function fromNative(value:RayGestureEvent):GestureEvent
+    static inline function fromNative(value:GestureEventImpl):GestureEvent
         return cast value;
 
     @:to
-    inline function toPointer():cpp.RawPointer<RayGestureEvent>
+    inline function toPointer():cpp.RawPointer<GestureEventImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -91,7 +91,7 @@ extern abstract GestureEvent(cpp.Struct<RayGestureEvent>) to cpp.Struct<RayGestu
 extern class RGestures
 {
     @:native('ProcessGestureEvent')
-    static function ProcessGestureEvent(event:RayGestureEvent):Void;
+    static function ProcessGestureEvent(event:GestureEventImpl):Void;
 
     @:native('UpdateGestures')
     static function UpdateGestures():Void;

@@ -46,29 +46,29 @@ extern class RCamera
     static function GetCameraRight(camera:cpp.RawPointer<RayCamera>):RayVector3;
 
     @:native('CameraMoveForward')
-    static function CameraMoveForward(camera:cpp.RawPointer<RayCamera3D>, distance:Single, moveInWorldPlane:Bool):Void;
+    static function CameraMoveForward(camera:cpp.RawPointer<Camera3DImpl>, distance:Single, moveInWorldPlane:Bool):Void;
 
     @:native('CameraMoveUp')
-    static function CameraMoveUp(camera:cpp.RawPointer<RayCamera3D>, distance:Single):Void;
+    static function CameraMoveUp(camera:cpp.RawPointer<Camera3DImpl>, distance:Single):Void;
 
     @:native('CameraMoveRight')
-    static function CameraMoveRight(camera:cpp.RawPointer<RayCamera3D>, distance:Single, moveInWorldPlane:Bool):Void;
+    static function CameraMoveRight(camera:cpp.RawPointer<Camera3DImpl>, distance:Single, moveInWorldPlane:Bool):Void;
 
     @:native('CameraMoveToTarget')
-    static function CameraMoveToTarget(camera:cpp.RawPointer<RayCamera3D>, delta:Single):Void;
+    static function CameraMoveToTarget(camera:cpp.RawPointer<Camera3DImpl>, delta:Single):Void;
 
     @:native('CameraYaw')
-    static function CameraYaw(camera:cpp.RawPointer<RayCamera3D>, angle:Single, rotateAroundTarget:Bool):Void;
+    static function CameraYaw(camera:cpp.RawPointer<Camera3DImpl>, angle:Single, rotateAroundTarget:Bool):Void;
 
     @:native('CameraPitch')
-    static function CameraPitch(camera:cpp.RawPointer<RayCamera3D>, angle:Single, lockView:Bool, rotateAroundTarget:Bool, rotateUp:Bool):Void;
+    static function CameraPitch(camera:cpp.RawPointer<Camera3DImpl>, angle:Single, lockView:Bool, rotateAroundTarget:Bool, rotateUp:Bool):Void;
 
     @:native('CameraRoll')
-    static function CameraRoll(camera:cpp.RawPointer<RayCamera3D>, angle:Single):Void;
+    static function CameraRoll(camera:cpp.RawPointer<Camera3DImpl>, angle:Single):Void;
 
     @:native('GetCameraViewMatrix')
-    static function GetCameraViewMatrix(camera:cpp.RawPointer<RayCamera3D>):RayMatrix;
+    static function GetCameraViewMatrix(camera:cpp.RawPointer<Camera3DImpl>):MatrixImpl;
 
     @:native('GetCameraProjectionMatrix')
-    static function GetCameraProjectionMatrix(camera:cpp.RawPointer<RayCamera3D>, aspect:Single):RayMatrix;
+    static function GetCameraProjectionMatrix(camera:cpp.RawPointer<Camera3DImpl>, aspect:Single):MatrixImpl;
 }
