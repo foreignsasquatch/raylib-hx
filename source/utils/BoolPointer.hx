@@ -29,6 +29,6 @@ extern abstract BoolPointer(cpp.RawPointer<Bool>) from cpp.RawPointer<Bool> to c
     @:from
     static inline function fromArray(value:Array<Bool>):BoolPointer
     {
-        return new BoolPointer(cpp.Pointer.ofArray(value));
+        return new BoolPointer(cpp.Pointer.ofArray(value).raw);
     }
 }
