@@ -20,6 +20,6 @@ extern abstract BytesPointer(cpp.RawPointer<cpp.UInt8>) from cpp.RawPointer<cpp.
     @:from
     static inline function fromBytesData(value:BytesData):BytesPointer
     {
-        return new BytesPointer(cpp.Pointer.ofArray(value).raw);
+        return new BytesPointer(cpp.Pointer.ofArray(value));
     }
 }

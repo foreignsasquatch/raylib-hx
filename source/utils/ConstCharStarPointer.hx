@@ -8,21 +8,21 @@ extern abstract ConstCharStarPointer(cpp.RawPointer<cpp.ConstCharStar>) from cpp
     }
 
     @:arrayAccess
-    inline function get(index:Int):Int
+    inline function get(index:Int):cpp.ConstCharStar
     {
         return this[index];
     }
 
     @:arrayAccess
-    inline function set(index:Int, value:Int):Void
+    inline function set(index:Int, value:cpp.ConstCharStar):Void
     {
         this[index] = value;
     }
 
     @:from
-    static inline function fromString(value:String):ConstCharStarPointer
+    static inline function fromValue(value:cpp.ConstCharStar):ConstCharStarPointer
     {
-        return new ConstCharStarPointer(cpp.RawPointer.addressOf(cpp.ConstCharStar.fromString(value)));
+        return new ConstCharStarPointer(cpp.RawPointer.addressOf(value));
     }
 
     @:from

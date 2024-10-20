@@ -23,12 +23,12 @@ extern abstract FloatPointer(cpp.RawPointer<Single>) from cpp.RawPointer<Single>
     @:from
     static inline function fromValue(value:Single):FloatPointer
     {
-        return new FloatPointer(cpp.RawPointer.addressOf(value).raw);
+        return new FloatPointer(cpp.RawPointer.addressOf(value));
     }
 
     @:from
     static inline function fromArray(value:Array<Single>):FloatPointer
     {
-        return new FloatPointer(cpp.Pointer.ofArray(value).raw);
+        return new FloatPointer(cpp.Pointer.ofArray(value));
     }
 }
