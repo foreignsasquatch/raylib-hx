@@ -36,16 +36,16 @@ import Raylib;
 @:unreflective
 @:structAccess
 @:native('Light')
-extern class RayLight
+extern class LightImpl
 {
     @:native('Light')
-    static function alloc():RayLight;
+    static function alloc():LightImpl;
 
     var type:Int;
     var enabled:Bool;
     var position:RayVector3;
     var target:RayVector3;
-    var color:RayColor;
+    var color:ColorImpl;
     var attenuation:Single;
     var enabledLoc:Int;
     var typeLoc:Int;
@@ -56,19 +56,19 @@ extern class RayLight
 }
 
 @:forward
-extern abstract Light(cpp.Struct<RayLight>) to cpp.Struct<RayLight>
+extern abstract Light(cpp.Struct<LightImpl>) to cpp.Struct<LightImpl>
 {
     inline function new():Void
     {
-        this = RayLight.alloc();
+        this = LightImpl.alloc();
     }
 
     @:from
-    static inline function fromNative(value:RayLight):Light
+    static inline function fromNative(value:LightImpl):Light
         return cast value;
 
     @:to
-    inline function toPointer():cpp.RawPointer<RayLight>
+    inline function toPointer():cpp.RawPointer<LightImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -97,8 +97,8 @@ private extern class LightTypeImpl {}
 extern class RLights
 {
     @:native('CreateLight')
-    static function createLight(type:Int, position:RayVector3, target:RayVector3, color:RayColor, shader:RayShader):RayLight;
+    static function createLight(type:Int, position:RayVector3, target:RayVector3, color:ColorImpl, shader:ShaderImpl):LightImpl;
 
     @:native('UpdateLightValues')
-    static function updateLightValues(shader:RayShader, light:RayLight):Void;
+    static function updateLightValues(shader:ShaderImpl, light:LightImpl):Void;
 }

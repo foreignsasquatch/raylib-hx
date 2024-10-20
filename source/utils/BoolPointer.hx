@@ -1,5 +1,6 @@
 package utils;
 
+@:semantics(variable)
 extern abstract BoolPointer(cpp.RawPointer<Bool>) from cpp.RawPointer<Bool> to cpp.RawPointer<Bool>
 {
     inline function new(ptr:cpp.RawPointer<Bool>):Void
@@ -22,7 +23,7 @@ extern abstract BoolPointer(cpp.RawPointer<Bool>) from cpp.RawPointer<Bool> to c
     @:from
     static inline function fromValue(value:Bool):BoolPointer
     {
-        return new BoolPointer(cpp.Pointer.addressOf(value).raw);
+        return new BoolPointer(cpp.RawPointer.addressOf(value));
     }
 
     @:from
