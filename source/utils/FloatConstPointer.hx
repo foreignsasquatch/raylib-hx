@@ -1,5 +1,6 @@
 package utils;
 
+@:nullSafety
 extern abstract FloatConstPointer(cpp.RawConstPointer<Single>) from cpp.RawConstPointer<Single> to cpp.RawConstPointer<Single>
 {
     inline function new(ptr:cpp.RawConstPointer<Single>):Void

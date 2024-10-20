@@ -1,1 +1,1 @@
---macro macros.DefineMacro.run()
+--macro macros.PlatformConfigMacro.run()

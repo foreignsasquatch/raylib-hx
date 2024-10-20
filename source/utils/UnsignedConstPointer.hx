@@ -1,5 +1,6 @@
 package utils;
 
+@:nullSafety
 extern abstract UnsignedConstPointer(cpp.RawConstPointer<cpp.UInt32>) from cpp.RawConstPointer<cpp.UInt32> to cpp.RawConstPointer<cpp.UInt32>
 {
     inline function new(ptr:cpp.RawConstPointer<cpp.UInt32>):Void

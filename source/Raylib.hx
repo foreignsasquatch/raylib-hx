@@ -44,6 +44,7 @@ extern class Vector2Impl
 }
 
 @:forward
+@:nullSafety
 extern abstract Vector2(cpp.Struct<Vector2Impl>) to cpp.Struct<Vector2Impl>
 {
     inline function new(x:Single, y:Single):Void
@@ -79,6 +80,7 @@ extern class RayVector3
 }
 
 @:forward
+@:nullSafety
 extern abstract Vector3(cpp.Struct<RayVector3>) to cpp.Struct<RayVector3>
 {
     inline function new(x:Single, y:Single, z:Single):Void
@@ -116,6 +118,7 @@ extern class Vector4Impl
 }
 
 @:forward
+@:nullSafety
 extern abstract Vector4(cpp.Struct<Vector4Impl>) to cpp.Struct<Vector4Impl>
 {
     inline function new(x:Single, y:Single, z:Single, w:Single):Void
@@ -169,6 +172,7 @@ extern class MatrixImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract Matrix(cpp.Struct<MatrixImpl>) to cpp.Struct<MatrixImpl>
 {
     inline function new():Void
@@ -202,6 +206,7 @@ extern class ColorImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract Color(cpp.Struct<ColorImpl>) to cpp.Struct<ColorImpl>
 {
     inline function new(r:cpp.UInt8, g:cpp.UInt8, b:cpp.UInt8, a:cpp.UInt8):Void
@@ -240,6 +245,7 @@ extern class RectangleImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract Rectangle(cpp.Struct<RectangleImpl>) to cpp.Struct<RectangleImpl>
 {
     inline function new(x:Single, y:Single, width:Single, height:Single):Void
@@ -279,6 +285,7 @@ extern class ImageImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract Image(cpp.Struct<ImageImpl>) to cpp.Struct<ImageImpl>
 {
     inline function new():Void
@@ -313,6 +320,7 @@ extern class TextureImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract Texture(cpp.Struct<TextureImpl>) to cpp.Struct<TextureImpl>
 {
     inline function new():Void
@@ -345,6 +353,7 @@ extern class RenderTextureImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract RenderTexture(cpp.Struct<RenderTextureImpl>) to cpp.Struct<RenderTextureImpl>
 {
     inline function new():Void
@@ -380,6 +389,7 @@ extern class NPatchInfoImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract NPatchInfo(cpp.Struct<NPatchInfoImpl>) to cpp.Struct<NPatchInfoImpl>
 {
     inline function new():Void
@@ -414,6 +424,7 @@ extern class GlyphInfoImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract GlyphInfo(cpp.Struct<GlyphInfoImpl>) to cpp.Struct<GlyphInfoImpl>
 {
     inline function new():Void
@@ -448,6 +459,7 @@ extern class FontImpl
     var glyphs:cpp.RawPointer<GlyphInfoImpl>;
 }
 
+@:nullSafety
 extern abstract Font(cpp.Struct<FontImpl>) to cpp.Struct<FontImpl>
 {
     inline function new():Void
@@ -482,6 +494,7 @@ extern class Camera3DImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract Camera3D(cpp.Struct<Camera3DImpl>) to cpp.Struct<Camera3DImpl>
 {
     inline function new():Void
@@ -515,6 +528,7 @@ extern class Camera2DImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract Camera2D(cpp.Struct<Camera2DImpl>) to cpp.Struct<Camera2DImpl>
 {
     inline function new():Void
@@ -562,6 +576,7 @@ extern class MeshImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract Mesh(cpp.Struct<MeshImpl>) to cpp.Struct<MeshImpl>
 {
     inline function new():Void
@@ -593,6 +608,7 @@ extern class ShaderImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract Shader(cpp.Struct<ShaderImpl>) to cpp.Struct<ShaderImpl>
 {
     inline function new():Void
@@ -625,6 +641,7 @@ extern class MaterialMapImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract MaterialMap(cpp.Struct<MaterialMapImpl>) to cpp.Struct<MaterialMapImpl>
 {
     inline function new():Void
@@ -657,6 +674,7 @@ extern class MaterialImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract Material(cpp.Struct<MaterialImpl>) to cpp.Struct<MaterialImpl>
 {
     inline function new():Void
@@ -689,6 +707,7 @@ extern class TransformImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract Transform(cpp.Struct<TransformImpl>) to cpp.Struct<TransformImpl>
 {
     inline function new():Void
@@ -720,6 +739,7 @@ extern class BoneInfoImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract BoneInfo(cpp.Struct<BoneInfoImpl>) to cpp.Struct<BoneInfoImpl>
 {
     inline function new():Void
@@ -760,6 +780,7 @@ extern class ModelImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract Model(cpp.Struct<ModelImpl>) to cpp.Struct<ModelImpl>
 {
     inline function new():Void
@@ -794,6 +815,7 @@ extern class ModelAnimationImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract ModelAnimation(cpp.Struct<ModelAnimationImpl>) to cpp.Struct<ModelAnimationImpl>
 {
     inline function new():Void
@@ -825,6 +847,7 @@ extern class RayImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract Ray(cpp.Struct<RayImpl>) to cpp.Struct<RayImpl>
 {
     inline function new():Void
@@ -858,6 +881,7 @@ extern class RayCollisionImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract RayCollision(cpp.Struct<RayCollisionImpl>) to cpp.Struct<RayCollisionImpl>
 {
     inline function new():Void
@@ -889,6 +913,7 @@ extern class BoundingBoxImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract BoundingBox(cpp.Struct<BoundingBoxImpl>) to cpp.Struct<BoundingBoxImpl>
 {
     inline function new():Void
@@ -921,6 +946,7 @@ extern class WaveImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract Wave(cpp.Struct<WaveImpl>) to cpp.Struct<WaveImpl>
 {
     inline function new():Void
@@ -963,6 +989,7 @@ extern class AudioStreamImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract AudioStream(cpp.Struct<AudioStreamImpl>) to cpp.Struct<AudioStreamImpl>
 {
     inline function new():Void
@@ -994,6 +1021,7 @@ extern class SoundImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract Sound(cpp.Struct<SoundImpl>) to cpp.Struct<SoundImpl>
 {
     inline function new():Void
@@ -1028,6 +1056,7 @@ extern class MusicImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract Music(cpp.Struct<MusicImpl>) to cpp.Struct<MusicImpl>
 {
     inline function new():Void
@@ -1066,6 +1095,7 @@ extern class VrDeviceInfoImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract VrDeviceInfo(cpp.Struct<VrDeviceInfoImpl>) to cpp.Struct<VrDeviceInfoImpl>
 {
     inline function new():Void
@@ -1101,6 +1131,7 @@ extern class VrStereoConfigImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract VrStereoConfig(cpp.Struct<VrStereoConfigImpl>) to cpp.Struct<VrStereoConfigImpl>
 {
     inline function new():Void
@@ -1133,6 +1164,7 @@ extern class FilePathListImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract FilePathList(cpp.Struct<FilePathListImpl>) to cpp.Struct<FilePathListImpl>
 {
     inline function new():Void
@@ -1164,6 +1196,7 @@ extern class AutomationEventImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract AutomationEvent(cpp.Struct<AutomationEventImpl>) to cpp.Struct<AutomationEventImpl>
 {
     inline function new():Void
@@ -1195,6 +1228,7 @@ extern class AutomationEventListImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract AutomationEventList(cpp.Struct<AutomationEventListImpl>) to cpp.Struct<AutomationEventListImpl>
 {
     inline function new():Void

@@ -1,5 +1,6 @@
 package utils;
 
+@:nullSafety
 extern abstract IntPointer(cpp.RawPointer<Int>) from cpp.RawPointer<Int> to cpp.RawPointer<Int>
 {
     inline function new(ptr:cpp.RawPointer<Int>):Void

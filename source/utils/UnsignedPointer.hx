@@ -1,5 +1,6 @@
 package utils;
 
+@:nullSafety
 extern abstract UnsignedPointer(cpp.RawPointer<cpp.UInt32>) from cpp.RawPointer<cpp.UInt32> to cpp.RawPointer<cpp.UInt32>
 {
     inline function new(ptr:cpp.RawPointer<cpp.UInt32>):Void

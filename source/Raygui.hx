@@ -49,6 +49,7 @@ extern class GuiStylePropImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract GuiStyleProp(cpp.Struct<GuiStylePropImpl>) to cpp.Struct<GuiStylePropImpl>
 {
     inline function new():Void

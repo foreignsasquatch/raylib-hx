@@ -8,7 +8,7 @@ import sys.FileSystem;
 using StringTools;
 
 @:nullSafety
-class DefineMacro
+class PlatformConfigMacro
 {
     public static function run():Void
     {

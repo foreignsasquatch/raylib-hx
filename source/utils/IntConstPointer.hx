@@ -1,5 +1,6 @@
 package utils;
 
+@:nullSafety
 extern abstract IntConstPointer(cpp.RawConstPointer<Int>) from cpp.RawConstPointer<Int> to cpp.RawConstPointer<Int>
 {
     inline function new(ptr:cpp.RawConstPointer<Int>):Void

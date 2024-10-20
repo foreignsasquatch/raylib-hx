@@ -1,5 +1,6 @@
 package utils;
 
+@:nullSafety
 extern abstract BoolConstPointer(cpp.RawConstPointer<Bool>) from cpp.RawConstPointer<Bool> to cpp.RawConstPointer<Bool>
 {
     inline function new(ptr:cpp.RawConstPointer<Bool>):Void

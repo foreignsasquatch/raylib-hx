@@ -1,5 +1,6 @@
 package utils;
 
+@:nullSafety
 extern abstract FloatPointer(cpp.RawPointer<Single>) from cpp.RawPointer<Single> to cpp.RawPointer<Single>
 {
     inline function new(ptr:cpp.RawPointer<Single>):Void

@@ -1,5 +1,6 @@
 package utils;
 
+@:nullSafety
 extern abstract ConstCharStarPointer(cpp.RawPointer<cpp.ConstCharStar>) from cpp.RawPointer<cpp.ConstCharStar> to cpp.RawPointer<cpp.ConstCharStar>
 {
     inline function new(ptr:cpp.RawPointer<cpp.ConstCharStar>):Void

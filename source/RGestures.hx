@@ -69,6 +69,7 @@ extern class GestureEventImpl
 }
 
 @:forward
+@:nullSafety
 extern abstract GestureEvent(cpp.Struct<GestureEventImpl>) to cpp.Struct<GestureEventImpl>
 {
     inline function new():Void

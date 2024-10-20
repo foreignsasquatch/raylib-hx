@@ -4,4 +4,5 @@ package cpp;
 @:scalar
 @:coreType
 @:notNull
+@:nullSafety
 extern abstract Long from Int to Int {}
