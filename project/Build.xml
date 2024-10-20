@@ -166,7 +166,7 @@
 
 		<section if="RAYLIB_WEB_ASYNCIFY">
 			<flag value="-s" />
-			<flag value="ASYNCIFY" />
+			<flag value="ASYNCIFY=1" />
 		</section>
 
 		<section if="RAYLIB_WEB_RESOURCES_PATH">
