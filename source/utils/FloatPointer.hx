@@ -1,6 +1,5 @@
 package utils;
 
-@:semantics(variable)
 extern abstract FloatPointer(cpp.RawPointer<Single>) from cpp.RawPointer<Single> to cpp.RawPointer<Single>
 {
     inline function new(ptr:cpp.RawPointer<Single>):Void
@@ -23,7 +22,7 @@ extern abstract FloatPointer(cpp.RawPointer<Single>) from cpp.RawPointer<Single>
     @:from
     static inline function fromValue(value:Single):FloatPointer
     {
-        return new FloatPointer(cpp.RawPointer.addressOf(value));
+        return new FloatPointer(cpp.Pointer.addressOf(value).raw);
     }
 
     @:from

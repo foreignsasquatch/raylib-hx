@@ -3,7 +3,6 @@ package utils;
 import haxe.io.Bytes;
 import haxe.io.BytesData;
 
-@:semantics(variable)
 extern abstract BytesPointer(cpp.RawPointer<cpp.UInt8>) from cpp.RawPointer<cpp.UInt8> to cpp.RawPointer<cpp.UInt8>
 {
     inline function new(ptr:cpp.RawPointer<cpp.UInt8>):Void

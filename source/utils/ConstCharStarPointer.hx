@@ -22,7 +22,7 @@ extern abstract ConstCharStarPointer(cpp.RawPointer<cpp.ConstCharStar>) from cpp
     @:from
     static inline function fromValue(value:cpp.ConstCharStar):ConstCharStarPointer
     {
-        return new ConstCharStarPointer(cpp.RawPointer.addressOf(value));
+        return new ConstCharStarPointer(cpp.Pointer.addressOf(value).raw);
     }
 
     @:from

@@ -1,6 +1,5 @@
 package utils;
 
-@:semantics(variable)
 extern abstract IntPointer(cpp.RawPointer<Int>) from cpp.RawPointer<Int> to cpp.RawPointer<Int>
 {
     inline function new(ptr:cpp.RawPointer<Int>):Void
@@ -23,7 +22,7 @@ extern abstract IntPointer(cpp.RawPointer<Int>) from cpp.RawPointer<Int> to cpp.
     @:from
     static inline function fromValue(value:Int):IntPointer
     {
-        return new IntPointer(cpp.RawPointer.addressOf(value));
+        return new IntPointer(cpp.Pointer.addressOf(value).raw);
     }
 
     @:from

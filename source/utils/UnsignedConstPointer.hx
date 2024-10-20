@@ -1,6 +1,5 @@
 package utils;
 
-@:semantics(variable)
 extern abstract UnsignedConstPointer(cpp.RawConstPointer<cpp.UInt32>) from cpp.RawConstPointer<cpp.UInt32> to cpp.RawConstPointer<cpp.UInt32>
 {
     inline function new(ptr:cpp.RawConstPointer<cpp.UInt32>):Void
@@ -23,7 +22,7 @@ extern abstract UnsignedConstPointer(cpp.RawConstPointer<cpp.UInt32>) from cpp.R
     @:from
     static inline function fromValue(value:cpp.UInt32):UnsignedConstPointer
     {
-        return new UnsignedConstPointer(cpp.RawPointer.addressOf(value).constRaw);
+        return new UnsignedConstPointer(cpp.Pointer.addressOf(value).constRaw);
     }
 
     @:from

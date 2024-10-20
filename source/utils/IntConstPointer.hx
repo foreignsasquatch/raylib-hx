@@ -1,6 +1,5 @@
 package utils;
 
-@:semantics(variable)
 extern abstract IntConstPointer(cpp.RawConstPointer<Int>) from cpp.RawConstPointer<Int> to cpp.RawConstPointer<Int>
 {
     inline function new(ptr:cpp.RawConstPointer<Int>):Void
@@ -23,7 +22,7 @@ extern abstract IntConstPointer(cpp.RawConstPointer<Int>) from cpp.RawConstPoint
     @:from
     static inline function fromValue(value:Int):IntConstPointer
     {
-        return new IntConstPointer(cpp.RawPointer.addressOf(value).constRaw);
+        return new IntConstPointer(cpp.Pointer.addressOf(value).constRaw);
     }
 
     @:from
