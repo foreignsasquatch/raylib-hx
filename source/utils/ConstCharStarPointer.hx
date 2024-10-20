@@ -20,7 +20,13 @@ extern abstract ConstCharStarPointer(cpp.RawPointer<cpp.ConstCharStar>) from cpp
     }
 
     @:from
-    static inline function fromArray(value:Array<String>):IntPointer
+    static inline function fromString(value:String):ConstCharStarPointer
+    {
+        return new ConstCharStarPointer(cpp.RawPointer.addressOf(cpp.ConstCharStar.fromString(value)));
+    }
+
+    @:from
+    static inline function fromArray(value:Array<String>):ConstCharStarPointer
     {
         final ptr:cpp.RawPointer<cpp.ConstCharStar> = untyped __cpp__('new const char *[{0}]', value.length);
 
