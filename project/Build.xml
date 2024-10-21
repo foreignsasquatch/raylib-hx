@@ -180,6 +180,15 @@
 		<files id="raylib_glfw" if="macos" />
 	</target>
 
+	<compiler id="android-gcc" if="android">
+		<flag value="-mfix-cortex-a53-835769" if="HXCPP_ARM64" />
+
+		<section if="HXCPP_ARMV7">
+			<flag value="-mfloat-abi=softfp" />
+			<flag value="-mfpu=vfpv3-d16" />
+		</section>
+	</compiler>
+
 	<linker id="exe" exe="em++" if="emscripten">
 		<flag value="-s" />
 		<flag value="USE_GLFW=3" />
