@@ -12,6 +12,8 @@
 
 		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
 		<include name="${haxelib:raylib-hx}/project/lib/raygui-defines.xml" />
+
+		<file name="${haxelib:raylib-hx}/project/src/android_main.c" if="android" />
 	</files>
 
 	<files id="__main__">
@@ -42,8 +44,6 @@
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtext.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtextures.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/utils.c" />
-
-		<file name="${haxelib:raylib-hx}/project/src/android_main.c" if="android" />
 
 		<section if="linux">
 			<compilerflag value="-D_GLFW_WAYLAND" if="RAYLIB_WAYLAND_DISPLAY" />
