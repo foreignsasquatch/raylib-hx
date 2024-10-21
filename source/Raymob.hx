@@ -36,4 +36,22 @@ import Raylib;
 @:unreflective
 extern class Raymob
 {
+    @:native('GetCacheDir') static function getCacheDir():cpp.CastCharStar;
+    @:native('Vibrate') static function vibrate(sec:Single):Void;
+    @:native('StartAccelerometerListening') static function startAccelerometerListening():Void;
+    @:native('StopAccelerometerListening') static function stopAccelerometerListening():Void;
+    @:native('GetAccelerometerAxis') static function getAccelerometerAxis():Vector3Impl;
+    @:native('GetAccelerometerX') static function getAccelerometerX():Single;
+    @:native('GetAccelerometerY') static function getAccelerometerY():Single;
+    @:native('GetAccelerometerZ') static function getAccelerometerZ():Single;
+    @:native('ShowSoftKeyboard') static function showSoftKeyboard():Void;
+    @:native('HideSoftKeyboard') static function hideSoftKeyboard():Void;
+    @:native('IsSoftKeyboardActive') static function isSoftKeyboardActive():Bool;
+    @:native('GetLastSoftKeyCode') static function getLastSoftKeyCode():Int;
+    @:native('GetLastSoftKeyLabel') static function getLastSoftKeyLabel():cpp.UInt16;
+    @:native('GetLastSoftKeyUnicode') static function getLastSoftKeyUnicode():Int;
+    @:native('GetLastSoftKeyChar') static function getLastSoftKeyChar():cpp.Char;
+    @:native('ClearLastSoftKey') static function clearLastSoftKey():Void;
+    @:native('SoftKeyboardEditText') static function softKeyboardEditText(text:cpp.CastCharStar, size:cpp.UInt32):Void;
+    @:native('KeepScreenOn') static function keepScreenOn(keepOn:Bool):Void;
 }
