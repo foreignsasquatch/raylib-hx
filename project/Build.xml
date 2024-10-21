@@ -3,6 +3,8 @@
 	<pragma once="true" />
 
 	<files id="haxe">
+		<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
+
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" />
@@ -13,6 +15,8 @@
 	</files>
 
 	<files id="__main__">
+		<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
+
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" />
@@ -24,6 +28,7 @@
 
 	<files id="raylib">
 		<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
+
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" unless="emscripten || android" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 
@@ -56,6 +61,8 @@
 	</files>
 
 	<files id="raymob">
+		<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
+
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" />
 
