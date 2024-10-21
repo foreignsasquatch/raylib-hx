@@ -37,9 +37,8 @@
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtext.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtextures.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/utils.c" />
-		<file name="${haxelib:raylib-hx}/project/src/android_main.c" if="android" />
 
-		<file name="${ANDROID_NDK_ROOT}/sources/android/native_app_glue/android_native_app_glue.c" if="android" />
+		<file name="${haxelib:raylib-hx}/project/src/android_main.c" if="android" />
 
 		<section if="linux">
 			<compilerflag value="-D_GLFW_WAYLAND" if="RAYLIB_WAYLAND_DISPLAY" />
@@ -56,7 +55,7 @@
 		</section>
 	</files>
 
-	<files id="raylib-glfw">
+	<files id="raylib-glfw" if="macos">
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" />
 
 		<compilerflag value="-D_GLFW_COCOA" />
@@ -80,6 +79,12 @@
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/nsgl_context.m" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/egl_context.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/osmesa_context.c" />
+	</files>
+
+	<files id="native_app_glue" if="android">
+		<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" />
+
+		<file name="${ANDROID_NDK_ROOT}/sources/android/native_app_glue/android_native_app_glue.c" if="android" />
 	</files>
 
 	<target id="haxe">
@@ -143,10 +148,8 @@
 		</section>
 
 		<files id="raylib-base" />
-
-		<section if="macos">
-			<files id="raylib-glfw" />
-		</section>
+		<files id="raylib-glfw" if="macos" />
+		<files id="native_app_glue" if="android" />
 	</target>
 
 	<linker id="exe" exe="em++" if="emscripten">
