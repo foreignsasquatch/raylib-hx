@@ -60,7 +60,7 @@ jobject GetFeaturesInstance(void)
         jobject nativeLoaderInstance = GetNativeLoaderInstance();
 
         jclass nativeLoaderClass = (*env)->GetObjectClass(env, nativeLoaderInstance);
-        jmethodID getFeaturesMethod = (*env)->GetMethodID(env, nativeLoaderClass, "getFeatures", "()Lcom/raylib/raymob/Features;");
+        jmethodID getFeaturesMethod = (*env)->GetMethodID(env, nativeLoaderClass, "getFeatures", "()Lorg/raymob/Features;");
 
         if (getFeaturesMethod == NULL) return NULL; // Handle the case where the method is not found
 
