@@ -7,7 +7,7 @@
 
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
-		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" if="android" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/include" />
 
 		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
@@ -21,7 +21,7 @@
 
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
-		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" if="android" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/include" />
 
 		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />

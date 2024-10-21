@@ -26,6 +26,7 @@
 
 package;
 
+#if android
 #if !cpp
 #error 'Raylib supports only C++ target platforms.'
 #end
@@ -55,3 +56,4 @@ extern class Raymob
     @:native('SoftKeyboardEditText') static function softKeyboardEditText(text:cpp.CastCharStar, size:cpp.UInt32):Void;
     @:native('KeepScreenOn') static function keepScreenOn(keepOn:Bool):Void;
 }
+#end
