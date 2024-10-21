@@ -804,6 +804,6 @@ extern class Raygui
     @:native('GuiColorPanel') static function guiColorPanel(bounds:RectangleImpl, text:cpp.ConstCharStar, color:cpp.RawPointer<ColorImpl>):Int;
     @:native('GuiColorBarAlpha') static function guiColorBarAlpha(bounds:RectangleImpl, text:cpp.ConstCharStar, alpha:utils.FloatPointer):Int;
     @:native('GuiColorBarHue') static function guiColorBarHue(bounds:RectangleImpl, text:cpp.ConstCharStar, value:utils.FloatPointer):Int;
-    @:native('GuiColorPickerHSV') static function guiColorPickerHSV(bounds:RectangleImpl, text:cpp.ConstCharStar, colorHsv:cpp.RawPointer<RayVector3>):Int;
-    @:native('GuiColorPanelHSV') static function guiColorPanelHSV(bounds:RectangleImpl, text:cpp.ConstCharStar, colorHsv:cpp.RawPointer<RayVector3>):Int;
+    @:native('GuiColorPickerHSV') static function guiColorPickerHSV(bounds:RectangleImpl, text:cpp.ConstCharStar, colorHsv:cpp.RawPointer<Vector3Impl>):Int;
+    @:native('GuiColorPanelHSV') static function guiColorPanelHSV(bounds:RectangleImpl, text:cpp.ConstCharStar, colorHsv:cpp.RawPointer<Vector3Impl>):Int;
 }

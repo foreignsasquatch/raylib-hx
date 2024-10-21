@@ -69,10 +69,10 @@ extern abstract Vector2(cpp.Struct<Vector2Impl>) to cpp.Struct<Vector2Impl>
 @:unreflective
 @:structAccess
 @:native('Vector3')
-extern class RayVector3
+extern class Vector3Impl
 {
     @:native('Vector3')
-    static function alloc():RayVector3;
+    static function alloc():Vector3Impl;
 
     var x:Single;
     var y:Single;
@@ -81,11 +81,11 @@ extern class RayVector3
 
 @:forward
 @:nullSafety
-extern abstract Vector3(cpp.Struct<RayVector3>) to cpp.Struct<RayVector3>
+extern abstract Vector3(cpp.Struct<Vector3Impl>) to cpp.Struct<Vector3Impl>
 {
     inline function new(x:Single, y:Single, z:Single):Void
     {
-        final vec3:RayVector3 = RayVector3.alloc();
+        final vec3:Vector3Impl = Vector3Impl.alloc();
         vec3.x = x;
         vec3.y = y;
         vec3.z = z;
@@ -93,11 +93,11 @@ extern abstract Vector3(cpp.Struct<RayVector3>) to cpp.Struct<RayVector3>
     }
 
     @:from
-    static inline function fromNative(value:RayVector3):Vector3
+    static inline function fromNative(value:Vector3Impl):Vector3
         return cast value;
 
     @:to
-    inline function toPointer():cpp.RawPointer<RayVector3>
+    inline function toPointer():cpp.RawPointer<Vector3Impl>
         return cast cpp.RawPointer.addressOf(this);
 }
 
@@ -486,9 +486,9 @@ extern class Camera3DImpl
     @:native('Camera3D')
     static function alloc():Camera3DImpl;
 
-    var position:RayVector3;
-    var target:RayVector3;
-    var up:RayVector3;
+    var position:Vector3Impl;
+    var target:Vector3Impl;
+    var up:Vector3Impl;
     var fovy:Single;
     var projection:Int;
 }
@@ -701,9 +701,9 @@ extern class TransformImpl
     @:native('Transform')
     static function alloc():TransformImpl;
 
-    var translation:RayVector3;
+    var translation:Vector3Impl;
     var rotation:Vector4Impl;
-    var scale:RayVector3;
+    var scale:Vector3Impl;
 }
 
 @:forward
@@ -842,8 +842,8 @@ extern class RayImpl
     @:native('Ray')
     static function alloc():RayImpl;
 
-    var position:RayVector3;
-    var direction:RayVector3;
+    var position:Vector3Impl;
+    var direction:Vector3Impl;
 }
 
 @:forward
@@ -876,8 +876,8 @@ extern class RayCollisionImpl
 
     var hit:Bool;
     var distance:Single;
-    var point:RayVector3;
-    var normal:RayVector3;
+    var point:Vector3Impl;
+    var normal:Vector3Impl;
 }
 
 @:forward
@@ -908,8 +908,8 @@ extern class BoundingBoxImpl
     @:native('BoundingBox')
     static function alloc():BoundingBoxImpl;
 
-    var min:RayVector3;
-    var max:RayVector3;
+    var min:Vector3Impl;
+    var max:Vector3Impl;
 }
 
 @:forward
@@ -2035,8 +2035,8 @@ extern class Raylib
     @:native('GetMouseRay') static function getMouseRay(mousePosition:Vector2Impl, camera:Camera3DImpl):RayImpl;
     @:native('GetScreenToWorldRay') static function getScreenToWorldRay(mousePosition:Vector2Impl, camera:Camera3DImpl):RayImpl;
     @:native('GetScreenToWorldRayEx') static function getScreenToWorldRayEx(mousePosition:Vector2Impl, camera:Camera3DImpl, width:Int, height:Int):RayImpl;
-    @:native('GetWorldToScreen') static function getWorldToScreen(position:RayVector3, camera:Camera3DImpl):Vector2Impl;
-    @:native('GetWorldToScreenEx') static function getWorldToScreenEx(position:RayVector3, camera:Camera3DImpl, width:Int, height:Int):Vector2Impl;
+    @:native('GetWorldToScreen') static function getWorldToScreen(position:Vector3Impl, camera:Camera3DImpl):Vector2Impl;
+    @:native('GetWorldToScreenEx') static function getWorldToScreenEx(position:Vector3Impl, camera:Camera3DImpl, width:Int, height:Int):Vector2Impl;
     @:native('GetWorldToScreen2D') static function getWorldToScreen2D(position:Vector2Impl, camera:Camera2DImpl):Vector2Impl;
     @:native('GetScreenToWorld2D') static function getScreenToWorld2D(position:Vector2Impl, camera:Camera2DImpl):Vector2Impl;
     @:native('GetCameraMatrixImpl') static function getCameraMatrixImpl(camera:Camera3DImpl):MatrixImpl;
@@ -2168,7 +2168,7 @@ extern class Raylib
     @:native('GetGesturePinchAngle') static function getGesturePinchAngle():Single;
 
     @:native('UpdateCamera') static function updateCamera(camera:cpp.RawPointer<Camera3DImpl>, mode:Int):Void;
-    @:native('UpdateCameraPro') static function updateCameraPro(camera:cpp.RawPointer<Camera3DImpl>, movement:RayVector3, rotation:RayVector3, zoom:Single):Void;
+    @:native('UpdateCameraPro') static function updateCameraPro(camera:cpp.RawPointer<Camera3DImpl>, movement:Vector3Impl, rotation:Vector3Impl, zoom:Single):Void;
 
     @:native('SetShapesTexture') static function setShapesTexture(texture:TextureImpl, source:RectangleImpl):Void;
     @:native('GetShapesTexture') static function getShapesTexture():TextureImpl;
@@ -2370,7 +2370,7 @@ extern class Raylib
     @:native('ColorToInt') static function colorToInt(color:ColorImpl):Int;
     @:native('ColorNormalize') static function colorNormalize(color:ColorImpl):Vector4Impl;
     @:native('ColorFromNormalized') static function colorFromNormalized(normalized:Vector4Impl):ColorImpl;
-    @:native('ColorToHSV') static function colorToHSV(color:ColorImpl):RayVector3;
+    @:native('ColorToHSV') static function colorToHSV(color:ColorImpl):Vector3Impl;
     @:native('ColorFromHSV') static function colorFromHSV(hue:Single, saturation:Single, value:Single):ColorImpl;
     @:native('ColorTint') static function colorTint(color:ColorImpl, tint:ColorImpl):ColorImpl;
     @:native('ColorBrightness') static function colorBrightness(color:ColorImpl, factor:Single):ColorImpl;
@@ -2441,30 +2441,30 @@ extern class Raylib
     @:native('TextToInteger') static function textToInteger(text:cpp.ConstCharStar):Int;
     @:native('TextToFloat') static function textToFloat(text:cpp.ConstCharStar):Single;
 
-    @:native('DrawLine3D') static function drawLine3D(startPos:RayVector3, endPos:RayVector3, color:ColorImpl):Void;
-    @:native('DrawPoint3D') static function drawPoint3D(position:RayVector3, color:ColorImpl):Void;
-    @:native('DrawCircle3D') static function drawCircle3D(center:RayVector3, radius:Single, rotationAxis:RayVector3, rotationAngle:Single, color:ColorImpl):Void;
-    @:native('DrawTriangle3D') static function drawTriangle3D(v1:RayVector3, v2:RayVector3, v3:RayVector3, color:ColorImpl):Void;
-    @:native('DrawTriangleStrip3D') static function drawTriangleStrip3D(points:cpp.RawPointer<RayVector3>, pointCount:Int, color:ColorImpl):Void;
-    @:native('DrawCube') static function drawCube(position:RayVector3, width:Single, height:Single, length:Single, color:ColorImpl):Void;
-    @:native('DrawCubeV') static function drawCubeV(position:RayVector3, size:RayVector3, color:ColorImpl):Void;
-    @:native('DrawCubeWires') static function drawCubeWires(position:RayVector3, width:Single, height:Single, length:Single, color:ColorImpl):Void;
-    @:native('DrawCubeWiresV') static function drawCubeWiresV(position:RayVector3, size:RayVector3, color:ColorImpl):Void;
-    @:native('DrawSphere') static function drawSphere(centerPos:RayVector3, radius:Single, color:ColorImpl):Void;
-    @:native('DrawSphereEx') static function drawSphereEx(centerPos:RayVector3, radius:Single, rings:Int, slices:Int, color:ColorImpl):Void;
-    @:native('DrawSphereWires') static function drawSphereWires(centerPos:RayVector3, radius:Single, rings:Int, slices:Int, color:ColorImpl):Void;
-    @:native('DrawCylinder') static function drawCylinder(position:RayVector3, radiusTop:Single, radiusBottom:Single, height:Single, slices:Int,
+    @:native('DrawLine3D') static function drawLine3D(startPos:Vector3Impl, endPos:Vector3Impl, color:ColorImpl):Void;
+    @:native('DrawPoint3D') static function drawPoint3D(position:Vector3Impl, color:ColorImpl):Void;
+    @:native('DrawCircle3D') static function drawCircle3D(center:Vector3Impl, radius:Single, rotationAxis:Vector3Impl, rotationAngle:Single, color:ColorImpl):Void;
+    @:native('DrawTriangle3D') static function drawTriangle3D(v1:Vector3Impl, v2:Vector3Impl, v3:Vector3Impl, color:ColorImpl):Void;
+    @:native('DrawTriangleStrip3D') static function drawTriangleStrip3D(points:cpp.RawPointer<Vector3Impl>, pointCount:Int, color:ColorImpl):Void;
+    @:native('DrawCube') static function drawCube(position:Vector3Impl, width:Single, height:Single, length:Single, color:ColorImpl):Void;
+    @:native('DrawCubeV') static function drawCubeV(position:Vector3Impl, size:Vector3Impl, color:ColorImpl):Void;
+    @:native('DrawCubeWires') static function drawCubeWires(position:Vector3Impl, width:Single, height:Single, length:Single, color:ColorImpl):Void;
+    @:native('DrawCubeWiresV') static function drawCubeWiresV(position:Vector3Impl, size:Vector3Impl, color:ColorImpl):Void;
+    @:native('DrawSphere') static function drawSphere(centerPos:Vector3Impl, radius:Single, color:ColorImpl):Void;
+    @:native('DrawSphereEx') static function drawSphereEx(centerPos:Vector3Impl, radius:Single, rings:Int, slices:Int, color:ColorImpl):Void;
+    @:native('DrawSphereWires') static function drawSphereWires(centerPos:Vector3Impl, radius:Single, rings:Int, slices:Int, color:ColorImpl):Void;
+    @:native('DrawCylinder') static function drawCylinder(position:Vector3Impl, radiusTop:Single, radiusBottom:Single, height:Single, slices:Int,
         color:ColorImpl):Void;
-    @:native('DrawCylinderEx') static function drawCylinderEx(startPos:RayVector3, endPos:RayVector3, startRadius:Single, endRadius:Single, sides:Int,
+    @:native('DrawCylinderEx') static function drawCylinderEx(startPos:Vector3Impl, endPos:Vector3Impl, startRadius:Single, endRadius:Single, sides:Int,
         color:ColorImpl):Void;
-    @:native('DrawCylinderWires') static function drawCylinderWires(position:RayVector3, radiusTop:Single, radiusBottom:Single, height:Single, slices:Int,
+    @:native('DrawCylinderWires') static function drawCylinderWires(position:Vector3Impl, radiusTop:Single, radiusBottom:Single, height:Single, slices:Int,
         color:ColorImpl):Void;
-    @:native('DrawCylinderWiresEx') static function drawCylinderWiresEx(startPos:RayVector3, endPos:RayVector3, startRadius:Single, endRadius:Single,
+    @:native('DrawCylinderWiresEx') static function drawCylinderWiresEx(startPos:Vector3Impl, endPos:Vector3Impl, startRadius:Single, endRadius:Single,
         sides:Int, color:ColorImpl):Void;
-    @:native('DrawCapsule') static function drawCapsule(startPos:RayVector3, endPos:RayVector3, radius:Single, slices:Int, rings:Int, color:ColorImpl):Void;
-    @:native('DrawCapsuleWires') static function drawCapsuleWires(startPos:RayVector3, endPos:RayVector3, radius:Single, slices:Int, rings:Int,
+    @:native('DrawCapsule') static function drawCapsule(startPos:Vector3Impl, endPos:Vector3Impl, radius:Single, slices:Int, rings:Int, color:ColorImpl):Void;
+    @:native('DrawCapsuleWires') static function drawCapsuleWires(startPos:Vector3Impl, endPos:Vector3Impl, radius:Single, slices:Int, rings:Int,
         color:ColorImpl):Void;
-    @:native('DrawPlane') static function drawPlane(centerPos:RayVector3, size:Vector2Impl, color:ColorImpl):Void;
+    @:native('DrawPlane') static function drawPlane(centerPos:Vector3Impl, size:Vector2Impl, color:ColorImpl):Void;
     @:native('DrawRay') static function drawRay(ray:RayImpl, color:ColorImpl):Void;
     @:native('DrawGrid') static function drawGrid(slices:Int, spacing:Single):Void;
 
@@ -2474,18 +2474,18 @@ extern class Raylib
     @:native('UnloadModel') static function unloadModel(model:ModelImpl):Void;
     @:native('GetModelBoundingBox') static function getModelBoundingBox(model:ModelImpl):BoundingBoxImpl;
 
-    @:native('DrawModel') static function drawModel(model:ModelImpl, position:RayVector3, scale:Single, tint:ColorImpl):Void;
-    @:native('DrawModelEx') static function drawModelEx(model:ModelImpl, position:RayVector3, rotationAxis:RayVector3, rotationAngle:Single, scale:RayVector3,
+    @:native('DrawModel') static function drawModel(model:ModelImpl, position:Vector3Impl, scale:Single, tint:ColorImpl):Void;
+    @:native('DrawModelEx') static function drawModelEx(model:ModelImpl, position:Vector3Impl, rotationAxis:Vector3Impl, rotationAngle:Single, scale:Vector3Impl,
         tint:ColorImpl):Void;
-    @:native('DrawModelWires') static function drawModelWires(model:ModelImpl, position:RayVector3, scale:Single, tint:ColorImpl):Void;
-    @:native('DrawModelWiresEx') static function drawModelWiresEx(model:ModelImpl, position:RayVector3, rotationAxis:RayVector3, rotationAngle:Single,
-        scale:RayVector3, tint:ColorImpl):Void;
+    @:native('DrawModelWires') static function drawModelWires(model:ModelImpl, position:Vector3Impl, scale:Single, tint:ColorImpl):Void;
+    @:native('DrawModelWiresEx') static function drawModelWiresEx(model:ModelImpl, position:Vector3Impl, rotationAxis:Vector3Impl, rotationAngle:Single,
+        scale:Vector3Impl, tint:ColorImpl):Void;
     @:native('DrawBoundingBox') static function drawBoundingBox(box:BoundingBoxImpl, color:ColorImpl):Void;
-    @:native('DrawBillboard') static function drawBillboard(camera:Camera3DImpl, texture:TextureImpl, position:RayVector3, size:Single, tint:ColorImpl):Void;
-    @:native('DrawBillboardRec') static function drawBillboardRec(camera:Camera3DImpl, texture:TextureImpl, source:RectangleImpl, position:RayVector3,
+    @:native('DrawBillboard') static function drawBillboard(camera:Camera3DImpl, texture:TextureImpl, position:Vector3Impl, size:Single, tint:ColorImpl):Void;
+    @:native('DrawBillboardRec') static function drawBillboardRec(camera:Camera3DImpl, texture:TextureImpl, source:RectangleImpl, position:Vector3Impl,
         size:Vector2Impl, tint:ColorImpl):Void;
-    @:native('DrawBillboardPro') static function drawBillboardPro(camera:Camera3DImpl, texture:TextureImpl, source:RectangleImpl, position:RayVector3,
-        up:RayVector3, size:Vector2Impl, origin:Vector2Impl, rotation:Single, tint:ColorImpl):Void;
+    @:native('DrawBillboardPro') static function drawBillboardPro(camera:Camera3DImpl, texture:TextureImpl, source:RectangleImpl, position:Vector3Impl,
+        up:Vector3Impl, size:Vector2Impl, origin:Vector2Impl, rotation:Single, tint:ColorImpl):Void;
 
     @:native('UploadMesh') static function uploadMesh(mesh:MeshImpl, dynamicBuffer:Bool):Void;
     @:native('UpdateMeshBuffer') static function updateMeshBuffer(mesh:MeshImpl, index:Int, data:cpp.RawPointer<cpp.Void>, dataSize:Int, offset:Int):Void;
@@ -2507,8 +2507,8 @@ extern class Raylib
     @:native('GenMeshCone') static function genMeshCone(radius:Single, height:Single, slices:Int):MeshImpl;
     @:native('GenMeshTorus') static function genMeshTorus(radius:Single, size:Single, radSeg:Int, sides:Int):MeshImpl;
     @:native('GenMeshKnot') static function genMeshKnot(radius:Single, size:Single, radSeg:Int, sides:Int):MeshImpl;
-    @:native('GenMeshHeightmap') static function genMeshHeightmap(heightmap:ImageImpl, size:RayVector3):MeshImpl;
-    @:native('GenMeshCubicmap') static function genMeshCubicmap(cubicmap:ImageImpl, cubeSize:RayVector3):MeshImpl;
+    @:native('GenMeshHeightmap') static function genMeshHeightmap(heightmap:ImageImpl, size:Vector3Impl):MeshImpl;
+    @:native('GenMeshCubicmap') static function genMeshCubicmap(cubicmap:ImageImpl, cubeSize:Vector3Impl):MeshImpl;
 
     @:native('LoadMaterials') static function loadMaterials(fileName:cpp.ConstCharStar, materialCount:utils.IntPointer):cpp.RawPointer<MaterialImpl>;
     @:native('LoadMaterialDefault') static function loadMaterialDefault():MaterialImpl;
@@ -2524,14 +2524,14 @@ extern class Raylib
     @:native('UnloadModelAnimations') static function unloadModelAnimations(animations:cpp.RawPointer<ModelAnimationImpl>, animCount:Int):Void;
     @:native('IsModelAnimationValid') static function isModelAnimationValid(model:ModelImpl, anim:ModelAnimationImpl):Bool;
 
-    @:native('CheckCollisionSpheres') static function checkCollisionSpheres(center1:RayVector3, radius1:Single, center2:RayVector3, radius2:Single):Bool;
+    @:native('CheckCollisionSpheres') static function checkCollisionSpheres(center1:Vector3Impl, radius1:Single, center2:Vector3Impl, radius2:Single):Bool;
     @:native('CheckCollisionBoxes') static function checkCollisionBoxes(box1:BoundingBoxImpl, box2:BoundingBoxImpl):Bool;
-    @:native('CheckCollisionBoxSphere') static function checkCollisionBoxSphere(box:BoundingBoxImpl, center:RayVector3, radius:Single):Bool;
-    @:native('GetRayCollisionSphere') static function getRayCollisionSphere(ray:RayImpl, center:RayVector3, radius:Single):RayCollisionImpl;
+    @:native('CheckCollisionBoxSphere') static function checkCollisionBoxSphere(box:BoundingBoxImpl, center:Vector3Impl, radius:Single):Bool;
+    @:native('GetRayCollisionSphere') static function getRayCollisionSphere(ray:RayImpl, center:Vector3Impl, radius:Single):RayCollisionImpl;
     @:native('GetRayCollisionBox') static function getRayCollisionBox(ray:RayImpl, box:BoundingBoxImpl):RayCollisionImpl;
     @:native('GetRayCollisionMesh') static function getRayCollisionMesh(ray:RayImpl, mesh:MeshImpl, transform:MatrixImpl):RayCollisionImpl;
-    @:native('GetRayCollisionTriangle') static function getRayCollisionTriangle(ray:RayImpl, p1:RayVector3, p2:RayVector3, p3:RayVector3):RayCollisionImpl;
-    @:native('GetRayCollisionQuad') static function getRayCollisionQuad(ray:RayImpl, p1:RayVector3, p2:RayVector3, p3:RayVector3, p4:RayVector3):RayCollisionImpl;
+    @:native('GetRayCollisionTriangle') static function getRayCollisionTriangle(ray:RayImpl, p1:Vector3Impl, p2:Vector3Impl, p3:Vector3Impl):RayCollisionImpl;
+    @:native('GetRayCollisionQuad') static function getRayCollisionQuad(ray:RayImpl, p1:Vector3Impl, p2:Vector3Impl, p3:Vector3Impl, p4:Vector3Impl):RayCollisionImpl;
 
     @:native('InitAudioDevice') static function initAudioDevice():Void;
     @:native('CloseAudioDevice') static function closeAudioDevice():Void;

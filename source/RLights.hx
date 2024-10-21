@@ -43,8 +43,8 @@ extern class LightImpl
 
     var type:Int;
     var enabled:Bool;
-    var position:RayVector3;
-    var target:RayVector3;
+    var position:Vector3Impl;
+    var target:Vector3Impl;
     var color:ColorImpl;
     var attenuation:Single;
     var enabledLoc:Int;
@@ -98,7 +98,7 @@ private extern class LightTypeImpl {}
 extern class RLights
 {
     @:native('CreateLight')
-    static function createLight(type:Int, position:RayVector3, target:RayVector3, color:ColorImpl, shader:ShaderImpl):LightImpl;
+    static function createLight(type:Int, position:Vector3Impl, target:Vector3Impl, color:ColorImpl, shader:ShaderImpl):LightImpl;
 
     @:native('UpdateLightValues')
     static function updateLightValues(shader:ShaderImpl, light:LightImpl):Void;
