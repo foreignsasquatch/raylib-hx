@@ -3,28 +3,35 @@
 	<pragma once="true" />
 
 	<files id="haxe">
+		<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
+
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" if="android" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/include" />
 
 		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
 		<include name="${haxelib:raylib-hx}/project/lib/raygui-defines.xml" />
+
+		<file name="${haxelib:raylib-hx}/project/src/android_main.c" if="android" />
 	</files>
 
 	<files id="__main__">
+		<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
+
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" if="android" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/include" />
 
 		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
 		<include name="${haxelib:raylib-hx}/project/lib/raygui-defines.xml" />
 	</files>
 
-	<files id="raylib-base">
+	<files id="raylib">
 		<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
 
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" unless="emscripten || android" />
-		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/extras" />
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 
 		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
@@ -37,9 +44,6 @@
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtext.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtextures.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/utils.c" />
-		<file name="${haxelib:raylib-hx}/project/src/android_main.c" if="android" />
-
-		<file name="${ANDROID_NDK_ROOT}/sources/android/native_app_glue/android_native_app_glue.c" if="android" />
 
 		<section if="linux">
 			<compilerflag value="-D_GLFW_WAYLAND" if="RAYLIB_WAYLAND_DISPLAY" />
@@ -56,7 +60,25 @@
 		</section>
 	</files>
 
-	<files id="raylib-glfw">
+	<files id="raymob">
+		<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
+
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
+		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" />
+
+		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
+
+		<file name="${haxelib:raylib-hx}/project/lib/raymob/src/features.c" />
+		<file name="${haxelib:raylib-hx}/project/lib/raymob/src/helper.c" />
+
+		<section unless="MSVC_VER">
+			<compilerflag value="-Wno-implicit-const-int-float-conversion" />
+			<compilerflag value="-Wno-missing-braces" />
+			<compilerflag value="-Wno-unused-result" />
+		</section>
+	</files>
+
+	<files id="raylib_glfw" if="macos">
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" />
 
 		<compilerflag value="-D_GLFW_COCOA" />
@@ -80,6 +102,12 @@
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/nsgl_context.m" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/egl_context.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/osmesa_context.c" />
+	</files>
+
+	<files id="native_app_glue" if="android">
+		<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" />
+
+		<file name="${ANDROID_NDK_ROOT}/sources/android/native_app_glue/android_native_app_glue.c" if="android" />
 	</files>
 
 	<target id="haxe">
@@ -142,12 +170,24 @@
 			<lib name="-lm" />
 		</section>
 
-		<files id="raylib-base" />
+		<files id="raylib" />
 
-		<section if="macos">
-			<files id="raylib-glfw" />
+		<section if="android">
+			<files id="raymob" />
+			<files id="native_app_glue" />
 		</section>
+
+		<files id="raylib_glfw" if="macos" />
 	</target>
+
+	<compiler id="android-gcc" if="android">
+		<flag value="-mfix-cortex-a53-835769" if="HXCPP_ARM64" />
+
+		<section if="HXCPP_ARMV7">
+			<flag value="-mfloat-abi=softfp" />
+			<flag value="-mfpu=vfpv3-d16" />
+		</section>
+	</compiler>
 
 	<linker id="exe" exe="em++" if="emscripten">
 		<flag value="-s" />
