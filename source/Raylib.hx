@@ -1947,7 +1947,7 @@ extern class Raylib
     @:native('InitWindow') static function initWindow(width:Int, height:Int, title:cpp.ConstCharStar):Void;
     @:native('CloseWindow') static function closeWindow():Void;
     @:native('WindowShouldClose') static function windowShouldClose():Bool;
-    @:native('IsWindowReady') static function isWindowReady():Bool;
+    @:native('IsWindowValid') static function isWindowValid():Bool;
     @:native('IsWindowFullscreen') static function isWindowFullscreen():Bool;
     @:native('IsWindowHidden') static function isWindowHidden():Bool;
     @:native('IsWindowMinimized') static function isWindowMinimized():Bool;
@@ -2023,7 +2023,7 @@ extern class Raylib
 
     @:native('LoadShader') static function loadShader(vsFileName:cpp.ConstCharStar, fsFileName:cpp.ConstCharStar):ShaderImpl;
     @:native('LoadShaderFromMemory') static function loadShaderFromMemory(vsCode:cpp.ConstCharStar, fsCode:cpp.ConstCharStar):ShaderImpl;
-    @:native('IsShaderReady') static function isShaderReady(shader:ShaderImpl):Bool;
+    @:native('IsShaderValid') static function isShaderValid(shader:ShaderImpl):Bool;
     @:native('GetShaderLocation') static function getShaderLocation(shader:ShaderImpl, uniformName:cpp.ConstCharStar):Int;
     @:native('GetShaderLocationAttrib') static function getShaderLocationAttrib(shader:ShaderImpl, attribName:cpp.ConstCharStar):Int;
     @:native('SetShaderValue') static function setShaderValue(shader:ShaderImpl, locIndex:Int, value:cpp.RawConstPointer<cpp.Void>, uniformType:Int):Void;
@@ -2265,7 +2265,7 @@ extern class Raylib
     @:native('LoadImageFromMemory') static function loadImageFromMemory(fileType:cpp.ConstCharStar, fileData:utils.BytesConstPointer, dataSize:Int):ImageImpl;
     @:native('LoadImageFromTexture') static function loadImageFromTexture(texture:TextureImpl):ImageImpl;
     @:native('LoadImageFromScreen') static function loadImageFromScreen():ImageImpl;
-    @:native('IsImageReady') static function isImageReady(image:ImageImpl):Bool;
+    @:native('IsImageValid') static function isImageValid(image:ImageImpl):Bool;
     @:native('UnloadImage') static function unloadImage(image:ImageImpl):Void;
     @:native('ExportImage') static function exportImage(image:ImageImpl, fileName:cpp.ConstCharStar):Bool;
     @:native('ExportImageToMemory') static function exportImageToMemory(image:ImageImpl, fileType:cpp.ConstCharStar,
@@ -2346,9 +2346,9 @@ extern class Raylib
     @:native('LoadTextureFromImage') static function loadTextureFromImage(image:ImageImpl):TextureImpl;
     @:native('LoadTextureCubemap') static function loadTextureCubemap(image:ImageImpl, layout:Int):TextureImpl;
     @:native('LoadRenderTexture') static function loadRenderTexture(width:Int, height:Int):RenderTextureImpl;
-    @:native('IsTextureReady') static function isTextureReady(texture:TextureImpl):Bool;
+    @:native('IsTextureValid') static function isTextureValid(texture:TextureImpl):Bool;
     @:native('UnloadTexture') static function unloadTexture(texture:TextureImpl):Void;
-    @:native('IsRenderTextureReady') static function isRenderTextureReady(target:RenderTextureImpl):Bool;
+    @:native('IsRenderTextureValid') static function isRenderTextureValid(target:RenderTextureImpl):Bool;
     @:native('UnloadRenderTexture') static function unloadRenderTexture(target:RenderTextureImpl):Void;
     @:native('UpdateTexture') static function updateTexture(texture:TextureImpl, pixels:cpp.RawConstPointer<cpp.Void>):Void;
     @:native('UpdateTextureRec') static function updateTextureRec(texture:TextureImpl, rec:RectangleImpl, pixels:cpp.RawConstPointer<cpp.Void>):Void;
@@ -2389,7 +2389,7 @@ extern class Raylib
     @:native('LoadFontFromImage') static function loadFontFromImage(image:ImageImpl, key:ColorImpl, firstChar:Int):FontImpl;
     @:native('LoadFontFromMemory') static function loadFontFromMemory(fileType:cpp.ConstCharStar, fileData:utils.BytesConstPointer, dataSize:Int,
         fontSize:Int, codepoints:utils.IntPointer, codepointCount:Int):FontImpl;
-    @:native('IsFontReady') static function isFontReady(font:FontImpl):Bool;
+    @:native('IsFontValid') static function isFontValid(font:FontImpl):Bool;
     @:native('LoadFontData') static function loadFontData(fileData:utils.BytesConstPointer, dataSize:Int, fontSize:Int, codepoints:utils.IntPointer,
         codepointCount:Int, type:Int):cpp.RawPointer<GlyphInfoImpl>;
     @:native('GenImageFontAtlas') static function genImageFontAtlas(glyphs:cpp.RawPointer<GlyphInfoImpl>,
@@ -2471,7 +2471,7 @@ extern class Raylib
 
     @:native('LoadModel') static function loadModel(fileName:cpp.ConstCharStar):ModelImpl;
     @:native('LoadModelFromMesh') static function loadModelFromMesh(mesh:MeshImpl):ModelImpl;
-    @:native('IsModelReady') static function isModelReady(model:ModelImpl):Bool;
+    @:native('IsModelValid') static function isModelValid(model:ModelImpl):Bool;
     @:native('UnloadModel') static function unloadModel(model:ModelImpl):Void;
     @:native('GetModelBoundingBox') static function getModelBoundingBox(model:ModelImpl):BoundingBoxImpl;
 
@@ -2513,7 +2513,7 @@ extern class Raylib
 
     @:native('LoadMaterials') static function loadMaterials(fileName:cpp.ConstCharStar, materialCount:utils.IntPointer):cpp.RawPointer<MaterialImpl>;
     @:native('LoadMaterialDefault') static function loadMaterialDefault():MaterialImpl;
-    @:native('IsMaterialReady') static function isMaterialReady(material:MaterialImpl):Bool;
+    @:native('IsMaterialValid') static function isMaterialValid(material:MaterialImpl):Bool;
     @:native('UnloadMaterial') static function unloadMaterial(material:MaterialImpl):Void;
     @:native('SetMaterialTexture') static function setMaterialTexture(material:cpp.RawPointer<MaterialImpl>, mapType:Int, texture:TextureImpl):Void;
     @:native('SetModelMeshMaterial') static function setModelMeshMaterial(model:cpp.RawPointer<ModelImpl>, meshId:Int, materialId:Int):Void;
@@ -2536,17 +2536,17 @@ extern class Raylib
 
     @:native('InitAudioDevice') static function initAudioDevice():Void;
     @:native('CloseAudioDevice') static function closeAudioDevice():Void;
-    @:native('IsAudioDeviceReady') static function isAudioDeviceReady():Bool;
+    @:native('IsAudioDeviceValid') static function isAudioDeviceValid():Bool;
     @:native('SetMasterVolume') static function setMasterVolume(volume:Single):Void;
     @:native('GetMasterVolume') static function getMasterVolume():Single;
 
     @:native('LoadWave') static function loadWave(fileName:cpp.ConstCharStar):WaveImpl;
     @:native('LoadWaveFromMemory') static function loadWaveFromMemory(fileType:cpp.ConstCharStar, fileData:utils.BytesConstPointer, dataSize:Int):WaveImpl;
-    @:native('IsWaveReady') static function isWaveReady(wave:WaveImpl):Bool;
+    @:native('IsWaveValid') static function isWaveValid(wave:WaveImpl):Bool;
     @:native('LoadSound') static function loadSound(fileName:cpp.ConstCharStar):SoundImpl;
     @:native('LoadSoundFromWave') static function loadSoundFromWave(wave:WaveImpl):SoundImpl;
     @:native('LoadSoundAlias') static function loadSoundAlias(source:SoundImpl):SoundImpl;
-    @:native('IsSoundReady') static function isSoundReady(sound:SoundImpl):Bool;
+    @:native('IsSoundValid') static function isSoundValid(sound:SoundImpl):Bool;
     @:native('UpdateSound') static function updateSound(sound:SoundImpl, data:cpp.RawConstPointer<cpp.Void>, frameCount:Int):Void;
     @:native('UnloadWave') static function unloadWave(wave:WaveImpl):Void;
     @:native('UnloadSound') static function unloadSound(sound:SoundImpl):Void;
@@ -2571,7 +2571,7 @@ extern class Raylib
     @:native('LoadMusicStream') static function loadMusicStream(fileName:cpp.ConstCharStar):MusicImpl;
     @:native('LoadMusicStreamFromMemory') static function loadMusicStreamFromMemory(fileType:cpp.ConstCharStar, fileData:utils.BytesConstPointer,
         dataSize:Int):MusicImpl;
-    @:native('IsMusicReady') static function isMusicReady(music:MusicImpl):Bool;
+    @:native('IsMusicValid') static function isMusicValid(music:MusicImpl):Bool;
     @:native('UnloadMusicStream') static function unloadMusicStream(music:MusicImpl):Void;
     @:native('PlayMusicStream') static function playMusicStream(music:MusicImpl):Void;
     @:native('IsMusicStreamPlaying') static function isMusicStreamPlaying(music:MusicImpl):Bool;
@@ -2587,7 +2587,7 @@ extern class Raylib
     @:native('GetMusicTimePlayed') static function getMusicTimePlayed(music:MusicImpl):Single;
 
     @:native('LoadAudioStream') static function loadAudioStream(sampleRate:cpp.UInt32, sampleSize:cpp.UInt32, channels:cpp.UInt32):AudioStreamImpl;
-    @:native('IsAudioStreamReady') static function isAudioStreamReady(stream:AudioStreamImpl):Bool;
+    @:native('IsAudioStreamValid') static function isAudioStreamValid(stream:AudioStreamImpl):Bool;
     @:native('UnloadAudioStream') static function unloadAudioStream(stream:AudioStreamImpl):Void;
     @:native('UpdateAudioStream') static function updateAudioStream(stream:AudioStreamImpl, data:cpp.RawConstPointer<cpp.Void>, samplesCount:Int):Void;
     @:native('IsAudioStreamProcessed') static function isAudioStreamProcessed(stream:AudioStreamImpl):Bool;
