@@ -47,6 +47,7 @@
 
 		<section if="linux">
 			<compilerflag value="-D_GLFW_WAYLAND" if="RAYLIB_WAYLAND_DISPLAY" />
+			<compilerflag value="-D_GLFW_X11" unless="RAYLIB_WAYLAND_DISPLAY" />
 		</section>
 
 		<section if="rpi">
