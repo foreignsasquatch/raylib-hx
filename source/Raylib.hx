@@ -557,7 +557,6 @@ extern class MeshImpl
 
     var vertexCount:Int;
     var triangleCount:Int;
-
     var vertices:utils.FloatPointer;
     var texcoords:utils.FloatPointer;
     var texcoords2:utils.FloatPointer;
@@ -565,12 +564,11 @@ extern class MeshImpl
     var tangents:utils.FloatPointer;
     var colors:utils.BytesPointer;
     var indices:cpp.RawPointer<cpp.UInt16>;
-
     var animVertices:utils.FloatPointer;
     var animNormals:utils.FloatPointer;
     var boneIds:utils.BytesPointer;
     var boneWeights:utils.FloatPointer;
-
+    var boneMatrices:cpp.RawPointer<MatrixImpl>;
     var vaoId:cpp.UInt32;
     var vboId:utils.UnsignedPointer;
 }
@@ -1596,6 +1594,9 @@ extern enum abstract ShaderLocationIndex(ShaderLocationIndexImpl)
     @:native('SHADER_LOC_MAP_IRRADIANCE') var SHADER_LOC_MAP_IRRADIANCE;
     @:native('SHADER_LOC_MAP_PREFILTER') var SHADER_LOC_MAP_PREFILTER;
     @:native('SHADER_LOC_MAP_BRDF') var SHADER_LOC_MAP_BRDF;
+    @:native('SHADER_LOC_VERTEX_BONEIDS') var SHADER_LOC_MAP_IRRADIANCE;
+    @:native('SHADER_LOC_VERTEX_BONEWEIGHTS') var SHADER_LOC_MAP_PREFILTER;
+    @:native('SHADER_LOC_BONE_MATRICES') var SHADER_LOC_MAP_BRDF;
 
     @:from
     static inline function fromInt(i:Int):ShaderLocationIndex
