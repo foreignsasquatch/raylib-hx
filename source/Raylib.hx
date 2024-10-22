@@ -1594,9 +1594,9 @@ extern enum abstract ShaderLocationIndex(ShaderLocationIndexImpl)
     @:native('SHADER_LOC_MAP_IRRADIANCE') var SHADER_LOC_MAP_IRRADIANCE;
     @:native('SHADER_LOC_MAP_PREFILTER') var SHADER_LOC_MAP_PREFILTER;
     @:native('SHADER_LOC_MAP_BRDF') var SHADER_LOC_MAP_BRDF;
-    @:native('SHADER_LOC_VERTEX_BONEIDS') var SHADER_LOC_MAP_IRRADIANCE;
-    @:native('SHADER_LOC_VERTEX_BONEWEIGHTS') var SHADER_LOC_MAP_PREFILTER;
-    @:native('SHADER_LOC_BONE_MATRICES') var SHADER_LOC_MAP_BRDF;
+    @:native('SHADER_LOC_VERTEX_BONEIDS') var SHADER_LOC_VERTEX_BONEIDS;
+    @:native('SHADER_LOC_VERTEX_BONEWEIGHTS') var SHADER_LOC_VERTEX_BONEWEIGHTS;
+    @:native('SHADER_LOC_BONE_MATRICES') var SHADER_LOC_BONE_MATRICES;
 
     @:from
     static inline function fromInt(i:Int):ShaderLocationIndex
