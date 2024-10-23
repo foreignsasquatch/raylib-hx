@@ -69,6 +69,8 @@ extern class Raymath
     @:native('Vector2Transform') static function vector2Transform(v:Vector2Impl, mat:MatrixImpl):Vector2Impl;
     @:native('Vector2Lerp') static function vector2Lerp(v1:Vector2Impl, v2:Vector2Impl, amount:Single):Vector2Impl;
     @:native('Vector2Reflect') static function vector2Reflect(v:Vector2Impl, normal:Vector2Impl):Vector2Impl;
+    @:native('Vector2Min') static function vector2Min(v1:Vector2Impl, v2:Vector2Impl):Vector2Impl;
+    @:native('Vector2Max') static function vector2Max(v1:Vector2Impl, v2:Vector2Impl):Vector2Impl;
     @:native('Vector2Rotate') static function vector2Rotate(v:Vector2Impl, angle:Single):Vector2Impl;
     @:native('Vector2MoveTowards') static function vector2MoveTowards(v:Vector2Impl, target:Vector2Impl, maxDistance:Single):Vector2Impl;
     @:native('Vector2Invert') static function vector2Invert(v:Vector2Impl):Vector2Impl;
@@ -101,7 +103,9 @@ extern class Raymath
     @:native('Vector3Transform') static function vector3Transform(v:Vector3Impl, mat:MatrixImpl):Vector3Impl;
     @:native('Vector3RotateByQuaternion') static function vector3RotateByVector4Impl(v:Vector3Impl, q:Vector4Impl):Vector3Impl;
     @:native('Vector3RotateByAxisAngle') static function vector3RotateByAxisAngle(v:Vector3Impl, axis:Vector3Impl, angle:Single):Vector3Impl;
+    @:native('Vector3MoveTowards') static function vector3MoveTowards(v:Vector3Impl, target:Vector3Impl, maxDistance:Single):Vector3Impl;
     @:native('Vector3Lerp') static function vector3Lerp(v1:Vector3Impl, v2:Vector3Impl, amount:Single):Vector3Impl;
+    @:native('Vector3CubicHermite') static function vector3CubicHermite(v1:Vector3Impl, tangent1:Vector3Impl, v2:Vector3Impl, tangent2:Vector3Impl, amount:Single):Vector3Impl;
     @:native('Vector3Reflect') static function vector3Reflect(v:Vector3Impl, normal:Vector3Impl):Vector3Impl;
     @:native('Vector3Min') static function vector3Min(v1:Vector3Impl, v2:Vector3Impl):Vector3Impl;
     @:native('Vector3Max') static function vector3Max(v1:Vector3Impl, v2:Vector3Impl):Vector3Impl;
@@ -128,11 +132,12 @@ extern class Raymath
     @:native('MatrixRotateXYZ') static function matrixRotateXYZ(angle:Vector3Impl):MatrixImpl;
     @:native('MatrixRotateZYX') static function matrixRotateZYX(angle:Vector3Impl):MatrixImpl;
     @:native('MatrixScale') static function matrixScale(x:Single, y:Single, z:Single):MatrixImpl;
-    @:native('MatrixFrustum') static function matrixFrustum(left:Float, right:Float, bottom:Float, top:Float, near:Float, far:Float):MatrixImpl;
+    @:native('MatrixFrustum') static function matrixFrustum(left:Float, right:Float, bottom:Float, top:Float, nearPlane:Float, farPlane:Float):MatrixImpl;
     @:native('MatrixPerspective') static function matrixPerspective(fovY:Float, aspect:Float, nearPlane:Float, farPlane:Float):MatrixImpl;
     @:native('MatrixOrtho') static function matrixOrtho(left:Float, right:Float, bottom:Float, top:Float, nearPlane:Float, farPlane:Float):MatrixImpl;
     @:native('MatrixLookAt') static function matrixLookAt(eye:Vector3Impl, target:Vector3Impl, up:Vector3Impl):MatrixImpl;
     @:native('MatrixToFloat') static function matrixToFloat(mat:MatrixImpl):utils.FloatPointer;
+    @:native('MatrixDecompose') static function matrixDecompose(mat:MatrixImpl, translation:cpp.RawPointer<Vector3Impl>, rotation:cpp.RawPointer<Vector4Impl>, scale:cpp.RawPointer<Vector3Impl>):Void;
 
     @:native('QuaternionAdd') static function quaternionAdd(q1:Vector4Impl, q2:Vector4Impl):Vector4Impl;
     @:native('QuaternionAddValue') static function quaternionAddValue(q:Vector4Impl, add:Single):Vector4Impl;
@@ -148,6 +153,7 @@ extern class Raymath
     @:native('QuaternionLerp') static function quaternionLerp(q1:Vector4Impl, q2:Vector4Impl, amount:Single):Vector4Impl;
     @:native('QuaternionNlerp') static function quaternionNlerp(q1:Vector4Impl, q2:Vector4Impl, amount:Single):Vector4Impl;
     @:native('QuaternionSlerp') static function quaternionSlerp(q1:Vector4Impl, q2:Vector4Impl, amount:Single):Vector4Impl;
+    @:native('QuaternionCubicHermiteSpline') static function quaternionCubicHermiteSpline(q1:Vector4Impl, outTangent1:Vector4Impl, q2:Vector4Impl, inTangent2:Vector4Impl, t:Single):Vector4Impl;
     @:native('QuaternionFromVector3ToVector3') static function quaternionFromVector3ToVector3(from:Vector3Impl, to:Vector3Impl):Vector4Impl;
     @:native('QuaternionFromMatrix') static function quaternionFromMatrix(mat:MatrixImpl):Vector4Impl;
     @:native('QuaternionToMatrix') static function quaternionToMatrix(q:Vector4Impl):MatrixImpl;
