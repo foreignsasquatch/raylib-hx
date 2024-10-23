@@ -31,14 +31,21 @@
 	<files id="raylib">
 		<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
 
-		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" unless="emscripten || android" />
+		<section if="PLATFORM_DESKTOP_GLFW">
+			<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" />
+		</section>
+
 		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 
 		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
 
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/raudio.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rcore.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rglfw.c" unless="macos || emscripten || android" />
+
+		<section if="PLATFORM_DESKTOP_GLFW">
+			<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rglfw.c" unless="macos" />
+		</section>
+
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rmodels.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rshapes.c" />
 		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtext.c" />
@@ -116,37 +123,59 @@
 			<lib name="-lopengl32" />
 			<lib name="-lgdi32" />
 			<lib name="-lwinmm" />
-			<lib name="-lshell32" />
+			<lib name="-lshell32" unless="PLATFORM_DESKTOP_RGFW" />
 		</section>
 
 		<section if="windows" unless="mingw">
 			<lib name="opengl32.lib" />
 			<lib name="gdi32.lib" />
 			<lib name="winmm.lib" />
-			<lib name="shell32.lib" />
+			<lib name="shell32.lib" unless="PLATFORM_DESKTOP_RGFW" />
 		</section>
 
 		<section if="macos">
+			<section if="PLATFORM_DESKTOP_GLFW">
+				<vflag name="-framework" value="IOKit" />
+				<vflag name="-framework" value="CoreAudio" />
+			</section>
+
+			<section if="PLATFORM_DESKTOP_RGFW">
+				<vflag name="-framework" value="Foundation" />
+				<vflag name="-framework" value="AppKit" />
+			</section>
+
 			<vflag name="-framework" value="OpenGL" />
-			<vflag name="-framework" value="IOKit" />
-			<vflag name="-framework" value="CoreAudio" />
 			<vflag name="-framework" value="CoreVideo" />
 		</section>
 
 		<section if="linux">
-			<lib name="-lGL" />
-			<lib name="-lpthread" />
-			<lib name="-lm" />
-			<lib name="-ldl" />
-			<lib name="-lrt" />
+			<section if="PLATFORM_DESKTOP_GLFW">
+				<lib name="-lGL" />
+				<lib name="-lpthread" />
+				<lib name="-lm" />
+				<lib name="-ldl" />
+				<lib name="-lrt" />
 
-			<lib name="-lX11" unless="RAYLIB_WAYLAND_DISPLAY" />
+				<lib name="-lX11" unless="RAYLIB_WAYLAND_DISPLAY" />
 
-			<section if="RAYLIB_WAYLAND_DISPLAY">
-				<lib name="-lwayland-client" />
-				<lib name="-lwayland-cursor" />
-				<lib name="-lwayland-egl" />
-				<lib name="-lxkbcommon" />
+				<section if="RAYLIB_WAYLAND_DISPLAY">
+					<lib name="-lwayland-client" />
+					<lib name="-lwayland-cursor" />
+					<lib name="-lwayland-egl" />
+					<lib name="-lxkbcommon" />
+				</section>
+			</section>
+
+			<section if="PLATFORM_DESKTOP_RGFW">
+				<lib name="-lGL" />
+				<lib name="-lX11" />
+				<lib name="-lXrandr" />
+				<lib name="-lXinerama" />
+				<lib name="-lXi" />
+				<lib name="-lXcursor" />
+				<lib name="-lpthread" />
+				<lib name="-lm" />
+				<lib name="-lrt" />
 			</section>
 		</section>
 
@@ -178,7 +207,9 @@
 			<files id="native_app_glue" />
 		</section>
 
-		<files id="raylib_glfw" if="macos" />
+		<section if="macos">
+			<files id="raylib_glfw" if="PLATFORM_DESKTOP_GLFW" />
+		</section>
 	</target>
 
 	<compiler id="android-gcc" if="android">
