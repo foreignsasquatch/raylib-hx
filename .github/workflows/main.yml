@@ -39,11 +39,11 @@ jobs:
 
       - name: Build Unix
         if: startsWith(matrix.os, 'macos') || startsWith(matrix.os, 'ubuntu')
-        run: cd examples/${{matrix.example}} && haxe build-unix.hxml
+        run: cd examples/${{matrix.example}} && haxe build-unix.hxml -D PLATFORM_DESKTOP_RGFW
 
       - name: Build Windows
         if: startsWith(matrix.os, 'windows')
-        run: cd examples/${{matrix.example}} && haxe build-win.hxml
+        run: cd examples/${{matrix.example}} && haxe build-win.hxml -D PLATFORM_DESKTOP_RGFW
   Emscripten:
     runs-on: ubuntu-latest
     strategy:
