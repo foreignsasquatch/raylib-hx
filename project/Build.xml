@@ -230,16 +230,24 @@
     </compiler>
 
     <linker id="exe" exe="em++" if="emscripten">
-        <flag name="-s" value="USE_GLFW=3" />
+        <flag value="-s" />
+        <flag value="USE_GLFW=3" />
 
         <section if="GRAPHICS_API_OPENGL_ES3">
-            <flag name="-s" value="MIN_WEBGL_VERSION=2" />
-            <flag name="-s" value="MAX_WEBGL_VERSION=2" />
+            <flag value="-s" />
+            <flag value="MIN_WEBGL_VERSION=2" />
+
+            <flag value="-s" />
+            <flag value="MAX_WEBGL_VERSION=2" />
         </section>
 
-        <flag name="-s" value="FORCE_FILESYSTEM=1" />
+        <flag value="-s" />
+        <flag value="FORCE_FILESYSTEM=1" />
 
-        <flag name="-s" value="ASYNCIFY=1" if="RAYLIB_WEB_ASYNCIFY" />
+        <section if="RAYLIB_WEB_ASYNCIFY">
+            <flag value="-s" />
+            <flag value="ASYNCIFY=1" />
+        </section>
 
         <section if="RAYLIB_WEB_RESOURCES_PATH">
             <flag value="--preload-file" />
@@ -247,7 +255,8 @@
         </section>
 
         <section if="debug">
-            <flag name="-s" value="ASSERTIONS=1" />
+            <flag value="-s" />
+            <flag value="ASSERTIONS=1" />
 
             <section if="RAYLIB_WEB_DEBUG_PROFILING">
                 <flag value="--profiling" />
@@ -256,7 +265,7 @@
 
         <section unless="RAYLIB_WEB_DISABLE_SHELL">
             <flag value="--shell-file" />
-            <flag value="${haxelib:raylib-hx}/project/lib/raylib/src/minshell.html" />
+            <flag value="${haxelib:raylib-hx}/project/lib/raylib/src/shell.html" />
         </section>
     </linker>
 </xml>
