@@ -62,6 +62,10 @@ extern abstract GuiStyleProp(cpp.Struct<GuiStylePropImpl>) to cpp.Struct<GuiStyl
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<GuiStylePropImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<GuiStylePropImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
