@@ -31,10 +31,7 @@
     <files id="raylib">
         <compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
 
-        <section if="PLATFORM_DESKTOP_GLFW">
-            <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" />
-        </section>
-
+        <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" if="PLATFORM_DESKTOP_GLFW" />
         <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 
         <include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
@@ -66,6 +63,7 @@
 
     <files id="raymob">
         <compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
+
         <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
         <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" />
 
