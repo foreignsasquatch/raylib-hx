@@ -40,7 +40,7 @@ extern class Raymath
     @:native('EPSILON') static var EPSILON:Single;
     @:native('DEG2RAD') static var DEG2RAD:Single;
     @:native('RAD2DEG') static var RAD2DEG:Single;
-    
+
     @:native('Clamp') static function clamp(value:Single, min:Single, max:Single):Single;
     @:native('Lerp') static function lerp(start:Single, end:Single, amount:Single):Single;
     @:native('Normalize') static function normalize(value:Single, start:Single, end:Single):Single;
@@ -105,7 +105,8 @@ extern class Raymath
     @:native('Vector3RotateByAxisAngle') static function vector3RotateByAxisAngle(v:Vector3Impl, axis:Vector3Impl, angle:Single):Vector3Impl;
     @:native('Vector3MoveTowards') static function vector3MoveTowards(v:Vector3Impl, target:Vector3Impl, maxDistance:Single):Vector3Impl;
     @:native('Vector3Lerp') static function vector3Lerp(v1:Vector3Impl, v2:Vector3Impl, amount:Single):Vector3Impl;
-    @:native('Vector3CubicHermite') static function vector3CubicHermite(v1:Vector3Impl, tangent1:Vector3Impl, v2:Vector3Impl, tangent2:Vector3Impl, amount:Single):Vector3Impl;
+    @:native('Vector3CubicHermite') static function vector3CubicHermite(v1:Vector3Impl, tangent1:Vector3Impl, v2:Vector3Impl, tangent2:Vector3Impl,
+        amount:Single):Vector3Impl;
     @:native('Vector3Reflect') static function vector3Reflect(v:Vector3Impl, normal:Vector3Impl):Vector3Impl;
     @:native('Vector3Min') static function vector3Min(v1:Vector3Impl, v2:Vector3Impl):Vector3Impl;
     @:native('Vector3Max') static function vector3Max(v1:Vector3Impl, v2:Vector3Impl):Vector3Impl;
@@ -115,6 +116,29 @@ extern class Raymath
     @:native('Vector3Invert') static function vector3Invert(v:Vector3Impl):Vector3Impl;
     @:native('Vector3Clamp') static function vector3Clamp(v:Vector3Impl, min:Vector3Impl, max:Vector3Impl):Vector3Impl;
     @:native('Vector3ClampValue') static function vector3ClampValue(v:Vector3Impl, min:Single, max:Single):Vector3Impl;
+
+    @:native('Vector4Zero') static function vector4Zero():Vector4Impl;
+    @:native('Vector4One') static function vector4One():Vector4Impl;
+    @:native('Vector4Add') static function vector4Add(v1:Vector4Impl, v2:Vector4Impl):Vector4Impl;
+    @:native('Vector4AddValue') static function vector4AddValue(v:Vector4Impl, add:Single):Vector4Impl;
+    @:native('Vector4Subtract') static function vector4Subtract(v1:Vector4Impl, v2:Vector4Impl):Vector4Impl;
+    @:native('Vector4SubtractValue') static function vector4SubtractValue(v:Vector4Impl, add:Single):Vector4Impl;
+    @:native('Vector4Length') static function vector4Length(v:Vector4Impl):Single;
+    @:native('Vector4LengthSqr') static function vector4LengthSqr(v:Vector4Impl):Single;
+    @:native('Vector4DotProduct') static function vector4DotProduct(v1:Vector4Impl, v2:Vector4Impl):Single;
+    @:native('Vector4Distance') static function vector4Distance(v1:Vector4Impl, v2:Vector4Impl):Single;
+    @:native('Vector4DistanceSqr') static function vector4DistanceSqr(v1:Vector4Impl, v2:Vector4Impl):Single;
+    @:native('Vector4Scale') static function vector4Scale(v:Vector4Impl, scale:Single):Vector4Impl;
+    @:native('Vector4Multiply') static function vector4Multiply(v1:Vector4Impl, v2:Vector4Impl):Vector4Impl;
+    @:native('Vector4Negate') static function vector4Negate(v:Vector4Impl):Vector4Impl;
+    @:native('Vector4Divide') static function vector4Divide(v1:Vector4Impl, v2:Vector4Impl):Vector4Impl;
+    @:native('Vector4Normalize') static function vector4Normalize(v:Vector4Impl):Vector4Impl;
+    @:native('Vector4Min') static function vector4Min(v1:Vector4Impl, v2:Vector4Impl):Vector4Impl;
+    @:native('Vector4Max') static function vector4Max(v1:Vector4Impl, v2:Vector4Impl):Vector4Impl;
+    @:native('Vector4Lerp') static function vector4Lerp(v1:Vector4Impl, v2:Vector4Impl, amount:Single):Vector4Impl;
+    @:native('Vector4MoveTowards') static function vector4MoveTowards(v:Vector4Impl, target:Vector4Impl, maxDistance:Single):Vector4Impl;
+    @:native('Vector4Invert') static function vector4Invert(v:Vector4Impl):Vector4Impl;
+    @:native('Vector4Equals') static function vector4Equals(p:Vector4Impl, q:Vector4Impl):Int;
 
     @:native('MatrixDeterminant') static function matrixDeterminant(mat:MatrixImpl):Single;
     @:native('MatrixTrace') static function matrixTrace(mat:MatrixImpl):Single;
@@ -137,7 +161,8 @@ extern class Raymath
     @:native('MatrixOrtho') static function matrixOrtho(left:Float, right:Float, bottom:Float, top:Float, nearPlane:Float, farPlane:Float):MatrixImpl;
     @:native('MatrixLookAt') static function matrixLookAt(eye:Vector3Impl, target:Vector3Impl, up:Vector3Impl):MatrixImpl;
     @:native('MatrixToFloat') static function matrixToFloat(mat:MatrixImpl):utils.FloatPointer;
-    @:native('MatrixDecompose') static function matrixDecompose(mat:MatrixImpl, translation:cpp.RawPointer<Vector3Impl>, rotation:cpp.RawPointer<Vector4Impl>, scale:cpp.RawPointer<Vector3Impl>):Void;
+    @:native('MatrixDecompose') static function matrixDecompose(mat:MatrixImpl, translation:cpp.RawPointer<Vector3Impl>, rotation:cpp.RawPointer<Vector4Impl>,
+        scale:cpp.RawPointer<Vector3Impl>):Void;
 
     @:native('QuaternionAdd') static function quaternionAdd(q1:Vector4Impl, q2:Vector4Impl):Vector4Impl;
     @:native('QuaternionAddValue') static function quaternionAddValue(q:Vector4Impl, add:Single):Vector4Impl;
@@ -153,7 +178,8 @@ extern class Raymath
     @:native('QuaternionLerp') static function quaternionLerp(q1:Vector4Impl, q2:Vector4Impl, amount:Single):Vector4Impl;
     @:native('QuaternionNlerp') static function quaternionNlerp(q1:Vector4Impl, q2:Vector4Impl, amount:Single):Vector4Impl;
     @:native('QuaternionSlerp') static function quaternionSlerp(q1:Vector4Impl, q2:Vector4Impl, amount:Single):Vector4Impl;
-    @:native('QuaternionCubicHermiteSpline') static function quaternionCubicHermiteSpline(q1:Vector4Impl, outTangent1:Vector4Impl, q2:Vector4Impl, inTangent2:Vector4Impl, t:Single):Vector4Impl;
+    @:native('QuaternionCubicHermiteSpline') static function quaternionCubicHermiteSpline(q1:Vector4Impl, outTangent1:Vector4Impl, q2:Vector4Impl,
+        inTangent2:Vector4Impl, t:Single):Vector4Impl;
     @:native('QuaternionFromVector3ToVector3') static function quaternionFromVector3ToVector3(from:Vector3Impl, to:Vector3Impl):Vector4Impl;
     @:native('QuaternionFromMatrix') static function quaternionFromMatrix(mat:MatrixImpl):Vector4Impl;
     @:native('QuaternionToMatrix') static function quaternionToMatrix(q:Vector4Impl):MatrixImpl;
