@@ -60,6 +60,10 @@ extern abstract Vector2(cpp.Struct<Vector2Impl>) to cpp.Struct<Vector2Impl>
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<Vector2Impl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<Vector2Impl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -95,6 +99,10 @@ extern abstract Vector3(cpp.Struct<Vector3Impl>) to cpp.Struct<Vector3Impl>
     @:from
     static inline function fromNative(value:Vector3Impl):Vector3
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<Vector3Impl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<Vector3Impl>
@@ -134,6 +142,10 @@ extern abstract Vector4(cpp.Struct<Vector4Impl>) to cpp.Struct<Vector4Impl>
     @:from
     static inline function fromNative(value:Vector4Impl):Vector4
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<Vector4Impl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<Vector4Impl>
@@ -185,6 +197,10 @@ extern abstract Matrix(cpp.Struct<MatrixImpl>) to cpp.Struct<MatrixImpl>
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<MatrixImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<MatrixImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -222,6 +238,10 @@ extern abstract Color(cpp.Struct<ColorImpl>) to cpp.Struct<ColorImpl>
     @:from
     static inline function fromNative(value:ColorImpl):Color
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<ColorImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<ColorImpl>
@@ -263,6 +283,10 @@ extern abstract Rectangle(cpp.Struct<RectangleImpl>) to cpp.Struct<RectangleImpl
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<RectangleImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<RectangleImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -296,6 +320,10 @@ extern abstract Image(cpp.Struct<ImageImpl>) to cpp.Struct<ImageImpl>
     @:from
     static inline function fromNative(value:ImageImpl):Image
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<ImageImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<ImageImpl>
@@ -333,6 +361,10 @@ extern abstract Texture(cpp.Struct<TextureImpl>) to cpp.Struct<TextureImpl>
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<TextureImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<TextureImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -364,6 +396,10 @@ extern abstract RenderTexture(cpp.Struct<RenderTextureImpl>) to cpp.Struct<Rende
     @:from
     static inline function fromNative(value:RenderTextureImpl):RenderTexture
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<RenderTextureImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<RenderTextureImpl>
@@ -402,6 +438,10 @@ extern abstract NPatchInfo(cpp.Struct<NPatchInfoImpl>) to cpp.Struct<NPatchInfoI
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<NPatchInfoImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<NPatchInfoImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -435,6 +475,10 @@ extern abstract GlyphInfo(cpp.Struct<GlyphInfoImpl>) to cpp.Struct<GlyphInfoImpl
     @:from
     static inline function fromNative(value:GlyphInfoImpl):GlyphInfo
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<GlyphInfoImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<GlyphInfoImpl>
@@ -472,6 +516,10 @@ extern abstract Font(cpp.Struct<FontImpl>) to cpp.Struct<FontImpl>
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<FontImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<FontImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -505,6 +553,10 @@ extern abstract Camera3D(cpp.Struct<Camera3DImpl>) to cpp.Struct<Camera3DImpl>
     @:from
     static inline function fromNative(value:Camera3DImpl):Camera3D
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<Camera3DImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<Camera3DImpl>
@@ -541,6 +593,10 @@ extern abstract Camera2D(cpp.Struct<Camera2DImpl>) to cpp.Struct<Camera2DImpl>
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<Camera2DImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<Camera2DImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -557,7 +613,6 @@ extern class MeshImpl
 
     var vertexCount:Int;
     var triangleCount:Int;
-
     var vertices:utils.FloatPointer;
     var texcoords:utils.FloatPointer;
     var texcoords2:utils.FloatPointer;
@@ -565,12 +620,11 @@ extern class MeshImpl
     var tangents:utils.FloatPointer;
     var colors:utils.BytesPointer;
     var indices:cpp.RawPointer<cpp.UInt16>;
-
     var animVertices:utils.FloatPointer;
     var animNormals:utils.FloatPointer;
     var boneIds:utils.BytesPointer;
     var boneWeights:utils.FloatPointer;
-
+    var boneMatrices:cpp.RawPointer<MatrixImpl>;
     var vaoId:cpp.UInt32;
     var vboId:utils.UnsignedPointer;
 }
@@ -587,6 +641,10 @@ extern abstract Mesh(cpp.Struct<MeshImpl>) to cpp.Struct<MeshImpl>
     @:from
     static inline function fromNative(value:MeshImpl):Mesh
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<MeshImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<MeshImpl>
@@ -619,6 +677,10 @@ extern abstract Shader(cpp.Struct<ShaderImpl>) to cpp.Struct<ShaderImpl>
     @:from
     static inline function fromNative(value:ShaderImpl):Shader
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<ShaderImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<ShaderImpl>
@@ -654,6 +716,10 @@ extern abstract MaterialMap(cpp.Struct<MaterialMapImpl>) to cpp.Struct<MaterialM
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<MaterialMapImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<MaterialMapImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -685,6 +751,10 @@ extern abstract Material(cpp.Struct<MaterialImpl>) to cpp.Struct<MaterialImpl>
     @:from
     static inline function fromNative(value:MaterialImpl):Material
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<MaterialImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<MaterialImpl>
@@ -720,6 +790,10 @@ extern abstract Transform(cpp.Struct<TransformImpl>) to cpp.Struct<TransformImpl
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<TransformImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<TransformImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -750,6 +824,10 @@ extern abstract BoneInfo(cpp.Struct<BoneInfoImpl>) to cpp.Struct<BoneInfoImpl>
     @:from
     static inline function fromNative(value:BoneInfoImpl):BoneInfo
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<BoneInfoImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<BoneInfoImpl>
@@ -793,6 +871,10 @@ extern abstract Model(cpp.Struct<ModelImpl>) to cpp.Struct<ModelImpl>
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<ModelImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<ModelImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -828,6 +910,10 @@ extern abstract ModelAnimation(cpp.Struct<ModelAnimationImpl>) to cpp.Struct<Mod
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<ModelAnimationImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<ModelAnimationImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -858,6 +944,10 @@ extern abstract Ray(cpp.Struct<RayImpl>) to cpp.Struct<RayImpl>
     @:from
     static inline function fromNative(value:RayImpl):Ray
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<RayImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<RayImpl>
@@ -894,6 +984,10 @@ extern abstract RayCollision(cpp.Struct<RayCollisionImpl>) to cpp.Struct<RayColl
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<RayCollisionImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<RayCollisionImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -924,6 +1018,10 @@ extern abstract BoundingBox(cpp.Struct<BoundingBoxImpl>) to cpp.Struct<BoundingB
     @:from
     static inline function fromNative(value:BoundingBoxImpl):BoundingBox
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<BoundingBoxImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<BoundingBoxImpl>
@@ -957,6 +1055,10 @@ extern abstract Wave(cpp.Struct<WaveImpl>) to cpp.Struct<WaveImpl>
     @:from
     static inline function fromNative(value:WaveImpl):Wave
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<WaveImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<WaveImpl>
@@ -1002,6 +1104,10 @@ extern abstract AudioStream(cpp.Struct<AudioStreamImpl>) to cpp.Struct<AudioStre
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<AudioStreamImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<AudioStreamImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -1032,6 +1138,10 @@ extern abstract Sound(cpp.Struct<SoundImpl>) to cpp.Struct<SoundImpl>
     @:from
     static inline function fromNative(value:SoundImpl):Sound
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<SoundImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<SoundImpl>
@@ -1067,6 +1177,10 @@ extern abstract Music(cpp.Struct<MusicImpl>) to cpp.Struct<MusicImpl>
     @:from
     static inline function fromNative(value:MusicImpl):Music
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<MusicImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<MusicImpl>
@@ -1108,6 +1222,10 @@ extern abstract VrDeviceInfo(cpp.Struct<VrDeviceInfoImpl>) to cpp.Struct<VrDevic
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<VrDeviceInfoImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<VrDeviceInfoImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -1144,6 +1262,10 @@ extern abstract VrStereoConfig(cpp.Struct<VrStereoConfigImpl>) to cpp.Struct<VrS
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<VrStereoConfigImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<VrStereoConfigImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -1175,6 +1297,10 @@ extern abstract FilePathList(cpp.Struct<FilePathListImpl>) to cpp.Struct<FilePat
     @:from
     static inline function fromNative(value:FilePathListImpl):FilePathList
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<FilePathListImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<FilePathListImpl>
@@ -1209,6 +1335,10 @@ extern abstract AutomationEvent(cpp.Struct<AutomationEventImpl>) to cpp.Struct<A
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<AutomationEventImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<AutomationEventImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -1239,6 +1369,10 @@ extern abstract AutomationEventList(cpp.Struct<AutomationEventListImpl>) to cpp.
     @:from
     static inline function fromNative(value:AutomationEventListImpl):AutomationEventList
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<AutomationEventListImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<AutomationEventListImpl>
@@ -1596,6 +1730,9 @@ extern enum abstract ShaderLocationIndex(ShaderLocationIndexImpl)
     @:native('SHADER_LOC_MAP_IRRADIANCE') var SHADER_LOC_MAP_IRRADIANCE;
     @:native('SHADER_LOC_MAP_PREFILTER') var SHADER_LOC_MAP_PREFILTER;
     @:native('SHADER_LOC_MAP_BRDF') var SHADER_LOC_MAP_BRDF;
+    @:native('SHADER_LOC_VERTEX_BONEIDS') var SHADER_LOC_VERTEX_BONEIDS;
+    @:native('SHADER_LOC_VERTEX_BONEWEIGHTS') var SHADER_LOC_VERTEX_BONEWEIGHTS;
+    @:native('SHADER_LOC_BONE_MATRICES') var SHADER_LOC_BONE_MATRICES;
 
     @:from
     static inline function fromInt(i:Int):ShaderLocationIndex
@@ -1946,7 +2083,7 @@ extern class Raylib
     @:native('InitWindow') static function initWindow(width:Int, height:Int, title:cpp.ConstCharStar):Void;
     @:native('CloseWindow') static function closeWindow():Void;
     @:native('WindowShouldClose') static function windowShouldClose():Bool;
-    @:native('IsWindowReady') static function isWindowReady():Bool;
+    @:native('IsWindowValid') static function isWindowValid():Bool;
     @:native('IsWindowFullscreen') static function isWindowFullscreen():Bool;
     @:native('IsWindowHidden') static function isWindowHidden():Bool;
     @:native('IsWindowMinimized') static function isWindowMinimized():Bool;
@@ -2022,25 +2159,25 @@ extern class Raylib
 
     @:native('LoadShader') static function loadShader(vsFileName:cpp.ConstCharStar, fsFileName:cpp.ConstCharStar):ShaderImpl;
     @:native('LoadShaderFromMemory') static function loadShaderFromMemory(vsCode:cpp.ConstCharStar, fsCode:cpp.ConstCharStar):ShaderImpl;
-    @:native('IsShaderReady') static function isShaderReady(shader:ShaderImpl):Bool;
+    @:native('IsShaderValid') static function isShaderValid(shader:ShaderImpl):Bool;
     @:native('GetShaderLocation') static function getShaderLocation(shader:ShaderImpl, uniformName:cpp.ConstCharStar):Int;
     @:native('GetShaderLocationAttrib') static function getShaderLocationAttrib(shader:ShaderImpl, attribName:cpp.ConstCharStar):Int;
     @:native('SetShaderValue') static function setShaderValue(shader:ShaderImpl, locIndex:Int, value:cpp.RawConstPointer<cpp.Void>, uniformType:Int):Void;
     @:native('SetShaderValueV') static function setShaderValueV(shader:ShaderImpl, locIndex:Int, value:cpp.RawConstPointer<cpp.Void>, uniformType:Int,
         count:Int):Void;
-    @:native('SetShaderValueMatrixImpl') static function setShaderValueMatrixImpl(shader:ShaderImpl, locIndex:Int, mat:MatrixImpl):Void;
+    @:native('SetShaderValueMatrix') static function setShaderValueMatrix(shader:ShaderImpl, locIndex:Int, mat:MatrixImpl):Void;
     @:native('SetShaderValueTexture') static function setShaderValueTexture(shader:ShaderImpl, locIndex:Int, texture:TextureImpl):Void;
     @:native('UnloadShader') static function unloadShader(shader:ShaderImpl):Void;
 
-    @:native('GetMouseRay') static function getMouseRay(mousePosition:Vector2Impl, camera:Camera3DImpl):RayImpl;
-    @:native('GetScreenToWorldRay') static function getScreenToWorldRay(mousePosition:Vector2Impl, camera:Camera3DImpl):RayImpl;
-    @:native('GetScreenToWorldRayEx') static function getScreenToWorldRayEx(mousePosition:Vector2Impl, camera:Camera3DImpl, width:Int, height:Int):RayImpl;
+    @:native('GetMouseRay') static function getMouseRay(position:Vector2Impl, camera:Camera3DImpl):RayImpl;
+    @:native('GetScreenToWorldRay') static function getScreenToWorldRay(position:Vector2Impl, camera:Camera3DImpl):RayImpl;
+    @:native('GetScreenToWorldRayEx') static function getScreenToWorldRayEx(position:Vector2Impl, camera:Camera3DImpl, width:Int, height:Int):RayImpl;
     @:native('GetWorldToScreen') static function getWorldToScreen(position:Vector3Impl, camera:Camera3DImpl):Vector2Impl;
     @:native('GetWorldToScreenEx') static function getWorldToScreenEx(position:Vector3Impl, camera:Camera3DImpl, width:Int, height:Int):Vector2Impl;
     @:native('GetWorldToScreen2D') static function getWorldToScreen2D(position:Vector2Impl, camera:Camera2DImpl):Vector2Impl;
     @:native('GetScreenToWorld2D') static function getScreenToWorld2D(position:Vector2Impl, camera:Camera2DImpl):Vector2Impl;
-    @:native('GetCameraMatrixImpl') static function getCameraMatrixImpl(camera:Camera3DImpl):MatrixImpl;
-    @:native('GetCameraMatrixImpl2D') static function getCameraMatrixImpl2D(camera:Camera2DImpl):MatrixImpl;
+    @:native('GetCameraMatrix') static function getCameraMatrix(camera:Camera3DImpl):MatrixImpl;
+    @:native('GetCameraMatrix2D') static function getCameraMatrix2D(camera:Camera2DImpl):MatrixImpl;
 
     @:native('SetTargetFPS') static function setTargetFPS(fps:Int):Void;
     @:native('GetFrameTime') static function getFrameTime():Single;
@@ -2090,6 +2227,7 @@ extern class Raylib
     @:native('GetPrevDirectoryPath') static function getPrevDirectoryPath(dirPath:cpp.ConstCharStar):cpp.ConstCharStar;
     @:native('GetWorkingDirectory') static function getWorkingDirectory():cpp.ConstCharStar;
     @:native('GetApplicationDirectory') static function getApplicationDirectory():cpp.ConstCharStar;
+    @:native('MakeDirectory') static function makeDirectory(dirPath:cpp.ConstCharStar):Int;
     @:native('ChangeDirectory') static function changeDirectory(dir:cpp.ConstCharStar):Bool;
     @:native('IsPathFile') static function isPathFile(path:cpp.ConstCharStar):Bool;
     @:native('IsFileNameValid') static function isFileNameValid(fileName:cpp.ConstCharStar):Bool;
@@ -2106,6 +2244,9 @@ extern class Raylib
     @:native('DecompressData') static function decompressData(compData:utils.BytesConstPointer, compDataSize:Int, dataSize:utils.IntPointer):utils.BytesPointer;
     @:native('EncodeDataBase64') static function encodeDataBase64(data:utils.BytesConstPointer, dataSize:Int, outputSize:utils.IntPointer):cpp.CastCharStar;
     @:native('DecodeDataBase64') static function decodeDataBase64(data:utils.BytesConstPointer, outputSize:utils.IntPointer):utils.BytesPointer;
+    @:native('ComputeCRC32') static function computeCRC32(data:utils.BytesConstPointer, dataSize:Int):cpp.UInt32;
+    @:native('ComputeMD5') static function computeMD5(data:utils.BytesConstPointer, dataSize:Int):utils.UnsignedPointer;
+    @:native('ComputeSHA1') static function computeSHA1(data:utils.BytesConstPointer, dataSize:Int):utils.UnsignedPointer;
 
     @:native('LoadAutomationEventList') static function loadAutomationEventList(fileName:cpp.ConstCharStar):AutomationEventListImpl;
     @:native('UnloadAutomationEventList') static function unloadAutomationEventList(list:AutomationEventListImpl):Void;
@@ -2135,7 +2276,7 @@ extern class Raylib
     @:native('GetGamepadAxisCount') static function getGamepadAxisCount(gamepad:Int):Int;
     @:native('GetGamepadAxisMovement') static function getGamepadAxisMovement(gamepad:Int, axis:Int):Single;
     @:native('SetGamepadMappings') static function setGamepadMappings(mappings:cpp.ConstCharStar):Int;
-    @:native('SetGamepadVibration') static function setGamepadVibration(gamepad:Int, leftMotor:Single, rightMotor:Single):Void;
+    @:native('SetGamepadVibration') static function setGamepadVibration(gamepad:Int, leftMotor:Single, rightMotor:Single, duration:Single):Void;
 
     @:native('IsMouseButtonPressed') static function isMouseButtonPressed(button:Int):Bool;
     @:native('IsMouseButtonDown') static function isMouseButtonDown(button:Int):Bool;
@@ -2178,14 +2319,14 @@ extern class Raylib
     @:native('DrawLine') static function drawLine(startPosX:Int, startPosY:Int, endPosX:Int, endPosY:Int, color:ColorImpl):Void;
     @:native('DrawLineV') static function drawLineV(startPos:Vector2Impl, endPos:Vector2Impl, color:ColorImpl):Void;
     @:native('DrawLineEx') static function drawLineEx(startPos:Vector2Impl, endPos:Vector2Impl, thick:Single, color:ColorImpl):Void;
-    @:native('DrawLineStrip') static function drawLineStrip(points:cpp.RawPointer<Vector2Impl>, pointCount:Int, color:ColorImpl):Void;
+    @:native('DrawLineStrip') static function drawLineStrip(points:cpp.RawConstPointer<Vector2Impl>, pointCount:Int, color:ColorImpl):Void;
     @:native('DrawLineBezier') static function drawLineBezier(startPos:Vector2Impl, endPos:Vector2Impl, thick:Single, color:ColorImpl):Void;
     @:native('DrawCircle') static function drawCircle(centerX:Int, centerY:Int, radius:Single, color:ColorImpl):Void;
     @:native('DrawCircleSector') static function drawCircleSector(center:Vector2Impl, radius:Single, startAngle:Single, endAngle:Single, segments:Int,
         color:ColorImpl):Void;
     @:native('DrawCircleSectorLines') static function drawCircleSectorLines(center:Vector2Impl, radius:Single, startAngle:Single, endAngle:Single,
         segments:Int, color:ColorImpl):Void;
-    @:native('DrawCircleGradient') static function drawCircleGradient(centerX:Int, centerY:Int, radius:Single, color1:ColorImpl, color2:ColorImpl):Void;
+    @:native('DrawCircleGradient') static function drawCircleGradient(centerX:Int, centerY:Int, radius:Single, inner:ColorImpl, outer:ColorImpl):Void;
     @:native('DrawCircleV') static function drawCircleV(center:Vector2Impl, radius:Single, color:ColorImpl):Void;
     @:native('DrawCircleLines') static function drawCircleLines(centerX:Int, centerY:Int, radius:Single, color:ColorImpl):Void;
     @:native('DrawCircleLinesV') static function drawCircleLinesV(center:Vector2Impl, radius:Single, color:ColorImpl):Void;
@@ -2199,10 +2340,10 @@ extern class Raylib
     @:native('DrawRectangleV') static function drawRectangleV(position:Vector2Impl, size:Vector2Impl, color:ColorImpl):Void;
     @:native('DrawRectangleRec') static function drawRectangleRec(rec:RectangleImpl, color:ColorImpl):Void;
     @:native('DrawRectanglePro') static function drawRectanglePro(rec:RectangleImpl, origin:Vector2Impl, rotation:Single, color:ColorImpl):Void;
-    @:native('DrawRectangleGradientV') static function drawRectangleGradientV(posX:Int, posY:Int, width:Int, height:Int, color1:ColorImpl, color2:ColorImpl):Void;
-    @:native('DrawRectangleGradientH') static function drawRectangleGradientH(posX:Int, posY:Int, width:Int, height:Int, color1:ColorImpl, color2:ColorImpl):Void;
-    @:native('DrawRectangleGradientEx') static function drawRectangleGradientEx(rec:RectangleImpl, col1:ColorImpl, col2:ColorImpl, col3:ColorImpl,
-        col4:ColorImpl):Void;
+    @:native('DrawRectangleGradientV') static function drawRectangleGradientV(posX:Int, posY:Int, width:Int, height:Int, top:ColorImpl, bottom:ColorImpl):Void;
+    @:native('DrawRectangleGradientH') static function drawRectangleGradientH(posX:Int, posY:Int, width:Int, height:Int, left:ColorImpl, right:ColorImpl):Void;
+    @:native('DrawRectangleGradientEx') static function drawRectangleGradientEx(rec:RectangleImpl, topLeft:ColorImpl, bottomLeft:ColorImpl, topRight:ColorImpl,
+        bottomRight:ColorImpl):Void;
     @:native('DrawRectangleLines') static function drawRectangleLines(posX:Int, posY:Int, width:Int, height:Int, color:ColorImpl):Void;
     @:native('DrawRectangleLinesEx') static function drawRectangleLinesEx(rec:RectangleImpl, lineThick:Single, color:ColorImpl):Void;
     @:native('DrawRectangleRounded') static function drawRectangleRounded(rec:RectangleImpl, roundness:Single, segments:Int, color:ColorImpl):Void;
@@ -2211,19 +2352,19 @@ extern class Raylib
         color:ColorImpl):Void;
     @:native('DrawTriangle') static function drawTriangle(v1:Vector2Impl, v2:Vector2Impl, v3:Vector2Impl, color:ColorImpl):Void;
     @:native('DrawTriangleLines') static function drawTriangleLines(v1:Vector2Impl, v2:Vector2Impl, v3:Vector2Impl, color:ColorImpl):Void;
-    @:native('DrawTriangleFan') static function drawTriangleFan(points:cpp.RawPointer<Vector2Impl>, pointCount:Int, color:ColorImpl):Void;
-    @:native('DrawTriangleStrip') static function drawTriangleStrip(points:cpp.RawPointer<Vector2Impl>, pointCount:Int, color:ColorImpl):Void;
+    @:native('DrawTriangleFan') static function drawTriangleFan(points:cpp.RawConstPointer<Vector2Impl>, pointCount:Int, color:ColorImpl):Void;
+    @:native('DrawTriangleStrip') static function drawTriangleStrip(points:cpp.RawConstPointer<Vector2Impl>, pointCount:Int, color:ColorImpl):Void;
     @:native('DrawPoly') static function drawPoly(center:Vector2Impl, sides:Int, radius:Single, rotation:Single, color:ColorImpl):Void;
     @:native('DrawPolyLines') static function drawPolyLines(center:Vector2Impl, sides:Int, radius:Single, rotation:Single, color:ColorImpl):Void;
     @:native('DrawPolyLinesEx') static function drawPolyLinesEx(center:Vector2Impl, sides:Int, radius:Single, rotation:Single, lineThick:Single,
         color:ColorImpl):Void;
 
-    @:native('DrawSplineLinear') static function drawSplineLinear(points:cpp.RawPointer<Vector2Impl>, pointCount:Int, thick:Single, color:ColorImpl):Void;
-    @:native('DrawSplineBasis') static function drawSplineBasis(points:cpp.RawPointer<Vector2Impl>, pointCount:Int, thick:Single, color:ColorImpl):Void;
-    @:native('DrawSplineCatmullRom') static function drawSplineCatmullRom(points:cpp.RawPointer<Vector2Impl>, pointCount:Int, thick:Single, color:ColorImpl):Void;
-    @:native('DrawSplineBezierQuadratic') static function drawSplineBezierQuadratic(points:cpp.RawPointer<Vector2Impl>, pointCount:Int, thick:Single,
+    @:native('DrawSplineLinear') static function drawSplineLinear(points:cpp.RawConstPointer<Vector2Impl>, pointCount:Int, thick:Single, color:ColorImpl):Void;
+    @:native('DrawSplineBasis') static function drawSplineBasis(points:cpp.RawConstPointer<Vector2Impl>, pointCount:Int, thick:Single, color:ColorImpl):Void;
+    @:native('DrawSplineCatmullRom') static function drawSplineCatmullRom(points:cpp.RawConstPointer<Vector2Impl>, pointCount:Int, thick:Single, color:ColorImpl):Void;
+    @:native('DrawSplineBezierQuadratic') static function drawSplineBezierQuadratic(points:cpp.RawConstPointer<Vector2Impl>, pointCount:Int, thick:Single,
         color:ColorImpl):Void;
-    @:native('DrawSplineBezierCubic') static function drawSplineBezierCubic(points:cpp.RawPointer<Vector2Impl>, pointCount:Int, thick:Single,
+    @:native('DrawSplineBezierCubic') static function drawSplineBezierCubic(points:cpp.RawConstPointer<Vector2Impl>, pointCount:Int, thick:Single,
         color:ColorImpl):Void;
     @:native('DrawSplineSegmentLinear') static function drawSplineSegmentLinear(p1:Vector2Impl, p2:Vector2Impl, thick:Single, color:ColorImpl):Void;
     @:native('DrawSplineSegmentBasis') static function drawSplineSegmentBasis(p1:Vector2Impl, p2:Vector2Impl, p3:Vector2Impl, p4:Vector2Impl, thick:Single,
@@ -2246,25 +2387,25 @@ extern class Raylib
     @:native('CheckCollisionRecs') static function checkCollisionRecs(rec1:RectangleImpl, rec2:RectangleImpl):Bool;
     @:native('CheckCollisionCircles') static function checkCollisionCircles(center1:Vector2Impl, radius1:Single, center2:Vector2Impl, radius2:Single):Bool;
     @:native('CheckCollisionCircleRec') static function checkCollisionCircleRec(center:Vector2Impl, radius:Single, rec:RectangleImpl):Bool;
+    @:native('CheckCollisionCircleLine') static function checkCollisionCircleLine(center:Vector2Impl, radius:Single, p1:Vector2Impl, p2:Vector2Impl):Bool;
     @:native('CheckCollisionPointRec') static function checkCollisionPointRec(point:Vector2Impl, rec:RectangleImpl):Bool;
     @:native('CheckCollisionPointCircle') static function checkCollisionPointCircle(point:Vector2Impl, center:Vector2Impl, radius:Single):Bool;
     @:native('CheckCollisionPointTriangle') static function checkCollisionPointTriangle(point:Vector2Impl, p1:Vector2Impl, p2:Vector2Impl, p3:Vector2Impl):Bool;
+    @:native('CheckCollisionPointLine') static function checkCollisionPointLine(point:Vector2Impl, p1:Vector2Impl, p2:Vector2Impl, threshold:Int):Bool;
     @:native('CheckCollisionPointPoly') static function checkCollisionPointPoly(point:Vector2Impl, points:cpp.RawPointer<Vector2Impl>, pointCount:Int):Bool;
     @:native('CheckCollisionLines') static function checkCollisionLines(startPos1:Vector2Impl, endPos1:Vector2Impl, startPos2:Vector2Impl, endPos2:Vector2Impl,
         collisionPoint:cpp.RawPointer<Vector2Impl>):Bool;
-    @:native('CheckCollisionPointLine') static function checkCollisionPointLine(point:Vector2Impl, p1:Vector2Impl, p2:Vector2Impl, threshold:Int):Bool;
     @:native('GetCollisionRec') static function getCollisionRec(rec1:RectangleImpl, rec2:RectangleImpl):RectangleImpl;
 
     @:native('LoadImage') static function loadImage(fileName:cpp.ConstCharStar):ImageImpl;
     @:native('LoadImageRaw') static function loadImageRaw(fileName:cpp.ConstCharStar, width:Int, height:Int, format:Int, headerSize:Int):ImageImpl;
-    @:native('LoadImageSvg') static function loadImageSvg(fileNameOrString:cpp.ConstCharStar, width:Int, height:Int):ImageImpl;
     @:native('LoadImageAnim') static function loadImageAnim(fileName:cpp.ConstCharStar, frames:utils.IntPointer):ImageImpl;
     @:native('LoadImageAnimFromMemory') static function loadImageAnimFromMemory(fileType:cpp.ConstCharStar, fileData:utils.BytesConstPointer, dataSize:Int,
         frames:utils.IntPointer):ImageImpl;
     @:native('LoadImageFromMemory') static function loadImageFromMemory(fileType:cpp.ConstCharStar, fileData:utils.BytesConstPointer, dataSize:Int):ImageImpl;
     @:native('LoadImageFromTexture') static function loadImageFromTexture(texture:TextureImpl):ImageImpl;
     @:native('LoadImageFromScreen') static function loadImageFromScreen():ImageImpl;
-    @:native('IsImageReady') static function isImageReady(image:ImageImpl):Bool;
+    @:native('IsImageValid') static function isImageValid(image:ImageImpl):Bool;
     @:native('UnloadImage') static function unloadImage(image:ImageImpl):Void;
     @:native('ExportImage') static function exportImage(image:ImageImpl, fileName:cpp.ConstCharStar):Bool;
     @:native('ExportImageToMemory') static function exportImageToMemory(image:ImageImpl, fileType:cpp.ConstCharStar,
@@ -2281,8 +2422,9 @@ extern class Raylib
     @:native('GenImageCellular') static function genImageCellular(width:Int, height:Int, tileSize:Int):ImageImpl;
     @:native('GenImageText') static function genImageText(width:Int, height:Int, text:cpp.ConstCharStar):ImageImpl;
 
-    @:native('ImageCopy') static function imageCopy(image:cpp.RawPointer<ImageImpl>):ImageImpl;
-    @:native('ImageFromImage') static function imageFromImage(image:cpp.RawPointer<ImageImpl>, rec:RectangleImpl):ImageImpl;
+    @:native('ImageCopy') static function imageCopy(image:ImageImpl):ImageImpl;
+    @:native('ImageFromImage') static function imageFromImage(image:ImageImpl, rec:RectangleImpl):ImageImpl;
+    @:native('ImageFromChannel') static function imageFromChannel(image:ImageImpl, selectedChannel:Int):ImageImpl;
     @:native('ImageText') static function imageText(text:cpp.ConstCharStar, fontSize:Int, color:ColorImpl):ImageImpl;
     @:native('ImageTextEx') static function imageTextEx(font:FontImpl, text:cpp.ConstCharStar, fontSize:Single, spacing:Single, tint:ColorImpl):ImageImpl;
     @:native('ImageFormat') static function imageFormat(image:cpp.RawPointer<ImageImpl>, newFormat:Int):Void;
@@ -2293,7 +2435,7 @@ extern class Raylib
     @:native('ImageAlphaMask') static function imageAlphaMask(image:cpp.RawPointer<ImageImpl>, alphaMask:ImageImpl):Void;
     @:native('ImageAlphaPremultiply') static function imageAlphaPremultiply(image:cpp.RawPointer<ImageImpl>):Void;
     @:native('ImageBlurGaussian') static function imageBlurGaussian(image:cpp.RawPointer<ImageImpl>, blurSize:Int):Void;
-    @:native('ImageKernelConvolution') static function imageKernelConvolution(image:cpp.RawPointer<ImageImpl>, kernel:utils.FloatPointer, kernelSize:Int):Void;
+    @:native('ImageKernelConvolution') static function imageKernelConvolution(image:cpp.RawPointer<ImageImpl>, kernel:utils.FloatConstPointer, kernelSize:Int):Void;
     @:native('ImageResize') static function imageResize(image:cpp.RawPointer<ImageImpl>, newWidth:Int, newHeight:Int):Void;
     @:native('ImageResizeNN') static function imageResizeNN(image:cpp.RawPointer<ImageImpl>, newWidth:Int, newHeight:Int):Void;
     @:native('ImageResizeCanvas') static function imageResizeCanvas(image:cpp.RawPointer<ImageImpl>, newWidth:Int, newHeight:Int, offsetX:Int, offsetY:Int,
@@ -2311,9 +2453,9 @@ extern class Raylib
     @:native('ImageColorContrast') static function imageColorContrast(image:cpp.RawPointer<ImageImpl>, contrast:Single):Void;
     @:native('ImageColorBrightness') static function imageColorBrightness(image:cpp.RawPointer<ImageImpl>, brightness:Int):Void;
     @:native('ImageColorReplace') static function imageColorReplace(image:cpp.RawPointer<ImageImpl>, color:ColorImpl, replace:ColorImpl):Void;
-    @:native('LoadImageColorImpls') static function loadImageColorImpls(image:ImageImpl):cpp.RawPointer<ColorImpl>;
+    @:native('LoadImageColors') static function loadImageColors(image:ImageImpl):cpp.RawPointer<ColorImpl>;
     @:native('LoadImagePalette') static function loadImagePalette(image:ImageImpl, maxPaletteSize:Int, colorCount:utils.IntPointer):cpp.RawPointer<ColorImpl>;
-    @:native('UnloadImageColorImpls') static function unloadImageColorImpls(colors:cpp.RawPointer<ColorImpl>):Void;
+    @:native('UnloadImageColors') static function unloadImageColors(colors:cpp.RawPointer<ColorImpl>):Void;
     @:native('UnloadImagePalette') static function unloadImagePalette(colors:cpp.RawPointer<ColorImpl>):Void;
     @:native('GetImageAlphaBorder') static function getImageAlphaBorder(image:ImageImpl, threshold:Single):RectangleImpl;
     @:native('GetImageColor') static function getImageColor(image:ImageImpl, x:Int, y:Int):ColorImpl;
@@ -2324,6 +2466,7 @@ extern class Raylib
     @:native('ImageDrawLine') static function imageDrawLine(dst:cpp.RawPointer<ImageImpl>, startPosX:Int, startPosY:Int, endPosX:Int, endPosY:Int,
         color:ColorImpl):Void;
     @:native('ImageDrawLineV') static function imageDrawLineV(dst:cpp.RawPointer<ImageImpl>, start:Vector2Impl, end:Vector2Impl, color:ColorImpl):Void;
+    @:native('ImageDrawLineEx') static function imageDrawLineEx(dst:cpp.RawPointer<ImageImpl>, start:Vector2Impl, end:Vector2Impl, thick:Int, color:ColorImpl):Void;
     @:native('ImageDrawCircle') static function imageDrawCircle(dst:cpp.RawPointer<ImageImpl>, centerX:Int, centerY:Int, radius:Int, color:ColorImpl):Void;
     @:native('ImageDrawCircleV') static function imageDrawCircleV(dst:cpp.RawPointer<ImageImpl>, center:Vector2Impl, radius:Int, color:ColorImpl):Void;
     @:native('ImageDrawCircleLines') static function imageDrawCircleLines(dst:cpp.RawPointer<ImageImpl>, centerX:Int, centerY:Int, radius:Int,
@@ -2335,6 +2478,11 @@ extern class Raylib
         color:ColorImpl):Void;
     @:native('ImageDrawRectangleRec') static function imageDrawRectangleRec(dst:cpp.RawPointer<ImageImpl>, rec:RectangleImpl, color:ColorImpl):Void;
     @:native('ImageDrawRectangleLines') static function imageDrawRectangleLines(dst:cpp.RawPointer<ImageImpl>, rec:RectangleImpl, thick:Int, color:ColorImpl):Void;
+    @:native('ImageDrawTriangle') static function imageDrawTriangle(dst:cpp.RawPointer<ImageImpl>, v1:Vector2Impl, v2:Vector2Impl, v3:Vector2Impl, color:ColorImpl):Void;
+    @:native('ImageDrawTriangleEx') static function imageDrawTriangleEx(dst:cpp.RawPointer<ImageImpl>, v1:Vector2Impl, v2:Vector2Impl, v3:Vector2Impl, c1:ColorImpl, c2:ColorImpl, c3:ColorImpl):Void;
+    @:native('ImageDrawTriangleLines') static function imageDrawTriangleLines(dst:cpp.RawPointer<ImageImpl>, v1:Vector2Impl, v2:Vector2Impl, v3:Vector2Impl, color:ColorImpl):Void;
+    @:native('ImageDrawTriangleFan') static function imageDrawTriangleFan(dst:cpp.RawPointer<ImageImpl>, points:cpp.RawPointer<Vector2Impl>, pointCount:Int, color:ColorImpl):Void;
+    @:native('ImageDrawTriangleStrip') static function imageDrawTriangleStrip(dst:cpp.RawPointer<ImageImpl>, points:cpp.RawPointer<Vector2Impl>, pointCount:Int, color:ColorImpl):Void;
     @:native('ImageDraw') static function imageDraw(dst:cpp.RawPointer<ImageImpl>, src:ImageImpl, srcRec:RectangleImpl, dstRec:RectangleImpl, tint:ColorImpl):Void;
     @:native('ImageDrawText') static function imageDrawText(dst:cpp.RawPointer<ImageImpl>, text:cpp.ConstCharStar, posX:Int, posY:Int, fontSize:Int,
         color:ColorImpl):Void;
@@ -2345,9 +2493,9 @@ extern class Raylib
     @:native('LoadTextureFromImage') static function loadTextureFromImage(image:ImageImpl):TextureImpl;
     @:native('LoadTextureCubemap') static function loadTextureCubemap(image:ImageImpl, layout:Int):TextureImpl;
     @:native('LoadRenderTexture') static function loadRenderTexture(width:Int, height:Int):RenderTextureImpl;
-    @:native('IsTextureReady') static function isTextureReady(texture:TextureImpl):Bool;
+    @:native('IsTextureValid') static function isTextureValid(texture:TextureImpl):Bool;
     @:native('UnloadTexture') static function unloadTexture(texture:TextureImpl):Void;
-    @:native('IsRenderTextureReady') static function isRenderTextureReady(target:RenderTextureImpl):Bool;
+    @:native('IsRenderTextureValid') static function isRenderTextureValid(target:RenderTextureImpl):Bool;
     @:native('UnloadRenderTexture') static function unloadRenderTexture(target:RenderTextureImpl):Void;
     @:native('UpdateTexture') static function updateTexture(texture:TextureImpl, pixels:cpp.RawConstPointer<cpp.Void>):Void;
     @:native('UpdateTextureRec') static function updateTextureRec(texture:TextureImpl, rec:RectangleImpl, pixels:cpp.RawConstPointer<cpp.Void>):Void;
@@ -2377,6 +2525,7 @@ extern class Raylib
     @:native('ColorContrast') static function colorContrast(color:ColorImpl, contrast:Single):ColorImpl;
     @:native('ColorAlpha') static function colorAlpha(color:ColorImpl, alpha:Single):ColorImpl;
     @:native('ColorAlphaBlend') static function colorAlphaBlend(dst:ColorImpl, src:ColorImpl, tint:ColorImpl):ColorImpl;
+    @:native('ColorLerp') static function colorLerp(color1:ColorImpl, color2:ColorImpl, factor:Single):ColorImpl;
     @:native('GetColor') static function getColor(hexValue:UInt):ColorImpl;
     @:native('GetPixelColor') static function getPixelColor(srcPtr:cpp.RawPointer<cpp.Void>, format:Int):ColorImpl;
     @:native('SetPixelColor') static function setPixelColor(dstPtr:cpp.RawPointer<cpp.Void>, color:ColorImpl, format:Int):Void;
@@ -2388,7 +2537,7 @@ extern class Raylib
     @:native('LoadFontFromImage') static function loadFontFromImage(image:ImageImpl, key:ColorImpl, firstChar:Int):FontImpl;
     @:native('LoadFontFromMemory') static function loadFontFromMemory(fileType:cpp.ConstCharStar, fileData:utils.BytesConstPointer, dataSize:Int,
         fontSize:Int, codepoints:utils.IntPointer, codepointCount:Int):FontImpl;
-    @:native('IsFontReady') static function isFontReady(font:FontImpl):Bool;
+    @:native('IsFontValid') static function isFontValid(font:FontImpl):Bool;
     @:native('LoadFontData') static function loadFontData(fileData:utils.BytesConstPointer, dataSize:Int, fontSize:Int, codepoints:utils.IntPointer,
         codepointCount:Int, type:Int):cpp.RawPointer<GlyphInfoImpl>;
     @:native('GenImageFontAtlas') static function genImageFontAtlas(glyphs:cpp.RawPointer<GlyphInfoImpl>,
@@ -2438,6 +2587,8 @@ extern class Raylib
     @:native('TextToUpper') static function textToUpper(text:cpp.ConstCharStar):cpp.ConstCharStar;
     @:native('TextToLower') static function textToLower(text:cpp.ConstCharStar):cpp.ConstCharStar;
     @:native('TextToPascal') static function textToPascal(text:cpp.ConstCharStar):cpp.ConstCharStar;
+    @:native('TextToSnake') static function textToSnake(text:cpp.ConstCharStar):cpp.ConstCharStar;
+    @:native('TextToCamel') static function textToCamel(text:cpp.ConstCharStar):cpp.ConstCharStar;
     @:native('TextToInteger') static function textToInteger(text:cpp.ConstCharStar):Int;
     @:native('TextToFloat') static function textToFloat(text:cpp.ConstCharStar):Single;
 
@@ -2445,7 +2596,7 @@ extern class Raylib
     @:native('DrawPoint3D') static function drawPoint3D(position:Vector3Impl, color:ColorImpl):Void;
     @:native('DrawCircle3D') static function drawCircle3D(center:Vector3Impl, radius:Single, rotationAxis:Vector3Impl, rotationAngle:Single, color:ColorImpl):Void;
     @:native('DrawTriangle3D') static function drawTriangle3D(v1:Vector3Impl, v2:Vector3Impl, v3:Vector3Impl, color:ColorImpl):Void;
-    @:native('DrawTriangleStrip3D') static function drawTriangleStrip3D(points:cpp.RawPointer<Vector3Impl>, pointCount:Int, color:ColorImpl):Void;
+    @:native('DrawTriangleStrip3D') static function drawTriangleStrip3D(points:cpp.RawConstPointer<Vector3Impl>, pointCount:Int, color:ColorImpl):Void;
     @:native('DrawCube') static function drawCube(position:Vector3Impl, width:Single, height:Single, length:Single, color:ColorImpl):Void;
     @:native('DrawCubeV') static function drawCubeV(position:Vector3Impl, size:Vector3Impl, color:ColorImpl):Void;
     @:native('DrawCubeWires') static function drawCubeWires(position:Vector3Impl, width:Single, height:Single, length:Single, color:ColorImpl):Void;
@@ -2470,7 +2621,7 @@ extern class Raylib
 
     @:native('LoadModel') static function loadModel(fileName:cpp.ConstCharStar):ModelImpl;
     @:native('LoadModelFromMesh') static function loadModelFromMesh(mesh:MeshImpl):ModelImpl;
-    @:native('IsModelReady') static function isModelReady(model:ModelImpl):Bool;
+    @:native('IsModelValid') static function isModelValid(model:ModelImpl):Bool;
     @:native('UnloadModel') static function unloadModel(model:ModelImpl):Void;
     @:native('GetModelBoundingBox') static function getModelBoundingBox(model:ModelImpl):BoundingBoxImpl;
 
@@ -2480,8 +2631,11 @@ extern class Raylib
     @:native('DrawModelWires') static function drawModelWires(model:ModelImpl, position:Vector3Impl, scale:Single, tint:ColorImpl):Void;
     @:native('DrawModelWiresEx') static function drawModelWiresEx(model:ModelImpl, position:Vector3Impl, rotationAxis:Vector3Impl, rotationAngle:Single,
         scale:Vector3Impl, tint:ColorImpl):Void;
+    @:native('DrawModelPoints') static function drawModelPoints(model:ModelImpl, position:Vector3Impl, scale:Single, tint:ColorImpl):Void;
+    @:native('DrawModelPointsEx') static function drawModelPointsEx(model:ModelImpl, position:Vector3Impl, rotationAxis:Vector3Impl, rotationAngle:Single,
+        scale:Vector3Impl, tint:ColorImpl):Void;
     @:native('DrawBoundingBox') static function drawBoundingBox(box:BoundingBoxImpl, color:ColorImpl):Void;
-    @:native('DrawBillboard') static function drawBillboard(camera:Camera3DImpl, texture:TextureImpl, position:Vector3Impl, size:Single, tint:ColorImpl):Void;
+    @:native('DrawBillboard') static function drawBillboard(camera:Camera3DImpl, texture:TextureImpl, position:Vector3Impl, scale:Single, tint:ColorImpl):Void;
     @:native('DrawBillboardRec') static function drawBillboardRec(camera:Camera3DImpl, texture:TextureImpl, source:RectangleImpl, position:Vector3Impl,
         size:Vector2Impl, tint:ColorImpl):Void;
     @:native('DrawBillboardPro') static function drawBillboardPro(camera:Camera3DImpl, texture:TextureImpl, source:RectangleImpl, position:Vector3Impl,
@@ -2512,7 +2666,7 @@ extern class Raylib
 
     @:native('LoadMaterials') static function loadMaterials(fileName:cpp.ConstCharStar, materialCount:utils.IntPointer):cpp.RawPointer<MaterialImpl>;
     @:native('LoadMaterialDefault') static function loadMaterialDefault():MaterialImpl;
-    @:native('IsMaterialReady') static function isMaterialReady(material:MaterialImpl):Bool;
+    @:native('IsMaterialValid') static function isMaterialValid(material:MaterialImpl):Bool;
     @:native('UnloadMaterial') static function unloadMaterial(material:MaterialImpl):Void;
     @:native('SetMaterialTexture') static function setMaterialTexture(material:cpp.RawPointer<MaterialImpl>, mapType:Int, texture:TextureImpl):Void;
     @:native('SetModelMeshMaterial') static function setModelMeshMaterial(model:cpp.RawPointer<ModelImpl>, meshId:Int, materialId:Int):Void;
@@ -2523,6 +2677,7 @@ extern class Raylib
     @:native('UnloadModelAnimation') static function unloadModelAnimation(anim:ModelAnimationImpl):Void;
     @:native('UnloadModelAnimations') static function unloadModelAnimations(animations:cpp.RawPointer<ModelAnimationImpl>, animCount:Int):Void;
     @:native('IsModelAnimationValid') static function isModelAnimationValid(model:ModelImpl, anim:ModelAnimationImpl):Bool;
+    @:native('UpdateModelAnimationBoneMatrices') static function updateModelAnimationBoneMatrices(model:ModelImpl, anim:ModelAnimationImpl, frame:Int):Void;
 
     @:native('CheckCollisionSpheres') static function checkCollisionSpheres(center1:Vector3Impl, radius1:Single, center2:Vector3Impl, radius2:Single):Bool;
     @:native('CheckCollisionBoxes') static function checkCollisionBoxes(box1:BoundingBoxImpl, box2:BoundingBoxImpl):Bool;
@@ -2535,17 +2690,17 @@ extern class Raylib
 
     @:native('InitAudioDevice') static function initAudioDevice():Void;
     @:native('CloseAudioDevice') static function closeAudioDevice():Void;
-    @:native('IsAudioDeviceReady') static function isAudioDeviceReady():Bool;
+    @:native('IsAudioDeviceValid') static function isAudioDeviceValid():Bool;
     @:native('SetMasterVolume') static function setMasterVolume(volume:Single):Void;
     @:native('GetMasterVolume') static function getMasterVolume():Single;
 
     @:native('LoadWave') static function loadWave(fileName:cpp.ConstCharStar):WaveImpl;
     @:native('LoadWaveFromMemory') static function loadWaveFromMemory(fileType:cpp.ConstCharStar, fileData:utils.BytesConstPointer, dataSize:Int):WaveImpl;
-    @:native('IsWaveReady') static function isWaveReady(wave:WaveImpl):Bool;
+    @:native('IsWaveValid') static function isWaveValid(wave:WaveImpl):Bool;
     @:native('LoadSound') static function loadSound(fileName:cpp.ConstCharStar):SoundImpl;
     @:native('LoadSoundFromWave') static function loadSoundFromWave(wave:WaveImpl):SoundImpl;
     @:native('LoadSoundAlias') static function loadSoundAlias(source:SoundImpl):SoundImpl;
-    @:native('IsSoundReady') static function isSoundReady(sound:SoundImpl):Bool;
+    @:native('IsSoundValid') static function isSoundValid(sound:SoundImpl):Bool;
     @:native('UpdateSound') static function updateSound(sound:SoundImpl, data:cpp.RawConstPointer<cpp.Void>, frameCount:Int):Void;
     @:native('UnloadWave') static function unloadWave(wave:WaveImpl):Void;
     @:native('UnloadSound') static function unloadSound(sound:SoundImpl):Void;
@@ -2570,7 +2725,7 @@ extern class Raylib
     @:native('LoadMusicStream') static function loadMusicStream(fileName:cpp.ConstCharStar):MusicImpl;
     @:native('LoadMusicStreamFromMemory') static function loadMusicStreamFromMemory(fileType:cpp.ConstCharStar, fileData:utils.BytesConstPointer,
         dataSize:Int):MusicImpl;
-    @:native('IsMusicReady') static function isMusicReady(music:MusicImpl):Bool;
+    @:native('IsMusicValid') static function isMusicValid(music:MusicImpl):Bool;
     @:native('UnloadMusicStream') static function unloadMusicStream(music:MusicImpl):Void;
     @:native('PlayMusicStream') static function playMusicStream(music:MusicImpl):Void;
     @:native('IsMusicStreamPlaying') static function isMusicStreamPlaying(music:MusicImpl):Bool;
@@ -2586,7 +2741,7 @@ extern class Raylib
     @:native('GetMusicTimePlayed') static function getMusicTimePlayed(music:MusicImpl):Single;
 
     @:native('LoadAudioStream') static function loadAudioStream(sampleRate:cpp.UInt32, sampleSize:cpp.UInt32, channels:cpp.UInt32):AudioStreamImpl;
-    @:native('IsAudioStreamReady') static function isAudioStreamReady(stream:AudioStreamImpl):Bool;
+    @:native('IsAudioStreamValid') static function isAudioStreamValid(stream:AudioStreamImpl):Bool;
     @:native('UnloadAudioStream') static function unloadAudioStream(stream:AudioStreamImpl):Void;
     @:native('UpdateAudioStream') static function updateAudioStream(stream:AudioStreamImpl, data:cpp.RawConstPointer<cpp.Void>, samplesCount:Int):Void;
     @:native('IsAudioStreamProcessed') static function isAudioStreamProcessed(stream:AudioStreamImpl):Bool;

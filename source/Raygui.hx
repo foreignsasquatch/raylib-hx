@@ -62,6 +62,10 @@ extern abstract GuiStyleProp(cpp.Struct<GuiStylePropImpl>) to cpp.Struct<GuiStyl
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<GuiStylePropImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<GuiStylePropImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -355,6 +359,8 @@ extern enum abstract GuiDropdownBoxProperty(GuiDropdownBoxPropertyImpl)
 {
     @:native('ARROW_PADDING') var ARROW_PADDING;
     @:native('DROPDOWN_ITEMS_SPACING') var DROPDOWN_ITEMS_SPACING;
+    @:native('DROPDOWN_ARROW_HIDDEN') var DROPDOWN_ITEMS_SPACING;
+    @:native('DROPDOWN_ROLL_UP') var DROPDOWN_ITEMS_SPACING;
 
     @:from
     static inline function fromInt(i:Int):GuiDropdownBoxProperty
@@ -413,6 +419,7 @@ extern enum abstract GuiListViewProperty(GuiListViewPropertyImpl)
     @:native('LIST_ITEMS_SPACING') var LIST_ITEMS_SPACING;
     @:native('SCROLLBAR_WIDTH') var SCROLLBAR_WIDTH;
     @:native('SCROLLBAR_SIDE') var SCROLLBAR_SIDE;
+    @:native('LIST_ITEMS_BORDER_WIDTH') var LIST_ITEMS_BORDER_WIDTH;
 
     @:from
     static inline function fromInt(i:Int):GuiListViewProperty
@@ -673,15 +680,15 @@ extern enum abstract GuiIconName(GuiIconNameImpl)
     @:native('ICON_FOLDER') var ICON_FOLDER;
     @:native('ICON_FILE') var ICON_FILE;
     @:native('ICON_SAND_TIMER') var ICON_SAND_TIMER;
-    @:native('ICON_220') var ICON_220;
-    @:native('ICON_221') var ICON_221;
-    @:native('ICON_222') var ICON_222;
-    @:native('ICON_223') var ICON_223;
-    @:native('ICON_224') var ICON_224;
-    @:native('ICON_225') var ICON_225;
-    @:native('ICON_226') var ICON_226;
-    @:native('ICON_227') var ICON_227;
-    @:native('ICON_228') var ICON_228;
+    @:native('ICON_WARNING') var ICON_WARNING;
+    @:native('ICON_HELP_BOX') var ICON_HELP_BOX;
+    @:native('ICON_INFO_BOX') var ICON_INFO_BOX;
+    @:native('ICON_PRIORITY') var ICON_PRIORITY;
+    @:native('ICON_LAYERS_ISO') var ICON_LAYERS_ISO;
+    @:native('ICON_LAYERS2') var ICON_LAYERS2;
+    @:native('ICON_MLAYERS') var ICON_MLAYERS;
+    @:native('ICON_MAPS') var ICON_MAPS;
+    @:native('ICON_HOT') var ICON_HOT;
     @:native('ICON_229') var ICON_229;
     @:native('ICON_230') var ICON_230;
     @:native('ICON_231') var ICON_231;
@@ -781,6 +788,8 @@ extern class Raygui
     @:native('GuiSpinner') static function guiSpinner(bounds:RectangleImpl, text:cpp.ConstCharStar, value:utils.IntPointer, minValue:Int, maxValue:Int,
         editMode:Bool):Int;
     @:native('GuiValueBox') static function guiValueBox(bounds:RectangleImpl, text:cpp.ConstCharStar, value:utils.IntPointer, minValue:Int, maxValue:Int,
+        editMode:Bool):Int;
+    @:native('GuiValueBoxFloat') static function guiValueBoxFloat(bounds:RectangleImpl, text:cpp.ConstCharStar, textValue:cpp.CastCharStar, value:utils.FloatPointer,
         editMode:Bool):Int;
     @:native('GuiTextBox') static function guiTextBox(bounds:RectangleImpl, text:cpp.CastCharStar, textSize:Int, editMode:Bool):Int;
     @:native('GuiSlider') static function guiSlider(bounds:RectangleImpl, textLeft:cpp.ConstCharStar, textRight:cpp.ConstCharStar, value:utils.FloatPointer,
