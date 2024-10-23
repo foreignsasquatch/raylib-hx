@@ -2,7 +2,6 @@
 -D analyzer-optimize
 -D emscripten
 -D RAYLIB_WEB_ASYNCIFY
--D RAYLIB_WEB_MINSHELL
 -D RAYLIB_WEB_RESOURCES_PATH=resources
 -D HXCPP_LINK_EMSCRIPTEN_EXT=.html
 -lib raylib-hx
