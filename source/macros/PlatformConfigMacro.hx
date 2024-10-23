@@ -51,6 +51,11 @@ class PlatformConfigMacro
         {
             Compiler.define('PLATFORM_DESKTOP');
 
+            if (Context.defined('PLATFORM_DESKTOP_RGFW'))
+                Compiler.define('PLATFORM_DESKTOP_RGFW');
+            else
+                Compiler.define('PLATFORM_DESKTOP_GLFW');
+
             if (!checkForOpenGLES() && !checkForOpenGL())
                 Compiler.define('GRAPHICS_API_OPENGL_33');
         }
