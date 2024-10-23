@@ -2108,9 +2108,9 @@ extern class Raylib
     @:native('DecompressData') static function decompressData(compData:utils.BytesConstPointer, compDataSize:Int, dataSize:utils.IntPointer):utils.BytesPointer;
     @:native('EncodeDataBase64') static function encodeDataBase64(data:utils.BytesConstPointer, dataSize:Int, outputSize:utils.IntPointer):cpp.CastCharStar;
     @:native('DecodeDataBase64') static function decodeDataBase64(data:utils.BytesConstPointer, outputSize:utils.IntPointer):utils.BytesPointer;
-    @:native('ComputeCRC32') static function encodeDataBase64(data:utils.BytesConstPointer, dataSize:Int):cpp.UInt32;
-    @:native('ComputeMD5') static function encodeDataBase64(data:utils.BytesConstPointer, dataSize:Int):utils.UnsignedPointer;
-    @:native('ComputeSHA1') static function encodeDataBase64(data:utils.BytesConstPointer, dataSize:Int):utils.UnsignedPointer;
+    @:native('ComputeCRC32') static function computeCRC32(data:utils.BytesConstPointer, dataSize:Int):cpp.UInt32;
+    @:native('ComputeMD5') static function computeMD5(data:utils.BytesConstPointer, dataSize:Int):utils.UnsignedPointer;
+    @:native('ComputeSHA1') static function computeSHA1(data:utils.BytesConstPointer, dataSize:Int):utils.UnsignedPointer;
 
     @:native('LoadAutomationEventList') static function loadAutomationEventList(fileName:cpp.ConstCharStar):AutomationEventListImpl;
     @:native('UnloadAutomationEventList') static function unloadAutomationEventList(list:AutomationEventListImpl):Void;
@@ -2317,9 +2317,9 @@ extern class Raylib
     @:native('ImageColorContrast') static function imageColorContrast(image:cpp.RawPointer<ImageImpl>, contrast:Single):Void;
     @:native('ImageColorBrightness') static function imageColorBrightness(image:cpp.RawPointer<ImageImpl>, brightness:Int):Void;
     @:native('ImageColorReplace') static function imageColorReplace(image:cpp.RawPointer<ImageImpl>, color:ColorImpl, replace:ColorImpl):Void;
-    @:native('LoadImageColorImpls') static function loadImageColorImpls(image:ImageImpl):cpp.RawPointer<ColorImpl>;
+    @:native('LoadImageColors') static function loadImageColors(image:ImageImpl):cpp.RawPointer<ColorImpl>;
     @:native('LoadImagePalette') static function loadImagePalette(image:ImageImpl, maxPaletteSize:Int, colorCount:utils.IntPointer):cpp.RawPointer<ColorImpl>;
-    @:native('UnloadImageColorImpls') static function unloadImageColorImpls(colors:cpp.RawPointer<ColorImpl>):Void;
+    @:native('UnloadImageColors') static function unloadImageColors(colors:cpp.RawPointer<ColorImpl>):Void;
     @:native('UnloadImagePalette') static function unloadImagePalette(colors:cpp.RawPointer<ColorImpl>):Void;
     @:native('GetImageAlphaBorder') static function getImageAlphaBorder(image:ImageImpl, threshold:Single):RectangleImpl;
     @:native('GetImageColor') static function getImageColor(image:ImageImpl, x:Int, y:Int):ColorImpl;
@@ -2330,7 +2330,7 @@ extern class Raylib
     @:native('ImageDrawLine') static function imageDrawLine(dst:cpp.RawPointer<ImageImpl>, startPosX:Int, startPosY:Int, endPosX:Int, endPosY:Int,
         color:ColorImpl):Void;
     @:native('ImageDrawLineV') static function imageDrawLineV(dst:cpp.RawPointer<ImageImpl>, start:Vector2Impl, end:Vector2Impl, color:ColorImpl):Void;
-    @:native('ImageDrawLineEx') static function imageDrawLineV(dst:cpp.RawPointer<ImageImpl>, start:Vector2Impl, end:Vector2Impl, thick:Int, color:ColorImpl):Void;
+    @:native('ImageDrawLineEx') static function imageDrawLineEx(dst:cpp.RawPointer<ImageImpl>, start:Vector2Impl, end:Vector2Impl, thick:Int, color:ColorImpl):Void;
     @:native('ImageDrawCircle') static function imageDrawCircle(dst:cpp.RawPointer<ImageImpl>, centerX:Int, centerY:Int, radius:Int, color:ColorImpl):Void;
     @:native('ImageDrawCircleV') static function imageDrawCircleV(dst:cpp.RawPointer<ImageImpl>, center:Vector2Impl, radius:Int, color:ColorImpl):Void;
     @:native('ImageDrawCircleLines') static function imageDrawCircleLines(dst:cpp.RawPointer<ImageImpl>, centerX:Int, centerY:Int, radius:Int,
