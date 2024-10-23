@@ -1,270 +1,273 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xml>
-	<pragma once="true" />
+    <pragma once="true" />
 
-	<files id="haxe">
-		<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
+    <files id="haxe">
+        <compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
+        <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
+        <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
+        <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" if="android" />
+        <compilerflag value="-I${haxelib:raylib-hx}/project/include" />
+        <include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
+        <include name="${haxelib:raylib-hx}/project/lib/raygui-defines.xml" />
+        <file name="${haxelib:raylib-hx}/project/src/android_main.c" if="android" />
+    </files>
 
-		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
-		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
-		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" if="android" />
-		<compilerflag value="-I${haxelib:raylib-hx}/project/include" />
+    <files id="__main__">
+        <compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
+        <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
+        <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
+        <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" if="android" />
+        <compilerflag value="-I${haxelib:raylib-hx}/project/include" />
+        <include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
+        <include name="${haxelib:raylib-hx}/project/lib/raygui-defines.xml" />
+    </files>
 
-		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
-		<include name="${haxelib:raylib-hx}/project/lib/raygui-defines.xml" />
+    <files id="raylib">
+        <compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
 
-		<file name="${haxelib:raylib-hx}/project/src/android_main.c" if="android" />
-	</files>
+        <section if="PLATFORM_DESKTOP_GLFW">
+            <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" />
+        </section>
 
-	<files id="__main__">
-		<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
+        <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
 
-		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
-		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
-		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" if="android" />
-		<compilerflag value="-I${haxelib:raylib-hx}/project/include" />
+        <include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
 
-		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
-		<include name="${haxelib:raylib-hx}/project/lib/raygui-defines.xml" />
-	</files>
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/raudio.c" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/rcore.c" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/rglfw.c" if="PLATFORM_DESKTOP_GLFW" unless="macos" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/rmodels.c" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/rshapes.c" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtext.c" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtextures.c" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/utils.c" />
 
-	<files id="raylib">
-		<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
+        <section if="linux">
+            <compilerflag value="-D_GLFW_WAYLAND" if="RAYLIB_WAYLAND_DISPLAY" />
+            <compilerflag value="-D_GLFW_X11" unless="RAYLIB_WAYLAND_DISPLAY" />
+        </section>
 
-		<section if="PLATFORM_DESKTOP_GLFW">
-			<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" />
-		</section>
+        <section if="rpi">
+            <compilerflag value="-DEGL_NO_X11" />
+        </section>
 
-		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
+        <section unless="MSVC_VER">
+            <compilerflag value="-Wno-implicit-const-int-float-conversion" />
+            <compilerflag value="-Wno-missing-braces" />
+            <compilerflag value="-Wno-unused-result" />
+        </section>
+    </files>
 
-		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
+    <files id="raymob">
+        <compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
+        <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
+        <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" />
 
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/raudio.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rcore.c" />
+        <include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
 
-		<section if="PLATFORM_DESKTOP_GLFW">
-			<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rglfw.c" unless="macos" />
-		</section>
+        <file name="${haxelib:raylib-hx}/project/lib/raymob/src/features.c" />
+        <file name="${haxelib:raylib-hx}/project/lib/raymob/src/helper.c" />
 
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rmodels.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rshapes.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtext.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtextures.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/utils.c" />
+        <section unless="MSVC_VER">
+            <compilerflag value="-Wno-implicit-const-int-float-conversion" />
+            <compilerflag value="-Wno-missing-braces" />
+            <compilerflag value="-Wno-unused-result" />
+        </section>
+    </files>
 
-		<section if="linux">
-			<compilerflag value="-D_GLFW_WAYLAND" if="RAYLIB_WAYLAND_DISPLAY" />
-			<compilerflag value="-D_GLFW_X11" unless="RAYLIB_WAYLAND_DISPLAY" />
-		</section>
+    <files id="raylib_glfw" if="macos">
+        <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" />
 
-		<section if="rpi">
-			<compilerflag value="-DEGL_NO_X11" />
-		</section>
+        <compilerflag value="-D_GLFW_COCOA" />
+        <compilerflag value="-D_GLFW_USE_MENUBAR" />
+        <compilerflag value="-D_GLFW_USE_RETINA" />
 
-		<section unless="MSVC_VER">
-			<compilerflag value="-Wno-implicit-const-int-float-conversion" />
-			<compilerflag value="-Wno-missing-braces" />
-			<compilerflag value="-Wno-unused-result" />
-		</section>
-	</files>
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/init.c" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/platform.c" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/context.c" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/monitor.c" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/window.c" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/input.c" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/vulkan.c" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/posix_module.c" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/posix_thread.c" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_init.m" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_joystick.m" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_monitor.m" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_window.m" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_time.c" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/nsgl_context.m" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/egl_context.c" />
+        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/osmesa_context.c" />
+    </files>
 
-	<files id="raymob">
-		<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
+    <files id="native_app_glue" if="android">
+        <compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" />
 
-		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
-		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" />
+        <file name="${ANDROID_NDK_ROOT}/sources/android/native_app_glue/android_native_app_glue.c" if="android" />
+    </files>
 
-		<include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
+    <target id="haxe">
+        <section if="PLATFORM_DESKTOP_GLFW">
+            <section if="mingw">
+                <lib name="-lopengl32" />
+                <lib name="-lgdi32" />
+                <lib name="-lwinmm" />
+                <lib name="-lshell32" />
+            </section>
 
-		<file name="${haxelib:raylib-hx}/project/lib/raymob/src/features.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raymob/src/helper.c" />
+            <section if="windows" unless="mingw">
+                <lib name="opengl32.lib" />
+                <lib name="gdi32.lib" />
+                <lib name="winmm.lib" />
+                <lib name="shell32.lib" />
+            </section>
+        </section>
 
-		<section unless="MSVC_VER">
-			<compilerflag value="-Wno-implicit-const-int-float-conversion" />
-			<compilerflag value="-Wno-missing-braces" />
-			<compilerflag value="-Wno-unused-result" />
-		</section>
-	</files>
+        <section if="PLATFORM_DESKTOP_RGFW">
+            <section if="mingw">
+                <lib name="-lgdi32" />
+                <lib name="-lwinmm" />
+                <lib name="-lopengl32" />
+            </section>
 
-	<files id="raylib_glfw" if="macos">
-		<compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" />
+            <section if="windows" unless="mingw">
+                <lib name="gdi32.lib" />
+                <lib name="winmm.lib" />
+                <lib name="opengl32.lib" />
+            </section>
+        </section>
 
-		<compilerflag value="-D_GLFW_COCOA" />
-		<compilerflag value="-D_GLFW_USE_MENUBAR" />
-		<compilerflag value="-D_GLFW_USE_RETINA" />
+        <section if="macos">
+            <section if="PLATFORM_DESKTOP_GLFW">
+                <vflag name="-framework" value="IOKit" />
+                <vflag name="-framework" value="CoreAudio" />
+            </section>
 
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/init.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/platform.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/context.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/monitor.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/window.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/input.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/vulkan.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/posix_module.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/posix_thread.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_init.m" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_joystick.m" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_monitor.m" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_window.m" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_time.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/nsgl_context.m" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/egl_context.c" />
-		<file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/osmesa_context.c" />
-	</files>
+            <section if="PLATFORM_DESKTOP_RGFW">
+                <vflag name="-framework" value="Foundation" />
+                <vflag name="-framework" value="AppKit" />
+            </section>
 
-	<files id="native_app_glue" if="android">
-		<compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" />
+            <vflag name="-framework" value="OpenGL" />
+            <vflag name="-framework" value="CoreVideo" />
+        </section>
 
-		<file name="${ANDROID_NDK_ROOT}/sources/android/native_app_glue/android_native_app_glue.c" if="android" />
-	</files>
+        <section if="linux">
+            <section if="PLATFORM_DESKTOP_GLFW">
+                <lib name="-lGL" />
+                <lib name="-lpthread" />
+                <lib name="-lm" />
+                <lib name="-ldl" />
+                <lib name="-lrt" />
+                <lib name="-lX11" unless="RAYLIB_WAYLAND_DISPLAY" />
 
-	<target id="haxe">
-		<section if="mingw">
-			<lib name="-lopengl32" />
-			<lib name="-lgdi32" />
-			<lib name="-lwinmm" />
-			<lib name="-lshell32" unless="PLATFORM_DESKTOP_RGFW" />
-		</section>
+                <section if="RAYLIB_WAYLAND_DISPLAY">
+                    <lib name="-lwayland-client" />
+                    <lib name="-lwayland-cursor" />
+                    <lib name="-lwayland-egl" />
+                    <lib name="-lxkbcommon" />
+                </section>
+            </section>
 
-		<section if="windows" unless="mingw">
-			<lib name="opengl32.lib" />
-			<lib name="gdi32.lib" />
-			<lib name="winmm.lib" />
-			<lib name="shell32.lib" unless="PLATFORM_DESKTOP_RGFW" />
-		</section>
+            <section if="PLATFORM_DESKTOP_RGFW">
+                <lib name="-lGL" />
+                <lib name="-lX11" />
+                <lib name="-lXrandr" />
+                <lib name="-lXinerama" />
+                <lib name="-lXi" />
+                <lib name="-lXcursor" />
+                <lib name="-lpthread" />
+                <lib name="-lm" />
+                <lib name="-lrt" />
+            </section>
+        </section>
 
-		<section if="macos">
-			<section if="PLATFORM_DESKTOP_GLFW">
-				<vflag name="-framework" value="IOKit" />
-				<vflag name="-framework" value="CoreAudio" />
-			</section>
+        <section if="rpi">
+            <lib name="-lGLESv2" />
+            <lib name="-lEGL" />
+            <lib name="-ldrm" />
+            <lib name="-lgbm" />
+            <lib name="-lpthread" />
+            <lib name="-lrt" />
+            <lib name="-lm" />
+            <lib name="-ldl" />
+            <lib name="-latomic" />
+        </section>
 
-			<section if="PLATFORM_DESKTOP_RGFW">
-				<vflag name="-framework" value="Foundation" />
-				<vflag name="-framework" value="AppKit" />
-			</section>
+        <section if="android">
+            <lib name="-llog" />
+            <lib name="-landroid" />
+            <lib name="-lEGL" />
+            <lib name="-lGLESv2" />
+            <lib name="-lOpenSLES" />
+            <lib name="-lm" />
+        </section>
 
-			<vflag name="-framework" value="OpenGL" />
-			<vflag name="-framework" value="CoreVideo" />
-		</section>
+        <files id="raylib" />
 
-		<section if="linux">
-			<section if="PLATFORM_DESKTOP_GLFW">
-				<lib name="-lGL" />
-				<lib name="-lpthread" />
-				<lib name="-lm" />
-				<lib name="-ldl" />
-				<lib name="-lrt" />
+        <section if="android">
+            <files id="raymob" />
+            <files id="native_app_glue" />
+        </section>
 
-				<lib name="-lX11" unless="RAYLIB_WAYLAND_DISPLAY" />
+        <section if="macos">
+            <files id="raylib_glfw" if="PLATFORM_DESKTOP_GLFW" />
+        </section>
+    </target>
 
-				<section if="RAYLIB_WAYLAND_DISPLAY">
-					<lib name="-lwayland-client" />
-					<lib name="-lwayland-cursor" />
-					<lib name="-lwayland-egl" />
-					<lib name="-lxkbcommon" />
-				</section>
-			</section>
+    <compiler id="android-gcc" if="android">
+        <flag value="-mfix-cortex-a53-835769" if="HXCPP_ARM64" />
+        <section if="HXCPP_ARMV7">
+            <flag value="-mfloat-abi=softfp" />
+            <flag value="-mfpu=vfpv3-d16" />
+        </section>
+    </compiler>
 
-			<section if="PLATFORM_DESKTOP_RGFW">
-				<lib name="-lGL" />
-				<lib name="-lX11" />
-				<lib name="-lXrandr" />
-				<lib name="-lXinerama" />
-				<lib name="-lXi" />
-				<lib name="-lXcursor" />
-				<lib name="-lpthread" />
-				<lib name="-lm" />
-				<lib name="-lrt" />
-			</section>
-		</section>
+    <linker id="exe" exe="em++" if="emscripten">
+        <flag value="-s" />
+        <flag value="USE_GLFW=3" />
 
-		<section if="rpi">
-			<lib name="-lGLESv2" />
-			<lib name="-lEGL" />
-			<lib name="-ldrm" />
-			<lib name="-lgbm" />
-			<lib name="-lpthread" />
-			<lib name="-lrt" />
-			<lib name="-lm" />
-			<lib name="-ldl" />
-			<lib name="-latomic" />
-		</section>
+        <section if="GRAPHICS_API_OPENGL_ES3">
+            <flag value="-s" />
+            <flag value="MIN_WEBGL_VERSION=2" />
+            <flag value="-s" />
+            <flag value="MAX_WEBGL_VERSION=2" />
+        </section>
 
-		<section if="android">
-			<lib name="-llog" />
-			<lib name="-landroid" />
-			<lib name="-lEGL" />
-			<lib name="-lGLESv2" />
-			<lib name="-lOpenSLES" />
-			<lib name="-lm" />
-		</section>
+        <flag value="-s" />
+        <flag value="FORCE_FILESYSTEM=1" />
 
-		<files id="raylib" />
+        <section if="RAYLIB_WEB_ASYNCIFY">
+            <flag value="-s" />
+            <flag value="ASYNCIFY=1" />
+        </section>
 
-		<section if="android">
-			<files id="raymob" />
-			<files id="native_app_glue" />
-		</section>
+        <section if="RAYLIB_WEB_RESOURCES_PATH">
+            <flag value="--preload-file" />
+            <flag value="${RAYLIB_WEB_RESOURCES_PATH}" />
+        </section>
 
-		<section if="macos">
-			<files id="raylib_glfw" if="PLATFORM_DESKTOP_GLFW" />
-		</section>
-	</target>
+        <section if="debug">
+            <flag value="-s" />
+            <flag value="ASSERTIONS=1" />
 
-	<compiler id="android-gcc" if="android">
-		<flag value="-mfix-cortex-a53-835769" if="HXCPP_ARM64" />
+            <section if="RAYLIB_WEB_DEBUG_PROFILING">
+                <flag value="--profiling" />
+            </section>
+        </section>
 
-		<section if="HXCPP_ARMV7">
-			<flag value="-mfloat-abi=softfp" />
-			<flag value="-mfpu=vfpv3-d16" />
-		</section>
-	</compiler>
+        <section unless="RAYLIB_WEB_DISABLE_SHELL">
+            <flag value="--shell-file" />
 
-	<linker id="exe" exe="em++" if="emscripten">
-		<flag value="-s" />
-		<flag value="USE_GLFW=3" />
+            <section if="RAYLIB_WEB_MINSHELL">
+                <flag value="${haxelib:raylib-hx}/project/lib/raylib/src/minshell.html" />
+            </section>
 
-		<section if="GRAPHICS_API_OPENGL_ES3">
-			<flag value="-s" />
-			<flag value="MIN_WEBGL_VERSION=2" />
-
-			<flag value="-s" />
-			<flag value="MAX_WEBGL_VERSION=2" />
-		</section>
-
-		<flag value="-s" />
-		<flag value="FORCE_FILESYSTEM=1" />
-
-		<section if="RAYLIB_WEB_ASYNCIFY">
-			<flag value="-s" />
-			<flag value="ASYNCIFY=1" />
-		</section>
-
-		<section if="RAYLIB_WEB_RESOURCES_PATH">
-			<flag value="--preload-file" />
-			<flag value="${RAYLIB_WEB_RESOURCES_PATH}" />
-		</section>
-
-		<section if="debug">
-			<flag value="-s" />
-			<flag value="ASSERTIONS=1" />
-
-			<section if="RAYLIB_WEB_DEBUG_PROFILING">
-				<flag value="--profiling" />
-			</section>
-		</section>
-
-		<section unless="RAYLIB_WEB_DISABLE_SHELL">
-			<flag value="--shell-file" />
-
-			<section if="RAYLIB_WEB_MINSHELL">
-				<flag value="${haxelib:raylib-hx}/project/lib/raylib/src/minshell.html" />
-			</section>
-
-			<section unless="RAYLIB_WEB_MINSHELL">
-				<flag value="${haxelib:raylib-hx}/project/lib/raylib/src/shell.html" />
-			</section>
-		</section>
-        </linker>
+            <section unless="RAYLIB_WEB_MINSHELL">
+                <flag value="${haxelib:raylib-hx}/project/lib/raylib/src/shell.html" />
+            </section>
+        </section>
+    </linker>
 </xml>
