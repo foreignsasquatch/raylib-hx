@@ -71,10 +71,32 @@ jobs:
 
       - name: Build
         run: cd examples/${{matrix.example}} && haxe build-wasm.hxml -D EMSDK=$EMSDK
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@main
+  Android:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        example: [core_basic_screen_manager, core_basic_window, models_heightmap, models_loading_gltf_animations, shaders_basic_lighting]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
         with:
-          name: wasmBuild-${{matrix.example}}
-          path: examples/${{matrix.example}}/bin/wasm
-          if-no-files-found: warn
+          submodules: true
+
+      - name: Setup Haxe
+        uses: krdlab/setup-haxe@master
+        with:
+          haxe-version: latest
+
+      - name: Install Dependencies
+        run: |
+          haxelib git hxcpp https://github.com/HaxeFoundation/hxcpp.git --quiet
+          cd $(haxelib libpath hxcpp)/tools/hxcpp
+          haxe compile.hxml
+          cd ${{github.workspace}}
+          haxelib dev raylib-hx .
+
+      - name: Compiling
+        run: cd examples/${{matrix.example}} && haxe build-android.hxml -D ANDROID_NDK_DIR=$ANDROID_NDK_ROOT
+        env:
+          JAVA_HOME: ${{ env.JAVA_HOME_17_X64 }}
