@@ -60,6 +60,10 @@ extern abstract Vector2(cpp.Struct<Vector2Impl>) to cpp.Struct<Vector2Impl>
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<Vector2Impl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<Vector2Impl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -95,6 +99,10 @@ extern abstract Vector3(cpp.Struct<Vector3Impl>) to cpp.Struct<Vector3Impl>
     @:from
     static inline function fromNative(value:Vector3Impl):Vector3
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<Vector3Impl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<Vector3Impl>
@@ -134,6 +142,10 @@ extern abstract Vector4(cpp.Struct<Vector4Impl>) to cpp.Struct<Vector4Impl>
     @:from
     static inline function fromNative(value:Vector4Impl):Vector4
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<Vector4Impl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<Vector4Impl>
@@ -185,6 +197,10 @@ extern abstract Matrix(cpp.Struct<MatrixImpl>) to cpp.Struct<MatrixImpl>
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<MatrixImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<MatrixImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -222,6 +238,10 @@ extern abstract Color(cpp.Struct<ColorImpl>) to cpp.Struct<ColorImpl>
     @:from
     static inline function fromNative(value:ColorImpl):Color
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<ColorImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<ColorImpl>
@@ -263,6 +283,10 @@ extern abstract Rectangle(cpp.Struct<RectangleImpl>) to cpp.Struct<RectangleImpl
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<RectangleImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<RectangleImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -296,6 +320,10 @@ extern abstract Image(cpp.Struct<ImageImpl>) to cpp.Struct<ImageImpl>
     @:from
     static inline function fromNative(value:ImageImpl):Image
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<ImageImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<ImageImpl>
@@ -333,6 +361,10 @@ extern abstract Texture(cpp.Struct<TextureImpl>) to cpp.Struct<TextureImpl>
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<TextureImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<TextureImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -364,6 +396,10 @@ extern abstract RenderTexture(cpp.Struct<RenderTextureImpl>) to cpp.Struct<Rende
     @:from
     static inline function fromNative(value:RenderTextureImpl):RenderTexture
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<RenderTextureImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<RenderTextureImpl>
@@ -402,6 +438,10 @@ extern abstract NPatchInfo(cpp.Struct<NPatchInfoImpl>) to cpp.Struct<NPatchInfoI
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<NPatchInfoImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<NPatchInfoImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -435,6 +475,10 @@ extern abstract GlyphInfo(cpp.Struct<GlyphInfoImpl>) to cpp.Struct<GlyphInfoImpl
     @:from
     static inline function fromNative(value:GlyphInfoImpl):GlyphInfo
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<GlyphInfoImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<GlyphInfoImpl>
@@ -472,6 +516,10 @@ extern abstract Font(cpp.Struct<FontImpl>) to cpp.Struct<FontImpl>
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<FontImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<FontImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -507,6 +555,10 @@ extern abstract Camera3D(cpp.Struct<Camera3DImpl>) to cpp.Struct<Camera3DImpl>
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<Camera3DImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<Camera3DImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -539,6 +591,10 @@ extern abstract Camera2D(cpp.Struct<Camera2DImpl>) to cpp.Struct<Camera2DImpl>
     @:from
     static inline function fromNative(value:Camera2DImpl):Camera2D
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<Camera2DImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<Camera2DImpl>
@@ -587,6 +643,10 @@ extern abstract Mesh(cpp.Struct<MeshImpl>) to cpp.Struct<MeshImpl>
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<MeshImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<MeshImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -617,6 +677,10 @@ extern abstract Shader(cpp.Struct<ShaderImpl>) to cpp.Struct<ShaderImpl>
     @:from
     static inline function fromNative(value:ShaderImpl):Shader
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<ShaderImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<ShaderImpl>
@@ -652,6 +716,10 @@ extern abstract MaterialMap(cpp.Struct<MaterialMapImpl>) to cpp.Struct<MaterialM
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<MaterialMapImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<MaterialMapImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -683,6 +751,10 @@ extern abstract Material(cpp.Struct<MaterialImpl>) to cpp.Struct<MaterialImpl>
     @:from
     static inline function fromNative(value:MaterialImpl):Material
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<MaterialImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<MaterialImpl>
@@ -718,6 +790,10 @@ extern abstract Transform(cpp.Struct<TransformImpl>) to cpp.Struct<TransformImpl
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<TransformImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<TransformImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -748,6 +824,10 @@ extern abstract BoneInfo(cpp.Struct<BoneInfoImpl>) to cpp.Struct<BoneInfoImpl>
     @:from
     static inline function fromNative(value:BoneInfoImpl):BoneInfo
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<BoneInfoImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<BoneInfoImpl>
@@ -791,6 +871,10 @@ extern abstract Model(cpp.Struct<ModelImpl>) to cpp.Struct<ModelImpl>
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<ModelImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<ModelImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -826,6 +910,10 @@ extern abstract ModelAnimation(cpp.Struct<ModelAnimationImpl>) to cpp.Struct<Mod
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<ModelAnimationImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<ModelAnimationImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -856,6 +944,10 @@ extern abstract Ray(cpp.Struct<RayImpl>) to cpp.Struct<RayImpl>
     @:from
     static inline function fromNative(value:RayImpl):Ray
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<RayImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<RayImpl>
@@ -892,6 +984,10 @@ extern abstract RayCollision(cpp.Struct<RayCollisionImpl>) to cpp.Struct<RayColl
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<RayCollisionImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<RayCollisionImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -922,6 +1018,10 @@ extern abstract BoundingBox(cpp.Struct<BoundingBoxImpl>) to cpp.Struct<BoundingB
     @:from
     static inline function fromNative(value:BoundingBoxImpl):BoundingBox
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<BoundingBoxImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<BoundingBoxImpl>
@@ -955,6 +1055,10 @@ extern abstract Wave(cpp.Struct<WaveImpl>) to cpp.Struct<WaveImpl>
     @:from
     static inline function fromNative(value:WaveImpl):Wave
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<WaveImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<WaveImpl>
@@ -1000,6 +1104,10 @@ extern abstract AudioStream(cpp.Struct<AudioStreamImpl>) to cpp.Struct<AudioStre
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<AudioStreamImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<AudioStreamImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -1030,6 +1138,10 @@ extern abstract Sound(cpp.Struct<SoundImpl>) to cpp.Struct<SoundImpl>
     @:from
     static inline function fromNative(value:SoundImpl):Sound
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<SoundImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<SoundImpl>
@@ -1065,6 +1177,10 @@ extern abstract Music(cpp.Struct<MusicImpl>) to cpp.Struct<MusicImpl>
     @:from
     static inline function fromNative(value:MusicImpl):Music
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<MusicImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<MusicImpl>
@@ -1106,6 +1222,10 @@ extern abstract VrDeviceInfo(cpp.Struct<VrDeviceInfoImpl>) to cpp.Struct<VrDevic
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<VrDeviceInfoImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<VrDeviceInfoImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -1142,6 +1262,10 @@ extern abstract VrStereoConfig(cpp.Struct<VrStereoConfigImpl>) to cpp.Struct<VrS
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<VrStereoConfigImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<VrStereoConfigImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -1173,6 +1297,10 @@ extern abstract FilePathList(cpp.Struct<FilePathListImpl>) to cpp.Struct<FilePat
     @:from
     static inline function fromNative(value:FilePathListImpl):FilePathList
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<FilePathListImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<FilePathListImpl>
@@ -1207,6 +1335,10 @@ extern abstract AutomationEvent(cpp.Struct<AutomationEventImpl>) to cpp.Struct<A
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<AutomationEventImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<AutomationEventImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
@@ -1237,6 +1369,10 @@ extern abstract AutomationEventList(cpp.Struct<AutomationEventListImpl>) to cpp.
     @:from
     static inline function fromNative(value:AutomationEventListImpl):AutomationEventList
         return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<AutomationEventListImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
 
     @:to
     inline function toPointer():cpp.RawPointer<AutomationEventListImpl>
