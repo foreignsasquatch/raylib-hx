@@ -82,6 +82,10 @@ extern abstract GestureEvent(cpp.Struct<GestureEventImpl>) to cpp.Struct<Gesture
         return cast value;
 
     @:to
+    inline function toConstPointer():cpp.RawConstPointer<GestureEventImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
     inline function toPointer():cpp.RawPointer<GestureEventImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
