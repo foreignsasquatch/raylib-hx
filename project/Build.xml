@@ -224,6 +224,7 @@
 
     <compiler id="android-gcc" if="android">
         <flag value="-mfix-cortex-a53-835769" if="HXCPP_ARM64" />
+
         <section if="HXCPP_ARMV7">
             <flag value="-mfloat-abi=softfp" />
             <flag value="-mfpu=vfpv3-d16" />
@@ -237,6 +238,7 @@
         <section if="GRAPHICS_API_OPENGL_ES3">
             <flag value="-s" />
             <flag value="MIN_WEBGL_VERSION=2" />
+
             <flag value="-s" />
             <flag value="MAX_WEBGL_VERSION=2" />
         </section>
