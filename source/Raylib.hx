@@ -619,7 +619,7 @@ extern class MeshImpl
     var normals:utils.FloatPointer;
     var tangents:utils.FloatPointer;
     var colors:utils.BytesPointer;
-    var indices:cpp.RawPointer<cpp.UInt16>;
+    var indices:utils.ShortPointer;
     var animVertices:utils.FloatPointer;
     var animNormals:utils.FloatPointer;
     var boneIds:utils.BytesPointer;
