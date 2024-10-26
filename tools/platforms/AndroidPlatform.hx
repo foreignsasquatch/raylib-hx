@@ -82,10 +82,6 @@ class AndroidPlatform implements TargetPlatform
 
 		archHXML.cpp = archCppDirectory;
 		archHXML.define(archDefine);
-
-		Log.info(archHXML.toString());
-		Log.info(Sys.getCwd());
-
 		archHXML.build();
 
 		System.copyIfNewer(Path.join([archCppDirectory, 'lib' + archHXML.main + archSuffix + '.so']),
