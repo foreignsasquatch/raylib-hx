@@ -1,5 +1,6 @@
 package;
 
+import interfaces.TargetPlatform;
 import haxe.io.Path;
 import hxp.HXML;
 import hxp.Log;
