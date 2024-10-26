@@ -56,42 +56,41 @@ class Runner
 										platform.build(X86_64);
 								}
 							}
-						default:
-							Log.error(ANSI.apply('Unknown command ', [ANSICode.Red]) + ANSI.apply(command, [ANSICode.Italic, ANSICode.Red])
-								+ ANSI.apply('...', [ANSICode.Red]));
 					}
-			
+				default:
+					Log.error(ANSI.apply('Unknown command ', [ANSICode.Red]) + ANSI.apply(command, [ANSICode.Italic, ANSICode.Red])
+						+ ANSI.apply('...', [ANSICode.Red]));
 			}
 		}
+	}
 
-		private static function setupNDK():Void
+	private static function setupNDK():Void
+	{
+		NDK_DIR = Sys.getEnv('ANDROID_NDK_ROOT');
+
+		if (NDK_DIR == null)
 		{
-			NDK_DIR = Sys.getEnv('ANDROID_NDK_ROOT');
+			Log.info(ANSI.apply('ANDROID_NDK_ROOT is not set, searching for NDK...', [ANSICode.Yellow]));
 
-			if (NDK_DIR == null)
+			switch (System.hostPlatform)
 			{
-				Log.info(ANSI.apply('ANDROID_NDK_ROOT is not set, searching for NDK...', [ANSICode.Yellow]));
-
-				switch (System.hostPlatform)
-				{
-					case WINDOWS:
-						Log.error(ANSI.apply('Please set ANDROID_NDK_ROOT manually.', [ANSICode.Red]));
-					case MAC:
-						NDK_DIR = Path.join([Sys.getEnv('HOME'), '/Library/Android/sdk/ndk']);
-					case LINUX:
-						if (FileSystem.exists(Path.join([Sys.getEnv('HOME'), '/Android/Sdk/ndk'])))
-							NDK_DIR = Path.join([Sys.getEnv('HOME'), '/Android/Sdk/ndk']);
-						else if (FileSystem.exists('/usr/local/android-ndk'))
-							NDK_DIR = '/usr/local/android-ndk';
-						else
-							Log.error(ANSI.apply('Could not find the Android NDK automatically. Please set ANDROID_NDK_ROOT.', [ANSICode.Red]));
-					default:
-						Log.error(ANSI.apply('Unsupported OS. Please set ANDROID_NDK_ROOT manually.', [ANSICode.Red]));
-				}
+				case WINDOWS:
+					Log.error(ANSI.apply('Please set ANDROID_NDK_ROOT manually.', [ANSICode.Red]));
+				case MAC:
+					NDK_DIR = Path.join([Sys.getEnv('HOME'), '/Library/Android/sdk/ndk']);
+				case LINUX:
+					if (FileSystem.exists(Path.join([Sys.getEnv('HOME'), '/Android/Sdk/ndk'])))
+						NDK_DIR = Path.join([Sys.getEnv('HOME'), '/Android/Sdk/ndk']);
+					else if (FileSystem.exists('/usr/local/android-ndk'))
+						NDK_DIR = '/usr/local/android-ndk';
+					else
+						Log.error(ANSI.apply('Could not find the Android NDK automatically. Please set ANDROID_NDK_ROOT.', [ANSICode.Red]));
+				default:
+					Log.error(ANSI.apply('Unsupported OS. Please set ANDROID_NDK_ROOT manually.', [ANSICode.Red]));
 			}
-
-			if (NDK_DIR != null)
-				Log.info(ANSI.apply('Using Android NDK at $NDK_DIR', [ANSICode.Green]));
 		}
+
+		if (NDK_DIR != null)
+			Log.info(ANSI.apply('Using Android NDK at $NDK_DIR', [ANSICode.Green]));
 	}
 }
