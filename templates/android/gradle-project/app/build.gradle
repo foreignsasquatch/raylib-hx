@@ -1,7 +1,4 @@
-plugins
-{
-	id('com.android.application') version '7.3.0'
-}
+apply plugin: 'com.android.application'
 
 repositories
 {
@@ -9,32 +6,23 @@ repositories
 	mavenCentral()
 }
 
-def isAtLeastOnePropertyTrueForPrefix(String prefix)
+tasks.withType(JavaCompile)
 {
-    return project.properties.any{ key, value -> key.startsWith(prefix) && value == 'true'}
+	options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
 }
 
 android
 {
-	namespace project.properties['app.application_id']
-	compileSdkVersion 33
+	namespace project.APP_APPLICATION_ID
+	compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
+	buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
 	defaultConfig
 	{
-		minSdkVersion 24
-		targetSdkVersion 33
-		applicationId project.properties['app.application_id']
-		versionCode Integer.parseInt(project.properties['app.version_code'])
-		versionName project.properties['app.version_name']
-
-		buildConfigField("boolean", "FEATURE_VIBRATION", project.properties['features.vibration'] ?: "false")
-		buildConfigField("boolean", "FEATURE_ACCELEROMETER", project.properties['features.accelerometer'] ?: "false")
-		buildConfigField("boolean", "FEATURE_SOFT_KEYBOARD", project.properties['features.soft_keyboard'] ?: "false")
-		buildConfigField("boolean", "FEATURE_DISPLAY_KEEP_ON", project.properties['features.display.keep_on'] ?: "false")
-		buildConfigField("boolean", "FEATURE_DISPLAY_IMMERSIVE", project.properties['features.display.immersive'] ?: "false")
-		buildConfigField("boolean", "FEATURE_DISPLAY_INTO_CUTOUT", project.properties['features.display.into_cutout'] ?: "false")
-		buildConfigField("boolean", "FEATURE_DISPLAY", isAtLeastOnePropertyTrueForPrefix('features.display.').toString())
-
-		manifestPlaceholders = ['APP_LABEL': project.properties['app.name'], 'APP_LIB_NAME': project.properties['app.native_library_name'], 'APP_ORIENTATION': project.properties['app.orientation'], 'FEATURE_INTERNET': project.properties['features.internet'], 'FEATURE_VIBRATION': project.properties['features.vibration'], 'FEATURE_ACCELEROMETER': project.properties['features.accelerometer']]
+		applicationId project.APP_APPLICATION_ID
+		minSdkVersion Integer.parseInt(project.ANDROID_BUILD_MIN_SDK_VERSION)
+		targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
+		versionCode Integer.parseInt(project.APP_VERSION_CODE)
+		versionName project.APP_VERSION_NAME
 	}
 	buildTypes
 	{
@@ -58,10 +46,5 @@ android
 	{
 		sourceCompatibility JavaVersion.VERSION_1_8
 		targetCompatibility JavaVersion.VERSION_1_8
-	}
-	buildFeatures
-	{
-		buildConfig true
-		viewBinding true
 	}
 }
