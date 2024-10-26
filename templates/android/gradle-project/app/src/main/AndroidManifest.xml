@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<!--Features-->
+
+	<uses-feature android:glEsVersion="0x00020000" android:required="true" />
+	<uses-feature android:name="android.hardware.sensor.accelerometer" android:required="${FEATURE_ACCELEROMETER}" />
+
+	<!--Conditionally include permission features-->
+
+	<uses-permission android:name="android.permission.INTERNET" android:required="${FEATURE_INTERNET}" />
+	<uses-permission android:name="android.permission.VIBRATE" android:required="${FEATURE_VIBRATION}" />
+
+	<!--Application config-->
+
+	<application
+		android:label="${APP_LABEL}"
+		android:icon="@drawable/icon"
+		android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+		android:allowBackup="true"
+		android:hardwareAccelerated="true"
+		android:allowNativeHeapPointerTagging="false"
+		android:appCategory="game">
+
+		<activity
+			android:name="GameActivity"
+			android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|locale|layoutDirection|navigation"
+			android:screenOrientation="${APP_ORIENTATION}"
+			android:launchMode="singleTask"
+			android:resizeableActivity="false"
+			android:clearTaskOnLaunch="true"
+			android:exported="true">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+
+			<meta-data android:name="android.app.lib_name" android:value="${APP_LIB_NAME}" />
+		</activity>
+	</application>
+</manifest>
