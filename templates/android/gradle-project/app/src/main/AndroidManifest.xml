@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-	::foreach ANDROID_PERMISSIONS::<uses-permission android:name="::__current__::" />
+	::foreach ANDROID_PERMISSIONS::
+	::if ((value != null) && (value != ""))::
+	<uses-permission android:name="::key::" android:required="::value::" />
+	::end::
 	::end::
 
 	<application ::foreach ANDROID_APPLICATION::::if ((value != null) && (value != ""))::::key::="::value::" ::end::::end::>
