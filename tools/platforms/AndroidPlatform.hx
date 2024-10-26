@@ -52,11 +52,11 @@ class AndroidPlatform implements TargetPlatform
 			return false;
 		}
 
-		final archHXML:HXML = hxml.clone();
-
 		var archCppDirectory:String;
 		var archDefine:String;
 		var archSuffix:String;
+
+		final archHXML:HXML = hxml.clone();
 
 		switch (architecture)
 		{
