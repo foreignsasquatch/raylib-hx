@@ -1,6 +1,7 @@
 package interfaces;
 
 import hxp.HXML;
+import utils.Architecture;
 
 interface TargetPlatform
 {
