@@ -21,7 +21,8 @@ class Runner
 		final runDir:Null<String> = args.pop();
 		final command:Null<String> = args.shift();
 		final target:Null<String> = args.shift();
-		final platform:Null<TargetPlatform> = null;
+
+		var platform:Null<TargetPlatform> = null;
 
 		if (runDir != null && command != null && target != null)
 		{
