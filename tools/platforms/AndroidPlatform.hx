@@ -84,6 +84,7 @@ class AndroidPlatform implements TargetPlatform
 		archHXML.define(archDefine);
 
 		Log.info(archHXML.toString());
+		Log.info(Sys.getCwd());
 
 		archHXML.build();
 
