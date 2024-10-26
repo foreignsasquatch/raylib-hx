@@ -7,6 +7,7 @@ import hxp.System;
 import platforms.AndroidPlatform;
 import sys.FileSystem;
 import utils.ANSI;
+import utils.Architecture;
 
 @:nullSafety
 class Runner
