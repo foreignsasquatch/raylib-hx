@@ -12,6 +12,11 @@ class AndroidPatform implements TargetPlatform
         this.hxml = hxml;
     }
 
+    public function setup():Void
+    {
+        
+    }
+
     public function build(architecture:Architecture):Bool
     {
         if (!supportedArchitectures.contains(architecture))
