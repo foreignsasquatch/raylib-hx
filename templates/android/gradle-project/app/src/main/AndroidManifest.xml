@@ -1,32 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-	::foreach ANDROID_PERMISSIONS::
-	::if ((value != null) && (value != ""))::
-	<uses-permission android:name="::key::" android:required="::value::" />
-	::end::
-	::end::
+	::foreach ANDROID_PERMISSIONS::::if ((value != null) && (value != ""))::<uses-permission android:name="::key::" android:required="::value::" />::end::::end::
 
 	<application ::foreach ANDROID_APPLICATION::::if ((value != null) && (value != ""))::::key::="::value::" ::end::::end::>
-	<application
-		android:label="${APP_LABEL}"
-		android:icon="@drawable/icon"
-		android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-		android:allowBackup="true"
-		android:hardwareAccelerated="true"
-		android:allowNativeHeapPointerTagging="false"
-		android:appCategory="game">
 
 		<activity ::foreach ANDROID_ACTIVITY::::if ((value != null) && (value != ""))::::key::="::value::" ::end::::end::>
-
-		<activity
-			android:name="GameActivity"
-			android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|locale|layoutDirection|navigation"
-			android:screenOrientation="${APP_ORIENTATION}"
-			android:launchMode="singleTask"
-			android:resizeableActivity="false"
-			android:clearTaskOnLaunch="true"
-			android:exported="true">
 
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -38,6 +17,7 @@
 			<meta-data android:name="::key::" android:value="::value::" />
 			::end::
 			::end::
+
 		</activity>
 	</application>
 </manifest>
