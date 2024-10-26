@@ -1,6 +1,7 @@
 package platforms;
 
 import interfaces.TargetPlatform;
+import haxe.io.Path;
 import hxp.System;
 
 class AndroidPatform implements TargetPlatform
@@ -14,7 +15,17 @@ class AndroidPatform implements TargetPlatform
 
     public function setup():Void
     {
-        
+        final compileDirectory:String = hxml.cpp;
+
+	final sourceSet:String = Path.join([compileDirectory, 'app/src/main']);
+
+	System.mkdir(sourceSet);
+
+	final context:Dynamic = {};
+	context.ANDROID_BUILD_SDK_VERSION = 0;
+	context.ANDROID_BUILD_TARGET_SDK_VERSION = 33;
+	context.ANDROID_BUILD_MIN_SDK_VERSION = 21;
+	context.ANDROID_BUILD_TOOLS_VERSION = 0;
     }
 
     public function build(architecture:Architecture):Bool
