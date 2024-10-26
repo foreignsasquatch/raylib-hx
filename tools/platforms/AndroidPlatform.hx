@@ -4,6 +4,7 @@ import interfaces.TargetPlatform;
 import haxe.io.Path;
 import hxp.Log;
 import hxp.System;
+import utils.Architecture;
 
 @:nullSafety
 class AndroidPlatform implements TargetPlatform
