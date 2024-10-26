@@ -26,6 +26,8 @@ class Runner
 
 		if (runDir != null && command != null && target != null)
 		{
+			Sys.setCwd(runDir);
+
 			switch (command)
 			{
 				case 'build':
