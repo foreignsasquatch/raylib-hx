@@ -31,7 +31,7 @@ class Runner
 			switch (command)
 			{
 				case 'build':
-					if (!FileSystem.exists(Path.join([runDir, 'build.hxml'])))
+					if (!FileSystem.exists('build.hxml'))
 						Log.error(ANSI.apply('Unable to find "build.hxml" necessary for building process.', [ANSICode.Red]));
 
 					switch (target)
@@ -39,7 +39,7 @@ class Runner
 						case 'android':
 							setupNDK();
 
-							final buildFile:HXML = HXML.fromFile(Path.join([runDir, 'build.hxml']));
+							final buildFile:HXML = HXML.fromFile('build.hxml');
 
 							buildFile.define('ANDROID_NDK_DIR', NDK_DIR);
 
