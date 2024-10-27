@@ -85,7 +85,7 @@ class AndroidPlatform implements TargetPlatform
 		];
 		context.ANDROID_ACTIVITY = activity;
 
-		final metadata:Array<{key:Dynamic, value:Dynamic}> = [{key: 'android.app.lib_name', value: archHXML.main}];
+		final metadata:Array<{key:Dynamic, value:Dynamic}> = [{key: 'android.app.lib_name', value: hxml.main}];
 
 		context.ANDROID_METADATA = metadata;
 
