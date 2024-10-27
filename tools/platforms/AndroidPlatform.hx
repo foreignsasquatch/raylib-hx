@@ -63,14 +63,6 @@ class AndroidPlatform implements TargetPlatform
 		final manifest:Xml = Xml.createElement('manifest');
 		manifest.set('xmlns:android', 'http://schemas.android.com/apk/res/android');
 
-		for (permission in DEFAULT_FEATURES)
-		{
-			final usesPermission:Xml = Xml.createElement('uses-permission');
-			usesPermission.set('android:name', permission.name);
-			usesPermission.set('android:required', Std.string(permission.required));
-			manifest.addChild(usesPermission);
-		}
-
 		final usesFeature:Xml = Xml.createElement('uses-feature');
 		usesFeature.set('android:glEsVersion', hxml.hasDefine('GRAPHICS_API_OPENGL_ES3') ? '0x00030000' : '0x00020000');
 		usesFeature.set('android:required', 'true');
@@ -82,6 +74,14 @@ class AndroidPlatform implements TargetPlatform
 			usesFeature.set('android:name', feature.name);
 			usesFeature.set('android:required', Std.string(feature.required));
 			manifest.addChild(usesFeature);
+		}
+
+		for (permission in DEFAULT_PERMISSIONS)
+		{
+			final usesPermission:Xml = Xml.createElement('uses-permission');
+			usesPermission.set('android:name', permission.name);
+			usesPermission.set('android:required', Std.string(permission.required));
+			manifest.addChild(usesPermission);
 		}
 
 		final application:Xml = Xml.createElement('application');
