@@ -3,6 +3,7 @@ package platforms;
 import interfaces.TargetPlatform;
 import haxe.io.Path;
 import haxe.DynamicAccess;
+import hxp.Haxelib;
 import hxp.HXML;
 import hxp.Log;
 import hxp.System;
@@ -11,13 +12,14 @@ import utils.Architecture;
 @:nullSafety
 class AndroidPlatform implements TargetPlatform
 {
+	private final hxml:HXML;
+
 	private final assetsDirectory:String;
 	private final cppDirectory:String;
 	private final javaDirectory:String;
 	private final jniLibsDirectory:String;
 	private final resDirectory:String;
-
-	private var hxml:HXML;
+	private final templateDirectory:String;
 
 	public function new(hxml:HXML):Void
 	{
@@ -28,6 +30,7 @@ class AndroidPlatform implements TargetPlatform
 		javaDirectory = Path.join([hxml.cpp, 'app/src/main/java']);
 		jniLibsDirectory = Path.join([hxml.cpp, 'app/src/main/jniLibs']);
 		resDirectory = Path.join([hxml.cpp, 'app/src/main/res']);
+		templateDirectory = Path.join([Haxelib.getPath(new Haxelib('raylib-hx')), 'templates']);
 	}
 
 	public function setup():Void
@@ -84,6 +87,12 @@ class AndroidPlatform implements TargetPlatform
 		final metadata:DynamicAccess<String> = {};
 		metadata.set('android.app.lib_name', archHXML.main);
 		context.ANDROID_METADATA = metadata;
+
+		final javaAppDirectory:String = Path.join([javaDirectory, context.APP_APPLICATION_ID.split('.').join('/')]);
+
+		System.makeDirectory(javaAppDirectory);
+
+		System.copyFileTemplate([templateDirectory], 'android/MainActivity.java', Path.join([javaAppDirectory, 'MainActivity.java']), context);
 	}
 
 	public function build(architectures:Array<Architecture>):Bool
