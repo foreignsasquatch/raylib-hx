@@ -13,20 +13,34 @@ import utils.Architecture;
 @:nullSafety
 class AndroidPlatform implements TargetPlatform
 {
+	@:noCompletion
 	private static final DEFAULT_FEATURES:Array<Feature> = [{name: 'android.hardware.sensor.accelerometer', required: true}];
 
+	@:noCompletion
 	private static final DEFAULT_PERMISSIONS:Array<Permission> = [
 		{name: 'android.permission.INTERNET', required: true},
 		{name: 'android.permission.VIBRATE', required: true}
 	];
 
+	@:noCompletion
 	private final hxml:HXML;
 
+	@:noCompletion
 	private final assetsDirectory:String;
+
+	@:noCompletion
 	private final cppDirectory:String;
+
+	@:noCompletion
 	private final javaDirectory:String;
+
+	@:noCompletion
 	private final jniLibsDirectory:String;
+
+	@:noCompletion
 	private final resDirectory:String;
+
+	@:noCompletion
 	private final templateDirectory:String;
 
 	public function new(hxml:HXML):Void
@@ -99,7 +113,17 @@ class AndroidPlatform implements TargetPlatform
 
 		final activity:Xml = Xml.createElement('activity');
 		activity.set('android:name', 'MainActivity');
-		activity.set('android:configChanges', 'keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|locale|layoutDirection|navigation');
+		activity.set('android:configChanges', [
+			'keyboard',
+			'keyboardHidden',
+			'orientation',
+			'screenSize',
+			'screenLayout',
+			'uiMode',
+			'locale',
+			'layoutDirection',
+			'navigation'
+		].join('|'));
 		activity.set('android:screenOrientation', 'landscape');
 		activity.set('android:launchMode', 'singleTask');
 		activity.set('android:resizeableActivity', 'false');
@@ -138,7 +162,8 @@ class AndroidPlatform implements TargetPlatform
 			}
 		}
 
-		System.copyFileTemplate([templateDirectory], 'android/MainActivity.java', Path.join([javaDirectory, context.APP_NAMESPACE.split('.').join('/'), 'MainActivity.java']), context);
+		System.copyFileTemplate([templateDirectory], 'android/MainActivity.java',
+			Path.join([javaDirectory, context.APP_NAMESPACE.split('.').join('/'), 'MainActivity.java']), context);
 	}
 
 	public function build(architectures:Array<Architecture>):Bool
@@ -187,14 +212,20 @@ class AndroidPlatform implements TargetPlatform
 			archHXML.define(archDefine);
 			archHXML.build();
 
-			System.copyIfNewer(Path.join([archHXML.cpp, 'lib' + archHXML.main + archSuffix + '.so']),
-				Path.join([jniLibsDirectory, archDirectory, 'lib' + archHXML.main + '.so']));
+			if (!archHXML.noOutput)
+			{
+				System.copyIfNewer(Path.join([archHXML.cpp, 'lib' + archHXML.main + archSuffix + '.so']),
+					Path.join([jniLibsDirectory, archDirectory, 'lib' + archHXML.main + '.so']));
+			}
 		}
 
-		if (System.hostPlatform != WINDOWS)
-			System.runCommand(hxml.cpp, 'chmod', ['+x', './gradlew']);
+		if (!hxml.noOutput)
+		{
+			if (System.hostPlatform != WINDOWS)
+				System.runCommand(hxml.cpp, 'chmod', ['+x', './gradlew']);
 
-		System.runCommand(hxml.cpp, System.hostPlatform != WINDOWS ? './gradlew' : 'gradlew', ['assembleDebug']);
+			System.runCommand(hxml.cpp, System.hostPlatform != WINDOWS ? './gradlew' : 'gradlew', ['assembleDebug']);
+		}
 
 		return true;
 	}
