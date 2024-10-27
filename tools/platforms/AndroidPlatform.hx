@@ -101,7 +101,7 @@ class AndroidPlatform implements TargetPlatform
 
 			for (fileLocation in gradleProjectFiles)
 			{
-				System.copyFile(file, Path.join([
+				System.copyFile(fileLocation, Path.join([
 					hxml.cpp,
 					StringTools.replace(fileLocation, Path.join([templateDirectory, 'android/gradle-project']), '')
 				]), context);
