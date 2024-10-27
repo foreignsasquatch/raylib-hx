@@ -46,9 +46,9 @@ class AndroidPlatform implements TargetPlatform
 		context.APP_VERSION_NAME = '1.0';
 		context.APP_VERSION_CODE = 1;
 
-		context.APP_BUILD_SDK_VERSION = 33;
-		context.APP_BUILD_TARGET_SDK_VERSION = 33;
-		context.APP_BUILD_MIN_SDK_VERSION = 21;
+		context.APP_COMPILE_SDK_VERSION = 33;
+		context.APP_TARGET_SDK_VERSION = 33;
+		context.APP_MIN_SDK_VERSION = 21;
 
 		final permissions:Array<{key:String, value:Dynamic}> = [];
 		permissions.push({key: 'android.permission.INTERNET', value: true});
@@ -66,7 +66,7 @@ class AndroidPlatform implements TargetPlatform
 		application.push({key: 'android:allowBackup', value: true});
 		application.push({key: 'android:hardwareAccelerated', value: true});
 
-		if (context.APP_BUILD_TARGET_SDK_VERSION >= 30)
+		if (context.APP_TARGET_SDK_VERSION >= 30)
 			application.push({key: 'android:allowNativeHeapPointerTagging', value: false});
 
 		application.push({key: 'android:appCategory', value: 'game'});

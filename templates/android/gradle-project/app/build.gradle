@@ -17,12 +17,12 @@ repositories
 android
 {
 	namespace project.APP_NAMESPACE
-	compileSdkVersion Integer.parseInt(project.APP_BUILD_SDK_VERSION)
+	compileSdkVersion Integer.parseInt(project.APP_COMPILE_SDK_VERSION)
 	defaultConfig
 	{
 		applicationId project.APP_NAMESPACE
-		minSdkVersion Integer.parseInt(project.APP_BUILD_MIN_SDK_VERSION)
-		targetSdkVersion Integer.parseInt(project.APP_BUILD_TARGET_SDK_VERSION)
+		minSdkVersion Integer.parseInt(project.APP_MIN_SDK_VERSION)
+		targetSdkVersion Integer.parseInt(project.APP_TARGET_SDK_VERSION)
 		versionCode Integer.parseInt(project.APP_VERSION_CODE)
 		versionName project.APP_VERSION_NAME
 	}
