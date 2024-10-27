@@ -77,8 +77,6 @@ class AndroidPlatform implements TargetPlatform
 
 				if (resources != null && resources.length > 0)
 				{
-					Log.info('Resources $resources');
-
 					for (resource in resources)
 						System.copyIfNewer(resource, Path.join([assetsDirectory, resource]));
 				}
