@@ -9,6 +9,7 @@ import hxp.System;
 import utils.android.Feature;
 import utils.android.Permission;
 import utils.Architecture;
+import utils.Config;
 
 @:nullSafety
 class AndroidPlatform implements TargetPlatform
@@ -21,6 +22,9 @@ class AndroidPlatform implements TargetPlatform
 		{name: 'android.permission.INTERNET', required: true},
 		{name: 'android.permission.VIBRATE', required: true}
 	];
+
+	@:noCompletion
+	private final config:Config;
 
 	@:noCompletion
 	private final hxml:HXML;
@@ -43,8 +47,9 @@ class AndroidPlatform implements TargetPlatform
 	@:noCompletion
 	private final templateDirectory:String;
 
-	public function new(hxml:HXML):Void
+	public function new(config:Config, hxml:HXML):Void
 	{
+		this.config = config;
 		this.hxml = hxml;
 
 		assetsDirectory = Path.join([hxml.cpp, 'app/src/main/assets']);
@@ -64,9 +69,9 @@ class AndroidPlatform implements TargetPlatform
 		System.makeDirectory(resDirectory);
 
 		final context:Dynamic = {};
-		context.APP_NAMESPACE = 'org.haxe.raylib';
-		context.APP_VERSION_NAME = '1.0';
-		context.APP_VERSION_CODE = 1;
+		context.APP_NAMESPACE = ['com', config.company ?? 'raylib', config.product ?? 'rgame'].join('.');
+		context.APP_VERSION_NAME = config.versionName ?? '1.0';
+		context.APP_VERSION_CODE = config.versionCode ?? 1;
 		context.APP_COMPILE_SDK_VERSION = 33;
 		context.APP_TARGET_SDK_VERSION = 33;
 		context.APP_MIN_SDK_VERSION = 21;
@@ -99,9 +104,9 @@ class AndroidPlatform implements TargetPlatform
 		}
 
 		final application:Xml = Xml.createElement('application');
-		application.set('android:label', 'rGame.hx');
+		application.set('android:label', config.label ?? 'rGame.hx');
 		// application.set('android:icon', '@drawable/icon');
-		application.set('android:theme', '@android:style/Theme.NoTitleBar.Fullscreen');
+		application.set('android:theme', config.fullscreen ? '@android:style/Theme.NoTitleBar.Fullscreen' : '@android:style/Theme.NoTitleBar');
 		application.set('android:allowBackup', 'true');
 		application.set('android:hardwareAccelerated', 'true');
 		application.set('android:appCategory', 'game');
@@ -124,7 +129,7 @@ class AndroidPlatform implements TargetPlatform
 			'layoutDirection',
 			'navigation'
 		].join('|'));
-		activity.set('android:screenOrientation', 'landscape');
+		activity.set('android:screenOrientation', config.orientation ?? 'landscape');
 		activity.set('android:launchMode', 'singleTask');
 		activity.set('android:resizeableActivity', 'false');
 		activity.set('android:clearTaskOnLaunch', 'true');
