@@ -6,9 +6,11 @@ import hxp.HXML;
 import hxp.Log;
 import hxp.System;
 import platforms.AndroidPlatform;
+import sys.io.File;
 import sys.FileSystem;
 import utils.ANSI;
 import utils.Architecture;
+import utils.Config;
 
 @:nullSafety
 class Runner
@@ -43,7 +45,7 @@ class Runner
 
 							buildFile.define('ANDROID_NDK_DIR', NDK_DIR);
 
-							platform = new AndroidPlatform(buildFile);
+							platform = new AndroidPlatform(Json.parse(File.getContent('config.json')), buildFile);
 
 							platform.setup();
 
