@@ -1,13 +1,6 @@
 package utils;
 
-typedef IconConfig =
-{
-	ldpi:String,
-	mdpi:String,
-	hdpi:String
-}
-
-typedef AppConfig =
+typedef Config =
 {
 	resourcesPath:String,
 	label:String,
@@ -15,5 +8,8 @@ typedef AppConfig =
 	product:String,
 	fullscreen:Bool,
 	orientation:String,
-	icon:IconConfig
+	icon:
+	{
+		ldpi:String, mdpi:String, hdpi:String
+	}
 }
