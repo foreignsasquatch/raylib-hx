@@ -2,11 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
 	::foreach ANDROID_PERMISSIONS::
-	::if ((value != null) && (value != ""))::<uses-permission android:name="::key::" android:required="::value::" />::end::
+	::if ((value != null) && (value != ""))::
+	::<uses-permission android:name="::key::" android:required="::value::" />::
+	::end::
 	::end::
 
 	::foreach ANDROID_FEATURES::
-	::if ((value != null) && (value != ""))::<uses-feature android:name="::key::" android:required="::value::" />::end::
+	::if ((value != null) && (value != ""))::
+	::<uses-feature android:name="::key::" android:required="::value::" />::
+	::end::
 	::end::
 
 	<application ::foreach ANDROID_APPLICATION::::if ((value != null) && (value != ""))::::key::="::value::" ::end::::end::>
