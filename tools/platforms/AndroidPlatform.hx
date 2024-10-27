@@ -41,11 +41,9 @@ class AndroidPlatform implements TargetPlatform
 		System.makeDirectory(resDirectory);
 
 		final context:Dynamic = {};
-
 		context.APP_NAMESPACE = 'org.haxe.raylib';
 		context.APP_VERSION_NAME = '1.0';
 		context.APP_VERSION_CODE = 1;
-
 		context.APP_COMPILE_SDK_VERSION = 33;
 		context.APP_TARGET_SDK_VERSION = 33;
 		context.APP_MIN_SDK_VERSION = 21;
