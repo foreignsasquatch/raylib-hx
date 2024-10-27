@@ -7,7 +7,7 @@ import org.raymob.Features;
 
 public class GameActivity extends NativeActivity
 {
-    private final Features features;
+    private Features features;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -24,7 +24,7 @@ public class GameActivity extends NativeActivity
 
         if (features != null)
         {
-            if (BuildConfig.FEATURE_DISPLAY_IMMERSIVE && hasFocus)
+            if (hasFocus)
                 features.setImmersiveMode();
         }
     }
