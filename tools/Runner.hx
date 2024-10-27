@@ -2,6 +2,7 @@ package;
 
 import interfaces.TargetPlatform;
 import haxe.io.Path;
+import haxe.Json;
 import hxp.HXML;
 import hxp.Log;
 import hxp.System;
