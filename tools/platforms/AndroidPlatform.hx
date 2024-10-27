@@ -44,48 +44,56 @@ class AndroidPlatform implements TargetPlatform
 		context.ANDROID_BUILD_TOOLS_VERSION = 0;
 	}
 
-	public function build(architecture:Architecture):Bool
+	public function build(excludeArchitectures:Array<Architecture>, test:Bool):Bool
 	{
-		if (!supportedArchitectures().contains(architecture))
+		final architecturesToBuild:Array<Architecture> = supportedArchitectures().filter(function(arch:Architecture):Bool
 		{
-			Log.warn('Unsupported architecture: ' + Std.string(architecture));
+			return !excludeArchitectures.contains(arch);
+		});
+
+		if (architectures.length == 0)
+		{
+			Log.warn('No architectures to build after applying exclusions.');
 			return false;
 		}
 
-		var archCppDirectory:String;
-		var archDefine:String;
-		var archSuffix:String;
-
-		final archHXML:HXML = hxml.clone();
-
-		switch (architecture)
+		for (architecture in architectures)
 		{
-			case ARM64:
-				archCppDirectory = Path.join([cppDirectory, 'arm64-v8a']);
-				archSuffix = archHXML.debug ? '-64-debug' : '-64';
-				archDefine = 'HXCPP_ARM64';
-			case ARMV7:
-				archCppDirectory = Path.join([cppDirectory, 'armeabi-v7a']);
-				archSuffix = archHXML.debug ? '-v7-debug' : '-v7';
-				archDefine = 'HXCPP_ARMV7';
-			case X86:
-				archCppDirectory = Path.join([cppDirectory, 'x86']);
-				archSuffix = archHXML.debug ? '-x86-debug' : '-x86';
-				archDefine = 'HXCPP_X86';
-			case X86_64:
-				archCppDirectory = Path.join([cppDirectory, 'x86_64']);
-				archSuffix = archHXML.debug ? '-x86_64-debug' : '-x86_64';
-				archDefine = 'HXCPP_X86_64';
+			var archCppDirectory:String;
+			var archDefine:String;
+			var archSuffix:String;
+
+			final archHXML:HXML = hxml.clone();
+
+			switch (architecture)
+			{
+				case ARM64:
+					archCppDirectory = Path.join([cppDirectory, 'arm64-v8a']);
+					archSuffix = archHXML.debug ? '-64-debug' : '-64';
+					archDefine = 'HXCPP_ARM64';
+				case ARMV7:
+					archCppDirectory = Path.join([cppDirectory, 'armeabi-v7a']);
+					archSuffix = archHXML.debug ? '-v7-debug' : '-v7';
+					archDefine = 'HXCPP_ARMV7';
+				case X86:
+					archCppDirectory = Path.join([cppDirectory, 'x86']);
+					archSuffix = archHXML.debug ? '-x86-debug' : '-x86';
+					archDefine = 'HXCPP_X86';
+				case X86_64:
+					archCppDirectory = Path.join([cppDirectory, 'x86_64']);
+					archSuffix = archHXML.debug ? '-x86_64-debug' : '-x86_64';
+					archDefine = 'HXCPP_X86_64';
+			}
+
+			System.makeDirectory(archCppDirectory);
+
+			archHXML.cpp = archCppDirectory;
+			archHXML.define(archDefine);
+			archHXML.build();
+
+			System.copyIfNewer(Path.join([archCppDirectory, 'lib' + archHXML.main + archSuffix + '.so']),
+				Path.join([jniLibsDirectory, 'lib' + archHXML.main + '.so']));
 		}
-
-		System.makeDirectory(archCppDirectory);
-
-		archHXML.cpp = archCppDirectory;
-		archHXML.define(archDefine);
-		archHXML.build();
-
-		System.copyIfNewer(Path.join([archCppDirectory, 'lib' + archHXML.main + archSuffix + '.so']),
-			Path.join([jniLibsDirectory, 'lib' + archHXML.main + '.so']));
 
 		return true;
 	}
