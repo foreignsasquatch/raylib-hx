@@ -194,7 +194,7 @@ class AndroidPlatform implements TargetPlatform
 		if (System.hostPlatform != WINDOWS)
 			System.runCommand(hxml.cpp, 'chmod', ['+x', './gradlew']);
 
-		System.runCommand(hxml.cpp, System.hostPlatform != WINDOWS ? './gradlew' : 'gradlew', ['build']);
+		System.runCommand(hxml.cpp, System.hostPlatform != WINDOWS ? './gradlew' : 'gradlew', ['assembleDebug']);
 
 		return true;
 	}
