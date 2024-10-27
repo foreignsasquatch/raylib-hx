@@ -51,22 +51,21 @@ class AndroidPlatform implements TargetPlatform
 		context.ANDROID_BUILD_MIN_SDK_VERSION = 21;
 		context.ANDROID_BUILD_TOOLS_VERSION = 0;
 
-		final permissions:Array<{key:Dynamic, value:Dynamic}> = [
-			{key: 'android.permission.INTERNET', value: true},
-			{key: 'android.permission.VIBRATE', value: true}
-		];
+		final permissions:Array<{key:String, value:Dynamic}> = [];
+		permissions.push({key: 'android.permission.INTERNET', value: true});
+		permissions.push({key: 'android.permission.VIBRATE', value: true});
 		context.ANDROID_PERMISSIONS = permissions;
 
-		final features:Array<{key:Dynamic, value:Dynamic}> = [{key: 'android.hardware.sensor.accelerometer', value: true}];
+		final features:Array<{key:String, value:Dynamic}> = [];
+		features.push({key: 'android.hardware.sensor.accelerometer', value: true});
 		context.ANDROID_FEATURES = features;
 
-		final application:Array<{key:Dynamic, value:Dynamic}> = [
-			{key: 'android:label', value: 'rGame.hx'},
-			// {key: 'android:icon', value: '@drawable/icon'},
-			{key: 'android:theme', value: '@android:style/Theme.NoTitleBar.Fullscreen'},
-			{key: 'android:allowBackup', value: true},
-			{key: 'android:hardwareAccelerated', value: true}
-		];
+		final application:Array<{key:String, value:Dynamic}> = [];
+		application.push({key: 'android:label', value: 'rGame.hx'});
+		// application.push({key: 'android:icon', value: '@drawable/icon'});
+		application.push({key: 'android:theme', value: '@android:style/Theme.NoTitleBar.Fullscreen'});
+		application.push({key: 'android:allowBackup', value: true});
+		application.push({key: 'android:hardwareAccelerated', value: true});
 
 		if (context.ANDROID_BUILD_TARGET_SDK_VERSION >= 30)
 			application.push({key: 'android:allowNativeHeapPointerTagging', value: false});
@@ -74,19 +73,18 @@ class AndroidPlatform implements TargetPlatform
 		application.push({key: 'android:appCategory', value: 'game'});
 		context.ANDROID_APPLICATION = application;
 
-		final activity:Array<{key:Dynamic, value:Dynamic}> = [
-			{key: 'android:name', value: 'MainActivity'},
-			{key: 'android:configChanges', value: 'keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|locale|layoutDirection|navigation'},
-			{key: 'android:screenOrientation', value: 'landscape'},
-			{key: 'android:launchMode', value: 'singleTask'},
-			{key: 'android:resizeableActivity', value: false},
-			{key: 'android:clearTaskOnLaunch', value: true},
-			{key: 'android:exported', value: true}
-		];
+		final activity:Array<{key:String, value:Dynamic}> = [];
+		activity.push({key: 'android:name', value: 'MainActivity'});
+		activity.push({key: 'android:configChanges', value: 'keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|locale|layoutDirection|navigation'});
+		activity.push({key: 'android:screenOrientation', value: 'landscape'});
+		activity.push({key: 'android:launchMode', value: 'singleTask'});
+		activity.push({key: 'android:resizeableActivity', value: false});
+		activity.push({key: 'android:clearTaskOnLaunch', value: true});
+		activity.push({key: 'android:exported', value: true});
 		context.ANDROID_ACTIVITY = activity;
 
-		final metadata:Array<{key:Dynamic, value:Dynamic}> = [{key: 'android.app.lib_name', value: hxml.main}];
-
+		final metadata:Array<{key:String, value:Dynamic}> = [];
+		metadata.push({key: 'android.app.lib_name', value: hxml.main});
 		context.ANDROID_METADATA = metadata;
 
 		final javaAppDirectory:String = Path.join([javaDirectory, context.APP_APPLICATION_ID.split('.').join('/')]);
