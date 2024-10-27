@@ -63,7 +63,8 @@ class AndroidPlatform implements TargetPlatform
 		for (permission in DEFAULT_FEATURES)
 		{
 			final usesPermission:Xml = Xml.createElement('uses-permission');
-			usesPermission.set('android:name', permission.key);
+			usesPermission.set('android:name', permission.name);
+			usesPermission.set('android:required', Std.string(permission.required));
 			manifest.addChild(usesPermission);
 		}
 
@@ -75,8 +76,8 @@ class AndroidPlatform implements TargetPlatform
 		for (feature in DEFAULT_FEATURES)
 		{
 			final usesFeature:Xml = Xml.createElement('uses-feature');
-			usesFeature.set('android:name', feature.key);
-			usesFeature.set('android:required', feature.value.toString());
+			usesFeature.set('android:name', feature.name);
+			usesFeature.set('android:required', Std.string(feature.required));
 			manifest.addChild(usesFeature);
 		}
 
