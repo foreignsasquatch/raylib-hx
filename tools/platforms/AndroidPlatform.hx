@@ -6,6 +6,7 @@ import hxp.Haxelib;
 import hxp.HXML;
 import hxp.Log;
 import hxp.System;
+import sys.FileSystem;
 import utils.android.Feature;
 import utils.android.Permission;
 import utils.Architecture;
@@ -67,6 +68,22 @@ class AndroidPlatform implements TargetPlatform
 		System.makeDirectory(javaDirectory);
 		System.makeDirectory(jniLibsDirectory);
 		System.makeDirectory(resDirectory);
+
+		if (config.resourcePath != null)
+		{
+			if (FileSystem.exists(config.resourcePath))
+			{
+				final resources:Array<String> = System.readDirectory(config.resourcePath);
+
+				if (resources != null && resources.length > 0)
+				{
+					Log.info('Resources $resources');
+
+					for (resource in resources)
+						System.copyIfNewer(resource, Path.join([assetsDirectory, resource]));
+				}
+			}
+		}
 
 		final context:Dynamic = {};
 		context.APP_NAMESPACE = ['com', config.company ?? 'raylib', config.product ?? 'rgame'].join('.');
