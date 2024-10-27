@@ -87,16 +87,10 @@ class AndroidPlatform implements TargetPlatform
 		metadata.push({key: 'android.app.lib_name', value: hxml.main});
 		context.APP_METADATA = metadata;
 
-		final javaAppDirectory:String = Path.join([javaDirectory, context.APP_NAMESPACE.split('.').join('/')]);
-
-		System.makeDirectory(javaAppDirectory);
-
 		final gradleProjectFiles:Array<String> = System.findTemplateRecursive([templateDirectory], 'android/gradle-project');
 
 		if (gradleProjectFiles != null && gradleProjectFiles.length > 0)
 		{
-			System.makeDirectory(hxml.cpp);
-
 			for (fileLocation in gradleProjectFiles)
 			{
 				System.copyFile(fileLocation, Path.join([
@@ -106,6 +100,8 @@ class AndroidPlatform implements TargetPlatform
 			}
 		}
 
+		final javaAppDirectory:String = Path.join([javaDirectory, context.APP_NAMESPACE.split('.').join('/')]);
+		System.makeDirectory(javaAppDirectory);
 		System.copyFileTemplate([templateDirectory], 'android/MainActivity.java', Path.join([javaAppDirectory, 'MainActivity.java']), context);
 	}
 
