@@ -47,20 +47,23 @@ class Runner
 
 							platform.setup();
 
-							for (arch in args)
+							final architectures:Array<Architecture> = [];
+
+							for (arg in args)
 							{
-								switch (arch)
+								switch (arg)
 								{
-									case 'arm64':
-										platform.build(ARM64);
-									case 'armv7':
-										platform.build(ARMV7);
-									case 'x86':
-										platform.build(X86);
-									case 'x86_64':
-										platform.build(X86_64);
+									case '-arm64', '-armv7', '-x86', '-x86_64':
+										final arch:Null<Architecture> = Architecture.fromFlag(arg);
+
+										if (arch != null)
+											architectures.push(arch);
+									default:
+										Log.warn('Unknown argument: ' + arg);
 								}
 							}
+
+							platform.build(architectures);
 					}
 				default:
 					Log.error(ANSI.apply('Unknown command ', [ANSICode.Red]) + ANSI.apply(command, [ANSICode.Italic, ANSICode.Red])
