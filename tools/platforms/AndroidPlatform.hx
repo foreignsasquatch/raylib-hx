@@ -67,19 +67,19 @@ class AndroidPlatform implements TargetPlatform
 
 			switch (architecture)
 			{
-				case Architecture.ARM64:
+				case ARM64:
 					archCppDirectory = Path.join([cppDirectory, 'arm64-v8a']);
 					archSuffix = archHXML.debug ? '-64-debug' : '-64';
 					archDefine = 'HXCPP_ARM64';
-				case Architecture.ARMV7:
+				case ARMV7:
 					archCppDirectory = Path.join([cppDirectory, 'armeabi-v7a']);
 					archSuffix = archHXML.debug ? '-v7-debug' : '-v7';
 					archDefine = 'HXCPP_ARMV7';
-				case Architecture.X86:
+				case X86:
 					archCppDirectory = Path.join([cppDirectory, 'x86']);
 					archSuffix = archHXML.debug ? '-x86-debug' : '-x86';
 					archDefine = 'HXCPP_X86';
-				case Architecture.X86_64:
+				case X86_64:
 					archCppDirectory = Path.join([cppDirectory, 'x86_64']);
 					archSuffix = archHXML.debug ? '-x86_64-debug' : '-x86_64';
 					archDefine = 'HXCPP_X86_64';
@@ -100,6 +100,6 @@ class AndroidPlatform implements TargetPlatform
 
 	public function supportedArchitectures():Array<Architecture>
 	{
-		return [Architecture.ARM64, Architecture.ARMV7, Architecture.X86, Architecture.X86_64];
+		return [ARM64, ARMV7, X86, X86_64];
 	}
 }
