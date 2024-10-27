@@ -155,10 +155,10 @@ class AndroidPlatform implements TargetPlatform
 				Path.join([jniLibsDirectory, 'lib' + archHXML.main + '.so']));
 		}
 
-		if (System.hostPlatform != WINDOWS)
+		/*if (System.hostPlatform != WINDOWS)
 			System.runCommand(hxml.cpp, 'chmod', ['+x', './gradlew']);
 
-		System.runCommand(hxml.cpp, System.hostPlatform != WINDOWS ? './gradlew' : 'gradlew', ['build']);
+		System.runCommand(hxml.cpp, System.hostPlatform != WINDOWS ? './gradlew' : 'gradlew', ['build']);*/
 
 		return true;
 	}
