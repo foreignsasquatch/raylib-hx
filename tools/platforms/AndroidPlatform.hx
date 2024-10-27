@@ -69,11 +69,11 @@ class AndroidPlatform implements TargetPlatform
 		System.makeDirectory(jniLibsDirectory);
 		System.makeDirectory(resDirectory);
 
-		if (config.resourcePath != null)
+		if (config.resourcesPath != null)
 		{
-			if (FileSystem.exists(config.resourcePath))
+			if (FileSystem.exists(config.resourcesPath))
 			{
-				final resources:Array<String> = System.readDirectory(config.resourcePath);
+				final resources:Array<String> = System.readDirectory(config.resourcesPath);
 
 				if (resources != null && resources.length > 0)
 				{
