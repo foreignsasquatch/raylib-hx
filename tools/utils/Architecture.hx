@@ -1,17 +1,13 @@
 package utils;
 
-abstract Architecture(String)
+enum abstract Architecture(String)
 {
-	public static inline final ARM64 = new Architecture("arm64");
-	public static inline final ARMV7 = new Architecture("armv7");
-	public static inline final X86 = new Architecture("x86");
-	public static inline final X86_64 = new Architecture("x86_64");
+	var ARM64;
+	var ARMV7;
+	var X86;
+	var X86_64;
 
-	private inline function new(value:String)
-	{
-		this = value;
-	}
-
+	@:from
 	public static function fromFlag(flag:String):Null<Architecture>
 	{
 		switch (flag.toLowerCase())
@@ -29,20 +25,9 @@ abstract Architecture(String)
 		}
 	}
 
+	@:to
 	public inline function toFlag():String
 	{
 		return '-' + this;
-	}
-
-	@:from
-	static public inline function fromString(value:String):Architecture
-	{
-		return new Architecture(value);
-	}
-
-	@:to
-	public inline function toString():String
-	{
-		return this;
 	}
 }
