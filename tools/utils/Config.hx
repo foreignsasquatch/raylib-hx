@@ -6,6 +6,8 @@ typedef Config =
 	label:String,
 	company:String,
 	product:String,
+	versionCode:Int,
+	versionName:String,
 	fullscreen:Bool,
 	orientation:String,
 	icon:
