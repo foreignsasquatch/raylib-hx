@@ -6,11 +6,20 @@ import hxp.Haxelib;
 import hxp.HXML;
 import hxp.Log;
 import hxp.System;
+import utils.android.Feature;
+import utils.android.Permission;
 import utils.Architecture;
 
 @:nullSafety
 class AndroidPlatform implements TargetPlatform
 {
+	private static final DEFAULT_FEATURES:Array<Feature> = [{name: 'android.hardware.sensor.accelerometer', required: true}];
+
+	private static final DEFAULT_PERMISSIONS:Array<Permission> = [
+		{name: 'android.permission.INTERNET', required: true},
+		{name: 'android.permission.VIBRATE', required: true}
+	];
+
 	private final hxml:HXML;
 
 	private final assetsDirectory:String;
@@ -48,44 +57,69 @@ class AndroidPlatform implements TargetPlatform
 		context.APP_TARGET_SDK_VERSION = 33;
 		context.APP_MIN_SDK_VERSION = 21;
 
-		final permissions:Array<{key:String, value:Dynamic}> = [];
-		permissions.push({key: 'android.permission.INTERNET', value: true});
-		permissions.push({key: 'android.permission.VIBRATE', value: true});
-		context.APP_PERMISSIONS = permissions;
+		final manifest:Xml = Xml.createElement('manifest');
+		manifest.set('xmlns:android', 'http://schemas.android.com/apk/res/android');
 
-		final features:Array<{key:String, value:Dynamic}> = [];
-		features.push({key: 'android.hardware.sensor.accelerometer', value: true});
-		context.APP_FEATURES = features;
+		for (permission in DEFAULT_FEATURES)
+		{
+			final usesPermission:Xml = Xml.createElement('uses-permission');
+			usesPermission.set('android:name', permission.key);
+			manifest.addChild(usesPermission);
+		}
 
-		final application:Array<{key:String, value:Dynamic}> = [];
-		application.push({key: 'android:label', value: 'rGame.hx'});
-		// application.push({key: 'android:icon', value: '@drawable/icon'});
-		application.push({key: 'android:theme', value: '@android:style/Theme.NoTitleBar.Fullscreen'});
-		application.push({key: 'android:allowBackup', value: true});
-		application.push({key: 'android:hardwareAccelerated', value: true});
+		final usesFeature:Xml = Xml.createElement('uses-feature');
+		usesFeature.set('android:glEsVersion', hxml.hasDefine('GRAPHICS_API_OPENGL_ES3') ? '0x00030000' : '0x00020000');
+		usesFeature.set('android:required', 'true');
+		manifest.addChild(usesFeature);
+
+		for (feature in DEFAULT_FEATURES)
+		{
+			final usesFeature:Xml = Xml.createElement('uses-feature');
+			usesFeature.set('android:name', feature.key);
+			usesFeature.set('android:required', feature.value.toString());
+			manifest.addChild(usesFeature);
+		}
+
+		final application:Xml = Xml.createElement('application');
+		application.set('android:label', 'rGame.hx');
+		// application.set('android:icon', '@drawable/icon');
+		application.set('android:theme', '@android:style/Theme.NoTitleBar.Fullscreen');
+		application.set('android:allowBackup', 'true');
+		application.set('android:hardwareAccelerated', 'true');
+		application.set('android:appCategory', 'game');
 
 		if (context.APP_TARGET_SDK_VERSION >= 30)
-			application.push({key: 'android:allowNativeHeapPointerTagging', value: false});
+			application.set('android:allowNativeHeapPointerTagging', 'false');
 
-		application.push({key: 'android:appCategory', value: 'game'});
-		context.APP_APPLICATION = application;
+		manifest.addChild(application);
 
-		final activity:Array<{key:String, value:Dynamic}> = [];
-		activity.push({key: 'android:name', value: 'MainActivity'});
-		activity.push({
-			key: 'android:configChanges',
-			value: 'keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|locale|layoutDirection|navigation'
-		});
-		activity.push({key: 'android:screenOrientation', value: 'landscape'});
-		activity.push({key: 'android:launchMode', value: 'singleTask'});
-		activity.push({key: 'android:resizeableActivity', value: false});
-		activity.push({key: 'android:clearTaskOnLaunch', value: true});
-		activity.push({key: 'android:exported', value: true});
-		context.APP_ACTIVITY = activity;
+		final activity:Xml = Xml.createElement('activity');
+		activity.set('android:name', 'MainActivity');
+		activity.set('android:configChanges', 'keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|locale|layoutDirection|navigation');
+		activity.set('android:screenOrientation', 'landscape');
+		activity.set('android:launchMode', 'singleTask');
+		activity.set('android:resizeableActivity', 'false');
+		activity.set('android:clearTaskOnLaunch', 'true');
+		activity.set('android:exported', 'true');
+		application.addChild(activity);
 
-		final metadata:Array<{key:String, value:Dynamic}> = [];
-		metadata.push({key: 'android.app.lib_name', value: hxml.main});
-		context.APP_METADATA = metadata;
+		final metaData:Xml = Xml.createElement('meta-data');
+		metaData.set('android:name', 'android.app.lib_name');
+		metaData.set('android:value', hxml.main);
+		application.addChild(metaData);
+
+		final intentFilter:Xml = Xml.createElement('intent-filter');
+		activity.addChild(intentFilter);
+
+		final action:Xml = Xml.createElement('action');
+		action.set('android:name', 'android.intent.action.MAIN');
+		intentFilter.addChild(action);
+
+		final category:Xml = Xml.createElement('category');
+		category.set('android:name', 'android.intent.category.LAUNCHER');
+		intentFilter.addChild(category);
+
+		System.writeText(haxe.xml.Printer.print(manifest, true), Path.join([hxml.cpp, 'app/src/main/AndroidManifest.xml']));
 
 		final gradleProjectFiles:Array<String> = System.findTemplateRecursive([templateDirectory], 'android/gradle-project');
 
