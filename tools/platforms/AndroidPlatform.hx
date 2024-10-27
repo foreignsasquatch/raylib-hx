@@ -12,7 +12,6 @@ import utils.Architecture;
 class AndroidPlatform implements TargetPlatform
 {
 	private final hxml:HXML;
-
 	private final assetsDirectory:String;
 	private final cppDirectory:String;
 	private final javaDirectory:String;
