@@ -45,10 +45,9 @@ class AndroidPlatform implements TargetPlatform
 		context.APP_VERSION_NAME = '1.0';
 		context.APP_VERSION_CODE = 1;
 
-		context.ANDROID_BUILD_SDK_VERSION = 0;
+		context.ANDROID_BUILD_SDK_VERSION = 33;
 		context.ANDROID_BUILD_TARGET_SDK_VERSION = 33;
 		context.ANDROID_BUILD_MIN_SDK_VERSION = 21;
-		context.ANDROID_BUILD_TOOLS_VERSION = 0;
 
 		final permissions:Array<{key:String, value:Dynamic}> = [];
 		permissions.push({key: 'android.permission.INTERNET', value: true});
@@ -127,7 +126,7 @@ class AndroidPlatform implements TargetPlatform
 
 		for (architecture in architectures)
 		{
-			var archCppDirectory:String;
+			var archDirectory:String;
 			var archDefine:String;
 			var archSuffix:String;
 
@@ -136,31 +135,29 @@ class AndroidPlatform implements TargetPlatform
 			switch (architecture)
 			{
 				case ARM64:
-					archCppDirectory = Path.join([cppDirectory, 'arm64-v8a']);
+					archDirectory = 'arm64-v8a';
 					archSuffix = archHXML.debug ? '-64-debug' : '-64';
 					archDefine = 'HXCPP_ARM64';
 				case ARMV7:
-					archCppDirectory = Path.join([cppDirectory, 'armeabi-v7a']);
+					archDirectory = 'armeabi-v7a';
 					archSuffix = archHXML.debug ? '-v7-debug' : '-v7';
 					archDefine = 'HXCPP_ARMV7';
 				case X86:
-					archCppDirectory = Path.join([cppDirectory, 'x86']);
+					archDirectory = 'x86';
 					archSuffix = archHXML.debug ? '-x86-debug' : '-x86';
 					archDefine = 'HXCPP_X86';
 				case X86_64:
-					archCppDirectory = Path.join([cppDirectory, 'x86_64']);
+					archDirectory = 'x86_64';
 					archSuffix = archHXML.debug ? '-x86_64-debug' : '-x86_64';
 					archDefine = 'HXCPP_X86_64';
 			}
 
-			System.makeDirectory(archCppDirectory);
-
-			archHXML.cpp = archCppDirectory;
+			archHXML.cpp = Path.join([cppDirectory, archDirectory]);
 			archHXML.define(archDefine);
 			archHXML.build();
 
-			System.copyIfNewer(Path.join([archCppDirectory, 'lib' + archHXML.main + archSuffix + '.so']),
-				Path.join([jniLibsDirectory, 'lib' + archHXML.main + '.so']));
+			System.copyIfNewer(Path.join([archHXML.cpp, 'lib' + archHXML.main + archSuffix + '.so']),
+				Path.join([jniLibsDirectory, archDirectory, 'lib' + archHXML.main + '.so']));
 		}
 
 		if (System.hostPlatform != WINDOWS)
