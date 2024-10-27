@@ -1887,7 +1887,6 @@ extern enum abstract CubemapLayout(CubemapLayoutImpl)
     @:native('CUBEMAP_LAYOUT_LINE_HORIZONTAL') var CUBEMAP_LAYOUT_LINE_HORIZONTAL;
     @:native('CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR') var CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR;
     @:native('CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE') var CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE;
-    @:native('CUBEMAP_LAYOUT_PANORAMA') var CUBEMAP_LAYOUT_PANORAMA;
 
     @:from
     static inline function fromInt(i:Int):CubemapLayout
