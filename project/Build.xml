@@ -220,6 +220,11 @@
         </section>
     </target>
 
+    <compiler id="MSVC" if="windows">
+        <flag value="-wd4028" />
+        <flag value="-wd4273" />
+    </compiler>
+
     <compiler id="android-gcc" if="android">
         <flag value="-mfix-cortex-a53-835769" if="HXCPP_ARM64" />
 
