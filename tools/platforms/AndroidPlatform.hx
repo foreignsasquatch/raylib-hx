@@ -42,22 +42,22 @@ class AndroidPlatform implements TargetPlatform
 
 		final context:Dynamic = {};
 
-		context.APP_APPLICATION_ID = 'org.haxe.raylib';
+		context.APP_NAMESPACE = 'org.haxe.raylib';
 		context.APP_VERSION_NAME = '1.0';
 		context.APP_VERSION_CODE = 1;
 
-		context.ANDROID_BUILD_SDK_VERSION = 33;
-		context.ANDROID_BUILD_TARGET_SDK_VERSION = 33;
-		context.ANDROID_BUILD_MIN_SDK_VERSION = 21;
+		context.APP_BUILD_SDK_VERSION = 33;
+		context.APP_BUILD_TARGET_SDK_VERSION = 33;
+		context.APP_BUILD_MIN_SDK_VERSION = 21;
 
 		final permissions:Array<{key:String, value:Dynamic}> = [];
 		permissions.push({key: 'android.permission.INTERNET', value: true});
 		permissions.push({key: 'android.permission.VIBRATE', value: true});
-		context.ANDROID_PERMISSIONS = permissions;
+		context.APP_PERMISSIONS = permissions;
 
 		final features:Array<{key:String, value:Dynamic}> = [];
 		features.push({key: 'android.hardware.sensor.accelerometer', value: true});
-		context.ANDROID_FEATURES = features;
+		context.APP_FEATURES = features;
 
 		final application:Array<{key:String, value:Dynamic}> = [];
 		application.push({key: 'android:label', value: 'rGame.hx'});
@@ -66,11 +66,11 @@ class AndroidPlatform implements TargetPlatform
 		application.push({key: 'android:allowBackup', value: true});
 		application.push({key: 'android:hardwareAccelerated', value: true});
 
-		if (context.ANDROID_BUILD_TARGET_SDK_VERSION >= 30)
+		if (context.APP_BUILD_TARGET_SDK_VERSION >= 30)
 			application.push({key: 'android:allowNativeHeapPointerTagging', value: false});
 
 		application.push({key: 'android:appCategory', value: 'game'});
-		context.ANDROID_APPLICATION = application;
+		context.APP_APPLICATION = application;
 
 		final activity:Array<{key:String, value:Dynamic}> = [];
 		activity.push({key: 'android:name', value: 'MainActivity'});
@@ -83,13 +83,13 @@ class AndroidPlatform implements TargetPlatform
 		activity.push({key: 'android:resizeableActivity', value: false});
 		activity.push({key: 'android:clearTaskOnLaunch', value: true});
 		activity.push({key: 'android:exported', value: true});
-		context.ANDROID_ACTIVITY = activity;
+		context.APP_ACTIVITY = activity;
 
 		final metadata:Array<{key:String, value:Dynamic}> = [];
 		metadata.push({key: 'android.app.lib_name', value: hxml.main});
-		context.ANDROID_METADATA = metadata;
+		context.APP_METADATA = metadata;
 
-		final javaAppDirectory:String = Path.join([javaDirectory, context.APP_APPLICATION_ID.split('.').join('/')]);
+		final javaAppDirectory:String = Path.join([javaDirectory, context.APP_NAMESPACE.split('.').join('/')]);
 
 		System.makeDirectory(javaAppDirectory);
 

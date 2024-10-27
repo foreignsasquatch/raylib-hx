@@ -1,4 +1,4 @@
-package ::APP_APPLICATION_ID::;
+package ::APP_NAMESPACE::;
 
 import org.raylib.GameActivity;
 
