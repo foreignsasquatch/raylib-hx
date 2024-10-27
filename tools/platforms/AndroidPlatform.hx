@@ -2,7 +2,6 @@ package platforms;
 
 import interfaces.TargetPlatform;
 import haxe.io.Path;
-import haxe.DynamicAccess;
 import hxp.Haxelib;
 import hxp.HXML;
 import hxp.Log;
@@ -52,16 +51,16 @@ class AndroidPlatform implements TargetPlatform
 			context.ANDROID_BUILD_MIN_SDK_VERSION = 21;
 			context.ANDROID_BUILD_TOOLS_VERSION = 0;
 
-			final permissions:DynamicAccess<Bool> = {};
+			final permissions:Map<String, Bool> = [];
 			permissions.set('android.permission.INTERNET', true);
 			permissions.set('android.permission.VIBRATE', true);
 			context.ANDROID_PERMISSIONS = permissions;
 
-			final features:DynamicAccess<Bool> = {};
+			final features:Map<String, Bool> = [];
 			features.set('android.hardware.sensor.accelerometer', true);
 			context.ANDROID_FEATURES = features;
 
-			final application:DynamicAccess<Dynamic> = {};
+			final application:Map<String, Dynamic> = [];
 			application.set('android:label', 'rGame.hx');
 			// application.set('android:icon', '@drawable/icon');
 			application.set('android:theme', '@android:style/Theme.NoTitleBar.Fullscreen');
@@ -74,7 +73,7 @@ class AndroidPlatform implements TargetPlatform
 			application.set('android:appCategory', 'game');
 			context.ANDROID_APPLICATION = application;
 
-			final activity:DynamicAccess<Dynamic> = {};
+			final activity:Map<String, Dynamic> = [];
 			activity.set('android:name', 'MainActivity');
 			activity.set('android:configChanges', 'keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|locale|layoutDirection|navigation');
 			activity.set('android:screenOrientation', 'landscape');
@@ -84,7 +83,7 @@ class AndroidPlatform implements TargetPlatform
 			activity.set('android:exported', true);
 			context.ANDROID_ACTIVITY = activity;
 
-			final metadata:DynamicAccess<String> = {};
+			final metadata:Map<String, String> = [];
 			metadata.set('android.app.lib_name', archHXML.main);
 			context.ANDROID_METADATA = metadata;
 
@@ -134,18 +133,18 @@ class AndroidPlatform implements TargetPlatform
 		context.ANDROID_BUILD_MIN_SDK_VERSION = 21;
 		context.ANDROID_BUILD_TOOLS_VERSION = 0;
 
-		final permissions:DynamicAccess<Bool> = {};
+		final permissions:Map<String, Bool> = [];
 		permissions.set('android.permission.INTERNET', true);
 		permissions.set('android.permission.VIBRATE', true);
 		context.ANDROID_PERMISSIONS = permissions;
 		Log.info('Set Android permissions: ' + permissions);
 
-		final features:DynamicAccess<Bool> = {};
+		final features:Map<String, Bool> = [];
 		features.set('android.hardware.sensor.accelerometer', true);
 		context.ANDROID_FEATURES = features;
 		Log.info('Set Android features: ' + features);
 
-		final application:DynamicAccess<Dynamic> = {};
+		final application:Map<String, Dynamic> = [];
 		application.set('android:label', 'rGame.hx');
 		application.set('android:theme', '@android:style/Theme.NoTitleBar.Fullscreen');
 		application.set('android:allowBackup', true);
@@ -158,7 +157,7 @@ class AndroidPlatform implements TargetPlatform
 		context.ANDROID_APPLICATION = application;
 		Log.info('Configured Android application: ' + application);
 
-		final activity:DynamicAccess<Dynamic> = {};
+		final activity:Map<String, Dynamic> = [];
 		activity.set('android:name', 'MainActivity');
 		activity.set('android:configChanges', 'keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|locale|layoutDirection|navigation');
 		activity.set('android:screenOrientation', 'landscape');
@@ -169,7 +168,7 @@ class AndroidPlatform implements TargetPlatform
 		context.ANDROID_ACTIVITY = activity;
 		Log.info('Configured Android activity: ' + activity);
 
-		final metadata:DynamicAccess<String> = {};
+		final metadata:Map<String, String> = [];
 		metadata.set('android.app.lib_name', hxml.main);
 		context.ANDROID_METADATA = metadata;
 		Log.info('Configured Android metadata: ' + metadata);
