@@ -44,11 +44,11 @@ class AndroidPlatform implements TargetPlatform
 		context.ANDROID_BUILD_TOOLS_VERSION = 0;
 	}
 
-	public function build(excludeArchitectures:Array<Architecture>, test:Bool):Bool
+	public function build(architectures:Array<Architecture>):Bool
 	{
-		final architecturesToBuild:Array<Architecture> = supportedArchitectures().filter(function(arch:Architecture):Bool
+		final architecturesToBuild:Array<Architecture> = architectures.filter(function(arch:Architecture):Bool
 		{
-			return !excludeArchitectures.contains(arch);
+			return supportedArchitectures.contains(arch);
 		});
 
 		if (architectures.length == 0)
