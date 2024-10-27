@@ -1,6 +1,7 @@
 package org.raymob.features;
 
 import android.app.NativeActivity;
+import android.content.Context;
 import android.view.WindowManager;
 import android.view.View;
 import android.os.Build;
@@ -9,7 +10,7 @@ public class DisplayManager
 {
     private final NativeActivity activity;
 
-    public DisplayManager(android.content.Context context) 
+    public DisplayManager(Context context) 
     {
         activity = (NativeActivity) context;
 
@@ -21,9 +22,9 @@ public class DisplayManager
     public void keepScreenOn(boolean keepOn) 
     {
         if (keepOn)
-            activity.getWindow().addFlags(LayoutParams.FLAG_KEEP_SCREEN_ON);
+            activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         else
-            activity.getWindow().clearFlags(LayoutParams.FLAG_KEEP_SCREEN_ON);
+            activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     public void setImmersiveMode() 
