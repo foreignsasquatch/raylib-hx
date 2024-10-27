@@ -2,6 +2,7 @@ package platforms;
 
 import interfaces.TargetPlatform;
 import haxe.io.Path;
+import haxe.DynamicAccess;
 import hxp.HXML;
 import hxp.Log;
 import hxp.System;
@@ -38,10 +39,51 @@ class AndroidPlatform implements TargetPlatform
 		System.makeDirectory(resDirectory);
 
 		final context:Dynamic = {};
+
+		context.APP_APPLICATION_ID = 'org.haxe.raylib';
+		context.APP_VERSION_NAME = '1.0';
+		context.APP_VERSION_CODE = 1;
+
 		context.ANDROID_BUILD_SDK_VERSION = 0;
 		context.ANDROID_BUILD_TARGET_SDK_VERSION = 33;
 		context.ANDROID_BUILD_MIN_SDK_VERSION = 21;
 		context.ANDROID_BUILD_TOOLS_VERSION = 0;
+
+		final permissions:DynamicAccess<Bool> = {};
+		permissions.set('android.permission.INTERNET', true);
+		permissions.set('android.permission.VIBRATE', true);
+		context.ANDROID_PERMISSIONS = permissions;
+
+		final features:DynamicAccess<Bool> = {};
+		features.set('android.hardware.sensor.accelerometer', true);
+		context.ANDROID_FEATURES = features;
+
+		final application:DynamicAccess<Dynamic> = {};
+		application.set('android:label', 'rGame.hx');
+		// application.set('android:icon', '@drawable/icon');
+		application.set('android:theme', '@android:style/Theme.NoTitleBar.Fullscreen');
+		application.set('android:allowBackup', true);
+		application.set('android:hardwareAccelerated', true);
+
+		if (context.ANDROID_BUILD_TARGET_SDK_VERSION >= 30)
+			application.set('android:allowNativeHeapPointerTagging', false);
+
+		application.set('android:appCategory', 'game');
+		context.ANDROID_APPLICATION = application;
+
+		final activity:DynamicAccess<Dynamic> = {};
+		activity.set('android:name', 'MainActivity');
+		activity.set('android:configChanges', 'keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|locale|layoutDirection|navigation');
+		activity.set('android:screenOrientation', 'landscape');
+		activity.set('android:launchMode', 'singleTask');
+		activity.set('android:resizeableActivity', false);
+		activity.set('android:clearTaskOnLaunch', true);
+		activity.set('android:exported', true);
+		context.ANDROID_ACTIVITY = activity;
+
+		final metadata:DynamicAccess<String> = {};
+		metadata.set('android.app.lib_name', archHXML.main);
+		context.ANDROID_METADATA = metadata;
 	}
 
 	public function build(architectures:Array<Architecture>):Bool
