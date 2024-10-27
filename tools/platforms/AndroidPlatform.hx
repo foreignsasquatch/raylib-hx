@@ -49,6 +49,14 @@ class AndroidPlatform implements TargetPlatform
 		System.makeDirectory(jniLibsDirectory);
 		System.makeDirectory(resDirectory);
 
+		final context:Dynamic = {};
+		context.APP_NAMESPACE = 'org.haxe.raylib';
+		context.APP_VERSION_NAME = '1.0';
+		context.APP_VERSION_CODE = 1;
+		context.APP_COMPILE_SDK_VERSION = 33;
+		context.APP_TARGET_SDK_VERSION = 33;
+		context.APP_MIN_SDK_VERSION = 21;
+
 		final manifest:Xml = Xml.createElement('manifest');
 		manifest.set('xmlns:android', 'http://schemas.android.com/apk/res/android');
 
@@ -113,14 +121,6 @@ class AndroidPlatform implements TargetPlatform
 		intentFilter.addChild(category);
 
 		System.writeText(haxe.xml.Printer.print(manifest, true), Path.join([hxml.cpp, 'app/src/main/AndroidManifest.xml']));
-
-		final context:Dynamic = {};
-		context.APP_NAMESPACE = 'org.haxe.raylib';
-		context.APP_VERSION_NAME = '1.0';
-		context.APP_VERSION_CODE = 1;
-		context.APP_COMPILE_SDK_VERSION = 33;
-		context.APP_TARGET_SDK_VERSION = 33;
-		context.APP_MIN_SDK_VERSION = 21;
 
 		final gradleProjectFiles:Array<String> = System.findTemplateRecursive([templateDirectory], 'android/gradle-project');
 
