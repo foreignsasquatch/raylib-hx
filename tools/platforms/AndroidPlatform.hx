@@ -107,11 +107,6 @@ class AndroidPlatform implements TargetPlatform
 		activity.set('android:exported', 'true');
 		application.addChild(activity);
 
-		final metaData:Xml = Xml.createElement('meta-data');
-		metaData.set('android:name', 'android.app.lib_name');
-		metaData.set('android:value', hxml.main);
-		application.addChild(metaData);
-
 		final intentFilter:Xml = Xml.createElement('intent-filter');
 		activity.addChild(intentFilter);
 
@@ -122,6 +117,11 @@ class AndroidPlatform implements TargetPlatform
 		final category:Xml = Xml.createElement('category');
 		category.set('android:name', 'android.intent.category.LAUNCHER');
 		intentFilter.addChild(category);
+
+		final metaData:Xml = Xml.createElement('meta-data');
+		metaData.set('android:name', 'android.app.lib_name');
+		metaData.set('android:value', hxml.main);
+		activity.addChild(metaData);
 
 		System.writeText(haxe.xml.Printer.print(manifest, true), Path.join([hxml.cpp, 'app/src/main/AndroidManifest.xml']));
 
