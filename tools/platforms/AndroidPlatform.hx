@@ -74,7 +74,10 @@ class AndroidPlatform implements TargetPlatform
 
 		final activity:Array<{key:String, value:Dynamic}> = [];
 		activity.push({key: 'android:name', value: 'MainActivity'});
-		activity.push({key: 'android:configChanges', value: 'keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|locale|layoutDirection|navigation'});
+		activity.push({
+			key: 'android:configChanges',
+			value: 'keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|locale|layoutDirection|navigation'
+		});
 		activity.push({key: 'android:screenOrientation', value: 'landscape'});
 		activity.push({key: 'android:launchMode', value: 'singleTask'});
 		activity.push({key: 'android:resizeableActivity', value: false});
@@ -96,8 +99,13 @@ class AndroidPlatform implements TargetPlatform
 		{
 			System.makeDirectory(hxml.cpp);
 
-			for (file in gradleProjectFiles)
-				System.copyFile(file, Path.join([hxml.cpp, file]), context);
+			for (fileLocation in gradleProjectFiles)
+			{
+				System.copyFile(file, Path.join([
+					hxml.cpp,
+					StringTools.replace(fileLocation, Path.join([templateDirectory, 'android/gradle-project']), '')
+				]), context);
+			}
 		}
 
 		System.copyFileTemplate([templateDirectory], 'android/MainActivity.java', Path.join([javaAppDirectory, 'MainActivity.java']), context);
@@ -155,10 +163,10 @@ class AndroidPlatform implements TargetPlatform
 				Path.join([jniLibsDirectory, 'lib' + archHXML.main + '.so']));
 		}
 
-		/*if (System.hostPlatform != WINDOWS)
+		if (System.hostPlatform != WINDOWS)
 			System.runCommand(hxml.cpp, 'chmod', ['+x', './gradlew']);
 
-		System.runCommand(hxml.cpp, System.hostPlatform != WINDOWS ? './gradlew' : 'gradlew', ['build']);*/
+		System.runCommand(hxml.cpp, System.hostPlatform != WINDOWS ? './gradlew' : 'gradlew', ['build']);
 
 		return true;
 	}
