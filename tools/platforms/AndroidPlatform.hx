@@ -170,7 +170,7 @@ class AndroidPlatform implements TargetPlatform
 		Log.info('Configured Android activity: ' + activity);
 
 		final metadata:DynamicAccess<String> = {};
-		metadata.set('android.app.lib_name', archHXML.main);
+		metadata.set('android.app.lib_name', hxml.main);
 		context.ANDROID_METADATA = metadata;
 		Log.info('Configured Android metadata: ' + metadata);
 
