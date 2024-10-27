@@ -59,4 +59,10 @@ public class Accelerometer implements SensorEventListener
             accelerometerValues[2] = event.values[2];
         }
     }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy)
+    {
+        // Do nothing in case of sensor accuracy change
+    }
 }
