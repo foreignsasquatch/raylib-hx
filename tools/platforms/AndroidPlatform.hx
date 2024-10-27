@@ -113,7 +113,8 @@ class AndroidPlatform implements TargetPlatform
 
 		if (architectures.length == 0)
 		{
-			Log.warn('No architectures to build after applying exclusions.');
+			Log.error('No architectures to build after applying exclusions.');
+
 			return false;
 		}
 
