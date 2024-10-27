@@ -56,6 +56,9 @@ class AndroidPlatform implements TargetPlatform
 		context.APP_COMPILE_SDK_VERSION = 33;
 		context.APP_TARGET_SDK_VERSION = 33;
 		context.APP_MIN_SDK_VERSION = 21;
+		context.APP_USE_NON_TRANSITIVE_R_CLASS = true;
+		context.APP_USE_ANDROIDX = false;
+		context.APP_ENABLE_JETIFIER = false;
 
 		final manifest:Xml = Xml.createElement('manifest');
 		manifest.set('xmlns:android', 'http://schemas.android.com/apk/res/android');
