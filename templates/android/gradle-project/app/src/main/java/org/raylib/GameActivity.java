@@ -18,7 +18,7 @@ public class GameActivity extends NativeActivity
     }
 
     @Override
-    protected void onWindowFocusChanged(boolean hasFocus)
+    public void onWindowFocusChanged(boolean hasFocus)
     {
         super.onWindowFocusChanged(hasFocus);
 
@@ -30,7 +30,7 @@ public class GameActivity extends NativeActivity
     }
 
     @Override
-    protected boolean onKeyUp(int keyCode, KeyEvent event)
+    public boolean onKeyUp(int keyCode, KeyEvent event)
     {
         if (features != null)
             features.onKeyUpEvent(event);
