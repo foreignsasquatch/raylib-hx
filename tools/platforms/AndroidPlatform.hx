@@ -53,23 +53,23 @@ class AndroidPlatform implements TargetPlatform
 			context.ANDROID_BUILD_TOOLS_VERSION = 0;
 
 			final permissions:DynamicAccess<Bool> = {};
-			permissions.set('android.permission.INTERNET', true);
-			permissions.set('android.permission.VIBRATE', true);
+			permissions.set('android.permission.INTERNET', 'true');
+			permissions.set('android.permission.VIBRATE', 'true');
 			context.ANDROID_PERMISSIONS = permissions;
 
 			final features:DynamicAccess<Bool> = {};
-			features.set('android.hardware.sensor.accelerometer', true);
+			features.set('android.hardware.sensor.accelerometer', 'true');
 			context.ANDROID_FEATURES = features;
 
 			final application:DynamicAccess<Dynamic> = {};
 			application.set('android:label', 'rGame.hx');
 			// application.set('android:icon', '@drawable/icon');
 			application.set('android:theme', '@android:style/Theme.NoTitleBar.Fullscreen');
-			application.set('android:allowBackup', true);
-			application.set('android:hardwareAccelerated', true);
+			application.set('android:allowBackup', 'true');
+			application.set('android:hardwareAccelerated', 'true');
 
 			if (context.ANDROID_BUILD_TARGET_SDK_VERSION >= 30)
-				application.set('android:allowNativeHeapPointerTagging', false);
+				application.set('android:allowNativeHeapPointerTagging', 'false');
 
 			application.set('android:appCategory', 'game');
 			context.ANDROID_APPLICATION = application;
@@ -79,9 +79,9 @@ class AndroidPlatform implements TargetPlatform
 			activity.set('android:configChanges', 'keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|locale|layoutDirection|navigation');
 			activity.set('android:screenOrientation', 'landscape');
 			activity.set('android:launchMode', 'singleTask');
-			activity.set('android:resizeableActivity', false);
-			activity.set('android:clearTaskOnLaunch', true);
-			activity.set('android:exported', true);
+			activity.set('android:resizeableActivity', 'false');
+			activity.set('android:clearTaskOnLaunch', 'true');
+			activity.set('android:exported', 'true');
 			context.ANDROID_ACTIVITY = activity;
 
 			final metadata:DynamicAccess<String> = {};
@@ -135,24 +135,24 @@ class AndroidPlatform implements TargetPlatform
 		context.ANDROID_BUILD_TOOLS_VERSION = 0;
 
 		final permissions:DynamicAccess<Bool> = {};
-		permissions.set('android.permission.INTERNET', true);
-		permissions.set('android.permission.VIBRATE', true);
+		permissions.set('android.permission.INTERNET', 'true');
+		permissions.set('android.permission.VIBRATE', 'true');
 		context.ANDROID_PERMISSIONS = permissions;
 		Log.info('Set Android permissions: ' + permissions);
 
 		final features:DynamicAccess<Bool> = {};
-		features.set('android.hardware.sensor.accelerometer', true);
+		features.set('android.hardware.sensor.accelerometer', 'true');
 		context.ANDROID_FEATURES = features;
 		Log.info('Set Android features: ' + features);
 
 		final application:DynamicAccess<Dynamic> = {};
 		application.set('android:label', 'rGame.hx');
 		application.set('android:theme', '@android:style/Theme.NoTitleBar.Fullscreen');
-		application.set('android:allowBackup', true);
-		application.set('android:hardwareAccelerated', true);
+		application.set('android:allowBackup', 'true');
+		application.set('android:hardwareAccelerated', 'true');
 
 		if (context.ANDROID_BUILD_TARGET_SDK_VERSION >= 30)
-			application.set('android:allowNativeHeapPointerTagging', false);
+			application.set('android:allowNativeHeapPointerTagging', 'false');
 
 		application.set('android:appCategory', 'game');
 		context.ANDROID_APPLICATION = application;
@@ -163,9 +163,9 @@ class AndroidPlatform implements TargetPlatform
 		activity.set('android:configChanges', 'keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|locale|layoutDirection|navigation');
 		activity.set('android:screenOrientation', 'landscape');
 		activity.set('android:launchMode', 'singleTask');
-		activity.set('android:resizeableActivity', false);
-		activity.set('android:clearTaskOnLaunch', true);
-		activity.set('android:exported', true);
+		activity.set('android:resizeableActivity', 'false');
+		activity.set('android:clearTaskOnLaunch', 'true');
+		activity.set('android:exported', 'true');
 		context.ANDROID_ACTIVITY = activity;
 		Log.info('Configured Android activity: ' + activity);
 
