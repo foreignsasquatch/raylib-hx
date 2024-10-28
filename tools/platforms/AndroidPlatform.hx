@@ -170,7 +170,7 @@ class AndroidPlatform extends TargetPlatform
 
 		System.writeText(Printer.print(manifest, true), Path.join([hxml.cpp, 'app/src/main/AndroidManifest.xml']));
 
-		final gradleProjectFiles:Array<String> = System.findTemplateRecursive([templateDirectory], 'android/gradle-project');
+		final gradleProjectFiles:Array<String> = System.findTemplateRecursive([templateDirectory], 'android');
 
 		if (gradleProjectFiles != null && gradleProjectFiles.length > 0)
 		{
@@ -178,7 +178,7 @@ class AndroidPlatform extends TargetPlatform
 			{
 				System.copyFile(fileLocation, Path.join([
 					hxml.cpp,
-					StringTools.replace(fileLocation, Path.join([templateDirectory, 'android/gradle-project']), '')
+					StringTools.replace(fileLocation, Path.join([templateDirectory, 'android']), '')
 				]), context);
 			}
 		}
