@@ -86,6 +86,8 @@ class AndroidPlatform extends TargetPlatform
 		context.APP_USE_NON_TRANSITIVE_R_CLASS = true;
 		context.APP_USE_ANDROIDX = false;
 		context.APP_ENABLE_JETIFIER = false;
+		context.GRADLE_VERSION = '8.6';
+		context.GRADLE_PLUGIN_VERSION = '7.3.0';
 
 		final manifest:Xml = Xml.createElement('manifest');
 		manifest.set('xmlns:android', 'http://schemas.android.com/apk/res/android');
