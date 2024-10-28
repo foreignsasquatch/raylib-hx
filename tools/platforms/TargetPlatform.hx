@@ -1,5 +1,6 @@
-package interfaces;
+package platforms;
 
+import hxp.HXML;
 import utils.Architecture;
 import utils.Config;
 
