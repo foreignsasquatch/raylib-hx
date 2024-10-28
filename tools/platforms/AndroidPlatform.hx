@@ -227,7 +227,7 @@ class AndroidPlatform extends TargetPlatform
 			if (System.hostPlatform != WINDOWS)
 				System.runCommand(hxml.cpp, 'chmod', ['+x', './gradlew']);
 
-			System.runCommand(hxml.cpp, System.hostPlatform != WINDOWS ? './gradlew' : 'gradlew', ['assembleDebug', '--quiet']);
+			System.runCommand(hxml.cpp, System.hostPlatform != WINDOWS ? './gradlew' : 'gradlew', ['assembleDebug', '--console=plain']);
 		}
 	}
 
