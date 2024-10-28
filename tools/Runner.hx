@@ -1,12 +1,12 @@
 package;
 
-import interfaces.TargetPlatform;
 import haxe.io.Path;
 import haxe.Json;
 import hxp.HXML;
 import hxp.Log;
 import hxp.System;
 import platforms.AndroidPlatform;
+import platforms.TargetPlatform;
 import sys.io.File;
 import sys.FileSystem;
 import utils.ANSI;
