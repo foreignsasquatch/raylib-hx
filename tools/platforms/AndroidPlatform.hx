@@ -77,7 +77,7 @@ class AndroidPlatform extends TargetPlatform
 		}
 
 		final context:Dynamic = {};
-		context.APP_NAMESPACE = ['com', config.company ?? 'raylib', config.product ?? 'rgame'].join('.');
+		context.APP_PACKAGE = ['com', config.company ?? 'raylib', config.product ?? 'rgame'].join('.');
 		context.APP_VERSION_NAME = config.versionName ?? '1.0';
 		context.APP_VERSION_CODE = config.versionCode ?? 1;
 		context.APP_COMPILE_SDK_VERSION = 33;
@@ -87,7 +87,7 @@ class AndroidPlatform extends TargetPlatform
 		context.APP_USE_ANDROIDX = false;
 		context.APP_ENABLE_JETIFIER = false;
 		context.GRADLE_VERSION = '8.6';
-		context.GRADLE_PLUGIN_VERSION = '7.3.0';
+		context.GRADLE_PLUGIN_VERSION = '::GRADLE_PLUGIN_VERSION::';
 
 		final manifest:Xml = Xml.createElement('manifest');
 		manifest.set('xmlns:android', 'http://schemas.android.com/apk/res/android');
@@ -178,7 +178,7 @@ class AndroidPlatform extends TargetPlatform
 		}
 
 		System.copyFileTemplate([templateDirectory], 'android/MainActivity.java',
-			Path.join([javaDirectory, context.APP_NAMESPACE.split('.').join('/'), 'MainActivity.java']), context);
+			Path.join([javaDirectory, context.APP_PACKAGE.split('.').join('/'), 'MainActivity.java']), context);
 	}
 
 	public override function build(architectures:Array<Architecture>):Void
