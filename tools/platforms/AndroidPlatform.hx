@@ -179,7 +179,7 @@ class AndroidPlatform extends TargetPlatform
 			Path.join([javaDirectory, context.APP_NAMESPACE.split('.').join('/'), 'MainActivity.java']), context);
 	}
 
-	public override function build(architectures:Array<Architecture>):Bool
+	public override function build(architectures:Array<Architecture>):Void
 	{
 		super.build(architectures);
 
@@ -229,8 +229,6 @@ class AndroidPlatform extends TargetPlatform
 
 			System.runCommand(hxml.cpp, System.hostPlatform != WINDOWS ? './gradlew' : 'gradlew', ['assembleDebug']);
 		}
-
-		return true;
 	}
 
 	public override function supportedArchitectures():Array<Architecture>
