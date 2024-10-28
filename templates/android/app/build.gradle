@@ -1,6 +1,6 @@
 plugins
 {
-	id 'com.android.application' version '::GRADLE_PLUGIN_VERSION::' apply false
+	id 'com.android.application' version '::GRADLE_PLUGIN_VERSION::'
 }
 
 repositories
