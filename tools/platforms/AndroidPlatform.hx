@@ -87,7 +87,7 @@ class AndroidPlatform extends TargetPlatform
 		context.APP_USE_NON_TRANSITIVE_R_CLASS = true;
 		context.APP_USE_ANDROIDX = false;
 		context.APP_ENABLE_JETIFIER = false;
-		context.GRADLE_VERSION = '7.2';
+		context.GRADLE_VERSION = '7.4';
 		context.GRADLE_PLUGIN_VERSION = '7.3.1';
 
 		final packageDirectory:String = Path.join([javaDirectory, context.APP_PACKAGE.split('.').join('/')]);
