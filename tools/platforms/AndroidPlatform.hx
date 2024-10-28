@@ -1,6 +1,7 @@
 package platforms;
 
 import haxe.io.Path;
+import haxe.xml.Printer;
 import hxp.Haxelib;
 import hxp.HXML;
 import hxp.Log;
@@ -77,6 +78,7 @@ class AndroidPlatform extends TargetPlatform
 		}
 
 		final context:Dynamic = {};
+
 		context.APP_PACKAGE = ['com', config.company ?? 'raylib', config.product ?? 'rgame'].join('.');
 		context.APP_VERSION_NAME = config.versionName ?? '1.0';
 		context.APP_VERSION_CODE = config.versionCode ?? 1;
@@ -86,16 +88,20 @@ class AndroidPlatform extends TargetPlatform
 		context.APP_USE_NON_TRANSITIVE_R_CLASS = true;
 		context.APP_USE_ANDROIDX = false;
 		context.APP_ENABLE_JETIFIER = false;
-		context.GRADLE_VERSION = '8.10.2';
-		context.GRADLE_PLUGIN_VERSION = '8.7.0';
+
+		context.GRADLE_VERSION = '8.3';
+		context.GRADLE_PLUGIN_VERSION = '8.1.2';
+
+		System.writeText('package ${context.APP_PACKAGE};\n\nimport org.raylib.GameActivity;\n\npublic class MainActivity extends GameActivity {}',
+			Path.join([javaDirectory, context.APP_PACKAGE.split('.').join('/'), 'MainActivity.java']));
 
 		final manifest:Xml = Xml.createElement('manifest');
 		manifest.set('xmlns:android', 'http://schemas.android.com/apk/res/android');
 
-		final usesFeature:Xml = Xml.createElement('uses-feature');
-		usesFeature.set('android:glEsVersion', hxml.hasDefine('GRAPHICS_API_OPENGL_ES3') ? '0x00030000' : '0x00020000');
-		usesFeature.set('android:required', 'true');
-		manifest.addChild(usesFeature);
+		final glEsVersion:Xml = Xml.createElement('uses-feature');
+		glEsVersion.set('android:glEsVersion', hxml.hasDefine('GRAPHICS_API_OPENGL_ES3') ? '0x00030000' : '0x00020000');
+		glEsVersion.set('android:required', 'true');
+		manifest.addChild(glEsVersion);
 
 		for (feature in DEFAULT_FEATURES)
 		{
@@ -162,7 +168,7 @@ class AndroidPlatform extends TargetPlatform
 		metaData.set('android:value', hxml.main);
 		activity.addChild(metaData);
 
-		System.writeText(haxe.xml.Printer.print(manifest, true), Path.join([hxml.cpp, 'app/src/main/AndroidManifest.xml']));
+		System.writeText(Printer.print(manifest, true), Path.join([hxml.cpp, 'app/src/main/AndroidManifest.xml']));
 
 		final gradleProjectFiles:Array<String> = System.findTemplateRecursive([templateDirectory], 'android/gradle-project');
 
@@ -176,9 +182,6 @@ class AndroidPlatform extends TargetPlatform
 				]), context);
 			}
 		}
-
-		System.copyFileTemplate([templateDirectory], 'android/MainActivity.java',
-			Path.join([javaDirectory, context.APP_PACKAGE.split('.').join('/'), 'MainActivity.java']), context);
 	}
 
 	public override function build(architectures:Array<Architecture>):Void
