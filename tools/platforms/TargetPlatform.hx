@@ -1,6 +1,7 @@
 package platforms;
 
 import hxp.HXML;
+import hxp.Log;
 import utils.Architecture;
 import utils.Config;
 
@@ -17,11 +18,11 @@ class TargetPlatform
 	{
 		this.config = config;
 		this.hxml = hxml;
-    }
+	}
 
-    public function setup():Void {}
+	public function setup():Void {}
 
-	public function build(architectures:Array<Architecture>):Bool
+	public function build(architectures:Array<Architecture>):Void
 	{
 		architectures = architectures.filter(function(arch:Architecture):Bool
 		{
@@ -33,11 +34,11 @@ class TargetPlatform
 			Log.error('No architectures to build after applying exclusions.');
 
 			return;
-        }
-    }
+		}
+	}
 
-    public function supportedArchitectures():Array<Architecture>
-    {
-        return [];
-    }
+	public function supportedArchitectures():Array<Architecture>
+	{
+		return [];
+	}
 }
