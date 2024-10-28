@@ -1,11 +1,11 @@
 package platforms;
 
-import interfaces.TargetPlatform;
 import haxe.io.Path;
 import hxp.Haxelib;
 import hxp.HXML;
 import hxp.Log;
 import hxp.System;
+import platforms.TargetPlatform;
 import sys.FileSystem;
 import utils.android.Feature;
 import utils.android.Permission;
@@ -13,7 +13,7 @@ import utils.Architecture;
 import utils.Config;
 
 @:nullSafety
-class AndroidPlatform implements TargetPlatform
+class AndroidPlatform extends TargetPlatform
 {
 	@:noCompletion
 	private static final DEFAULT_FEATURES:Array<Feature> = [{name: 'android.hardware.sensor.accelerometer', required: true}];
@@ -23,12 +23,6 @@ class AndroidPlatform implements TargetPlatform
 		{name: 'android.permission.INTERNET', required: true},
 		{name: 'android.permission.VIBRATE', required: true}
 	];
-
-	@:noCompletion
-	private final config:Config;
-
-	@:noCompletion
-	private final hxml:HXML;
 
 	@:noCompletion
 	private final assetsDirectory:String;
@@ -50,8 +44,7 @@ class AndroidPlatform implements TargetPlatform
 
 	public function new(config:Config, hxml:HXML):Void
 	{
-		this.config = config;
-		this.hxml = hxml;
+		super(config, hxml);
 
 		assetsDirectory = Path.join([hxml.cpp, 'app/src/main/assets']);
 		cppDirectory = Path.join([hxml.cpp, 'app/src/main/cpp']);
@@ -61,7 +54,7 @@ class AndroidPlatform implements TargetPlatform
 		templateDirectory = Path.join([Haxelib.getPath(new Haxelib('raylib-hx')), 'templates']);
 	}
 
-	public function setup():Void
+	public override function setup():Void
 	{
 		System.makeDirectory(assetsDirectory);
 		System.makeDirectory(cppDirectory);
@@ -186,19 +179,9 @@ class AndroidPlatform implements TargetPlatform
 			Path.join([javaDirectory, context.APP_NAMESPACE.split('.').join('/'), 'MainActivity.java']), context);
 	}
 
-	public function build(architectures:Array<Architecture>):Bool
+	public override function build(architectures:Array<Architecture>):Bool
 	{
-		final architecturesToBuild:Array<Architecture> = architectures.filter(function(arch:Architecture):Bool
-		{
-			return supportedArchitectures().contains(arch);
-		});
-
-		if (architectures.length == 0)
-		{
-			Log.error('No architectures to build after applying exclusions.');
-
-			return false;
-		}
+		super.build(architectures);
 
 		for (architecture in architectures)
 		{
@@ -250,7 +233,7 @@ class AndroidPlatform implements TargetPlatform
 		return true;
 	}
 
-	public function supportedArchitectures():Array<Architecture>
+	public override function supportedArchitectures():Array<Architecture>
 	{
 		return [ARM64, ARMV7, X86, X86_64];
 	}
