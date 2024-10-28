@@ -78,7 +78,6 @@ class AndroidPlatform extends TargetPlatform
 		}
 
 		final context:Dynamic = {};
-
 		context.APP_PACKAGE = ['com', config.company ?? 'raylib', config.product ?? 'rgame'].join('.');
 		context.APP_VERSION_NAME = config.versionName ?? '1.0';
 		context.APP_VERSION_CODE = config.versionCode ?? 1;
@@ -88,9 +87,8 @@ class AndroidPlatform extends TargetPlatform
 		context.APP_USE_NON_TRANSITIVE_R_CLASS = true;
 		context.APP_USE_ANDROIDX = false;
 		context.APP_ENABLE_JETIFIER = false;
-
-		context.GRADLE_VERSION = '8.3';
-		context.GRADLE_PLUGIN_VERSION = '8.1.1';
+		context.GRADLE_VERSION = '7.2';
+		context.GRADLE_PLUGIN_VERSION = '7.3.1';
 
 		final packageDirectory:String = Path.join([javaDirectory, context.APP_PACKAGE.split('.').join('/')]);
 
