@@ -92,8 +92,11 @@ class AndroidPlatform extends TargetPlatform
 		context.GRADLE_VERSION = '8.3';
 		context.GRADLE_PLUGIN_VERSION = '8.1.2';
 
-		System.writeText('package ${context.APP_PACKAGE};\n\nimport org.raylib.GameActivity;\n\npublic class MainActivity extends GameActivity {}',
-			Path.join([javaDirectory, context.APP_PACKAGE.split('.').join('/'), 'MainActivity.java']));
+		final packageDirectory:String = Path.join([javaDirectory, context.APP_PACKAGE.split('.').join('/')]);
+
+		System.makeDirectory(packageDirectory);
+
+		System.writeText('package ${context.APP_PACKAGE};\n\nimport org.raylib.GameActivity;\n\npublic class MainActivity extends GameActivity {}', Path.join([packageDirectory, 'MainActivity.java']));
 
 		final manifest:Xml = Xml.createElement('manifest');
 		manifest.set('xmlns:android', 'http://schemas.android.com/apk/res/android');
