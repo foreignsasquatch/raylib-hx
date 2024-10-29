@@ -38,6 +38,9 @@ class Runner
 		var options:Map<String, Array<String>> = cli.options;
 		trace('options: ' + options);
 
+		var runnedInDirectory:String = cli.runnedInDirectory;
+		trace('runnedInDirectory: ' + runnedInDirectory);
+
 		var workingDirectory:String = cli.workingDirectory;
 		trace('workingDirectory: ' + workingDirectory);
 
