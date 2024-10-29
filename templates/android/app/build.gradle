@@ -9,15 +9,12 @@ repositories
 	mavenCentral()
 }
 
-/*tasks.withType(JavaCompile)
-{
-	options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
-}*/
-
 android
 {
 	namespace project.APP_PACKAGE
+
 	compileSdkVersion Integer.parseInt(project.APP_COMPILE_SDK_VERSION)
+
 	defaultConfig
 	{
 		applicationId project.APP_PACKAGE
@@ -26,13 +23,18 @@ android
 		versionCode Integer.parseInt(project.APP_VERSION_CODE)
 		versionName project.APP_VERSION_NAME
 	}
+
 	buildTypes
 	{
 		debug
 		{
+			minifyEnabled true
+			shrinkResources true
+			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
 			debuggable true
 			jniDebuggable true
 		}
+
 		release
 		{
 			minifyEnabled true
@@ -44,6 +46,19 @@ android
 			zipAlignEnabled true
 		}
 	}
+
+	buildFeatures
+	{
+		mlModelBinding false
+		renderscript false
+	}
+
+	lintOptions
+	{
+		checkReleaseBuilds false
+		abortOnError false
+	}
+
 	compileOptions
 	{
 		sourceCompatibility JavaVersion.VERSION_1_8
