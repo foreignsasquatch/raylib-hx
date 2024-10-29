@@ -22,7 +22,7 @@ class Config
 		if (parsedData != null)
 		{
 			resourcesPath = parsedData.resourcesPath;
-			label = parsedData?).label;
+			label = parsedData.label;
 			company = parsedData.company;
 			product = parsedData.product;
 			versionCode = parsedData.versionCode;
