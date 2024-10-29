@@ -8,29 +8,25 @@ using StringTools;
 @:nullSafety
 class Cli
 {
-	public var args:Array<String>;
-	public var command:String;
-	public var commandArgs:Array<String>;
-	public var defines:Map<String, String>;
-	public var flags:Map<String, Bool>;
-	public var options:Map<String, Array<String>>;
-	public var workingDirectory:String;
-	public var runnedInDirectory:String;
+	public var args:Array<String> = [];
+	public var command:String = '';
+	public var commandArgs:Array<String> = [];
+	public var defines:Map<String, String> = [];
+	public var flags:Map<String, Bool> = [];
+	public var options:Map<String, Array<String>> = [];
+	public var runnedInDirectory:String = '';
+	public var workingDirectory:String = '';
 
 	public function new()
 	{
 		args = Sys.args();
-		command = '';
-		commandArgs = [];
-		defines = [];
-		flags = [];
-		options = [];
-		workingDirectory = Sys.getCwd();
 
 		final runnedIn:Null<String> = args.pop();
 
 		if (runnedIn != null)
 			runnedInDirectory = runnedIn;
+
+		workingDirectory = Sys.getCwd();
 
 		processArguments();
 	}
