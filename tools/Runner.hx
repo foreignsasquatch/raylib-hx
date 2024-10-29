@@ -49,7 +49,7 @@ class Runner
 						platform.build(architectures);
 				}
 			default:
-				Log.error(ANSI.apply('Unknown command: $command', [ANSICode.Red]));
+				Log.error(ANSI.apply('Unknown command: ${cli.command}', [ANSICode.Red]));
 		}
 	}
 
@@ -90,12 +90,12 @@ class Runner
 			switch (key)
 			{
 				case '-arm64', '-armv7', '-x86', '-x86_64':
-					final arch:Null<Architecture> = Architecture.fromFlag(arg);
+					final arch:Null<Architecture> = Architecture.fromFlag(key);
 
 					if (arch != null)
 						architectures.push(arch);
 				default:
-					Log.warn(ANSI.apply('Unknown argument: $arg', [ANSICode.Yellow]));
+					Log.warn(ANSI.apply('Unknown argument: $key', [ANSICode.Yellow]));
 			}
 		}
 
