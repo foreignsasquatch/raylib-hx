@@ -63,8 +63,9 @@ class Runner
 
 	private static function getTargetPlatform(target:Null<String>, config:Config, hxml:HXML):Null<TargetPlatform>
 	{
-		var targets:Null<TargetPlatform> = null switch (target)
+		var targetPlatform:Null<TargetPlatform> = null;
 
+		switch (target)
 		{
 			/*case 'windows':
 					targetPlatform = new TargetPlatform.Windows();
