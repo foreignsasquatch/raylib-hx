@@ -21,12 +21,25 @@ class Runner
 		final cli:Cli = new Cli();
 
 		var args:Array<String> = cli.args;
+		trace('args: ' + args);
+
 		var command:String = cli.command;
+		trace('command: ' + command);
+
 		var commandArgs:Array<String> = cli.commandArgs;
+		trace('commandArgs: ' + commandArgs);
+
 		var defines:Map<String, String> = cli.defines;
+		trace('defines: ' + defines);
+
 		var flags:Map<String, Bool> = cli.flags;
+		trace('flags: ' + flags);
+
 		var options:Map<String, Array<String>> = cli.options;
+		trace('options: ' + options);
+
 		var workingDirectory:String = cli.workingDirectory;
+		trace('workingDirectory: ' + workingDirectory);
 
 		/*final args:Array<String> = Sys.args();
 			final runDir:Null<String> = args.pop();
