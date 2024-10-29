@@ -18,12 +18,11 @@ class Cli
 	{
 		args = Sys.args();
 		workingDirectory = Sys.getCwd();
-
 		command = '';
 		commandArgs = [];
-		defines = new Map();
-		flags = new Map();
-		options = new Map();
+		defines = [];
+		flags = [];
+		options = [];
 
 		processArguments();
 	}
