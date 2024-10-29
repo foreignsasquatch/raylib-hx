@@ -15,11 +15,13 @@ class Cli
 	public var flags:Map<String, Bool>;
 	public var options:Map<String, Array<String>>;
 	public var workingDirectory:String;
+	public var runnedInDirectory:String;
 
 	public function new()
 	{
 		args = Sys.args();
 		workingDirectory = Sys.getCwd();
+		runnedInDirectory = '';
 		command = '';
 		commandArgs = [];
 		defines = [];
@@ -97,6 +99,11 @@ class Cli
 			else
 				words.push(arg);
 		}
+
+		final runnedIn:Null<String> = words.pop();
+
+		if (runnedIn != null)
+			runnedInDirectory = runnedIn;
 
 		final wordCommand:Null<String> = words.shift();
 
