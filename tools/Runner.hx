@@ -39,6 +39,10 @@ class Runner
 					Log.error(ANSI.apply('Unable to find "build.hxml" in ' + runDir + ' for the build process.', [ANSICode.Red]));
 
 				final buildFile:HXML = HXML.fromFile('build.hxml');
+
+				for (key => value in defines)
+					buildFile.define(key, value);
+
 				final configFile:Config = Json.parse(File.getContent('config.json'));
 
 				platform = getTargetPlatform(commandArgs[0], configFile, buildFile);
@@ -47,7 +51,7 @@ class Runner
 				{
 					platform.setup();
 
-					final architectures:Array<String> = getArchitectures(args);
+					final architectures:Array<String> = getArchitectures(flags);
 
 					if (architectures.length > 0)
 						platform.build(architectures);
