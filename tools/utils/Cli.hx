@@ -1,5 +1,7 @@
 package utils;
 
+using StringTools;
+
 /**
  * @see https://github.com/openfl/hxp/blob/master/src/hxp/Script.hx
  */
@@ -63,7 +65,11 @@ class Cli
 				else if (arg.startsWith('--'))
 				{
 					final field:String = arg.substr(2, equals - 2);
-					options[field] = options.get(field, []).concat(argValue);
+
+					if (!options.exists(field))
+						options[field] = [argValue];
+					else
+						options[field].push(argValue);
 				}
 				else if (arg.startsWith('-'))
 					flags.set(arg, true);
