@@ -20,44 +20,36 @@ class Runner
 	{
 		final cli:Cli = new Cli();
 
-		var args:Array<String> = cli.args;
-		var command:String = cli.command;
-		var commandArgs:Array<String> = cli.commandArgs;
-		var defines:Map<String, String> = cli.defines;
-		var flags:Map<String, Bool> = cli.flags;
-		var options:Map<String, Array<String>> = cli.options;
-		var runnedInDirectory:String = cli.runnedInDirectory;
-		var workingDirectory:String = cli.workingDirectory;
+		Sys.setCwd(cli.runnedInDirectory);
+
 		var platform:Null<TargetPlatform> = null;
 
-		Sys.setCwd(runnedInDirectory);
-
-		switch (command)
+		switch (cli.command)
 		{
 			case 'build':
 				if (!FileSystem.exists('build.hxml'))
-					Log.error(ANSI.apply('Unable to find "build.hxml" in ' + runDir + ' for the build process.', [ANSICode.Red]));
+					Log.error(ANSI.apply('Unable to find "build.hxml" in ${cli.runnedInDirectory} for the build process.', [ANSICode.Red]));
 
 				final buildFile:HXML = HXML.fromFile('build.hxml');
 
-				for (key => value in defines)
+				for (key => value in cli.defines)
 					buildFile.define(key, value);
 
 				final configFile:Config = Json.parse(File.getContent('config.json'));
 
-				platform = getTargetPlatform(commandArgs[0], configFile, buildFile);
+				platform = getTargetPlatform(cli.commandArgs[0], configFile, buildFile);
 
 				if (platform != null)
 				{
 					platform.setup();
 
-					final architectures:Array<String> = getArchitectures(flags);
+					final architectures:Array<Architecture> = getArchitectures(cli.flags);
 
 					if (architectures.length > 0)
 						platform.build(architectures);
 				}
 			default:
-				Log.error(ANSI.apply('Unknown command: ', [ANSICode.Red]) + command);
+				Log.error(ANSI.apply('Unknown command: $command', [ANSICode.Red]));
 		}
 	}
 
