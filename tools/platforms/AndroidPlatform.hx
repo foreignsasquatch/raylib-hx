@@ -77,6 +77,10 @@ class AndroidPlatform extends TargetPlatform
 			}
 		}
 
+		System.copyFile(Path.join([Haxelib.getPath(new Haxelib('raylib-hx')), 'project/lib/raylib/logo/raylib_36x36.png']), Path.join([resDirectory, 'res/drawable-ldpi/icon.png']));
+		System.copyFile(Path.join([Haxelib.getPath(new Haxelib('raylib-hx')), 'project/lib/raylib/logo/raylib_48x48.png']), Path.join([resDirectory, 'res/drawable-mdpi/icon.png']));
+		System.copyFile(Path.join([Haxelib.getPath(new Haxelib('raylib-hx')), 'project/lib/raylib/logo/raylib_72x72.png']), Path.join([resDirectory, 'res/drawable-hdpi/icon.png']));
+
 		final context:Dynamic = {};
 		context.APP_PACKAGE = ['com', config.company ?? 'raylib', config.product ?? 'rgame'].join('.');
 		context.APP_VERSION_NAME = config.versionName ?? '1.0';
@@ -122,7 +126,7 @@ class AndroidPlatform extends TargetPlatform
 
 		final application:Xml = Xml.createElement('application');
 		application.set('android:label', config.label ?? 'rGame.hx');
-		// application.set('android:icon', '@drawable/icon');
+		application.set('android:icon', '@drawable/icon');
 		application.set('android:theme', config.fullscreen ? '@android:style/Theme.NoTitleBar.Fullscreen' : '@android:style/Theme.NoTitleBar');
 		application.set('android:allowBackup', 'true');
 		application.set('android:hardwareAccelerated', 'true');
@@ -135,17 +139,7 @@ class AndroidPlatform extends TargetPlatform
 
 		final activity:Xml = Xml.createElement('activity');
 		activity.set('android:name', 'MainActivity');
-		activity.set('android:configChanges', [
-			'keyboard',
-			'keyboardHidden',
-			'orientation',
-			'screenSize',
-			'screenLayout',
-			'uiMode',
-			'locale',
-			'layoutDirection',
-			'navigation'
-		].join('|'));
+		activity.set('android:configChanges', 'keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|locale|layoutDirection|navigation');
 		activity.set('android:screenOrientation', config.orientation ?? 'landscape');
 		activity.set('android:launchMode', 'singleTask');
 		activity.set('android:resizeableActivity', 'false');
