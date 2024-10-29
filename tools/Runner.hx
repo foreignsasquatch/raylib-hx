@@ -35,73 +35,67 @@ class Runner
 			{
 				case 'build':
 					if (!FileSystem.exists('build.hxml'))
-						Log.error(ANSI.apply('Unable to find "build.hxml" necessary for building process.', [ANSICode.Red]));
+						Log.error(ANSI.apply('Unable to find "build.hxml" in ' + runDir + ' for the build process.', [ANSICode.Red]));
 
-					switch (target)
+					final buildFile:HXML = HXML.fromFile('build.hxml');
+					final configFile:Config = Json.parse(File.getContent('config.json'));
+
+					platform = getTargetPlatform(target, configFile, buildFile);
+
+					if (platform != null)
 					{
-						case 'android':
-							setupNDK();
+						platform.setup();
 
-							final buildFile:HXML = HXML.fromFile('build.hxml');
+						final architectures:Array<String> = getArchitectures(args);
 
-							buildFile.define('ANDROID_NDK_DIR', NDK_DIR);
-
-							platform = new AndroidPlatform(Json.parse(File.getContent('config.json')), buildFile);
-
-							platform.setup();
-
-							final architectures:Array<Architecture> = [];
-
-							for (arg in args)
-							{
-								switch (arg)
-								{
-									case '-arm64', '-armv7', '-x86', '-x86_64':
-										final arch:Null<Architecture> = Architecture.fromFlag(arg);
-
-										if (arch != null)
-											architectures.push(arch);
-									default:
-										Log.warn('Unknown argument: ' + arg);
-								}
-							}
-
+						if (architectures.length > 0)
 							platform.build(architectures);
 					}
 				default:
-					Log.error(ANSI.apply('Unknown command ', [ANSICode.Red]) + ANSI.apply(command, [ANSICode.Italic, ANSICode.Red])
-						+ ANSI.apply('...', [ANSICode.Red]));
+					Log.error(ANSI.apply('Unknown command: ', [ANSICode.Red]) + command);
 			}
 		}
 	}
 
-	private static function setupNDK():Void
+	private static function getTargetPlatform(target:Null<String>, config:Config, hxml:HXML):Null<TargetPlatform>
 	{
-		NDK_DIR = Sys.getEnv('ANDROID_NDK_ROOT');
+		var targets:Null<TargetPlatform> = null
 
-		if (NDK_DIR == null)
+		switch (target)
 		{
-			Log.info(ANSI.apply('ANDROID_NDK_ROOT is not set, searching for NDK...', [ANSICode.Yellow]));
+			/*case 'windows': new TargetPlatform.Windows();
+			case 'linux': new TargetPlatform.Linux();
+			case 'macos': new TargetPlatform.MacOS();
+			case 'emscripten': new TargetPlatform.Emscripten();*/
+			case 'android':
+				targetPlatform = new AndroidPlatform(config, hxml);
+			default: 
+				Log.error(ANSI.apply('Unknown target platform: $target', [ANSICode.Red]));
 
-			switch (System.hostPlatform)
+				targetPlatform = null;
+		}
+
+		return targetPlatform;
+	}
+
+	private static function getArchitectures(args:Array<String>):Array<Architecture>
+	{
+		final architectures:Array<Architecture> = [];
+
+		for (arg in args)
+		{
+			switch (arg)
 			{
-				case WINDOWS:
-					Log.error(ANSI.apply('Please set ANDROID_NDK_ROOT manually.', [ANSICode.Red]));
-				case MAC:
-					NDK_DIR = Path.join([Sys.getEnv('HOME'), '/Library/Android/sdk/ndk']);
-				case LINUX:
-					if (FileSystem.exists(Path.join([Sys.getEnv('HOME'), '/Android/Sdk/ndk'])))
-						NDK_DIR = Path.join([Sys.getEnv('HOME'), '/Android/Sdk/ndk']);
-					else if (FileSystem.exists('/usr/local/android-ndk'))
-						NDK_DIR = '/usr/local/android-ndk';
-					else
-						Log.error(ANSI.apply('Could not find the Android NDK automatically. Please set ANDROID_NDK_ROOT.', [ANSICode.Red]));
+				case '-arm64', '-armv7', '-x86', '-x86_64':
+					final arch:Null<Architecture> = Architecture.fromFlag(arg);
+
+					if (arch != null)
+						architectures.push(arch);
 				default:
-					Log.error(ANSI.apply('Unsupported OS. Please set ANDROID_NDK_ROOT manually.', [ANSICode.Red]));
+					Log.warn(ANSI.apply('Unknown argument: $arg', [ANSICode.Yellow]));
 			}
 		}
 
-		if (NDK_DIR != null)
-			Log.info(ANSI.apply('Using Android NDK at $NDK_DIR', [ANSICode.Green]));
+		return architectures;
 	}
 }
