@@ -20,13 +20,17 @@ class Cli
 	public function new()
 	{
 		args = Sys.args();
-		workingDirectory = Sys.getCwd();
-		runnedInDirectory = '';
 		command = '';
 		commandArgs = [];
 		defines = [];
 		flags = [];
 		options = [];
+		workingDirectory = Sys.getCwd();
+
+		final runnedIn:Null<String> = args.pop();
+
+		if (runnedIn != null)
+			runnedInDirectory = runnedIn;
 
 		processArguments();
 	}
@@ -99,11 +103,6 @@ class Cli
 			else
 				words.push(arg);
 		}
-
-		final runnedIn:Null<String> = words.pop();
-
-		if (runnedIn != null)
-			runnedInDirectory = runnedIn;
 
 		final wordCommand:Null<String> = words.shift();
 
