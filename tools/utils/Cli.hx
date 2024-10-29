@@ -32,7 +32,7 @@ class Cli
 	private function processArguments():Void
 	{
 		var catchDefine = false;
-		var catchOption:String = null;
+		var catchOption:Null<String> = null;
 		var words:Array<String> = [];
 
 		for (arg in args)
@@ -44,7 +44,7 @@ class Cli
 				if (!options.exists(catchOption))
 					options[catchOption] = [arg];
 				else
-					options[catchOption].push(arg);
+					options[catchOption]?.push(arg);
 
 				catchOption = null;
 			}
@@ -73,7 +73,7 @@ class Cli
 					if (!options.exists(field))
 						options[field] = [argValue];
 					else
-						options[field].push(argValue);
+						options[field]?.push(argValue);
 				}
 				else if (arg.startsWith('-'))
 					flags.set(arg, true);
@@ -98,7 +98,11 @@ class Cli
 				words.push(arg);
 		}
 
-		command = words.shift();
+		final wordCommand:Null<String> = words.shift();
+
+		if (wordCommand != null)
+			command = wordCommand;
+
 		commandArgs = words;
 	}
 }
