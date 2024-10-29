@@ -12,7 +12,7 @@ class Config
 	public var product:Null<String>;
 	public var versionCode:Null<Int>;
 	public var versionName:Null<String>;
-	public var fullscreen:Null<Bool>;
+	public var fullscreen:Bool = true;
 	public var orientation:Null<String>;
 
 	public function new(content:String):Void
