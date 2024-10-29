@@ -125,7 +125,7 @@ class AndroidPlatform extends TargetPlatform
 		}
 
 		final application:Xml = Xml.createElement('application');
-		application.set('android:label', config.label ?? 'rGame.hx');
+		application.set('android:label', config.label ?? 'rGame');
 		application.set('android:icon', '@drawable/icon');
 		application.set('android:theme', config.fullscreen ? '@android:style/Theme.NoTitleBar.Fullscreen' : '@android:style/Theme.NoTitleBar');
 		application.set('android:allowBackup', 'true');
