@@ -41,7 +41,11 @@ class Cli
 
 			if (catchOption != null)
 			{
-				options[catchOption] = options.get(catchOption, []).concat(arg);
+				if (!options.exists(catchOption))
+					options[catchOption] = [arg];
+				else
+					options[catchOption].push(arg);
+
 				catchOption = null;
 			}
 			else if (arg == '-D')
@@ -52,8 +56,8 @@ class Cli
 
 				var argValue:String = arg.substr(equals + 1);
 
-				if (r.match(arg))
-					argValue = r.matched(1);
+				if (expression.match(arg))
+					argValue = expression.matched(1);
 
 				if (catchDefine)
 				{
