@@ -11,17 +11,17 @@ repositories
 
 android
 {
-	namespace project.APP_PACKAGE
+	namespace '::APP_PACKAGE::'
 
-	compileSdkVersion Integer.parseInt(project.APP_COMPILE_SDK_VERSION)
+	compileSdkVersion Integer.parseInt('::APP_COMPILE_SDK_VERSION::')
 
 	defaultConfig
 	{
-		applicationId project.APP_PACKAGE
-		minSdkVersion Integer.parseInt(project.APP_MIN_SDK_VERSION)
-		targetSdkVersion Integer.parseInt(project.APP_TARGET_SDK_VERSION)
-		versionCode Integer.parseInt(project.APP_VERSION_CODE)
-		versionName project.APP_VERSION_NAME
+		applicationId '::APP_PACKAGE::'
+		targetSdkVersion Integer.parseInt('::APP_TARGET_SDK_VERSION::')
+		minSdkVersion Integer.parseInt('::APP_MIN_SDK_VERSION::')
+		versionCode Integer.parseInt('::APP_VERSION_CODE::')
+		versionName '::APP_VERSION_NAME::'
 	}
 
 	buildTypes
