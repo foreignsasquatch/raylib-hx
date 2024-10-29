@@ -6,7 +6,6 @@ import hxp.Log;
 import hxp.System;
 import platforms.AndroidPlatform;
 import platforms.TargetPlatform;
-import sys.io.File;
 import sys.FileSystem;
 import utils.ANSI;
 import utils.Architecture;
@@ -30,6 +29,9 @@ class Runner
 				if (!FileSystem.exists('build.hxml'))
 					Log.error(ANSI.apply('Unable to find "build.hxml" in ${cli.runnedInDirectory} for the build process.', [ANSICode.Red]));
 
+				if (!FileSystem.exists('config.json'))
+					Log.error(ANSI.apply('Unable to find "config.json" in ${cli.runnedInDirectory} for the build process.', [ANSICode.Red]));
+
 				final buildFile:HXML = HXML.fromFile('build.hxml');
 
 				for (key => value in cli.flags)
@@ -41,9 +43,7 @@ class Runner
 				for (key => value in cli.defines)
 					buildFile.define(key, value);
 
-				final configFile:Config = Json.parse(File.getContent('config.json'));
-
-				platform = getTargetPlatform(cli.commandArgs[0], configFile, buildFile);
+				platform = getTargetPlatform(cli.commandArgs[0], Config.fromFile('config.json'), buildFile);
 
 				if (platform != null)
 				{
