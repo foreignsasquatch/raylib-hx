@@ -20,7 +20,7 @@ class Runner
 
 	public static function main():Void
 	{
-		final cli:Script = new Cli();
+		final cli:Cli = new Cli();
 
 		var args:Array<String> = cli.args;
 		trace('args: ' + args);
