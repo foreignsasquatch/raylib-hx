@@ -3,7 +3,6 @@ package;
 import haxe.Json;
 import hxp.HXML;
 import hxp.Log;
-import hxp.Script;
 import hxp.System;
 import platforms.AndroidPlatform;
 import platforms.TargetPlatform;
@@ -11,6 +10,7 @@ import sys.io.File;
 import sys.FileSystem;
 import utils.ANSI;
 import utils.Architecture;
+import utils.Cli;
 import utils.Config;
 
 @:nullSafety
@@ -20,31 +20,27 @@ class Runner
 
 	public static function main():Void
 	{
-		Script.main();
+		final cli:Script = new Cli();
 
-		// Create an instance of Script to parse arguments.
-		final script:Script = new Script();
-
-		// Retrieve and trace various properties from the Script instance.
-		var args:Array<String> = script.args;
+		var args:Array<String> = cli.args;
 		trace('args: ' + args);
 
-		var command:String = script.command;
+		var command:String = cli.command;
 		trace('command: ' + command);
 
-		var commandArgs:Array<String> = script.commandArgs;
+		var commandArgs:Array<String> = cli.commandArgs;
 		trace('commandArgs: ' + commandArgs);
 
-		var defines:Map<String, String> = script.defines;
+		var defines:Map<String, String> = cli.defines;
 		trace('defines: ' + defines);
 
-		var flags:Map<String, Bool> = script.flags;
+		var flags:Map<String, Bool> = cli.flags;
 		trace('flags: ' + flags);
 
-		var options:Map<String, Array<String>> = script.options;
+		var options:Map<String, Array<String>> = cli.options;
 		trace('options: ' + options);
 
-		var workingDirectory:String = script.workingDirectory;
+		var workingDirectory:String = cli.workingDirectory;
 		trace('workingDirectory: ' + workingDirectory);
 
 		/*final args:Array<String> = Sys.args();
