@@ -32,6 +32,12 @@ class Runner
 
 				final buildFile:HXML = HXML.fromFile('build.hxml');
 
+				for (key => value in cli.flags)
+				{
+					if (key == '-debug' && value)
+						buildFile.debug = true;
+				}
+
 				for (key => value in cli.defines)
 					buildFile.define(key, value);
 
