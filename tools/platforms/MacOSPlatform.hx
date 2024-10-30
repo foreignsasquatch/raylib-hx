@@ -55,6 +55,8 @@ class MacOSPlatform extends TargetPlatform
 	{
 		super.build(architectures);
 
+		final compiledArchitectures:Array<String> = [];
+
 		for (architecture in architectures)
 		{
 			var archDirectory:String;
@@ -79,6 +81,21 @@ class MacOSPlatform extends TargetPlatform
 			archHXML.cpp = Path.join([cppDirectory, archDirectory]);
 			archHXML.define(archDefine);
 			archHXML.build();
+
+			compiledArchitectures.push(Path.join(['../', archDirectory, archHXML.debug ? archHXML.main + '-debug' : archHXML.main]));
+		}
+
+		if (!hxml.noOutput)
+		{
+			if (compiledArchitectures.length > 1)
+				System.runCommand(outputDirectory, 'lipo', ['-create', '-output', hxml.main].concat(compiledArchitectures));
+
+			/*else if (compiledArchitectures.length > 0)
+			{
+				System.copyIfNewer();
+			}*/
+
+			System.runCommand(outputDirectory, 'chmod', ['755', './']);
 		}
 	}
 
