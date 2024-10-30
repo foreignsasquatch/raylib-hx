@@ -10,6 +10,7 @@ import platforms.TargetPlatform;
 import sys.FileSystem;
 import utils.android.Feature;
 import utils.android.Permission;
+import utils.ANSI;
 import utils.Architecture;
 import utils.Config;
 
