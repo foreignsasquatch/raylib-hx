@@ -35,6 +35,20 @@ class MacOSPlatform extends TargetPlatform
 	{
 		System.makeDirectory(outputDirectory);
 		System.makeDirectory(cppDirectory);
+
+		if (config.resourcesPath != null)
+		{
+			if (FileSystem.exists(config.resourcesPath))
+			{
+				final resources:Array<String> = System.readDirectory(config.resourcesPath);
+
+				if (resources != null && resources.length > 0)
+				{
+					for (resource in resources)
+						System.copyIfNewer(resource, Path.join([outputDirectory, resource]));
+				}
+			}
+		}
 	}
 
 	public override function build(architectures:Array<Architecture>):Void
