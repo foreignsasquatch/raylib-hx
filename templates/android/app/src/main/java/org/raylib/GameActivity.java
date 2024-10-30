@@ -8,8 +8,6 @@ import android.os.Bundle;
 
 public class GameActivity extends NativeActivity
 {
-    private Features features;
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -37,7 +35,7 @@ public class GameActivity extends NativeActivity
     {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) 
         {
-            WindowManager.LayoutParams layoutParams = activity.getWindow().getAttributes();
+            WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
             layoutParams.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
             getWindow().setAttributes(layoutParams);
         }
