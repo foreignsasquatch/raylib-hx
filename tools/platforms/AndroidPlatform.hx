@@ -101,7 +101,7 @@ class AndroidPlatform extends TargetPlatform
 
 		System.makeDirectory(packageDirectory);
 
-		System.writeText('package ${context.APP_PACKAGE};\n\nimport org.raylib.GameActivity;\n\npublic class MainActivity extends GameActivity {}', Path.join([packageDirectory, 'MainActivity.java']));
+		System.writeText('package ${context.APP_PACKAGE};\n\nimport org.raylib.ImmersiveActivity;\n\npublic class NativeLoader extends ImmersiveActivity {}', Path.join([packageDirectory, 'MainActivity.java']));
 
 		final manifest:Xml = Xml.createElement('manifest');
 		manifest.set('xmlns:android', 'http://schemas.android.com/apk/res/android');
@@ -141,7 +141,7 @@ class AndroidPlatform extends TargetPlatform
 		manifest.addChild(application);
 
 		final activity:Xml = Xml.createElement('activity');
-		activity.set('android:name', 'MainActivity');
+		activity.set('android:name', 'NativeLoader');
 		activity.set('android:configChanges', 'keyboard|keyboardHidden|orientation|screenSize|screenLayout|uiMode|locale|layoutDirection|navigation');
 		activity.set('android:screenOrientation', config.orientation ?? 'landscape');
 		activity.set('android:launchMode', 'singleTask');
