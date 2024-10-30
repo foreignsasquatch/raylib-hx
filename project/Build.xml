@@ -3,11 +3,8 @@
     <pragma once="true" />
 
     <files id="haxe">
-        <compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
-
         <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
         <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
-        <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" if="android" />
         <compilerflag value="-I${haxelib:raylib-hx}/project/include" />
 
         <include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
@@ -17,11 +14,8 @@
     </files>
 
     <files id="__main__">
-        <compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
-
         <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
         <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raygui/src" />
-        <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" if="android" />
         <compilerflag value="-I${haxelib:raylib-hx}/project/include" />
 
         <include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
@@ -53,24 +47,6 @@
         <section if="rpi">
             <compilerflag value="-DEGL_NO_X11" />
         </section>
-
-        <section unless="MSVC_VER">
-            <compilerflag value="-Wno-implicit-const-int-float-conversion" />
-            <compilerflag value="-Wno-missing-braces" />
-            <compilerflag value="-Wno-unused-result" />
-        </section>
-    </files>
-
-    <files id="raymob">
-        <compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
-
-        <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src" />
-        <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raymob/src" />
-
-        <include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
-
-        <file name="${haxelib:raylib-hx}/project/lib/raymob/src/features.c" />
-        <file name="${haxelib:raylib-hx}/project/lib/raymob/src/helper.c" />
 
         <section unless="MSVC_VER">
             <compilerflag value="-Wno-implicit-const-int-float-conversion" />
@@ -211,7 +187,6 @@
         <files id="raylib" />
 
         <section if="android">
-            <files id="raymob" />
             <files id="native_app_glue" />
         </section>
 
