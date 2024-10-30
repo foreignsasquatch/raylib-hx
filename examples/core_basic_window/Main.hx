@@ -2,6 +2,9 @@ package;
 
 import Raylib;
 
+#if windows
+@:buildXml('<target id="haxe"> <flag value="${haxelib:raylib-hx}/project/lib/raylib/src/raylib.rc.data" /> </target>')
+#end
 class Main
 {
     //------------------------------------------------------------------------------------
