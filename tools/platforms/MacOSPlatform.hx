@@ -59,6 +59,9 @@ class MacOSPlatform extends TargetPlatform
 				case X86_64:
 					archDirectory = 'x86_64';
 					archDefine = 'HXCPP_M64';
+				default:
+					Log.warn(ANSI.apply('Unable to use this architecture: $key', [ANSICode.Yellow]));
+					continue;
 			}
 
 			archHXML.cpp = Path.join([cppDirectory, archDirectory]);
