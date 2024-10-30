@@ -47,6 +47,9 @@ class AndroidPlatform extends TargetPlatform
 	{
 		super(config, hxml);
 
+		if (!hxml.hasDefine('android'))
+			hxml.define('android');
+
 		assetsDirectory = Path.join([hxml.cpp, 'app/src/main/assets']);
 		cppDirectory = Path.join([hxml.cpp, 'app/src/main/cpp']);
 		javaDirectory = Path.join([hxml.cpp, 'app/src/main/java']);
