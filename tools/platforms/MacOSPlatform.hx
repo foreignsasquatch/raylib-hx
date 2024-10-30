@@ -82,7 +82,7 @@ class MacOSPlatform extends TargetPlatform
 			archHXML.define(archDefine);
 			archHXML.build();
 
-			compiledArchitectures.push(Path.join(['../', archDirectory, archHXML.debug ? archHXML.main + '-debug' : archHXML.main]));
+			compiledArchitectures.push(Path.normalize(FileSystem.absolutePath(Path.join(['../', archDirectory, archHXML.debug ? archHXML.main + '-debug' : archHXML.main]))));
 		}
 
 		if (!hxml.noOutput)
