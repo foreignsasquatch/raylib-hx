@@ -6,12 +6,13 @@ import android.view.View;
 import android.os.Build;
 import android.os.Bundle;
 
-public class GameActivity extends NativeActivity
+public class ImmersiveActivity extends NativeActivity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         setImmersiveMode();
+
         renderIntoCutoutArea();
 
         super.onCreate(savedInstanceState);
