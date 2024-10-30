@@ -61,7 +61,7 @@ class MacOSPlatform extends TargetPlatform
 					archDirectory = 'x86_64';
 					archDefine = 'HXCPP_M64';
 				default:
-					Log.warn(ANSI.apply('Unable to use this architecture: $key', [ANSICode.Yellow]));
+					Log.warn(ANSI.apply('Unable to use this architecture: $architecture', [ANSICode.Yellow]));
 					continue;
 			}
 
