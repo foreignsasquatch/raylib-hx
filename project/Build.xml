@@ -49,6 +49,8 @@
         </section>
 
         <section unless="MSVC_VER">
+            <compilerflag value="-Werror=implicit-function-declaration" />
+            <compilerflag value="-Werror=pointer-arith" />
             <compilerflag value="-Wno-implicit-const-int-float-conversion" />
             <compilerflag value="-Wno-missing-braces" />
             <compilerflag value="-Wno-unused-result" />
