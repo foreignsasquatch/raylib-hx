@@ -77,9 +77,9 @@ class AndroidPlatform extends TargetPlatform
 			}
 		}
 
-		System.copyFile(Path.join([Haxelib.getPath(new Haxelib('raylib-hx')), 'project/lib/raylib/logo/raylib_36x36.png']), Path.join([resDirectory, 'drawable-ldpi/icon.png']));
-		System.copyFile(Path.join([Haxelib.getPath(new Haxelib('raylib-hx')), 'project/lib/raylib/logo/raylib_48x48.png']), Path.join([resDirectory, 'drawable-mdpi/icon.png']));
-		System.copyFile(Path.join([Haxelib.getPath(new Haxelib('raylib-hx')), 'project/lib/raylib/logo/raylib_72x72.png']), Path.join([resDirectory, 'drawable-hdpi/icon.png']));
+		System.copyIfNewer(Path.join([Haxelib.getPath(new Haxelib('raylib-hx')), 'project/lib/raylib/logo/raylib_36x36.png']), Path.join([resDirectory, 'drawable-ldpi/icon.png']));
+		System.copyIfNewer(Path.join([Haxelib.getPath(new Haxelib('raylib-hx')), 'project/lib/raylib/logo/raylib_48x48.png']), Path.join([resDirectory, 'drawable-mdpi/icon.png']));
+		System.copyIfNewer(Path.join([Haxelib.getPath(new Haxelib('raylib-hx')), 'project/lib/raylib/logo/raylib_72x72.png']), Path.join([resDirectory, 'drawable-hdpi/icon.png']));
 
 		final context:Dynamic = {};
 		context.APP_PACKAGE = ['com', config.company ?? 'raylib', config.product ?? 'rgame'].join('.');
