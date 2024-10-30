@@ -82,18 +82,16 @@ class MacOSPlatform extends TargetPlatform
 			archHXML.define(archDefine);
 			archHXML.build();
 
-			compiledArchitectures.push(Path.normalize(FileSystem.absolutePath(Path.join([archHXML.cpp, archHXML.debug ? archHXML.main + '-debug' : archHXML.main]))));
+			if (!hxml.noOutput)
+				compiledArchitectures.push(Path.normalize(FileSystem.absolutePath(Path.join([archHXML.cpp, archHXML.debug ? archHXML.main + '-debug' : archHXML.main]))));
 		}
 
 		if (!hxml.noOutput)
 		{
 			if (compiledArchitectures.length > 1)
 				System.runCommand(outputDirectory, 'lipo', ['-create', '-output', hxml.main].concat(compiledArchitectures));
-
-			/*else if (compiledArchitectures.length > 0)
-			{
-				System.copyIfNewer();
-			}*/
+			else if (compiledArchitectures.length > 0)
+				System.copyIfNewer(compiledArchitectures[0], Path.join([outputDirectory, hxml.main]));
 
 			System.runCommand(outputDirectory, 'chmod', ['755', './']);
 		}
