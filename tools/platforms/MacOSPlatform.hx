@@ -54,9 +54,6 @@ class MacOSPlatform extends TargetPlatform
 				case ARM64:
 					archDirectory = 'arm64';
 					archDefine = 'HXCPP_ARM64';
-				case X86:
-					archDirectory = 'x86';
-					archDefine = 'HXCPP_M32';
 				case X86_64:
 					archDirectory = 'x86_64';
 					archDefine = 'HXCPP_M64';
@@ -73,6 +70,6 @@ class MacOSPlatform extends TargetPlatform
 
 	public override function supportedArchitectures():Array<Architecture>
 	{
-		return [ARM64, X86, X86_64];
+		return [ARM64, X86_64];
 	}
 }
