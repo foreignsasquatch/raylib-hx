@@ -96,13 +96,11 @@ class Runner
 
 			switch (key)
 			{
-				case '-arm64', '-armv7', '-x86', '-x86_64':
+				case '-arm64' | '-armv7' | '-x86' | '-x86_64':
 					final arch:Null<Architecture> = Architecture.fromFlag(key);
 
 					if (arch != null)
 						architectures.push(arch);
-				default:
-					Log.warn(ANSI.apply('Unknown argument: $key', [ANSICode.Yellow]));
 			}
 		}
 
