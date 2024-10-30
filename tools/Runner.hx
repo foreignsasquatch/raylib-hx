@@ -5,6 +5,7 @@ import hxp.HXML;
 import hxp.Log;
 import hxp.System;
 import platforms.AndroidPlatform;
+import platforms.MacOSPlatform;
 import platforms.TargetPlatform;
 import sys.FileSystem;
 import utils.ANSI;
@@ -69,10 +70,10 @@ class Runner
 					targetPlatform = new TargetPlatform.Windows();
 				case 'linux':
 					targetPlatform = new TargetPlatform.Linux();
-				case 'macos':
-					targetPlatform = new TargetPlatform.MacOS();
 				case 'emscripten':
 					targetPlatform = new TargetPlatform.Emscripten(); */
+			case 'macos':
+				targetPlatform = new MacOSPlatform(config, hxml);
 			case 'android':
 				targetPlatform = new AndroidPlatform(config, hxml);
 			default:
