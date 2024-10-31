@@ -86,8 +86,6 @@
     <files id="native_app_glue" dir="${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android">
         <compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" />
 
-        <compilerflag value="-uANativeActivity_onCreate" /> 
-
         <file name="android_native_app_glue.c" if="android" />
     </files>
 
