@@ -94,7 +94,7 @@ class AndroidPlatform extends TargetPlatform
 		context.APP_USE_NON_TRANSITIVE_R_CLASS = true;
 		context.APP_USE_ANDROIDX = false;
 		context.APP_ENABLE_JETIFIER = false;
-		context.APP_EXTRA_SHAREDLIBS = [];
+		context.APP_SHAREDLIBS = [];
 		context.GRADLE_VERSION = '8.10.2';
 		context.GRADLE_PLUGIN_VERSION = '8.7.0';
 
@@ -108,12 +108,14 @@ class AndroidPlatform extends TargetPlatform
 		nativeLoaderActivity.push('public class NativeLoader extends ImmersiveActivity');
 		nativeLoaderActivity.push('{');
 
-		if (context.APP_EXTRA_SHAREDLIBS.length > 0)
+		if (context.APP_SHAREDLIBS.length > 0)
 		{
 			nativeLoaderActivity.push('    static');
 			nativeLoaderActivity.push('    {');
 
-			for (lib in context.APP_EXTRA_SHAREDLIBS)
+			final sharedLibs:Array<String> = context.APP_SHAREDLIBS;
+
+			for (lib in sharedLibs)
 				nativeLoaderActivity.push('        System.loadLibrary($lib);');
 
 			nativeLoaderActivity.push('    }');
