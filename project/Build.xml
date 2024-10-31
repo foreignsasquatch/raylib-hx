@@ -22,7 +22,7 @@
         <include name="${haxelib:raylib-hx}/project/lib/raygui-defines.xml" />
     </files>
 
-    <files id="raylib">
+    <files id="raylib" dir="${haxelib:raylib-hx}/project/lib/raylib">
         <compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android" />
 
         <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" if="PLATFORM_DESKTOP_GLFW" />
@@ -30,14 +30,14 @@
 
         <include name="${haxelib:raylib-hx}/project/lib/raylib-defines.xml" />
 
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/raudio.c" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/rcore.c" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/rglfw.c" if="PLATFORM_DESKTOP_GLFW" unless="macos" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/rmodels.c" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/rshapes.c" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtext.c" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/rtextures.c" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/utils.c" />
+        <file name="src/raudio.c" />
+        <file name="src/rcore.c" />
+        <file name="src/rglfw.c" if="PLATFORM_DESKTOP_GLFW" unless="macos" />
+        <file name="src/rmodels.c" />
+        <file name="src/rshapes.c" />
+        <file name="src/rtext.c" />
+        <file name="src/rtextures.c" />
+        <file name="src/utils.c" />
 
         <section if="linux">
             <compilerflag value="-D_GLFW_WAYLAND" if="RAYLIB_WAYLAND_DISPLAY" />
@@ -57,30 +57,30 @@
         </section>
     </files>
 
-    <files id="raylib_glfw" if="macos">
+    <files id="raylib_glfw" dir="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw" if="macos">
         <compilerflag value="-I${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/include" />
 
         <compilerflag value="-D_GLFW_COCOA" />
         <compilerflag value="-D_GLFW_USE_MENUBAR" />
         <compilerflag value="-D_GLFW_USE_RETINA" />
 
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/init.c" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/platform.c" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/context.c" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/monitor.c" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/window.c" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/input.c" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/vulkan.c" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/posix_module.c" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/posix_thread.c" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_init.m" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_joystick.m" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_monitor.m" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_window.m" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/cocoa_time.c" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/nsgl_context.m" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/egl_context.c" />
-        <file name="${haxelib:raylib-hx}/project/lib/raylib/src/external/glfw/src/osmesa_context.c" />
+        <file name="src/init.c" />
+        <file name="src/platform.c" />
+        <file name="src/context.c" />
+        <file name="src/monitor.c" />
+        <file name="src/window.c" />
+        <file name="src/input.c" />
+        <file name="src/vulkan.c" />
+        <file name="src/posix_module.c" />
+        <file name="src/posix_thread.c" />
+        <file name="src/cocoa_init.m" />
+        <file name="src/cocoa_joystick.m" />
+        <file name="src/cocoa_monitor.m" />
+        <file name="src/cocoa_window.m" />
+        <file name="src/cocoa_time.c" />
+        <file name="src/nsgl_context.m" />
+        <file name="src/egl_context.c" />
+        <file name="src/osmesa_context.c" />
     </files>
 
     <files id="native_app_glue" if="android">
