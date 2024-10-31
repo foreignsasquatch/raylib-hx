@@ -101,7 +101,7 @@ class AndroidPlatform extends TargetPlatform
 
 		System.makeDirectory(packageDirectory);
 
-		System.writeText('package ${context.APP_PACKAGE};\n\nimport org.raylib.ImmersiveActivity;\n\npublic class NativeLoader extends ImmersiveActivity {}', Path.join([packageDirectory, 'MainActivity.java']));
+		System.writeText('package ${context.APP_PACKAGE};\n\nimport org.raylib.ImmersiveActivity;\n\npublic class NativeLoader extends ImmersiveActivity {}', Path.join([packageDirectory, 'NativeLoader.java']));
 
 		final manifest:Xml = Xml.createElement('manifest');
 		manifest.set('xmlns:android', 'http://schemas.android.com/apk/res/android');
