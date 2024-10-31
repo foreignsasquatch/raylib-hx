@@ -15,6 +15,7 @@ public class ImmersiveActivity extends NativeActivity
     protected void onCreate(Bundle savedInstanceState)
     {
         setImmersiveMode();
+
         renderIntoCutoutArea();
 
         super.onCreate(savedInstanceState);
