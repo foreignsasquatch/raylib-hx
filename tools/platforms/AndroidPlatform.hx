@@ -94,6 +94,7 @@ class AndroidPlatform extends TargetPlatform
 		context.APP_USE_NON_TRANSITIVE_R_CLASS = true;
 		context.APP_USE_ANDROIDX = false;
 		context.APP_ENABLE_JETIFIER = false;
+		context.APP_EXTRA_SHAREDLIBS = [];
 		context.GRADLE_VERSION = '8.10.2';
 		context.GRADLE_PLUGIN_VERSION = '8.7.0';
 
@@ -101,7 +102,25 @@ class AndroidPlatform extends TargetPlatform
 
 		System.makeDirectory(packageDirectory);
 
-		System.writeText('package ${context.APP_PACKAGE};\n\nimport org.raylib.ImmersiveActivity;\n\npublic class NativeLoader extends ImmersiveActivity {}', Path.join([packageDirectory, 'NativeLoader.java']));
+		final nativeLoaderActivity:Array<String> = [];
+		nativeLoaderActivity.push('package ${context.APP_PACKAGE};\n');
+		nativeLoaderActivity.push('import org.raylib.ImmersiveActivity;\n');
+		nativeLoaderActivity.push('public class NativeLoader extends ImmersiveActivity');
+		nativeLoaderActivity.push('{');
+
+		if (context.APP_EXTRA_SHAREDLIBS.length > 0)
+		{
+			nativeLoaderActivity.push('    static');
+			nativeLoaderActivity.push('    {');
+
+			for (lib in context.APP_EXTRA_SHAREDLIBS)
+				nativeLoaderActivity.push('        System.loadLibrary($lib);');
+
+			nativeLoaderActivity.push('    }');
+		}
+
+		nativeLoaderActivity.push('}');
+		System.writeText(nativeLoaderActivity.join('\n'), Path.join([packageDirectory, 'NativeLoader.java']));
 
 		final manifest:Xml = Xml.createElement('manifest');
 		manifest.set('xmlns:android', 'http://schemas.android.com/apk/res/android');
