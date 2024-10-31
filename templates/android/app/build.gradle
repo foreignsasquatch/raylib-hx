@@ -52,5 +52,5 @@ android
 
 tasks.withType(JavaCompile)
 {
-	options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+	::if APP_SHOW_DEPRECATION_WARNINGS::options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"::else::options.compilerArgs << "-Xlint:none"::end::
 }
