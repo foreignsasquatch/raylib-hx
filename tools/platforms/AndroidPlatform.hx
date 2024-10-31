@@ -95,6 +95,7 @@ class AndroidPlatform extends TargetPlatform
 		context.APP_USE_ANDROIDX = false;
 		context.APP_ENABLE_JETIFIER = false;
 		context.APP_SHAREDLIBS = [];
+		context.APP_SHOW_DEPRECATION_WARNINGS = false;
 		context.GRADLE_VERSION = '8.10.2';
 		context.GRADLE_PLUGIN_VERSION = '8.7.0';
 
