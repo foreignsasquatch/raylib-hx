@@ -14,10 +14,10 @@ public class ImmersiveActivity extends NativeActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        super.onCreate(savedInstanceState);
-
         setImmersiveMode();
         renderIntoCutoutArea();
+
+        super.onCreate(savedInstanceState);
     }
 
     @Override
