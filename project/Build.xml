@@ -83,10 +83,12 @@
         <file name="src/osmesa_context.c" />
     </files>
 
-    <files id="native_app_glue" if="android">
+    <files id="native_app_glue" dir="${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="android">
         <compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" />
 
-        <file name="${ANDROID_NDK_ROOT}/sources/android/native_app_glue/android_native_app_glue.c" if="android" />
+        <compilerflag value="-uANativeActivity_onCreate" /> 
+
+        <file name="android_native_app_glue.c" if="android" />
     </files>
 
     <target id="haxe">
