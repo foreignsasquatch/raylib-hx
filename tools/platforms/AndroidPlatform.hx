@@ -88,14 +88,14 @@ class AndroidPlatform extends TargetPlatform
 		context.APP_PACKAGE = ['com', config.company ?? 'raylib', config.product ?? 'rgame'].join('.');
 		context.APP_VERSION_NAME = config.versionName ?? '1.0';
 		context.APP_VERSION_CODE = config.versionCode ?? 1;
-		context.APP_COMPILE_SDK_VERSION = 33;
-		context.APP_TARGET_SDK_VERSION = 33;
+		context.APP_COMPILE_SDK_VERSION = 34;
+		context.APP_TARGET_SDK_VERSION = 34;
 		context.APP_MIN_SDK_VERSION = 21;
 		context.APP_USE_NON_TRANSITIVE_R_CLASS = true;
 		context.APP_USE_ANDROIDX = false;
 		context.APP_ENABLE_JETIFIER = false;
 		context.GRADLE_VERSION = '8.10.2';
-		context.GRADLE_PLUGIN_VERSION = '7.3.1';
+		context.GRADLE_PLUGIN_VERSION = '8.7.0';
 
 		final packageDirectory:String = Path.join([javaDirectory, context.APP_PACKAGE.split('.').join('/')]);
 
