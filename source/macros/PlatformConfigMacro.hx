@@ -64,7 +64,7 @@ class PlatformConfigMacro
                 final resourceFile:Null<String> = Context.definedValue('resourceFile');
 
                 if (resourceFile != null && resourceFile.length > 0)
-                    Compiler.define('resourceFile', FileSystem.absolutePath(resourcesPath));
+                    Compiler.define('resourceFile', FileSystem.absolutePath(resourceFile));
             }
         }
     }
