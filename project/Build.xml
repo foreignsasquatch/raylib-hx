@@ -247,7 +247,7 @@
 
         <section unless="RAYLIB_WEB_DISABLE_SHELL">
             <flag value="--shell-file" />
-            <flag value="${haxelib:raylib-hx}/project/lib/raylib/src/shell.html" />
+            <flag value="${haxelib:raylib-hx}/project/lib/raylib/src/minshell.html" />
         </section>
     </linker>
 </xml>

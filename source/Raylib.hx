@@ -2676,7 +2676,7 @@ extern class Raylib
     @:native('UnloadModelAnimation') static function unloadModelAnimation(anim:ModelAnimationImpl):Void;
     @:native('UnloadModelAnimations') static function unloadModelAnimations(animations:cpp.RawPointer<ModelAnimationImpl>, animCount:Int):Void;
     @:native('IsModelAnimationValid') static function isModelAnimationValid(model:ModelImpl, anim:ModelAnimationImpl):Bool;
-    @:native('UpdateModelAnimationBoneMatrices') static function updateModelAnimationBoneMatrices(model:ModelImpl, anim:ModelAnimationImpl, frame:Int):Void;
+    @:native('UpdateModelAnimationBones') static function UpdateModelAnimationBones(model:ModelImpl, anim:ModelAnimationImpl, frame:Int):Void;
 
     @:native('CheckCollisionSpheres') static function checkCollisionSpheres(center1:Vector3Impl, radius1:Single, center2:Vector3Impl, radius2:Single):Bool;
     @:native('CheckCollisionBoxes') static function checkCollisionBoxes(box1:BoundingBoxImpl, box2:BoundingBoxImpl):Bool;
