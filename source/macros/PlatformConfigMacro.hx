@@ -59,6 +59,7 @@ class PlatformConfigMacro
             if (!checkForOpenGLES() && !checkForOpenGL())
                 Compiler.define('GRAPHICS_API_OPENGL_33');
 
+            // Tbh, idrk if this is actually intended or not but hey, at least it works now.
             if (Context.defined('resourceFile'))
             {
                 final resourceFile:Null<String> = Context.definedValue('resourceFile');
