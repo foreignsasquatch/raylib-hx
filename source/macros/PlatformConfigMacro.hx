@@ -58,6 +58,14 @@ class PlatformConfigMacro
 
             if (!checkForOpenGLES() && !checkForOpenGL())
                 Compiler.define('GRAPHICS_API_OPENGL_33');
+
+            if (Context.defined('resourceFile'))
+            {
+                final resourceFile:Null<String> = Context.definedValue('resourceFile');
+
+                if (resourceFile != null && resourceFile.length > 0)
+                    Compiler.define('resourceFile', FileSystem.absolutePath(resourcesPath));
+            }
         }
     }
 

@@ -1,6 +1,6 @@
 -cp ./
 -D analyzer-optimize
--D resourceFile=./raylib.rc
+-D resourceFile=raylib.rc
 -lib raylib-hx
 -dce full
 -main Main
