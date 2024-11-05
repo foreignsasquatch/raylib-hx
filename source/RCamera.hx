@@ -37,13 +37,13 @@ import Raylib;
 extern class RCamera
 {
     @:native('GetCameraForward')
-    static function GetCameraForward(camera:cpp.RawPointer<RayCamera>):Vector3Impl;
+    static function GetCameraForward(camera:cpp.RawPointer<Camera3DImpl>):Vector3Impl;
 
     @:native('GetCameraUp')
-    static function GetCameraUp(camera:cpp.RawPointer<RayCamera>):Vector3Impl;
+    static function GetCameraUp(camera:cpp.RawPointer<Camera3DImpl>):Vector3Impl;
 
     @:native('GetCameraRight')
-    static function GetCameraRight(camera:cpp.RawPointer<RayCamera>):Vector3Impl;
+    static function GetCameraRight(camera:cpp.RawPointer<Camera3DImpl>):Vector3Impl;
 
     @:native('CameraMoveForward')
     static function CameraMoveForward(camera:cpp.RawPointer<Camera3DImpl>, distance:Single, moveInWorldPlane:Bool):Void;
