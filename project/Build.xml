@@ -215,6 +215,9 @@
         <flag value="-s" />
         <flag value="USE_GLFW=3" />
 
+        <flag value="-s" />
+        <flag value="EXPORTED_RUNTIME_METHODS=ccall" />
+
         <section if="GRAPHICS_API_OPENGL_ES3">
             <flag value="-s" />
             <flag value="MIN_WEBGL_VERSION=2" />

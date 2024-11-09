@@ -1,6 +1,7 @@
 package macros;
 
 #if macro
+import haxe.io.Path;
 import haxe.macro.Context;
 import haxe.macro.Compiler;
 import sys.FileSystem;
@@ -44,7 +45,7 @@ class PlatformConfigMacro
                 final resourcesPath:Null<String> = Context.definedValue('RAYLIB_WEB_RESOURCES_PATH');
 
                 if (resourcesPath != null && resourcesPath.length > 0)
-                    Compiler.define('RAYLIB_WEB_RESOURCES_PATH', FileSystem.absolutePath(resourcesPath) + '@' + resourcesPath);
+                    Compiler.define('RAYLIB_WEB_RESOURCES_PATH', Path.normalize(FileSystem.absolutePath(resourcesPath)) + '@' + resourcesPath);
             }
         }
         else
@@ -58,6 +59,15 @@ class PlatformConfigMacro
 
             if (!checkForOpenGLES() && !checkForOpenGL())
                 Compiler.define('GRAPHICS_API_OPENGL_33');
+
+            // Tbh, idrk if this is actually intended or not but hey, at least it works now.
+            if (Context.defined('resourceFile'))
+            {
+                final resourceFile:Null<String> = Context.definedValue('resourceFile');
+
+                if (resourceFile != null && resourceFile.length > 0)
+                    Compiler.define('resourceFile', Path.normalize(FileSystem.absolutePath(resourceFile)));
+            }
         }
     }
 
