@@ -1,1 +1,1 @@
---macro macros.PlatformConfigMacro.run()
+--macro raylib.macros.PlatformConfigMacro.run()

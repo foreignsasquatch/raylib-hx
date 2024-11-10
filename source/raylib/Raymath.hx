@@ -24,12 +24,12 @@
  *     3. This notice may not be removed or altered from any source distribution.
  */
 
-package;
+package raylib;
 
 #if !cpp
 #error 'Raylib supports only C++ target platforms.'
 #end
-import Raylib;
+import raylib.Raylib;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('impl/raymath-impl.h')
@@ -254,7 +254,7 @@ extern class Raymath
     static function Vector3Unproject(source:Vector3Impl, projection:MatrixImpl, view:MatrixImpl):Vector3Impl;
 
     @:native('Vector3ToFloat')
-    static function Vector3ToFloat(v:Vector3Impl):utils.FloatPointer;
+    static function Vector3ToFloat(v:Vector3Impl):raylib.utils.FloatPointer;
 
     @:native('Vector3Invert')
     static function Vector3Invert(v:Vector3Impl):Vector3Impl;
@@ -392,7 +392,7 @@ extern class Raymath
     static function MatrixLookAt(eye:Vector3Impl, target:Vector3Impl, up:Vector3Impl):MatrixImpl;
 
     @:native('MatrixToFloat')
-    static function MatrixToFloat(mat:MatrixImpl):utils.FloatPointer;
+    static function MatrixToFloat(mat:MatrixImpl):raylib.utils.FloatPointer;
 
     @:native('MatrixDecompose')
     static function MatrixDecompose(mat:MatrixImpl, translation:cpp.RawPointer<Vector3Impl>, rotation:cpp.RawPointer<Vector4Impl>,

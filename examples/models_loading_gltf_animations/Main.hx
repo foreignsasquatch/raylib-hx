@@ -1,6 +1,6 @@
 package;
 
-import Raylib;
+import raylib.Raylib;
 
 class Main
 {
@@ -14,7 +14,7 @@ class Main
         final screenWidth:Int = 800;
         final screenHeight:Int = 450;
 
-        Raylib.initWindow(screenWidth, screenHeight, "raylib [models] example - loading gltf animations");
+        Raylib.InitWindow(screenWidth, screenHeight, "raylib [models] example - loading gltf animations");
 
         // Define the camera to look into our 3D world
         final camera:Camera3D = new Camera3D();
@@ -25,17 +25,17 @@ class Main
         camera.projection = CAMERA_PERSPECTIVE;                   // Camera projection type
 
         // Load glTF model
-        final model:Model = Raylib.loadModel("resources/robot.glb");
+        final model:Model = Raylib.LoadModel("resources/robot.glb");
 
         // Load glTF model animations
         var animsCount:Int = 0;
         var animationIndex:UInt = 0;
         var animCurrentFrame:UInt = 0;
-        var modelAnimation:cpp.RawPointer<ModelAnimationImpl> = Raylib.loadModelAnimations("resources/robot.glb", animsCount);
+        var modelAnimation:cpp.RawPointer<ModelAnimationImpl> = Raylib.LoadModelAnimations("resources/robot.glb", animsCount);
 
         final position:Vector3 = new Vector3(0.0, 0.0, 0.0);    // Set model position
 
-        Raylib.setTargetFPS(60); // Set our game to run at 60 frames-per-second
+        Raylib.SetTargetFPS(60); // Set our game to run at 60 frames-per-second
         //--------------------------------------------------------------------------------------
 
         // Main game loop
@@ -43,51 +43,51 @@ class Main
         {
             // Update
             //----------------------------------------------------------------------------------
-            Raylib.updateCamera(camera, CAMERA_THIRD_PERSON);
+            Raylib.UpdateCamera(camera, CAMERA_THIRD_PERSON);
 
             // Select current animation
-            if (Raylib.isMouseButtonPressed(MOUSE_BUTTON_RIGHT))
+            if (Raylib.IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
                 animationIndex = (animationIndex + 1) % animsCount;
-            else if (Raylib.isMouseButtonPressed(MOUSE_BUTTON_LEFT))
+            else if (Raylib.IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
                 animationIndex = (animationIndex + animsCount - 1) % animsCount;
 
             // Update model animation
             final anim:ModelAnimation = modelAnimation[animationIndex];
             animCurrentFrame = (animCurrentFrame + 1) % anim.frameCount;
-            Raylib.updateModelAnimation(model, anim, animCurrentFrame);
+            Raylib.UpdateModelAnimation(model, anim, animCurrentFrame);
             //----------------------------------------------------------------------------------
 
             // Draw
             //----------------------------------------------------------------------------------
-            Raylib.beginDrawing();
+            Raylib.BeginDrawing();
 
-            Raylib.clearBackground(Raylib.RAYWHITE);
+            Raylib.ClearBackground(Raylib.RAYWHITE);
 
-            Raylib.beginMode3D(camera);
+            Raylib.BeginMode3D(camera);
 
-            Raylib.drawModel(model, position, 1.0, Raylib.WHITE); // Draw animated model
-            Raylib.drawGrid(10, 1.0); // Draw a grid
+            Raylib.DrawModel(model, position, 1.0, Raylib.WHITE); // Draw animated model
+            Raylib.DrawGrid(10, 1.0); // Draw a grid
 
-            Raylib.endMode3D();
+            Raylib.EndMode3D();
 
-            Raylib.drawText("Use the LEFT/RIGHT mouse buttons to switch animation", 10, 10, 20, Raylib.GRAY);
-            Raylib.drawText("Animation: " + cast(anim.name, String), 10, Raylib.getScreenHeight() - 20, 10, Raylib.DARKGRAY);
+            Raylib.DrawText("Use the LEFT/RIGHT mouse buttons to switch animation", 10, 10, 20, Raylib.GRAY);
+            Raylib.DrawText("Animation: " + cast(anim.name, String), 10, Raylib.getScreenHeight() - 20, 10, Raylib.DARKGRAY);
 
-            Raylib.endDrawing();
+            Raylib.EndDrawing();
             //----------------------------------------------------------------------------------
         }
 
         // De-Initialization
         //--------------------------------------------------------------------------------------
-        Raylib.unloadModel(model); // Unload model
+        Raylib.UnloadModel(model); // Unload model
 
         if (modelAnimation != null)
         {
-            Raylib.unloadModelAnimations(modelAnimation, animsCount); // Unload animations
+            Raylib.UnloadModelAnimations(modelAnimation, animsCount); // Unload animations
             modelAnimation = null;
         }
 
-        Raylib.closeWindow(); // Close window and OpenGL context
+        Raylib.CloseWindow(); // Close window and OpenGL context
         //--------------------------------------------------------------------------------------
     }
 }

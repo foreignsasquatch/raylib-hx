@@ -24,12 +24,12 @@
  *     3. This notice may not be removed or altered from any source distribution.
  */
 
-package;
+package raylib;
 
 #if !cpp
 #error 'Raylib supports only C++ target platforms.'
 #end
-import Raylib;
+import raylib.Raylib;
 
 extern enum abstract TouchAction(TouchActionImpl)
 {
@@ -61,7 +61,7 @@ extern class GestureEventImpl
 {
     var touchAction:Int;
     var pointCount:Int;
-    var pointId:utils.IntPointer;
+    var pointId:raylib.utils.IntPointer;
     var position:cpp.RawPointer<Vector2Impl>;
 
     function new():Void;

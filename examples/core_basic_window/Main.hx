@@ -1,6 +1,6 @@
 package;
 
-import Raylib;
+import raylib.Raylib;
 
 class Main
 {
@@ -14,9 +14,9 @@ class Main
         final screenWidth:Int = 800;
         final screenHeight:Int = 450;
 
-        Raylib.initWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+        Raylib.InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
 
-        Raylib.setTargetFPS(60); // Set our game to run at 60 frames-per-second
+        Raylib.SetTargetFPS(60); // Set our game to run at 60 frames-per-second
         //--------------------------------------------------------------------------------------
 
         // Main game loop
@@ -29,19 +29,19 @@ class Main
 
             // Draw
             //----------------------------------------------------------------------------------
-            Raylib.beginDrawing();
+            Raylib.BeginDrawing();
 
-            Raylib.clearBackground(Raylib.RAYWHITE);
+            Raylib.ClearBackground(Raylib.RAYWHITE);
 
-            Raylib.drawText("Congrats! You created your first window!", 190, 200, 20, Raylib.LIGHTGRAY);
+            Raylib.DrawText("Congrats! You created your first window!", 190, 200, 20, Raylib.LIGHTGRAY);
 
-            Raylib.endDrawing();
+            Raylib.EndDrawing();
             //----------------------------------------------------------------------------------
         }
 
         // De-Initialization
         //--------------------------------------------------------------------------------------
-        Raylib.closeWindow(); // Close window and OpenGL context
+        Raylib.CloseWindow(); // Close window and OpenGL context
         //--------------------------------------------------------------------------------------
     }
 }
