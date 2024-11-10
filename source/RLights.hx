@@ -76,7 +76,8 @@ extern abstract Light(cpp.Struct<LightImpl>) to cpp.Struct<LightImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
 
-typedef LightReference = cpp.Reference<Light>;
+@:native('cpp.Reference<Light>')
+extern class LightReference extends LightImpl {}
 
 extern enum abstract LightType(LightTypeImpl)
 {
