@@ -1,7 +1,0 @@
--cp ./
--D analyzer-optimize
--lib raylib-hx
--dce full
--main Main
--cpp bin/unix
--cmd cp -rf resources bin/unix/resources
