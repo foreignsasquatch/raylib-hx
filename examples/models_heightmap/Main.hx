@@ -27,12 +27,9 @@ class Main
 
         final image:Image = LoadImage("resources/heightmap.png"); // Load heightmap image (RAM)
         final texture:Texture = LoadTextureFromImage(image); // Convert image to texture (VRAM)
-
         final mesh:Mesh = GenMeshHeightmap(image, new Vector3(16, 8, 16)); // Generate heightmap mesh (RAM and VRAM)
         final model:Model = LoadModelFromMesh(mesh); // Load model from generated mesh
         model.materials[0].maps[untyped MATERIAL_MAP_ALBEDO].texture = texture; // Set map diffuse texture
-
-        final mapPosition:Vector3 = new Vector3(-8.0, 0.0, -8.0); // Define model position
 
         UnloadImage(image); // Unload heightmap image from RAM, already uploaded to VRAM
 
@@ -55,7 +52,7 @@ class Main
 
             BeginMode3D(camera);
 
-            DrawModel(model, mapPosition, 1.0, RED);
+            DrawModel(model, new Vector3(-8.0, 0.0, -8.0), 1.0, RED);
             DrawGrid(20, 1.0);
 
             EndMode3D();
