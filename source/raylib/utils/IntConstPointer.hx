@@ -1,4 +1,4 @@
-package utils;
+package raylib.utils;
 
 @:nullSafety
 extern abstract IntConstPointer(cpp.RawConstPointer<Int>) from cpp.RawConstPointer<Int> to cpp.RawConstPointer<Int>

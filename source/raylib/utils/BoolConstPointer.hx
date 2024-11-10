@@ -1,4 +1,4 @@
-package utils;
+package raylib.utils;
 
 @:nullSafety
 extern abstract BoolConstPointer(cpp.RawConstPointer<Bool>) from cpp.RawConstPointer<Bool> to cpp.RawConstPointer<Bool>

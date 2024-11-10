@@ -1,4 +1,4 @@
-package macros;
+package raylib.macros;
 
 #if macro
 import haxe.io.Path;
