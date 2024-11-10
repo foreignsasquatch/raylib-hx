@@ -1,6 +1,7 @@
 package;
 
 import raylib.Raylib.*;
+import raylib.Types;
 
 //------------------------------------------------------------------------------------------
 // Types and Structures Definition

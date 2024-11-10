@@ -1,6 +1,7 @@
 package;
 
 import raylib.Raylib.*;
+import raylib.Types;
 
 class Main
 {
