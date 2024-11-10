@@ -29,7 +29,7 @@ package raylib;
 #if !cpp
 #error 'Raylib supports only C++ target platforms.'
 #end
-import raylib.Raylib;
+import raylib.Types;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raymath-impl.h')
