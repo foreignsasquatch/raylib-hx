@@ -24,15 +24,15 @@
  *     3. This notice may not be removed or altered from any source distribution.
  */
 
-package;
+package raylib;
 
 #if !cpp
 #error 'Raylib supports only C++ target platforms.'
 #end
-import Raylib;
+import raylib.Types;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('impl/rcamera-impl.h')
+@:include('rcamera-impl.h')
 @:unreflective
 extern class RCamera
 {

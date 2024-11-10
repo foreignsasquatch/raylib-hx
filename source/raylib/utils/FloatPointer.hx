@@ -1,4 +1,4 @@
-package utils;
+package raylib.utils;
 
 @:nullSafety
 extern abstract FloatPointer(cpp.RawPointer<Single>) from cpp.RawPointer<Single> to cpp.RawPointer<Single>

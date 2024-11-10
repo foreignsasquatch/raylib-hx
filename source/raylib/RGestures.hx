@@ -24,86 +24,79 @@
  *     3. This notice may not be removed or altered from any source distribution.
  */
 
-package;
+package raylib;
 
 #if !cpp
 #error 'Raylib supports only C++ target platforms.'
 #end
-import Raylib;
+import raylib.Types;
 
-@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('impl/rlights-impl.h')
-@:unreflective
-@:structAccess
-@:native('Light')
-extern class LightImpl
+extern enum abstract TouchAction(TouchActionImpl)
 {
-    @:native('Light')
-    static function alloc():LightImpl;
-
-    var type:Int;
-    var enabled:Bool;
-    var position:Vector3Impl;
-    var target:Vector3Impl;
-    var color:ColorImpl;
-    var attenuation:Single;
-    var enabledLoc:Int;
-    var typeLoc:Int;
-    var positionLoc:Int;
-    var targetLoc:Int;
-    var colorLoc:Int;
-    var attenuationLoc:Int;
-}
-
-@:forward
-@:nullSafety
-extern abstract Light(cpp.Struct<LightImpl>) to cpp.Struct<LightImpl>
-{
-    inline function new():Void
-    {
-        this = LightImpl.alloc();
-    }
+    @:native('TOUCH_ACTION_UP') var TOUCH_ACTION_UP;
+    @:native('TOUCH_ACTION_DOWN') var TOUCH_ACTION_DOWN;
+    @:native('TOUCH_ACTION_MOVE') var TOUCH_ACTION_MOVE;
+    @:native('TOUCH_ACTION_CANCEL') var TOUCH_ACTION_CANCEL;
 
     @:from
-    static inline function fromNative(value:LightImpl):Light
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<LightImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<LightImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
-
-extern enum abstract LightType(LightTypeImpl)
-{
-    @:native('LIGHT_DIRECTIONAL') var LIGHT_DIRECTIONAL;
-    @:native('LIGHT_POINT') var LIGHT_POINT;
-
-    @:from
-    public static inline function fromInt(i:Int):LightType
+    static inline function fromInt(i:Int):TouchAction
         return cast i;
 
     @:to
-    public inline function toInt():Int
+    inline function toInt():Int
         return untyped this;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('impl/rlights-impl.h')
-@:native('LightType')
-private extern class LightTypeImpl {}
+@:include('rgestures-impl.h')
+@:native('TouchAction')
+private extern class TouchActionImpl {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('impl/rlights-impl.h')
+@:include('rgestures-impl.h')
 @:unreflective
-extern class RLights
+@:structAccess
+@:native('GestureEvent')
+extern class GestureEventImpl
 {
-    @:native('CreateLight')
-    static function createLight(type:Int, position:Vector3Impl, target:Vector3Impl, color:ColorImpl, shader:ShaderImpl):LightImpl;
+    var touchAction:Int;
+    var pointCount:Int;
+    var pointId:raylib.utils.IntPointer;
+    var position:cpp.RawPointer<Vector2Impl>;
 
-    @:native('UpdateLightValues')
-    static function updateLightValues(shader:ShaderImpl, light:LightImpl):Void;
+    function new():Void;
+}
+
+@:forward
+@:nullSafety
+extern abstract GestureEvent(cpp.Struct<GestureEventImpl>) to cpp.Struct<GestureEventImpl>
+{
+    inline function new():Void
+    {
+        this = new GestureEventImpl();
+    }
+
+    @:from
+    static inline function fromNative(value:GestureEventImpl):GestureEvent
+        return cast value;
+
+    @:to
+    inline function toConstPointer():cpp.RawConstPointer<GestureEventImpl>
+        return cast cpp.RawConstPointer.addressOf(this);
+
+    @:to
+    inline function toPointer():cpp.RawPointer<GestureEventImpl>
+        return cast cpp.RawPointer.addressOf(this);
+}
+
+@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:include('rgestures-impl.h')
+@:unreflective
+extern class RGestures
+{
+    @:native('ProcessGestureEvent')
+    static function ProcessGestureEvent(event:GestureEventImpl):Void;
+
+    @:native('UpdateGestures')
+    static function UpdateGestures():Void;
 }

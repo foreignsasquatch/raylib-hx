@@ -1,4 +1,4 @@
-package utils;
+package raylib.utils;
 
 @:nullSafety
 extern abstract ShortConstPointer(cpp.RawConstPointer<cpp.UInt16>) from cpp.RawConstPointer<cpp.UInt16> to cpp.RawConstPointer<cpp.UInt16>

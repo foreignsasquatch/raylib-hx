@@ -1,4 +1,4 @@
-package utils;
+package raylib.utils;
 
 @:nullSafety
 extern abstract IntPointer(cpp.RawPointer<Int>) from cpp.RawPointer<Int> to cpp.RawPointer<Int>

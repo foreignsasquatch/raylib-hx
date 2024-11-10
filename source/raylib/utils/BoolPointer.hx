@@ -1,4 +1,4 @@
-package utils;
+package raylib.utils;
 
 @:nullSafety
 extern abstract BoolPointer(cpp.RawPointer<Bool>) from cpp.RawPointer<Bool> to cpp.RawPointer<Bool>
