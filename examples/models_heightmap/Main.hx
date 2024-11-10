@@ -29,7 +29,7 @@ class Main
         final texture:Texture = LoadTextureFromImage(image); // Convert image to texture (VRAM)
         final mesh:Mesh = GenMeshHeightmap(image, new Vector3(16, 8, 16)); // Generate heightmap mesh (RAM and VRAM)
         final model:Model = LoadModelFromMesh(mesh); // Load model from generated mesh
-        model.materials[0].maps[untyped MATERIAL_MAP_ALBEDO].texture = texture; // Set map diffuse texture
+        model.materials[0].maps[cast MATERIAL_MAP_ALBEDO].texture = texture; // Set map diffuse texture
 
         UnloadImage(image); // Unload heightmap image from RAM, already uploaded to VRAM
 
