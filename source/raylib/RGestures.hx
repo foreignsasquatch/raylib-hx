@@ -29,7 +29,7 @@ package raylib;
 #if !cpp
 #error 'Raylib supports only C++ target platforms.'
 #end
-import raylib.Raylib;
+import raylib.Types;
 
 extern enum abstract TouchAction(TouchActionImpl)
 {
