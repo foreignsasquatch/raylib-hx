@@ -76,9 +76,6 @@ extern abstract Light(cpp.Struct<LightImpl>) to cpp.Struct<LightImpl>
         return cast cpp.RawPointer.addressOf(this);
 }
 
-@:native('cpp.Reference<Light>')
-extern class LightReference extends LightImpl {}
-
 extern enum abstract LightType(LightTypeImpl)
 {
     @:native('LIGHT_DIRECTIONAL') var LIGHT_DIRECTIONAL;
