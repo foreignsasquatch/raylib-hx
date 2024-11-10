@@ -1,6 +1,6 @@
 package;
 
-import raylib.Raylib;
+import raylib.Raylib.*;
 
 //------------------------------------------------------------------------------------------
 // Types and Structures Definition
@@ -25,18 +25,18 @@ class Main
         final screenWidth:Int = 800;
         final screenHeight:Int = 450;
 
-        Raylib.InitWindow(screenWidth, screenHeight, "raylib [core] example - basic screen manager");
+        InitWindow(screenWidth, screenHeight, "raylib [core] example - basic screen manager");
 
         var currentScreen:GameScreen = GameScreen.LOGO;
 
         // TODO: Initialize all required variables and load all required data here!
         var framesCounter:Int = 0; // Useful to count frames
 
-        Raylib.SetTargetFPS(60); // Set desired framerate (frames-per-second)
+        SetTargetFPS(60); // Set desired framerate (frames-per-second)
         //--------------------------------------------------------------------------------------
 
         // Main game loop
-        while (!Raylib.WindowShouldClose()) // Detect window close button or ESC key
+        while (!WindowShouldClose()) // Detect window close button or ESC key
         {
             // Update
             //----------------------------------------------------------------------------------
@@ -54,21 +54,21 @@ class Main
                 case GameScreen.TITLE:
                     // TODO: Update TITLE screen variables here!
                     // Press enter to change to GAMEPLAY screen
-                    if (Raylib.IsKeyPressed(KEY_ENTER) || Raylib.IsGestureDetected(GESTURE_TAP))
+                    if (IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP))
                     {
                         currentScreen = GameScreen.GAMEPLAY;
                     }
                 case GameScreen.GAMEPLAY:
                     // TODO: Update GAMEPLAY screen variables here!
                     // Press enter to change to ENDING screen
-                    if (Raylib.IsKeyPressed(KEY_ENTER) || Raylib.IsGestureDetected(GESTURE_TAP))
+                    if (IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP))
                     {
                         currentScreen = GameScreen.ENDING;
                     }
                 case GameScreen.ENDING:
                     // TODO: Update ENDING screen variables here!
                     // Press enter to return to TITLE screen
-                    if (Raylib.IsKeyPressed(KEY_ENTER) || Raylib.IsGestureDetected(GESTURE_TAP))
+                    if (IsKeyPressed(KEY_ENTER) || IsGestureDetected(GESTURE_TAP))
                     {
                         currentScreen = GameScreen.TITLE;
                     }
@@ -77,34 +77,34 @@ class Main
 
             // Draw
             //----------------------------------------------------------------------------------
-            Raylib.BeginDrawing();
-            Raylib.ClearBackground(Raylib.RAYWHITE);
+            BeginDrawing();
+            ClearBackground(RAYWHITE);
 
             switch (currentScreen)
             {
                 case GameScreen.LOGO:
                     // TODO: Draw LOGO screen here!
-                    Raylib.DrawText("LOGO SCREEN", 20, 20, 40, Raylib.LIGHTGRAY);
-                    Raylib.DrawText("WAIT for 2 SECONDS...", 290, 220, 20, Raylib.GRAY);
+                    DrawText("LOGO SCREEN", 20, 20, 40, LIGHTGRAY);
+                    DrawText("WAIT for 2 SECONDS...", 290, 220, 20, GRAY);
                 case GameScreen.TITLE:
                     // TODO: Draw TITLE screen here!
-                    Raylib.DrawRectangle(0, 0, screenWidth, screenHeight, Raylib.GREEN);
-                    Raylib.DrawText("TITLE SCREEN", 20, 20, 40, Raylib.DARKGREEN);
-                    Raylib.DrawText("PRESS ENTER or TAP to JUMP to GAMEPLAY SCREEN", 120, 220, 20, Raylib.DARKGREEN);
+                    DrawRectangle(0, 0, screenWidth, screenHeight, GREEN);
+                    DrawText("TITLE SCREEN", 20, 20, 40, DARKGREEN);
+                    DrawText("PRESS ENTER or TAP to JUMP to GAMEPLAY SCREEN", 120, 220, 20, DARKGREEN);
                 case GameScreen.GAMEPLAY:
                     // TODO: Draw GAMEPLAY screen here!
-                    Raylib.DrawRectangle(0, 0, screenWidth, screenHeight, Raylib.PURPLE);
-                    Raylib.DrawText("GAMEPLAY SCREEN", 20, 20, 40, Raylib.MAROON);
-                    Raylib.DrawText("PRESS ENTER or TAP to JUMP to ENDING SCREEN", 130, 220, 20, Raylib.MAROON);
+                    DrawRectangle(0, 0, screenWidth, screenHeight, PURPLE);
+                    DrawText("GAMEPLAY SCREEN", 20, 20, 40, MAROON);
+                    DrawText("PRESS ENTER or TAP to JUMP to ENDING SCREEN", 130, 220, 20, MAROON);
                 case GameScreen.ENDING:
                     // TODO: Draw ENDING screen here!
-                    Raylib.DrawRectangle(0, 0, screenWidth, screenHeight, Raylib.BLUE);
-                    Raylib.DrawText("ENDING SCREEN", 20, 20, 40, Raylib.DARKBLUE);
-                    Raylib.DrawText("PRESS ENTER or TAP to RETURN to TITLE SCREEN", 120, 220, 20, Raylib.DARKBLUE);
+                    DrawRectangle(0, 0, screenWidth, screenHeight, BLUE);
+                    DrawText("ENDING SCREEN", 20, 20, 40, DARKBLUE);
+                    DrawText("PRESS ENTER or TAP to RETURN to TITLE SCREEN", 120, 220, 20, DARKBLUE);
                 default:
             }
 
-            Raylib.EndDrawing();
+            EndDrawing();
             //----------------------------------------------------------------------------------
         }
 
@@ -112,7 +112,7 @@ class Main
         //--------------------------------------------------------------------------------------
         // TODO: Unload all loaded data (textures, fonts, audio) here!
 
-        Raylib.CloseWindow(); // Close window and OpenGL context
+        CloseWindow(); // Close window and OpenGL context
         //--------------------------------------------------------------------------------------
     }
 }
