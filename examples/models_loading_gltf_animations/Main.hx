@@ -71,7 +71,7 @@ class Main
             Raylib.EndMode3D();
 
             Raylib.DrawText("Use the LEFT/RIGHT mouse buttons to switch animation", 10, 10, 20, Raylib.GRAY);
-            Raylib.DrawText("Animation: " + cast(anim.name, String), 10, Raylib.getScreenHeight() - 20, 10, Raylib.DARKGRAY);
+            Raylib.DrawText("Animation: " + cast(anim.name, String), 10, Raylib.GetScreenHeight() - 20, 10, Raylib.DARKGRAY);
 
             Raylib.EndDrawing();
             //----------------------------------------------------------------------------------

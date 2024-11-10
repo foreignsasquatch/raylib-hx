@@ -27,7 +27,7 @@ class Main
         final image:Image = Raylib.LoadImage("resources/heightmap.png"); // Load heightmap image (RAM)
         final texture:Texture = Raylib.LoadTextureFromImage(image); // Convert image to texture (VRAM)
 
-        final mesh:Mesh = Raylib.genMeshHeightmap(image, new Vector3(16, 8, 16)); // Generate heightmap mesh (RAM and VRAM)
+        final mesh:Mesh = Raylib.GenMeshHeightmap(image, new Vector3(16, 8, 16)); // Generate heightmap mesh (RAM and VRAM)
         final model:Model = Raylib.LoadModelFromMesh(mesh); // Load model from generated mesh
         model.materials[0].maps[untyped MATERIAL_MAP_ALBEDO].texture = texture; // Set map diffuse texture
 
