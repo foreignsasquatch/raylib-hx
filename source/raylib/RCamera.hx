@@ -32,7 +32,7 @@ package raylib;
 import raylib.Raylib;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('impl/rcamera-impl.h')
+@:include('rcamera-impl.h')
 @:unreflective
 extern class RCamera
 {
