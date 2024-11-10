@@ -59,13 +59,12 @@ private extern class TouchActionImpl {}
 @:native('GestureEvent')
 extern class GestureEventImpl
 {
-    @:native('GestureEvent')
-    static function alloc():GestureEventImpl;
-
     var touchAction:Int;
     var pointCount:Int;
     var pointId:utils.IntPointer;
     var position:cpp.RawPointer<Vector2Impl>;
+
+    function new():Void;
 }
 
 @:forward
@@ -74,7 +73,7 @@ extern abstract GestureEvent(cpp.Struct<GestureEventImpl>) to cpp.Struct<Gesture
 {
     inline function new():Void
     {
-        this = GestureEventImpl.alloc();
+        this = new GestureEventImpl();
     }
 
     @:from
