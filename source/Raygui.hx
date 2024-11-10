@@ -33,43 +33,6 @@ package;
 #end
 import Raylib;
 
-@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
-@:include('impl/raygui-impl.h')
-@:unreflective
-@:structAccess
-@:native('GuiStyleProp')
-extern class GuiStylePropImpl
-{
-    @:native('GuiStyleProp')
-    static function alloc():GuiStylePropImpl;
-
-    var controlId:cpp.UInt16;
-    var propertyId:cpp.UInt16;
-    var propertyValue:Int;
-}
-
-@:forward
-@:nullSafety
-extern abstract GuiStyleProp(cpp.Struct<GuiStylePropImpl>) to cpp.Struct<GuiStylePropImpl>
-{
-    inline function new():Void
-    {
-        this = GuiStylePropImpl.alloc();
-    }
-
-    @:from
-    static inline function fromNative(value:GuiStylePropImpl):GuiStyleProp
-        return cast value;
-
-    @:to
-    inline function toConstPointer():cpp.RawConstPointer<GuiStylePropImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
-
-    @:to
-    inline function toPointer():cpp.RawPointer<GuiStylePropImpl>
-        return cast cpp.RawPointer.addressOf(this);
-}
-
 extern enum abstract GuiState(GuiStateImpl)
 {
     @:native('STATE_NORMAL') var STATE_NORMAL;

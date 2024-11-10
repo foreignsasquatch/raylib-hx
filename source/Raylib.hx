@@ -36,11 +36,10 @@ package;
 @:native('Vector2')
 extern class Vector2Impl
 {
-    @:native('Vector2')
-    static function alloc():Vector2Impl;
-
     var x:Single;
     var y:Single;
+
+    function new():Void;
 }
 
 @:forward
@@ -49,7 +48,7 @@ extern abstract Vector2(cpp.Struct<Vector2Impl>) to cpp.Struct<Vector2Impl>
 {
     inline function new(x:Single, y:Single):Void
     {
-        final vec2:Vector2Impl = Vector2Impl.alloc();
+        final vec2:Vector2Impl = new Vector2Impl();
         vec2.x = x;
         vec2.y = y;
         this = vec2;
@@ -75,12 +74,11 @@ extern abstract Vector2(cpp.Struct<Vector2Impl>) to cpp.Struct<Vector2Impl>
 @:native('Vector3')
 extern class Vector3Impl
 {
-    @:native('Vector3')
-    static function alloc():Vector3Impl;
-
     var x:Single;
     var y:Single;
     var z:Single;
+
+    function new():Void;
 }
 
 @:forward
@@ -89,7 +87,7 @@ extern abstract Vector3(cpp.Struct<Vector3Impl>) to cpp.Struct<Vector3Impl>
 {
     inline function new(x:Single, y:Single, z:Single):Void
     {
-        final vec3:Vector3Impl = Vector3Impl.alloc();
+        final vec3:Vector3Impl = new Vector3Impl();
         vec3.x = x;
         vec3.y = y;
         vec3.z = z;
@@ -116,13 +114,12 @@ extern abstract Vector3(cpp.Struct<Vector3Impl>) to cpp.Struct<Vector3Impl>
 @:native('Vector4')
 extern class Vector4Impl
 {
-    @:native('Vector4Impl')
-    static function alloc():Vector4Impl;
-
     var x:Single;
     var y:Single;
     var z:Single;
     var w:Single;
+
+    function new():Void;
 }
 
 @:forward
@@ -131,7 +128,7 @@ extern abstract Vector4(cpp.Struct<Vector4Impl>) to cpp.Struct<Vector4Impl>
 {
     inline function new(x:Single, y:Single, z:Single, w:Single):Void
     {
-        final vec4:Vector4Impl = Vector4Impl.alloc();
+        final vec4:Vector4Impl = new Vector4Impl();
         vec4.x = x;
         vec4.y = y;
         vec4.z = z;
@@ -159,9 +156,6 @@ extern abstract Vector4(cpp.Struct<Vector4Impl>) to cpp.Struct<Vector4Impl>
 @:native('Matrix')
 extern class MatrixImpl
 {
-    @:native('Matrix')
-    static function alloc():MatrixImpl;
-
     var m0:Single;
     var m4:Single;
     var m8:Single;
@@ -181,6 +175,8 @@ extern class MatrixImpl
     var m7:Single;
     var m11:Single;
     var m15:Single;
+
+    function new():Void;
 }
 
 @:forward
@@ -189,7 +185,7 @@ extern abstract Matrix(cpp.Struct<MatrixImpl>) to cpp.Struct<MatrixImpl>
 {
     inline function new():Void
     {
-        this = MatrixImpl.alloc();
+        this = new MatrixImpl();
     }
 
     @:from
@@ -212,13 +208,12 @@ extern abstract Matrix(cpp.Struct<MatrixImpl>) to cpp.Struct<MatrixImpl>
 @:native('Color')
 extern class ColorImpl
 {
-    @:native('Color')
-    static function alloc():ColorImpl;
-
     var r:cpp.UInt8;
     var g:cpp.UInt8;
     var b:cpp.UInt8;
     var a:cpp.UInt8;
+
+    function new():Void;
 }
 
 @:forward
@@ -227,7 +222,7 @@ extern abstract Color(cpp.Struct<ColorImpl>) to cpp.Struct<ColorImpl>
 {
     inline function new(r:cpp.UInt8, g:cpp.UInt8, b:cpp.UInt8, a:cpp.UInt8):Void
     {
-        final color:ColorImpl = ColorImpl.alloc();
+        final color:ColorImpl = new ColorImpl();
         color.r = r;
         color.g = g;
         color.b = b;
@@ -255,13 +250,12 @@ extern abstract Color(cpp.Struct<ColorImpl>) to cpp.Struct<ColorImpl>
 @:native('Rectangle')
 extern class RectangleImpl
 {
-    @:native('Rectangle')
-    static function alloc():RectangleImpl;
-
     var x:Single;
     var y:Single;
     var width:Single;
     var height:Single;
+
+    function new():Void;
 }
 
 @:forward
@@ -270,7 +264,7 @@ extern abstract Rectangle(cpp.Struct<RectangleImpl>) to cpp.Struct<RectangleImpl
 {
     inline function new(x:Single, y:Single, width:Single, height:Single):Void
     {
-        final rect:RectangleImpl = RectangleImpl.alloc();
+        final rect:RectangleImpl = new RectangleImpl();
         rect.x = x;
         rect.y = y;
         rect.width = width;
@@ -298,14 +292,13 @@ extern abstract Rectangle(cpp.Struct<RectangleImpl>) to cpp.Struct<RectangleImpl
 @:native('Image')
 extern class ImageImpl
 {
-    @:native('Image')
-    static function alloc():ImageImpl;
-
     var data:cpp.RawPointer<cpp.Void>;
     var width:Int;
     var height:Int;
     var mipmaps:Int;
     var format:Int;
+
+    function new():Void;
 }
 
 @:forward
@@ -314,7 +307,7 @@ extern abstract Image(cpp.Struct<ImageImpl>) to cpp.Struct<ImageImpl>
 {
     inline function new():Void
     {
-        this = ImageImpl.alloc();
+        this = new ImageImpl();
     }
 
     @:from
@@ -337,14 +330,13 @@ extern abstract Image(cpp.Struct<ImageImpl>) to cpp.Struct<ImageImpl>
 @:native('Texture')
 extern class TextureImpl
 {
-    @:native('Texture')
-    static function alloc():TextureImpl;
-
     var id:cpp.UInt32;
     var width:Int;
     var height:Int;
     var mipmaps:Int;
     var format:Int;
+
+    function new():Void;
 }
 
 @:forward
@@ -353,7 +345,7 @@ extern abstract Texture(cpp.Struct<TextureImpl>) to cpp.Struct<TextureImpl>
 {
     inline function new():Void
     {
-        this = TextureImpl.alloc();
+        this = new TextureImpl();
     }
 
     @:from
@@ -376,12 +368,11 @@ extern abstract Texture(cpp.Struct<TextureImpl>) to cpp.Struct<TextureImpl>
 @:native('RenderTexture')
 extern class RenderTextureImpl
 {
-    @:native('RenderTexture')
-    static function alloc():RenderTextureImpl;
-
     var id:cpp.UInt32;
     var texture:TextureImpl;
     var depth:TextureImpl;
+
+    function new():Void;
 }
 
 @:forward
@@ -390,7 +381,7 @@ extern abstract RenderTexture(cpp.Struct<RenderTextureImpl>) to cpp.Struct<Rende
 {
     inline function new():Void
     {
-        this = RenderTextureImpl.alloc();
+        this = new RenderTextureImpl();
     }
 
     @:from
@@ -413,15 +404,14 @@ extern abstract RenderTexture(cpp.Struct<RenderTextureImpl>) to cpp.Struct<Rende
 @:native('NPatchInfo')
 extern class NPatchInfoImpl
 {
-    @:native('NPatchInfo')
-    static function alloc():NPatchInfoImpl;
-
     var source:RectangleImpl;
     var left:Int;
     var top:Int;
     var right:Int;
     var bottom:Int;
     var layout:Int;
+
+    function new():Void;
 }
 
 @:forward
@@ -430,7 +420,7 @@ extern abstract NPatchInfo(cpp.Struct<NPatchInfoImpl>) to cpp.Struct<NPatchInfoI
 {
     inline function new():Void
     {
-        this = NPatchInfoImpl.alloc();
+        this = new NPatchInfoImpl();
     }
 
     @:from
@@ -453,14 +443,13 @@ extern abstract NPatchInfo(cpp.Struct<NPatchInfoImpl>) to cpp.Struct<NPatchInfoI
 @:native('GlyphInfo')
 extern class GlyphInfoImpl
 {
-    @:native('GlyphInfo')
-    static function alloc():GlyphInfoImpl;
-
     var value:Int;
     var offsetX:Int;
     var offsetY:Int;
     var advanceX:Int;
     var image:ImageImpl;
+
+    function new():Void;
 }
 
 @:forward
@@ -469,7 +458,7 @@ extern abstract GlyphInfo(cpp.Struct<GlyphInfoImpl>) to cpp.Struct<GlyphInfoImpl
 {
     inline function new():Void
     {
-        this = GlyphInfoImpl.alloc();
+        this = new GlyphInfoImpl();
     }
 
     @:from
@@ -492,15 +481,14 @@ extern abstract GlyphInfo(cpp.Struct<GlyphInfoImpl>) to cpp.Struct<GlyphInfoImpl
 @:native('Font')
 extern class FontImpl
 {
-    @:native('Font')
-    static function alloc():FontImpl;
-
     var baseSize:Int;
     var glyphCount:Int;
     var glyphPadding:Int;
     var texture:TextureImpl;
     var recs:cpp.RawPointer<RectangleImpl>;
     var glyphs:cpp.RawPointer<GlyphInfoImpl>;
+
+    function new():Void;
 }
 
 @:nullSafety
@@ -508,7 +496,7 @@ extern abstract Font(cpp.Struct<FontImpl>) to cpp.Struct<FontImpl>
 {
     inline function new():Void
     {
-        this = FontImpl.alloc();
+        this = new FontImpl();
     }
 
     @:from
@@ -531,14 +519,13 @@ extern abstract Font(cpp.Struct<FontImpl>) to cpp.Struct<FontImpl>
 @:native('Camera3D')
 extern class Camera3DImpl
 {
-    @:native('Camera3D')
-    static function alloc():Camera3DImpl;
-
     var position:Vector3Impl;
     var target:Vector3Impl;
     var up:Vector3Impl;
     var fovy:Single;
     var projection:Int;
+
+    function new():Void;
 }
 
 @:forward
@@ -547,7 +534,7 @@ extern abstract Camera3D(cpp.Struct<Camera3DImpl>) to cpp.Struct<Camera3DImpl>
 {
     inline function new():Void
     {
-        this = Camera3DImpl.alloc();
+        this = new Camera3DImpl();
     }
 
     @:from
@@ -570,13 +557,12 @@ extern abstract Camera3D(cpp.Struct<Camera3DImpl>) to cpp.Struct<Camera3DImpl>
 @:native('Camera2D')
 extern class Camera2DImpl
 {
-    @:native('Camera2D')
-    static function alloc():Camera2DImpl;
-
     var offset:Vector2Impl;
     var target:Vector2Impl;
     var rotation:Single;
     var zoom:Single;
+
+    function new():Void;
 }
 
 @:forward
@@ -585,7 +571,7 @@ extern abstract Camera2D(cpp.Struct<Camera2DImpl>) to cpp.Struct<Camera2DImpl>
 {
     inline function new():Void
     {
-        this = Camera2DImpl.alloc();
+        this = new Camera2DImpl();
     }
 
     @:from
@@ -608,9 +594,6 @@ extern abstract Camera2D(cpp.Struct<Camera2DImpl>) to cpp.Struct<Camera2DImpl>
 @:native('Mesh')
 extern class MeshImpl
 {
-    @:native('Mesh')
-    static function alloc():MeshImpl;
-
     var vertexCount:Int;
     var triangleCount:Int;
     var vertices:utils.FloatPointer;
@@ -627,6 +610,8 @@ extern class MeshImpl
     var boneMatrices:cpp.RawPointer<MatrixImpl>;
     var vaoId:cpp.UInt32;
     var vboId:utils.UnsignedPointer;
+
+    function new():Void;
 }
 
 @:forward
@@ -635,7 +620,7 @@ extern abstract Mesh(cpp.Struct<MeshImpl>) to cpp.Struct<MeshImpl>
 {
     inline function new():Void
     {
-        this = MeshImpl.alloc();
+        this = new MeshImpl();
     }
 
     @:from
@@ -658,11 +643,10 @@ extern abstract Mesh(cpp.Struct<MeshImpl>) to cpp.Struct<MeshImpl>
 @:native('Shader')
 extern class ShaderImpl
 {
-    @:native('Shader')
-    static function alloc():ShaderImpl;
-
     var id:cpp.UInt32;
     var locs:utils.IntPointer;
+
+    function new():Void;
 }
 
 @:forward
@@ -671,7 +655,7 @@ extern abstract Shader(cpp.Struct<ShaderImpl>) to cpp.Struct<ShaderImpl>
 {
     inline function new():Void
     {
-        this = ShaderImpl.alloc();
+        this = new ShaderImpl();
     }
 
     @:from
@@ -694,12 +678,11 @@ extern abstract Shader(cpp.Struct<ShaderImpl>) to cpp.Struct<ShaderImpl>
 @:native('MaterialMap')
 extern class MaterialMapImpl
 {
-    @:native('MaterialMap')
-    static function alloc():MaterialMapImpl;
-
     var texture:TextureImpl;
     var color:ColorImpl;
     var value:Single;
+
+    function new():Void;
 }
 
 @:forward
@@ -708,7 +691,7 @@ extern abstract MaterialMap(cpp.Struct<MaterialMapImpl>) to cpp.Struct<MaterialM
 {
     inline function new():Void
     {
-        this = MaterialMapImpl.alloc();
+        this = new MaterialMapImpl();
     }
 
     @:from
@@ -731,12 +714,11 @@ extern abstract MaterialMap(cpp.Struct<MaterialMapImpl>) to cpp.Struct<MaterialM
 @:native('Material')
 extern class MaterialImpl
 {
-    @:native('Material')
-    static function alloc():MaterialImpl;
-
     var shader:ShaderImpl;
     var maps:cpp.RawPointer<MaterialMapImpl>;
     var params:utils.FloatPointer;
+
+    function new():Void;
 }
 
 @:forward
@@ -745,7 +727,7 @@ extern abstract Material(cpp.Struct<MaterialImpl>) to cpp.Struct<MaterialImpl>
 {
     inline function new():Void
     {
-        this = MaterialImpl.alloc();
+        this = new MaterialImpl();
     }
 
     @:from
@@ -768,12 +750,11 @@ extern abstract Material(cpp.Struct<MaterialImpl>) to cpp.Struct<MaterialImpl>
 @:native('Transform')
 extern class TransformImpl
 {
-    @:native('Transform')
-    static function alloc():TransformImpl;
-
     var translation:Vector3Impl;
     var rotation:Vector4Impl;
     var scale:Vector3Impl;
+
+    function new():Void;
 }
 
 @:forward
@@ -782,7 +763,7 @@ extern abstract Transform(cpp.Struct<TransformImpl>) to cpp.Struct<TransformImpl
 {
     inline function new():Void
     {
-        this = TransformImpl.alloc();
+        this = new TransformImpl();
     }
 
     @:from
@@ -805,11 +786,10 @@ extern abstract Transform(cpp.Struct<TransformImpl>) to cpp.Struct<TransformImpl
 @:native('BoneInfo')
 extern class BoneInfoImpl
 {
-    @:native('BoneInfo')
-    static function alloc():BoneInfoImpl;
-
     var name:cpp.CastCharStar;
     var parent:Int;
+
+    function new():Void;
 }
 
 @:forward
@@ -818,7 +798,7 @@ extern abstract BoneInfo(cpp.Struct<BoneInfoImpl>) to cpp.Struct<BoneInfoImpl>
 {
     inline function new():Void
     {
-        this = BoneInfoImpl.alloc();
+        this = new BoneInfoImpl();
     }
 
     @:from
@@ -841,20 +821,17 @@ extern abstract BoneInfo(cpp.Struct<BoneInfoImpl>) to cpp.Struct<BoneInfoImpl>
 @:native('Model')
 extern class ModelImpl
 {
-    @:native('Model')
-    static function alloc():ModelImpl;
-
     var transform:MatrixImpl;
-
     var meshCount:Int;
     var materialCount:Int;
     var meshes:cpp.RawPointer<MeshImpl>;
     var materials:cpp.RawPointer<MaterialImpl>;
     var meshMaterial:utils.IntPointer;
-
     var boneCount:Int;
     var bones:cpp.RawPointer<BoneInfo>;
     var bindPose:cpp.RawPointer<TransformImpl>;
+
+    function new():Void;
 }
 
 @:forward
@@ -863,7 +840,7 @@ extern abstract Model(cpp.Struct<ModelImpl>) to cpp.Struct<ModelImpl>
 {
     inline function new():Void
     {
-        this = ModelImpl.alloc();
+        this = new ModelImpl();
     }
 
     @:from
@@ -886,14 +863,13 @@ extern abstract Model(cpp.Struct<ModelImpl>) to cpp.Struct<ModelImpl>
 @:native('ModelAnimation')
 extern class ModelAnimationImpl
 {
-    @:native('ModelAnimation')
-    static function alloc():ModelAnimationImpl;
-
     var boneCount:Int;
     var frameCount:Int;
     var bones:cpp.RawPointer<BoneInfo>;
     var framePoses:cpp.RawPointer<cpp.RawPointer<TransformImpl>>;
     var name:cpp.CastCharStar;
+
+    function new():Void;
 }
 
 @:forward
@@ -902,7 +878,7 @@ extern abstract ModelAnimation(cpp.Struct<ModelAnimationImpl>) to cpp.Struct<Mod
 {
     inline function new():Void
     {
-        this = ModelAnimationImpl.alloc();
+        this = new ModelAnimationImpl();
     }
 
     @:from
@@ -925,11 +901,10 @@ extern abstract ModelAnimation(cpp.Struct<ModelAnimationImpl>) to cpp.Struct<Mod
 @:native('Ray')
 extern class RayImpl
 {
-    @:native('Ray')
-    static function alloc():RayImpl;
-
     var position:Vector3Impl;
     var direction:Vector3Impl;
+
+    function new():Void;
 }
 
 @:forward
@@ -938,7 +913,7 @@ extern abstract Ray(cpp.Struct<RayImpl>) to cpp.Struct<RayImpl>
 {
     inline function new():Void
     {
-        this = RayImpl.alloc();
+        this = new RayImpl();
     }
 
     @:from
@@ -961,13 +936,12 @@ extern abstract Ray(cpp.Struct<RayImpl>) to cpp.Struct<RayImpl>
 @:native('RayCollision')
 extern class RayCollisionImpl
 {
-    @:native('RayCollision')
-    static function alloc():RayCollisionImpl;
-
     var hit:Bool;
     var distance:Single;
     var point:Vector3Impl;
     var normal:Vector3Impl;
+
+    function new():Void;
 }
 
 @:forward
@@ -976,7 +950,7 @@ extern abstract RayCollision(cpp.Struct<RayCollisionImpl>) to cpp.Struct<RayColl
 {
     inline function new():Void
     {
-        this = RayCollisionImpl.alloc();
+        this = new RayCollisionImpl();
     }
 
     @:from
@@ -999,11 +973,10 @@ extern abstract RayCollision(cpp.Struct<RayCollisionImpl>) to cpp.Struct<RayColl
 @:native('BoundingBox')
 extern class BoundingBoxImpl
 {
-    @:native('BoundingBox')
-    static function alloc():BoundingBoxImpl;
-
     var min:Vector3Impl;
     var max:Vector3Impl;
+
+    function new():Void;
 }
 
 @:forward
@@ -1012,7 +985,7 @@ extern abstract BoundingBox(cpp.Struct<BoundingBoxImpl>) to cpp.Struct<BoundingB
 {
     inline function new():Void
     {
-        this = BoundingBoxImpl.alloc();
+        this = new BoundingBoxImpl();
     }
 
     @:from
@@ -1037,10 +1010,9 @@ typedef AudioCallback = cpp.Callable<(bufferData:cpp.RawPointer<cpp.Void>, frame
 @:native('Wave')
 extern class WaveImpl
 {
-    @:native('Wave')
-    static function alloc():WaveImpl;
-
     var frameCount:cpp.UInt32;
+
+    function new():Void;
 }
 
 @:forward
@@ -1049,7 +1021,7 @@ extern abstract Wave(cpp.Struct<WaveImpl>) to cpp.Struct<WaveImpl>
 {
     inline function new():Void
     {
-        this = WaveImpl.alloc();
+        this = new WaveImpl();
     }
 
     @:from
@@ -1082,12 +1054,11 @@ extern class RAudioProcessor {}
 @:native('AudioStream')
 extern class AudioStreamImpl
 {
-    @:native('AudioStream')
-    static function alloc():AudioStreamImpl;
-
     var buffer:cpp.RawPointer<RAudioBuffer>;
     var processor:cpp.RawPointer<RAudioProcessor>;
     var sampleRate:cpp.UInt32;
+
+    function new():Void;
 }
 
 @:forward
@@ -1096,7 +1067,7 @@ extern abstract AudioStream(cpp.Struct<AudioStreamImpl>) to cpp.Struct<AudioStre
 {
     inline function new():Void
     {
-        this = AudioStreamImpl.alloc();
+        this = new AudioStreamImpl();
     }
 
     @:from
@@ -1119,11 +1090,10 @@ extern abstract AudioStream(cpp.Struct<AudioStreamImpl>) to cpp.Struct<AudioStre
 @:native('Sound')
 extern class SoundImpl
 {
-    @:native('Sound')
-    static function alloc():SoundImpl;
-
     var stream:AudioStreamImpl;
     var frameCount:cpp.UInt32;
+
+    function new():Void;
 }
 
 @:forward
@@ -1132,7 +1102,7 @@ extern abstract Sound(cpp.Struct<SoundImpl>) to cpp.Struct<SoundImpl>
 {
     inline function new():Void
     {
-        this = SoundImpl.alloc();
+        this = new SoundImpl();
     }
 
     @:from
@@ -1155,14 +1125,13 @@ extern abstract Sound(cpp.Struct<SoundImpl>) to cpp.Struct<SoundImpl>
 @:native('Music')
 extern class MusicImpl
 {
-    @:native('Music')
-    static function alloc():MusicImpl;
-
     var stream:AudioStreamImpl;
     var frameCount:cpp.UInt32;
     var looping:Bool;
     var ctxType:Int;
     var ctxData:cpp.RawPointer<cpp.Void>;
+
+    function new():Void;
 }
 
 @:forward
@@ -1171,7 +1140,7 @@ extern abstract Music(cpp.Struct<MusicImpl>) to cpp.Struct<MusicImpl>
 {
     inline function new():Void
     {
-        this = MusicImpl.alloc();
+        this = new MusicImpl();
     }
 
     @:from
@@ -1194,9 +1163,6 @@ extern abstract Music(cpp.Struct<MusicImpl>) to cpp.Struct<MusicImpl>
 @:native('VrDeviceInfo')
 extern class VrDeviceInfoImpl
 {
-    @:native('VrDeviceInfo')
-    static function alloc():VrDeviceInfoImpl;
-
     var hResolution:Int;
     var vResolution:Int;
     var hScreenSize:Single;
@@ -1206,6 +1172,8 @@ extern class VrDeviceInfoImpl
     var interpupillaryDistance:Single;
     var lensDistortionValues:utils.FloatPointer;
     var chromaAbCorrection:utils.FloatPointer;
+
+    function new():Void;
 }
 
 @:forward
@@ -1214,7 +1182,7 @@ extern abstract VrDeviceInfo(cpp.Struct<VrDeviceInfoImpl>) to cpp.Struct<VrDevic
 {
     inline function new():Void
     {
-        this = VrDeviceInfoImpl.alloc();
+        this = new VrDeviceInfoImpl();
     }
 
     @:from
@@ -1237,15 +1205,14 @@ extern abstract VrDeviceInfo(cpp.Struct<VrDeviceInfoImpl>) to cpp.Struct<VrDevic
 @:native('VrStereoConfig')
 extern class VrStereoConfigImpl
 {
-    @:native('VrStereoConfig')
-    static function alloc():VrStereoConfigImpl;
-
     var projection:cpp.RawPointer<MatrixImpl>;
     var rightLensCenter:utils.FloatPointer;
     var leftScreenCenter:utils.FloatPointer;
     var rightScreenCenter:utils.FloatPointer;
     var scale:utils.FloatPointer;
     var scaleIn:utils.FloatPointer;
+
+    function new():Void;
 }
 
 @:forward
@@ -1254,7 +1221,7 @@ extern abstract VrStereoConfig(cpp.Struct<VrStereoConfigImpl>) to cpp.Struct<VrS
 {
     inline function new():Void
     {
-        this = VrStereoConfigImpl.alloc();
+        this = new VrStereoConfigImpl();
     }
 
     @:from
@@ -1277,12 +1244,11 @@ extern abstract VrStereoConfig(cpp.Struct<VrStereoConfigImpl>) to cpp.Struct<VrS
 @:native('FilePathList')
 extern class FilePathListImpl
 {
-    @:native('FilePathList')
-    static function alloc():FilePathListImpl;
-
     var capacity:cpp.UInt32;
     var count:cpp.UInt32;
     var paths:cpp.RawPointer<cpp.CastCharStar>;
+
+    function new():Void;
 }
 
 @:forward
@@ -1291,7 +1257,7 @@ extern abstract FilePathList(cpp.Struct<FilePathListImpl>) to cpp.Struct<FilePat
 {
     inline function new():Void
     {
-        this = FilePathListImpl.alloc();
+        this = new FilePathListImpl();
     }
 
     @:from
@@ -1314,11 +1280,10 @@ extern abstract FilePathList(cpp.Struct<FilePathListImpl>) to cpp.Struct<FilePat
 @:native('AutomationEvent')
 extern class AutomationEventImpl
 {
-    @:native('AutomationEvent')
-    static function alloc():AutomationEventImpl;
-
     var frame:cpp.UInt32;
     var type:cpp.UInt32;
+
+    function new():Void;
 }
 
 @:forward
@@ -1327,7 +1292,7 @@ extern abstract AutomationEvent(cpp.Struct<AutomationEventImpl>) to cpp.Struct<A
 {
     inline function new():Void
     {
-        this = AutomationEventImpl.alloc();
+        this = new AutomationEventImpl();
     }
 
     @:from
@@ -1350,11 +1315,10 @@ extern abstract AutomationEvent(cpp.Struct<AutomationEventImpl>) to cpp.Struct<A
 @:native('AutomationEventList')
 extern class AutomationEventListImpl
 {
-    @:native('AutomationEventList')
-    static function alloc():AutomationEventListImpl;
-
     var capacity:cpp.UInt32;
     var events:cpp.RawPointer<AutomationEventImpl>;
+
+    function new():Void;
 }
 
 @:forward
@@ -1363,7 +1327,7 @@ extern abstract AutomationEventList(cpp.Struct<AutomationEventListImpl>) to cpp.
 {
     inline function new():Void
     {
-        this = AutomationEventListImpl.alloc();
+        this = new AutomationEventListImpl();
     }
 
     @:from
