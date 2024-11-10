@@ -39,7 +39,7 @@ class Main
         //--------------------------------------------------------------------------------------
 
         // Main game loop
-        while (!Raylib.windowShouldClose()) // Detect window close button or ESC key
+        while (!Raylib.WindowShouldClose()) // Detect window close button or ESC key
         {
             // Update
             //----------------------------------------------------------------------------------
