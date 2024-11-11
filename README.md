@@ -10,7 +10,7 @@ Haxe/hxcpp @:native bindings for [raylib](https://raylib.com).
 
 ### Supported Platforms
 
-- ![Windows](https://img.shields.io/badge/-Windows-0078D6?logo=windows&logoColor=white&style=flat)
+- ![Windows](https://custom-icon-badges.demolab.com/badge/Windows-0078D6?logo=windows11&logoColor=white)
 - ![macOS](https://img.shields.io/badge/-macOS-000000?logo=apple&logoColor=white&style=flat)
 - ![Linux](https://img.shields.io/badge/-Linux-FCC624?logo=linux&logoColor=black&style=flat)
 - ![Emscripten](https://img.shields.io/badge/-Emscripten-FFB900?logo=javascript&logoColor=black&style=flat)
