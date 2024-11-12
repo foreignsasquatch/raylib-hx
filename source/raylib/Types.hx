@@ -830,7 +830,7 @@ extern class ModelImpl
     var materials:cpp.RawPointer<MaterialImpl>;
     var meshMaterial:raylib.utils.IntPointer;
     var boneCount:Int;
-    var bones:cpp.RawPointer<BoneInfo>;
+    var bones:cpp.RawPointer<BoneInfoImpl>;
     var bindPose:cpp.RawPointer<TransformImpl>;
 
     function new():Void;
@@ -867,7 +867,7 @@ extern class ModelAnimationImpl
 {
     var boneCount:Int;
     var frameCount:Int;
-    var bones:cpp.RawPointer<BoneInfo>;
+    var bones:cpp.RawPointer<BoneInfoImpl>;
     var framePoses:cpp.RawPointer<cpp.RawPointer<TransformImpl>>;
     var name:cpp.CastCharStar;
 
