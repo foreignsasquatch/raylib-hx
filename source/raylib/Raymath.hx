@@ -93,6 +93,9 @@ extern class Raymath
     @:native('Vector2DotProduct')
     static function Vector2DotProduct(v1:Vector2Impl, v2:Vector2Impl):Single;
 
+    @:native('Vector2CrossProduct')
+    static function Vector2CrossProduct(v1:Vector2Impl, v2:Vector2Impl):Single;
+
     @:native('Vector2Distance')
     static function Vector2Distance(v1:Vector2Impl, v2:Vector2Impl):Single;
 

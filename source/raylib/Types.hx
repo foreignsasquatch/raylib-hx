@@ -1699,6 +1699,7 @@ extern enum abstract ShaderLocationIndex(ShaderLocationIndexImpl)
     @:native('SHADER_LOC_VERTEX_BONEIDS') var SHADER_LOC_VERTEX_BONEIDS;
     @:native('SHADER_LOC_VERTEX_BONEWEIGHTS') var SHADER_LOC_VERTEX_BONEWEIGHTS;
     @:native('SHADER_LOC_BONE_MATRICES') var SHADER_LOC_BONE_MATRICES;
+    @:native('SHADER_LOC_VERTEX_INSTANCE_TX') var SHADER_LOC_VERTEX_INSTANCE_TX;
 
     @:from
     static inline function fromInt(i:Int):ShaderLocationIndex
@@ -1724,6 +1725,10 @@ extern enum abstract ShaderUniformDataType(ShaderUniformDataTypeImpl)
     @:native('SHADER_UNIFORM_IVEC2') var SHADER_UNIFORM_IVEC2;
     @:native('SHADER_UNIFORM_IVEC3') var SHADER_UNIFORM_IVEC3;
     @:native('SHADER_UNIFORM_IVEC4') var SHADER_UNIFORM_IVEC4;
+    @:native('SHADER_UNIFORM_UINT') var SHADER_UNIFORM_UINT;
+    @:native('SHADER_UNIFORM_UIVEC2') var SHADER_UNIFORM_UIVEC2;
+    @:native('SHADER_UNIFORM_UIVEC3') var SHADER_UNIFORM_UIVEC3;
+    @:native('SHADER_UNIFORM_UIVEC4') var SHADER_UNIFORM_UIVEC4;
     @:native('SHADER_UNIFORM_SAMPLER2D') var SHADER_UNIFORM_SAMPLER2D;
 
     @:from
@@ -2006,4 +2011,4 @@ typedef TraceLogCallback = cpp.Callable<(logLevel:Int, text:cpp.ConstCharStar, a
 typedef LoadFileDataCallback = cpp.Callable<(fileName:cpp.ConstCharStar, dataSize:raylib.utils.IntPointer) -> raylib.utils.BytesPointer>;
 typedef SaveFileDataCallback = cpp.Callable<(fileName:cpp.ConstCharStar, data:cpp.RawPointer<cpp.Void>, dataSize:Int) -> Bool>;
 typedef LoadFileTextCallback = cpp.Callable<(fileName:cpp.ConstCharStar) -> cpp.CastCharStar>;
-typedef SaveFileTextCallback = cpp.Callable<(fileName:cpp.ConstCharStar, text:cpp.CastCharStar) -> Bool>;
+typedef SaveFileTextCallback = cpp.Callable<(fileName:cpp.ConstCharStar, text:cpp.ConstCharStar) -> Bool>;

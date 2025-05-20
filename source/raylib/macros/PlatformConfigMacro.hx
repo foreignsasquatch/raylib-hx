@@ -33,7 +33,10 @@ class PlatformConfigMacro
         }
         else if (Context.defined('emscripten'))
         {
-            Compiler.define('PLATFORM_WEB');
+            if (Context.defined('PLATFORM_WEB_RGFW'))
+                Compiler.define('PLATFORM_WEB_RGFW');
+            else
+                Compiler.define('PLATFORM_WEB');
 
             if (checkForOpenGL())
                 Context.fatalError('You can\'t use normal OpenGL while targeting Emscripten', Context.currentPos());

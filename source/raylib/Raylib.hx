@@ -494,7 +494,7 @@ extern class Raylib
     static function UnloadFileText(text:cpp.CastCharStar):Void;
 
     @:native('SaveFileText')
-    static function SaveFileText(fileName:cpp.ConstCharStar, text:cpp.CastCharStar):Bool;
+    static function SaveFileText(fileName:cpp.ConstCharStar, text:cpp.ConstCharStar):Bool;
 
     @:native('FileExists')
     static function FileExists(fileName:cpp.ConstCharStar):Bool;
@@ -628,6 +628,9 @@ extern class Raylib
 
     @:native('GetCharPressed')
     static function GetCharPressed():Int;
+
+    @:native('GetKeyName')
+    static function GetKeyName(key:Int):cpp.ConstCharStar;
 
     @:native('SetExitKey')
     static function SetExitKey(key:Int):Void;
@@ -1446,10 +1449,10 @@ extern class Raylib
     static function TextInsert(text:cpp.ConstCharStar, insert:cpp.ConstCharStar, position:Int):cpp.ConstCharStar;
 
     @:native('TextJoin')
-    static function TextJoin(textList:raylib.utils.ConstCharStarPointer, count:Int, delimiter:cpp.ConstCharStar):cpp.ConstCharStar;
+    static function TextJoin(textList:raylib.utils.CastCharStarPointer, count:Int, delimiter:cpp.ConstCharStar):cpp.CastCharStar;
 
     @:native('TextSplit')
-    static function TextSplit(text:cpp.ConstCharStar, delimiter:cpp.Char, count:raylib.utils.IntPointer):raylib.utils.ConstCharStarPointer;
+    static function TextSplit(text:cpp.ConstCharStar, delimiter:cpp.Char, count:raylib.utils.IntPointer):raylib.utils.CastCharStarPointer;
 
     @:native('TextAppend')
     static function TextAppend(text:raylib.utils.BytesPointer, append:cpp.ConstCharStar, position:raylib.utils.IntPointer):Void;

@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xml>
-	<compilerflag value="-DPLATFORM_DESKTOP_GLFW" if="PLATFORM_DESKTOP_GLFW" />
-	<compilerflag value="-DPLATFORM_DESKTOP_RGFW" if="PLATFORM_DESKTOP_RGFW" />
+    <compilerflag value="-DPLATFORM_DESKTOP_GLFW" if="PLATFORM_DESKTOP_GLFW" />
+    <compilerflag value="-DPLATFORM_DESKTOP_RGFW" if="PLATFORM_DESKTOP_RGFW" />
 
-	<compilerflag value="-DPLATFORM_WEB" if="PLATFORM_WEB" />
-	<compilerflag value="-DPLATFORM_DRM" if="PLATFORM_DRM" />
-	<compilerflag value="-DPLATFORM_ANDROID" if="PLATFORM_ANDROID" />
+    <compilerflag value="-DPLATFORM_WEB" if="PLATFORM_WEB" />
+    <compilerflag value="-DPLATFORM_WEB_RGFW" if="PLATFORM_WEB_RGFW" />
+    <compilerflag value="-DPLATFORM_DRM" if="PLATFORM_DRM" />
+    <compilerflag value="-DPLATFORM_ANDROID" if="PLATFORM_ANDROID" />
 
-	<compilerflag value="-DGRAPHICS_API_OPENGL_11" if="GRAPHICS_API_OPENGL_11" />
-	<compilerflag value="-DGRAPHICS_API_OPENGL_21" if="GRAPHICS_API_OPENGL_21" />
-	<compilerflag value="-DGRAPHICS_API_OPENGL_33" if="GRAPHICS_API_OPENGL_33" />
-	<compilerflag value="-DGRAPHICS_API_OPENGL_43" if="GRAPHICS_API_OPENGL_43" />
-	<compilerflag value="-DGRAPHICS_API_OPENGL_ES2" if="GRAPHICS_API_OPENGL_ES2" />
-	<compilerflag value="-DGRAPHICS_API_OPENGL_ES3" if="GRAPHICS_API_OPENGL_ES3" />
+    <compilerflag value="-DGRAPHICS_API_OPENGL_11" if="GRAPHICS_API_OPENGL_11" />
+    <compilerflag value="-DGRAPHICS_API_OPENGL_21" if="GRAPHICS_API_OPENGL_21" />
+    <compilerflag value="-DGRAPHICS_API_OPENGL_33" if="GRAPHICS_API_OPENGL_33" />
+    <compilerflag value="-DGRAPHICS_API_OPENGL_43" if="GRAPHICS_API_OPENGL_43" />
+    <compilerflag value="-DGRAPHICS_API_OPENGL_ES2" if="GRAPHICS_API_OPENGL_ES2" />
+    <compilerflag value="-DGRAPHICS_API_OPENGL_ES3" if="GRAPHICS_API_OPENGL_ES3" />
 
-	<compilerflag value="-DRLGL_RENDER_TEXTURES_HINT" if="RLGL_RENDER_TEXTURES_HINT" />
-	<compilerflag value="-DRLGL_SHOW_GL_DETAILS_INFO" if="RLGL_SHOW_GL_DETAILS_INFO" />
-	<compilerflag value="-DRLGL_ENABLE_OPENGL_DEBUG_CONTEXT" if="RLGL_ENABLE_OPENGL_DEBUG_CONTEXT" />
+    <compilerflag value="-DRLGL_RENDER_TEXTURES_HINT" if="RLGL_RENDER_TEXTURES_HINT" />
+    <compilerflag value="-DRLGL_SHOW_GL_DETAILS_INFO" if="RLGL_SHOW_GL_DETAILS_INFO" />
+    <compilerflag value="-DRLGL_ENABLE_OPENGL_DEBUG_CONTEXT" if="RLGL_ENABLE_OPENGL_DEBUG_CONTEXT" />
 
-	<compilerflag value="-DSUPPORT_BUSY_WAIT_LOOP" if="SUPPORT_BUSY_WAIT_LOOP" />
-	<compilerflag value="-DSUPPORT_CUSTOM_FRAME_CONTROL" if="SUPPORT_CUSTOM_FRAME_CONTROL" />
-	<compilerflag value="-DSUPPORT_FILEFORMAT_BMP" if="SUPPORT_FILEFORMAT_BMP" />
-	<compilerflag value="-DSUPPORT_FILEFORMAT_TGA" if="SUPPORT_FILEFORMAT_TGA" />
-	<compilerflag value="-DSUPPORT_FILEFORMAT_JPG" if="SUPPORT_FILEFORMAT_JPG" />
-	<compilerflag value="-DSUPPORT_FILEFORMAT_HDR" if="SUPPORT_FILEFORMAT_HDR" />
-	<compilerflag value="-DSUPPORT_FILEFORMAT_PIC" if="SUPPORT_FILEFORMAT_PIC" />
-	<compilerflag value="-DSUPPORT_FILEFORMAT_KTX" if="SUPPORT_FILEFORMAT_KTX" />
-	<compilerflag value="-DSUPPORT_FILEFORMAT_ASTC" if="SUPPORT_FILEFORMAT_ASTC" />
-	<compilerflag value="-DSUPPORT_FILEFORMAT_PKM" if="SUPPORT_FILEFORMAT_PKM" />
-	<compilerflag value="-DSUPPORT_FILEFORMAT_PVR" if="SUPPORT_FILEFORMAT_PVR" />
-	<compilerflag value="-DSUPPORT_FILEFORMAT_SVG" if="SUPPORT_FILEFORMAT_SVG" />
-	<compilerflag value="-DSUPPORT_FILEFORMAT_FLAC" if="SUPPORT_FILEFORMAT_FLAC" />
-	<compilerflag value="-DSUPPORT_TRACELOG_DEBUG" if="SUPPORT_TRACELOG_DEBUG" />
+    <compilerflag value="-DSUPPORT_BUSY_WAIT_LOOP" if="SUPPORT_BUSY_WAIT_LOOP" />
+    <compilerflag value="-DSUPPORT_CUSTOM_FRAME_CONTROL" if="SUPPORT_CUSTOM_FRAME_CONTROL" />
+    <compilerflag value="-DSUPPORT_FILEFORMAT_BMP" if="SUPPORT_FILEFORMAT_BMP" />
+    <compilerflag value="-DSUPPORT_FILEFORMAT_TGA" if="SUPPORT_FILEFORMAT_TGA" />
+    <compilerflag value="-DSUPPORT_FILEFORMAT_JPG" if="SUPPORT_FILEFORMAT_JPG" />
+    <compilerflag value="-DSUPPORT_FILEFORMAT_HDR" if="SUPPORT_FILEFORMAT_HDR" />
+    <compilerflag value="-DSUPPORT_FILEFORMAT_PIC" if="SUPPORT_FILEFORMAT_PIC" />
+    <compilerflag value="-DSUPPORT_FILEFORMAT_KTX" if="SUPPORT_FILEFORMAT_KTX" />
+    <compilerflag value="-DSUPPORT_FILEFORMAT_ASTC" if="SUPPORT_FILEFORMAT_ASTC" />
+    <compilerflag value="-DSUPPORT_FILEFORMAT_PKM" if="SUPPORT_FILEFORMAT_PKM" />
+    <compilerflag value="-DSUPPORT_FILEFORMAT_PVR" if="SUPPORT_FILEFORMAT_PVR" />
+    <compilerflag value="-DSUPPORT_FILEFORMAT_SVG" if="SUPPORT_FILEFORMAT_SVG" />
+    <compilerflag value="-DSUPPORT_FILEFORMAT_FLAC" if="SUPPORT_FILEFORMAT_FLAC" />
+    <compilerflag value="-DSUPPORT_TRACELOG_DEBUG" if="SUPPORT_TRACELOG_DEBUG" />
 </xml>
