@@ -1,34 +1,26 @@
 package raylib.utils;
 
-@:nullSafety
-extern abstract BoolConstPointer(cpp.RawConstPointer<Bool>) from cpp.RawConstPointer<Bool> to cpp.RawConstPointer<Bool>
+import cpp.Pointer;
+import cpp.RawConstPointer;
+
+import haxe.extern.AsVar;
+
+extern abstract BoolConstPointer(RawConstPointer<Bool>) from RawConstPointer<Bool> to RawConstPointer<Bool>
 {
-    inline function new(ptr:cpp.RawConstPointer<Bool>):Void
+    inline function new(ptr:RawConstPointer<Bool>):Void
     {
         this = ptr;
     }
 
-    @:arrayAccess
-    inline function get(index:Int):Bool
+    @:from
+    overload static inline function fromValue(value:AsVar<Array<Bool>>):BoolConstPointer
     {
-        return this[index];
-    }
-
-    @:arrayAccess
-    inline function set(index:Int, value:Bool):Void
-    {
-        this[index] = value;
+        return new BoolConstPointer(Pointer.arrayElem(value, 0).constRaw);
     }
 
     @:from
-    static inline function fromValue(value:Bool):BoolConstPointer
+    overload static inline function fromValue(value:AsVar<Bool>):BoolConstPointer
     {
-        return new BoolConstPointer(cpp.Pointer.addressOf(value).constRaw);
-    }
-
-    @:from
-    static inline function fromArray(value:Array<Bool>):BoolConstPointer
-    {
-        return new BoolConstPointer(cpp.Pointer.ofArray(value).constRaw);
+        return new BoolConstPointer(Pointer.addressOf(value).constRaw);
     }
 }

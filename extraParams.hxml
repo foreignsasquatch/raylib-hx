@@ -1,1 +1,2 @@
+--macro nullSafety('raylib')
 --macro raylib.macros.PlatformConfigMacro.run()

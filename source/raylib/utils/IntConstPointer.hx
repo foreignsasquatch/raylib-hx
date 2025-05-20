@@ -1,34 +1,26 @@
 package raylib.utils;
 
-@:nullSafety
-extern abstract IntConstPointer(cpp.RawConstPointer<Int>) from cpp.RawConstPointer<Int> to cpp.RawConstPointer<Int>
+import cpp.Pointer;
+import cpp.RawConstPointer;
+
+import haxe.extern.AsVar;
+
+extern abstract IntConstPointer(RawConstPointer<Int>) from RawConstPointer<Int> to RawConstPointer<Int>
 {
-    inline function new(ptr:cpp.RawConstPointer<Int>):Void
+    inline function new(ptr:RawConstPointer<Int>):Void
     {
         this = ptr;
     }
 
-    @:arrayAccess
-    inline function get(index:Int):Int
+    @:from
+    overload static inline function fromValue(value:AsVar<Array<Int>>):IntConstPointer
     {
-        return this[index];
-    }
-
-    @:arrayAccess
-    inline function set(index:Int, value:Int):Void
-    {
-        this[index] = value;
+        return new IntConstPointer(Pointer.arrayElem(value, 0).constRaw);
     }
 
     @:from
-    static inline function fromValue(value:Int):IntConstPointer
+    overload static inline function fromValue(value:AsVar<Int>):IntConstPointer
     {
-        return new IntConstPointer(cpp.Pointer.addressOf(value).constRaw);
-    }
-
-    @:from
-    static inline function fromArray(value:Array<Int>):IntConstPointer
-    {
-        return new IntConstPointer(cpp.Pointer.ofArray(value).constRaw);
+        return new IntConstPointer(Pointer.addressOf(value).constRaw);
     }
 }

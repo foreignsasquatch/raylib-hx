@@ -33,10 +33,14 @@ import raylib.Types;
 
 extern enum abstract TouchAction(TouchActionImpl)
 {
-    @:native('TOUCH_ACTION_UP') var TOUCH_ACTION_UP;
-    @:native('TOUCH_ACTION_DOWN') var TOUCH_ACTION_DOWN;
-    @:native('TOUCH_ACTION_MOVE') var TOUCH_ACTION_MOVE;
-    @:native('TOUCH_ACTION_CANCEL') var TOUCH_ACTION_CANCEL;
+    @:native('TOUCH_ACTION_UP')
+    var TOUCH_ACTION_UP;
+    @:native('TOUCH_ACTION_DOWN')
+    var TOUCH_ACTION_DOWN;
+    @:native('TOUCH_ACTION_MOVE')
+    var TOUCH_ACTION_MOVE;
+    @:native('TOUCH_ACTION_CANCEL')
+    var TOUCH_ACTION_CANCEL;
 
     @:from
     static inline function fromInt(i:Int):TouchAction
@@ -54,7 +58,6 @@ private extern class TouchActionImpl {}
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('rgestures-impl.h')
-@:unreflective
 @:structAccess
 @:native('GestureEvent')
 extern class GestureEventImpl
@@ -68,7 +71,6 @@ extern class GestureEventImpl
 }
 
 @:forward
-@:nullSafety
 extern abstract GestureEvent(cpp.Struct<GestureEventImpl>) to cpp.Struct<GestureEventImpl>
 {
     inline function new():Void
@@ -82,16 +84,15 @@ extern abstract GestureEvent(cpp.Struct<GestureEventImpl>) to cpp.Struct<Gesture
 
     @:to
     inline function toConstPointer():cpp.RawConstPointer<GestureEventImpl>
-        return cast cpp.RawConstPointer.addressOf(this);
+        return cast cpp.Pointer.addressOf(this).constRaw;
 
     @:to
     inline function toPointer():cpp.RawPointer<GestureEventImpl>
-        return cast cpp.RawPointer.addressOf(this);
+        return cast cpp.Pointer.addressOf(this).raw;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('rgestures-impl.h')
-@:unreflective
 extern class RGestures
 {
     @:native('ProcessGestureEvent')

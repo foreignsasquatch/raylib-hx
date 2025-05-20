@@ -1,10 +1,9 @@
 package emscripten;
 
 typedef Em_Callback_Func = cpp.Callable<Void->Void>;
-typedef Em_Arg_Callback_Func = cpp.Callable<(cpp.RawPointer<cpp.Void>) -> Void>;
+typedef Em_Arg_Callback_Func = cpp.Callable<(raylib.utils.VoidPointer) -> Void>;
 
 @:include('emscripten.h')
-@:unreflective
 extern class Emscripten
 {
     @:native('emscripten_set_main_loop')
@@ -26,7 +25,7 @@ extern class Emscripten
     static function get_main_loop_timing(mode:raylib.utils.IntPointer, value:raylib.utils.IntPointer):Void;
 
     @:native('emscripten_set_main_loop_arg')
-    static function set_main_loop_arg(func:Em_Arg_Callback_Func, arg:cpp.RawPointer<cpp.Void>, fps:Int, simulate_infinite_loop:Bool):Void;
+    static function set_main_loop_arg(func:Em_Arg_Callback_Func, arg:raylib.utils.VoidPointer, fps:Int, simulate_infinite_loop:Bool):Void;
 
     @:native('emscripten_pause_main_loop')
     static function pause_main_loop():Void;

@@ -1,9 +1,13 @@
 package raylib.utils;
 
-@:nullSafety
-extern abstract BoolPointer(cpp.RawPointer<Bool>) from cpp.RawPointer<Bool> to cpp.RawPointer<Bool>
+import cpp.Pointer;
+import cpp.RawPointer;
+
+import haxe.extern.AsVar;
+
+extern abstract BoolPointer(RawPointer<Bool>) from RawPointer<Bool> to RawPointer<Bool>
 {
-    inline function new(ptr:cpp.RawPointer<Bool>):Void
+    inline function new(ptr:RawPointer<Bool>):Void
     {
         this = ptr;
     }
@@ -21,14 +25,14 @@ extern abstract BoolPointer(cpp.RawPointer<Bool>) from cpp.RawPointer<Bool> to c
     }
 
     @:from
-    static inline function fromValue(value:Bool):BoolPointer
+    overload static inline function fromValue(value:AsVar<Array<Bool>>):BoolPointer
     {
-        return new BoolPointer(cpp.Pointer.addressOf(value).raw);
+        return new BoolPointer(Pointer.arrayElem(value, 0).raw);
     }
 
     @:from
-    static inline function fromArray(value:Array<Bool>):BoolPointer
+    overload static inline function fromValue(value:AsVar<Bool>):BoolPointer
     {
-        return new BoolPointer(cpp.Pointer.ofArray(value).raw);
+        return new BoolPointer(Pointer.addressOf(value).raw);
     }
 }

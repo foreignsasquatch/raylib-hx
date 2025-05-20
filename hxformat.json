@@ -14,5 +14,14 @@
 	},
 	"indentation": {
 		"character": "    "
+	},
+	"emptyLines": {
+		"maxAnywhereInFile": 1,
+		"afterPackage": 1,
+		"importAndUsing": {
+			"beforeType": 1,
+			"betweenImports": 1,
+			"betweenImportsLevel": "firstLevelPackage"
+		}
 	}
 }

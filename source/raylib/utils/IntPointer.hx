@@ -1,9 +1,13 @@
 package raylib.utils;
 
-@:nullSafety
-extern abstract IntPointer(cpp.RawPointer<Int>) from cpp.RawPointer<Int> to cpp.RawPointer<Int>
+import cpp.Pointer;
+import cpp.RawPointer;
+
+import haxe.extern.AsVar;
+
+extern abstract IntPointer(RawPointer<Int>) from RawPointer<Int> to RawPointer<Int>
 {
-    inline function new(ptr:cpp.RawPointer<Int>):Void
+    inline function new(ptr:RawPointer<Int>):Void
     {
         this = ptr;
     }
@@ -21,14 +25,14 @@ extern abstract IntPointer(cpp.RawPointer<Int>) from cpp.RawPointer<Int> to cpp.
     }
 
     @:from
-    static inline function fromValue(value:Int):IntPointer
+    overload static inline function fromValue(value:AsVar<Array<Int>>):IntPointer
     {
-        return new IntPointer(cpp.Pointer.addressOf(value).raw);
+        return new IntPointer(Pointer.arrayElem(value, 0).raw);
     }
 
     @:from
-    static inline function fromArray(value:Array<Int>):IntPointer
+    overload static inline function fromValue(value:AsVar<Int>):IntPointer
     {
-        return new IntPointer(cpp.Pointer.ofArray(value).raw);
+        return new IntPointer(Pointer.addressOf(value).raw);
     }
 }

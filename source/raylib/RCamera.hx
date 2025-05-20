@@ -33,7 +33,6 @@ import raylib.Types;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('rcamera-impl.h')
-@:unreflective
 extern class RCamera
 {
     @:native('GetCameraForward')

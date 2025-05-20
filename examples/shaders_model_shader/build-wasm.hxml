@@ -1,0 +1,11 @@
+-cp ./
+-D analyzer-optimize
+-D emscripten
+-D RAYLIB_WEB_ASYNCIFY
+-D RAYLIB_WEB_RESOURCES_PATH=resources
+-D HXCPP_LINK_EMSCRIPTEN_EXT=.html
+-D HXCPP_LINK_MEMORY_GROWTH
+-lib raylib-hx
+-dce full
+-main Main
+-cpp bin/wasm

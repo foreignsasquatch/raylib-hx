@@ -33,7 +33,6 @@ import raylib.Types;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raymath-impl.h')
-@:unreflective
 extern class Raymath
 {
     @:native('PI')
@@ -238,8 +237,7 @@ extern class Raymath
     static function Vector3Lerp(v1:Vector3Impl, v2:Vector3Impl, amount:Single):Vector3Impl;
 
     @:native('Vector3CubicHermite')
-    static function Vector3CubicHermite(v1:Vector3Impl, tangent1:Vector3Impl, v2:Vector3Impl, tangent2:Vector3Impl,
-        amount:Single):Vector3Impl;
+    static function Vector3CubicHermite(v1:Vector3Impl, tangent1:Vector3Impl, v2:Vector3Impl, tangent2:Vector3Impl, amount:Single):Vector3Impl;
 
     @:native('Vector3Reflect')
     static function Vector3Reflect(v:Vector3Impl, normal:Vector3Impl):Vector3Impl;
@@ -257,7 +255,7 @@ extern class Raymath
     static function Vector3Unproject(source:Vector3Impl, projection:MatrixImpl, view:MatrixImpl):Vector3Impl;
 
     @:native('Vector3ToFloat')
-    static function Vector3ToFloat(v:Vector3Impl):raylib.utils.FloatPointer;
+    static function Vector3ToFloat(v:Vector3Impl):raylib.utils.SinglePointer;
 
     @:native('Vector3Invert')
     static function Vector3Invert(v:Vector3Impl):Vector3Impl;
@@ -395,7 +393,7 @@ extern class Raymath
     static function MatrixLookAt(eye:Vector3Impl, target:Vector3Impl, up:Vector3Impl):MatrixImpl;
 
     @:native('MatrixToFloat')
-    static function MatrixToFloat(mat:MatrixImpl):raylib.utils.FloatPointer;
+    static function MatrixToFloat(mat:MatrixImpl):raylib.utils.SinglePointer;
 
     @:native('MatrixDecompose')
     static function MatrixDecompose(mat:MatrixImpl, translation:cpp.RawPointer<Vector3Impl>, rotation:cpp.RawPointer<Vector4Impl>,
@@ -444,8 +442,7 @@ extern class Raymath
     static function QuaternionSlerp(q1:Vector4Impl, q2:Vector4Impl, amount:Single):Vector4Impl;
 
     @:native('QuaternionCubicHermiteSpline')
-    static function QuaternionCubicHermiteSpline(q1:Vector4Impl, outTangent1:Vector4Impl, q2:Vector4Impl,
-        inTangent2:Vector4Impl, t:Single):Vector4Impl;
+    static function QuaternionCubicHermiteSpline(q1:Vector4Impl, outTangent1:Vector4Impl, q2:Vector4Impl, inTangent2:Vector4Impl, t:Single):Vector4Impl;
 
     @:native('QuaternionFromVector3ToVector3')
     static function QuaternionFromVector3ToVector3(from:Vector3Impl, to:Vector3Impl):Vector4Impl;

@@ -33,7 +33,6 @@ import raylib.Types;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raylib.h')
-@:unreflective
 extern class Raylib
 {
     @:native('RAYLIB_VERSION_MAJOR')
@@ -211,7 +210,7 @@ extern class Raylib
     static function SetWindowFocused():Void;
 
     @:native('GetWindowHandle')
-    static function GetWindowHandle():cpp.RawPointer<cpp.Void>;
+    static function GetWindowHandle():raylib.utils.VoidPointer;
 
     @:native('GetScreenWidth')
     static function GetScreenWidth():Int;
@@ -361,11 +360,10 @@ extern class Raylib
     static function GetShaderLocationAttrib(shader:ShaderImpl, attribName:cpp.ConstCharStar):Int;
 
     @:native('SetShaderValue')
-    static function SetShaderValue(shader:ShaderImpl, locIndex:Int, value:cpp.RawConstPointer<cpp.Void>, uniformType:Int):Void;
+    static function SetShaderValue(shader:ShaderImpl, locIndex:Int, value:raylib.utils.VoidConstPointer, uniformType:Int):Void;
 
     @:native('SetShaderValueV')
-    static function SetShaderValueV(shader:ShaderImpl, locIndex:Int, value:cpp.RawConstPointer<cpp.Void>, uniformType:Int,
-        count:Int):Void;
+    static function SetShaderValueV(shader:ShaderImpl, locIndex:Int, value:raylib.utils.VoidConstPointer, uniformType:Int, count:Int):Void;
 
     @:native('SetShaderValueMatrix')
     static function SetShaderValueMatrix(shader:ShaderImpl, locIndex:Int, mat:MatrixImpl):Void;
@@ -452,13 +450,13 @@ extern class Raylib
     static function SetTraceLogLevel(logLevel:Int):Void;
 
     @:native('MemAlloc')
-    static function MemAlloc(size:cpp.UInt32):cpp.RawPointer<cpp.Void>;
+    static function MemAlloc(size:cpp.UInt32):raylib.utils.VoidPointer;
 
     @:native('MemRealloc')
-    static function MemRealloc(ptr:cpp.RawPointer<cpp.Void>, size:cpp.UInt32):cpp.RawPointer<cpp.Void>;
+    static function MemRealloc(ptr:raylib.utils.VoidPointer, size:cpp.UInt32):raylib.utils.VoidPointer;
 
     @:native('MemFree')
-    static function MemFree(ptr:cpp.RawPointer<cpp.Void>):Void;
+    static function MemFree(ptr:raylib.utils.VoidPointer):Void;
 
     @:native('SetTraceLogCallback')
     static function SetTraceLogCallback(callback:TraceLogCallback):Void;
@@ -476,16 +474,16 @@ extern class Raylib
     static function SetSaveFileTextCallback(callback:SaveFileTextCallback):Void;
 
     @:native('LoadFileData')
-    static function LoadFileData(fileName:cpp.ConstCharStar, dataSize:raylib.utils.IntPointer):raylib.utils.BytesPointer;
+    static function LoadFileData(fileName:cpp.ConstCharStar, dataSize:raylib.utils.IntPointer):raylib.utils.UInt8Pointer;
 
     @:native('UnloadFileData')
-    static function UnloadFileData(data:raylib.utils.BytesPointer):Void;
+    static function UnloadFileData(data:raylib.utils.UInt8Pointer):Void;
 
     @:native('SaveFileData')
-    static function SaveFileData(fileName:cpp.ConstCharStar, data:cpp.RawPointer<cpp.Void>, dataSize:Int):Bool;
+    static function SaveFileData(fileName:cpp.ConstCharStar, data:raylib.utils.VoidPointer, dataSize:Int):Bool;
 
     @:native('ExportDataAsCode')
-    static function ExportDataAsCode(data:raylib.utils.BytesPointer, dataSize:Int, fileName:cpp.ConstCharStar):Bool;
+    static function ExportDataAsCode(data:raylib.utils.UInt8Pointer, dataSize:Int, fileName:cpp.ConstCharStar):Bool;
 
     @:native('LoadFileText')
     static function LoadFileText(fileName:cpp.ConstCharStar):cpp.CastCharStar;
@@ -545,8 +543,7 @@ extern class Raylib
     static function LoadDirectoryFiles(dirPath:cpp.ConstCharStar):FilePathListImpl;
 
     @:native('LoadDirectoryFilesEx')
-    static function LoadDirectoryFilesEx(basePath:cpp.ConstCharStar, filter:cpp.ConstCharStar,
-        scanSubdirs:Bool):FilePathListImpl;
+    static function LoadDirectoryFilesEx(basePath:cpp.ConstCharStar, filter:cpp.ConstCharStar, scanSubdirs:Bool):FilePathListImpl;
 
     @:native('UnloadDirectoryFiles')
     static function UnloadDirectoryFiles(files:FilePathListImpl):Void;
@@ -564,25 +561,25 @@ extern class Raylib
     static function GetFileModTime(fileName:cpp.ConstCharStar):cpp.Long;
 
     @:native('CompressData')
-    static function CompressData(data:raylib.utils.BytesConstPointer, dataSize:Int, compDataSize:raylib.utils.IntPointer):raylib.utils.BytesPointer;
+    static function CompressData(data:raylib.utils.UInt8ConstPointer, dataSize:Int, compDataSize:raylib.utils.IntPointer):raylib.utils.UInt8Pointer;
 
     @:native('DecompressData')
-    static function DecompressData(compData:raylib.utils.BytesConstPointer, compDataSize:Int, dataSize:raylib.utils.IntPointer):raylib.utils.BytesPointer;
+    static function DecompressData(compData:raylib.utils.UInt8ConstPointer, compDataSize:Int, dataSize:raylib.utils.IntPointer):raylib.utils.UInt8Pointer;
 
     @:native('EncodeDataBase64')
-    static function EncodeDataBase64(data:raylib.utils.BytesConstPointer, dataSize:Int, outputSize:raylib.utils.IntPointer):cpp.CastCharStar;
+    static function EncodeDataBase64(data:raylib.utils.UInt8ConstPointer, dataSize:Int, outputSize:raylib.utils.IntPointer):cpp.CastCharStar;
 
     @:native('DecodeDataBase64')
-    static function DecodeDataBase64(data:raylib.utils.BytesConstPointer, outputSize:raylib.utils.IntPointer):raylib.utils.BytesPointer;
+    static function DecodeDataBase64(data:raylib.utils.UInt8ConstPointer, outputSize:raylib.utils.IntPointer):raylib.utils.UInt8Pointer;
 
     @:native('ComputeCRC32')
-    static function ComputeCRC32(data:raylib.utils.BytesConstPointer, dataSize:Int):cpp.UInt32;
+    static function ComputeCRC32(data:raylib.utils.UInt8ConstPointer, dataSize:Int):cpp.UInt32;
 
     @:native('ComputeMD5')
-    static function ComputeMD5(data:raylib.utils.BytesConstPointer, dataSize:Int):raylib.utils.UnsignedPointer;
+    static function ComputeMD5(data:raylib.utils.UInt8ConstPointer, dataSize:Int):raylib.utils.UInt32Pointer;
 
     @:native('ComputeSHA1')
-    static function ComputeSHA1(data:raylib.utils.BytesConstPointer, dataSize:Int):raylib.utils.UnsignedPointer;
+    static function ComputeSHA1(data:raylib.utils.UInt8ConstPointer, dataSize:Int):raylib.utils.UInt32Pointer;
 
     @:native('LoadAutomationEventList')
     static function LoadAutomationEventList(fileName:cpp.ConstCharStar):AutomationEventListImpl;
@@ -789,12 +786,10 @@ extern class Raylib
     static function DrawCircle(centerX:Int, centerY:Int, radius:Single, color:ColorImpl):Void;
 
     @:native('DrawCircleSector')
-    static function DrawCircleSector(center:Vector2Impl, radius:Single, startAngle:Single, endAngle:Single, segments:Int,
-        color:ColorImpl):Void;
+    static function DrawCircleSector(center:Vector2Impl, radius:Single, startAngle:Single, endAngle:Single, segments:Int, color:ColorImpl):Void;
 
     @:native('DrawCircleSectorLines')
-    static function DrawCircleSectorLines(center:Vector2Impl, radius:Single, startAngle:Single, endAngle:Single,
-        segments:Int, color:ColorImpl):Void;
+    static function DrawCircleSectorLines(center:Vector2Impl, radius:Single, startAngle:Single, endAngle:Single, segments:Int, color:ColorImpl):Void;
 
     @:native('DrawCircleGradient')
     static function DrawCircleGradient(centerX:Int, centerY:Int, radius:Single, inner:ColorImpl, outer:ColorImpl):Void;
@@ -819,8 +814,8 @@ extern class Raylib
         color:ColorImpl):Void;
 
     @:native('DrawRingLines')
-    static function DrawRingLines(center:Vector2Impl, innerRadius:Single, outerRadius:Single, startAngle:Single, endAngle:Single,
-        segments:Int, color:ColorImpl):Void;
+    static function DrawRingLines(center:Vector2Impl, innerRadius:Single, outerRadius:Single, startAngle:Single, endAngle:Single, segments:Int,
+        color:ColorImpl):Void;
 
     @:native('DrawRectangle')
     static function DrawRectangle(posX:Int, posY:Int, width:Int, height:Int, color:ColorImpl):Void;
@@ -841,8 +836,7 @@ extern class Raylib
     static function DrawRectangleGradientH(posX:Int, posY:Int, width:Int, height:Int, left:ColorImpl, right:ColorImpl):Void;
 
     @:native('DrawRectangleGradientEx')
-    static function DrawRectangleGradientEx(rec:RectangleImpl, topLeft:ColorImpl, bottomLeft:ColorImpl, topRight:ColorImpl,
-        bottomRight:ColorImpl):Void;
+    static function DrawRectangleGradientEx(rec:RectangleImpl, topLeft:ColorImpl, bottomLeft:ColorImpl, topRight:ColorImpl, bottomRight:ColorImpl):Void;
 
     @:native('DrawRectangleLines')
     static function DrawRectangleLines(posX:Int, posY:Int, width:Int, height:Int, color:ColorImpl):Void;
@@ -857,8 +851,7 @@ extern class Raylib
     static function DrawRectangleRoundedLines(rec:RectangleImpl, roundness:Single, segments:Int, color:ColorImpl):Void;
 
     @:native('DrawRectangleRoundedLinesEx')
-    static function DrawRectangleRoundedLinesEx(rec:RectangleImpl, roundness:Single, segments:Int, lineThick:Single,
-        color:ColorImpl):Void;
+    static function DrawRectangleRoundedLinesEx(rec:RectangleImpl, roundness:Single, segments:Int, lineThick:Single, color:ColorImpl):Void;
 
     @:native('DrawTriangle')
     static function DrawTriangle(v1:Vector2Impl, v2:Vector2Impl, v3:Vector2Impl, color:ColorImpl):Void;
@@ -879,8 +872,7 @@ extern class Raylib
     static function DrawPolyLines(center:Vector2Impl, sides:Int, radius:Single, rotation:Single, color:ColorImpl):Void;
 
     @:native('DrawPolyLinesEx')
-    static function DrawPolyLinesEx(center:Vector2Impl, sides:Int, radius:Single, rotation:Single, lineThick:Single,
-        color:ColorImpl):Void;
+    static function DrawPolyLinesEx(center:Vector2Impl, sides:Int, radius:Single, rotation:Single, lineThick:Single, color:ColorImpl):Void;
 
     @:native('DrawSplineLinear')
     static function DrawSplineLinear(points:cpp.RawConstPointer<Vector2Impl>, pointCount:Int, thick:Single, color:ColorImpl):Void;
@@ -892,31 +884,25 @@ extern class Raylib
     static function DrawSplineCatmullRom(points:cpp.RawConstPointer<Vector2Impl>, pointCount:Int, thick:Single, color:ColorImpl):Void;
 
     @:native('DrawSplineBezierQuadratic')
-    static function DrawSplineBezierQuadratic(points:cpp.RawConstPointer<Vector2Impl>, pointCount:Int, thick:Single,
-        color:ColorImpl):Void;
+    static function DrawSplineBezierQuadratic(points:cpp.RawConstPointer<Vector2Impl>, pointCount:Int, thick:Single, color:ColorImpl):Void;
 
     @:native('DrawSplineBezierCubic')
-    static function DrawSplineBezierCubic(points:cpp.RawConstPointer<Vector2Impl>, pointCount:Int, thick:Single,
-        color:ColorImpl):Void;
+    static function DrawSplineBezierCubic(points:cpp.RawConstPointer<Vector2Impl>, pointCount:Int, thick:Single, color:ColorImpl):Void;
 
     @:native('DrawSplineSegmentLinear')
     static function DrawSplineSegmentLinear(p1:Vector2Impl, p2:Vector2Impl, thick:Single, color:ColorImpl):Void;
 
     @:native('DrawSplineSegmentBasis')
-    static function DrawSplineSegmentBasis(p1:Vector2Impl, p2:Vector2Impl, p3:Vector2Impl, p4:Vector2Impl, thick:Single,
-        color:ColorImpl):Void;
+    static function DrawSplineSegmentBasis(p1:Vector2Impl, p2:Vector2Impl, p3:Vector2Impl, p4:Vector2Impl, thick:Single, color:ColorImpl):Void;
 
     @:native('DrawSplineSegmentCatmullRom')
-    static function DrawSplineSegmentCatmullRom(p1:Vector2Impl, p2:Vector2Impl, p3:Vector2Impl, p4:Vector2Impl,
-        thick:Single, color:ColorImpl):Void;
+    static function DrawSplineSegmentCatmullRom(p1:Vector2Impl, p2:Vector2Impl, p3:Vector2Impl, p4:Vector2Impl, thick:Single, color:ColorImpl):Void;
 
     @:native('DrawSplineSegmentBezierQuadratic')
-    static function DrawSplineSegmentBezierQuadratic(p1:Vector2Impl, c2:Vector2Impl, p3:Vector2Impl, thick:Single,
-        color:ColorImpl):Void;
+    static function DrawSplineSegmentBezierQuadratic(p1:Vector2Impl, c2:Vector2Impl, p3:Vector2Impl, thick:Single, color:ColorImpl):Void;
 
     @:native('DrawSplineSegmentBezierCubic')
-    static function DrawSplineSegmentBezierCubic(p1:Vector2Impl, c2:Vector2Impl, c3:Vector2Impl, p4:Vector2Impl,
-        thick:Single, color:ColorImpl):Void;
+    static function DrawSplineSegmentBezierCubic(p1:Vector2Impl, c2:Vector2Impl, c3:Vector2Impl, p4:Vector2Impl, thick:Single, color:ColorImpl):Void;
 
     @:native('GetSplinePointLinear')
     static function GetSplinePointLinear(startPos:Vector2Impl, endPos:Vector2Impl, t:Single):Vector2Impl;
@@ -925,15 +911,13 @@ extern class Raylib
     static function GetSplinePointBasis(p1:Vector2Impl, p2:Vector2Impl, p3:Vector2Impl, p4:Vector2Impl, t:Single):Vector2Impl;
 
     @:native('GetSplinePointCatmullRom')
-    static function GetSplinePointCatmullRom(p1:Vector2Impl, p2:Vector2Impl, p3:Vector2Impl, p4:Vector2Impl,
-        t:Single):Vector2Impl;
+    static function GetSplinePointCatmullRom(p1:Vector2Impl, p2:Vector2Impl, p3:Vector2Impl, p4:Vector2Impl, t:Single):Vector2Impl;
 
     @:native('GetSplinePointBezierQuad')
     static function GetSplinePointBezierQuad(p1:Vector2Impl, c2:Vector2Impl, p3:Vector2Impl, t:Single):Vector2Impl;
 
     @:native('GetSplinePointBezierCubic')
-    static function GetSplinePointBezierCubic(p1:Vector2Impl, c2:Vector2Impl, c3:Vector2Impl, p4:Vector2Impl,
-        t:Single):Vector2Impl;
+    static function GetSplinePointBezierCubic(p1:Vector2Impl, c2:Vector2Impl, c3:Vector2Impl, p4:Vector2Impl, t:Single):Vector2Impl;
 
     @:native('CheckCollisionRecs')
     static function CheckCollisionRecs(rec1:RectangleImpl, rec2:RectangleImpl):Bool;
@@ -979,11 +963,11 @@ extern class Raylib
     static function LoadImageAnim(fileName:cpp.ConstCharStar, frames:raylib.utils.IntPointer):ImageImpl;
 
     @:native('LoadImageAnimFromMemory')
-    static function LoadImageAnimFromMemory(fileType:cpp.ConstCharStar, fileData:raylib.utils.BytesConstPointer, dataSize:Int,
+    static function LoadImageAnimFromMemory(fileType:cpp.ConstCharStar, fileData:raylib.utils.UInt8ConstPointer, dataSize:Int,
         frames:raylib.utils.IntPointer):ImageImpl;
 
     @:native('LoadImageFromMemory')
-    static function LoadImageFromMemory(fileType:cpp.ConstCharStar, fileData:raylib.utils.BytesConstPointer, dataSize:Int):ImageImpl;
+    static function LoadImageFromMemory(fileType:cpp.ConstCharStar, fileData:raylib.utils.UInt8ConstPointer, dataSize:Int):ImageImpl;
 
     @:native('LoadImageFromTexture')
     static function LoadImageFromTexture(texture:TextureImpl):ImageImpl;
@@ -1001,8 +985,7 @@ extern class Raylib
     static function ExportImage(image:ImageImpl, fileName:cpp.ConstCharStar):Bool;
 
     @:native('ExportImageToMemory')
-    static function ExportImageToMemory(image:ImageImpl, fileType:cpp.ConstCharStar,
-        fileSize:raylib.utils.IntPointer):raylib.utils.BytesPointer;
+    static function ExportImageToMemory(image:ImageImpl, fileType:cpp.ConstCharStar, fileSize:raylib.utils.IntPointer):raylib.utils.UInt8Pointer;
 
     @:native('ExportImageAsCode')
     static function ExportImageAsCode(image:ImageImpl, fileName:cpp.ConstCharStar):Bool;
@@ -1074,7 +1057,7 @@ extern class Raylib
     static function ImageBlurGaussian(image:cpp.RawPointer<ImageImpl>, blurSize:Int):Void;
 
     @:native('ImageKernelConvolution')
-    static function ImageKernelConvolution(image:cpp.RawPointer<ImageImpl>, kernel:raylib.utils.FloatConstPointer, kernelSize:Int):Void;
+    static function ImageKernelConvolution(image:cpp.RawPointer<ImageImpl>, kernel:raylib.utils.SingleConstPointer, kernelSize:Int):Void;
 
     @:native('ImageResize')
     static function ImageResize(image:cpp.RawPointer<ImageImpl>, newWidth:Int, newHeight:Int):Void;
@@ -1083,8 +1066,7 @@ extern class Raylib
     static function ImageResizeNN(image:cpp.RawPointer<ImageImpl>, newWidth:Int, newHeight:Int):Void;
 
     @:native('ImageResizeCanvas')
-    static function ImageResizeCanvas(image:cpp.RawPointer<ImageImpl>, newWidth:Int, newHeight:Int, offsetX:Int, offsetY:Int,
-        fill:ColorImpl):Void;
+    static function ImageResizeCanvas(image:cpp.RawPointer<ImageImpl>, newWidth:Int, newHeight:Int, offsetX:Int, offsetY:Int, fill:ColorImpl):Void;
 
     @:native('ImageMipmaps')
     static function ImageMipmaps(image:cpp.RawPointer<ImageImpl>):Void;
@@ -1153,8 +1135,7 @@ extern class Raylib
     static function ImageDrawPixelV(dst:cpp.RawPointer<ImageImpl>, position:Vector2Impl, color:ColorImpl):Void;
 
     @:native('ImageDrawLine')
-    static function ImageDrawLine(dst:cpp.RawPointer<ImageImpl>, startPosX:Int, startPosY:Int, endPosX:Int, endPosY:Int,
-        color:ColorImpl):Void;
+    static function ImageDrawLine(dst:cpp.RawPointer<ImageImpl>, startPosX:Int, startPosY:Int, endPosX:Int, endPosY:Int, color:ColorImpl):Void;
 
     @:native('ImageDrawLineV')
     static function ImageDrawLineV(dst:cpp.RawPointer<ImageImpl>, start:Vector2Impl, end:Vector2Impl, color:ColorImpl):Void;
@@ -1169,19 +1150,16 @@ extern class Raylib
     static function ImageDrawCircleV(dst:cpp.RawPointer<ImageImpl>, center:Vector2Impl, radius:Int, color:ColorImpl):Void;
 
     @:native('ImageDrawCircleLines')
-    static function ImageDrawCircleLines(dst:cpp.RawPointer<ImageImpl>, centerX:Int, centerY:Int, radius:Int,
-        color:ColorImpl):Void;
+    static function ImageDrawCircleLines(dst:cpp.RawPointer<ImageImpl>, centerX:Int, centerY:Int, radius:Int, color:ColorImpl):Void;
 
     @:native('ImageDrawCircleLinesV')
     static function ImageDrawCircleLinesV(dst:cpp.RawPointer<ImageImpl>, center:Vector2Impl, radius:Int, color:ColorImpl):Void;
 
     @:native('ImageDrawRectangle')
-    static function ImageDrawRectangle(dst:cpp.RawPointer<ImageImpl>, posX:Int, posY:Int, width:Int, height:Int,
-        color:ColorImpl):Void;
+    static function ImageDrawRectangle(dst:cpp.RawPointer<ImageImpl>, posX:Int, posY:Int, width:Int, height:Int, color:ColorImpl):Void;
 
     @:native('ImageDrawRectangleV')
-    static function ImageDrawRectangleV(dst:cpp.RawPointer<ImageImpl>, position:Vector2Impl, size:Vector2Impl,
-        color:ColorImpl):Void;
+    static function ImageDrawRectangleV(dst:cpp.RawPointer<ImageImpl>, position:Vector2Impl, size:Vector2Impl, color:ColorImpl):Void;
 
     @:native('ImageDrawRectangleRec')
     static function ImageDrawRectangleRec(dst:cpp.RawPointer<ImageImpl>, rec:RectangleImpl, color:ColorImpl):Void;
@@ -1193,7 +1171,8 @@ extern class Raylib
     static function ImageDrawTriangle(dst:cpp.RawPointer<ImageImpl>, v1:Vector2Impl, v2:Vector2Impl, v3:Vector2Impl, color:ColorImpl):Void;
 
     @:native('ImageDrawTriangleEx')
-    static function ImageDrawTriangleEx(dst:cpp.RawPointer<ImageImpl>, v1:Vector2Impl, v2:Vector2Impl, v3:Vector2Impl, c1:ColorImpl, c2:ColorImpl, c3:ColorImpl):Void;
+    static function ImageDrawTriangleEx(dst:cpp.RawPointer<ImageImpl>, v1:Vector2Impl, v2:Vector2Impl, v3:Vector2Impl, c1:ColorImpl, c2:ColorImpl,
+        c3:ColorImpl):Void;
 
     @:native('ImageDrawTriangleLines')
     static function ImageDrawTriangleLines(dst:cpp.RawPointer<ImageImpl>, v1:Vector2Impl, v2:Vector2Impl, v3:Vector2Impl, color:ColorImpl):Void;
@@ -1208,12 +1187,11 @@ extern class Raylib
     static function ImageDraw(dst:cpp.RawPointer<ImageImpl>, src:ImageImpl, srcRec:RectangleImpl, dstRec:RectangleImpl, tint:ColorImpl):Void;
 
     @:native('ImageDrawText')
-    static function ImageDrawText(dst:cpp.RawPointer<ImageImpl>, text:cpp.ConstCharStar, posX:Int, posY:Int, fontSize:Int,
-        color:ColorImpl):Void;
+    static function ImageDrawText(dst:cpp.RawPointer<ImageImpl>, text:cpp.ConstCharStar, posX:Int, posY:Int, fontSize:Int, color:ColorImpl):Void;
 
     @:native('ImageDrawTextEx')
-    static function ImageDrawTextEx(dst:cpp.RawPointer<ImageImpl>, font:FontImpl, text:cpp.ConstCharStar, position:Vector2Impl,
-        fontSize:Single, spacing:Single, tint:ColorImpl):Void;
+    static function ImageDrawTextEx(dst:cpp.RawPointer<ImageImpl>, font:FontImpl, text:cpp.ConstCharStar, position:Vector2Impl, fontSize:Single,
+        spacing:Single, tint:ColorImpl):Void;
 
     @:native('LoadTexture')
     static function LoadTexture(fileName:cpp.ConstCharStar):TextureImpl;
@@ -1240,10 +1218,10 @@ extern class Raylib
     static function UnloadRenderTexture(target:RenderTextureImpl):Void;
 
     @:native('UpdateTexture')
-    static function UpdateTexture(texture:TextureImpl, pixels:cpp.RawConstPointer<cpp.Void>):Void;
+    static function UpdateTexture(texture:TextureImpl, pixels:raylib.utils.VoidConstPointer):Void;
 
     @:native('UpdateTextureRec')
-    static function UpdateTextureRec(texture:TextureImpl, rec:RectangleImpl, pixels:cpp.RawConstPointer<cpp.Void>):Void;
+    static function UpdateTextureRec(texture:TextureImpl, rec:RectangleImpl, pixels:raylib.utils.VoidConstPointer):Void;
 
     @:native('GenTextureMipmaps')
     static function GenTextureMipmaps(texture:cpp.RawPointer<TextureImpl>):Void;
@@ -1267,12 +1245,11 @@ extern class Raylib
     static function DrawTextureRec(texture:TextureImpl, source:RectangleImpl, position:Vector2Impl, tint:ColorImpl):Void;
 
     @:native('DrawTexturePro')
-    static function DrawTexturePro(texture:TextureImpl, source:RectangleImpl, dest:RectangleImpl, origin:Vector2Impl, rotation:Single,
-        tint:ColorImpl):Void;
+    static function DrawTexturePro(texture:TextureImpl, source:RectangleImpl, dest:RectangleImpl, origin:Vector2Impl, rotation:Single, tint:ColorImpl):Void;
 
     @:native('DrawTextureNPatch')
-    static function DrawTextureNPatch(texture:TextureImpl, nPatchInfo:NPatchInfoImpl, dest:RectangleImpl, origin:Vector2Impl,
-        rotation:Single, tint:ColorImpl):Void;
+    static function DrawTextureNPatch(texture:TextureImpl, nPatchInfo:NPatchInfoImpl, dest:RectangleImpl, origin:Vector2Impl, rotation:Single,
+        tint:ColorImpl):Void;
 
     @:native('ColorIsEqual')
     static function ColorIsEqual(col1:ColorImpl, col2:ColorImpl):Bool;
@@ -1317,10 +1294,10 @@ extern class Raylib
     static function GetColor(hexValue:UInt):ColorImpl;
 
     @:native('GetPixelColor')
-    static function GetPixelColor(srcPtr:cpp.RawPointer<cpp.Void>, format:Int):ColorImpl;
+    static function GetPixelColor(srcPtr:raylib.utils.VoidPointer, format:Int):ColorImpl;
 
     @:native('SetPixelColor')
-    static function SetPixelColor(dstPtr:cpp.RawPointer<cpp.Void>, color:ColorImpl, format:Int):Void;
+    static function SetPixelColor(dstPtr:raylib.utils.VoidPointer, color:ColorImpl, format:Int):Void;
 
     @:native('GetPixelDataSize')
     static function GetPixelDataSize(width:Int, height:Int, format:Int):Int;
@@ -1338,19 +1315,19 @@ extern class Raylib
     static function LoadFontFromImage(image:ImageImpl, key:ColorImpl, firstChar:Int):FontImpl;
 
     @:native('LoadFontFromMemory')
-    static function LoadFontFromMemory(fileType:cpp.ConstCharStar, fileData:raylib.utils.BytesConstPointer, dataSize:Int,
-        fontSize:Int, codepoints:raylib.utils.IntPointer, codepointCount:Int):FontImpl;
+    static function LoadFontFromMemory(fileType:cpp.ConstCharStar, fileData:raylib.utils.UInt8ConstPointer, dataSize:Int, fontSize:Int,
+        codepoints:raylib.utils.IntPointer, codepointCount:Int):FontImpl;
 
     @:native('IsFontValid')
     static function IsFontValid(font:FontImpl):Bool;
 
     @:native('LoadFontData')
-    static function LoadFontData(fileData:raylib.utils.BytesConstPointer, dataSize:Int, fontSize:Int, codepoints:raylib.utils.IntPointer,
-        codepointCount:Int, type:Int):cpp.RawPointer<GlyphInfoImpl>;
+    static function LoadFontData(fileData:raylib.utils.UInt8ConstPointer, dataSize:Int, fontSize:Int, codepoints:raylib.utils.IntPointer, codepointCount:Int,
+        type:Int):cpp.RawPointer<GlyphInfoImpl>;
 
     @:native('GenImageFontAtlas')
-    static function GenImageFontAtlas(glyphs:cpp.RawPointer<GlyphInfoImpl>,
-        glyphRecs:cpp.RawPointer<cpp.RawPointer<RectangleImpl>>, glyphCount:Int, fontSize:Int, padding:Int, packMethod:Int):ImageImpl;
+    static function GenImageFontAtlas(glyphs:cpp.RawPointer<GlyphInfoImpl>, glyphRecs:cpp.RawPointer<cpp.RawPointer<RectangleImpl>>, glyphCount:Int,
+        fontSize:Int, padding:Int, packMethod:Int):ImageImpl;
 
     @:native('UnloadFontData')
     static function UnloadFontData(glyphs:cpp.RawPointer<GlyphInfoImpl>, glyphCount:Int):Void;
@@ -1368,19 +1345,18 @@ extern class Raylib
     static function DrawText(text:cpp.ConstCharStar, posX:Int, posY:Int, fontSize:Int, color:ColorImpl):Void;
 
     @:native('DrawTextEx')
-    static function DrawTextEx(font:FontImpl, text:cpp.ConstCharStar, position:Vector2Impl, fontSize:Single, spacing:Single,
-        tint:ColorImpl):Void;
+    static function DrawTextEx(font:FontImpl, text:cpp.ConstCharStar, position:Vector2Impl, fontSize:Single, spacing:Single, tint:ColorImpl):Void;
 
     @:native('DrawTextPro')
-    static function DrawTextPro(font:FontImpl, text:cpp.ConstCharStar, position:Vector2Impl, origin:Vector2Impl, rotation:Single,
-        fontSize:Single, spacing:Single, tint:ColorImpl):Void;
+    static function DrawTextPro(font:FontImpl, text:cpp.ConstCharStar, position:Vector2Impl, origin:Vector2Impl, rotation:Single, fontSize:Single,
+        spacing:Single, tint:ColorImpl):Void;
 
     @:native('DrawTextCodepoint')
     static function DrawTextCodepoint(font:FontImpl, codepoint:Int, position:Vector2Impl, fontSize:Single, tint:ColorImpl):Void;
 
     @:native('DrawTextCodepoints')
-    static function DrawTextCodepoints(font:FontImpl, codepoints:raylib.utils.IntPointer, codepointCount:Int, position:Vector2Impl,
-        fontSize:Single, spacing:Single, tint:ColorImpl):Void;
+    static function DrawTextCodepoints(font:FontImpl, codepoints:raylib.utils.IntPointer, codepointCount:Int, position:Vector2Impl, fontSize:Single,
+        spacing:Single, tint:ColorImpl):Void;
 
     @:native('SetTextLineSpacing')
     static function SetTextLineSpacing(spacing:Int):Void;
@@ -1428,7 +1404,7 @@ extern class Raylib
     static function CodepointToUTF8(codepoint:Int, utf8Size:raylib.utils.IntPointer):cpp.ConstCharStar;
 
     @:native('TextCopy')
-    static function TextCopy(dst:raylib.utils.BytesPointer, src:cpp.ConstCharStar):Int;
+    static function TextCopy(dst:raylib.utils.UInt8Pointer, src:cpp.ConstCharStar):Int;
 
     @:native('TextIsEqual')
     static function TextIsEqual(text1:cpp.ConstCharStar, text2:cpp.ConstCharStar):Bool;
@@ -1455,7 +1431,7 @@ extern class Raylib
     static function TextSplit(text:cpp.ConstCharStar, delimiter:cpp.Char, count:raylib.utils.IntPointer):raylib.utils.CastCharStarPointer;
 
     @:native('TextAppend')
-    static function TextAppend(text:raylib.utils.BytesPointer, append:cpp.ConstCharStar, position:raylib.utils.IntPointer):Void;
+    static function TextAppend(text:raylib.utils.UInt8Pointer, append:cpp.ConstCharStar, position:raylib.utils.IntPointer):Void;
 
     @:native('TextFindIndex')
     static function TextFindIndex(text:cpp.ConstCharStar, find:cpp.ConstCharStar):Int;
@@ -1518,27 +1494,22 @@ extern class Raylib
     static function DrawSphereWires(centerPos:Vector3Impl, radius:Single, rings:Int, slices:Int, color:ColorImpl):Void;
 
     @:native('DrawCylinder')
-    static function DrawCylinder(position:Vector3Impl, radiusTop:Single, radiusBottom:Single, height:Single, slices:Int,
-        color:ColorImpl):Void;
+    static function DrawCylinder(position:Vector3Impl, radiusTop:Single, radiusBottom:Single, height:Single, slices:Int, color:ColorImpl):Void;
 
     @:native('DrawCylinderEx')
-    static function DrawCylinderEx(startPos:Vector3Impl, endPos:Vector3Impl, startRadius:Single, endRadius:Single, sides:Int,
-        color:ColorImpl):Void;
+    static function DrawCylinderEx(startPos:Vector3Impl, endPos:Vector3Impl, startRadius:Single, endRadius:Single, sides:Int, color:ColorImpl):Void;
 
     @:native('DrawCylinderWires')
-    static function DrawCylinderWires(position:Vector3Impl, radiusTop:Single, radiusBottom:Single, height:Single, slices:Int,
-        color:ColorImpl):Void;
+    static function DrawCylinderWires(position:Vector3Impl, radiusTop:Single, radiusBottom:Single, height:Single, slices:Int, color:ColorImpl):Void;
 
     @:native('DrawCylinderWiresEx')
-    static function DrawCylinderWiresEx(startPos:Vector3Impl, endPos:Vector3Impl, startRadius:Single, endRadius:Single,
-        sides:Int, color:ColorImpl):Void;
+    static function DrawCylinderWiresEx(startPos:Vector3Impl, endPos:Vector3Impl, startRadius:Single, endRadius:Single, sides:Int, color:ColorImpl):Void;
 
     @:native('DrawCapsule')
     static function DrawCapsule(startPos:Vector3Impl, endPos:Vector3Impl, radius:Single, slices:Int, rings:Int, color:ColorImpl):Void;
 
     @:native('DrawCapsuleWires')
-    static function DrawCapsuleWires(startPos:Vector3Impl, endPos:Vector3Impl, radius:Single, slices:Int, rings:Int,
-        color:ColorImpl):Void;
+    static function DrawCapsuleWires(startPos:Vector3Impl, endPos:Vector3Impl, radius:Single, slices:Int, rings:Int, color:ColorImpl):Void;
 
     @:native('DrawPlane')
     static function DrawPlane(centerPos:Vector3Impl, size:Vector2Impl, color:ColorImpl):Void;
@@ -1568,22 +1539,21 @@ extern class Raylib
     static function DrawModel(model:ModelImpl, position:Vector3Impl, scale:Single, tint:ColorImpl):Void;
 
     @:native('DrawModelEx')
-    static function DrawModelEx(model:ModelImpl, position:Vector3Impl, rotationAxis:Vector3Impl, rotationAngle:Single, scale:Vector3Impl,
-        tint:ColorImpl):Void;
+    static function DrawModelEx(model:ModelImpl, position:Vector3Impl, rotationAxis:Vector3Impl, rotationAngle:Single, scale:Vector3Impl, tint:ColorImpl):Void;
 
     @:native('DrawModelWires')
     static function DrawModelWires(model:ModelImpl, position:Vector3Impl, scale:Single, tint:ColorImpl):Void;
 
     @:native('DrawModelWiresEx')
-    static function DrawModelWiresEx(model:ModelImpl, position:Vector3Impl, rotationAxis:Vector3Impl, rotationAngle:Single,
-        scale:Vector3Impl, tint:ColorImpl):Void;
+    static function DrawModelWiresEx(model:ModelImpl, position:Vector3Impl, rotationAxis:Vector3Impl, rotationAngle:Single, scale:Vector3Impl,
+        tint:ColorImpl):Void;
 
     @:native('DrawModelPoints')
     static function DrawModelPoints(model:ModelImpl, position:Vector3Impl, scale:Single, tint:ColorImpl):Void;
 
     @:native('DrawModelPointsEx')
-    static function DrawModelPointsEx(model:ModelImpl, position:Vector3Impl, rotationAxis:Vector3Impl, rotationAngle:Single,
-        scale:Vector3Impl, tint:ColorImpl):Void;
+    static function DrawModelPointsEx(model:ModelImpl, position:Vector3Impl, rotationAxis:Vector3Impl, rotationAngle:Single, scale:Vector3Impl,
+        tint:ColorImpl):Void;
 
     @:native('DrawBoundingBox')
     static function DrawBoundingBox(box:BoundingBoxImpl, color:ColorImpl):Void;
@@ -1592,18 +1562,18 @@ extern class Raylib
     static function DrawBillboard(camera:Camera3DImpl, texture:TextureImpl, position:Vector3Impl, scale:Single, tint:ColorImpl):Void;
 
     @:native('DrawBillboardRec')
-    static function DrawBillboardRec(camera:Camera3DImpl, texture:TextureImpl, source:RectangleImpl, position:Vector3Impl,
-        size:Vector2Impl, tint:ColorImpl):Void;
+    static function DrawBillboardRec(camera:Camera3DImpl, texture:TextureImpl, source:RectangleImpl, position:Vector3Impl, size:Vector2Impl,
+        tint:ColorImpl):Void;
 
     @:native('DrawBillboardPro')
-    static function DrawBillboardPro(camera:Camera3DImpl, texture:TextureImpl, source:RectangleImpl, position:Vector3Impl,
-        up:Vector3Impl, size:Vector2Impl, origin:Vector2Impl, rotation:Single, tint:ColorImpl):Void;
+    static function DrawBillboardPro(camera:Camera3DImpl, texture:TextureImpl, source:RectangleImpl, position:Vector3Impl, up:Vector3Impl, size:Vector2Impl,
+        origin:Vector2Impl, rotation:Single, tint:ColorImpl):Void;
 
     @:native('UploadMesh')
     static function UploadMesh(mesh:MeshImpl, dynamicBuffer:Bool):Void;
 
     @:native('UpdateMeshBuffer')
-    static function UpdateMeshBuffer(mesh:MeshImpl, index:Int, data:cpp.RawPointer<cpp.Void>, dataSize:Int, offset:Int):Void;
+    static function UpdateMeshBuffer(mesh:MeshImpl, index:Int, data:raylib.utils.VoidPointer, dataSize:Int, offset:Int):Void;
 
     @:native('UnloadMesh')
     static function UnloadMesh(mesh:MeshImpl):Void;
@@ -1612,8 +1582,7 @@ extern class Raylib
     static function DrawMesh(mesh:MeshImpl, material:MaterialImpl, transform:MatrixImpl):Void;
 
     @:native('DrawMeshInstanced')
-    static function DrawMeshInstanced(mesh:MeshImpl, material:MaterialImpl, transforms:cpp.RawPointer<MatrixImpl>,
-        instances:Int):Void;
+    static function DrawMeshInstanced(mesh:MeshImpl, material:MaterialImpl, transforms:cpp.RawPointer<MatrixImpl>, instances:Int):Void;
 
     @:native('GetMeshBoundingBox')
     static function GetMeshBoundingBox(mesh:MeshImpl):BoundingBoxImpl;
@@ -1679,8 +1648,7 @@ extern class Raylib
     static function SetModelMeshMaterial(model:cpp.RawPointer<ModelImpl>, meshId:Int, materialId:Int):Void;
 
     @:native('LoadModelAnimations')
-    static function LoadModelAnimations(fileName:cpp.ConstCharStar,
-        animCount:raylib.utils.IntPointer):cpp.RawPointer<ModelAnimationImpl>;
+    static function LoadModelAnimations(fileName:cpp.ConstCharStar, animCount:raylib.utils.IntPointer):cpp.RawPointer<ModelAnimationImpl>;
 
     @:native('UpdateModelAnimation')
     static function UpdateModelAnimation(model:ModelImpl, anim:ModelAnimationImpl, frame:Int):Void;
@@ -1740,7 +1708,7 @@ extern class Raylib
     static function LoadWave(fileName:cpp.ConstCharStar):WaveImpl;
 
     @:native('LoadWaveFromMemory')
-    static function LoadWaveFromMemory(fileType:cpp.ConstCharStar, fileData:raylib.utils.BytesConstPointer, dataSize:Int):WaveImpl;
+    static function LoadWaveFromMemory(fileType:cpp.ConstCharStar, fileData:raylib.utils.UInt8ConstPointer, dataSize:Int):WaveImpl;
 
     @:native('IsWaveValid')
     static function IsWaveValid(wave:WaveImpl):Bool;
@@ -1758,7 +1726,7 @@ extern class Raylib
     static function IsSoundValid(sound:SoundImpl):Bool;
 
     @:native('UpdateSound')
-    static function UpdateSound(sound:SoundImpl, data:cpp.RawConstPointer<cpp.Void>, frameCount:Int):Void;
+    static function UpdateSound(sound:SoundImpl, data:raylib.utils.VoidConstPointer, frameCount:Int):Void;
 
     @:native('UnloadWave')
     static function UnloadWave(wave:WaveImpl):Void;
@@ -1809,16 +1777,16 @@ extern class Raylib
     static function WaveFormat(wave:cpp.RawPointer<WaveImpl>, initSample:Int, finalSample:Int, channels:Int):Void;
 
     @:native('LoadWaveSamples')
-    static function LoadWaveSamples(wave:WaveImpl):raylib.utils.FloatPointer;
+    static function LoadWaveSamples(wave:WaveImpl):raylib.utils.SinglePointer;
 
-    @:native('UnloadWaveSamples')static function UnloadWaveSamples(samples:raylib.utils.FloatPointer):Void;
+    @:native('UnloadWaveSamples')
+	static function UnloadWaveSamples(samples:raylib.utils.SinglePointer):Void;
 
     @:native('LoadMusicStream')
     static function LoadMusicStream(fileName:cpp.ConstCharStar):MusicImpl;
 
     @:native('LoadMusicStreamFromMemory')
-    static function LoadMusicStreamFromMemory(fileType:cpp.ConstCharStar, fileData:raylib.utils.BytesConstPointer,
-        dataSize:Int):MusicImpl;
+    static function LoadMusicStreamFromMemory(fileType:cpp.ConstCharStar, fileData:raylib.utils.UInt8ConstPointer, dataSize:Int):MusicImpl;
 
     @:native('IsMusicValid')
     static function IsMusicValid(music:MusicImpl):Bool;
@@ -1872,7 +1840,7 @@ extern class Raylib
     static function UnloadAudioStream(stream:AudioStreamImpl):Void;
 
     @:native('UpdateAudioStream')
-    static function UpdateAudioStream(stream:AudioStreamImpl, data:cpp.RawConstPointer<cpp.Void>, samplesCount:Int):Void;
+    static function UpdateAudioStream(stream:AudioStreamImpl, data:raylib.utils.VoidConstPointer, samplesCount:Int):Void;
 
     @:native('IsAudioStreamProcessed')
     static function IsAudioStreamProcessed(stream:AudioStreamImpl):Bool;
