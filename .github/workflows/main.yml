@@ -26,7 +26,7 @@ jobs:
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
         with:
-          haxe-version: latest
+          haxe-version: 4.3.7
 
       - name: Install Libs
         if: startsWith(matrix.os, 'ubuntu')
@@ -60,7 +60,7 @@ jobs:
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
         with:
-          haxe-version: latest
+          haxe-version: 4.3.7
 
       - name: Install Dependencies
         run: haxelib install hxcpp --quiet && haxelib dev raylib-hx .
@@ -82,7 +82,7 @@ jobs:
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
         with:
-          haxe-version: latest
+          haxe-version: 4.3.7
 
       - name: Install Dependencies
         run: |
