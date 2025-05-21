@@ -1,5 +1,8 @@
 package;
 
+import cpp.UInt32;
+import cpp.Pointer;
+
 import raylib.Raylib.*;
 import raylib.Types;
 
@@ -32,7 +35,7 @@ class Main
         var animsCount:Int = 0;
         var animationIndex:UInt = 0;
         var animCurrentFrame:UInt = 0;
-        var modelAnimation:cpp.RawPointer<ModelAnimationImpl> = LoadModelAnimations("resources/robot.glb", animsCount);
+        var modelAnimation:Pointer<ModelAnimationImpl> = Pointer.fromRaw(LoadModelAnimations("resources/robot.glb", animsCount));
 
         final position:Vector3 = new Vector3(0.0, 0.0, 0.0); // Set model position
 
@@ -84,7 +87,7 @@ class Main
 
         if (modelAnimation != null)
         {
-            UnloadModelAnimations(modelAnimation, animsCount); // Unload animations
+            UnloadModelAnimations(modelAnimation.raw, animsCount); // Unload animations
             modelAnimation = null;
         }
 
