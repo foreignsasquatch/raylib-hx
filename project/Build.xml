@@ -195,6 +195,7 @@
     </target>
 
     <compiler id="MSVC" if="windows">
+        <flag value="-wd4005" />
         <flag value="-wd4028" />
         <flag value="-wd4273" />
     </compiler>
