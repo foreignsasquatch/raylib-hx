@@ -40,16 +40,16 @@ import raylib.utils.SinglePointer;
 extern class Raymath
 {
     @:native('PI')
-    static var RL_PI:Single;
+    static var PI:Single;
 
     @:native('EPSILON')
-    static var RL_EPSILON:Single;
+    static var EPSILON:Single;
 
     @:native('DEG2RAD')
-    static var RL_DEG2RAD:Single;
+    static var DEG2RAD:Single;
 
     @:native('RAD2DEG')
-    static var RL_RAD2DEG:Single;
+    static var RAD2DEG:Single;
 
     @:native('Clamp')
     static function Clamp(value:Single, min:Single, max:Single):Single;
