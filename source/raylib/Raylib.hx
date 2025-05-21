@@ -56,94 +56,94 @@ import raylib.utils.VoidPointer;
 extern class Raylib
 {
     @:native('RAYLIB_VERSION_MAJOR')
-    static var RL_VERSION_MAJOR:UInt32;
+    static var RAYLIB_VERSION_MAJOR:UInt32;
 
     @:native('RAYLIB_VERSION_MINOR')
-    static var RL_VERSION_MINOR:UInt32;
+    static var RAYLIB_VERSION_MINOR:UInt32;
 
     @:native('RAYLIB_VERSION_PATCH')
-    static var RL_VERSION_PATCH:UInt32;
+    static var RAYLIB_VERSION_PATCH:UInt32;
 
     @:native('RAYLIB_VERSION')
-    static var RL_VERSION:ConstCharStar;
+    static var RAYLIB_VERSION:ConstCharStar;
 
     @:native('LIGHTGRAY')
-    static var RL_LIGHTGRAY:ColorImpl;
+    static var LIGHTGRAY:ColorImpl;
 
     @:native('GRAY')
-    static var RL_GRAY:ColorImpl;
+    static var GRAY:ColorImpl;
 
     @:native('DARKGRAY')
-    static var RL_DARKGRAY:ColorImpl;
+    static var DARKGRAY:ColorImpl;
 
     @:native('YELLOW')
-    static var RL_YELLOW:ColorImpl;
+    static var YELLOW:ColorImpl;
 
     @:native('GOLD')
-    static var RL_GOLD:ColorImpl;
+    static var GOLD:ColorImpl;
 
     @:native('ORANGE')
-    static var RL_ORANGE:ColorImpl;
+    static var ORANGE:ColorImpl;
 
     @:native('PINK')
-    static var RL_PINK:ColorImpl;
+    static var PINK:ColorImpl;
 
     @:native('RED')
-    static var RL_RED:ColorImpl;
+    static var RED:ColorImpl;
 
     @:native('MAROON')
-    static var RL_MAROON:ColorImpl;
+    static var MAROON:ColorImpl;
 
     @:native('GREEN')
-    static var RL_GREEN:ColorImpl;
+    static var GREEN:ColorImpl;
 
     @:native('LIME')
-    static var RL_LIME:ColorImpl;
+    static var LIME:ColorImpl;
 
     @:native('DARKGREEN')
-    static var RL_DARKGREEN:ColorImpl;
+    static var DARKGREEN:ColorImpl;
 
     @:native('SKYBLUE')
-    static var RL_SKYBLUE:ColorImpl;
+    static var SKYBLUE:ColorImpl;
 
     @:native('BLUE')
-    static var RL_BLUE:ColorImpl;
+    static var BLUE:ColorImpl;
 
     @:native('DARKBLUE')
-    static var RL_DARKBLUE:ColorImpl;
+    static var DARKBLUE:ColorImpl;
 
     @:native('PURPLE')
-    static var RL_PURPLE:ColorImpl;
+    static var PURPLE:ColorImpl;
 
     @:native('VIOLET')
-    static var RL_VIOLET:ColorImpl;
+    static var VIOLET:ColorImpl;
 
     @:native('DARKPURPLE')
-    static var RL_DARKPURPLE:ColorImpl;
+    static var DARKPURPLE:ColorImpl;
 
     @:native('BEIGE')
-    static var RL_BEIGE:ColorImpl;
+    static var BEIGE:ColorImpl;
 
     @:native('BROWN')
-    static var RL_BROWN:ColorImpl;
+    static var BROWN:ColorImpl;
 
     @:native('DARKBROWN')
-    static var RL_DARKBROWN:ColorImpl;
+    static var DARKBROWN:ColorImpl;
 
     @:native('WHITE')
-    static var RL_WHITE:ColorImpl;
+    static var WHITE:ColorImpl;
 
     @:native('BLACK')
-    static var RL_BLACK:ColorImpl;
+    static var BLACK:ColorImpl;
 
     @:native('BLANK')
-    static var RL_BLANK:ColorImpl;
+    static var BLANK:ColorImpl;
 
     @:native('MAGENTA')
-    static var RL_MAGENTA:ColorImpl;
+    static var MAGENTA:ColorImpl;
 
     @:native('RAYWHITE')
-    static var RL_RAYWHITE:ColorImpl;
+    static var RAYWHITE:ColorImpl;
 
     @:native('InitWindow')
     static function InitWindow(width:Int, height:Int, title:ConstCharStar):Void;
