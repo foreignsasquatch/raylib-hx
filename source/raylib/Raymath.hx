@@ -29,7 +29,11 @@ package raylib;
 #if !cpp
 #error 'Raylib supports only C++ target platforms.'
 #end
+import cpp.RawPointer;
+import cpp.Void;
+
 import raylib.Types;
+import raylib.utils.SinglePointer;
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
 @:include('raymath-impl.h')
@@ -219,7 +223,7 @@ extern class Raymath
     static function Vector3Reject(v1:Vector3Impl, v2:Vector3Impl):Vector3Impl;
 
     @:native('Vector3OrthoNormalize')
-    static function Vector3OrthoNormalize(v1:cpp.RawPointer<Vector3Impl>, v2:cpp.RawPointer<Vector3Impl>):Void;
+    static function Vector3OrthoNormalize(v1:RawPointer<Vector3Impl>, v2:RawPointer<Vector3Impl>):Void;
 
     @:native('Vector3Transform')
     static function Vector3Transform(v:Vector3Impl, mat:MatrixImpl):Vector3Impl;
@@ -255,7 +259,7 @@ extern class Raymath
     static function Vector3Unproject(source:Vector3Impl, projection:MatrixImpl, view:MatrixImpl):Vector3Impl;
 
     @:native('Vector3ToFloat')
-    static function Vector3ToFloat(v:Vector3Impl):raylib.utils.SinglePointer;
+    static function Vector3ToFloat(v:Vector3Impl):SinglePointer;
 
     @:native('Vector3Invert')
     static function Vector3Invert(v:Vector3Impl):Vector3Impl;
@@ -393,11 +397,10 @@ extern class Raymath
     static function MatrixLookAt(eye:Vector3Impl, target:Vector3Impl, up:Vector3Impl):MatrixImpl;
 
     @:native('MatrixToFloat')
-    static function MatrixToFloat(mat:MatrixImpl):raylib.utils.SinglePointer;
+    static function MatrixToFloat(mat:MatrixImpl):SinglePointer;
 
     @:native('MatrixDecompose')
-    static function MatrixDecompose(mat:MatrixImpl, translation:cpp.RawPointer<Vector3Impl>, rotation:cpp.RawPointer<Vector4Impl>,
-        scale:cpp.RawPointer<Vector3Impl>):Void;
+    static function MatrixDecompose(mat:MatrixImpl, translation:RawPointer<Vector3Impl>, rotation:RawPointer<Vector4Impl>, scale:RawPointer<Vector3Impl>):Void;
 
     @:native('QuaternionAdd')
     static function QuaternionAdd(q1:Vector4Impl, q2:Vector4Impl):Vector4Impl;

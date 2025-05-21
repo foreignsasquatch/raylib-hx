@@ -29,16 +29,26 @@ package raylib;
 #if !cpp
 #error 'Raylib supports only C++ target platforms.'
 #end
+import cpp.Pointer;
+import cpp.RawConstPointer;
+import cpp.RawPointer;
+import cpp.Struct;
+import cpp.Void;
+
 import raylib.Types;
+import raylib.utils.IntPointer;
 
 extern enum abstract TouchAction(TouchActionImpl)
 {
     @:native('TOUCH_ACTION_UP')
     var TOUCH_ACTION_UP;
+
     @:native('TOUCH_ACTION_DOWN')
     var TOUCH_ACTION_DOWN;
+
     @:native('TOUCH_ACTION_MOVE')
     var TOUCH_ACTION_MOVE;
+
     @:native('TOUCH_ACTION_CANCEL')
     var TOUCH_ACTION_CANCEL;
 
@@ -64,14 +74,14 @@ extern class GestureEventImpl
 {
     var touchAction:Int;
     var pointCount:Int;
-    var pointId:raylib.utils.IntPointer;
-    var position:cpp.RawPointer<Vector2Impl>;
+    var pointId:IntPointer;
+    var position:RawPointer<Vector2Impl>;
 
     function new():Void;
 }
 
 @:forward
-extern abstract GestureEvent(cpp.Struct<GestureEventImpl>) to cpp.Struct<GestureEventImpl>
+extern abstract GestureEvent(Struct<GestureEventImpl>) to Struct<GestureEventImpl>
 {
     inline function new():Void
     {
@@ -83,12 +93,12 @@ extern abstract GestureEvent(cpp.Struct<GestureEventImpl>) to cpp.Struct<Gesture
         return cast value;
 
     @:to
-    inline function toConstPointer():cpp.RawConstPointer<GestureEventImpl>
-        return cast cpp.Pointer.addressOf(this).constRaw;
+    inline function toConstPointer():RawConstPointer<GestureEventImpl>
+        return cast Pointer.addressOf(this).constRaw;
 
     @:to
-    inline function toPointer():cpp.RawPointer<GestureEventImpl>
-        return cast cpp.Pointer.addressOf(this).raw;
+    inline function toPointer():RawPointer<GestureEventImpl>
+        return cast Pointer.addressOf(this).raw;
 }
 
 @:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
