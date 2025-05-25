@@ -490,6 +490,7 @@ extern class FontImpl
     function new():Void;
 }
 
+@:forward
 extern abstract Font(Struct<FontImpl>) to Struct<FontImpl>
 {
     inline function new():Void
