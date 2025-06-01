@@ -826,8 +826,14 @@ extern class Raylib
     @:native('DrawEllipse')
     static function DrawEllipse(centerX:Int, centerY:Int, radiusH:Single, radiusV:Single, color:ColorImpl):Void;
 
+    @:native('DrawEllipseV')
+    static function DrawEllipseV(center:Vector2Impl, radiusH:Single, radiusV:Single, color:ColorImpl):Void;
+
     @:native('DrawEllipseLines')
     static function DrawEllipseLines(centerX:Int, centerY:Int, radiusH:Single, radiusV:Single, color:ColorImpl):Void;
+
+    @:native('DrawEllipseLinesV')
+    static function DrawEllipseLinesV(center:Vector2Impl, radiusH:Single, radiusV:Single, color:ColorImpl):Void;
 
     @:native('DrawRing')
     static function DrawRing(center:Vector2Impl, innerRadius:Single, outerRadius:Single, startAngle:Single, endAngle:Single, segments:Int,
