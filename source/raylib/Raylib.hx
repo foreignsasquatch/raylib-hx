@@ -862,7 +862,7 @@ extern class Raylib
     static function DrawRectangleGradientH(posX:Int, posY:Int, width:Int, height:Int, left:ColorImpl, right:ColorImpl):Void;
 
     @:native('DrawRectangleGradientEx')
-    static function DrawRectangleGradientEx(rec:RectangleImpl, topLeft:ColorImpl, bottomLeft:ColorImpl, topRight:ColorImpl, bottomRight:ColorImpl):Void;
+    static function DrawRectangleGradientEx(rec:RectangleImpl, topLeft:ColorImpl, bottomLeft:ColorImpl, bottomRight:ColorImpl, topRight:ColorImpl):Void;
 
     @:native('DrawRectangleLines')
     static function DrawRectangleLines(posX:Int, posY:Int, width:Int, height:Int, color:ColorImpl):Void;
@@ -1203,10 +1203,10 @@ extern class Raylib
     static function ImageDrawTriangleLines(dst:RawPointer<ImageImpl>, v1:Vector2Impl, v2:Vector2Impl, v3:Vector2Impl, color:ColorImpl):Void;
 
     @:native('ImageDrawTriangleFan')
-    static function ImageDrawTriangleFan(dst:RawPointer<ImageImpl>, points:RawPointer<Vector2Impl>, pointCount:Int, color:ColorImpl):Void;
+    static function ImageDrawTriangleFan(dst:RawPointer<ImageImpl>, points:RawConstPointer<Vector2Impl>, pointCount:Int, color:ColorImpl):Void;
 
     @:native('ImageDrawTriangleStrip')
-    static function ImageDrawTriangleStrip(dst:RawPointer<ImageImpl>, points:RawPointer<Vector2Impl>, pointCount:Int, color:ColorImpl):Void;
+    static function ImageDrawTriangleStrip(dst:RawPointer<ImageImpl>, points:RawConstPointer<Vector2Impl>, pointCount:Int, color:ColorImpl):Void;
 
     @:native('ImageDraw')
     static function ImageDraw(dst:RawPointer<ImageImpl>, src:ImageImpl, srcRec:RectangleImpl, dstRec:RectangleImpl, tint:ColorImpl):Void;
