@@ -154,8 +154,8 @@ extern class Raylib
     @:native('WindowShouldClose')
     static function WindowShouldClose():Bool;
 
-    @:native('IsWindowValid')
-    static function IsWindowValid():Bool;
+    @:native('IsWindowReady')
+    static function IsWindowReady():Bool;
 
     @:native('IsWindowFullscreen')
     static function IsWindowFullscreen():Bool;
