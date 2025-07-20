@@ -33,7 +33,6 @@ import cpp.ConstCharStar;
 import cpp.RawPointer;
 import cpp.UInt32;
 import cpp.UInt8;
-import cpp.Void;
 
 import raylib.Types;
 import raylib.utils.IntPointer;

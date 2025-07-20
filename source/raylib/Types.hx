@@ -39,7 +39,6 @@ import cpp.Struct;
 import cpp.UInt32;
 import cpp.UInt8;
 import cpp.VarList;
-import cpp.Void;
 
 import raylib.utils.CastCharStarPointer;
 import raylib.utils.IntPointer;
@@ -2550,6 +2549,7 @@ extern enum abstract NPatchLayout(NPatchLayoutImpl)
 private extern class NPatchLayoutImpl {}
 
 typedef TraceLogCallback = Callable<(logLevel:Int, text:ConstCharStar, args:VarList) -> Void>;
+
 typedef LoadFileDataCallback = Callable<(fileName:ConstCharStar, dataSize:IntPointer) -> UInt8Pointer>;
 typedef SaveFileDataCallback = Callable<(fileName:ConstCharStar, data:VoidPointer, dataSize:Int) -> Bool>;
 typedef LoadFileTextCallback = Callable<(fileName:ConstCharStar) -> CastCharStar>;
