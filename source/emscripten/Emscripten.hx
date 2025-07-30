@@ -1,7 +1,5 @@
 package emscripten;
 
-import cpp.Void;
-
 import raylib.utils.IntPointer;
 import raylib.utils.VoidPointer;
 

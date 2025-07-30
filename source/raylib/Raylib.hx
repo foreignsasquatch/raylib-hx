@@ -35,7 +35,6 @@ import cpp.RawPointer;
 import cpp.Rest;
 import cpp.UInt32;
 import cpp.VarArg;
-import cpp.Void;
 
 import raylib.Types;
 import raylib.utils.CastCharStarPointer;

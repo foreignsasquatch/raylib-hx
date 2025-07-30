@@ -27,7 +27,6 @@
 package raylib;
 
 import cpp.RawPointer;
-import cpp.Void;
 
 import raylib.Types;
 import raylib.utils.SinglePointer;

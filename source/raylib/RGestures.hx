@@ -30,7 +30,6 @@ import cpp.Pointer;
 import cpp.RawConstPointer;
 import cpp.RawPointer;
 import cpp.Struct;
-import cpp.Void;
 
 import raylib.Types;
 import raylib.utils.IntPointer;
