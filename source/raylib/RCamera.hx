@@ -26,15 +26,12 @@
 
 package raylib;
 
-#if !cpp
-#error 'Raylib supports only C++ target platforms.'
-#end
 import cpp.RawPointer;
 import cpp.Void;
 
 import raylib.Types;
 
-@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:buildXml("<include name=\"${haxelib:raylib-hx}/project/Build.xml\" />")
 @:include('rcamera-impl.h')
 extern class RCamera
 {

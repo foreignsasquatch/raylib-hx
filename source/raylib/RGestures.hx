@@ -26,9 +26,6 @@
 
 package raylib;
 
-#if !cpp
-#error 'Raylib supports only C++ target platforms.'
-#end
 import cpp.Pointer;
 import cpp.RawConstPointer;
 import cpp.RawPointer;
@@ -61,12 +58,12 @@ extern enum abstract TouchAction(TouchActionImpl)
         return untyped this;
 }
 
-@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:buildXml("<include name=\"${haxelib:raylib-hx}/project/Build.xml\" />")
 @:include('rgestures-impl.h')
 @:native('TouchAction')
 private extern class TouchActionImpl {}
 
-@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:buildXml("<include name=\"${haxelib:raylib-hx}/project/Build.xml\" />")
 @:include('rgestures-impl.h')
 @:structAccess
 @:native('GestureEvent')
@@ -101,7 +98,7 @@ extern abstract GestureEvent(Struct<GestureEventImpl>) to Struct<GestureEventImp
         return cast Pointer.addressOf(this).raw;
 }
 
-@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:buildXml("<include name=\"${haxelib:raylib-hx}/project/Build.xml\" />")
 @:include('rgestures-impl.h')
 extern class RGestures
 {

@@ -26,16 +26,13 @@
 
 package raylib;
 
-#if !cpp
-#error 'Raylib supports only C++ target platforms.'
-#end
 import cpp.RawPointer;
 import cpp.Void;
 
 import raylib.Types;
 import raylib.utils.SinglePointer;
 
-@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:buildXml("<include name=\"${haxelib:raylib-hx}/project/Build.xml\" />")
 @:include('raymath-impl.h')
 extern class Raymath
 {

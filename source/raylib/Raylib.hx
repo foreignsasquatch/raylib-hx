@@ -26,9 +26,6 @@
 
 package raylib;
 
-#if !cpp
-#error 'Raylib supports only C++ target platforms.'
-#end
 import cpp.CastCharStar;
 import cpp.Char;
 import cpp.ConstCharStar;
@@ -51,7 +48,7 @@ import raylib.utils.UInt8Pointer;
 import raylib.utils.VoidConstPointer;
 import raylib.utils.VoidPointer;
 
-@:buildXml('<include name="${haxelib:raylib-hx}/project/Build.xml" />')
+@:buildXml("<include name=\"${haxelib:raylib-hx}/project/Build.xml\" />")
 @:include('raylib.h')
 extern class Raylib
 {
