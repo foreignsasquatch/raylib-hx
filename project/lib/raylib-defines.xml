@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xml>
+    <!--Platform Setup-->
+
     <compilerflag value="-DPLATFORM_DESKTOP_GLFW" if="PLATFORM_DESKTOP_GLFW" />
-
     <compilerflag value="-DPLATFORM_DESKTOP_RGFW" if="PLATFORM_DESKTOP_RGFW" />
-
     <compilerflag value="-DPLATFORM_WEB" if="PLATFORM_WEB" />
-
     <compilerflag value="-DPLATFORM_WEB_RGFW" if="PLATFORM_WEB_RGFW" />
-
     <compilerflag value="-DPLATFORM_DRM" if="PLATFORM_DRM" />
-
     <compilerflag value="-DPLATFORM_ANDROID" if="PLATFORM_ANDROID" />
+
+    <!--Graphics API Setup-->
 
     <compilerflag value="-DGRAPHICS_API_OPENGL_11" if="GRAPHICS_API_OPENGL_11" />
     <compilerflag value="-DGRAPHICS_API_OPENGL_21" if="GRAPHICS_API_OPENGL_21" />
@@ -19,22 +18,116 @@
     <compilerflag value="-DGRAPHICS_API_OPENGL_ES2" if="GRAPHICS_API_OPENGL_ES2" />
     <compilerflag value="-DGRAPHICS_API_OPENGL_ES3" if="GRAPHICS_API_OPENGL_ES3" />
 
-    <compilerflag value="-DRLGL_RENDER_TEXTURES_HINT" if="RLGL_RENDER_TEXTURES_HINT" />
+    <!--RLGL Setup-->
+
     <compilerflag value="-DRLGL_SHOW_GL_DETAILS_INFO" if="RLGL_SHOW_GL_DETAILS_INFO" />
     <compilerflag value="-DRLGL_ENABLE_OPENGL_DEBUG_CONTEXT" if="RLGL_ENABLE_OPENGL_DEBUG_CONTEXT" />
 
+    <!--Custom Config-->
+
+    <section if="RAYLIB_CUSTOM_CONFIG">
+        <!--Module selection-->
+
+        <compilerflag value="-DSUPPORT_MODULE_RSHAPES" if="SUPPORT_MODULE_RSHAPES" />
+        <compilerflag value="-DSUPPORT_MODULE_RTEXTURES" if="SUPPORT_MODULE_RTEXTURES" />
+        <compilerflag value="-DSUPPORT_MODULE_RTEXT" if="SUPPORT_MODULE_RTEXT" />
+        <compilerflag value="-DSUPPORT_MODULE_RMODELS" if="SUPPORT_MODULE_RMODELS" />
+        <compilerflag value="-DSUPPORT_MODULE_RAUDIO" if="SUPPORT_MODULE_RAUDIO" />
+
+        <!--RCore Configuration Flags-->
+
+        <compilerflag value="-DSUPPORT_CAMERA_SYSTEM" if="SUPPORT_CAMERA_SYSTEM" />
+        <compilerflag value="-DSUPPORT_GESTURES_SYSTEM" if="SUPPORT_GESTURES_SYSTEM" />
+        <compilerflag value="-DSUPPORT_RPRAND_GENERATOR" if="SUPPORT_RPRAND_GENERATOR" />
+        <compilerflag value="-DSUPPORT_MOUSE_GESTURES" if="SUPPORT_MOUSE_GESTURES" />
+        <compilerflag value="-DSUPPORT_SSH_KEYBOARD_RPI" if="SUPPORT_SSH_KEYBOARD_RPI" />
+        <compilerflag value="-DSUPPORT_WINMM_HIGHRES_TIMER" if="SUPPORT_WINMM_HIGHRES_TIMER" />
+        <compilerflag value="-DSUPPORT_PARTIALBUSY_WAIT_LOOP" if="SUPPORT_PARTIALBUSY_WAIT_LOOP" />
+        <compilerflag value="-DSUPPORT_SCREEN_CAPTURE" if="SUPPORT_SCREEN_CAPTURE" />
+        <compilerflag value="-DSUPPORT_GIF_RECORDING" if="SUPPORT_GIF_RECORDING" />
+        <compilerflag value="-DSUPPORT_COMPRESSION_API" if="SUPPORT_COMPRESSION_API" />
+        <compilerflag value="-DSUPPORT_AUTOMATION_EVENTS" if="SUPPORT_AUTOMATION_EVENTS" />
+        <compilerflag value="-DSUPPORT_CLIPBOARD_IMAGE" if="SUPPORT_CLIPBOARD_IMAGE" />
+
+        <!--RShapes Configuration Flags-->
+
+        <compilerflag value="-DSUPPORT_QUADS_DRAW_MODE" if="SUPPORT_QUADS_DRAW_MODE" />
+
+        <!--RTextures Configuration Flags-->
+
+        <compilerflag value="-DSUPPORT_FILEFORMAT_PNG" if="SUPPORT_FILEFORMAT_PNG" />
+        <compilerflag value="-DSUPPORT_FILEFORMAT_GIF" if="SUPPORT_FILEFORMAT_GIF" />
+        <compilerflag value="-DSUPPORT_FILEFORMAT_QOI" if="SUPPORT_FILEFORMAT_QOI" />
+        <compilerflag value="-DSUPPORT_FILEFORMAT_DDS" if="SUPPORT_FILEFORMAT_DDS" />
+
+        <compilerflag value="-DSUPPORT_IMAGE_EXPORT" if="SUPPORT_IMAGE_EXPORT" />
+        <compilerflag value="-DSUPPORT_IMAGE_GENERATION" if="SUPPORT_IMAGE_GENERATION" />
+        <compilerflag value="-DSUPPORT_IMAGE_MANIPULATION" if="SUPPORT_IMAGE_MANIPULATION" />
+
+        <!--RText Configuration Flags-->
+
+        <compilerflag value="-DSUPPORT_DEFAULT_FONT" if="SUPPORT_DEFAULT_FONT" />
+
+        <compilerflag value="-DSUPPORT_FILEFORMAT_TTF" if="SUPPORT_FILEFORMAT_TTF" />
+        <compilerflag value="-DSUPPORT_FILEFORMAT_FNT" if="SUPPORT_FILEFORMAT_FNT" />
+
+        <compilerflag value="-DSUPPORT_TEXT_MANIPULATION" if="SUPPORT_TEXT_MANIPULATION" />
+
+        <compilerflag value="-DSUPPORT_FONT_ATLAS_WHITE_REC" if="SUPPORT_FONT_ATLAS_WHITE_REC" />
+
+        <!--RModels Configuration Flags-->
+
+        <compilerflag value="-DSUPPORT_FILEFORMAT_OBJ" if="SUPPORT_FILEFORMAT_OBJ" />
+        <compilerflag value="-DSUPPORT_FILEFORMAT_MTL" if="SUPPORT_FILEFORMAT_MTL" />
+        <compilerflag value="-DSUPPORT_FILEFORMAT_IQM" if="SUPPORT_FILEFORMAT_IQM" />
+        <compilerflag value="-DSUPPORT_FILEFORMAT_GLTF" if="SUPPORT_FILEFORMAT_GLTF" />
+        <compilerflag value="-DSUPPORT_FILEFORMAT_VOX" if="SUPPORT_FILEFORMAT_VOX" />
+        <compilerflag value="-DSUPPORT_FILEFORMAT_M3D" if="SUPPORT_FILEFORMAT_M3D" />
+
+        <compilerflag value="-DSUPPORT_MESH_GENERATION" if="SUPPORT_MESH_GENERATION" />
+
+        <!--RAudio Configuration Flags-->
+
+        <compilerflag value="-DSUPPORT_FILEFORMAT_WAV" if="SUPPORT_FILEFORMAT_WAV" />
+        <compilerflag value="-DSUPPORT_FILEFORMAT_OGG" if="SUPPORT_FILEFORMAT_OGG" />
+        <compilerflag value="-DSUPPORT_FILEFORMAT_MP3" if="SUPPORT_FILEFORMAT_MP3" />
+        <compilerflag value="-DSUPPORT_FILEFORMAT_QOA" if="SUPPORT_FILEFORMAT_QOA" />
+        <compilerflag value="-DSUPPORT_FILEFORMAT_XM" if="SUPPORT_FILEFORMAT_XM" />
+        <compilerflag value="-DSUPPORT_FILEFORMAT_MOD" if="SUPPORT_FILEFORMAT_MOD" />
+
+        <!--Utils Configuration Flags-->
+
+        <compilerflag value="-DSUPPORT_STANDARD_FILEIO" if="SUPPORT_STANDARD_FILEIO" />
+        <compilerflag value="-DSUPPORT_TRACELOG" if="SUPPORT_TRACELOG" />
+    </section>
+
+    <!--Configuration Flags-->
+
     <compilerflag value="-DSUPPORT_BUSY_WAIT_LOOP" if="SUPPORT_BUSY_WAIT_LOOP" />
     <compilerflag value="-DSUPPORT_CUSTOM_FRAME_CONTROL" if="SUPPORT_CUSTOM_FRAME_CONTROL" />
+
+    <!--RTextures Configuration Flags-->
+
     <compilerflag value="-DSUPPORT_FILEFORMAT_BMP" if="SUPPORT_FILEFORMAT_BMP" />
     <compilerflag value="-DSUPPORT_FILEFORMAT_TGA" if="SUPPORT_FILEFORMAT_TGA" />
     <compilerflag value="-DSUPPORT_FILEFORMAT_JPG" if="SUPPORT_FILEFORMAT_JPG" />
+    <compilerflag value="-DSUPPORT_FILEFORMAT_PSD" if="SUPPORT_FILEFORMAT_PSD" />
     <compilerflag value="-DSUPPORT_FILEFORMAT_HDR" if="SUPPORT_FILEFORMAT_HDR" />
     <compilerflag value="-DSUPPORT_FILEFORMAT_PIC" if="SUPPORT_FILEFORMAT_PIC" />
     <compilerflag value="-DSUPPORT_FILEFORMAT_KTX" if="SUPPORT_FILEFORMAT_KTX" />
     <compilerflag value="-DSUPPORT_FILEFORMAT_ASTC" if="SUPPORT_FILEFORMAT_ASTC" />
     <compilerflag value="-DSUPPORT_FILEFORMAT_PKM" if="SUPPORT_FILEFORMAT_PKM" />
     <compilerflag value="-DSUPPORT_FILEFORMAT_PVR" if="SUPPORT_FILEFORMAT_PVR" />
-    <compilerflag value="-DSUPPORT_FILEFORMAT_SVG" if="SUPPORT_FILEFORMAT_SVG" />
+
+    <!--RText Configuration Flags-->
+
+    <compilerflag value="-DSUPPORT_FILEFORMAT_BDF" if="SUPPORT_FILEFORMAT_BDF" />
+
+    <!--RAudio Configuration Flags-->
+
     <compilerflag value="-DSUPPORT_FILEFORMAT_FLAC" if="SUPPORT_FILEFORMAT_FLAC" />
+
+    <!--Utils Configuration Flags-->
+
     <compilerflag value="-DSUPPORT_TRACELOG_DEBUG" if="SUPPORT_TRACELOG_DEBUG" />
 </xml>
