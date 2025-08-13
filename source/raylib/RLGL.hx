@@ -26,6 +26,7 @@
 
 package raylib;
 
+import cpp.RawConstPointer;
 import cpp.Callable;
 import cpp.ConstCharStar;
 import cpp.RawPointer;
@@ -33,33 +34,27 @@ import cpp.UInt32;
 import cpp.UInt8;
 
 import raylib.Types;
-import raylib.utils.IntPointer;
-import raylib.utils.SingleConstPointer;
-import raylib.utils.SinglePointer;
-import raylib.utils.UInt32Pointer;
-import raylib.utils.UInt8Pointer;
-import raylib.utils.VoidPointer;
 
-typedef RLGLLoadProc = Callable<(name:ConstCharStar) -> VoidPointer>;
+typedef RLGLLoadProc = Callable<(name:ConstCharStar) -> RawPointer<cpp.Void>>;
 
 @:buildXml("<include name=\"${haxelib:raylib-hx}/project/Build.xml\" />")
 @:include('rlgl.h')
 @:structAccess
 @:native('rlVertexBuffer')
-extern class RlVertexBufferImpl
+extern class RlVertexBuffer
 {
     var elementCount:Int;
-    var vertices:SinglePointer;
-    var texcoords:SinglePointer;
-    var normals:SinglePointer;
-    var colors:UInt8Pointer;
+    var vertices:RawPointer<Single>;
+    var texcoords:RawPointer<Single>;
+    var normals:RawPointer<Single>;
+    var colors:RawPointer<UInt8>;
     #if (GRAPHICS_API_OPENGL_11 || GRAPHICS_API_OPENGL_33)
-    var indices:UInt32Pointer;
+    var indices:RawPointer<UInt32>;
     #elseif GRAPHICS_API_OPENGL_ES2
-    var indices:UInt16Pointer;
+    var indices:RawPointer<UInt16>;
     #end
     var vaoId:UInt32;
-    var vboId:UInt32Pointer;
+    var vboId:RawPointer<UInt32>;
 
     function new():Void;
 }
@@ -68,7 +63,7 @@ extern class RlVertexBufferImpl
 @:include('rlgl.h')
 @:structAccess
 @:native('rlDrawCall')
-extern class RlDrawCallImpl
+extern class RlDrawCall
 {
     var mode:Int;
     var vertexCount:Int;
@@ -82,12 +77,12 @@ extern class RlDrawCallImpl
 @:include('rlgl.h')
 @:structAccess
 @:native('rlRenderBatch')
-extern class RlRenderBatchImpl
+extern class RlRenderBatch
 {
     var bufferCount:Int;
     var currentBuffer:Int;
-    var vertexBuffer:RawPointer<RlVertexBufferImpl>;
-    var draws:RawPointer<RlDrawCallImpl>;
+    var vertexBuffer:RawPointer<RlVertexBuffer>;
+    var draws:RawPointer<RlDrawCall>;
     var drawCounter:Int;
     var currentDepth:Single;
 
@@ -893,7 +888,7 @@ extern class RLGL
     static function rlScalef(x:Single, y:Single, z:Single):Void;
 
     @:native('rlMultMatrixf')
-    static function rlMultMatrixf(matf:SingleConstPointer):Void;
+    static function rlMultMatrixf(matf:RawConstPointer<Single>):Void;
 
     @:native('rlFrustum')
     static function rlFrustum(left:Float, right:Float, bottom:Float, top:Float, znear:Float, zfar:Float):Void;
@@ -969,7 +964,7 @@ extern class RLGL
 
     #if GRAPHICS_API_OPENGL_11
     @:native('rlEnableStatePointer')
-    static function rlEnableStatePointer(vertexAttribType:Int, buffer:VoidPointer):Void;
+    static function rlEnableStatePointer(vertexAttribType:Int, buffer:RawPointer<cpp.Void>):Void;
 
     @:native('rlDisableStatePointer')
     static function rlDisableStatePointer(vertexAttribType:Int):Void;
@@ -1117,10 +1112,10 @@ extern class RLGL
     static function rlglClose():Void;
 
     @:native('rlLoadExtensions')
-    static function rlLoadExtensions(loader:VoidPointer):Void;
+    static function rlLoadExtensions(loader:RawPointer<cpp.Void>):Void;
 
     @:native('rlGetProcAddress')
-    static function rlGetProcAddress(procName:ConstCharStar):VoidPointer;
+    static function rlGetProcAddress(procName:ConstCharStar):RawPointer<cpp.Void>;
 
     @:native('rlGetVersion')
     static function rlGetVersion():Int;
@@ -1144,19 +1139,19 @@ extern class RLGL
     static function rlGetShaderIdDefault():UInt32;
 
     @:native('rlGetShaderLocsDefault')
-    static function rlGetShaderLocsDefault():IntPointer;
+    static function rlGetShaderLocsDefault():RawPointer<Int>;
 
     @:native('rlLoadRenderBatch')
-    static function rlLoadRenderBatch(numBuffers:Int, bufferElements:Int):RlRenderBatchImpl;
+    static function rlLoadRenderBatch(numBuffers:Int, bufferElements:Int):RlRenderBatch;
 
     @:native('rlUnloadRenderBatch')
-    static function rlUnloadRenderBatch(batch:RlRenderBatchImpl):Void;
+    static function rlUnloadRenderBatch(batch:RlRenderBatch):Void;
 
     @:native('rlDrawRenderBatch')
-    static function rlDrawRenderBatch(batch:cpp.RawPointer<RlRenderBatchImpl>):Void;
+    static function rlDrawRenderBatch(batch:cpp.RawPointer<RlRenderBatch>):Void;
 
     @:native('rlSetRenderBatchActive')
-    static function rlSetRenderBatchActive(batch:cpp.RawPointer<RlRenderBatchImpl>):Void;
+    static function rlSetRenderBatchActive(batch:cpp.RawPointer<RlRenderBatch>):Void;
 
     @:native('rlDrawRenderBatchActive')
     static function rlDrawRenderBatchActive():Void;
@@ -1171,16 +1166,16 @@ extern class RLGL
     static function rlLoadVertexArray():UInt32;
 
     @:native('rlLoadVertexBuffer')
-    static function rlLoadVertexBuffer(buffer:VoidPointer, size:Int, dyn:Bool):UInt32;
+    static function rlLoadVertexBuffer(buffer:RawPointer<cpp.Void>, size:Int, dyn:Bool):UInt32;
 
     @:native('rlLoadVertexBufferElement')
-    static function rlLoadVertexBufferElement(buffer:VoidPointer, size:Int, dyn:Bool):UInt32;
+    static function rlLoadVertexBufferElement(buffer:RawPointer<cpp.Void>, size:Int, dyn:Bool):UInt32;
 
     @:native('rlUpdateVertexBuffer')
-    static function rlUpdateVertexBuffer(bufferId:UInt32, data:VoidPointer, dataSize:Int, offset:Int):Void;
+    static function rlUpdateVertexBuffer(bufferId:UInt32, data:RawPointer<cpp.Void>, dataSize:Int, offset:Int):Void;
 
     @:native('rlUpdateVertexBufferElements')
-    static function rlUpdateVertexBufferElements(id:UInt32, data:VoidPointer, dataSize:Int, offset:Int):Void;
+    static function rlUpdateVertexBufferElements(id:UInt32, data:RawPointer<cpp.Void>, dataSize:Int, offset:Int):Void;
 
     @:native('rlUnloadVertexArray')
     static function rlUnloadVertexArray(vaoId:UInt32):Void;
@@ -1195,34 +1190,34 @@ extern class RLGL
     static function rlSetVertexAttributeDivisor(index:UInt32, divisor:Int):Void;
 
     @:native('rlSetVertexAttributeDefault')
-    static function rlSetVertexAttributeDefault(locIndex:Int, value:VoidPointer, attribType:Int, count:Int):Void;
+    static function rlSetVertexAttributeDefault(locIndex:Int, value:RawPointer<cpp.Void>, attribType:Int, count:Int):Void;
 
     @:native('rlDrawVertexArray')
     static function rlDrawVertexArray(offset:Int, count:Int):Void;
 
     @:native('rlDrawVertexArrayElements')
-    static function rlDrawVertexArrayElements(offset:Int, count:Int, buffer:VoidPointer):Void;
+    static function rlDrawVertexArrayElements(offset:Int, count:Int, buffer:RawPointer<cpp.Void>):Void;
 
     @:native('rlDrawVertexArrayInstanced')
     static function rlDrawVertexArrayInstanced(offset:Int, count:Int, instances:Int):Void;
 
     @:native('rlDrawVertexArrayElementsInstanced')
-    static function rlDrawVertexArrayElementsInstanced(offset:Int, count:Int, buffer:VoidPointer, instances:Int):Void;
+    static function rlDrawVertexArrayElementsInstanced(offset:Int, count:Int, buffer:RawPointer<cpp.Void>, instances:Int):Void;
 
     @:native('rlLoadTexture')
-    static function rlLoadTexture(data:VoidPointer, width:Int, height:Int, format:Int, mipmapCount:Int):UInt32;
+    static function rlLoadTexture(data:RawPointer<cpp.Void>, width:Int, height:Int, format:Int, mipmapCount:Int):UInt32;
 
     @:native('rlLoadTextureDepth')
     static function rlLoadTextureDepth(width:Int, height:Int, useRenderBuffer:Bool):UInt32;
 
     @:native('rlLoadTextureCubemap')
-    static function rlLoadTextureCubemap(data:VoidPointer, size:Int, format:Int, mipmapCount:Int):UInt32;
+    static function rlLoadTextureCubemap(data:RawPointer<cpp.Void>, size:Int, format:Int, mipmapCount:Int):UInt32;
 
     @:native('rlUpdateTexture')
-    static function rlUpdateTexture(id:UInt32, offsetX:Int, offsetY:Int, width:Int, height:Int, format:Int, data:VoidPointer):Void;
+    static function rlUpdateTexture(id:UInt32, offsetX:Int, offsetY:Int, width:Int, height:Int, format:Int, data:RawPointer<cpp.Void>):Void;
 
     @:native('rlGetGlTextureFormats')
-    static function rlGetGlTextureFormats(format:Int, glInternalFormat:UInt32Pointer, glFormat:UInt32Pointer, glType:UInt32Pointer):Void;
+    static function rlGetGlTextureFormats(format:Int, glInternalFormat:RawPointer<UInt32>, glFormat:RawPointer<UInt32>, glType:RawPointer<UInt32>):Void;
 
     @:native('rlGetPixelFormatName')
     static function rlGetPixelFormatName(format:UInt32):ConstCharStar;
@@ -1231,13 +1226,13 @@ extern class RLGL
     static function rlUnloadTexture(id:UInt32):Void;
 
     @:native('rlGenTextureMipmaps')
-    static function rlGenTextureMipmaps(id:UInt32, width:Int, height:Int, format:Int, mipmaps:IntPointer):Void;
+    static function rlGenTextureMipmaps(id:UInt32, width:Int, height:Int, format:Int, mipmaps:RawPointer<Int>):Void;
 
     @:native('rlReadTexturePixels')
-    static function rlReadTexturePixels(id:UInt32, width:Int, height:Int, format:Int):VoidPointer;
+    static function rlReadTexturePixels(id:UInt32, width:Int, height:Int, format:Int):RawPointer<cpp.Void>;
 
     @:native('rlReadScreenPixels')
-    static function rlReadScreenPixels(width:Int, height:Int):UInt8Pointer;
+    static function rlReadScreenPixels(width:Int, height:Int):RawPointer<UInt8>;
 
     @:native('rlLoadFramebuffer')
     static function rlLoadFramebuffer():UInt32;
@@ -1270,19 +1265,19 @@ extern class RLGL
     static function rlGetLocationAttrib(shaderId:UInt32, attribName:ConstCharStar):Int;
 
     @:native('rlSetUniform')
-    static function rlSetUniform(locIndex:Int, value:VoidPointer, uniformType:Int, count:Int):Void;
+    static function rlSetUniform(locIndex:Int, value:RawPointer<cpp.Void>, uniformType:Int, count:Int):Void;
 
     @:native('rlSetUniformMatrix')
-    static function rlSetUniformMatrix(locIndex:Int, mat:MatrixImpl):Void;
+    static function rlSetUniformMatrix(locIndex:Int, mat:Matrix):Void;
 
     @:native('rlSetUniformMatrices')
-    static function rlSetUniformMatrices(locIndex:Int, mat:cpp.ConstPointer<MatrixImpl>, count:Int):Void;
+    static function rlSetUniformMatrices(locIndex:Int, mat:cpp.ConstPointer<Matrix>, count:Int):Void;
 
     @:native('rlSetUniformSampler')
     static function rlSetUniformSampler(locIndex:Int, textureId:UInt32):Void;
 
     @:native('rlSetShader')
-    static function rlSetShader(id:UInt32, locs:IntPointer):Void;
+    static function rlSetShader(id:UInt32, locs:RawPointer<Int>):Void;
 
     @:native('rlLoadComputeShaderProgram')
     static function rlLoadComputeShaderProgram(shaderId:UInt32):UInt32;
@@ -1291,19 +1286,19 @@ extern class RLGL
     static function rlComputeShaderDispatch(groupX:UInt32, groupY:UInt32, groupZ:UInt32):Void;
 
     @:native('rlLoadShaderBuffer')
-    static function rlLoadShaderBuffer(size:UInt32, data:VoidPointer, usageHint:Int):UInt32;
+    static function rlLoadShaderBuffer(size:UInt32, data:RawPointer<cpp.Void>, usageHint:Int):UInt32;
 
     @:native('rlUnloadShaderBuffer')
     static function rlUnloadShaderBuffer(ssboId:UInt32):Void;
 
     @:native('rlUpdateShaderBuffer')
-    static function rlUpdateShaderBuffer(id:UInt32, data:VoidPointer, dataSize:UInt32, offset:UInt32):Void;
+    static function rlUpdateShaderBuffer(id:UInt32, data:RawPointer<cpp.Void>, dataSize:UInt32, offset:UInt32):Void;
 
     @:native('rlBindShaderBuffer')
     static function rlBindShaderBuffer(id:UInt32, index:UInt32):Void;
 
     @:native('rlReadShaderBuffer')
-    static function rlReadShaderBuffer(id:UInt32, dest:VoidPointer, count:UInt32, offset:UInt32):Void;
+    static function rlReadShaderBuffer(id:UInt32, dest:RawPointer<cpp.Void>, count:UInt32, offset:UInt32):Void;
 
     @:native('rlCopyShaderBuffer')
     static function rlCopyShaderBuffer(destId:UInt32, srcId:UInt32, destOffset:UInt32, srcOffset:UInt32, count:UInt32):Void;
@@ -1315,31 +1310,31 @@ extern class RLGL
     static function rlBindImageTexture(id:UInt32, index:UInt32, format:Int, readonly:Bool):Void;
 
     @:native('rlGetMatrixModelview')
-    static function rlGetMatrixModelview():MatrixImpl;
+    static function rlGetMatrixModelview():Matrix;
 
     @:native('rlGetMatrixProjection')
-    static function rlGetMatrixProjection():MatrixImpl;
+    static function rlGetMatrixProjection():Matrix;
 
     @:native('rlGetMatrixTransform')
-    static function rlGetMatrixTransform():MatrixImpl;
+    static function rlGetMatrixTransform():Matrix;
 
     @:native('rlGetMatrixProjectionStereo')
-    static function rlGetMatrixProjectionStereo(eye:Int):MatrixImpl;
+    static function rlGetMatrixProjectionStereo(eye:Int):Matrix;
 
     @:native('rlGetMatrixViewOffsetStereo')
-    static function rlGetMatrixViewOffsetStereo(eye:Int):MatrixImpl;
+    static function rlGetMatrixViewOffsetStereo(eye:Int):Matrix;
 
     @:native('rlSetMatrixProjection')
-    static function rlSetMatrixProjection(proj:MatrixImpl):Void;
+    static function rlSetMatrixProjection(proj:Matrix):Void;
 
     @:native('rlSetMatrixModelview')
-    static function rlSetMatrixModelview(view:MatrixImpl):Void;
+    static function rlSetMatrixModelview(view:Matrix):Void;
 
     @:native('rlSetMatrixProjectionStereo')
-    static function rlSetMatrixProjectionStereo(right:MatrixImpl, left:MatrixImpl):Void;
+    static function rlSetMatrixProjectionStereo(right:Matrix, left:Matrix):Void;
 
     @:native('rlSetMatrixViewOffsetStereo')
-    static function rlSetMatrixViewOffsetStereo(right:MatrixImpl, left:MatrixImpl):Void;
+    static function rlSetMatrixViewOffsetStereo(right:Matrix, left:Matrix):Void;
 
     @:native('rlLoadDrawCube')
     static function rlLoadDrawCube():Void;

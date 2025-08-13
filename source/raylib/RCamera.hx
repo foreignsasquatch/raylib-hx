@@ -35,38 +35,38 @@ import raylib.Types;
 extern class RCamera
 {
     @:native('GetCameraForward')
-    static function GetCameraForward(camera:RawPointer<Camera3DImpl>):Vector3Impl;
+    static function GetCameraForward(camera:RawPointer<Camera3D>):Vector3;
 
     @:native('GetCameraUp')
-    static function GetCameraUp(camera:RawPointer<Camera3DImpl>):Vector3Impl;
+    static function GetCameraUp(camera:RawPointer<Camera3D>):Vector3;
 
     @:native('GetCameraRight')
-    static function GetCameraRight(camera:RawPointer<Camera3DImpl>):Vector3Impl;
+    static function GetCameraRight(camera:RawPointer<Camera3D>):Vector3;
 
     @:native('CameraMoveForward')
-    static function CameraMoveForward(camera:RawPointer<Camera3DImpl>, distance:Single, moveInWorldPlane:Bool):Void;
+    static function CameraMoveForward(camera:RawPointer<Camera3D>, distance:Single, moveInWorldPlane:Bool):Void;
 
     @:native('CameraMoveUp')
-    static function CameraMoveUp(camera:RawPointer<Camera3DImpl>, distance:Single):Void;
+    static function CameraMoveUp(camera:RawPointer<Camera3D>, distance:Single):Void;
 
     @:native('CameraMoveRight')
-    static function CameraMoveRight(camera:RawPointer<Camera3DImpl>, distance:Single, moveInWorldPlane:Bool):Void;
+    static function CameraMoveRight(camera:RawPointer<Camera3D>, distance:Single, moveInWorldPlane:Bool):Void;
 
     @:native('CameraMoveToTarget')
-    static function CameraMoveToTarget(camera:RawPointer<Camera3DImpl>, delta:Single):Void;
+    static function CameraMoveToTarget(camera:RawPointer<Camera3D>, delta:Single):Void;
 
     @:native('CameraYaw')
-    static function CameraYaw(camera:RawPointer<Camera3DImpl>, angle:Single, rotateAroundTarget:Bool):Void;
+    static function CameraYaw(camera:RawPointer<Camera3D>, angle:Single, rotateAroundTarget:Bool):Void;
 
     @:native('CameraPitch')
-    static function CameraPitch(camera:RawPointer<Camera3DImpl>, angle:Single, lockView:Bool, rotateAroundTarget:Bool, rotateUp:Bool):Void;
+    static function CameraPitch(camera:RawPointer<Camera3D>, angle:Single, lockView:Bool, rotateAroundTarget:Bool, rotateUp:Bool):Void;
 
     @:native('CameraRoll')
-    static function CameraRoll(camera:RawPointer<Camera3DImpl>, angle:Single):Void;
+    static function CameraRoll(camera:RawPointer<Camera3D>, angle:Single):Void;
 
     @:native('GetCameraViewMatrix')
-    static function GetCameraViewMatrix(camera:RawPointer<Camera3DImpl>):MatrixImpl;
+    static function GetCameraViewMatrix(camera:RawPointer<Camera3D>):Matrix;
 
     @:native('GetCameraProjectionMatrix')
-    static function GetCameraProjectionMatrix(camera:RawPointer<Camera3DImpl>, aspect:Single):MatrixImpl;
+    static function GetCameraProjectionMatrix(camera:RawPointer<Camera3D>, aspect:Single):Matrix;
 }

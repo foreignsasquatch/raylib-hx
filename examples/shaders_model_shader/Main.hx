@@ -1,5 +1,7 @@
 package;
 
+import cpp.RawPointer;
+
 import raylib.Raylib.*;
 import raylib.Types;
 
@@ -27,9 +29,9 @@ class Main
 
         // Define the camera to look into our 3d world
         final camera:Camera3D = new Camera3D();
-        camera.position = new Vector3(4.0, 4.0, 4.0); // Camera position
-        camera.target = new Vector3(0.0, 1.0, -1.0); // Camera looking at point
-        camera.up = new Vector3(0.0, 1.0, 0.0); // Camera up vector (rotation towards target)
+        camera.position = Vector3.create(4.0, 4.0, 4.0); // Camera position
+        camera.target = Vector3.create(0.0, 1.0, -1.0); // Camera looking at point
+        camera.up = Vector3.create(0.0, 1.0, 0.0); // Camera up vector (rotation towards target)
         camera.fovy = 45.0; // Camera field-of-view Y
         camera.projection = CAMERA_PERSPECTIVE; // Camera projection type
 
@@ -43,7 +45,7 @@ class Main
         model.materials[0].shader = shader; // Set shader effect to 3d model
         model.materials[0].maps[cast MATERIAL_MAP_ALBEDO].texture = texture; // Bind texture to model
 
-        final position:Vector3 = new Vector3(0, 0, 0); // Set model position
+        final position:Vector3 = Vector3.create(0, 0, 0); // Set model position
 
         DisableCursor(); // Limit cursor to relative movement inside the window
         SetTargetFPS(60); // Set our game to run at 60 frames-per-second
@@ -54,7 +56,7 @@ class Main
         {
             // Update
             //----------------------------------------------------------------------------------
-            UpdateCamera(camera, CAMERA_FREE);
+            UpdateCamera(RawPointer.addressOf(camera), CAMERA_FREE);
             //----------------------------------------------------------------------------------
 
             // Draw

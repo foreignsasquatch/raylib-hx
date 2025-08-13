@@ -26,6 +26,7 @@
 
 package raylib;
 
+import cpp.UInt8;
 import cpp.CastCharStar;
 import cpp.Char;
 import cpp.ConstCharStar;
@@ -37,15 +38,6 @@ import cpp.UInt32;
 import cpp.VarArg;
 
 import raylib.Types;
-import raylib.utils.CastCharStarPointer;
-import raylib.utils.IntPointer;
-import raylib.utils.SingleConstPointer;
-import raylib.utils.SinglePointer;
-import raylib.utils.UInt32Pointer;
-import raylib.utils.UInt8ConstPointer;
-import raylib.utils.UInt8Pointer;
-import raylib.utils.VoidConstPointer;
-import raylib.utils.VoidPointer;
 
 @:buildXml("<include name=\"${haxelib:raylib-hx}/project/Build.xml\" />")
 @:include('raylib.h')
@@ -64,82 +56,82 @@ extern class Raylib
     static var RAYLIB_VERSION:ConstCharStar;
 
     @:native('LIGHTGRAY')
-    static var LIGHTGRAY:ColorImpl;
+    static var LIGHTGRAY:Color;
 
     @:native('GRAY')
-    static var GRAY:ColorImpl;
+    static var GRAY:Color;
 
     @:native('DARKGRAY')
-    static var DARKGRAY:ColorImpl;
+    static var DARKGRAY:Color;
 
     @:native('YELLOW')
-    static var YELLOW:ColorImpl;
+    static var YELLOW:Color;
 
     @:native('GOLD')
-    static var GOLD:ColorImpl;
+    static var GOLD:Color;
 
     @:native('ORANGE')
-    static var ORANGE:ColorImpl;
+    static var ORANGE:Color;
 
     @:native('PINK')
-    static var PINK:ColorImpl;
+    static var PINK:Color;
 
     @:native('RED')
-    static var RED:ColorImpl;
+    static var RED:Color;
 
     @:native('MAROON')
-    static var MAROON:ColorImpl;
+    static var MAROON:Color;
 
     @:native('GREEN')
-    static var GREEN:ColorImpl;
+    static var GREEN:Color;
 
     @:native('LIME')
-    static var LIME:ColorImpl;
+    static var LIME:Color;
 
     @:native('DARKGREEN')
-    static var DARKGREEN:ColorImpl;
+    static var DARKGREEN:Color;
 
     @:native('SKYBLUE')
-    static var SKYBLUE:ColorImpl;
+    static var SKYBLUE:Color;
 
     @:native('BLUE')
-    static var BLUE:ColorImpl;
+    static var BLUE:Color;
 
     @:native('DARKBLUE')
-    static var DARKBLUE:ColorImpl;
+    static var DARKBLUE:Color;
 
     @:native('PURPLE')
-    static var PURPLE:ColorImpl;
+    static var PURPLE:Color;
 
     @:native('VIOLET')
-    static var VIOLET:ColorImpl;
+    static var VIOLET:Color;
 
     @:native('DARKPURPLE')
-    static var DARKPURPLE:ColorImpl;
+    static var DARKPURPLE:Color;
 
     @:native('BEIGE')
-    static var BEIGE:ColorImpl;
+    static var BEIGE:Color;
 
     @:native('BROWN')
-    static var BROWN:ColorImpl;
+    static var BROWN:Color;
 
     @:native('DARKBROWN')
-    static var DARKBROWN:ColorImpl;
+    static var DARKBROWN:Color;
 
     @:native('WHITE')
-    static var WHITE:ColorImpl;
+    static var WHITE:Color;
 
     @:native('BLACK')
-    static var BLACK:ColorImpl;
+    static var BLACK:Color;
 
     @:native('BLANK')
-    static var BLANK:ColorImpl;
+    static var BLANK:Color;
 
     @:native('MAGENTA')
-    static var MAGENTA:ColorImpl;
+    static var MAGENTA:Color;
 
     @:native('RAYWHITE')
-    static var RAYWHITE:ColorImpl;
+    static var RAYWHITE:Color;
 
     @:native('InitWindow')
     static function InitWindow(width:Int, height:Int, title:ConstCharStar):Void;
@@ -196,10 +188,10 @@ extern class Raylib
     static function RestoreWindow():Void;
 
     @:native('SetWindowIcon')
-    static function SetWindowIcon(image:ImageImpl):Void;
+    static function SetWindowIcon(image:Image):Void;
 
     @:native('SetWindowIcons')
-    static function SetWindowIcons(images:RawPointer<ImageImpl>, count:Int):Void;
+    static function SetWindowIcons(images:RawPointer<Image>, count:Int):Void;
 
     @:native('SetWindowTitle')
     static function SetWindowTitle(title:ConstCharStar):Void;
@@ -226,7 +218,7 @@ extern class Raylib
     static function SetWindowFocused():Void;
 
     @:native('GetWindowHandle')
-    static function GetWindowHandle():VoidPointer;
+    static function GetWindowHandle():RawPointer<cpp.Void>;
 
     @:native('GetScreenWidth')
     static function GetScreenWidth():Int;
@@ -247,7 +239,7 @@ extern class Raylib
     static function GetCurrentMonitor():UInt32;
 
     @:native('GetMonitorPosition')
-    static function GetMonitorPosition(monitor:Int):Vector2Impl;
+    static function GetMonitorPosition(monitor:Int):Vector2;
 
     @:native('GetMonitorWidth')
     static function GetMonitorWidth(monitor:Int):Int;
@@ -265,10 +257,10 @@ extern class Raylib
     static function GetMonitorRefreshRate(monitor:Int):Int;
 
     @:native('GetWindowPosition')
-    static function GetWindowPosition():Vector2Impl;
+    static function GetWindowPosition():Vector2;
 
     @:native('GetWindowScaleDPI')
-    static function GetWindowScaleDPI():Vector2Impl;
+    static function GetWindowScaleDPI():Vector2;
 
     @:native('GetMonitorName')
     static function GetMonitorName(monitor:Int):ConstCharStar;
@@ -304,7 +296,7 @@ extern class Raylib
     static function IsCursorOnScreen():Bool;
 
     @:native('ClearBackground')
-    static function ClearBackground(color:ColorImpl):Void;
+    static function ClearBackground(color:Color):Void;
 
     @:native('BeginDrawing')
     static function BeginDrawing():Void;
@@ -313,25 +305,25 @@ extern class Raylib
     static function EndDrawing():Void;
 
     @:native('BeginMode2D')
-    static function BeginMode2D(camera:Camera2DImpl):Void;
+    static function BeginMode2D(camera:Camera2D):Void;
 
     @:native('EndMode2D')
     static function EndMode2D():Void;
 
     @:native('BeginMode3D')
-    static function BeginMode3D(camera:Camera3DImpl):Void;
+    static function BeginMode3D(camera:Camera3D):Void;
 
     @:native('EndMode3D')
     static function EndMode3D():Void;
 
     @:native('BeginTextureMode')
-    static function BeginTextureMode(target:RenderTextureImpl):Void;
+    static function BeginTextureMode(target:RenderTexture):Void;
 
     @:native('EndTextureMode')
     static function EndTextureMode():Void;
 
     @:native('BeginShaderMode')
-    static function BeginShaderMode(shader:ShaderImpl):Void;
+    static function BeginShaderMode(shader:Shader):Void;
 
     @:native('EndShaderMode')
     static function EndShaderMode():Void;
@@ -349,73 +341,73 @@ extern class Raylib
     static function EndScissorMode():Void;
 
     @:native('BeginVrStereoMode')
-    static function BeginVrStereoMode(config:VrStereoConfigImpl):Void;
+    static function BeginVrStereoMode(config:VrStereoConfig):Void;
 
     @:native('EndVrStereoMode')
     static function EndVrStereoMode():Void;
 
     @:native('LoadVrStereoConfig')
-    static function LoadVrStereoConfig(device:VrDeviceInfoImpl):VrStereoConfigImpl;
+    static function LoadVrStereoConfig(device:VrDeviceInfo):VrStereoConfig;
 
     @:native('UnloadVrStereoConfig')
-    static function UnloadVrStereoConfig(config:VrStereoConfigImpl):Void;
+    static function UnloadVrStereoConfig(config:VrStereoConfig):Void;
 
     @:native('LoadShader')
-    static function LoadShader(vsFileName:ConstCharStar, fsFileName:ConstCharStar):ShaderImpl;
+    static function LoadShader(vsFileName:ConstCharStar, fsFileName:ConstCharStar):Shader;
 
     @:native('LoadShaderFromMemory')
-    static function LoadShaderFromMemory(vsCode:ConstCharStar, fsCode:ConstCharStar):ShaderImpl;
+    static function LoadShaderFromMemory(vsCode:ConstCharStar, fsCode:ConstCharStar):Shader;
 
     @:native('IsShaderValid')
-    static function IsShaderValid(shader:ShaderImpl):Bool;
+    static function IsShaderValid(shader:Shader):Bool;
 
     @:native('GetShaderLocation')
-    static function GetShaderLocation(shader:ShaderImpl, uniformName:ConstCharStar):Int;
+    static function GetShaderLocation(shader:Shader, uniformName:ConstCharStar):Int;
 
     @:native('GetShaderLocationAttrib')
-    static function GetShaderLocationAttrib(shader:ShaderImpl, attribName:ConstCharStar):Int;
+    static function GetShaderLocationAttrib(shader:Shader, attribName:ConstCharStar):Int;
 
     @:native('SetShaderValue')
-    static function SetShaderValue(shader:ShaderImpl, locIndex:Int, value:VoidConstPointer, uniformType:Int):Void;
+    static function SetShaderValue(shader:Shader, locIndex:Int, value:RawConstPointer<cpp.Void>, uniformType:Int):Void;
 
     @:native('SetShaderValueV')
-    static function SetShaderValueV(shader:ShaderImpl, locIndex:Int, value:VoidConstPointer, uniformType:Int, count:Int):Void;
+    static function SetShaderValueV(shader:Shader, locIndex:Int, value:RawConstPointer<cpp.Void>, uniformType:Int, count:Int):Void;
 
     @:native('SetShaderValueMatrix')
-    static function SetShaderValueMatrix(shader:ShaderImpl, locIndex:Int, mat:MatrixImpl):Void;
+    static function SetShaderValueMatrix(shader:Shader, locIndex:Int, mat:Matrix):Void;
 
     @:native('SetShaderValueTexture')
-    static function SetShaderValueTexture(shader:ShaderImpl, locIndex:Int, texture:TextureImpl):Void;
+    static function SetShaderValueTexture(shader:Shader, locIndex:Int, texture:Texture):Void;
 
     @:native('UnloadShader')
-    static function UnloadShader(shader:ShaderImpl):Void;
+    static function UnloadShader(shader:Shader):Void;
 
     @:native('GetMouseRay')
-    static function GetMouseRay(position:Vector2Impl, camera:Camera3DImpl):RayImpl;
+    static function GetMouseRay(position:Vector2, camera:Camera3D):Ray;
 
     @:native('GetScreenToWorldRay')
-    static function GetScreenToWorldRay(position:Vector2Impl, camera:Camera3DImpl):RayImpl;
+    static function GetScreenToWorldRay(position:Vector2, camera:Camera3D):Ray;
 
     @:native('GetScreenToWorldRayEx')
-    static function GetScreenToWorldRayEx(position:Vector2Impl, camera:Camera3DImpl, width:Int, height:Int):RayImpl;
+    static function GetScreenToWorldRayEx(position:Vector2, camera:Camera3D, width:Int, height:Int):Ray;
 
     @:native('GetWorldToScreen')
-    static function GetWorldToScreen(position:Vector3Impl, camera:Camera3DImpl):Vector2Impl;
+    static function GetWorldToScreen(position:Vector3, camera:Camera3D):Vector2;
 
     @:native('GetWorldToScreenEx')
-    static function GetWorldToScreenEx(position:Vector3Impl, camera:Camera3DImpl, width:Int, height:Int):Vector2Impl;
+    static function GetWorldToScreenEx(position:Vector3, camera:Camera3D, width:Int, height:Int):Vector2;
 
     @:native('GetWorldToScreen2D')
-    static function GetWorldToScreen2D(position:Vector2Impl, camera:Camera2DImpl):Vector2Impl;
+    static function GetWorldToScreen2D(position:Vector2, camera:Camera2D):Vector2;
 
     @:native('GetScreenToWorld2D')
-    static function GetScreenToWorld2D(position:Vector2Impl, camera:Camera2DImpl):Vector2Impl;
+    static function GetScreenToWorld2D(position:Vector2, camera:Camera2D):Vector2;
 
     @:native('GetCameraMatrix')
-    static function GetCameraMatrix(camera:Camera3DImpl):MatrixImpl;
+    static function GetCameraMatrix(camera:Camera3D):Matrix;
 
     @:native('GetCameraMatrix2D')
-    static function GetCameraMatrix2D(camera:Camera2DImpl):MatrixImpl;
+    static function GetCameraMatrix2D(camera:Camera2D):Matrix;
 
     @:native('SetTargetFPS')
     static function SetTargetFPS(fps:Int):Void;
@@ -445,10 +437,10 @@ extern class Raylib
     static function GetRandomValue(min:Int, max:Int):Int;
 
     @:native('LoadRandomSequence')
-    static function LoadRandomSequence(count:UInt32, min:Int, max:Int):IntPointer;
+    static function LoadRandomSequence(count:UInt32, min:Int, max:Int):RawPointer<Int>;
 
     @:native('UnloadRandomSequence')
-    static function UnloadRandomSequence(sequence:IntPointer):Void;
+    static function UnloadRandomSequence(sequence:RawPointer<Int>):Void;
 
     @:native('TakeScreenshot')
     static function TakeScreenshot(fileName:ConstCharStar):Void;
@@ -466,13 +458,13 @@ extern class Raylib
     static function SetTraceLogLevel(logLevel:Int):Void;
 
     @:native('MemAlloc')
-    static function MemAlloc(size:UInt32):VoidPointer;
+    static function MemAlloc(size:UInt32):RawPointer<cpp.Void>;
 
     @:native('MemRealloc')
-    static function MemRealloc(ptr:VoidPointer, size:UInt32):VoidPointer;
+    static function MemRealloc(ptr:RawPointer<cpp.Void>, size:UInt32):RawPointer<cpp.Void>;
 
     @:native('MemFree')
-    static function MemFree(ptr:VoidPointer):Void;
+    static function MemFree(ptr:RawPointer<cpp.Void>):Void;
 
     @:native('SetTraceLogCallback')
     static function SetTraceLogCallback(callback:TraceLogCallback):Void;
@@ -490,16 +482,16 @@ extern class Raylib
     static function SetSaveFileTextCallback(callback:SaveFileTextCallback):Void;
 
     @:native('LoadFileData')
-    static function LoadFileData(fileName:ConstCharStar, dataSize:IntPointer):UInt8Pointer;
+    static function LoadFileData(fileName:ConstCharStar, dataSize:RawPointer<Int>):RawPointer<UInt8>;
 
     @:native('UnloadFileData')
-    static function UnloadFileData(data:UInt8Pointer):Void;
+    static function UnloadFileData(data:RawPointer<UInt8>):Void;
 
     @:native('SaveFileData')
-    static function SaveFileData(fileName:ConstCharStar, data:VoidPointer, dataSize:Int):Bool;
+    static function SaveFileData(fileName:ConstCharStar, data:RawPointer<cpp.Void>, dataSize:Int):Bool;
 
     @:native('ExportDataAsCode')
-    static function ExportDataAsCode(data:UInt8Pointer, dataSize:Int, fileName:ConstCharStar):Bool;
+    static function ExportDataAsCode(data:RawPointer<UInt8>, dataSize:Int, fileName:ConstCharStar):Bool;
 
     @:native('LoadFileText')
     static function LoadFileText(fileName:ConstCharStar):CastCharStar;
@@ -556,55 +548,55 @@ extern class Raylib
     static function IsFileNameValid(fileName:ConstCharStar):Bool;
 
     @:native('LoadDirectoryFiles')
-    static function LoadDirectoryFiles(dirPath:ConstCharStar):FilePathListImpl;
+    static function LoadDirectoryFiles(dirPath:ConstCharStar):FilePathList;
 
     @:native('LoadDirectoryFilesEx')
-    static function LoadDirectoryFilesEx(basePath:ConstCharStar, filter:ConstCharStar, scanSubdirs:Bool):FilePathListImpl;
+    static function LoadDirectoryFilesEx(basePath:ConstCharStar, filter:ConstCharStar, scanSubdirs:Bool):FilePathList;
 
     @:native('UnloadDirectoryFiles')
-    static function UnloadDirectoryFiles(files:FilePathListImpl):Void;
+    static function UnloadDirectoryFiles(files:FilePathList):Void;
 
     @:native('IsFileDropped')
     static function IsFileDropped():Bool;
 
     @:native('LoadDroppedFiles')
-    static function LoadDroppedFiles():FilePathListImpl;
+    static function LoadDroppedFiles():FilePathList;
 
     @:native('UnloadDroppedFiles')
-    static function UnloadDroppedFiles(files:FilePathListImpl):Void;
+    static function UnloadDroppedFiles(files:FilePathList):Void;
 
     @:native('GetFileModTime')
     static function GetFileModTime(fileName:ConstCharStar):Long;
 
     @:native('CompressData')
-    static function CompressData(data:UInt8ConstPointer, dataSize:Int, compDataSize:IntPointer):UInt8Pointer;
+    static function CompressData(data:RawConstPointer<UInt8>, dataSize:Int, compDataSize:RawPointer<Int>):RawPointer<UInt8>;
 
     @:native('DecompressData')
-    static function DecompressData(compData:UInt8ConstPointer, compDataSize:Int, dataSize:IntPointer):UInt8Pointer;
+    static function DecompressData(compData:RawConstPointer<UInt8>, compDataSize:Int, dataSize:RawPointer<Int>):RawPointer<UInt8>;
 
     @:native('EncodeDataBase64')
-    static function EncodeDataBase64(data:UInt8ConstPointer, dataSize:Int, outputSize:IntPointer):CastCharStar;
+    static function EncodeDataBase64(data:RawConstPointer<UInt8>, dataSize:Int, outputSize:RawPointer<Int>):CastCharStar;
 
     @:native('DecodeDataBase64')
-    static function DecodeDataBase64(data:UInt8ConstPointer, outputSize:IntPointer):UInt8Pointer;
+    static function DecodeDataBase64(data:RawConstPointer<UInt8>, outputSize:RawPointer<Int>):RawPointer<UInt8>;
 
     @:native('ComputeCRC32')
-    static function ComputeCRC32(data:UInt8ConstPointer, dataSize:Int):UInt32;
+    static function ComputeCRC32(data:RawConstPointer<UInt8>, dataSize:Int):UInt32;
 
     @:native('ComputeMD5')
-    static function ComputeMD5(data:UInt8ConstPointer, dataSize:Int):UInt32Pointer;
+    static function ComputeMD5(data:RawConstPointer<UInt8>, dataSize:Int):RawPointer<UInt32>;
 
     @:native('ComputeSHA1')
-    static function ComputeSHA1(data:UInt8ConstPointer, dataSize:Int):UInt32Pointer;
+    static function ComputeSHA1(data:RawConstPointer<UInt8>, dataSize:Int):RawPointer<UInt32>;
 
     @:native('LoadAutomationEventList')
-    static function LoadAutomationEventList(fileName:ConstCharStar):AutomationEventListImpl;
+    static function LoadAutomationEventList(fileName:ConstCharStar):AutomationEventList;
 
     @:native('UnloadAutomationEventList')
-    static function UnloadAutomationEventList(list:AutomationEventListImpl):Void;
+    static function UnloadAutomationEventList(list:AutomationEventList):Void;
 
     @:native('ExportAutomationEventList')
-    static function ExportAutomationEventList(list:AutomationEventListImpl, fileName:ConstCharStar):Bool;
+    static function ExportAutomationEventList(list:AutomationEventList, fileName:ConstCharStar):Bool;
 
     @:native('SetAutomationEventList')
     static function SetAutomationEventList(list:RawPointer<AutomationEventList>):Void;
@@ -619,7 +611,7 @@ extern class Raylib
     static function StopAutomationEventRecording():Void;
 
     @:native('PlayAutomationEvent')
-    static function PlayAutomationEvent(event:AutomationEventImpl):Void;
+    static function PlayAutomationEvent(event:AutomationEvent):Void;
 
     @:native('IsKeyPressed')
     static function IsKeyPressed(key:Int):Bool;
@@ -700,10 +692,10 @@ extern class Raylib
     static function GetMouseY():Int;
 
     @:native('GetMousePosition')
-    static function GetMousePosition():Vector2Impl;
+    static function GetMousePosition():Vector2;
 
     @:native('GetMouseDelta')
-    static function GetMouseDelta():Vector2Impl;
+    static function GetMouseDelta():Vector2;
 
     @:native('SetMousePosition')
     static function SetMousePosition(x:Int, y:Int):Void;
@@ -718,7 +710,7 @@ extern class Raylib
     static function GetMouseWheelMove():Single;
 
     @:native('GetMouseWheelMoveV')
-    static function GetMouseWheelMoveV():Vector2Impl;
+    static function GetMouseWheelMoveV():Vector2;
 
     @:native('SetMouseCursor')
     static function SetMouseCursor(cursor:Int):Void;
@@ -730,7 +722,7 @@ extern class Raylib
     static function GetTouchY():Int;
 
     @:native('GetTouchPosition')
-    static function GetTouchPosition(index:Int):Vector2Impl;
+    static function GetTouchPosition(index:Int):Vector2;
 
     @:native('GetTouchPointId')
     static function GetTouchPointId(index:Int):Int;
@@ -751,633 +743,627 @@ extern class Raylib
     static function GetGestureHoldDuration():Single;
 
     @:native('GetGestureDragVector')
-    static function GetGestureDragVector():Vector2Impl;
+    static function GetGestureDragVector():Vector2;
 
     @:native('GetGestureDragAngle')
     static function GetGestureDragAngle():Single;
 
     @:native('GetGesturePinchVector')
-    static function GetGesturePinchVector():Vector2Impl;
+    static function GetGesturePinchVector():Vector2;
 
     @:native('GetGesturePinchAngle')
     static function GetGesturePinchAngle():Single;
 
     @:native('UpdateCamera')
-    static function UpdateCamera(camera:RawPointer<Camera3DImpl>, mode:Int):Void;
+    static function UpdateCamera(camera:RawPointer<Camera3D>, mode:Int):Void;
 
     @:native('UpdateCameraPro')
-    static function UpdateCameraPro(camera:RawPointer<Camera3DImpl>, movement:Vector3Impl, rotation:Vector3Impl, zoom:Single):Void;
+    static function UpdateCameraPro(camera:RawPointer<Camera3D>, movement:Vector3, rotation:Vector3, zoom:Single):Void;
 
     @:native('SetShapesTexture')
-    static function SetShapesTexture(texture:TextureImpl, source:RectangleImpl):Void;
+    static function SetShapesTexture(texture:Texture, source:Rectangle):Void;
 
     @:native('GetShapesTexture')
-    static function GetShapesTexture():TextureImpl;
+    static function GetShapesTexture():Texture;
 
     @:native('GetShapesTextureRectangleImpl')
-    static function GetShapesTextureRectangleImpl():RectangleImpl;
+    static function GetShapesTextureRectangleImpl():Rectangle;
 
     @:native('DrawPixel')
-    static function DrawPixel(posX:Int, posY:Int, color:ColorImpl):Void;
+    static function DrawPixel(posX:Int, posY:Int, color:Color):Void;
 
     @:native('DrawPixelV')
-    static function DrawPixelV(position:Vector2Impl, color:ColorImpl):Void;
+    static function DrawPixelV(position:Vector2, color:Color):Void;
 
     @:native('DrawLine')
-    static function DrawLine(startPosX:Int, startPosY:Int, endPosX:Int, endPosY:Int, color:ColorImpl):Void;
+    static function DrawLine(startPosX:Int, startPosY:Int, endPosX:Int, endPosY:Int, color:Color):Void;
 
     @:native('DrawLineV')
-    static function DrawLineV(startPos:Vector2Impl, endPos:Vector2Impl, color:ColorImpl):Void;
+    static function DrawLineV(startPos:Vector2, endPos:Vector2, color:Color):Void;
 
     @:native('DrawLineEx')
-    static function DrawLineEx(startPos:Vector2Impl, endPos:Vector2Impl, thick:Single, color:ColorImpl):Void;
+    static function DrawLineEx(startPos:Vector2, endPos:Vector2, thick:Single, color:Color):Void;
 
     @:native('DrawLineStrip')
-    static function DrawLineStrip(points:RawConstPointer<Vector2Impl>, pointCount:Int, color:ColorImpl):Void;
+    static function DrawLineStrip(points:RawConstPointer<Vector2>, pointCount:Int, color:Color):Void;
 
     @:native('DrawLineBezier')
-    static function DrawLineBezier(startPos:Vector2Impl, endPos:Vector2Impl, thick:Single, color:ColorImpl):Void;
+    static function DrawLineBezier(startPos:Vector2, endPos:Vector2, thick:Single, color:Color):Void;
 
     @:native('DrawCircle')
-    static function DrawCircle(centerX:Int, centerY:Int, radius:Single, color:ColorImpl):Void;
+    static function DrawCircle(centerX:Int, centerY:Int, radius:Single, color:Color):Void;
 
     @:native('DrawCircleSector')
-    static function DrawCircleSector(center:Vector2Impl, radius:Single, startAngle:Single, endAngle:Single, segments:Int, color:ColorImpl):Void;
+    static function DrawCircleSector(center:Vector2, radius:Single, startAngle:Single, endAngle:Single, segments:Int, color:Color):Void;
 
     @:native('DrawCircleSectorLines')
-    static function DrawCircleSectorLines(center:Vector2Impl, radius:Single, startAngle:Single, endAngle:Single, segments:Int, color:ColorImpl):Void;
+    static function DrawCircleSectorLines(center:Vector2, radius:Single, startAngle:Single, endAngle:Single, segments:Int, color:Color):Void;
 
     @:native('DrawCircleGradient')
-    static function DrawCircleGradient(centerX:Int, centerY:Int, radius:Single, inner:ColorImpl, outer:ColorImpl):Void;
+    static function DrawCircleGradient(centerX:Int, centerY:Int, radius:Single, inner:Color, outer:Color):Void;
 
     @:native('DrawCircleV')
-    static function DrawCircleV(center:Vector2Impl, radius:Single, color:ColorImpl):Void;
+    static function DrawCircleV(center:Vector2, radius:Single, color:Color):Void;
 
     @:native('DrawCircleLines')
-    static function DrawCircleLines(centerX:Int, centerY:Int, radius:Single, color:ColorImpl):Void;
+    static function DrawCircleLines(centerX:Int, centerY:Int, radius:Single, color:Color):Void;
 
     @:native('DrawCircleLinesV')
-    static function DrawCircleLinesV(center:Vector2Impl, radius:Single, color:ColorImpl):Void;
+    static function DrawCircleLinesV(center:Vector2, radius:Single, color:Color):Void;
 
     @:native('DrawEllipse')
-    static function DrawEllipse(centerX:Int, centerY:Int, radiusH:Single, radiusV:Single, color:ColorImpl):Void;
+    static function DrawEllipse(centerX:Int, centerY:Int, radiusH:Single, radiusV:Single, color:Color):Void;
 
     @:native('DrawEllipseV')
-    static function DrawEllipseV(center:Vector2Impl, radiusH:Single, radiusV:Single, color:ColorImpl):Void;
+    static function DrawEllipseV(center:Vector2, radiusH:Single, radiusV:Single, color:Color):Void;
 
     @:native('DrawEllipseLines')
-    static function DrawEllipseLines(centerX:Int, centerY:Int, radiusH:Single, radiusV:Single, color:ColorImpl):Void;
+    static function DrawEllipseLines(centerX:Int, centerY:Int, radiusH:Single, radiusV:Single, color:Color):Void;
 
     @:native('DrawEllipseLinesV')
-    static function DrawEllipseLinesV(center:Vector2Impl, radiusH:Single, radiusV:Single, color:ColorImpl):Void;
+    static function DrawEllipseLinesV(center:Vector2, radiusH:Single, radiusV:Single, color:Color):Void;
 
     @:native('DrawRing')
-    static function DrawRing(center:Vector2Impl, innerRadius:Single, outerRadius:Single, startAngle:Single, endAngle:Single, segments:Int,
-        color:ColorImpl):Void;
+    static function DrawRing(center:Vector2, innerRadius:Single, outerRadius:Single, startAngle:Single, endAngle:Single, segments:Int, color:Color):Void;
 
     @:native('DrawRingLines')
-    static function DrawRingLines(center:Vector2Impl, innerRadius:Single, outerRadius:Single, startAngle:Single, endAngle:Single, segments:Int,
-        color:ColorImpl):Void;
+    static function DrawRingLines(center:Vector2, innerRadius:Single, outerRadius:Single, startAngle:Single, endAngle:Single, segments:Int, color:Color):Void;
 
     @:native('DrawRectangle')
-    static function DrawRectangle(posX:Int, posY:Int, width:Int, height:Int, color:ColorImpl):Void;
+    static function DrawRectangle(posX:Int, posY:Int, width:Int, height:Int, color:Color):Void;
 
     @:native('DrawRectangleV')
-    static function DrawRectangleV(position:Vector2Impl, size:Vector2Impl, color:ColorImpl):Void;
+    static function DrawRectangleV(position:Vector2, size:Vector2, color:Color):Void;
 
     @:native('DrawRectangleRec')
-    static function DrawRectangleRec(rec:RectangleImpl, color:ColorImpl):Void;
+    static function DrawRectangleRec(rec:Rectangle, color:Color):Void;
 
     @:native('DrawRectanglePro')
-    static function DrawRectanglePro(rec:RectangleImpl, origin:Vector2Impl, rotation:Single, color:ColorImpl):Void;
+    static function DrawRectanglePro(rec:Rectangle, origin:Vector2, rotation:Single, color:Color):Void;
 
     @:native('DrawRectangleGradientV')
-    static function DrawRectangleGradientV(posX:Int, posY:Int, width:Int, height:Int, top:ColorImpl, bottom:ColorImpl):Void;
+    static function DrawRectangleGradientV(posX:Int, posY:Int, width:Int, height:Int, top:Color, bottom:Color):Void;
 
     @:native('DrawRectangleGradientH')
-    static function DrawRectangleGradientH(posX:Int, posY:Int, width:Int, height:Int, left:ColorImpl, right:ColorImpl):Void;
+    static function DrawRectangleGradientH(posX:Int, posY:Int, width:Int, height:Int, left:Color, right:Color):Void;
 
     @:native('DrawRectangleGradientEx')
-    static function DrawRectangleGradientEx(rec:RectangleImpl, topLeft:ColorImpl, bottomLeft:ColorImpl, bottomRight:ColorImpl, topRight:ColorImpl):Void;
+    static function DrawRectangleGradientEx(rec:Rectangle, topLeft:Color, bottomLeft:Color, bottomRight:Color, topRight:Color):Void;
 
     @:native('DrawRectangleLines')
-    static function DrawRectangleLines(posX:Int, posY:Int, width:Int, height:Int, color:ColorImpl):Void;
+    static function DrawRectangleLines(posX:Int, posY:Int, width:Int, height:Int, color:Color):Void;
 
     @:native('DrawRectangleLinesEx')
-    static function DrawRectangleLinesEx(rec:RectangleImpl, lineThick:Single, color:ColorImpl):Void;
+    static function DrawRectangleLinesEx(rec:Rectangle, lineThick:Single, color:Color):Void;
 
     @:native('DrawRectangleRounded')
-    static function DrawRectangleRounded(rec:RectangleImpl, roundness:Single, segments:Int, color:ColorImpl):Void;
+    static function DrawRectangleRounded(rec:Rectangle, roundness:Single, segments:Int, color:Color):Void;
 
     @:native('DrawRectangleRoundedLines')
-    static function DrawRectangleRoundedLines(rec:RectangleImpl, roundness:Single, segments:Int, color:ColorImpl):Void;
+    static function DrawRectangleRoundedLines(rec:Rectangle, roundness:Single, segments:Int, color:Color):Void;
 
     @:native('DrawRectangleRoundedLinesEx')
-    static function DrawRectangleRoundedLinesEx(rec:RectangleImpl, roundness:Single, segments:Int, lineThick:Single, color:ColorImpl):Void;
+    static function DrawRectangleRoundedLinesEx(rec:Rectangle, roundness:Single, segments:Int, lineThick:Single, color:Color):Void;
 
     @:native('DrawTriangle')
-    static function DrawTriangle(v1:Vector2Impl, v2:Vector2Impl, v3:Vector2Impl, color:ColorImpl):Void;
+    static function DrawTriangle(v1:Vector2, v2:Vector2, v3:Vector2, color:Color):Void;
 
     @:native('DrawTriangleLines')
-    static function DrawTriangleLines(v1:Vector2Impl, v2:Vector2Impl, v3:Vector2Impl, color:ColorImpl):Void;
+    static function DrawTriangleLines(v1:Vector2, v2:Vector2, v3:Vector2, color:Color):Void;
 
     @:native('DrawTriangleFan')
-    static function DrawTriangleFan(points:RawConstPointer<Vector2Impl>, pointCount:Int, color:ColorImpl):Void;
+    static function DrawTriangleFan(points:RawConstPointer<Vector2>, pointCount:Int, color:Color):Void;
 
     @:native('DrawTriangleStrip')
-    static function DrawTriangleStrip(points:RawConstPointer<Vector2Impl>, pointCount:Int, color:ColorImpl):Void;
+    static function DrawTriangleStrip(points:RawConstPointer<Vector2>, pointCount:Int, color:Color):Void;
 
     @:native('DrawPoly')
-    static function DrawPoly(center:Vector2Impl, sides:Int, radius:Single, rotation:Single, color:ColorImpl):Void;
+    static function DrawPoly(center:Vector2, sides:Int, radius:Single, rotation:Single, color:Color):Void;
 
     @:native('DrawPolyLines')
-    static function DrawPolyLines(center:Vector2Impl, sides:Int, radius:Single, rotation:Single, color:ColorImpl):Void;
+    static function DrawPolyLines(center:Vector2, sides:Int, radius:Single, rotation:Single, color:Color):Void;
 
     @:native('DrawPolyLinesEx')
-    static function DrawPolyLinesEx(center:Vector2Impl, sides:Int, radius:Single, rotation:Single, lineThick:Single, color:ColorImpl):Void;
+    static function DrawPolyLinesEx(center:Vector2, sides:Int, radius:Single, rotation:Single, lineThick:Single, color:Color):Void;
 
     @:native('DrawSplineLinear')
-    static function DrawSplineLinear(points:RawConstPointer<Vector2Impl>, pointCount:Int, thick:Single, color:ColorImpl):Void;
+    static function DrawSplineLinear(points:RawConstPointer<Vector2>, pointCount:Int, thick:Single, color:Color):Void;
 
     @:native('DrawSplineBasis')
-    static function DrawSplineBasis(points:RawConstPointer<Vector2Impl>, pointCount:Int, thick:Single, color:ColorImpl):Void;
+    static function DrawSplineBasis(points:RawConstPointer<Vector2>, pointCount:Int, thick:Single, color:Color):Void;
 
     @:native('DrawSplineCatmullRom')
-    static function DrawSplineCatmullRom(points:RawConstPointer<Vector2Impl>, pointCount:Int, thick:Single, color:ColorImpl):Void;
+    static function DrawSplineCatmullRom(points:RawConstPointer<Vector2>, pointCount:Int, thick:Single, color:Color):Void;
 
     @:native('DrawSplineBezierQuadratic')
-    static function DrawSplineBezierQuadratic(points:RawConstPointer<Vector2Impl>, pointCount:Int, thick:Single, color:ColorImpl):Void;
+    static function DrawSplineBezierQuadratic(points:RawConstPointer<Vector2>, pointCount:Int, thick:Single, color:Color):Void;
 
     @:native('DrawSplineBezierCubic')
-    static function DrawSplineBezierCubic(points:RawConstPointer<Vector2Impl>, pointCount:Int, thick:Single, color:ColorImpl):Void;
+    static function DrawSplineBezierCubic(points:RawConstPointer<Vector2>, pointCount:Int, thick:Single, color:Color):Void;
 
     @:native('DrawSplineSegmentLinear')
-    static function DrawSplineSegmentLinear(p1:Vector2Impl, p2:Vector2Impl, thick:Single, color:ColorImpl):Void;
+    static function DrawSplineSegmentLinear(p1:Vector2, p2:Vector2, thick:Single, color:Color):Void;
 
     @:native('DrawSplineSegmentBasis')
-    static function DrawSplineSegmentBasis(p1:Vector2Impl, p2:Vector2Impl, p3:Vector2Impl, p4:Vector2Impl, thick:Single, color:ColorImpl):Void;
+    static function DrawSplineSegmentBasis(p1:Vector2, p2:Vector2, p3:Vector2, p4:Vector2, thick:Single, color:Color):Void;
 
     @:native('DrawSplineSegmentCatmullRom')
-    static function DrawSplineSegmentCatmullRom(p1:Vector2Impl, p2:Vector2Impl, p3:Vector2Impl, p4:Vector2Impl, thick:Single, color:ColorImpl):Void;
+    static function DrawSplineSegmentCatmullRom(p1:Vector2, p2:Vector2, p3:Vector2, p4:Vector2, thick:Single, color:Color):Void;
 
     @:native('DrawSplineSegmentBezierQuadratic')
-    static function DrawSplineSegmentBezierQuadratic(p1:Vector2Impl, c2:Vector2Impl, p3:Vector2Impl, thick:Single, color:ColorImpl):Void;
+    static function DrawSplineSegmentBezierQuadratic(p1:Vector2, c2:Vector2, p3:Vector2, thick:Single, color:Color):Void;
 
     @:native('DrawSplineSegmentBezierCubic')
-    static function DrawSplineSegmentBezierCubic(p1:Vector2Impl, c2:Vector2Impl, c3:Vector2Impl, p4:Vector2Impl, thick:Single, color:ColorImpl):Void;
+    static function DrawSplineSegmentBezierCubic(p1:Vector2, c2:Vector2, c3:Vector2, p4:Vector2, thick:Single, color:Color):Void;
 
     @:native('GetSplinePointLinear')
-    static function GetSplinePointLinear(startPos:Vector2Impl, endPos:Vector2Impl, t:Single):Vector2Impl;
+    static function GetSplinePointLinear(startPos:Vector2, endPos:Vector2, t:Single):Vector2;
 
     @:native('GetSplinePointBasis')
-    static function GetSplinePointBasis(p1:Vector2Impl, p2:Vector2Impl, p3:Vector2Impl, p4:Vector2Impl, t:Single):Vector2Impl;
+    static function GetSplinePointBasis(p1:Vector2, p2:Vector2, p3:Vector2, p4:Vector2, t:Single):Vector2;
 
     @:native('GetSplinePointCatmullRom')
-    static function GetSplinePointCatmullRom(p1:Vector2Impl, p2:Vector2Impl, p3:Vector2Impl, p4:Vector2Impl, t:Single):Vector2Impl;
+    static function GetSplinePointCatmullRom(p1:Vector2, p2:Vector2, p3:Vector2, p4:Vector2, t:Single):Vector2;
 
     @:native('GetSplinePointBezierQuad')
-    static function GetSplinePointBezierQuad(p1:Vector2Impl, c2:Vector2Impl, p3:Vector2Impl, t:Single):Vector2Impl;
+    static function GetSplinePointBezierQuad(p1:Vector2, c2:Vector2, p3:Vector2, t:Single):Vector2;
 
     @:native('GetSplinePointBezierCubic')
-    static function GetSplinePointBezierCubic(p1:Vector2Impl, c2:Vector2Impl, c3:Vector2Impl, p4:Vector2Impl, t:Single):Vector2Impl;
+    static function GetSplinePointBezierCubic(p1:Vector2, c2:Vector2, c3:Vector2, p4:Vector2, t:Single):Vector2;
 
     @:native('CheckCollisionRecs')
-    static function CheckCollisionRecs(rec1:RectangleImpl, rec2:RectangleImpl):Bool;
+    static function CheckCollisionRecs(rec1:Rectangle, rec2:Rectangle):Bool;
 
     @:native('CheckCollisionCircles')
-    static function CheckCollisionCircles(center1:Vector2Impl, radius1:Single, center2:Vector2Impl, radius2:Single):Bool;
+    static function CheckCollisionCircles(center1:Vector2, radius1:Single, center2:Vector2, radius2:Single):Bool;
 
     @:native('CheckCollisionCircleRec')
-    static function CheckCollisionCircleRec(center:Vector2Impl, radius:Single, rec:RectangleImpl):Bool;
+    static function CheckCollisionCircleRec(center:Vector2, radius:Single, rec:Rectangle):Bool;
 
     @:native('CheckCollisionCircleLine')
-    static function CheckCollisionCircleLine(center:Vector2Impl, radius:Single, p1:Vector2Impl, p2:Vector2Impl):Bool;
+    static function CheckCollisionCircleLine(center:Vector2, radius:Single, p1:Vector2, p2:Vector2):Bool;
 
     @:native('CheckCollisionPointRec')
-    static function CheckCollisionPointRec(point:Vector2Impl, rec:RectangleImpl):Bool;
+    static function CheckCollisionPointRec(point:Vector2, rec:Rectangle):Bool;
 
     @:native('CheckCollisionPointCircle')
-    static function CheckCollisionPointCircle(point:Vector2Impl, center:Vector2Impl, radius:Single):Bool;
+    static function CheckCollisionPointCircle(point:Vector2, center:Vector2, radius:Single):Bool;
 
     @:native('CheckCollisionPointTriangle')
-    static function CheckCollisionPointTriangle(point:Vector2Impl, p1:Vector2Impl, p2:Vector2Impl, p3:Vector2Impl):Bool;
+    static function CheckCollisionPointTriangle(point:Vector2, p1:Vector2, p2:Vector2, p3:Vector2):Bool;
 
     @:native('CheckCollisionPointLine')
-    static function CheckCollisionPointLine(point:Vector2Impl, p1:Vector2Impl, p2:Vector2Impl, threshold:Int):Bool;
+    static function CheckCollisionPointLine(point:Vector2, p1:Vector2, p2:Vector2, threshold:Int):Bool;
 
     @:native('CheckCollisionPointPoly')
-    static function CheckCollisionPointPoly(point:Vector2Impl, points:RawPointer<Vector2Impl>, pointCount:Int):Bool;
+    static function CheckCollisionPointPoly(point:Vector2, points:RawPointer<Vector2>, pointCount:Int):Bool;
 
     @:native('CheckCollisionLines')
-    static function CheckCollisionLines(startPos1:Vector2Impl, endPos1:Vector2Impl, startPos2:Vector2Impl, endPos2:Vector2Impl,
-        collisionPoint:RawPointer<Vector2Impl>):Bool;
+    static function CheckCollisionLines(startPos1:Vector2, endPos1:Vector2, startPos2:Vector2, endPos2:Vector2, collisionPoint:RawPointer<Vector2>):Bool;
 
     @:native('GetCollisionRec')
-    static function GetCollisionRec(rec1:RectangleImpl, rec2:RectangleImpl):RectangleImpl;
+    static function GetCollisionRec(rec1:Rectangle, rec2:Rectangle):Rectangle;
 
     @:native('LoadImage')
-    static function LoadImage(fileName:ConstCharStar):ImageImpl;
+    static function LoadImage(fileName:ConstCharStar):Image;
 
     @:native('LoadImageRaw')
-    static function LoadImageRaw(fileName:ConstCharStar, width:Int, height:Int, format:Int, headerSize:Int):ImageImpl;
+    static function LoadImageRaw(fileName:ConstCharStar, width:Int, height:Int, format:Int, headerSize:Int):Image;
 
     @:native('LoadImageAnim')
-    static function LoadImageAnim(fileName:ConstCharStar, frames:IntPointer):ImageImpl;
+    static function LoadImageAnim(fileName:ConstCharStar, frames:RawPointer<Int>):Image;
 
     @:native('LoadImageAnimFromMemory')
-    static function LoadImageAnimFromMemory(fileType:ConstCharStar, fileData:UInt8ConstPointer, dataSize:Int, frames:IntPointer):ImageImpl;
+    static function LoadImageAnimFromMemory(fileType:ConstCharStar, fileData:RawConstPointer<UInt8>, dataSize:Int, frames:RawPointer<Int>):Image;
 
     @:native('LoadImageFromMemory')
-    static function LoadImageFromMemory(fileType:ConstCharStar, fileData:UInt8ConstPointer, dataSize:Int):ImageImpl;
+    static function LoadImageFromMemory(fileType:ConstCharStar, fileData:RawConstPointer<UInt8>, dataSize:Int):Image;
 
     @:native('LoadImageFromTexture')
-    static function LoadImageFromTexture(texture:TextureImpl):ImageImpl;
+    static function LoadImageFromTexture(texture:Texture):Image;
 
     @:native('LoadImageFromScreen')
-    static function LoadImageFromScreen():ImageImpl;
+    static function LoadImageFromScreen():Image;
 
     @:native('IsImageValid')
-    static function IsImageValid(image:ImageImpl):Bool;
+    static function IsImageValid(image:Image):Bool;
 
     @:native('UnloadImage')
-    static function UnloadImage(image:ImageImpl):Void;
+    static function UnloadImage(image:Image):Void;
 
     @:native('ExportImage')
-    static function ExportImage(image:ImageImpl, fileName:ConstCharStar):Bool;
+    static function ExportImage(image:Image, fileName:ConstCharStar):Bool;
 
     @:native('ExportImageToMemory')
-    static function ExportImageToMemory(image:ImageImpl, fileType:ConstCharStar, fileSize:IntPointer):UInt8Pointer;
+    static function ExportImageToMemory(image:Image, fileType:ConstCharStar, fileSize:RawPointer<Int>):RawPointer<UInt8>;
 
     @:native('ExportImageAsCode')
-    static function ExportImageAsCode(image:ImageImpl, fileName:ConstCharStar):Bool;
+    static function ExportImageAsCode(image:Image, fileName:ConstCharStar):Bool;
 
     @:native('GenImageColor')
-    static function GenImageColor(width:Int, height:Int, color:ColorImpl):ImageImpl;
+    static function GenImageColor(width:Int, height:Int, color:Color):Image;
 
     @:native('GenImageGradientLinear')
-    static function GenImageGradientLinear(width:Int, height:Int, direction:Int, start:ColorImpl, end:ColorImpl):ImageImpl;
+    static function GenImageGradientLinear(width:Int, height:Int, direction:Int, start:Color, end:Color):Image;
 
     @:native('GenImageGradientRadial')
-    static function GenImageGradientRadial(width:Int, height:Int, density:Single, inner:ColorImpl, outer:ColorImpl):ImageImpl;
+    static function GenImageGradientRadial(width:Int, height:Int, density:Single, inner:Color, outer:Color):Image;
 
     @:native('GenImageGradientSquare')
-    static function GenImageGradientSquare(width:Int, height:Int, density:Single, inner:ColorImpl, outer:ColorImpl):ImageImpl;
+    static function GenImageGradientSquare(width:Int, height:Int, density:Single, inner:Color, outer:Color):Image;
 
     @:native('GenImageChecked')
-    static function GenImageChecked(width:Int, height:Int, checksX:Int, checksY:Int, col1:ColorImpl, col2:ColorImpl):ImageImpl;
+    static function GenImageChecked(width:Int, height:Int, checksX:Int, checksY:Int, col1:Color, col2:Color):Image;
 
     @:native('GenImageWhiteNoise')
-    static function GenImageWhiteNoise(width:Int, height:Int, factor:Single):ImageImpl;
+    static function GenImageWhiteNoise(width:Int, height:Int, factor:Single):Image;
 
     @:native('GenImagePerlinNoise')
-    static function GenImagePerlinNoise(width:Int, height:Int, offsetX:Int, offsetY:Int, scale:Single):ImageImpl;
+    static function GenImagePerlinNoise(width:Int, height:Int, offsetX:Int, offsetY:Int, scale:Single):Image;
 
     @:native('GenImageCellular')
-    static function GenImageCellular(width:Int, height:Int, tileSize:Int):ImageImpl;
+    static function GenImageCellular(width:Int, height:Int, tileSize:Int):Image;
 
     @:native('GenImageText')
-    static function GenImageText(width:Int, height:Int, text:ConstCharStar):ImageImpl;
+    static function GenImageText(width:Int, height:Int, text:ConstCharStar):Image;
 
     @:native('ImageCopy')
-    static function ImageCopy(image:ImageImpl):ImageImpl;
+    static function ImageCopy(image:Image):Image;
 
     @:native('ImageFromImage')
-    static function ImageFromImage(image:ImageImpl, rec:RectangleImpl):ImageImpl;
+    static function ImageFromImage(image:Image, rec:Rectangle):Image;
 
     @:native('ImageFromChannel')
-    static function ImageFromChannel(image:ImageImpl, selectedChannel:Int):ImageImpl;
+    static function ImageFromChannel(image:Image, selectedChannel:Int):Image;
 
     @:native('ImageText')
-    static function ImageText(text:ConstCharStar, fontSize:Int, color:ColorImpl):ImageImpl;
+    static function ImageText(text:ConstCharStar, fontSize:Int, color:Color):Image;
 
     @:native('ImageTextEx')
-    static function ImageTextEx(font:FontImpl, text:ConstCharStar, fontSize:Single, spacing:Single, tint:ColorImpl):ImageImpl;
+    static function ImageTextEx(font:Font, text:ConstCharStar, fontSize:Single, spacing:Single, tint:Color):Image;
 
     @:native('ImageFormat')
-    static function ImageFormat(image:RawPointer<ImageImpl>, newFormat:Int):Void;
+    static function ImageFormat(image:RawPointer<Image>, newFormat:Int):Void;
 
     @:native('ImageToPOT')
-    static function ImageToPOT(image:RawPointer<ImageImpl>, fill:ColorImpl):Void;
+    static function ImageToPOT(image:RawPointer<Image>, fill:Color):Void;
 
     @:native('ImageCrop')
-    static function ImageCrop(image:RawPointer<ImageImpl>, crop:RectangleImpl):Void;
+    static function ImageCrop(image:RawPointer<Image>, crop:Rectangle):Void;
 
     @:native('ImageAlphaCrop')
-    static function ImageAlphaCrop(image:RawPointer<ImageImpl>, threshold:Single):Void;
+    static function ImageAlphaCrop(image:RawPointer<Image>, threshold:Single):Void;
 
     @:native('ImageAlphaClear')
-    static function ImageAlphaClear(image:RawPointer<ImageImpl>, color:ColorImpl, threshold:Single):Void;
+    static function ImageAlphaClear(image:RawPointer<Image>, color:Color, threshold:Single):Void;
 
     @:native('ImageAlphaMask')
-    static function ImageAlphaMask(image:RawPointer<ImageImpl>, alphaMask:ImageImpl):Void;
+    static function ImageAlphaMask(image:RawPointer<Image>, alphaMask:Image):Void;
 
     @:native('ImageAlphaPremultiply')
-    static function ImageAlphaPremultiply(image:RawPointer<ImageImpl>):Void;
+    static function ImageAlphaPremultiply(image:RawPointer<Image>):Void;
 
     @:native('ImageBlurGaussian')
-    static function ImageBlurGaussian(image:RawPointer<ImageImpl>, blurSize:Int):Void;
+    static function ImageBlurGaussian(image:RawPointer<Image>, blurSize:Int):Void;
 
     @:native('ImageKernelConvolution')
-    static function ImageKernelConvolution(image:RawPointer<ImageImpl>, kernel:SingleConstPointer, kernelSize:Int):Void;
+    static function ImageKernelConvolution(image:RawPointer<Image>, kernel:RawConstPointer<Single>, kernelSize:Int):Void;
 
     @:native('ImageResize')
-    static function ImageResize(image:RawPointer<ImageImpl>, newWidth:Int, newHeight:Int):Void;
+    static function ImageResize(image:RawPointer<Image>, newWidth:Int, newHeight:Int):Void;
 
     @:native('ImageResizeNN')
-    static function ImageResizeNN(image:RawPointer<ImageImpl>, newWidth:Int, newHeight:Int):Void;
+    static function ImageResizeNN(image:RawPointer<Image>, newWidth:Int, newHeight:Int):Void;
 
     @:native('ImageResizeCanvas')
-    static function ImageResizeCanvas(image:RawPointer<ImageImpl>, newWidth:Int, newHeight:Int, offsetX:Int, offsetY:Int, fill:ColorImpl):Void;
+    static function ImageResizeCanvas(image:RawPointer<Image>, newWidth:Int, newHeight:Int, offsetX:Int, offsetY:Int, fill:Color):Void;
 
     @:native('ImageMipmaps')
-    static function ImageMipmaps(image:RawPointer<ImageImpl>):Void;
+    static function ImageMipmaps(image:RawPointer<Image>):Void;
 
     @:native('ImageDither')
-    static function ImageDither(image:RawPointer<ImageImpl>, rBpp:Int, gBpp:Int, bBpp:Int, aBpp:Int):Void;
+    static function ImageDither(image:RawPointer<Image>, rBpp:Int, gBpp:Int, bBpp:Int, aBpp:Int):Void;
 
     @:native('ImageFlipVertical')
-    static function ImageFlipVertical(image:RawPointer<ImageImpl>):Void;
+    static function ImageFlipVertical(image:RawPointer<Image>):Void;
 
     @:native('ImageFlipHorizontal')
-    static function ImageFlipHorizontal(image:RawPointer<ImageImpl>):Void;
+    static function ImageFlipHorizontal(image:RawPointer<Image>):Void;
 
     @:native('ImageRotate')
-    static function ImageRotate(image:RawPointer<ImageImpl>, degrees:Int):Void;
+    static function ImageRotate(image:RawPointer<Image>, degrees:Int):Void;
 
     @:native('ImageRotateCW')
-    static function ImageRotateCW(image:RawPointer<ImageImpl>):Void;
+    static function ImageRotateCW(image:RawPointer<Image>):Void;
 
     @:native('ImageRotateCCW')
-    static function ImageRotateCCW(image:RawPointer<ImageImpl>):Void;
+    static function ImageRotateCCW(image:RawPointer<Image>):Void;
 
     @:native('ImageColorTint')
-    static function ImageColorTint(image:RawPointer<ImageImpl>, color:ColorImpl):Void;
+    static function ImageColorTint(image:RawPointer<Image>, color:Color):Void;
 
     @:native('ImageColorInvert')
-    static function ImageColorInvert(image:RawPointer<ImageImpl>):Void;
+    static function ImageColorInvert(image:RawPointer<Image>):Void;
 
     @:native('ImageColorGrayscale')
-    static function ImageColorGrayscale(image:RawPointer<ImageImpl>):Void;
+    static function ImageColorGrayscale(image:RawPointer<Image>):Void;
 
     @:native('ImageColorContrast')
-    static function ImageColorContrast(image:RawPointer<ImageImpl>, contrast:Single):Void;
+    static function ImageColorContrast(image:RawPointer<Image>, contrast:Single):Void;
 
     @:native('ImageColorBrightness')
-    static function ImageColorBrightness(image:RawPointer<ImageImpl>, brightness:Int):Void;
+    static function ImageColorBrightness(image:RawPointer<Image>, brightness:Int):Void;
 
     @:native('ImageColorReplace')
-    static function ImageColorReplace(image:RawPointer<ImageImpl>, color:ColorImpl, replace:ColorImpl):Void;
+    static function ImageColorReplace(image:RawPointer<Image>, color:Color, replace:Color):Void;
 
     @:native('LoadImageColors')
-    static function LoadImageColors(image:ImageImpl):RawPointer<ColorImpl>;
+    static function LoadImageColors(image:Image):RawPointer<Color>;
 
     @:native('LoadImagePalette')
-    static function LoadImagePalette(image:ImageImpl, maxPaletteSize:Int, colorCount:IntPointer):RawPointer<ColorImpl>;
+    static function LoadImagePalette(image:Image, maxPaletteSize:Int, colorCount:RawPointer<Int>):RawPointer<Color>;
 
     @:native('UnloadImageColors')
-    static function UnloadImageColors(colors:RawPointer<ColorImpl>):Void;
+    static function UnloadImageColors(colors:RawPointer<Color>):Void;
 
     @:native('UnloadImagePalette')
-    static function UnloadImagePalette(colors:RawPointer<ColorImpl>):Void;
+    static function UnloadImagePalette(colors:RawPointer<Color>):Void;
 
     @:native('GetImageAlphaBorder')
-    static function GetImageAlphaBorder(image:ImageImpl, threshold:Single):RectangleImpl;
+    static function GetImageAlphaBorder(image:Image, threshold:Single):Rectangle;
 
     @:native('GetImageColor')
-    static function GetImageColor(image:ImageImpl, x:Int, y:Int):ColorImpl;
+    static function GetImageColor(image:Image, x:Int, y:Int):Color;
 
     @:native('ImageClearBackground')
-    static function ImageClearBackground(dst:RawPointer<ImageImpl>, color:ColorImpl):Void;
+    static function ImageClearBackground(dst:RawPointer<Image>, color:Color):Void;
 
     @:native('ImageDrawPixel')
-    static function ImageDrawPixel(dst:RawPointer<ImageImpl>, posX:Int, posY:Int, color:ColorImpl):Void;
+    static function ImageDrawPixel(dst:RawPointer<Image>, posX:Int, posY:Int, color:Color):Void;
 
     @:native('ImageDrawPixelV')
-    static function ImageDrawPixelV(dst:RawPointer<ImageImpl>, position:Vector2Impl, color:ColorImpl):Void;
+    static function ImageDrawPixelV(dst:RawPointer<Image>, position:Vector2, color:Color):Void;
 
     @:native('ImageDrawLine')
-    static function ImageDrawLine(dst:RawPointer<ImageImpl>, startPosX:Int, startPosY:Int, endPosX:Int, endPosY:Int, color:ColorImpl):Void;
+    static function ImageDrawLine(dst:RawPointer<Image>, startPosX:Int, startPosY:Int, endPosX:Int, endPosY:Int, color:Color):Void;
 
     @:native('ImageDrawLineV')
-    static function ImageDrawLineV(dst:RawPointer<ImageImpl>, start:Vector2Impl, end:Vector2Impl, color:ColorImpl):Void;
+    static function ImageDrawLineV(dst:RawPointer<Image>, start:Vector2, end:Vector2, color:Color):Void;
 
     @:native('ImageDrawLineEx')
-    static function ImageDrawLineEx(dst:RawPointer<ImageImpl>, start:Vector2Impl, end:Vector2Impl, thick:Int, color:ColorImpl):Void;
+    static function ImageDrawLineEx(dst:RawPointer<Image>, start:Vector2, end:Vector2, thick:Int, color:Color):Void;
 
     @:native('ImageDrawCircle')
-    static function ImageDrawCircle(dst:RawPointer<ImageImpl>, centerX:Int, centerY:Int, radius:Int, color:ColorImpl):Void;
+    static function ImageDrawCircle(dst:RawPointer<Image>, centerX:Int, centerY:Int, radius:Int, color:Color):Void;
 
     @:native('ImageDrawCircleV')
-    static function ImageDrawCircleV(dst:RawPointer<ImageImpl>, center:Vector2Impl, radius:Int, color:ColorImpl):Void;
+    static function ImageDrawCircleV(dst:RawPointer<Image>, center:Vector2, radius:Int, color:Color):Void;
 
     @:native('ImageDrawCircleLines')
-    static function ImageDrawCircleLines(dst:RawPointer<ImageImpl>, centerX:Int, centerY:Int, radius:Int, color:ColorImpl):Void;
+    static function ImageDrawCircleLines(dst:RawPointer<Image>, centerX:Int, centerY:Int, radius:Int, color:Color):Void;
 
     @:native('ImageDrawCircleLinesV')
-    static function ImageDrawCircleLinesV(dst:RawPointer<ImageImpl>, center:Vector2Impl, radius:Int, color:ColorImpl):Void;
+    static function ImageDrawCircleLinesV(dst:RawPointer<Image>, center:Vector2, radius:Int, color:Color):Void;
 
     @:native('ImageDrawRectangle')
-    static function ImageDrawRectangle(dst:RawPointer<ImageImpl>, posX:Int, posY:Int, width:Int, height:Int, color:ColorImpl):Void;
+    static function ImageDrawRectangle(dst:RawPointer<Image>, posX:Int, posY:Int, width:Int, height:Int, color:Color):Void;
 
     @:native('ImageDrawRectangleV')
-    static function ImageDrawRectangleV(dst:RawPointer<ImageImpl>, position:Vector2Impl, size:Vector2Impl, color:ColorImpl):Void;
+    static function ImageDrawRectangleV(dst:RawPointer<Image>, position:Vector2, size:Vector2, color:Color):Void;
 
     @:native('ImageDrawRectangleRec')
-    static function ImageDrawRectangleRec(dst:RawPointer<ImageImpl>, rec:RectangleImpl, color:ColorImpl):Void;
+    static function ImageDrawRectangleRec(dst:RawPointer<Image>, rec:Rectangle, color:Color):Void;
 
     @:native('ImageDrawRectangleLines')
-    static function ImageDrawRectangleLines(dst:RawPointer<ImageImpl>, rec:RectangleImpl, thick:Int, color:ColorImpl):Void;
+    static function ImageDrawRectangleLines(dst:RawPointer<Image>, rec:Rectangle, thick:Int, color:Color):Void;
 
     @:native('ImageDrawTriangle')
-    static function ImageDrawTriangle(dst:RawPointer<ImageImpl>, v1:Vector2Impl, v2:Vector2Impl, v3:Vector2Impl, color:ColorImpl):Void;
+    static function ImageDrawTriangle(dst:RawPointer<Image>, v1:Vector2, v2:Vector2, v3:Vector2, color:Color):Void;
 
     @:native('ImageDrawTriangleEx')
-    static function ImageDrawTriangleEx(dst:RawPointer<ImageImpl>, v1:Vector2Impl, v2:Vector2Impl, v3:Vector2Impl, c1:ColorImpl, c2:ColorImpl,
-        c3:ColorImpl):Void;
+    static function ImageDrawTriangleEx(dst:RawPointer<Image>, v1:Vector2, v2:Vector2, v3:Vector2, c1:Color, c2:Color, c3:Color):Void;
 
     @:native('ImageDrawTriangleLines')
-    static function ImageDrawTriangleLines(dst:RawPointer<ImageImpl>, v1:Vector2Impl, v2:Vector2Impl, v3:Vector2Impl, color:ColorImpl):Void;
+    static function ImageDrawTriangleLines(dst:RawPointer<Image>, v1:Vector2, v2:Vector2, v3:Vector2, color:Color):Void;
 
     @:native('ImageDrawTriangleFan')
-    static function ImageDrawTriangleFan(dst:RawPointer<ImageImpl>, points:RawConstPointer<Vector2Impl>, pointCount:Int, color:ColorImpl):Void;
+    static function ImageDrawTriangleFan(dst:RawPointer<Image>, points:RawConstPointer<Vector2>, pointCount:Int, color:Color):Void;
 
     @:native('ImageDrawTriangleStrip')
-    static function ImageDrawTriangleStrip(dst:RawPointer<ImageImpl>, points:RawConstPointer<Vector2Impl>, pointCount:Int, color:ColorImpl):Void;
+    static function ImageDrawTriangleStrip(dst:RawPointer<Image>, points:RawConstPointer<Vector2>, pointCount:Int, color:Color):Void;
 
     @:native('ImageDraw')
-    static function ImageDraw(dst:RawPointer<ImageImpl>, src:ImageImpl, srcRec:RectangleImpl, dstRec:RectangleImpl, tint:ColorImpl):Void;
+    static function ImageDraw(dst:RawPointer<Image>, src:Image, srcRec:Rectangle, dstRec:Rectangle, tint:Color):Void;
 
     @:native('ImageDrawText')
-    static function ImageDrawText(dst:RawPointer<ImageImpl>, text:ConstCharStar, posX:Int, posY:Int, fontSize:Int, color:ColorImpl):Void;
+    static function ImageDrawText(dst:RawPointer<Image>, text:ConstCharStar, posX:Int, posY:Int, fontSize:Int, color:Color):Void;
 
     @:native('ImageDrawTextEx')
-    static function ImageDrawTextEx(dst:RawPointer<ImageImpl>, font:FontImpl, text:ConstCharStar, position:Vector2Impl, fontSize:Single, spacing:Single,
-        tint:ColorImpl):Void;
+    static function ImageDrawTextEx(dst:RawPointer<Image>, font:Font, text:ConstCharStar, position:Vector2, fontSize:Single, spacing:Single, tint:Color):Void;
 
     @:native('LoadTexture')
-    static function LoadTexture(fileName:ConstCharStar):TextureImpl;
+    static function LoadTexture(fileName:ConstCharStar):Texture;
 
     @:native('LoadTextureFromImage')
-    static function LoadTextureFromImage(image:ImageImpl):TextureImpl;
+    static function LoadTextureFromImage(image:Image):Texture;
 
     @:native('LoadTextureCubemap')
-    static function LoadTextureCubemap(image:ImageImpl, layout:Int):TextureImpl;
+    static function LoadTextureCubemap(image:Image, layout:Int):Texture;
 
     @:native('LoadRenderTexture')
-    static function LoadRenderTexture(width:Int, height:Int):RenderTextureImpl;
+    static function LoadRenderTexture(width:Int, height:Int):RenderTexture;
 
     @:native('IsTextureValid')
-    static function IsTextureValid(texture:TextureImpl):Bool;
+    static function IsTextureValid(texture:Texture):Bool;
 
     @:native('UnloadTexture')
-    static function UnloadTexture(texture:TextureImpl):Void;
+    static function UnloadTexture(texture:Texture):Void;
 
     @:native('IsRenderTextureValid')
-    static function IsRenderTextureValid(target:RenderTextureImpl):Bool;
+    static function IsRenderTextureValid(target:RenderTexture):Bool;
 
     @:native('UnloadRenderTexture')
-    static function UnloadRenderTexture(target:RenderTextureImpl):Void;
+    static function UnloadRenderTexture(target:RenderTexture):Void;
 
     @:native('UpdateTexture')
-    static function UpdateTexture(texture:TextureImpl, pixels:VoidConstPointer):Void;
+    static function UpdateTexture(texture:Texture, pixels:RawConstPointer<cpp.Void>):Void;
 
     @:native('UpdateTextureRec')
-    static function UpdateTextureRec(texture:TextureImpl, rec:RectangleImpl, pixels:VoidConstPointer):Void;
+    static function UpdateTextureRec(texture:Texture, rec:Rectangle, pixels:RawConstPointer<cpp.Void>):Void;
 
     @:native('GenTextureMipmaps')
-    static function GenTextureMipmaps(texture:RawPointer<TextureImpl>):Void;
+    static function GenTextureMipmaps(texture:RawPointer<Texture>):Void;
 
     @:native('SetTextureFilter')
-    static function SetTextureFilter(texture:TextureImpl, filter:Int):Void;
+    static function SetTextureFilter(texture:Texture, filter:Int):Void;
 
     @:native('SetTextureWrap')
-    static function SetTextureWrap(texture:TextureImpl, wrap:Int):Void;
+    static function SetTextureWrap(texture:Texture, wrap:Int):Void;
 
     @:native('DrawTexture')
-    static function DrawTexture(texture:TextureImpl, posX:Int, posY:Int, tint:ColorImpl):Void;
+    static function DrawTexture(texture:Texture, posX:Int, posY:Int, tint:Color):Void;
 
     @:native('DrawTextureV')
-    static function DrawTextureV(texture:TextureImpl, position:Vector2Impl, tint:ColorImpl):Void;
+    static function DrawTextureV(texture:Texture, position:Vector2, tint:Color):Void;
 
     @:native('DrawTextureEx')
-    static function DrawTextureEx(texture:TextureImpl, position:Vector2Impl, rotation:Single, scale:Single, tint:ColorImpl):Void;
+    static function DrawTextureEx(texture:Texture, position:Vector2, rotation:Single, scale:Single, tint:Color):Void;
 
     @:native('DrawTextureRec')
-    static function DrawTextureRec(texture:TextureImpl, source:RectangleImpl, position:Vector2Impl, tint:ColorImpl):Void;
+    static function DrawTextureRec(texture:Texture, source:Rectangle, position:Vector2, tint:Color):Void;
 
     @:native('DrawTexturePro')
-    static function DrawTexturePro(texture:TextureImpl, source:RectangleImpl, dest:RectangleImpl, origin:Vector2Impl, rotation:Single, tint:ColorImpl):Void;
+    static function DrawTexturePro(texture:Texture, source:Rectangle, dest:Rectangle, origin:Vector2, rotation:Single, tint:Color):Void;
 
     @:native('DrawTextureNPatch')
-    static function DrawTextureNPatch(texture:TextureImpl, nPatchInfo:NPatchInfoImpl, dest:RectangleImpl, origin:Vector2Impl, rotation:Single,
-        tint:ColorImpl):Void;
+    static function DrawTextureNPatch(texture:Texture, nPatchInfo:NPatchInfo, dest:Rectangle, origin:Vector2, rotation:Single, tint:Color):Void;
 
     @:native('ColorIsEqual')
-    static function ColorIsEqual(col1:ColorImpl, col2:ColorImpl):Bool;
+    static function ColorIsEqual(col1:Color, col2:Color):Bool;
 
     @:native('Fade')
-    static function Fade(color:ColorImpl, alpha:Single):ColorImpl;
+    static function Fade(color:Color, alpha:Single):Color;
 
     @:native('ColorToInt')
-    static function ColorToInt(color:ColorImpl):Int;
+    static function ColorToInt(color:Color):Int;
 
     @:native('ColorNormalize')
-    static function ColorNormalize(color:ColorImpl):Vector4Impl;
+    static function ColorNormalize(color:Color):Vector4;
 
     @:native('ColorFromNormalized')
-    static function ColorFromNormalized(normalized:Vector4Impl):ColorImpl;
+    static function ColorFromNormalized(normalized:Vector4):Color;
 
     @:native('ColorToHSV')
-    static function ColorToHSV(color:ColorImpl):Vector3Impl;
+    static function ColorToHSV(color:Color):Vector3;
 
     @:native('ColorFromHSV')
-    static function ColorFromHSV(hue:Single, saturation:Single, value:Single):ColorImpl;
+    static function ColorFromHSV(hue:Single, saturation:Single, value:Single):Color;
 
     @:native('ColorTint')
-    static function ColorTint(color:ColorImpl, tint:ColorImpl):ColorImpl;
+    static function ColorTint(color:Color, tint:Color):Color;
 
     @:native('ColorBrightness')
-    static function ColorBrightness(color:ColorImpl, factor:Single):ColorImpl;
+    static function ColorBrightness(color:Color, factor:Single):Color;
 
     @:native('ColorContrast')
-    static function ColorContrast(color:ColorImpl, contrast:Single):ColorImpl;
+    static function ColorContrast(color:Color, contrast:Single):Color;
 
     @:native('ColorAlpha')
-    static function ColorAlpha(color:ColorImpl, alpha:Single):ColorImpl;
+    static function ColorAlpha(color:Color, alpha:Single):Color;
 
     @:native('ColorAlphaBlend')
-    static function ColorAlphaBlend(dst:ColorImpl, src:ColorImpl, tint:ColorImpl):ColorImpl;
+    static function ColorAlphaBlend(dst:Color, src:Color, tint:Color):Color;
 
     @:native('ColorLerp')
-    static function ColorLerp(color1:ColorImpl, color2:ColorImpl, factor:Single):ColorImpl;
+    static function ColorLerp(color1:Color, color2:Color, factor:Single):Color;
 
     @:native('GetColor')
-    static function GetColor(hexValue:UInt):ColorImpl;
+    static function GetColor(hexValue:UInt):Color;
 
     @:native('GetPixelColor')
-    static function GetPixelColor(srcPtr:VoidPointer, format:Int):ColorImpl;
+    static function GetPixelColor(srcPtr:RawPointer<cpp.Void>, format:Int):Color;
 
     @:native('SetPixelColor')
-    static function SetPixelColor(dstPtr:VoidPointer, color:ColorImpl, format:Int):Void;
+    static function SetPixelColor(dstPtr:RawPointer<cpp.Void>, color:Color, format:Int):Void;
 
     @:native('GetPixelDataSize')
     static function GetPixelDataSize(width:Int, height:Int, format:Int):Int;
 
     @:native('GetFontDefault')
-    static function GetFontDefault():FontImpl;
+    static function GetFontDefault():Font;
 
     @:native('LoadFont')
-    static function LoadFont(fileName:ConstCharStar):FontImpl;
+    static function LoadFont(fileName:ConstCharStar):Font;
 
     @:native('LoadFontEx')
-    static function LoadFontEx(fileName:ConstCharStar, fontSize:Int, codepoints:IntPointer, codepointCount:Int):FontImpl;
+    static function LoadFontEx(fileName:ConstCharStar, fontSize:Int, codepoints:RawPointer<Int>, codepointCount:Int):Font;
 
     @:native('LoadFontFromImage')
-    static function LoadFontFromImage(image:ImageImpl, key:ColorImpl, firstChar:Int):FontImpl;
+    static function LoadFontFromImage(image:Image, key:Color, firstChar:Int):Font;
 
     @:native('LoadFontFromMemory')
-    static function LoadFontFromMemory(fileType:ConstCharStar, fileData:UInt8ConstPointer, dataSize:Int, fontSize:Int, codepoints:IntPointer,
-        codepointCount:Int):FontImpl;
+    static function LoadFontFromMemory(fileType:ConstCharStar, fileData:RawConstPointer<UInt8>, dataSize:Int, fontSize:Int, codepoints:RawPointer<Int>,
+        codepointCount:Int):Font;
 
     @:native('IsFontValid')
-    static function IsFontValid(font:FontImpl):Bool;
+    static function IsFontValid(font:Font):Bool;
 
     @:native('LoadFontData')
-    static function LoadFontData(fileData:UInt8ConstPointer, dataSize:Int, fontSize:Int, codepoints:IntPointer, codepointCount:Int,
-        type:Int):RawPointer<GlyphInfoImpl>;
+    static function LoadFontData(fileData:RawConstPointer<UInt8>, dataSize:Int, fontSize:Int, codepoints:RawPointer<Int>, codepointCount:Int,
+        type:Int):RawPointer<GlyphInfo>;
 
     @:native('GenImageFontAtlas')
-    static function GenImageFontAtlas(glyphs:RawPointer<GlyphInfoImpl>, glyphRecs:RawPointer<RawPointer<RectangleImpl>>, glyphCount:Int, fontSize:Int,
-        padding:Int, packMethod:Int):ImageImpl;
+    static function GenImageFontAtlas(glyphs:RawPointer<GlyphInfo>, glyphRecs:RawPointer<RawPointer<Rectangle>>, glyphCount:Int, fontSize:Int, padding:Int,
+        packMethod:Int):Image;
 
     @:native('UnloadFontData')
-    static function UnloadFontData(glyphs:RawPointer<GlyphInfoImpl>, glyphCount:Int):Void;
+    static function UnloadFontData(glyphs:RawPointer<GlyphInfo>, glyphCount:Int):Void;
 
     @:native('UnloadFont')
-    static function UnloadFont(font:FontImpl):Void;
+    static function UnloadFont(font:Font):Void;
 
     @:native('ExportFontAsCode')
-    static function ExportFontAsCode(font:FontImpl, fileName:ConstCharStar):Bool;
+    static function ExportFontAsCode(font:Font, fileName:ConstCharStar):Bool;
 
     @:native('DrawFPS')
     static function DrawFPS(posX:Int, posY:Int):Void;
 
     @:native('DrawText')
-    static function DrawText(text:ConstCharStar, posX:Int, posY:Int, fontSize:Int, color:ColorImpl):Void;
+    static function DrawText(text:ConstCharStar, posX:Int, posY:Int, fontSize:Int, color:Color):Void;
 
     @:native('DrawTextEx')
-    static function DrawTextEx(font:FontImpl, text:ConstCharStar, position:Vector2Impl, fontSize:Single, spacing:Single, tint:ColorImpl):Void;
+    static function DrawTextEx(font:Font, text:ConstCharStar, position:Vector2, fontSize:Single, spacing:Single, tint:Color):Void;
 
     @:native('DrawTextPro')
-    static function DrawTextPro(font:FontImpl, text:ConstCharStar, position:Vector2Impl, origin:Vector2Impl, rotation:Single, fontSize:Single, spacing:Single,
-        tint:ColorImpl):Void;
+    static function DrawTextPro(font:Font, text:ConstCharStar, position:Vector2, origin:Vector2, rotation:Single, fontSize:Single, spacing:Single,
+        tint:Color):Void;
 
     @:native('DrawTextCodepoint')
-    static function DrawTextCodepoint(font:FontImpl, codepoint:Int, position:Vector2Impl, fontSize:Single, tint:ColorImpl):Void;
+    static function DrawTextCodepoint(font:Font, codepoint:Int, position:Vector2, fontSize:Single, tint:Color):Void;
 
     @:native('DrawTextCodepoints')
-    static function DrawTextCodepoints(font:FontImpl, codepoints:IntPointer, codepointCount:Int, position:Vector2Impl, fontSize:Single, spacing:Single,
-        tint:ColorImpl):Void;
+    static function DrawTextCodepoints(font:Font, codepoints:RawPointer<Int>, codepointCount:Int, position:Vector2, fontSize:Single, spacing:Single,
+        tint:Color):Void;
 
     @:native('SetTextLineSpacing')
     static function SetTextLineSpacing(spacing:Int):Void;
@@ -1386,46 +1372,46 @@ extern class Raylib
     static function MeasureText(text:ConstCharStar, fontSize:Int):Int;
 
     @:native('MeasureTextEx')
-    static function MeasureTextEx(font:FontImpl, text:ConstCharStar, fontSize:Single, spacing:Single):Vector2Impl;
+    static function MeasureTextEx(font:Font, text:ConstCharStar, fontSize:Single, spacing:Single):Vector2;
 
     @:native('GetGlyphIndex')
-    static function GetGlyphIndex(font:FontImpl, codepoint:Int):Int;
+    static function GetGlyphIndex(font:Font, codepoint:Int):Int;
 
     @:native('GetGlyphInfo')
-    static function GetGlyphInfo(font:FontImpl, codepoint:Int):GlyphInfoImpl;
+    static function GetGlyphInfo(font:Font, codepoint:Int):GlyphInfo;
 
     @:native('GetGlyphAtlasRec')
-    static function GetGlyphAtlasRec(font:FontImpl, codepoint:Int):RectangleImpl;
+    static function GetGlyphAtlasRec(font:Font, codepoint:Int):Rectangle;
 
     @:native('LoadUTF8')
-    static function LoadUTF8(codepoints:IntPointer, length:Int):ConstCharStar;
+    static function LoadUTF8(codepoints:RawPointer<Int>, length:Int):ConstCharStar;
 
     @:native('UnloadUTF8')
     static function UnloadUTF8(text:ConstCharStar):Void;
 
     @:native('LoadCodepoints')
-    static function LoadCodepoints(text:ConstCharStar, count:IntPointer):IntPointer;
+    static function LoadCodepoints(text:ConstCharStar, count:RawPointer<Int>):RawPointer<Int>;
 
     @:native('UnloadCodepoints')
-    static function UnloadCodepoints(codepoints:IntPointer):Void;
+    static function UnloadCodepoints(codepoints:RawPointer<Int>):Void;
 
     @:native('GetCodepointCount')
     static function GetCodepointCount(text:ConstCharStar):Int;
 
     @:native('GetCodepoint')
-    static function GetCodepoint(text:ConstCharStar, codepointSize:IntPointer):Int;
+    static function GetCodepoint(text:ConstCharStar, codepointSize:RawPointer<Int>):Int;
 
     @:native('GetCodepointNext')
-    static function GetCodepointNext(text:ConstCharStar, codepointSize:IntPointer):Int;
+    static function GetCodepointNext(text:ConstCharStar, codepointSize:RawPointer<Int>):Int;
 
     @:native('GetCodepointPrevious')
-    static function GetCodepointPrevious(text:ConstCharStar, codepointSize:IntPointer):Int;
+    static function GetCodepointPrevious(text:ConstCharStar, codepointSize:RawPointer<Int>):Int;
 
     @:native('CodepointToUTF8')
-    static function CodepointToUTF8(codepoint:Int, utf8Size:IntPointer):ConstCharStar;
+    static function CodepointToUTF8(codepoint:Int, utf8Size:RawPointer<Int>):ConstCharStar;
 
     @:native('TextCopy')
-    static function TextCopy(dst:UInt8Pointer, src:ConstCharStar):Int;
+    static function TextCopy(dst:RawPointer<UInt8>, src:ConstCharStar):Int;
 
     @:native('TextIsEqual')
     static function TextIsEqual(text1:ConstCharStar, text2:ConstCharStar):Bool;
@@ -1446,13 +1432,13 @@ extern class Raylib
     static function TextInsert(text:ConstCharStar, insert:ConstCharStar, position:Int):ConstCharStar;
 
     @:native('TextJoin')
-    static function TextJoin(textList:CastCharStarPointer, count:Int, delimiter:ConstCharStar):CastCharStar;
+    static function TextJoin(textList:RawPointer<CastCharStar>, count:Int, delimiter:ConstCharStar):CastCharStar;
 
     @:native('TextSplit')
-    static function TextSplit(text:ConstCharStar, delimiter:Char, count:IntPointer):CastCharStarPointer;
+    static function TextSplit(text:ConstCharStar, delimiter:Char, count:RawPointer<Int>):RawPointer<CastCharStar>;
 
     @:native('TextAppend')
-    static function TextAppend(text:UInt8Pointer, append:ConstCharStar, position:IntPointer):Void;
+    static function TextAppend(text:RawPointer<UInt8>, append:ConstCharStar, position:RawPointer<Int>):Void;
 
     @:native('TextFindIndex')
     static function TextFindIndex(text:ConstCharStar, find:ConstCharStar):Int;
@@ -1479,236 +1465,233 @@ extern class Raylib
     static function TextToFloat(text:ConstCharStar):Single;
 
     @:native('DrawLine3D')
-    static function DrawLine3D(startPos:Vector3Impl, endPos:Vector3Impl, color:ColorImpl):Void;
+    static function DrawLine3D(startPos:Vector3, endPos:Vector3, color:Color):Void;
 
     @:native('DrawPoint3D')
-    static function DrawPoint3D(position:Vector3Impl, color:ColorImpl):Void;
+    static function DrawPoint3D(position:Vector3, color:Color):Void;
 
     @:native('DrawCircle3D')
-    static function DrawCircle3D(center:Vector3Impl, radius:Single, rotationAxis:Vector3Impl, rotationAngle:Single, color:ColorImpl):Void;
+    static function DrawCircle3D(center:Vector3, radius:Single, rotationAxis:Vector3, rotationAngle:Single, color:Color):Void;
 
     @:native('DrawTriangle3D')
-    static function DrawTriangle3D(v1:Vector3Impl, v2:Vector3Impl, v3:Vector3Impl, color:ColorImpl):Void;
+    static function DrawTriangle3D(v1:Vector3, v2:Vector3, v3:Vector3, color:Color):Void;
 
     @:native('DrawTriangleStrip3D')
-    static function DrawTriangleStrip3D(points:RawConstPointer<Vector3Impl>, pointCount:Int, color:ColorImpl):Void;
+    static function DrawTriangleStrip3D(points:RawConstPointer<Vector3>, pointCount:Int, color:Color):Void;
 
     @:native('DrawCube')
-    static function DrawCube(position:Vector3Impl, width:Single, height:Single, length:Single, color:ColorImpl):Void;
+    static function DrawCube(position:Vector3, width:Single, height:Single, length:Single, color:Color):Void;
 
     @:native('DrawCubeV')
-    static function DrawCubeV(position:Vector3Impl, size:Vector3Impl, color:ColorImpl):Void;
+    static function DrawCubeV(position:Vector3, size:Vector3, color:Color):Void;
 
     @:native('DrawCubeWires')
-    static function DrawCubeWires(position:Vector3Impl, width:Single, height:Single, length:Single, color:ColorImpl):Void;
+    static function DrawCubeWires(position:Vector3, width:Single, height:Single, length:Single, color:Color):Void;
 
     @:native('DrawCubeWiresV')
-    static function DrawCubeWiresV(position:Vector3Impl, size:Vector3Impl, color:ColorImpl):Void;
+    static function DrawCubeWiresV(position:Vector3, size:Vector3, color:Color):Void;
 
     @:native('DrawSphere')
-    static function DrawSphere(centerPos:Vector3Impl, radius:Single, color:ColorImpl):Void;
+    static function DrawSphere(centerPos:Vector3, radius:Single, color:Color):Void;
 
     @:native('DrawSphereEx')
-    static function DrawSphereEx(centerPos:Vector3Impl, radius:Single, rings:Int, slices:Int, color:ColorImpl):Void;
+    static function DrawSphereEx(centerPos:Vector3, radius:Single, rings:Int, slices:Int, color:Color):Void;
 
     @:native('DrawSphereWires')
-    static function DrawSphereWires(centerPos:Vector3Impl, radius:Single, rings:Int, slices:Int, color:ColorImpl):Void;
+    static function DrawSphereWires(centerPos:Vector3, radius:Single, rings:Int, slices:Int, color:Color):Void;
 
     @:native('DrawCylinder')
-    static function DrawCylinder(position:Vector3Impl, radiusTop:Single, radiusBottom:Single, height:Single, slices:Int, color:ColorImpl):Void;
+    static function DrawCylinder(position:Vector3, radiusTop:Single, radiusBottom:Single, height:Single, slices:Int, color:Color):Void;
 
     @:native('DrawCylinderEx')
-    static function DrawCylinderEx(startPos:Vector3Impl, endPos:Vector3Impl, startRadius:Single, endRadius:Single, sides:Int, color:ColorImpl):Void;
+    static function DrawCylinderEx(startPos:Vector3, endPos:Vector3, startRadius:Single, endRadius:Single, sides:Int, color:Color):Void;
 
     @:native('DrawCylinderWires')
-    static function DrawCylinderWires(position:Vector3Impl, radiusTop:Single, radiusBottom:Single, height:Single, slices:Int, color:ColorImpl):Void;
+    static function DrawCylinderWires(position:Vector3, radiusTop:Single, radiusBottom:Single, height:Single, slices:Int, color:Color):Void;
 
     @:native('DrawCylinderWiresEx')
-    static function DrawCylinderWiresEx(startPos:Vector3Impl, endPos:Vector3Impl, startRadius:Single, endRadius:Single, sides:Int, color:ColorImpl):Void;
+    static function DrawCylinderWiresEx(startPos:Vector3, endPos:Vector3, startRadius:Single, endRadius:Single, sides:Int, color:Color):Void;
 
     @:native('DrawCapsule')
-    static function DrawCapsule(startPos:Vector3Impl, endPos:Vector3Impl, radius:Single, slices:Int, rings:Int, color:ColorImpl):Void;
+    static function DrawCapsule(startPos:Vector3, endPos:Vector3, radius:Single, slices:Int, rings:Int, color:Color):Void;
 
     @:native('DrawCapsuleWires')
-    static function DrawCapsuleWires(startPos:Vector3Impl, endPos:Vector3Impl, radius:Single, slices:Int, rings:Int, color:ColorImpl):Void;
+    static function DrawCapsuleWires(startPos:Vector3, endPos:Vector3, radius:Single, slices:Int, rings:Int, color:Color):Void;
 
     @:native('DrawPlane')
-    static function DrawPlane(centerPos:Vector3Impl, size:Vector2Impl, color:ColorImpl):Void;
+    static function DrawPlane(centerPos:Vector3, size:Vector2, color:Color):Void;
 
     @:native('DrawRay')
-    static function DrawRay(ray:RayImpl, color:ColorImpl):Void;
+    static function DrawRay(ray:Ray, color:Color):Void;
 
     @:native('DrawGrid')
     static function DrawGrid(slices:Int, spacing:Single):Void;
 
     @:native('LoadModel')
-    static function LoadModel(fileName:ConstCharStar):ModelImpl;
+    static function LoadModel(fileName:ConstCharStar):Model;
 
     @:native('LoadModelFromMesh')
-    static function LoadModelFromMesh(mesh:MeshImpl):ModelImpl;
+    static function LoadModelFromMesh(mesh:Mesh):Model;
 
     @:native('IsModelValid')
-    static function IsModelValid(model:ModelImpl):Bool;
+    static function IsModelValid(model:Model):Bool;
 
     @:native('UnloadModel')
-    static function UnloadModel(model:ModelImpl):Void;
+    static function UnloadModel(model:Model):Void;
 
     @:native('GetModelBoundingBox')
-    static function GetModelBoundingBox(model:ModelImpl):BoundingBoxImpl;
+    static function GetModelBoundingBox(model:Model):BoundingBox;
 
     @:native('DrawModel')
-    static function DrawModel(model:ModelImpl, position:Vector3Impl, scale:Single, tint:ColorImpl):Void;
+    static function DrawModel(model:Model, position:Vector3, scale:Single, tint:Color):Void;
 
     @:native('DrawModelEx')
-    static function DrawModelEx(model:ModelImpl, position:Vector3Impl, rotationAxis:Vector3Impl, rotationAngle:Single, scale:Vector3Impl, tint:ColorImpl):Void;
+    static function DrawModelEx(model:Model, position:Vector3, rotationAxis:Vector3, rotationAngle:Single, scale:Vector3, tint:Color):Void;
 
     @:native('DrawModelWires')
-    static function DrawModelWires(model:ModelImpl, position:Vector3Impl, scale:Single, tint:ColorImpl):Void;
+    static function DrawModelWires(model:Model, position:Vector3, scale:Single, tint:Color):Void;
 
     @:native('DrawModelWiresEx')
-    static function DrawModelWiresEx(model:ModelImpl, position:Vector3Impl, rotationAxis:Vector3Impl, rotationAngle:Single, scale:Vector3Impl,
-        tint:ColorImpl):Void;
+    static function DrawModelWiresEx(model:Model, position:Vector3, rotationAxis:Vector3, rotationAngle:Single, scale:Vector3, tint:Color):Void;
 
     @:native('DrawModelPoints')
-    static function DrawModelPoints(model:ModelImpl, position:Vector3Impl, scale:Single, tint:ColorImpl):Void;
+    static function DrawModelPoints(model:Model, position:Vector3, scale:Single, tint:Color):Void;
 
     @:native('DrawModelPointsEx')
-    static function DrawModelPointsEx(model:ModelImpl, position:Vector3Impl, rotationAxis:Vector3Impl, rotationAngle:Single, scale:Vector3Impl,
-        tint:ColorImpl):Void;
+    static function DrawModelPointsEx(model:Model, position:Vector3, rotationAxis:Vector3, rotationAngle:Single, scale:Vector3, tint:Color):Void;
 
     @:native('DrawBoundingBox')
-    static function DrawBoundingBox(box:BoundingBoxImpl, color:ColorImpl):Void;
+    static function DrawBoundingBox(box:BoundingBox, color:Color):Void;
 
     @:native('DrawBillboard')
-    static function DrawBillboard(camera:Camera3DImpl, texture:TextureImpl, position:Vector3Impl, scale:Single, tint:ColorImpl):Void;
+    static function DrawBillboard(camera:Camera3D, texture:Texture, position:Vector3, scale:Single, tint:Color):Void;
 
     @:native('DrawBillboardRec')
-    static function DrawBillboardRec(camera:Camera3DImpl, texture:TextureImpl, source:RectangleImpl, position:Vector3Impl, size:Vector2Impl,
-        tint:ColorImpl):Void;
+    static function DrawBillboardRec(camera:Camera3D, texture:Texture, source:Rectangle, position:Vector3, size:Vector2, tint:Color):Void;
 
     @:native('DrawBillboardPro')
-    static function DrawBillboardPro(camera:Camera3DImpl, texture:TextureImpl, source:RectangleImpl, position:Vector3Impl, up:Vector3Impl, size:Vector2Impl,
-        origin:Vector2Impl, rotation:Single, tint:ColorImpl):Void;
+    static function DrawBillboardPro(camera:Camera3D, texture:Texture, source:Rectangle, position:Vector3, up:Vector3, size:Vector2, origin:Vector2,
+        rotation:Single, tint:Color):Void;
 
     @:native('UploadMesh')
-    static function UploadMesh(mesh:MeshImpl, dynamicBuffer:Bool):Void;
+    static function UploadMesh(mesh:Mesh, dynamicBuffer:Bool):Void;
 
     @:native('UpdateMeshBuffer')
-    static function UpdateMeshBuffer(mesh:MeshImpl, index:Int, data:VoidPointer, dataSize:Int, offset:Int):Void;
+    static function UpdateMeshBuffer(mesh:Mesh, index:Int, data:RawPointer<cpp.Void>, dataSize:Int, offset:Int):Void;
 
     @:native('UnloadMesh')
-    static function UnloadMesh(mesh:MeshImpl):Void;
+    static function UnloadMesh(mesh:Mesh):Void;
 
     @:native('DrawMesh')
-    static function DrawMesh(mesh:MeshImpl, material:MaterialImpl, transform:MatrixImpl):Void;
+    static function DrawMesh(mesh:Mesh, material:Material, transform:Matrix):Void;
 
     @:native('DrawMeshInstanced')
-    static function DrawMeshInstanced(mesh:MeshImpl, material:MaterialImpl, transforms:RawPointer<MatrixImpl>, instances:Int):Void;
+    static function DrawMeshInstanced(mesh:Mesh, material:Material, transforms:RawPointer<Matrix>, instances:Int):Void;
 
     @:native('GetMeshBoundingBox')
-    static function GetMeshBoundingBox(mesh:MeshImpl):BoundingBoxImpl;
+    static function GetMeshBoundingBox(mesh:Mesh):BoundingBox;
 
     @:native('GenMeshTangents')
-    static function GenMeshTangents(mesh:MeshImpl):Void;
+    static function GenMeshTangents(mesh:Mesh):Void;
 
     @:native('ExportMesh')
-    static function ExportMesh(mesh:MeshImpl, fileName:ConstCharStar):Bool;
+    static function ExportMesh(mesh:Mesh, fileName:ConstCharStar):Bool;
 
     @:native('ExportMeshAsCode')
-    static function ExportMeshAsCode(mesh:MeshImpl, fileName:ConstCharStar):Bool;
+    static function ExportMeshAsCode(mesh:Mesh, fileName:ConstCharStar):Bool;
 
     @:native('GenMeshPoly')
-    static function GenMeshPoly(sides:Int, radius:Single):MeshImpl;
+    static function GenMeshPoly(sides:Int, radius:Single):Mesh;
 
     @:native('GenMeshPlane')
-    static function GenMeshPlane(width:Single, length:Single, resX:Int, resZ:Int):MeshImpl;
+    static function GenMeshPlane(width:Single, length:Single, resX:Int, resZ:Int):Mesh;
 
     @:native('GenMeshCube')
-    static function GenMeshCube(width:Single, height:Single, length:Single):MeshImpl;
+    static function GenMeshCube(width:Single, height:Single, length:Single):Mesh;
 
     @:native('GenMeshSphere')
-    static function GenMeshSphere(radius:Single, rings:Int, slices:Int):MeshImpl;
+    static function GenMeshSphere(radius:Single, rings:Int, slices:Int):Mesh;
 
     @:native('GenMeshHemiSphere')
-    static function GenMeshHemiSphere(radius:Single, rings:Int, slices:Int):MeshImpl;
+    static function GenMeshHemiSphere(radius:Single, rings:Int, slices:Int):Mesh;
 
     @:native('GenMeshCylinder')
-    static function GenMeshCylinder(radius:Single, height:Single, slices:Int):MeshImpl;
+    static function GenMeshCylinder(radius:Single, height:Single, slices:Int):Mesh;
 
     @:native('GenMeshCone')
-    static function GenMeshCone(radius:Single, height:Single, slices:Int):MeshImpl;
+    static function GenMeshCone(radius:Single, height:Single, slices:Int):Mesh;
 
     @:native('GenMeshTorus')
-    static function GenMeshTorus(radius:Single, size:Single, radSeg:Int, sides:Int):MeshImpl;
+    static function GenMeshTorus(radius:Single, size:Single, radSeg:Int, sides:Int):Mesh;
 
     @:native('GenMeshKnot')
-    static function GenMeshKnot(radius:Single, size:Single, radSeg:Int, sides:Int):MeshImpl;
+    static function GenMeshKnot(radius:Single, size:Single, radSeg:Int, sides:Int):Mesh;
 
     @:native('GenMeshHeightmap')
-    static function GenMeshHeightmap(heightmap:ImageImpl, size:Vector3Impl):MeshImpl;
+    static function GenMeshHeightmap(heightmap:Image, size:Vector3):Mesh;
 
     @:native('GenMeshCubicmap')
-    static function GenMeshCubicmap(cubicmap:ImageImpl, cubeSize:Vector3Impl):MeshImpl;
+    static function GenMeshCubicmap(cubicmap:Image, cubeSize:Vector3):Mesh;
 
     @:native('LoadMaterials')
-    static function LoadMaterials(fileName:ConstCharStar, materialCount:IntPointer):RawPointer<MaterialImpl>;
+    static function LoadMaterials(fileName:ConstCharStar, materialCount:RawPointer<Int>):RawPointer<Material>;
 
     @:native('LoadMaterialDefault')
-    static function LoadMaterialDefault():MaterialImpl;
+    static function LoadMaterialDefault():Material;
 
     @:native('IsMaterialValid')
-    static function IsMaterialValid(material:MaterialImpl):Bool;
+    static function IsMaterialValid(material:Material):Bool;
 
     @:native('UnloadMaterial')
-    static function UnloadMaterial(material:MaterialImpl):Void;
+    static function UnloadMaterial(material:Material):Void;
 
     @:native('SetMaterialTexture')
-    static function SetMaterialTexture(material:RawPointer<MaterialImpl>, mapType:Int, texture:TextureImpl):Void;
+    static function SetMaterialTexture(material:RawPointer<Material>, mapType:Int, texture:Texture):Void;
 
     @:native('SetModelMeshMaterial')
-    static function SetModelMeshMaterial(model:RawPointer<ModelImpl>, meshId:Int, materialId:Int):Void;
+    static function SetModelMeshMaterial(model:RawPointer<Model>, meshId:Int, materialId:Int):Void;
 
     @:native('LoadModelAnimations')
-    static function LoadModelAnimations(fileName:ConstCharStar, animCount:IntPointer):RawPointer<ModelAnimationImpl>;
+    static function LoadModelAnimations(fileName:ConstCharStar, animCount:RawPointer<Int>):RawPointer<ModelAnimation>;
 
     @:native('UpdateModelAnimation')
-    static function UpdateModelAnimation(model:ModelImpl, anim:ModelAnimationImpl, frame:Int):Void;
+    static function UpdateModelAnimation(model:Model, anim:ModelAnimation, frame:Int):Void;
 
     @:native('UnloadModelAnimation')
-    static function UnloadModelAnimation(anim:ModelAnimationImpl):Void;
+    static function UnloadModelAnimation(anim:ModelAnimation):Void;
 
     @:native('UnloadModelAnimations')
-    static function UnloadModelAnimations(animations:RawPointer<ModelAnimationImpl>, animCount:Int):Void;
+    static function UnloadModelAnimations(animations:RawPointer<ModelAnimation>, animCount:Int):Void;
 
     @:native('IsModelAnimationValid')
-    static function IsModelAnimationValid(model:ModelImpl, anim:ModelAnimationImpl):Bool;
+    static function IsModelAnimationValid(model:Model, anim:ModelAnimation):Bool;
 
     @:native('UpdateModelAnimationBones')
-    static function UpdateModelAnimationBones(model:ModelImpl, anim:ModelAnimationImpl, frame:Int):Void;
+    static function UpdateModelAnimationBones(model:Model, anim:ModelAnimation, frame:Int):Void;
 
     @:native('CheckCollisionSpheres')
-    static function CheckCollisionSpheres(center1:Vector3Impl, radius1:Single, center2:Vector3Impl, radius2:Single):Bool;
+    static function CheckCollisionSpheres(center1:Vector3, radius1:Single, center2:Vector3, radius2:Single):Bool;
 
     @:native('CheckCollisionBoxes')
-    static function CheckCollisionBoxes(box1:BoundingBoxImpl, box2:BoundingBoxImpl):Bool;
+    static function CheckCollisionBoxes(box1:BoundingBox, box2:BoundingBox):Bool;
 
     @:native('CheckCollisionBoxSphere')
-    static function CheckCollisionBoxSphere(box:BoundingBoxImpl, center:Vector3Impl, radius:Single):Bool;
+    static function CheckCollisionBoxSphere(box:BoundingBox, center:Vector3, radius:Single):Bool;
 
     @:native('GetRayCollisionSphere')
-    static function GetRayCollisionSphere(ray:RayImpl, center:Vector3Impl, radius:Single):RayCollisionImpl;
+    static function GetRayCollisionSphere(ray:Ray, center:Vector3, radius:Single):RayCollision;
 
     @:native('GetRayCollisionBox')
-    static function GetRayCollisionBox(ray:RayImpl, box:BoundingBoxImpl):RayCollisionImpl;
+    static function GetRayCollisionBox(ray:Ray, box:BoundingBox):RayCollision;
 
     @:native('GetRayCollisionMesh')
-    static function GetRayCollisionMesh(ray:RayImpl, mesh:MeshImpl, transform:MatrixImpl):RayCollisionImpl;
+    static function GetRayCollisionMesh(ray:Ray, mesh:Mesh, transform:Matrix):RayCollision;
 
     @:native('GetRayCollisionTriangle')
-    static function GetRayCollisionTriangle(ray:RayImpl, p1:Vector3Impl, p2:Vector3Impl, p3:Vector3Impl):RayCollisionImpl;
+    static function GetRayCollisionTriangle(ray:Ray, p1:Vector3, p2:Vector3, p3:Vector3):RayCollision;
 
     @:native('GetRayCollisionQuad')
-    static function GetRayCollisionQuad(ray:RayImpl, p1:Vector3Impl, p2:Vector3Impl, p3:Vector3Impl, p4:Vector3Impl):RayCollisionImpl;
+    static function GetRayCollisionQuad(ray:Ray, p1:Vector3, p2:Vector3, p3:Vector3, p4:Vector3):RayCollision;
 
     @:native('InitAudioDevice')
     static function InitAudioDevice():Void;
@@ -1726,181 +1709,181 @@ extern class Raylib
     static function GetMasterVolume():Single;
 
     @:native('LoadWave')
-    static function LoadWave(fileName:ConstCharStar):WaveImpl;
+    static function LoadWave(fileName:ConstCharStar):Wave;
 
     @:native('LoadWaveFromMemory')
-    static function LoadWaveFromMemory(fileType:ConstCharStar, fileData:UInt8ConstPointer, dataSize:Int):WaveImpl;
+    static function LoadWaveFromMemory(fileType:ConstCharStar, fileData:RawConstPointer<UInt8>, dataSize:Int):Wave;
 
     @:native('IsWaveValid')
-    static function IsWaveValid(wave:WaveImpl):Bool;
+    static function IsWaveValid(wave:Wave):Bool;
 
     @:native('LoadSound')
-    static function LoadSound(fileName:ConstCharStar):SoundImpl;
+    static function LoadSound(fileName:ConstCharStar):Sound;
 
     @:native('LoadSoundFromWave')
-    static function LoadSoundFromWave(wave:WaveImpl):SoundImpl;
+    static function LoadSoundFromWave(wave:Wave):Sound;
 
     @:native('LoadSoundAlias')
-    static function LoadSoundAlias(source:SoundImpl):SoundImpl;
+    static function LoadSoundAlias(source:Sound):Sound;
 
     @:native('IsSoundValid')
-    static function IsSoundValid(sound:SoundImpl):Bool;
+    static function IsSoundValid(sound:Sound):Bool;
 
     @:native('UpdateSound')
-    static function UpdateSound(sound:SoundImpl, data:VoidConstPointer, frameCount:Int):Void;
+    static function UpdateSound(sound:Sound, data:RawConstPointer<cpp.Void>, frameCount:Int):Void;
 
     @:native('UnloadWave')
-    static function UnloadWave(wave:WaveImpl):Void;
+    static function UnloadWave(wave:Wave):Void;
 
     @:native('UnloadSound')
-    static function UnloadSound(sound:SoundImpl):Void;
+    static function UnloadSound(sound:Sound):Void;
 
     @:native('UnloadSoundAlias')
-    static function UnloadSoundAlias(alias:SoundImpl):Void;
+    static function UnloadSoundAlias(alias:Sound):Void;
 
     @:native('ExportWave')
-    static function ExportWave(wave:WaveImpl, fileName:ConstCharStar):Bool;
+    static function ExportWave(wave:Wave, fileName:ConstCharStar):Bool;
 
     @:native('ExportWaveAsCode')
-    static function ExportWaveAsCode(wave:WaveImpl, fileName:ConstCharStar):Bool;
+    static function ExportWaveAsCode(wave:Wave, fileName:ConstCharStar):Bool;
 
     @:native('PlaySound')
-    static function PlaySound(sound:SoundImpl):Void;
+    static function PlaySound(sound:Sound):Void;
 
     @:native('StopSound')
-    static function StopSound(sound:SoundImpl):Void;
+    static function StopSound(sound:Sound):Void;
 
     @:native('PauseSound')
-    static function PauseSound(sound:SoundImpl):Void;
+    static function PauseSound(sound:Sound):Void;
 
     @:native('ResumeSound')
-    static function ResumeSound(sound:SoundImpl):Void;
+    static function ResumeSound(sound:Sound):Void;
 
     @:native('IsSoundPlaying')
-    static function IsSoundPlaying(sound:SoundImpl):Bool;
+    static function IsSoundPlaying(sound:Sound):Bool;
 
     @:native('SetSoundVolume')
-    static function SetSoundVolume(sound:SoundImpl, volume:Single):Void;
+    static function SetSoundVolume(sound:Sound, volume:Single):Void;
 
     @:native('SetSoundPitch')
-    static function SetSoundPitch(sound:SoundImpl, pitch:Single):Void;
+    static function SetSoundPitch(sound:Sound, pitch:Single):Void;
 
     @:native('SetSoundPan')
-    static function SetSoundPan(sound:SoundImpl, pan:Single):Void;
+    static function SetSoundPan(sound:Sound, pan:Single):Void;
 
     @:native('WaveCopy')
-    static function WaveCopy(wave:WaveImpl):WaveImpl;
+    static function WaveCopy(wave:Wave):Wave;
 
     @:native('WaveCrop')
-    static function WaveCrop(wave:RawPointer<WaveImpl>, initFrame:Int, finalFrame:Int):Void;
+    static function WaveCrop(wave:RawPointer<Wave>, initFrame:Int, finalFrame:Int):Void;
 
     @:native('WaveFormat')
-    static function WaveFormat(wave:RawPointer<WaveImpl>, initSample:Int, finalSample:Int, channels:Int):Void;
+    static function WaveFormat(wave:RawPointer<Wave>, initSample:Int, finalSample:Int, channels:Int):Void;
 
     @:native('LoadWaveSamples')
-    static function LoadWaveSamples(wave:WaveImpl):SinglePointer;
+    static function LoadWaveSamples(wave:Wave):RawPointer<Single>;
 
     @:native('UnloadWaveSamples')
-    static function UnloadWaveSamples(samples:SinglePointer):Void;
+    static function UnloadWaveSamples(samples:RawPointer<Single>):Void;
 
     @:native('LoadMusicStream')
-    static function LoadMusicStream(fileName:ConstCharStar):MusicImpl;
+    static function LoadMusicStream(fileName:ConstCharStar):Music;
 
     @:native('LoadMusicStreamFromMemory')
-    static function LoadMusicStreamFromMemory(fileType:ConstCharStar, fileData:UInt8ConstPointer, dataSize:Int):MusicImpl;
+    static function LoadMusicStreamFromMemory(fileType:ConstCharStar, fileData:RawConstPointer<UInt8>, dataSize:Int):Music;
 
     @:native('IsMusicValid')
-    static function IsMusicValid(music:MusicImpl):Bool;
+    static function IsMusicValid(music:Music):Bool;
 
     @:native('UnloadMusicStream')
-    static function UnloadMusicStream(music:MusicImpl):Void;
+    static function UnloadMusicStream(music:Music):Void;
 
     @:native('PlayMusicStream')
-    static function PlayMusicStream(music:MusicImpl):Void;
+    static function PlayMusicStream(music:Music):Void;
 
     @:native('IsMusicStreamPlaying')
-    static function IsMusicStreamPlaying(music:MusicImpl):Bool;
+    static function IsMusicStreamPlaying(music:Music):Bool;
 
     @:native('UpdateMusicStream')
-    static function UpdateMusicStream(music:MusicImpl):Void;
+    static function UpdateMusicStream(music:Music):Void;
 
     @:native('StopMusicStream')
-    static function StopMusicStream(music:MusicImpl):Void;
+    static function StopMusicStream(music:Music):Void;
 
     @:native('PauseMusicStream')
-    static function PauseMusicStream(music:MusicImpl):Void;
+    static function PauseMusicStream(music:Music):Void;
 
     @:native('ResumeMusicStream')
-    static function ResumeMusicStream(music:MusicImpl):Void;
+    static function ResumeMusicStream(music:Music):Void;
 
     @:native('SeekMusicStream')
-    static function SeekMusicStream(music:MusicImpl, position:Single):Void;
+    static function SeekMusicStream(music:Music, position:Single):Void;
 
     @:native('SetMusicVolume')
-    static function SetMusicVolume(music:MusicImpl, volume:Single):Void;
+    static function SetMusicVolume(music:Music, volume:Single):Void;
 
     @:native('SetMusicPitch')
-    static function SetMusicPitch(music:MusicImpl, pitch:Single):Void;
+    static function SetMusicPitch(music:Music, pitch:Single):Void;
 
     @:native('SetMusicPan')
-    static function SetMusicPan(music:MusicImpl, pan:Single):Void;
+    static function SetMusicPan(music:Music, pan:Single):Void;
 
     @:native('GetMusicTimeLength')
-    static function GetMusicTimeLength(music:MusicImpl):Single;
+    static function GetMusicTimeLength(music:Music):Single;
 
     @:native('GetMusicTimePlayed')
-    static function GetMusicTimePlayed(music:MusicImpl):Single;
+    static function GetMusicTimePlayed(music:Music):Single;
 
     @:native('LoadAudioStream')
-    static function LoadAudioStream(sampleRate:UInt32, sampleSize:UInt32, channels:UInt32):AudioStreamImpl;
+    static function LoadAudioStream(sampleRate:UInt32, sampleSize:UInt32, channels:UInt32):AudioStream;
 
     @:native('IsAudioStreamValid')
-    static function IsAudioStreamValid(stream:AudioStreamImpl):Bool;
+    static function IsAudioStreamValid(stream:AudioStream):Bool;
 
     @:native('UnloadAudioStream')
-    static function UnloadAudioStream(stream:AudioStreamImpl):Void;
+    static function UnloadAudioStream(stream:AudioStream):Void;
 
     @:native('UpdateAudioStream')
-    static function UpdateAudioStream(stream:AudioStreamImpl, data:VoidConstPointer, samplesCount:Int):Void;
+    static function UpdateAudioStream(stream:AudioStream, data:RawConstPointer<cpp.Void>, samplesCount:Int):Void;
 
     @:native('IsAudioStreamProcessed')
-    static function IsAudioStreamProcessed(stream:AudioStreamImpl):Bool;
+    static function IsAudioStreamProcessed(stream:AudioStream):Bool;
 
     @:native('PlayAudioStream')
-    static function PlayAudioStream(stream:AudioStreamImpl):Void;
+    static function PlayAudioStream(stream:AudioStream):Void;
 
     @:native('PauseAudioStream')
-    static function PauseAudioStream(stream:AudioStreamImpl):Void;
+    static function PauseAudioStream(stream:AudioStream):Void;
 
     @:native('ResumeAudioStream')
-    static function ResumeAudioStream(stream:AudioStreamImpl):Void;
+    static function ResumeAudioStream(stream:AudioStream):Void;
 
     @:native('IsAudioStreamPlaying')
-    static function IsAudioStreamPlaying(stream:AudioStreamImpl):Bool;
+    static function IsAudioStreamPlaying(stream:AudioStream):Bool;
 
     @:native('StopAudioStream')
-    static function StopAudioStream(stream:AudioStreamImpl):Void;
+    static function StopAudioStream(stream:AudioStream):Void;
 
     @:native('SetAudioStreamVolume')
-    static function SetAudioStreamVolume(stream:AudioStreamImpl, volume:Single):Void;
+    static function SetAudioStreamVolume(stream:AudioStream, volume:Single):Void;
 
     @:native('SetAudioStreamPitch')
-    static function SetAudioStreamPitch(stream:AudioStreamImpl, pitch:Single):Void;
+    static function SetAudioStreamPitch(stream:AudioStream, pitch:Single):Void;
 
     @:native('SetAudioStreamPan')
-    static function SetAudioStreamPan(stream:AudioStreamImpl, pan:Single):Void;
+    static function SetAudioStreamPan(stream:AudioStream, pan:Single):Void;
 
     @:native('SetAudioStreamBufferSizeDefault')
     static function SetAudioStreamBufferSizeDefault(size:Int):Void;
 
     @:native('SetAudioStreamCallback')
-    static function SetAudioStreamCallback(stream:AudioStreamImpl, callback:AudioCallback):Void;
+    static function SetAudioStreamCallback(stream:AudioStream, callback:AudioCallback):Void;
 
     @:native('AttachAudioStreamProcessor')
-    static function AttachAudioStreamProcessor(stream:AudioStreamImpl, processor:AudioCallback):Void;
+    static function AttachAudioStreamProcessor(stream:AudioStream, processor:AudioCallback):Void;
 
     @:native('DetachAudioStreamProcessor')
-    static function DetachAudioStreamProcessor(stream:AudioStreamImpl, processor:AudioCallback):Void;
+    static function DetachAudioStreamProcessor(stream:AudioStream, processor:AudioCallback):Void;
 
     @:native('AttachAudioMixedProcessor')
     static function AttachAudioMixedProcessor(processor:AudioCallback):Void;

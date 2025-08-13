@@ -1,7 +1,6 @@
 package emscripten;
 
-import raylib.utils.IntPointer;
-import raylib.utils.VoidPointer;
+import cpp.RawPointer;
 
 /**
  * Function type for simple callbacks with no arguments
@@ -11,7 +10,7 @@ typedef Em_Callback_Func = cpp.Callable<Void->Void>;
 /**
  * Function type for callbacks that accept a pointer argument
  */
-typedef Em_Arg_Callback_Func = cpp.Callable<VoidPointer->Void>;
+typedef Em_Arg_Callback_Func = cpp.Callable<RawPointer<cpp.Void>->Void>;
 
 /**
  * Bindings to Emscripten's runtime API for WebAssembly applications.
@@ -66,7 +65,7 @@ extern class Emscripten
      * @param value Pointer to store the current timing value
      */
     @:native('emscripten_get_main_loop_timing')
-    static function get_main_loop_timing(mode:IntPointer, value:IntPointer):Void;
+    static function get_main_loop_timing(mode:RawPointer<Int>, value:RawPointer<Int>):Void;
 
     /**
      * Sets a C function as the main event loop for the application with a custom argument.
@@ -79,7 +78,7 @@ extern class Emscripten
      * @param simulate_infinite_loop If true, this function does not return (blocks the call stack)
      */
     @:native('emscripten_set_main_loop_arg')
-    static function set_main_loop_arg(func:Em_Arg_Callback_Func, arg:VoidPointer, fps:Int, simulate_infinite_loop:Bool):Void;
+    static function set_main_loop_arg(func:Em_Arg_Callback_Func, arg:RawPointer<cpp.Void>, fps:Int, simulate_infinite_loop:Bool):Void;
 
     /**
      * Pauses the execution of the main loop.

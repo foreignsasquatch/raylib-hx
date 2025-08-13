@@ -1,7 +1,6 @@
 package;
 
-import cpp.UInt32;
-import cpp.Pointer;
+import cpp.RawPointer;
 
 import raylib.Raylib.*;
 import raylib.Types;
@@ -22,9 +21,9 @@ class Main
 
         // Define the camera to look into our 3D world
         final camera:Camera3D = new Camera3D();
-        camera.position = new Vector3(5.0, 5.0, 5.0); // Camera position
-        camera.target = new Vector3(0.0, 1.5, 0.0); // Camera looking at point
-        camera.up = new Vector3(0.0, 1.0, 0.0); // Camera up vector (rotation towards target)
+        camera.position = Vector3.create(5.0, 5.0, 5.0); // Camera position
+        camera.target = Vector3.create(0.0, 1.5, 0.0); // Camera looking at point
+        camera.up = Vector3.create(0.0, 1.0, 0.0); // Camera up vector (rotation towards target)
         camera.fovy = 45.0; // Camera field-of-view Y
         camera.projection = CAMERA_PERSPECTIVE; // Camera projection type
 
@@ -35,9 +34,9 @@ class Main
         var animsCount:Int = 0;
         var animationIndex:UInt = 0;
         var animCurrentFrame:UInt = 0;
-        var modelAnimation:Pointer<ModelAnimationImpl> = Pointer.fromRaw(LoadModelAnimations("resources/robot.glb", animsCount));
+        var modelAnimation:RawPointer<ModelAnimation> = LoadModelAnimations("resources/robot.glb", RawPointer.addressOf(animsCount));
 
-        final position:Vector3 = new Vector3(0.0, 0.0, 0.0); // Set model position
+        final position:Vector3 = Vector3.create(0.0, 0.0, 0.0); // Set model position
 
         SetTargetFPS(60); // Set our game to run at 60 frames-per-second
         //--------------------------------------------------------------------------------------
@@ -47,7 +46,7 @@ class Main
         {
             // Update
             //----------------------------------------------------------------------------------
-            UpdateCamera(camera, CAMERA_THIRD_PERSON);
+            UpdateCamera(RawPointer.addressOf(camera), CAMERA_THIRD_PERSON);
 
             // Select current animation
             if (IsMouseButtonPressed(MOUSE_BUTTON_RIGHT))
@@ -87,7 +86,7 @@ class Main
 
         if (modelAnimation != null)
         {
-            UnloadModelAnimations(modelAnimation.raw, animsCount); // Unload animations
+            UnloadModelAnimations(modelAnimation, animsCount); // Unload animations
             modelAnimation = null;
         }
 

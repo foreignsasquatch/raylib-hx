@@ -32,7 +32,6 @@ import cpp.RawPointer;
 import cpp.Struct;
 
 import raylib.Types;
-import raylib.utils.IntPointer;
 
 extern enum abstract TouchAction(TouchActionImpl)
 {
@@ -66,35 +65,14 @@ private extern class TouchActionImpl {}
 @:include('rgestures-impl.h')
 @:structAccess
 @:native('GestureEvent')
-extern class GestureEventImpl
+extern class GestureEvent
 {
     var touchAction:Int;
     var pointCount:Int;
-    var pointId:IntPointer;
-    var position:RawPointer<Vector2Impl>;
+    var pointId:RawPointer<Int>;
+    var position:RawPointer<Vector2>;
 
     function new():Void;
-}
-
-@:forward
-extern abstract GestureEvent(Struct<GestureEventImpl>) to Struct<GestureEventImpl>
-{
-    inline function new():Void
-    {
-        this = new GestureEventImpl();
-    }
-
-    @:from
-    static inline function fromNative(value:GestureEventImpl):GestureEvent
-        return cast value;
-
-    @:to
-    inline function toConstPointer():RawConstPointer<GestureEventImpl>
-        return cast Pointer.addressOf(this).constRaw;
-
-    @:to
-    inline function toPointer():RawPointer<GestureEventImpl>
-        return cast Pointer.addressOf(this).raw;
 }
 
 @:buildXml("<include name=\"${haxelib:raylib-hx}/project/Build.xml\" />")
@@ -102,7 +80,7 @@ extern abstract GestureEvent(Struct<GestureEventImpl>) to Struct<GestureEventImp
 extern class RGestures
 {
     @:native('ProcessGestureEvent')
-    static function ProcessGestureEvent(event:GestureEventImpl):Void;
+    static function ProcessGestureEvent(event:GestureEvent):Void;
 
     @:native('UpdateGestures')
     static function UpdateGestures():Void;
